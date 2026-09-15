@@ -52,6 +52,7 @@
   "toneOfVoice": {
     "descrizione": "MODIFICA: es. Caldo, professionale, entusiasta ma non urlato. Diamo del 'voi' o del 'tu' agli sposi? Emoji sì/no?",
     "emojiConsentiti": true,
-    "hashtagFissi": ["#djmatrimonio", "#weddingdj", "#matrimonio2027", "MODIFICA aggiungi i tuoi"]
+    "_nota_hashtagFissi": "Aggiungi/togli hashtag liberamente nell'elenco qui sotto: ogni voce viene pubblicata così com'è, quindi NON scrivere note o istruzioni dentro l'elenco.",
+    "hashtagFissi": ["#djmatrimonio", "#weddingdj", "#matrimonio2027"]
   }
 }
