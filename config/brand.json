@@ -1,15 +1,15 @@
 {
   "_istruzioni": "Compila questo file con i tuoi dati reali. Tutti gli agenti (contenuti, lead, strategia) leggono da qui: più è dettagliato, migliori saranno i testi e le proposte generate. Non serve toccare codice, solo questo JSON.",
 
-  "nomeArte": "MODIFICA: es. Forte DJ",
+  "nomeArte": "Forte DJ",
   "nomeReale": "MODIFICA",
-  "tagline": "MODIFICA: una frase che ti descrive, es. 'Matrimoni ed eventi che si ricordano per la musica giusta al momento giusto'",
-  "bio": "MODIFICA: 2-3 frasi di presentazione, stile e approccio. Usata per generare didascalie e messaggi coerenti.",
+  "tagline": "Con Forte DJ il divertimento è assicurato: la musica diventa il cuore pulsante di una serata indimenticabile.",
+  "bio": "DJ per matrimoni ed eventi con esperienza pluriennale e un repertorio vasto e sempre aggiornato: dagli anni '70/'80/'90 al pop, rock, dance, R&B/soul, musica latina e lounge. Ogni playlist viene costruita su misura insieme ai clienti, leggendo la pista e adattando la selezione musicale al pubblico presente. DJ set curato interamente da un unico professionista, con impianto audio, luci e macchina del fumo per un allestimento completo.",
   "anniEsperienza": "MODIFICA: es. 10",
   "numeroEventiFatti": "MODIFICA: es. 200+",
 
-  "generi": ["MODIFICA: es. Commercial", "Latino", "House", "Anni 80/90", "Musica italiana"],
-  "tipologieEventi": ["Matrimoni", "Party privati", "Eventi aziendali", "Feste 18/30/50 anni"],
+  "generi": ["Commerciale", "Anni 70/80/90", "Latino", "Dance", "Pop", "Rock", "R&B/Soul", "Lounge"],
+  "tipologieEventi": ["Matrimoni", "Matrimoni in chiesa", "Cerimonie/comunioni", "Compleanni e anniversari", "Feste aziendali", "Addio al nubilato/celibato", "Feste private", "Capodanno ed eventi stagionali", "Locali/club/bar", "Ricevimenti/inaugurazioni"],
 
   "areaServita": {
     "base": "MODIFICA: es. Bergamo",
