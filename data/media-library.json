@@ -1,4 +1,13 @@
 {
   "_istruzioni": "Libreria dei media caricati dalla dashboard (pagina 'Carica media'). Il Media Agent pesca da qui il prossimo file non ancora usato e lo mette in coda per la didascalia.",
-  "items": []
+  "items": [
+    {
+      "id": "ac69c16a-de21-490f-8a4d-4a843e6934dd",
+      "url": "https://res.cloudinary.com/zdjngwjy/image/upload/v1789483997/nup6bo3p1smmnmi7u7zd.jpg",
+      "filename": "20260711_231034.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-15T14:53:18.479Z",
+      "usatoIl": null
+    }
+  ]
 }
