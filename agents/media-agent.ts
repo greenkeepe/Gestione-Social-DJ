@@ -1,17 +1,25 @@
-// Agente "Occhio" — sceglie il prossimo media dall'album Google Photos e
-// apre una nuova voce in coda (senza ancora didascalia: ci pensa l'Agente
-// Contenuti subito dopo, nello stesso run del Master).
+// Agente "Occhio" — sceglie il prossimo media caricato dalla dashboard
+// (pagina "Carica media") e apre una nuova voce in coda (senza ancora
+// didascalia: ci pensa l'Agente Contenuti subito dopo, nello stesso run
+// del Master).
 import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
-import { elencaMediaAlbum, urlDownloadDiretto, type MediaItemGooglePhotos } from "../lib/googlePhotos.js";
 import { IDENTITA } from "./identities.js";
 
-interface MediaIndexFile {
+interface MediaLibraryItem {
+  id: string;
+  url: string;
+  filename: string;
+  mimeType: string;
+  uploadedAt: string;
+  usatoIl: string | null;
+}
+
+interface MediaLibraryFile {
   _istruzioni: string;
-  album: string | null;
-  items: Array<{ id: string; filename: string; usatoIl: string | null }>;
+  items: MediaLibraryItem[];
 }
 
 interface PostsQueueFile {
@@ -21,7 +29,7 @@ interface PostsQueueFile {
 
 export async function eseguiMediaAgent(): Promise<void> {
   try {
-    const mediaIndex = await readData<MediaIndexFile>("media-index.json");
+    const libreria = await readData<MediaLibraryFile>("media-library.json");
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
 
     const cePostaInAttesaDiMedia = queueFile.queue.some((p) => p.status === "in-coda-caption");
@@ -35,29 +43,14 @@ export async function eseguiMediaAgent(): Promise<void> {
       return;
     }
 
-    let itemsRemoti: MediaItemGooglePhotos[] = [];
-    try {
-      itemsRemoti = await elencaMediaAlbum();
-    } catch (err) {
-      await logAgentRun({
-        agente: IDENTITA.media.nome,
-        identita: IDENTITA.media.ruolo,
-        status: "errore",
-        riepilogo: "Impossibile leggere l'album Google Photos. Controlla le credenziali GOOGLE_* nei secrets.",
-        dettagli: { errore: String(err) }
-      });
-      return;
-    }
-
-    const idGiaUsati = new Set(mediaIndex.items.filter((i) => i.usatoIl !== null).map((i) => i.id));
-    const prossimo = itemsRemoti.find((m) => !idGiaUsati.has(m.id));
+    const prossimo = libreria.items.find((m) => m.usatoIl === null);
 
     if (!prossimo) {
       await logAgentRun({
         agente: IDENTITA.media.nome,
         identita: IDENTITA.media.ruolo,
         status: "nessuna-azione",
-        riepilogo: "Nessun nuovo media disponibile nell'album: tutti i contenuti presenti sono già stati usati. Aggiungi nuove foto/video alla cartella Google Photos dedicata."
+        riepilogo: "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard."
       });
       return;
     }
@@ -68,11 +61,11 @@ export async function eseguiMediaAgent(): Promise<void> {
       createdAt: nowIso(),
       formato: isVideo ? "reel" : "post",
       media: {
-        source: "google-photos",
+        source: "dashboard-upload",
         mediaId: prossimo.id,
         filename: prossimo.filename,
         mimeType: prossimo.mimeType,
-        downloadUrl: urlDownloadDiretto(prossimo)
+        downloadUrl: prossimo.url
       },
       caption: null,
       hashtags: [],
@@ -81,14 +74,8 @@ export async function eseguiMediaAgent(): Promise<void> {
     });
     await writeData("posts-queue.json", queueFile);
 
-    mediaIndex.album = mediaIndex.album ?? process.env.GOOGLE_PHOTOS_ALBUM_ID ?? null;
-    const esistente = mediaIndex.items.find((i) => i.id === prossimo.id);
-    if (esistente) {
-      esistente.usatoIl = nowIso();
-    } else {
-      mediaIndex.items.push({ id: prossimo.id, filename: prossimo.filename, usatoIl: nowIso() });
-    }
-    await writeData("media-index.json", mediaIndex);
+    prossimo.usatoIl = nowIso();
+    await writeData("media-library.json", libreria);
 
     await logAgentRun({
       agente: IDENTITA.media.nome,

@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 const IDENTITA_DESCRIZIONI: Record<string, string> = {
   Direttore: "Agente Master: coordina tutti gli altri agenti ogni giorno nell'ordine corretto.",
-  Occhio: "Agente Media: sceglie foto/video dall'album Google Photos evitando ripetizioni.",
+  Occhio: "Agente Media: sceglie il prossimo file caricato dalla pagina \"Carica media\", evitando ripetizioni.",
   Copy: "Agente Contenuti: scrive didascalie e hashtag seguendo il calendario editoriale.",
   Editore: "Agente Pubblicazione: pubblica su Instagram/Facebook nell'orario migliore della giornata.",
   Cacciatore: "Agente Lead: individua chi ha interagito con i contenuti e prepara bozze di messaggi (mai invio automatico).",
