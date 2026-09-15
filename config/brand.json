@@ -59,7 +59,7 @@
   },
 
   "toneOfVoice": {
-    "descrizione": "MODIFICA: es. Caldo, professionale, entusiasta ma non urlato. Diamo del 'voi' o del 'tu' agli sposi? Emoji sì/no?",
+    "descrizione": "Il tono si adatta al tipo di evento e al contenuto della foto/video, non è fisso: più elegante, romantico e curato per matrimoni e cerimonie; più energico, diretto e scanzonato per feste, diciottesimi, aperitivi ed eventi aziendali. Sempre caldo, autentico e mai urlato o eccessivo. Emoji usate con moderazione (1-2 per post, mai a raffica), scelte in modo pertinente al momento (es. 💍 per momenti romantici, 🎉🔥 per momenti di festa).",
     "emojiConsentiti": true,
     "_nota_hashtagFissi": "Aggiungi/togli hashtag liberamente nell'elenco qui sotto: ogni voce viene pubblicata così com'è, quindi NON scrivere note o istruzioni dentro l'elenco.",
     "hashtagFissi": ["#djmatrimonio", "#weddingdj", "#matrimonio2027"]
