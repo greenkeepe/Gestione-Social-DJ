@@ -26,7 +26,7 @@ export interface QueueItem {
   hashtags: string[];
   orarioProgrammato: string | null;
   pillarId?: string;
-  media: { filename: string; mimeType: string };
+  media: { filename: string; mimeType: string; downloadUrl: string };
 }
 
 export interface PostsQueueFile {

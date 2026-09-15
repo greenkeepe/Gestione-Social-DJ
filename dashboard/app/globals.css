@@ -258,3 +258,115 @@ th {
   background: var(--border);
   display: block;
 }
+
+/* --- Anteprima post: mockup realistico stile Instagram/Facebook -------- */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin: 20px 0;
+}
+
+.ig-post {
+  background: #ffffff;
+  color: #262626;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  border: 1px solid #dbdbdb;
+}
+
+.ig-post__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+}
+
+.ig-post__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #feda75, #d62976 60%, #4f5bd5);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ig-post__handle {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ig-post__badge {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ig-post__badge.pronto { background: #e6f4ea; color: #1e7e34; }
+.ig-post__badge.in-coda-caption { background: #fff4e0; color: #a15c00; }
+.ig-post__badge.pubblicato { background: #e8eefc; color: #1a56db; }
+
+.ig-post__media {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #000;
+  display: block;
+  object-fit: cover;
+}
+
+.ig-post__media.reel {
+  aspect-ratio: 9 / 16;
+}
+
+.ig-post__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px 4px;
+  color: #262626;
+}
+
+.ig-post__actions svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #262626;
+  stroke-width: 1.8;
+}
+
+.ig-post__actions .spacer {
+  margin-left: auto;
+}
+
+.ig-post__caption {
+  padding: 8px 14px 4px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ig-post__caption .placeholder {
+  color: #8e8e8e;
+  font-style: italic;
+}
+
+.ig-post__hashtags {
+  color: #00376b;
+}
+
+.ig-post__meta {
+  padding: 0 14px 14px;
+  font-size: 11px;
+  color: #8e8e8e;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

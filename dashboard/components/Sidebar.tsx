@@ -9,6 +9,7 @@ export function Sidebar() {
         <Link href="/">Panoramica</Link>
         <Link href="/agenti">Agenti</Link>
         <Link href="/carica">Carica media</Link>
+        <Link href="/anteprima">Anteprima</Link>
         <Link href="/contenuti">Contenuti</Link>
         <Link href="/lead">Lead</Link>
         <Link href="/strategia">Strategia 2027</Link>

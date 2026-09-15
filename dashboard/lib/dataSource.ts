@@ -5,12 +5,12 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-async function leggiDaGitHub<T>(fileName: string): Promise<T> {
+async function leggiDaGitHub<T>(percorsoRelativo: string): Promise<T> {
   const repo = process.env.GITHUB_REPO;
   const branch = process.env.GITHUB_BRANCH ?? "main";
   const token = process.env.GITHUB_TOKEN;
 
-  const url = `https://api.github.com/repos/${repo}/contents/data/${fileName}?ref=${branch}`;
+  const url = `https://api.github.com/repos/${repo}/contents/${percorsoRelativo}?ref=${branch}`;
   const res = await fetch(url, {
     headers: {
       Accept: "application/vnd.github.raw+json",
@@ -20,22 +20,31 @@ async function leggiDaGitHub<T>(fileName: string): Promise<T> {
   });
 
   if (!res.ok) {
-    throw new Error(`Impossibile leggere data/${fileName} da GitHub (${res.status}): ${await res.text()}`);
+    throw new Error(`Impossibile leggere ${percorsoRelativo} da GitHub (${res.status}): ${await res.text()}`);
   }
   return (await res.json()) as T;
 }
 
-async function leggiDaFilesystem<T>(fileName: string): Promise<T> {
-  const filePath = path.resolve(process.cwd(), "..", "data", fileName);
+async function leggiDaFilesystem<T>(cartella: string, fileName: string): Promise<T> {
+  const filePath = path.resolve(process.cwd(), "..", cartella, fileName);
   const raw = await readFile(filePath, "utf-8");
   return JSON.parse(raw) as T;
 }
 
 export async function leggiDati<T>(fileName: string): Promise<T> {
   if (process.env.GITHUB_REPO) {
-    return leggiDaGitHub<T>(fileName);
+    return leggiDaGitHub<T>(`data/${fileName}`);
   }
-  return leggiDaFilesystem<T>(fileName);
+  return leggiDaFilesystem<T>("data", fileName);
+}
+
+// Legge config/brand.json — usato dalla pagina "Anteprima" per mostrare
+// i post come appariranno davvero (nome account, handle, ecc.)
+export async function leggiConfig<T>(fileName: string): Promise<T> {
+  if (process.env.GITHUB_REPO) {
+    return leggiDaGitHub<T>(`config/${fileName}`);
+  }
+  return leggiDaFilesystem<T>("config", fileName);
 }
 
 // Usata dalla pagina "Carica media": scrive direttamente nel repository
