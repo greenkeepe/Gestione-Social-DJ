@@ -1,14 +1,4 @@
 {
   "_istruzioni": "Elenco lead (potenziali sposi/clienti). Il Leads Agent AGGIUNGE proposte di contatto qui con status 'bozza-da-rivedere'. NESSUN INVIO AUTOMATICO: sei tu a rivedere il messaggio, eventualmente modificarlo, e inviarlo di persona da telefono/Instagram. Quando lo invii manualmente, aggiorna lo status a 'inviato'.",
-  "leads": [
-    {
-      "id": "4b7639b2-5ed6-41e7-9831-bd7153028d4e",
-      "username": "forte_dj",
-      "fonte": "commento su post 18085932254697979",
-      "commentoOriginale": "Date disponibili 2027.\nContattatemi per preventivo personalizzato #wedding #party #matrimonio #eventi #festa",
-      "messaggioProposto": "Ciao! Grazie per il tuo messaggio 😊 Se vuoi saperne di più sui servizi per il tuo matrimonio scrivimi pure qui in DM, ti rispondo con tutti i dettagli e la disponibilità!",
-      "status": "bozza-da-rivedere",
-      "creatoIl": "2026-09-15T12:55:28.853Z"
-    }
-  ]
+  "leads": []
 }

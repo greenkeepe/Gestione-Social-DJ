@@ -91,6 +91,12 @@ export async function leggiInsightsAccountInstagram(): Promise<Record<string, un
   });
 }
 
+export async function leggiUsernameAccountInstagram(): Promise<string> {
+  const igUserId = requireEnv("META_IG_BUSINESS_ACCOUNT_ID");
+  const res = await graphFetch<{ username: string }>(`/${igUserId}`, { fields: "username" });
+  return res.username;
+}
+
 export async function leggiInsightsPost(postId: string): Promise<Record<string, unknown>> {
   return graphFetch(`/${postId}/insights`, { metric: "impressions,reach,likes,comments,saved,shares" });
 }

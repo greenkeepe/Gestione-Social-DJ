@@ -11,7 +11,7 @@ import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
-import { leggiUltimiMediaInstagram, leggiCommentiRecenti } from "../lib/metaGraph.js";
+import { leggiUltimiMediaInstagram, leggiCommentiRecenti, leggiUsernameAccountInstagram } from "../lib/metaGraph.js";
 import { generaTestoConLLM } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
 
@@ -58,11 +58,13 @@ export async function eseguiLeadsAgent(): Promise<void> {
     }
 
     const brand = await readBrand<Record<string, any>>();
+    const nostroUsername = await leggiUsernameAccountInstagram().catch(() => null);
     let nuoviLead = 0;
 
     for (const m of media) {
       const commenti = await leggiCommentiRecenti(m.id).catch(() => []);
       for (const c of commenti) {
+        if (nostroUsername && c.username === nostroUsername) continue; // ignora i nostri stessi commenti (es. hashtag aggiuntivi)
         if (usernameGiaContattati.has(c.username)) continue;
         if (!sembraUnLeadInteressato(c.text)) continue;
 
