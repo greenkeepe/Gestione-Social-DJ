@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.local
+dist/
+.next/
+out/
+*.log
+.DS_Store
+media-cache/
+dashboard/node_modules/
+dashboard/.next/

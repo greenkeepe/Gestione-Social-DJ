@@ -1,0 +1,116 @@
+// Client minimale per Meta Graph API (Facebook Pages + Instagram Graph API).
+// Documentazione: https://developers.facebook.com/docs/instagram-api/guides/content-publishing
+const GRAPH_VERSION = "v21.0";
+const BASE = `https://graph.facebook.com/${GRAPH_VERSION}`;
+
+function requireEnv(name: string): string {
+  const v = process.env[name];
+  if (!v) throw new Error(`Variabile d'ambiente mancante: ${name}. Vedi .env.example.`);
+  return v;
+}
+
+async function graphFetch<T>(path: string, params: Record<string, string>, method: "GET" | "POST" = "GET"): Promise<T> {
+  const url = new URL(`${BASE}${path}`);
+  const token = requireEnv("META_PAGE_ACCESS_TOKEN");
+  const body = new URLSearchParams({ ...params, access_token: token });
+
+  const res = method === "GET"
+    ? await fetch(`${url.toString()}?${body.toString()}`)
+    : await fetch(url.toString(), { method: "POST", body });
+
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(`Graph API error [${path}]: ${JSON.stringify(json)}`);
+  }
+  return json as T;
+}
+
+// --- Pubblicazione Instagram (foto singola, carosello, reel) --------------
+// Il flusso Instagram richiede due passi: 1) creare un "media container"
+// puntando all'URL pubblico del file, 2) pubblicarlo.
+export async function pubblicaSuInstagram(opts: {
+  imageUrl?: string;
+  videoUrl?: string;
+  isReel?: boolean;
+  caption: string;
+}): Promise<{ id: string }> {
+  const igUserId = requireEnv("META_IG_BUSINESS_ACCOUNT_ID");
+
+  const containerParams: Record<string, string> = { caption: opts.caption };
+  if (opts.videoUrl) {
+    containerParams.media_type = opts.isReel ? "REELS" : "VIDEO";
+    containerParams.video_url = opts.videoUrl;
+  } else if (opts.imageUrl) {
+    containerParams.image_url = opts.imageUrl;
+  } else {
+    throw new Error("Serve imageUrl o videoUrl per pubblicare su Instagram");
+  }
+
+  const container = await graphFetch<{ id: string }>(`/${igUserId}/media`, containerParams, "POST");
+
+  // I reel/video richiedono un breve polling finché Meta finisce l'elaborazione.
+  if (opts.videoUrl) {
+    await attendiElaborazioneContainer(container.id);
+  }
+
+  const pubblicato = await graphFetch<{ id: string }>(
+    `/${igUserId}/media_publish`,
+    { creation_id: container.id },
+    "POST"
+  );
+  return pubblicato;
+}
+
+async function attendiElaborazioneContainer(containerId: string, tentativiMax = 20): Promise<void> {
+  for (let i = 0; i < tentativiMax; i++) {
+    const status = await graphFetch<{ status_code: string }>(`/${containerId}`, { fields: "status_code" });
+    if (status.status_code === "FINISHED") return;
+    if (status.status_code === "ERROR") throw new Error(`Elaborazione media Instagram fallita (container ${containerId})`);
+    await new Promise((r) => setTimeout(r, 5000));
+  }
+  throw new Error(`Timeout in attesa dell'elaborazione del media Instagram (container ${containerId})`);
+}
+
+// --- Pubblicazione Facebook Page -------------------------------------------
+export async function pubblicaSuFacebook(opts: { message: string; imageUrl?: string; videoUrl?: string }): Promise<{ id: string }> {
+  const pageId = requireEnv("META_PAGE_ID");
+  if (opts.videoUrl) {
+    return graphFetch(`/${pageId}/videos`, { file_url: opts.videoUrl, description: opts.message }, "POST");
+  }
+  if (opts.imageUrl) {
+    return graphFetch(`/${pageId}/photos`, { url: opts.imageUrl, caption: opts.message }, "POST");
+  }
+  return graphFetch(`/${pageId}/feed`, { message: opts.message }, "POST");
+}
+
+// --- Insights (per Analytics Agent) -----------------------------------------
+export async function leggiInsightsAccountInstagram(): Promise<Record<string, unknown>> {
+  const igUserId = requireEnv("META_IG_BUSINESS_ACCOUNT_ID");
+  return graphFetch(`/${igUserId}`, {
+    fields: "followers_count,media_count"
+  });
+}
+
+export async function leggiInsightsPost(postId: string): Promise<Record<string, unknown>> {
+  return graphFetch(`/${postId}/insights`, { metric: "impressions,reach,likes,comments,saved,shares" });
+}
+
+// --- Commenti/menzioni in entrata (per Leads Agent) -------------------------
+// Solo interazioni IN ENTRATA da chi ha già interagito con i nostri contenuti
+// (mai ricerca/contatto di sconosciuti che non ci hanno scritto per primi).
+export async function leggiCommentiRecenti(mediaId: string): Promise<Array<{ id: string; username: string; text: string; timestamp: string }>> {
+  const res = await graphFetch<{ data: Array<{ id: string; username: string; text: string; timestamp: string }> }>(
+    `/${mediaId}/comments`,
+    { fields: "username,text,timestamp" }
+  );
+  return res.data;
+}
+
+export async function leggiUltimiMediaInstagram(limit = 10): Promise<Array<{ id: string; timestamp: string; caption?: string }>> {
+  const igUserId = requireEnv("META_IG_BUSINESS_ACCOUNT_ID");
+  const res = await graphFetch<{ data: Array<{ id: string; timestamp: string; caption?: string }> }>(`/${igUserId}/media`, {
+    fields: "id,timestamp,caption",
+    limit: String(limit)
+  });
+  return res.data;
+}

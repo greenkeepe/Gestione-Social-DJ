@@ -1,0 +1,53 @@
+name: Controllo pubblicazione (trova l'orario migliore)
+
+# Gira più volte al giorno e pubblica solo quando l'orologio raggiunge
+# l'orario scelto dall'Agente Contenuti per il post del giorno (con una
+# finestra di tolleranza di 90 minuti). Così la pubblicazione avviene
+# sempre nella fascia storicamente più efficace, non a un orario fisso.
+on:
+  schedule:
+    - cron: "0 10,16,19,20 * * *" # ~11:00, 17:00, 20:00, 21:00 Europe/Rome (varia con l'ora legale)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gestione-social-dj-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Installa dipendenze
+        run: npm install
+
+      - name: Esegui Agente Pubblicazione (Editore)
+        env:
+          TZ: Europe/Rome
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_BUSINESS_ACCOUNT_ID: ${{ secrets.META_IG_BUSINESS_ACCOUNT_ID }}
+        run: npm run agent:publishing
+
+      - name: Commit e push dei dati aggiornati
+        run: |
+          git config user.name "gestione-social-dj-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(editore): pubblicazione contenuto [skip ci]"
+            git push
+          else
+            echo "Nessuna modifica ai dati da salvare."
+          fi

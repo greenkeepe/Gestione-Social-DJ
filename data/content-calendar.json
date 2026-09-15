@@ -1,0 +1,53 @@
+{
+  "_istruzioni": "Temi ricorrenti settimanali usati dal Content Agent per variare i contenuti invece di ripetere sempre lo stesso format. Modificabile liberamente.",
+  "pillars": [
+    {
+      "id": "dietro-le-quinte",
+      "nome": "Dietro le quinte",
+      "descrizione": "Setup, prove audio, preparazione console prima dell'evento. Mostra professionalità e cura.",
+      "formatoConsigliato": ["reel", "story"]
+    },
+    {
+      "id": "momenti-forti",
+      "nome": "Momenti forti della serata",
+      "descrizione": "Primo ballo, taglio torta, pista piena, reazioni degli invitati. Il contenuto con più potenziale virale.",
+      "formatoConsigliato": ["reel", "post"]
+    },
+    {
+      "id": "location",
+      "nome": "Location e ambientazione",
+      "descrizione": "Foto/video della venue, luci, allestimento. Utile per essere taggati da fotografi e wedding planner.",
+      "formatoConsigliato": ["post", "carosello"]
+    },
+    {
+      "id": "testimonianze",
+      "nome": "Testimonianze sposi",
+      "descrizione": "Citazioni/recensioni reali abbinate a foto dell'evento (con permesso degli sposi).",
+      "formatoConsigliato": ["post", "story"]
+    },
+    {
+      "id": "consigli",
+      "nome": "Consigli per gli sposi",
+      "descrizione": "Contenuto educativo: come scegliere la musica, timeline della serata, errori da evitare. Costruisce autorità e SEO sociale.",
+      "formatoConsigliato": ["reel", "carosello"]
+    },
+    {
+      "id": "playlist",
+      "nome": "Anteprima playlist / mash-up",
+      "descrizione": "Piccoli teaser audio/video di mix o brani must-have per matrimoni.",
+      "formatoConsigliato": ["reel"]
+    },
+    {
+      "id": "call-to-action",
+      "nome": "Disponibilità date",
+      "descrizione": "Comunicazione diretta su date libere/quasi sold-out per creare urgenza (usare con misura, max 1 volta/settimana).",
+      "formatoConsigliato": ["post", "story"]
+    }
+  ],
+  "settimanaTipo": {
+    "lunedi": "consigli",
+    "mercoledi": "dietro-le-quinte",
+    "venerdi": "momenti-forti",
+    "domenica": "testimonianze"
+  }
+}

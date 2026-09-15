@@ -1,0 +1,56 @@
+{
+  "_istruzioni": "Rappresentazione strutturata (per la dashboard) del piano in docs/strategia-marketing-2027.md. Lo Strategy Agent aggiorna 'progresso' periodicamente.",
+  "obiettivo": "30 matrimoni prenotati e confermati per la stagione 2027",
+  "logicaTemporale": "In Italia gli sposi prenotano il DJ mediamente 12-18 mesi prima. Per riempire il 2027 il grosso del lavoro di acquisizione lead va fatto tra fine 2025 e tutto il 2026, con una coda fino a inizio 2027 per i posti rimasti liberi.",
+  "fasi": [
+    {
+      "id": "fondamenta",
+      "nome": "Fondamenta (mesi 1-2)",
+      "periodo": "ora - ottobre/novembre 2025",
+      "obiettivi": [
+        "Profili FB/IG ottimizzati (bio, link, categoria Business, contatti)",
+        "Almeno 20 contenuti di qualità pubblicati per costruire un feed credibile prima di iniziare a fare outreach",
+        "Brand identity coerente (config/brand.json completato)",
+        "Primi 3-5 partnership avviate con fotografi/wedding planner/location"
+      ]
+    },
+    {
+      "id": "crescita",
+      "nome": "Crescita e lead generation (mesi 3-10)",
+      "periodo": "dicembre 2025 - agosto 2026",
+      "obiettivi": [
+        "Pubblicazione quotidiana costante (post/reel/story)",
+        "Partecipazione ad almeno 2-4 fiere/eventi wedding all'anno",
+        "Pipeline lead attiva: 15-20 lead qualificati al mese",
+        "Tasso di conversione lead->contratto monitorato e ottimizzato",
+        "Programma referral attivo con sposi già serviti"
+      ]
+    },
+    {
+      "id": "consolidamento",
+      "nome": "Consolidamento e ultimi posti (mesi 11-16)",
+      "periodo": "settembre 2026 - febbraio 2027",
+      "obiettivi": [
+        "Comunicazione 'ultimi posti disponibili 2027' per creare urgenza",
+        "Focus su date meno richieste (infrasettimanali, bassa stagione) per sposi flessibili",
+        "Raccolta testimonianze stagione 2026 da usare come riprova sociale per chiudere il 2027"
+      ]
+    }
+  ],
+  "canaliAcquisizione": [
+    "Instagram/Facebook organico (contenuti quotidiani)",
+    "Partnership con fotografi, videomaker, wedding planner, location (referral incrociato)",
+    "Fiere ed eventi wedding locali",
+    "Passaparola/referral da sposi precedenti",
+    "Profilo su portali matrimonio (Musiqua, Matrimonio.com, ecc.)",
+    "Commenti/interazioni autentiche su contenuti di altri vendor wedding locali (no spam)"
+  ],
+  "progresso": {
+    "ultimoAggiornamento": null,
+    "faseCorrente": "fondamenta",
+    "matrimoniConfermati": 0,
+    "leadInPipeline": 0,
+    "partnershipAttive": 0,
+    "note": []
+  }
+}

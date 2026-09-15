@@ -1,0 +1,57 @@
+{
+  "_istruzioni": "Compila questo file con i tuoi dati reali. Tutti gli agenti (contenuti, lead, strategia) leggono da qui: più è dettagliato, migliori saranno i testi e le proposte generate. Non serve toccare codice, solo questo JSON.",
+
+  "nomeArte": "MODIFICA: es. Forte DJ",
+  "nomeReale": "MODIFICA",
+  "tagline": "MODIFICA: una frase che ti descrive, es. 'Matrimoni ed eventi che si ricordano per la musica giusta al momento giusto'",
+  "bio": "MODIFICA: 2-3 frasi di presentazione, stile e approccio. Usata per generare didascalie e messaggi coerenti.",
+  "anniEsperienza": "MODIFICA: es. 10",
+  "numeroEventiFatti": "MODIFICA: es. 200+",
+
+  "generi": ["MODIFICA: es. Commercial", "Latino", "House", "Anni 80/90", "Musica italiana"],
+  "tipologieEventi": ["Matrimoni", "Party privati", "Eventi aziendali", "Feste 18/30/50 anni"],
+
+  "areaServita": {
+    "base": "MODIFICA: es. Bergamo",
+    "regioniCoperte": ["MODIFICA: es. Lombardia", "Veneto"],
+    "disponibileTrasferte": true
+  },
+
+  "fasce_prezzo": {
+    "nota": "Facoltativo — usato solo internamente per qualificare i lead, MAI pubblicato nei post pubblici a meno che tu non lo richieda esplicitamente.",
+    "matrimonio_base": "MODIFICA o lascia vuoto",
+    "matrimonio_full_service": "MODIFICA o lascia vuoto (luci, foto/video booth, ecc.)"
+  },
+
+  "puntiDiForza": [
+    "MODIFICA: es. Sopralluogo gratuito prima dell'evento",
+    "MODIFICA: es. Playlist personalizzata insieme agli sposi",
+    "MODIFICA: es. Service audio/luci professionale incluso",
+    "MODIFICA: es. Esperienza pluriennale in location di prestigio"
+  ],
+
+  "servizi_extra": ["MODIFICA: es. Luci", "Foto booth", "Animazione", "MC/presentatore"],
+
+  "testimonianze": [
+    {
+      "nomi_sposi": "MODIFICA: es. Marco & Giulia",
+      "data": "MODIFICA",
+      "citazione": "MODIFICA: breve recensione reale"
+    }
+  ],
+
+  "contatti": {
+    "telefono": "MODIFICA",
+    "whatsapp": "MODIFICA",
+    "email": "MODIFICA",
+    "sitoWeb": "MODIFICA (es. profilo Musiqua/Matrimonio.com)",
+    "instagram": "MODIFICA: @handle",
+    "facebook": "MODIFICA: nome pagina"
+  },
+
+  "toneOfVoice": {
+    "descrizione": "MODIFICA: es. Caldo, professionale, entusiasta ma non urlato. Diamo del 'voi' o del 'tu' agli sposi? Emoji sì/no?",
+    "emojiConsentiti": true,
+    "hashtagFissi": ["#djmatrimonio", "#weddingdj", "#matrimonio2027", "MODIFICA aggiungi i tuoi"]
+  }
+}
