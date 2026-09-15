@@ -1,5 +1,4 @@
 import { randomUUID } from "node:crypto";
-import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { NextResponse } from "next/server";
 import { aggiornaDatiSuGitHub } from "../../../lib/dataSource";
 
@@ -17,47 +16,35 @@ interface MediaLibraryFile {
   }>;
 }
 
-// Upload "diretto dal browser" a Vercel Blob: il file non passa più dalla
-// nostra funzione serverless (che ha un limite di ~4.5MB), va dritto allo
-// storage. Questa route genera solo il token di autorizzazione e, a
-// caricamento completato, salva l'informazione nel repository.
-export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody;
+// Il file è già su Cloudinary a questo punto (caricato direttamente dal
+// browser): qui riceviamo solo l'URL pubblico risultante e lo salviamo
+// in data/media-library.json, che l'Agente Media legge in seguito.
+export async function POST(req: Request) {
+  const { url, filename, mimeType } = (await req.json()) as { url?: string; filename?: string; mimeType?: string };
+
+  if (!url || !filename || !mimeType) {
+    return NextResponse.json({ error: "Dati mancanti (url, filename, mimeType)." }, { status: 400 });
+  }
 
   try {
-    const jsonResponse = await handleUpload({
-      body,
-      request,
-      onBeforeGenerateToken: async () => {
-        return {
-          allowedContentTypes: ["image/*", "video/*"],
-          addRandomSuffix: true
-        };
+    await aggiornaDatiSuGitHub<MediaLibraryFile>(
+      "media-library.json",
+      (attuale) => {
+        attuale.items.push({
+          id: randomUUID(),
+          url,
+          filename,
+          mimeType,
+          uploadedAt: new Date().toISOString(),
+          usatoIl: null
+        });
+        return attuale;
       },
-      onUploadCompleted: async ({ blob, tokenPayload }) => {
-        const filename = tokenPayload ? JSON.parse(tokenPayload).filename : blob.pathname;
-        const mimeType = tokenPayload ? JSON.parse(tokenPayload).mimeType : blob.contentType;
-
-        await aggiornaDatiSuGitHub<MediaLibraryFile>(
-          "media-library.json",
-          (attuale) => {
-            attuale.items.push({
-              id: randomUUID(),
-              url: blob.url,
-              filename,
-              mimeType,
-              uploadedAt: new Date().toISOString(),
-              usatoIl: null
-            });
-            return attuale;
-          },
-          `chore(media): carica "${filename}" dalla dashboard`
-        );
-      }
-    });
-
-    return NextResponse.json(jsonResponse);
+      `chore(media): carica "${filename}" dalla dashboard`
+    );
   } catch (err) {
-    return NextResponse.json({ error: String(err) }, { status: 400 });
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
+
+  return NextResponse.json({ ok: true });
 }

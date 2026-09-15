@@ -42,7 +42,9 @@ Necessario per far pubblicare gli agenti sulle tue pagine.
 
 ### 3. I media si caricano dalla dashboard (non da Google Photos)
 
-Google ha limitato a marzo 2025 la possibilità per le app di leggere automaticamente un album esistente della libreria Google Photos ([dettagli](https://developers.google.com/photos/support/updates)), quindi il sistema non usa più questa via. Al suo posto, la pagina **"Carica media"** della dashboard ti permette di caricare foto/video direttamente dal telefono: il file va su **Vercel Blob** (storage gratuito, incluso nel setup del passo 5) e l'Agente Media pesca da lì, uno alla volta, nei giorni successivi.
+Google ha limitato a marzo 2025 la possibilità per le app di leggere automaticamente un album esistente della libreria Google Photos ([dettagli](https://developers.google.com/photos/support/updates)), quindi il sistema non usa più questa via. Al suo posto, la pagina **"Carica media"** della dashboard ti permette di caricare foto/video direttamente dal telefono: il file va su **Cloudinary** (storage gratuito, il caricamento avviene direttamente dal browser senza passare dal server) e l'Agente Media pesca da lì, uno alla volta, nei giorni successivi.
+
+Crea un account gratuito su **[cloudinary.com](https://cloudinary.com)** (nessuna carta richiesta), poi vai su **Settings → Upload → Upload presets → Add upload preset**, imposta **Signing Mode: Unsigned** e salva. Ti servono due valori (non sono segreti, vanno bene anche pubblici): il **Cloud name** (visibile nella home del dashboard Cloudinary) e il **nome del preset** appena creato.
 
 ### 4. Configura i secrets su GitHub
 
@@ -52,10 +54,9 @@ Nel repository, vai su **Settings → Secrets and variables → Actions** e aggi
 
 1. Vai su **[vercel.com](https://vercel.com)**, collega il tuo account GitHub.
 2. Importa questo repository, impostando come **Root Directory**: `dashboard`, e come **Framework Preset**: `Next.js`.
-3. Nella scheda **Storage** del progetto, crea uno **Blob store** ("Create Database" → "Blob") e collegalo al progetto: Vercel imposta da solo la variabile `BLOB_READ_WRITE_TOKEN`.
-4. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permesso **Contents: Read and write** limitato a questo repository — serve alla dashboard sia per leggere i dati sia per salvare i nuovi media caricati.
-5. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato).
-6. Deploy. La dashboard sarà raggiungibile da un link tipo `https://tuo-progetto.vercel.app`, protetto da password, da qualsiasi dispositivo.
+3. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permesso **Contents: Read and write** limitato a questo repository — serve alla dashboard sia per leggere i dati sia per salvare i nuovi media caricati.
+4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` e `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` (dal passo 3).
+5. Deploy. La dashboard sarà raggiungibile da un link tipo `https://tuo-progetto.vercel.app`, protetto da password, da qualsiasi dispositivo.
 
 ### 6. Attiva le automazioni
 
@@ -79,7 +80,7 @@ npm run dev                 # dashboard su http://localhost:3000
 Oggi tutto gira a **costo zero**:
 - GitHub Actions: gratuito su repository pubblici (o incluso nel piano free su privati, entro i minuti mensili)
 - Vercel: piano free per la dashboard, nessuna carta di credito richiesta
-- Vercel Blob: 1GB di storage e 10GB di trasferimento al mese gratis, più che sufficiente per uso personale
+- Cloudinary: piano free con 25 "crediti" al mese (1 credito = 1GB di storage o di banda), nessuna carta richiesta — ampiamente sufficiente per uso personale
 - Meta Graph API: gratuita entro i limiti standard
 - Generazione testi: template scritti a mano, zero costo
 
@@ -104,5 +105,5 @@ docs/         piano marketing dettagliato verso i 30 matrimoni 2027
 
 - Il **Page Access Token** Meta scade periodicamente (~60 giorni, o prima se generato senza estenderlo esplicitamente su Graph API Explorer): se le pubblicazioni iniziano a fallire, è la prima cosa da controllare e rigenerare.
 - La ricerca lead si basa solo su **commenti su contenuti già pubblicati** (nessuna ricerca di sconosciuti), per restare nei limiti consentiti da Meta e dalla normativa privacy.
-- Il piano gratuito di Vercel Blob (1GB) è pensato per uso personale: se il volume di foto/video crescerà molto, valuta l'upgrade a Vercel Pro.
+- Il piano gratuito di Cloudinary (25 crediti/mese) è pensato per uso personale: se il volume di foto/video crescerà molto, valuta un piano a pagamento.
 - Il link Musiqua fornito non era raggiungibile dall'ambiente di sviluppo in fase di creazione del sistema: se vuoi che i testi riflettano esattamente i contenuti di quel profilo, incolla qui le informazioni principali (bio, prezzi, recensioni) e le integro in `config/brand.json`.
