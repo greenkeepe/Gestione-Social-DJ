@@ -12,8 +12,9 @@
   "tipologieEventi": ["Matrimoni", "Matrimoni in chiesa", "Cerimonie/comunioni", "Compleanni e anniversari", "Feste aziendali", "Addio al nubilato/celibato", "Feste private", "Capodanno ed eventi stagionali", "Locali/club/bar", "Ricevimenti/inaugurazioni"],
 
   "areaServita": {
-    "base": "MODIFICA: es. Bergamo",
-    "regioniCoperte": ["MODIFICA: es. Lombardia", "Veneto"],
+    "base": "Serravalle Scrivia (AL)",
+    "raggioAzione": "150 km",
+    "regioniCoperte": ["Piemonte", "Liguria", "Lombardia", "zone di confine con l'Emilia-Romagna"],
     "disponibileTrasferte": true
   },
 
