@@ -1,4 +1,27 @@
 {
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
-  "queue": []
+  "queue": [
+    {
+      "id": "42a50bb4-e0fb-457c-92f8-0560f35b097b",
+      "createdAt": "2026-09-15T15:00:42.218Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "ac69c16a-de21-490f-8a4d-4a843e6934dd",
+        "filename": "20260711_231034.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://res.cloudinary.com/zdjngwjy/image/upload/v1789483997/nup6bo3p1smmnmi7u7zd.jpg"
+      },
+      "caption": "Le date per il 2027 stanno iniziando a riempirsi: se state pensando al matrimonio dei vostri sogni, scriviamoci! 💍\n\n#djmatrimonio #weddingdj #matrimonio2027 MODIFICA aggiungi i tuoi",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonio2027",
+        "MODIFICA aggiungi i tuoi"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "pillarId": "call-to-action"
+    }
+  ]
 }
