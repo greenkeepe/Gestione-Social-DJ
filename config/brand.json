@@ -2,11 +2,11 @@
   "_istruzioni": "Compila questo file con i tuoi dati reali. Tutti gli agenti (contenuti, lead, strategia) leggono da qui: più è dettagliato, migliori saranno i testi e le proposte generate. Non serve toccare codice, solo questo JSON.",
 
   "nomeArte": "Forte DJ",
-  "nomeReale": "MODIFICA",
+  "nomeReale": "Andrea",
   "tagline": "Con Forte DJ il divertimento è assicurato: la musica diventa il cuore pulsante di una serata indimenticabile.",
   "bio": "DJ per matrimoni ed eventi con esperienza pluriennale e un repertorio vasto e sempre aggiornato: dagli anni '70/'80/'90 al pop, rock, dance, R&B/soul, musica latina e lounge. Ogni playlist viene costruita su misura insieme ai clienti, leggendo la pista e adattando la selezione musicale al pubblico presente. DJ set curato interamente da un unico professionista, con impianto audio, luci e macchina del fumo per un allestimento completo.",
-  "anniEsperienza": "MODIFICA: es. 10",
-  "numeroEventiFatti": "MODIFICA: es. 200+",
+  "anniEsperienza": "20",
+  "numeroEventiFatti": "200+",
 
   "generi": ["Commerciale", "Anni 70/80/90", "Latino", "Dance", "Pop", "Rock", "R&B/Soul", "Lounge"],
   "tipologieEventi": ["Matrimoni", "Matrimoni in chiesa", "Cerimonie/comunioni", "Compleanni e anniversari", "Feste aziendali", "Addio al nubilato/celibato", "Feste private", "Capodanno ed eventi stagionali", "Locali/club/bar", "Ricevimenti/inaugurazioni"],
@@ -24,20 +24,28 @@
   },
 
   "puntiDiForza": [
-    "MODIFICA: es. Sopralluogo gratuito prima dell'evento",
-    "MODIFICA: es. Playlist personalizzata insieme agli sposi",
-    "MODIFICA: es. Service audio/luci professionale incluso",
-    "MODIFICA: es. Esperienza pluriennale in location di prestigio"
+    "Oltre 60 recensioni pubblicate, tutte a 5 stelle",
+    "DJ set curato interamente da un unico professionista, dall'inizio alla fine della serata",
+    "Repertorio vastissimo e sempre aggiornato: dagli anni '70/80/90 al pop, rock, dance, latino e lounge, capace di far ballare ogni fascia d'età",
+    "Grande capacità di leggere la pista e adattare la musica al pubblico presente",
+    "Esperienza in location prestigiose: relais, ristoranti, club house, golf club",
+    "Playlist costruita su misura insieme ai clienti, con incontro di pianificazione prima dell'evento",
+    "Montaggio e smontaggio rapido dell'attrezzatura (meno di un'ora)"
   ],
 
-  "servizi_extra": ["MODIFICA: es. Luci", "Foto booth", "Animazione", "MC/presentatore"],
+  "servizi_extra": ["Impianto audio professionale", "Consolle", "Luci", "Macchina del fumo", "Microfoni per interventi/cerimonia"],
 
   "testimonianze": [
-    {
-      "nomi_sposi": "MODIFICA: es. Marco & Giulia",
-      "data": "MODIFICA",
-      "citazione": "MODIFICA: breve recensione reale"
-    }
+    { "cliente": "Jonathan & Emma", "tipoEvento": "Matrimonio", "data": "25/08/2025", "valutazione": 5, "citazione": "We couldn't have asked for a better DJ for our wedding! From the ceremony to the last song on the dance floor, he created the perfect soundtrack for every moment. Many of our guests told us it was the best wedding party they've ever been to." },
+    { "cliente": "Giuseppe T.", "tipoEvento": "Diciottesimo", "data": "19/06/2025", "valutazione": 5, "citazione": "Ha fatto un lavoro assurdo, ha fatto ballare tutti dal primo pezzo all'ultimo! Musica perfetta, zero pause noiose, solo energia e divertimento." },
+    { "cliente": "Antonella e Marco M.", "tipoEvento": "Matrimonio", "data": "19/06/2025", "valutazione": 5, "citazione": "Ha reso il nostro matrimonio una vera festa! Musica perfetta in ogni momento, ha fatto ballare tutti e creato un'atmosfera magica. Simpatico, professionale e super coinvolgente." },
+    { "cliente": "Martina M.", "tipoEvento": "Evento aziendale", "data": "12/09/2024", "valutazione": 5, "citazione": "Ha trasformato il nostro evento aziendale in una serata indimenticabile! Professionale, intuitivo e sempre sul pezzo, è stato un vero piacere lavorare con lui." },
+    { "cliente": "Alessandra G.", "tipoEvento": "Matrimonio", "data": "24/07/2024", "valutazione": 5, "citazione": "Non solo la selezione della musica è impeccabile, la sua capacità di coordinarsi con la location e il catering è stata chiave nel far sì che la festa prendesse piede da subito!" },
+    { "cliente": "Federica D.", "tipoEvento": "Matrimonio", "data": "24/07/2024", "valutazione": 5, "citazione": "Molto disponibile, simpatico e professionale. Con lui il divertimento è assicurato. Riesce a far ballare tutti gli invitati e di tutte le età." },
+    { "cliente": "Raffaella D.", "tipoEvento": "Festa 50 anni", "data": "13/11/2023", "valutazione": 5, "citazione": "Professionale, puntuale, affidabilissimo. Ha reso la festa indimenticabile per tutti, dai senior di 70 anni ai piccoli di 5 anni!" },
+    { "cliente": "Cristina R.", "tipoEvento": "Matrimonio", "data": "11/09/2023", "valutazione": 5, "citazione": "Con grande maestria è riuscito ad animare la nostra festa con musica adeguata in ogni momento: musiche d'atmosfera per la conversazione, brani coinvolgenti per lo svago, hit che spaccano per ballare tutta la notte." },
+    { "cliente": "Giovanna S.", "tipoEvento": "Matrimonio", "data": "26/06/2023", "valutazione": 5, "citazione": "Gentile, empatico, professionale e super disponibile. Ha soddisfatto in pieno le nostre aspettative e quelle dei nostri ospiti, che si sono letteralmente scatenati." },
+    { "cliente": "Marco F.", "tipoEvento": "Matrimonio", "data": "05/07/2021", "valutazione": 5, "citazione": "Professionalità, cortesia, ottima presenza. Adatta la sua musica in base agli invitati e all'evento, quindi è sempre perfetto in ogni tipologia di situazione." }
   ],
 
   "contatti": {
