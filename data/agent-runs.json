@@ -6,6 +6,51 @@
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-15T12:55:31.060Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
+      "timestamp": "2026-09-15T12:55:31.059Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 385 follower Instagram, 1 lead attivi.",
+      "timestamp": "2026-09-15T12:55:31.057Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "ok",
+      "riepilogo": "Trovati 1 nuovi lead da chi ha commentato con interesse. Bozze pronte da rivedere nella dashboard.",
+      "timestamp": "2026-09-15T12:55:30.873Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-15T12:55:27.091Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "errore",
+      "riepilogo": "Impossibile leggere l'album Google Photos. Controlla le credenziali GOOGLE_* nei secrets.",
+      "dettagli": {
+        "errore": "Error: Variabile d'ambiente mancante: GOOGLE_CLIENT_ID. Vedi .env.example."
+      },
+      "timestamp": "2026-09-15T12:55:27.089Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-15T12:48:36.612Z"
     },
     {
