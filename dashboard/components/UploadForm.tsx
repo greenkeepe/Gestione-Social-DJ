@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 
 export function UploadForm() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,17 +18,19 @@ export function UploadForm() {
     setStato("caricamento");
     setErrore(null);
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const res = await fetch("/api/upload", { method: "POST", body: formData });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? "Errore sconosciuto");
+      await upload(`media/${Date.now()}-${file.name}`, file, {
+        access: "public",
+        handleUploadUrl: "/api/upload",
+        clientPayload: JSON.stringify({ filename: file.name, mimeType: file.type })
+      });
 
       setStato("inattivo");
       if (inputRef.current) inputRef.current.value = "";
-      router.refresh();
+      // Il salvataggio dei metadati su GitHub avviene in background (callback
+      // onUploadCompleted): un piccolo ritardo prima di aggiornare la lista
+      // evita di non vedere subito il file appena caricato.
+      setTimeout(() => router.refresh(), 2000);
     } catch (err) {
       setStato("errore");
       setErrore(err instanceof Error ? err.message : String(err));

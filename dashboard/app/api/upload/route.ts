@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { put } from "@vercel/blob";
+import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { NextResponse } from "next/server";
 import { aggiornaDatiSuGitHub } from "../../../lib/dataSource";
 
@@ -17,38 +17,47 @@ interface MediaLibraryFile {
   }>;
 }
 
-export async function POST(req: Request) {
-  const formData = await req.formData();
-  const file = formData.get("file");
-
-  if (!(file instanceof File)) {
-    return NextResponse.json({ error: "Nessun file ricevuto." }, { status: 400 });
-  }
-  if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) {
-    return NextResponse.json({ error: "Sono accettate solo immagini o video." }, { status: 400 });
-  }
-
-  const blob = await put(`media/${Date.now()}-${file.name}`, file, { access: "public" });
+// Upload "diretto dal browser" a Vercel Blob: il file non passa più dalla
+// nostra funzione serverless (che ha un limite di ~4.5MB), va dritto allo
+// storage. Questa route genera solo il token di autorizzazione e, a
+// caricamento completato, salva l'informazione nel repository.
+export async function POST(request: Request): Promise<NextResponse> {
+  const body = (await request.json()) as HandleUploadBody;
 
   try {
-    await aggiornaDatiSuGitHub<MediaLibraryFile>(
-      "media-library.json",
-      (attuale) => {
-        attuale.items.push({
-          id: randomUUID(),
-          url: blob.url,
-          filename: file.name,
-          mimeType: file.type,
-          uploadedAt: new Date().toISOString(),
-          usatoIl: null
-        });
-        return attuale;
+    const jsonResponse = await handleUpload({
+      body,
+      request,
+      onBeforeGenerateToken: async () => {
+        return {
+          allowedContentTypes: ["image/*", "video/*"],
+          addRandomSuffix: true
+        };
       },
-      `chore(media): carica "${file.name}" dalla dashboard`
-    );
-  } catch (err) {
-    return NextResponse.json({ error: String(err) }, { status: 500 });
-  }
+      onUploadCompleted: async ({ blob, tokenPayload }) => {
+        const filename = tokenPayload ? JSON.parse(tokenPayload).filename : blob.pathname;
+        const mimeType = tokenPayload ? JSON.parse(tokenPayload).mimeType : blob.contentType;
 
-  return NextResponse.json({ ok: true, url: blob.url });
+        await aggiornaDatiSuGitHub<MediaLibraryFile>(
+          "media-library.json",
+          (attuale) => {
+            attuale.items.push({
+              id: randomUUID(),
+              url: blob.url,
+              filename,
+              mimeType,
+              uploadedAt: new Date().toISOString(),
+              usatoIl: null
+            });
+            return attuale;
+          },
+          `chore(media): carica "${filename}" dalla dashboard`
+        );
+      }
+    });
+
+    return NextResponse.json(jsonResponse);
+  } catch (err) {
+    return NextResponse.json({ error: String(err) }, { status: 400 });
+  }
 }
