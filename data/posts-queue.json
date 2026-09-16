@@ -256,6 +256,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-09-16"
+    },
+    {
+      "id": "b685d7b8-7718-4db9-824b-1b2e4ca9bbfb",
+      "createdAt": "2026-09-16T18:54:24.743Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Tommy P.|26/01/2023.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/39479bea-bbdf-4223-a84e-101a2cbf306f.png"
+      },
+      "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Festa fatta in un locale per il nostro anniversario, non potevamo chiedere di meglio. Professionale e sempre sorridente.\"\n— Tommy P., Anniversario di matrimonio\n\nMandami un messaggio privato se vuoi sapere di più.",
+      "hashtags": [
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#weddingday",
+        "#weddingdj",
+        "#discjockey",
+        "#djwedding",
+        "#djprofessionista",
+        "#weddingmusic",
+        "#piemonte",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-16",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }

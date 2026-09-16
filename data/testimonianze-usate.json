@@ -1,4 +1,6 @@
 {
   "_istruzioni": "Tiene traccia di quali testimonianze (config/brand.json > testimonianze) sono già state usate in un post generato automaticamente, per farle ruotare tutte prima di ripartire dal principio. Gestito in automatico dall'Agente Media (Occhio): non serve modificarlo a mano.",
-  "usate": []
+  "usate": [
+    "Tommy P.|26/01/2023"
+  ]
 }
