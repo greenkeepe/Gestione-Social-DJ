@@ -288,6 +288,38 @@
       "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "158769e6-4eff-4a78-8817-ca0f21543f7d",
+      "createdAt": "2026-09-16T18:58:11.598Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Elia-R.-05-07-2021.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/24eda1b3-02f9-4e61-ae30-02139531d5c9.png"
+      },
+      "caption": "Recensioni così sono il motivo per cui faccio questo lavoro.\n\n\"Professionalità e divertimento assicurato, complimenti a ForteDj per il variegato repertorio che ha, e per il suo dono di poter soddisfare tutti i gusti di genere musicale!\"\n— Elia R., Diciottesimo\n\nMandami un messaggio privato se vuoi sapere di più.",
+      "hashtags": [
+        "#weddingitaly",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#animazionematrimonio",
+        "#djprofessionista",
+        "#djeventi",
+        "#weddingmusic",
+        "#piemonte",
+        "#liguria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-16",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
