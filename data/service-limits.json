@@ -1,0 +1,14 @@
+{
+  "_istruzioni": "Soglie di utilizzo dei servizi gratuiti usati dal sistema, per non finire mai per sbaglio su un piano a pagamento. L'Agente Analista misura l'uso reale (oggi solo per Cloudflare R2, l'unico con un limite di spazio misurabile senza credenziali aggiuntive) e, se supera la sogliaPercentualePausa impostata, mette in pausa automaticamente il caricamento di nuovi media (foto/video via Telegram o dashboard) finché non liberi spazio o alzi la soglia da qui o dalla pagina 'Utilizzo servizi' della dashboard.",
+  "servizi": {
+    "r2": {
+      "nome": "Cloudflare R2 (storage foto/video/Reel)",
+      "limiteBytes": 10737418240,
+      "sogliaPercentualePausa": 90,
+      "usoAttualeBytes": 0,
+      "oggettiAttuali": 0,
+      "aggiornatoIl": null,
+      "pausatoIl": null
+    }
+  }
+}

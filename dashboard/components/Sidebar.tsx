@@ -14,6 +14,7 @@ export function Sidebar() {
         <Link href="/contenuti">Contenuti</Link>
         <Link href="/lead">Lead</Link>
         <Link href="/strategia">Strategia 2027</Link>
+        <Link href="/utilizzo">📊 Utilizzo servizi</Link>
       </nav>
       <form className="logout-form" action="/api/logout" method="post">
         <button type="submit">Esci</button>

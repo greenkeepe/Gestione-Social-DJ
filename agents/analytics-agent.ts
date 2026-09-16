@@ -4,7 +4,60 @@ import "dotenv/config";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { leggiInsightsAccountInstagram } from "../lib/metaGraph.js";
+import { misuraUsoR2 } from "../lib/r2Usage.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
+
+interface ServiceLimitsFile {
+  _istruzioni: string;
+  servizi: {
+    r2: {
+      nome: string;
+      limiteBytes: number;
+      sogliaPercentualePausa: number;
+      usoAttualeBytes: number;
+      oggettiAttuali: number;
+      aggiornatoIl: string | null;
+      pausatoIl: string | null;
+    };
+  };
+}
+
+// Misura lo spazio reale occupato su Cloudflare R2 e mette in pausa
+// automaticamente il caricamento di nuovi media se si supera la soglia
+// impostata: separato dal resto del ciclo (try/catch proprio) così un
+// eventuale problema con i token Meta non impedisce mai questo controllo.
+async function aggiornaUsoR2(): Promise<void> {
+  const accountId = process.env.R2_ACCOUNT_ID;
+  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+  const bucketName = process.env.R2_BUCKET_NAME;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName) return; // R2 non configurato: niente da misurare
+
+  const limiti = await readData<ServiceLimitsFile>("service-limits.json");
+  const r2 = limiti.servizi.r2;
+  const eraGiaPausato = r2.pausatoIl !== null;
+
+  const uso = await misuraUsoR2({ accountId, accessKeyId, secretAccessKey, bucketName });
+  r2.usoAttualeBytes = uso.bytes;
+  r2.oggettiAttuali = uso.oggetti;
+  r2.aggiornatoIl = nowIso();
+
+  const percentuale = (uso.bytes / r2.limiteBytes) * 100;
+  const superaSoglia = percentuale >= r2.sogliaPercentualePausa;
+
+  if (superaSoglia && !eraGiaPausato) {
+    r2.pausatoIl = nowIso();
+    await inviaMessaggioTelegram(
+      `⚠️ Spazio R2 al ${percentuale.toFixed(0)}% (soglia ${r2.sogliaPercentualePausa}%): ho messo in pausa il caricamento di nuovi media da Telegram/dashboard finché non liberi spazio o alzi la soglia dalla pagina "Utilizzo servizi".`
+    );
+  } else if (!superaSoglia && eraGiaPausato) {
+    r2.pausatoIl = null; // spazio liberato sotto soglia: riprende da solo
+    await inviaMessaggioTelegram(`✅ Spazio R2 tornato sotto soglia (${percentuale.toFixed(0)}%): il caricamento di nuovi media è di nuovo attivo.`);
+  }
+
+  await writeData("service-limits.json", limiti);
+}
 
 interface KpisFile {
   ultimoAggiornamento: string | null;
@@ -18,6 +71,8 @@ interface LeadsFile {
 }
 
 export async function eseguiAnalyticsAgent(): Promise<void> {
+  await aggiornaUsoR2().catch((err) => console.error("[Analista] Misura uso R2 fallita:", err));
+
   try {
     const kpis = await readData<KpisFile>("kpis.json");
     const followersPrecedenti = kpis.instagram.followers;

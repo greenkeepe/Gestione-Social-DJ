@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { aggiornaDatiSuGitHub, lanciaWorkflow } from "../../../lib/dataSource";
 import { chatAutorizzata, inviaMessaggio, scaricaFileTelegram } from "../../../lib/telegram";
 import { caricaBufferSuR2 } from "../../../lib/r2Server";
+import { r2Pausato } from "../../../lib/serviceLimits";
 import type { ReelJobsFile } from "../../../lib/types";
 
 export const runtime = "nodejs";
@@ -81,6 +82,14 @@ export async function POST(req: Request) {
 
   try {
     const caption = message.caption?.trim() || null;
+
+    if ((message.photo?.length || message.video || message.document) && (await r2Pausato())) {
+      await inviaMessaggio(
+        chatId,
+        "⏸️ Caricamento in pausa: lo spazio gratuito su Cloudflare R2 ha superato la soglia impostata. Libera spazio (elimina vecchi media dalla dashboard) o alza la soglia dalla pagina \"Utilizzo servizi\", poi riprova."
+      );
+      return NextResponse.json({ ok: true });
+    }
 
     // Foto (album Telegram: usa la risoluzione più alta disponibile)
     if (message.photo && message.photo.length > 0) {

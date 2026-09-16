@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { AwsClient } from "aws4fetch";
+import { r2Pausato } from "../../../lib/serviceLimits";
 
 export const runtime = "nodejs";
 
@@ -26,6 +27,13 @@ export async function POST(req: Request) {
   const { filename, contentType } = (await req.json()) as { filename?: string; contentType?: string };
   if (!filename || !contentType) {
     return NextResponse.json({ error: "Dati mancanti (filename, contentType)." }, { status: 400 });
+  }
+
+  if (await r2Pausato()) {
+    return NextResponse.json(
+      { error: "Spazio R2 esaurito (soglia superata): libera spazio o alza la soglia dalla pagina \"Utilizzo servizi\" prima di caricare altro." },
+      { status: 507 }
+    );
   }
 
   const estensione = filename.includes(".") ? filename.slice(filename.lastIndexOf(".")) : "";
