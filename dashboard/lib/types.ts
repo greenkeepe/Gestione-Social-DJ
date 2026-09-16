@@ -26,7 +26,8 @@ export interface QueueItem {
   hashtags: string[];
   orarioProgrammato: string | null;
   pillarId?: string;
-  media: { filename: string; mimeType: string; downloadUrl: string };
+  istruzioniUtente?: string | null;
+  media: { filename: string; mimeType: string; downloadUrl: string; source?: string };
 }
 
 export interface PostsQueueFile {
@@ -88,6 +89,7 @@ export interface ReelJob {
   aggiornatoIl: string;
   erroreMessaggio: string | null;
   risultato: { reelUrl: string; durataSecondi: number; piano: PianoReel } | null;
+  source?: "dashboard" | "telegram";
 }
 
 export interface ReelJobsFile {

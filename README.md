@@ -59,14 +59,14 @@ Tutti i media (foto, video grezzi, Reel generati) vivono in un bucket **Cloudfla
 
 ### 4. Configura i secrets su GitHub
 
-Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`).
+Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`).
 
 ### 5. Metti online la dashboard (gratis, su Vercel)
 
 1. Vai su **[vercel.com](https://vercel.com)**, collega il tuo account GitHub.
 2. Importa questo repository, impostando come **Root Directory**: `dashboard`, e come **Framework Preset**: `Next.js`.
 3. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permessi **Contents: Read and write** e **Actions: Read and write**, limitato a questo repository — il primo serve alla dashboard per leggere i dati e salvare i nuovi media caricati, il secondo per far scrivere subito la didascalia quando premi "Usa per un post" nella pagina "Crea Reel AI" (altrimenti aspetta comunque il ciclo automatico del giorno dopo).
-4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), e i 5 valori R2 dal passo 3bis (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`).
+4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), e i 5 valori R2 dal passo 3bis (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`). Se vuoi anche l'invio da Telegram, aggiungi `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (vedi sezione **"Invio da Telegram"** più sotto).
 5. Deploy. La dashboard sarà raggiungibile da un link tipo `https://tuo-progetto.vercel.app`, protetto da password, da qualsiasi dispositivo.
 
 ### 6. Attiva le automazioni
@@ -84,13 +84,35 @@ Il Regista (`agents/reel-maker-agent.ts`, eseguito da `.github/workflows/reel-ma
 3. **Piano di montaggio** (`lib/reelPlanner.ts`): sceglie l'hook (mai i primissimi istanti del video) e i segmenti migliori in base al punteggio, con stile Clean/Dynamic/Bold dedotto dal profilo (in **Automatico**, dedotto dall'energia audio e dalla frequenza dei cambi scena).
 4. **Montaggio**: ritaglio 9:16 centrato, concatenazione (hard-cut o dissolvenza a seconda dello stile), normalizzazione audio (`loudnorm`), testo di apertura opzionale.
 5. **Controllo qualità**: verifica reale (risoluzione 1080×1920, presenza audio, durata coerente) prima di segnare il job come pronto — se qualcosa non torna il job va in **errore** invece di essere spacciato per riuscito.
-6. Il Reel finito viene caricato su Cloudflare R2 e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa".
+6. Il Reel finito viene caricato su Cloudflare R2 e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa" per i video caricati **dalla dashboard**.
+
+I video ricevuti **da Telegram** (vedi sotto) sono un'eccezione voluta: appena il Reel è pronto entra da solo nella libreria media, senza passare dal click "Usa per un post" — è tutto il senso di mandare un video dal telefono e non doverci più pensare.
 
 **Limiti noti (per restare a costo zero)**:
 - Il ritaglio 9:16 è **centrato**, non segue il soggetto: un vero tracking richiederebbe un modello di visione artificiale (GPU, servizio a pagamento).
 - **Niente sottotitoli automatici**: non è integrato nessun servizio di trascrizione (a pagamento). Restano disattivati finché non ne colleghi uno.
 - **Niente musica di sottofondo automatica**: nessuna libreria musicale con diritti verificati è integrata — il Reel usa solo l'audio originale del video, normalizzato.
 - Puoi disattivare la funzione senza toccare il codice impostando `ENABLE_AI_REEL_MAKER=false`.
+
+## Invio da Telegram (il modo più semplice di usare il sistema)
+
+Invece di aprire la dashboard per caricare foto/video, puoi mandarli direttamente a un bot Telegram personale: il resto (didascalia, montaggio del Reel, orario migliore, pubblicazione) lo fanno gli agenti da soli. Il bot risponde in chat per confermare cosa sta succedendo, così hai sempre visibilità senza dover controllare nulla.
+
+**Come funziona:**
+- Mandi una **foto** → entra in `data/media-library.json` come un upload dashboard: Copy le scrive la didascalia (guardandola davvero, se hai `ANTHROPIC_API_KEY`) ed Editore la pubblica nell'orario migliore.
+- Mandi un **video** → entra nella coda dell'AI Reel Maker (`data/reel-jobs.json`): il Regista lo monta in un Reel verticale e, a differenza dei video caricati dalla dashboard, lo pubblica **in automatico** appena pronto, senza bisogno di premere "Usa per un post".
+- Se aggiungi una **didascalia al messaggio Telegram** (es. "è il primo ballo di Marco e Giulia"), quella nota arriva a Copy/Regista come contesto per scrivere un testo più pertinente — senza inventare fatti che non gli hai detto.
+
+**Setup (una tantum):**
+1. Apri una chat con **[@BotFather](https://t.me/BotFather)** su Telegram, manda `/newbot` e segui le istruzioni: alla fine ti dà un **token** (`TELEGRAM_BOT_TOKEN`).
+2. Trova il tuo **chat id**: manda un qualsiasi messaggio al tuo nuovo bot, poi apri nel browser `https://api.telegram.org/bot<TOKEN>/getUpdates` (sostituendo `<TOKEN>`) e cerca `"chat":{"id":...}` nella risposta. Quel numero è `TELEGRAM_ALLOWED_CHAT_ID` — **solo i messaggi da questo id vengono accettati**, chiunque altro scriva al bot viene ignorato.
+3. Scegli una stringa segreta a caso per `TELEGRAM_WEBHOOK_SECRET` (es. generata con `openssl rand -hex 24`).
+4. Aggiungi le 3 variabili (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET`) nelle variabili d'ambiente di **Vercel** (dashboard) e le prime due anche nei **GitHub Secrets** (servono agli agenti Editore/Regista per le notifiche di conferma — passo facoltativo, il resto funziona comunque senza).
+5. Registra il webhook (una volta sola, dopo il deploy) aprendo nel browser:
+   `https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://tuo-progetto.vercel.app/api/telegram-webhook&secret_token=<TUO_TELEGRAM_WEBHOOK_SECRET>`
+6. Fatto: manda una foto al bot e in pochi secondi dovresti ricevere una risposta di conferma.
+
+**Limite noto**: la Bot API di Telegram permette di **scaricare** al massimo file da **20MB**, anche se in chat puoi inviarne di più grandi (limite della piattaforma Telegram, non di questo progetto — servirebbe un Bot API server self-hosted per aggirarlo, fuori scope per un sistema a costo zero). Per video più pesanti, comprimili prima di inviarli oppure carica il file direttamente dalla pagina "Crea Reel AI" della dashboard, che non ha questo limite.
 
 ## Provare il sistema in locale (facoltativo, per sviluppatori)
 
@@ -146,3 +168,5 @@ docs/         piano marketing dettagliato verso i 30 matrimoni 2027
 - La ricerca lead si basa solo su **commenti su contenuti già pubblicati** (nessuna ricerca di sconosciuti), per restare nei limiti consentiti da Meta e dalla normativa privacy.
 - Il piano gratuito di Cloudflare R2 (10GB di storage) è pensato per uso personale: se il volume di foto/video crescerà molto, valuta un piano a pagamento (comunque economico: $0.015/GB/mese oltre i 10GB inclusi).
 - Il link Musiqua fornito non era raggiungibile dall'ambiente di sviluppo in fase di creazione del sistema: se vuoi che i testi riflettano esattamente i contenuti di quel profilo, incolla qui le informazioni principali (bio, prezzi, recensioni) e le integro in `config/brand.json`.
+- La Bot API di Telegram non scarica file oltre i **20MB** (vedi sezione "Invio da Telegram"): per video più pesanti usa la pagina "Crea Reel AI" della dashboard.
+- I video ricevuti da Telegram vengono pubblicati **senza revisione manuale** una volta montati (a differenza di quelli caricati dalla dashboard, che restano in attesa del click "Usa per un post"): è una scelta voluta per semplificare l'uso da telefono, ma significa fidarsi del montaggio automatico dell'AI Reel Maker.

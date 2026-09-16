@@ -41,6 +41,7 @@ interface PostsQueueFile {
     hashtags: string[];
     orarioProgrammato: string | null;
     pillarId?: string;
+    istruzioniUtente?: string | null;
     media: { downloadUrl: string; mimeType: string; filename: string };
   }>;
 }
@@ -164,6 +165,9 @@ export async function eseguiContentAgent(): Promise<void> {
     const calendar = await readData<CalendarFile>("content-calendar.json");
     const pilastro = pilastroDelGiorno(calendar);
     const ctaWhatsapp = testoCtaWhatsapp(brand);
+    const notaUtente = target.istruzioniUtente?.trim()
+      ? `\nNote di Andrea su questo contenuto specifico (usale SOLO se pertinenti, non inventare fatti/nomi/date che non sono qui): "${target.istruzioniUtente.trim()}".`
+      : "";
 
     let corpo: string | null = null;
     let metodo = "template";
@@ -173,7 +177,7 @@ export async function eseguiContentAgent(): Promise<void> {
       if (immagine) {
         const promptVisione = `Guarda l'immagine allegata: è una foto o un fotogramma reale ripreso durante un evento/matrimonio con DJ.
 Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), nel tono di questo brand: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
-Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.
+Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
 Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag né una call to action: li aggiungo io dopo.`;
         const testoVisione = await generaTestoConLLMEImmagine(promptVisione, immagine);
         if (testoVisione) {
@@ -186,7 +190,7 @@ Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare d
         const promptTesto = `Scrivi una didascalia Instagram in italiano per un DJ per matrimoni ed eventi.
 Brand: ${JSON.stringify(brand)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
-Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.
+Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
 Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag né una call to action nel corpo: li aggiungo io dopo.`;
         const testoLLM = await generaTestoConLLM(promptTesto);
         if (testoLLM) {

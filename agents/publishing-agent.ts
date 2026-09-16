@@ -7,6 +7,7 @@ import "dotenv/config";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { pubblicaSuInstagram, pubblicaSuFacebook } from "../lib/metaGraph.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
 
 interface PostsQueueFile {
@@ -147,6 +148,13 @@ export async function eseguiPublishingAgent(): Promise<void> {
         ? `Pubblicato su Instagram (${risultatoIg!.id}) e Facebook (${risultatoFb!.id}).`
         : `Pubblicazione PARZIALE, richiede la tua attenzione — ${dettaglioIg}; ${dettaglioFb}`
     });
+
+    const anteprima = caption.length > 100 ? `${caption.slice(0, 100)}…` : caption;
+    await inviaMessaggioTelegram(
+      completo
+        ? `✅ Pubblicato su Instagram e Facebook!\n"${anteprima}"`
+        : `⚠️ Pubblicazione parziale, dai un'occhiata alla dashboard:\n${dettaglioIg}\n${dettaglioFb}`
+    );
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
@@ -155,6 +163,7 @@ export async function eseguiPublishingAgent(): Promise<void> {
       riepilogo: "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
       dettagli: { errore: String(err) }
     });
+    await inviaMessaggioTelegram(`⚠️ Errore nella pubblicazione automatica: ${err instanceof Error ? err.message : String(err)}`);
   }
 }
 

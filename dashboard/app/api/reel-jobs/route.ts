@@ -44,7 +44,8 @@ export async function POST(req: Request) {
           step: "in-coda",
           aggiornatoIl: new Date().toISOString(),
           erroreMessaggio: null,
-          risultato: null
+          risultato: null,
+          source: "dashboard"
         });
         return attuale;
       },

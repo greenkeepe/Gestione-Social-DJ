@@ -15,6 +15,8 @@ interface MediaLibraryItem {
   mimeType: string;
   uploadedAt: string;
   usatoIl: string | null;
+  source?: string;
+  istruzioniUtente?: string | null;
 }
 
 interface MediaLibraryFile {
@@ -61,7 +63,7 @@ export async function eseguiMediaAgent(): Promise<void> {
       createdAt: nowIso(),
       formato: isVideo ? "reel" : "post",
       media: {
-        source: "dashboard-upload",
+        source: prossimo.source ?? "dashboard-upload",
         mediaId: prossimo.id,
         filename: prossimo.filename,
         mimeType: prossimo.mimeType,
@@ -70,7 +72,8 @@ export async function eseguiMediaAgent(): Promise<void> {
       caption: null,
       hashtags: [],
       orarioProgrammato: null,
-      status: "in-coda-caption"
+      status: "in-coda-caption",
+      istruzioniUtente: prossimo.istruzioniUtente ?? null
     });
     await writeData("posts-queue.json", queueFile);
 
