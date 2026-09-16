@@ -24,11 +24,59 @@
       "mimeType": "video/mp4",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-16T15:13:07.564Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-16T15:14:02.318Z",
       "erroreMessaggio": null,
-      "risultato": null,
+      "risultato": {
+        "reelUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/954e665c-5bcb-47e2-a617-32a58d4d6566.mp4",
+        "durataSecondi": 15.9,
+        "piano": {
+          "categoria": "dj_event",
+          "stile": "bold",
+          "profiloUsato": "dj_party",
+          "durataTarget": 15.55,
+          "hook": {
+            "inizio": 13.1,
+            "fine": 15.89
+          },
+          "segmenti": [
+            {
+              "inizio": 13.1,
+              "fine": 15.89,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 0,
+              "fine": 3,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 3,
+              "fine": 6,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 6,
+              "fine": 8.79,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 8.79,
+              "fine": 11.3,
+              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 11.3,
+              "fine": 12.76,
+              "motivo": "spezzone #6 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Forte DJ"
+        }
+      },
       "source": "telegram"
     },
     {
