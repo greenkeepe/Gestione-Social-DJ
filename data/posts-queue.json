@@ -128,6 +128,28 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "aec9e91c-ec67-4d7d-9cd3-e81cb015d6ab",
+      "createdAt": "2026-09-16T12:17:23.290Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "89f284da-3e7d-494a-b28f-ae85e8c528da",
+        "filename": "telegram-1789555729482.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/49dc84f2-d81e-4fec-9f77-8720850f6a0f.jpg"
+      },
+      "caption": "Preparazione, check audio, tanta cura nei dettagli prima che inizi la festa 🎧✨\nCon Forte DJ il divertimento è assicurato: la musica diventa il cuore pulsante di una serata indimenticabile.\n\n📲 Scrivimi su WhatsApp per info e disponibilità: https://wa.me/393667447280",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonio2027"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
