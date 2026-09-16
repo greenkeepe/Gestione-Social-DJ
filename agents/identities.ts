@@ -42,5 +42,10 @@ export const IDENTITA = {
     nome: "Stratega",
     ruolo: "Agente Strategia",
     descrizione: "Tiene aggiornato il piano verso l'obiettivo dei 30 matrimoni 2027 e suggerisce aggiustamenti di rotta."
+  },
+  reelMaker: {
+    nome: "Regista",
+    ruolo: "Agente AI Reel Maker",
+    descrizione: "Trasforma un video grezzo caricato dalla dashboard in un Reel verticale pronto per i social: analizza scene e audio, sceglie i momenti migliori, monta e verifica il risultato prima di metterlo in libreria media."
   }
 } as const satisfies Record<string, Identita>;

@@ -4,7 +4,7 @@ Sistema di agenti autonomi che gestiscono la presenza social del tuo profilo DJ 
 
 ## Come è fatto il sistema
 
-Un **Agente Master ("Direttore")** coordina ogni giorno 5 agenti specializzati, ciascuno con un ruolo preciso:
+Un **Agente Master ("Direttore")** coordina ogni giorno 5 agenti specializzati, ciascuno con un ruolo preciso; un sesto agente (il **Regista**) lavora in coda separata trasformando i video grezzi in Reel:
 
 | Agente | Nome | Cosa fa |
 |---|---|---|
@@ -14,8 +14,9 @@ Un **Agente Master ("Direttore")** coordina ogni giorno 5 agenti specializzati, 
 | Lead | **Cacciatore** | Individua chi ha commentato/interagito con interesse e prepara bozze di messaggi — **non invia mai nulla da solo** |
 | Analytics | **Analista** | Legge le statistiche da Meta e aggiorna i KPI |
 | Strategia | **Stratega** | Tiene aggiornato l'avanzamento verso l'obiettivo dei 30 matrimoni 2027 |
+| AI Reel Maker | **Regista** | Trasforma un video grezzo caricato dalla pagina "Crea Reel AI" in un Reel verticale montato e verificato (vedi sezione dedicata sotto) |
 
-Tutto gira **automaticamente ogni giorno** tramite GitHub Actions (gratuito), scrive i risultati in file dati (`data/*.json`) versionati su git, e la **dashboard** (`dashboard/`, deployabile gratis su Vercel) li legge in tempo reale per farteli controllare da telefono o computer, ovunque tu sia.
+Tutto gira **automaticamente** tramite GitHub Actions (gratuito), scrive i risultati in file dati (`data/*.json`) versionati su git, e la **dashboard** (`dashboard/`, deployabile gratis su Vercel) li legge in tempo reale per farteli controllare da telefono o computer, ovunque tu sia.
 
 ### Perché il contatto con potenziali sposi è "solo bozze"
 
@@ -48,7 +49,7 @@ Crea un account gratuito su **[cloudinary.com](https://cloudinary.com)** (nessun
 
 ### 4. Configura i secrets su GitHub
 
-Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, e opzionalmente `ANTHROPIC_API_KEY`).
+Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_UPLOAD_PRESET` — stessi valori del punto 3 — e opzionalmente `ANTHROPIC_API_KEY`).
 
 ### 5. Metti online la dashboard (gratis, su Vercel)
 
@@ -60,7 +61,26 @@ Nel repository, vai su **Settings → Secrets and variables → Actions** e aggi
 
 ### 6. Attiva le automazioni
 
-Le due GitHub Actions (`.github/workflows/daily-agents.yml` e `publish-check.yml`) partono da sole secondo lo schedule una volta che i secrets sono impostati. Puoi anche lanciarle manualmente da **Actions → [nome workflow] → Run workflow** per un primo test.
+Le tre GitHub Actions (`.github/workflows/daily-agents.yml`, `publish-check.yml` e `reel-maker.yml`) partono da sole secondo lo schedule una volta che i secrets sono impostati. Puoi anche lanciarle manualmente da **Actions → [nome workflow] → Run workflow** per un primo test.
+
+## AI Reel Maker (video grezzo → Reel)
+
+Dalla pagina **"🎬 Crea Reel AI"** della dashboard carichi un video grezzo (stesso upload diretto a Cloudinary già usato per "Carica media") scegliendo un profilo di montaggio — **Automatico**, DJ/Party, Matrimonio, Evento, Aziendale, Persona che parla in camera, Promozionale — ed eventuali note libere ("è il momento del primo ballo", ecc.).
+
+Il Regista (`agents/reel-maker-agent.ts`, eseguito da `.github/workflows/reel-maker.yml` ogni ~20 minuti) lo elabora con **ffmpeg** (installato gratis sul runner GitHub Actions), senza servizi cloud di editing a pagamento:
+
+1. **Analisi**: durata, risoluzione, fps, audio (`ffprobe`).
+2. **Rilevazione scene** reale (filtro `scene` di ffmpeg) e, se c'è audio, **rilevazione silenzi** e **misura del volume** di ogni spezzone candidato (`lib/videoTools.ts`) — punteggi calcolati sui dati veri del video, mai inventati.
+3. **Piano di montaggio** (`lib/reelPlanner.ts`): sceglie l'hook (mai i primissimi istanti del video) e i segmenti migliori in base al punteggio, con stile Clean/Dynamic/Bold dedotto dal profilo (in **Automatico**, dedotto dall'energia audio e dalla frequenza dei cambi scena).
+4. **Montaggio**: ritaglio 9:16 centrato, concatenazione (hard-cut o dissolvenza a seconda dello stile), normalizzazione audio (`loudnorm`), testo di apertura opzionale.
+5. **Controllo qualità**: verifica reale (risoluzione 1080×1920, presenza audio, durata coerente) prima di segnare il job come pronto — se qualcosa non torna il job va in **errore** invece di essere spacciato per riuscito.
+6. Il Reel finito viene caricato su Cloudinary e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa".
+
+**Limiti noti (per restare a costo zero)**:
+- Il ritaglio 9:16 è **centrato**, non segue il soggetto: un vero tracking richiederebbe un modello di visione artificiale (GPU, servizio a pagamento).
+- **Niente sottotitoli automatici**: non è integrato nessun servizio di trascrizione (a pagamento). Restano disattivati finché non ne colleghi uno.
+- **Niente musica di sottofondo automatica**: nessuna libreria musicale con diritti verificati è integrata — il Reel usa solo l'audio originale del video, normalizzato.
+- Puoi disattivare la funzione senza toccare il codice impostando `ENABLE_AI_REEL_MAKER=false`.
 
 ## Provare il sistema in locale (facoltativo, per sviluppatori)
 
@@ -68,6 +88,7 @@ Le due GitHub Actions (`.github/workflows/daily-agents.yml` e `publish-check.yml
 npm install                 # dipendenze agenti
 cp .env.example .env        # e compila con le tue credenziali
 npm run master              # esegue un ciclo completo degli agenti
+npm run agent:reelmaker     # elabora un video grezzo in coda (richiede ffmpeg installato)
 
 cd dashboard
 npm install
@@ -83,6 +104,7 @@ Oggi tutto gira a **costo zero**:
 - Cloudinary: piano free con 25 "crediti" al mese (1 credito = 1GB di storage o di banda), nessuna carta richiesta — ampiamente sufficiente per uso personale
 - Meta Graph API: gratuita entro i limiti standard
 - Generazione testi: template scritti a mano, zero costo
+- AI Reel Maker: ffmpeg (open source, gratuito) sul runner GitHub Actions — nessun servizio di editing/transcrizione a pagamento
 
 **Quando vorrai investire** (vedi anche `docs/strategia-marketing-2027.md`):
 - **Sponsorizzazioni Meta Ads**: budget mirato geograficamente per accelerare la fase di crescita lead, quando il canale organico non basta più a sostenere il ritmo verso i 30 matrimoni.
@@ -93,7 +115,7 @@ Oggi tutto gira a **costo zero**:
 
 ```
 agents/       agenti (Master + 6 specializzati), eseguiti da GitHub Actions
-lib/          librerie condivise (storage, Meta Graph API, ecc.)
+lib/          librerie condivise (storage, Meta Graph API, ffmpeg/reel planner, ecc.)
 config/       config/brand.json — i tuoi dati reali
 data/         "database" a costo zero: file JSON aggiornati dagli agenti
 dashboard/    app Next.js, deployabile gratis su Vercel

@@ -12,6 +12,7 @@
     "agent:leads": "tsx agents/leads-agent.ts",
     "agent:analytics": "tsx agents/analytics-agent.ts",
     "agent:strategy": "tsx agents/strategy-agent.ts",
+    "agent:reelmaker": "tsx agents/reel-maker-agent.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

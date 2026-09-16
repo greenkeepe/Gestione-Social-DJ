@@ -1,0 +1,59 @@
+name: AI Reel Maker (video grezzo -> Reel)
+
+# Gira spesso durante il giorno per accorgersi in fretta di un nuovo video
+# caricato dalla pagina "Crea Reel AI" della dashboard, senza bisogno di
+# concedere alla dashboard il permesso di lanciare workflow (le basta poter
+# scrivere su data/, come già fa per "Carica media"). Stesso schema di
+# polling già usato da publish-check.yml.
+on:
+  schedule:
+    - cron: "*/20 6-22 * * *" # ogni 20 minuti, 06:00-22:59 UTC (copre l'intera giornata italiana)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gestione-social-dj-reelmaker
+  cancel-in-progress: false
+
+jobs:
+  crea-reel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Installa ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+
+      - name: Installa dipendenze
+        run: npm install
+
+      - name: Esegui Agente Reel Maker (Regista)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
+          ENABLE_AI_REEL_MAKER: ${{ vars.ENABLE_AI_REEL_MAKER }}
+        run: npm run agent:reelmaker
+
+      - name: Commit e push dei dati aggiornati
+        run: |
+          git config user.name "gestione-social-dj-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(regista): elaborazione AI Reel Maker [skip ci]"
+            git push
+          else
+            echo "Nessuna modifica ai dati da salvare."
+          fi

@@ -60,6 +60,39 @@ export interface LeadsFile {
   leads: Lead[];
 }
 
+export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
+
+export interface PianoReel {
+  categoria: string;
+  stile: "clean" | "dynamic" | "bold";
+  profiloUsato: ProfiloReel;
+  durataTarget: number;
+  hook: { inizio: number; fine: number };
+  segmenti: Array<{ inizio: number; fine: number; motivo: string }>;
+  sottotitoli: boolean;
+  musica: boolean;
+  testoHook: string | null;
+}
+
+export interface ReelJob {
+  id: string;
+  createdAt: string;
+  videoUrl: string;
+  filename: string;
+  mimeType: string;
+  profilo: ProfiloReel;
+  istruzioni: string | null;
+  status: "in-coda-analisi" | "pronto" | "errore" | "usato";
+  step: string;
+  aggiornatoIl: string;
+  erroreMessaggio: string | null;
+  risultato: { reelUrl: string; durataSecondi: number; piano: PianoReel } | null;
+}
+
+export interface ReelJobsFile {
+  jobs: ReelJob[];
+}
+
 export interface StrategyFile {
   obiettivo: string;
   logicaTemporale: string;

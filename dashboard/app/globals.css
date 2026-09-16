@@ -316,6 +316,14 @@ th {
 .ig-post__badge.in-coda-caption { background: #fff4e0; color: #a15c00; }
 .ig-post__badge.pubblicato { background: #e8eefc; color: #1a56db; }
 
+/* --- Badge stato job "Crea Reel AI" (usati fuori dal mockup ig-post,
+   quindi qui coerenti con lo sfondo scuro del resto della dashboard) --- */
+.reel-jobs-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.reel-jobs-grid .ig-post__badge { color: #1a1500; }
+.reel-jobs-grid .ig-post__badge.in-coda-analisi { background: var(--warn); }
+.reel-jobs-grid .ig-post__badge.errore { background: var(--err); }
+.reel-jobs-grid .ig-post__badge.usato { background: var(--text-dim); }
+
 .ig-post__media {
   width: 100%;
   aspect-ratio: 1;
