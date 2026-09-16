@@ -108,7 +108,7 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
     media: {
       source: "testimonianza",
       mediaId: null,
-      filename: `testimonianza-${chiaveTestimonianza(scelta)}.png`,
+      filename: `testimonianza-${scelta.cliente}-${scelta.data}.png`.replace(/[^a-zA-Z0-9.-]+/g, "-"),
       mimeType: "image/png",
       downloadUrl: url
     },
