@@ -93,9 +93,10 @@ export async function pubblicaStoriesSuInstagram(opts: { imageUrl?: string; vide
   }
 
   const container = await graphFetch<{ id: string }>(`/${igUserId}/media`, containerParams, "POST");
-  if (opts.videoUrl) {
-    await attendiElaborazioneContainer(container.id);
-  }
+  // Stesso motivo di pubblicaSuInstagram: aspetta SEMPRE il container
+  // "FINISHED", non solo per i video — sotto carico anche un'immagine può
+  // restare "IN_PROGRESS" per un momento (visto in un test reale).
+  await attendiElaborazioneContainer(container.id);
   return graphFetch<{ id: string }>(`/${igUserId}/media_publish`, { creation_id: container.id }, "POST");
 }
 
