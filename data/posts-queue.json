@@ -124,6 +124,37 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "14fe03b2-d4a4-49bc-9a76-f69d6ff43f0b",
+      "createdAt": "2026-09-16T15:27:25.498Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "982e158e-840f-4202-be6f-9a1dbca9a5a2",
+        "filename": "telegram-1789572092185.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/2058a500-f604-49b2-8597-b77e38bb9e67.jpg"
+      },
+      "caption": "Sorrisi veri, mani alzate e quella luce calda che accende la pista: è il momento in cui la serata smette di essere una scaletta e diventa energia pura. Dietro la console la musica prende forma, davanti l'emozione fa il resto 🎉✨\n\n💾 Salva questo post: ti torna utile quando organizzi la musica del tuo evento!\n\n📲 Trovi il bottone WhatsApp sul mio profilo: scrivimi per tutti i dettagli!",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingparty",
+        "#weddingdj",
+        "#weddingitaly",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#djprofessionista",
+        "#musicapermatrimoni",
+        "#piemonte",
+        "#lombardia",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
