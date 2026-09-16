@@ -44,6 +44,7 @@ function siamoNellaFinestra(orarioProgrammato: string): boolean {
 export async function eseguiPublishingAgent(): Promise<void> {
   try {
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
+    const logFile = await readData<PublishedLogFile>("published-log.json");
     const oggi = new Date().toISOString().slice(0, 10);
 
     // FORCE_PUBLISH_QUEUE_ID: pubblica SUBITO un contenuto specifico, ignorando
@@ -53,9 +54,20 @@ export async function eseguiPublishingAgent(): Promise<void> {
     // rischio di doppie pubblicazioni accidentali sul resto della coda.
     const forzaQueueId = process.env.FORCE_PUBLISH_QUEUE_ID?.trim() || null;
 
-    const pubblicatoOggi = (await readData<PublishedLogFile>("published-log.json")).log.some(
-      (p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi)
+    // Un contenuto "pubblicato-parziale" (una piattaforma è andata, l'altra no,
+    // es. permesso mancante) non deve restare bloccato per sempre: la ricerca
+    // di un "pronto" qui sotto non lo troverebbe mai più. Ritenta SOLO la
+    // piattaforma mancante, ignorando il limite di 1/giorno (non è una nuova
+    // pubblicazione, il contenuto è già uscito almeno in parte).
+    const parziale = queueFile.queue.find(
+      (p) => p.status === "pubblicato-parziale" && (!forzaQueueId || p.id === forzaQueueId)
     );
+    if (parziale) {
+      await riprovaPubblicazioneParziale(parziale, queueFile, logFile);
+      return;
+    }
+
+    const pubblicatoOggi = logFile.log.some((p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi));
     if (pubblicatoOggi && !forzaQueueId) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
@@ -149,7 +161,6 @@ export async function eseguiPublishingAgent(): Promise<void> {
     // piattaforma che ha già funzionato.
     target.status = risultatoIg && risultatoFb ? "pubblicato" : "pubblicato-parziale";
 
-    const logFile = await readData<PublishedLogFile>("published-log.json");
     logFile.log.unshift({
       queueId: target.id,
       timestamp: nowIso(),
@@ -193,6 +204,111 @@ export async function eseguiPublishingAgent(): Promise<void> {
     });
     await inviaMessaggioTelegram(`⚠️ Errore nella pubblicazione automatica: ${err instanceof Error ? err.message : String(err)}`);
   }
+}
+
+// Ritenta SOLO la piattaforma rimasta indietro di un contenuto già uscito in
+// parte (es. Instagram OK, Facebook fallito per un permesso mancante nel
+// frattempo risolto). Non ripubblica mai la piattaforma già andata a buon
+// fine, quindi nessun rischio di doppioni.
+async function riprovaPubblicazioneParziale(
+  target: PostsQueueFile["queue"][number],
+  queueFile: PostsQueueFile,
+  logFile: PublishedLogFile
+): Promise<void> {
+  const voce = logFile.log.find((v) => v.queueId === target.id) as
+    | { instagramId: string | null; facebookId: string | null; instagramStoryId?: string | null }
+    | undefined;
+  if (!voce) {
+    await logAgentRun({
+      agente: IDENTITA.publishing.nome,
+      identita: IDENTITA.publishing.ruolo,
+      status: "errore",
+      riepilogo: `Contenuto "pubblicato-parziale" (${target.id}) senza voce corrispondente in published-log.json: serve un controllo manuale.`
+    });
+    return;
+  }
+
+  const isVideo = target.media.mimeType.startsWith("video/");
+  const caption = `${target.caption ?? ""}\n\n${(target.hashtags ?? []).join(" ")}`.trim();
+
+  let nuovoErrore: string | null = null;
+  let piattaforma = "";
+
+  if (!voce.instagramId) {
+    piattaforma = "Instagram";
+    try {
+      const risultato = await pubblicaSuInstagram({
+        imageUrl: isVideo ? undefined : target.media.downloadUrl,
+        videoUrl: isVideo ? target.media.downloadUrl : undefined,
+        isReel: target.formato === "reel",
+        caption
+      });
+      voce.instagramId = risultato.id;
+      try {
+        const storia = await pubblicaStoriesSuInstagram({
+          imageUrl: isVideo ? undefined : target.media.downloadUrl,
+          videoUrl: isVideo ? target.media.downloadUrl : undefined
+        });
+        voce.instagramStoryId = storia.id;
+      } catch (err) {
+        console.error("[Editore] Storia Instagram (recupero) fallita, non bloccante:", err);
+      }
+    } catch (err) {
+      nuovoErrore = err instanceof Error ? err.message : String(err);
+    }
+  } else if (!voce.facebookId) {
+    piattaforma = "Facebook";
+    try {
+      const risultato = await pubblicaSuFacebook({
+        message: caption,
+        imageUrl: isVideo ? undefined : target.media.downloadUrl,
+        videoUrl: isVideo ? target.media.downloadUrl : undefined
+      });
+      voce.facebookId = risultato.id;
+    } catch (err) {
+      nuovoErrore = err instanceof Error ? err.message : String(err);
+    }
+  } else {
+    // Entrambi gli id erano già presenti: lo stato non era coerente col log, lo sistemiamo senza ripubblicare nulla.
+    target.status = "pubblicato";
+    await writeData("posts-queue.json", queueFile);
+    await logAgentRun({
+      agente: IDENTITA.publishing.nome,
+      identita: IDENTITA.publishing.ruolo,
+      status: "ok",
+      riepilogo: `Contenuto (${target.id}) era segnato "pubblicato-parziale" ma entrambe le piattaforme risultavano già a posto: stato corretto.`
+    });
+    return;
+  }
+
+  await writeData("published-log.json", logFile);
+
+  if (nuovoErrore) {
+    await logAgentRun({
+      agente: IDENTITA.publishing.nome,
+      identita: IDENTITA.publishing.ruolo,
+      status: "errore",
+      riepilogo: `Nuovo tentativo su ${piattaforma} ancora fallito: ${nuovoErrore}`
+    });
+    await inviaMessaggioTelegram(`⚠️ Ritento ${piattaforma} per un post parziale ma fallisce ancora: ${nuovoErrore}`);
+    return;
+  }
+
+  const oraCompleto = Boolean(voce.instagramId && voce.facebookId);
+  target.status = oraCompleto ? "pubblicato" : "pubblicato-parziale";
+  await writeData("posts-queue.json", queueFile);
+
+  await logAgentRun({
+    agente: IDENTITA.publishing.nome,
+    identita: IDENTITA.publishing.ruolo,
+    status: "ok",
+    riepilogo: `Recuperata la pubblicazione mancante su ${piattaforma}.${oraCompleto ? " Ora pubblicato su entrambe le piattaforme." : ""}`
+  });
+  await inviaMessaggioTelegram(
+    oraCompleto
+      ? `✅ Recuperato! Ora pubblicato anche su ${piattaforma}: il post è live su Instagram e Facebook.`
+      : `✅ Recuperata la pubblicazione su ${piattaforma}.`
+  );
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
