@@ -185,7 +185,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[Telegram webhook] errore:", err);
-    await inviaMessaggio(chatId, "⚠️ Ops, qualcosa è andato storto ricevendo il tuo file. Riprova, oppure usa la dashboard.").catch(() => {});
+    const dettaglio = err instanceof Error ? err.message : String(err);
+    await inviaMessaggio(chatId, `⚠️ Qualcosa è andato storto: ${dettaglio.slice(0, 300)}`).catch(() => {});
     return NextResponse.json({ ok: true });
   }
 }
