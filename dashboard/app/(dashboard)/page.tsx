@@ -1,5 +1,6 @@
 import { leggiDati } from "../../lib/dataSource";
 import type { KpisFile, AgentRunsFile, StrategyFile, PostsQueueFile, PublishedLogFile, ReelJobsFile } from "../../lib/types";
+import { ProgressRing } from "../../components/ProgressRing";
 
 export const dynamic = "force-dynamic";
 
@@ -40,40 +41,72 @@ export default async function Panoramica() {
       </p>
 
       <div className="grid">
-        <div className="card">
-          <div className="label">Follower Instagram</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Follower Instagram</div>
+            <span className="stat-icon" aria-hidden="true">📷</span>
+          </div>
           <div className="value">{kpis.instagram.followers ?? "—"}</div>
+          {kpis.instagram.followersTrend7g !== null && (
+            <span className={`trend ${kpis.instagram.followersTrend7g >= 0 ? "trend--up" : "trend--down"}`}>
+              {kpis.instagram.followersTrend7g >= 0 ? "▲" : "▼"} {Math.abs(kpis.instagram.followersTrend7g)} (7g)
+            </span>
+          )}
         </div>
-        <div className="card">
-          <div className="label">Follower Facebook</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Follower Facebook</div>
+            <span className="stat-icon" aria-hidden="true">👍</span>
+          </div>
           <div className="value">{kpis.facebook.followers ?? "—"}</div>
         </div>
-        <div className="card">
-          <div className="label">Lead attivi</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Lead attivi</div>
+            <span className="stat-icon" aria-hidden="true">💬</span>
+          </div>
           <div className="value">{kpis.obiettivo2027.leadAttivi}</div>
         </div>
-        <div className="card">
-          <div className="label">Matrimoni confermati 2027</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Matrimoni confermati 2027</div>
+            <span className="stat-icon" aria-hidden="true">💍</span>
+          </div>
           <div className="value">{kpis.obiettivo2027.matrimoniConfermati} / {kpis.obiettivo2027.matrimoniTarget}</div>
+          <div className="progress-bar">
+            <div style={{ width: `${percentuale}%` }} />
+          </div>
         </div>
       </div>
 
       <h3>Pipeline contenuti — visione globale</h3>
       <div className="grid">
-        <div className="card">
-          <div className="label">Media in attesa (foto/video da caricare)</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Media in attesa (foto/video da caricare)</div>
+            <span className="stat-icon" aria-hidden="true">📥</span>
+          </div>
           <div className="value">{mediaInAttesa}</div>
         </div>
-        <div className="card">
-          <div className="label">Reel in montaggio AI</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Reel in montaggio AI</div>
+            <span className="stat-icon" aria-hidden="true">🎬</span>
+          </div>
           <div className="value">{reelInElaborazione}</div>
         </div>
-        <div className="card">
-          <div className="label">Contenuti in coda (tutti gli stati)</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Contenuti in coda (tutti gli stati)</div>
+            <span className="stat-icon" aria-hidden="true">🗂️</span>
+          </div>
           <div className="value">{inCoda}</div>
         </div>
-        <div className="card">
-          <div className="label">In pausa / in errore (richiedono attenzione)</div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">In pausa / in errore (richiedono attenzione)</div>
+            <span className="stat-icon" aria-hidden="true">⚠️</span>
+          </div>
           <div className="value">{inPausaOErrore}</div>
         </div>
       </div>
@@ -87,11 +120,16 @@ export default async function Panoramica() {
       </p>
 
       <div className="card">
-        <div className="label">Obiettivo: {strategy.obiettivo}</div>
-        <div className="progress-bar">
-          <div style={{ width: `${percentuale}%` }} />
+        <div className="stat-with-ring">
+          <ProgressRing percentage={percentuale} color="var(--color-accent)" sublabel="obiettivo 2027" />
+          <div className="stat-with-ring__details">
+            <div className="label">Obiettivo: {strategy.obiettivo}</div>
+            <div className="progress-bar">
+              <div style={{ width: `${percentuale}%` }} />
+            </div>
+            <p className="note">{percentuale}% completato — fase corrente: {strategy.progresso.faseCorrente}</p>
+          </div>
         </div>
-        <p className="note">{percentuale}% completato — fase corrente: {strategy.progresso.faseCorrente}</p>
       </div>
 
       <h3>Ultime azioni degli agenti</h3>

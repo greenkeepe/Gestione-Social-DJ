@@ -1,5 +1,6 @@
 import { leggiDati } from "../../../lib/dataSource";
 import { ServiceLimitsForm } from "../../../components/ServiceLimitsForm";
+import { ProgressRing } from "../../../components/ProgressRing";
 
 export const dynamic = "force-dynamic";
 
@@ -56,15 +57,25 @@ export default async function UtilizzoPage() {
           <div className="label">{r2.nome}</div>
           {pausatoR2 && <span className="badge errore">⏸️ In pausa</span>}
         </div>
-        <div className="progress-bar" style={{ marginTop: 10 }}>
-          <div style={{ width: `${percentualeR2}%`, background: percentualeR2 >= r2.sogliaPercentualePausa ? "#c0392b" : undefined }} />
+        <div className="stat-with-ring" style={{ marginTop: 10 }}>
+          <ProgressRing
+            percentage={percentualeR2}
+            color={percentualeR2 >= r2.sogliaPercentualePausa ? "var(--color-err)" : "var(--color-primary)"}
+            label={`${percentualeR2.toFixed(0)}%`}
+            sublabel={`soglia ${r2.sogliaPercentualePausa}%`}
+          />
+          <div className="stat-with-ring__details">
+            <div className="progress-bar">
+              <div style={{ width: `${percentualeR2}%`, background: percentualeR2 >= r2.sogliaPercentualePausa ? "var(--color-err)" : undefined }} />
+            </div>
+            <p className="note" style={{ marginTop: 6 }}>
+              {formattaGb(r2.usoAttualeBytes)} / {formattaGb(r2.limiteBytes)} ({percentualeR2.toFixed(1)}%) — {r2.oggettiAttuali} file
+            </p>
+            <p className="note">
+              {r2.aggiornatoIl ? `Ultima misurazione: ${new Date(r2.aggiornatoIl).toLocaleString("it-IT")}` : "Non ancora misurato: attendi il prossimo ciclo agenti."}
+            </p>
+          </div>
         </div>
-        <p className="note" style={{ marginTop: 6 }}>
-          {formattaGb(r2.usoAttualeBytes)} / {formattaGb(r2.limiteBytes)} ({percentualeR2.toFixed(1)}%) — {r2.oggettiAttuali} file
-        </p>
-        <p className="note">
-          {r2.aggiornatoIl ? `Ultima misurazione: ${new Date(r2.aggiornatoIl).toLocaleString("it-IT")}` : "Non ancora misurato: attendi il prossimo ciclo agenti."}
-        </p>
         {pausatoR2 && (
           <p className="error-msg">
             Caricamento di nuovi media (Telegram e dashboard) in pausa da{" "}
@@ -82,22 +93,32 @@ export default async function UtilizzoPage() {
         </div>
         {anthropicConfigurata ? (
           <>
-            <div className="progress-bar" style={{ marginTop: 10 }}>
-              <div
-                style={{
-                  width: `${percentualeAnthropic}%`,
-                  background: percentualeAnthropic >= anthropic.sogliaPercentualePausa ? "#c0392b" : undefined
-                }}
+            <div className="stat-with-ring" style={{ marginTop: 10 }}>
+              <ProgressRing
+                percentage={percentualeAnthropic}
+                color={percentualeAnthropic >= anthropic.sogliaPercentualePausa ? "var(--color-err)" : "var(--color-primary)"}
+                label={`${percentualeAnthropic.toFixed(0)}%`}
+                sublabel={`soglia ${anthropic.sogliaPercentualePausa}%`}
               />
+              <div className="stat-with-ring__details">
+                <div className="progress-bar">
+                  <div
+                    style={{
+                      width: `${percentualeAnthropic}%`,
+                      background: percentualeAnthropic >= anthropic.sogliaPercentualePausa ? "var(--color-err)" : undefined
+                    }}
+                  />
+                </div>
+                <p className="note" style={{ marginTop: 6 }}>
+                  {anthropic.chiamateEffettuateMese} / {anthropic.limiteChiamateMese} chiamate ({percentualeAnthropic.toFixed(1)}%) — mese{" "}
+                  {anthropic.meseCorrente}
+                </p>
+                <p className="note">
+                  {anthropic.aggiornatoIl ? `Ultima chiamata: ${new Date(anthropic.aggiornatoIl).toLocaleString("it-IT")}` : "Ancora nessuna chiamata questo mese."}
+                </p>
+                <p className="note">Costo indicativo: pochi centesimi ogni 100 chiamate. Il conto reale è su console.anthropic.com.</p>
+              </div>
             </div>
-            <p className="note" style={{ marginTop: 6 }}>
-              {anthropic.chiamateEffettuateMese} / {anthropic.limiteChiamateMese} chiamate ({percentualeAnthropic.toFixed(1)}%) — mese{" "}
-              {anthropic.meseCorrente}
-            </p>
-            <p className="note">
-              {anthropic.aggiornatoIl ? `Ultima chiamata: ${new Date(anthropic.aggiornatoIl).toLocaleString("it-IT")}` : "Ancora nessuna chiamata questo mese."}
-            </p>
-            <p className="note">Costo indicativo: pochi centesimi ogni 100 chiamate. Il conto reale è su console.anthropic.com.</p>
             {pausatoAnthropic && (
               <p className="error-msg">
                 Chiamate in pausa da {anthropic.pausatoIl ? new Date(anthropic.pausatoIl).toLocaleString("it-IT") : ""}: le didascalie tornano

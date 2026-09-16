@@ -1,5 +1,6 @@
 import { leggiDati } from "../../../lib/dataSource";
 import type { AgentRunsFile } from "../../../lib/types";
+import { StatusBreakdown } from "../../../components/StatusBreakdown";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +29,10 @@ export default async function AgentiPage() {
       <h2>Agenti</h2>
       <p className="note">Ogni agente ha un ruolo specifico ed è coordinato quotidianamente dal Direttore (Agente Master).</p>
 
+      <h3 style={{ marginTop: 12 }}>Esiti complessivi</h3>
+      <StatusBreakdown runs={agentRuns.runs} />
+
+      <h3>Ogni agente</h3>
       <div className="grid">
         {Object.entries(IDENTITA_DESCRIZIONI).map(([nome, descrizione]) => {
           const runs = perAgente.get(nome) ?? [];

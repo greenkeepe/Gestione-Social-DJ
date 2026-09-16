@@ -1,103 +1,327 @@
+/* ===========================================================================
+   Gestione Social DJ — Forte DJ
+   Palette: indigo/violet primario (elegante, "da matrimonio") + oro caldo
+   come accento, su sfondo chiaro. Dark mode via prefers-color-scheme.
+   =========================================================================== */
+
 :root {
-  color-scheme: light dark;
-  --bg: #0f1115;
-  --bg-elev: #171a21;
-  --border: #262b36;
-  --text: #e8eaed;
-  --text-dim: #9aa1ad;
-  --accent: #d4a94a;
-  --accent-soft: #d4a94a22;
-  --ok: #4caf7d;
-  --warn: #e0a63a;
-  --err: #e0605a;
+  color-scheme: light;
+
+  /* --- Brand --- */
+  --color-primary: #4c3a8c;
+  --color-primary-dark: #362a68;
+  --color-primary-light: #7561c9;
+  --color-primary-soft: rgba(76, 58, 140, 0.09);
+  --color-accent: #c28a2e;
+  --color-accent-strong: #a4741f;
+  --color-accent-soft: rgba(194, 138, 46, 0.16);
+  --color-coral: #e2654b;
+  --color-coral-soft: rgba(226, 101, 75, 0.14);
+
+  /* --- Status --- */
+  --color-ok: #2f9e6e;
+  --color-ok-soft: rgba(47, 158, 110, 0.14);
+  --color-warn: #d98c22;
+  --color-warn-soft: rgba(217, 140, 34, 0.16);
+  --color-err: #d64545;
+  --color-err-soft: rgba(214, 69, 69, 0.13);
+
+  /* --- Surfaces / text (legacy names kept so existing inline var() usages
+     in components keep working — they now resolve to the new palette) --- */
+  --bg: #f6f4fb;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #f0ecf9;
+  --border: #e3ddf1;
+  --text: #211b36;
+  --text-dim: #6c6484;
+  --accent: var(--color-accent);
+  --accent-soft: var(--color-accent-soft);
+  --ok: var(--color-ok);
+  --warn: var(--color-warn);
+  --err: var(--color-err);
+
+  /* --- Effects --- */
+  --shadow-sm: 0 1px 2px rgba(33, 20, 66, 0.05), 0 1px 1px rgba(33, 20, 66, 0.04);
+  --shadow-md: 0 6px 20px rgba(33, 20, 66, 0.08);
+  --shadow-lg: 0 18px 44px rgba(33, 20, 66, 0.14);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* --- Layout --- */
+  --sidebar-width: 260px;
+  --topbar-height: 60px;
+
+  /* --- Typography (populated by next/font in app/layout.tsx) --- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-primary: #9c8ce0;
+    --color-primary-dark: #7869c4;
+    --color-primary-light: #b6a9ec;
+    --color-primary-soft: rgba(156, 140, 224, 0.16);
+    --color-accent: #e3b45a;
+    --color-accent-strong: #f0c476;
+    --color-accent-soft: rgba(227, 180, 90, 0.16);
+    --color-coral: #ed8069;
+    --color-coral-soft: rgba(237, 128, 105, 0.16);
+
+    --color-ok: #4fc98a;
+    --color-ok-soft: rgba(79, 201, 138, 0.16);
+    --color-warn: #e7a94a;
+    --color-warn-soft: rgba(231, 169, 74, 0.16);
+    --color-err: #ea6b6b;
+    --color-err-soft: rgba(234, 107, 107, 0.16);
+
+    --bg: #131020;
+    --bg-elev: #1d1830;
+    --bg-elev-2: #251f3c;
+    --border: #342c4f;
+    --text: #eeebf7;
+    --text-dim: #aaa1c8;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 10px 26px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 22px 50px rgba(0, 0, 0, 0.5);
+  }
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: inherit;
 }
 
+h1, h2, h3, h4 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+h2 {
+  font-size: 26px;
+  margin: 0 0 6px;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 28px 0 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   Layout shell
+   ------------------------------------------------------------------------- */
+
 .layout {
   display: flex;
   min-height: 100vh;
 }
 
-.sidebar {
-  width: 220px;
-  flex-shrink: 0;
-  background: var(--bg-elev);
-  border-right: 1px solid var(--border);
-  padding: 24px 16px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-
-.sidebar h1 {
-  font-size: 15px;
-  margin: 0 0 4px;
-  color: var(--accent);
-}
-
-.sidebar p.sub {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin: 0 0 24px;
-}
-
-.sidebar nav a {
-  display: block;
-  padding: 8px 10px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
-  color: var(--text-dim);
-  margin-bottom: 2px;
-}
-
-.sidebar nav a:hover {
-  background: var(--accent-soft);
-  color: var(--text);
-}
-
-.logout-form {
-  margin-top: 24px;
-}
-
-.logout-form button {
-  width: 100%;
-  padding: 8px;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-dim);
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
 .main {
   flex: 1;
-  padding: 32px 40px;
-  max-width: 1100px;
+  min-width: 0;
+  padding: 40px 44px 64px;
+  max-width: 1180px;
 }
 
 .main h2 {
   margin-top: 0;
 }
 
+/* ---------------------------------------------------------------------------
+   Sidebar (desktop) + Topbar / off-canvas nav (mobile)
+   ------------------------------------------------------------------------- */
+
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: linear-gradient(180deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: #f3f0ff;
+  padding: 28px 18px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 40;
+}
+
+.sidebar__brand {
+  padding: 0 8px;
+  margin-bottom: 26px;
+}
+
+.sidebar h1 {
+  font-size: 17px;
+  margin: 0 0 4px;
+  color: #fff;
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.sidebar p.sub {
+  font-size: 12px;
+  color: rgba(243, 240, 255, 0.66);
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(243, 240, 255, 0.78);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sidebar nav a.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.sidebar nav a.active::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.logout-form {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.logout-form button {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(243, 240, 255, 0.85);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.logout-form button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile topbar — hidden on desktop, shown under the breakpoint below. */
+.topbar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-height);
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary));
+  color: #fff;
+  z-index: 60;
+  box-shadow: var(--shadow-md);
+}
+
+.topbar__brand {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.topbar__toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.topbar__toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.topbar__toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.topbar__toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.topbar__toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Cards / grid / stats
+   ------------------------------------------------------------------------- */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   margin: 20px 0;
 }
@@ -105,112 +329,321 @@ a {
 .card {
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+a.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-color: var(--color-primary-light);
 }
 
 .card .label {
   font-size: 12px;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .card .value {
-  font-size: 28px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 30px;
   font-weight: 600;
-  margin-top: 6px;
+  margin-top: 8px;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.card--stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card--stat .stat-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.stat-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: saturate(1.1);
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-top: 8px;
+  width: fit-content;
+}
+
+.trend--up {
+  background: var(--color-ok-soft);
+  color: var(--color-ok);
+}
+
+.trend--down {
+  background: var(--color-err-soft);
+  color: var(--color-err);
 }
 
 .badge {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-.badge.ok { background: #4caf7d22; color: var(--ok); }
-.badge.errore { background: #e0605a22; color: var(--err); }
-.badge.nessuna-azione { background: #9aa1ad22; color: var(--text-dim); }
+.badge.ok { background: var(--color-ok-soft); color: var(--color-ok); }
+.badge.errore { background: var(--color-err-soft); color: var(--color-err); }
+.badge.nessuna-azione { background: var(--bg-elev-2); color: var(--text-dim); }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 th, td {
   text-align: left;
-  padding: 10px 8px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--border);
   font-size: 14px;
 }
 
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover td {
+  background: var(--color-primary-soft);
+}
+
 th {
   color: var(--text-dim);
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: 700;
+  font-size: 11px;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-elev-2);
 }
+
+/* ---------------------------------------------------------------------------
+   Progress bar (legacy linear) + Progress ring (new SVG gauge)
+   ------------------------------------------------------------------------- */
 
 .progress-bar {
   height: 10px;
   border-radius: 999px;
-  background: var(--border);
+  background: var(--bg-elev-2);
   overflow: hidden;
   margin: 8px 0;
+  box-shadow: inset 0 1px 2px rgba(33, 20, 66, 0.08);
 }
 
 .progress-bar > div {
   height: 100%;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 999px;
+  transition: width 0.4s ease;
 }
+
+.progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.progress-ring svg {
+  transform-origin: center;
+}
+
+.progress-ring circle {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-ring__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.progress-ring__value {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.progress-ring__sublabel {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 2px;
+  max-width: 80%;
+}
+
+.stat-with-ring {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-with-ring__details {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* ---------------------------------------------------------------------------
+   Status breakdown (agenti) — stacked bar + legend
+   ------------------------------------------------------------------------- */
+
+.status-breakdown {
+  margin: 18px 0 8px;
+}
+
+.status-breakdown__bar {
+  display: flex;
+  height: 14px;
+  width: 100%;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--bg-elev-2);
+  box-shadow: inset 0 1px 2px rgba(33, 20, 66, 0.08);
+}
+
+.status-breakdown__segment {
+  height: 100%;
+  min-width: 3px;
+  transition: width 0.4s ease;
+}
+
+.status-breakdown__empty {
+  width: 100%;
+  height: 100%;
+}
+
+.status-breakdown__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.status-breakdown__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-breakdown__legend-item strong {
+  color: var(--text);
+}
+
+.status-breakdown__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Login
+   ------------------------------------------------------------------------- */
 
 .login-wrap {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background:
+    radial-gradient(circle at 15% 10%, var(--color-primary-soft), transparent 45%),
+    radial-gradient(circle at 85% 90%, var(--color-accent-soft), transparent 45%),
+    var(--bg);
+  padding: 24px;
 }
 
 .login-card {
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   padding: 40px;
   width: 320px;
+  max-width: 100%;
+  box-shadow: var(--shadow-lg);
 }
 
 .login-card h1 {
-  color: var(--accent);
-  font-size: 18px;
+  color: var(--color-primary);
+  font-size: 20px;
   margin-top: 0;
 }
 
 .login-card input {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
   margin: 12px 0;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.login-card input:focus {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 1px;
 }
 
 .login-card button {
   width: 100%;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 11px;
+  border-radius: var(--radius-sm);
   border: none;
-  background: var(--accent);
-  color: #1a1500;
-  font-weight: 600;
+  background: var(--color-accent);
+  color: #241703;
+  font-weight: 700;
   cursor: pointer;
+  font-size: 14px;
+  transition: background 0.15s ease;
+}
+
+.login-card button:hover {
+  background: var(--color-accent-strong);
 }
 
 .error-msg {
-  color: var(--err);
+  color: var(--color-err);
   font-size: 13px;
 }
 
@@ -228,21 +661,32 @@ th {
 }
 
 .pill {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 5px 14px;
   font-size: 13px;
+  font-weight: 600;
 }
 
 .upload-btn {
   padding: 10px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: none;
-  background: var(--accent);
-  color: #1a1500;
-  font-weight: 600;
+  background: var(--color-accent);
+  color: #241703;
+  font-weight: 700;
   cursor: pointer;
+  font-size: 14px;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background: var(--color-accent-strong);
+}
+
+.upload-btn:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 .upload-btn:disabled {
@@ -250,12 +694,16 @@ th {
   cursor: default;
 }
 
+input, textarea, select {
+  font-family: inherit;
+}
+
 .media-thumb {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 8px;
-  background: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev-2);
   display: block;
 }
 
@@ -270,10 +718,10 @@ th {
 .ig-post {
   background: #ffffff;
   color: #262626;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   border: 1px solid #dbdbdb;
 }
 
@@ -308,7 +756,7 @@ th {
   font-size: 11px;
   padding: 3px 9px;
   border-radius: 999px;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -317,12 +765,12 @@ th {
 .ig-post__badge.pubblicato { background: #e8eefc; color: #1a56db; }
 
 /* --- Badge stato job "Crea Reel AI" (usati fuori dal mockup ig-post,
-   quindi qui coerenti con lo sfondo scuro del resto della dashboard) --- */
+   quindi qui coerenti con la palette chiara del resto della dashboard) --- */
 .reel-jobs-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-.reel-jobs-grid .ig-post__badge { color: #1a1500; }
-.reel-jobs-grid .ig-post__badge.in-coda-analisi { background: var(--warn); }
-.reel-jobs-grid .ig-post__badge.errore { background: var(--err); }
-.reel-jobs-grid .ig-post__badge.usato { background: var(--text-dim); }
+.reel-jobs-grid .ig-post__badge { color: #241703; }
+.reel-jobs-grid .ig-post__badge.in-coda-analisi { background: var(--color-warn); color: #241703; }
+.reel-jobs-grid .ig-post__badge.errore { background: var(--color-err); color: #fff; }
+.reel-jobs-grid .ig-post__badge.usato { background: var(--text-dim); color: #fff; }
 
 .ig-post__media {
   width: 100%;
@@ -377,4 +825,84 @@ th {
   color: #8e8e8e;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive — phone-first fixes for the dashboard shell
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .topbar {
+    display: flex;
+  }
+
+  .layout {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: min(300px, 84vw);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.sidebar--open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(19, 16, 32, 0.5);
+    z-index: 50;
+  }
+
+  .main {
+    max-width: 100%;
+    padding: 24px 18px 48px;
+    padding-top: calc(var(--topbar-height) + 20px);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card .value {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .stat-with-ring {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+  }
 }
