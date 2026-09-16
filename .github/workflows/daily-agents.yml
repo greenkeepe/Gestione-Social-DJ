@@ -45,6 +45,11 @@ jobs:
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_IG_BUSINESS_ACCOUNT_ID: ${{ secrets.META_IG_BUSINESS_ACCOUNT_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          # Il resoconto mattutino su Telegram parte SOLO dal vero ciclo
+          # schedulato delle 06:00, mai da un lancio manuale/di test.
+          MORNING_REPORT: ${{ github.event_name == 'schedule' }}
         run: npm run master
 
       - name: Commit e push dei dati aggiornati

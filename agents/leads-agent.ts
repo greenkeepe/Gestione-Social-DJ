@@ -29,8 +29,11 @@ interface LeadsFile {
 }
 
 const PAROLE_CHIAVE_INTERESSE = [
-  "matrimonio", "sposi", "sposa", "sposo", "wedding", "info", "prezzo",
-  "disponibilità", "disponibilita", "contatt", "quanto costa", "data"
+  "matrimonio", "sposi", "sposa", "sposo", "wedding", "info", "prezzo", "prezzi",
+  "disponibilità", "disponibilita", "contatt", "quanto costa", "quanto costi", "costa",
+  "data", "evento", "feste", "festa", "compleanno", "diciottesimo", "battesimo",
+  "comunione", "cerimonia", "location", "quanto viene", "preventivo", "budget",
+  "quando sei libero", "sei libero", "disponibile", "come funziona", "ricevimento"
 ];
 
 function sembraUnLeadInteressato(testo: string): boolean {
@@ -45,7 +48,7 @@ export async function eseguiLeadsAgent(): Promise<void> {
 
     let media: Awaited<ReturnType<typeof leggiUltimiMediaInstagram>> = [];
     try {
-      media = await leggiUltimiMediaInstagram(5);
+      media = await leggiUltimiMediaInstagram(15);
     } catch (err) {
       await logAgentRun({
         agente: IDENTITA.leads.nome,
