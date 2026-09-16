@@ -1,9 +1,9 @@
 // Agente "Occhio" — sceglie il prossimo media caricato dalla dashboard
 // (pagina "Carica media") e apre una nuova voce in coda (senza ancora
 // didascalia: ci pensa l'Agente Contenuti subito dopo, nello stesso run
-// del Master). Se non c'è nessun media fresco E la coda è del tutto vuota,
-// non lascia l'account fermo: genera un post-cartolina da una recensione
-// reale (a rotazione, mai ripetuta finché non sono passate tutte).
+// del Master). A ogni ciclo c'è anche una probabilità casuale (indipendente
+// da cosa c'è già in coda) di generare invece un post-cartolina da una
+// recensione reale, a rotazione, mai ripetuta finché non sono passate tutte.
 import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
@@ -48,10 +48,10 @@ interface TestimonianzeUsateFile {
 }
 
 const INTRO_TESTIMONIANZE = [
-  "Le parole più belle sono quelle di chi c'era. Grazie di cuore ❤️",
-  "Niente vale più delle parole di chi ha vissuto la serata con noi 🙏",
-  "Recensioni così sono il motivo per cui faccio questo lavoro 🎧✨",
-  "Non lo dico io, lo dicono gli sposi 💍"
+  "Le parole più belle sono quelle di chi c'era, grazie davvero.",
+  "Niente vale più le parole di chi ha vissuto la serata con noi.",
+  "Recensioni così sono il motivo per cui faccio questo lavoro.",
+  "Non lo dico io, lo dicono gli sposi."
 ];
 
 function chiaveTestimonianza(t: Testimonianza): string {
@@ -127,10 +127,34 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
   return scelta;
 }
 
+// Probabilità che, a ogni ciclo, esca un post da una recensione reale invece
+// che (o oltre a) una foto/video: le testimonianze sono un pilastro di
+// contenuto a sé, escono a rotazione casuale indipendentemente da cosa c'è
+// già in coda. Le foto/video vere mandate da Andrea non perdono mai il loro
+// posto: aspettano solo un giro in più prima di essere pubblicate.
+const PROBABILITA_TESTIMONIANZA = 0.2;
+
 export async function eseguiMediaAgent(): Promise<void> {
   try {
     const libreria = await readData<MediaLibraryFile>("media-library.json");
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
+
+    if (Math.random() < PROBABILITA_TESTIMONIANZA) {
+      const scelta = await generaPostTestimonianza(queueFile).catch((err) => {
+        console.error("[Occhio] Generazione post testimonianza fallita:", err);
+        return null;
+      });
+      if (scelta) {
+        await writeData("posts-queue.json", queueFile);
+        await logAgentRun({
+          agente: IDENTITA.media.nome,
+          identita: IDENTITA.media.ruolo,
+          status: "ok",
+          riepilogo: `Generato un post dalla recensione di ${scelta.cliente} (${scelta.tipoEvento}), a rotazione con le foto/video.`
+        });
+        return;
+      }
+    }
 
     const cePostaInAttesaDiMedia = queueFile.queue.some((p) => p.status === "in-coda-caption");
     if (cePostaInAttesaDiMedia) {
@@ -146,28 +170,6 @@ export async function eseguiMediaAgent(): Promise<void> {
     const prossimo = libreria.items.find((m) => m.usatoIl === null);
 
     if (!prossimo) {
-      // Nessun media fresco: se la coda è del tutto vuota (niente in attesa,
-      // niente già pronto), meglio un post da una recensione reale che
-      // lasciare l'account fermo. Se invece c'è già qualcosa in coda, si
-      // aspetta tranquillamente il prossimo media senza affollarla.
-      const codaVuota = queueFile.queue.every((p) => p.status === "pubblicato" || p.status === "pubblicato-parziale");
-      if (codaVuota) {
-        const scelta = await generaPostTestimonianza(queueFile).catch((err) => {
-          console.error("[Occhio] Generazione post testimonianza fallita:", err);
-          return null;
-        });
-        if (scelta) {
-          await writeData("posts-queue.json", queueFile);
-          await logAgentRun({
-            agente: IDENTITA.media.nome,
-            identita: IDENTITA.media.ruolo,
-            status: "ok",
-            riepilogo: `Nessun media fresco in coda: generato un post dalla recensione di ${scelta.cliente} (${scelta.tipoEvento}) per non lasciare fermo l'account.`
-          });
-          return;
-        }
-      }
-
       await logAgentRun({
         agente: IDENTITA.media.nome,
         identita: IDENTITA.media.ruolo,

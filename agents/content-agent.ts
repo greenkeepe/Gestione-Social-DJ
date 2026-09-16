@@ -70,32 +70,32 @@ function templateBase(brand: Record<string, any>, pilastro: CalendarFile["pillar
 
   const varianti: Record<string, string[]> = {
     "dietro-le-quinte": [
-      `Preparazione, check audio, tanta cura nei dettagli prima che inizi la festa 🎧✨\n${tagline}`,
-      `Dietro ogni serata perfetta c'è un lavoro fatto di cura e attenzione, anche nei minuti prima che tutto cominci 🎚️`
+      `Check audio e mille dettagli prima che parta tutto.\n${tagline}`,
+      `Un po' di lavoro dietro le quinte prima della festa vera 🎚️`
     ],
     "momenti-forti": [
-      `Questo è il momento in cui la pista esplode 🔥 Emozioni così non si dimenticano.`,
-      `Quando la musica giusta arriva al momento giusto, succede questo 💃🕺`
+      `Questo è il momento in cui la pista si accende sul serio.`,
+      `Quando la canzone giusta arriva al momento giusto, succede questo 🔥`
     ],
     location: [
-      `Ogni location ha la sua atmosfera: qui l'abbiamo trasformata in una vera festa 🎶`,
-      `Ambienti diversi, stessa energia: adattare suono e luci a ogni location fa la differenza ✨`
+      `Ogni location ha la sua atmosfera, qui l'abbiamo tirata fuori bene.`,
+      `Location diverse, stesso obiettivo: far ballare tutti.`
     ],
     testimonianze: [
-      `Le parole più belle sono quelle di chi c'era. Grazie di cuore ❤️`,
-      `Niente vale più delle parole di chi ha vissuto la serata con noi 🙏`
+      `Le parole più belle sono quelle di chi c'era, grazie davvero.`,
+      `Niente vale le parole di chi ha vissuto la serata con noi.`
     ],
     consigli: [
-      `Un consiglio per chi sta organizzando il matrimonio: la scelta della musica giusta cambia tutta la serata.`,
-      `Una playlist ben costruita non è solo una lista di canzoni: è il ritmo di tutta la vostra serata 🎵`
+      `Un consiglio per chi sta organizzando: la musica giusta cambia tutta la serata.`,
+      `Una playlist ben fatta non è solo una lista di canzoni, è il ritmo di tutta la serata.`
     ],
     playlist: [
-      `Un piccolo assaggio di quello che potrebbe suonare al vostro matrimonio 🎵`,
-      `Dal primo ballo al gran finale: ogni momento ha la sua canzone 🎶`
+      `Un piccolo assaggio di quello che potrebbe suonare al vostro matrimonio.`,
+      `Dal primo ballo al gran finale, ogni momento ha la sua canzone.`
     ],
     "call-to-action": [
-      `Le date per il 2027 stanno iniziando a riempirsi: se state pensando al matrimonio dei vostri sogni, scriviamoci! 💍`,
-      `Stai organizzando un matrimonio o un evento nel 2027? Le prime date si stanno esaurendo: parliamone 📅`
+      `Le date per il 2027 iniziano a riempirsi: se ci state pensando, scriviamoci.`,
+      `Stai organizzando un matrimonio o un evento nel 2027? Meglio parlarne prima che si riempiano le date.`
     ]
   };
 
@@ -129,9 +129,9 @@ export function costruisciHashtag(brand: Record<string, any>): string[] {
 // segue ancora l'account (non solo ai follower esistenti come i like).
 function testoIncoraggiaSalvataggio(): string {
   const varianti = [
-    "💾 Salva questo post: ti torna utile quando organizzi la musica del tuo evento!",
-    "📌 Tienilo a portata di mano per quando dovrai pensare alla musica del tuo matrimonio.",
-    "❤️ Se ti è piaciuto, taggami chi si sta per sposare o organizza una festa!"
+    "Salva questo post, ti torna utile quando organizzi la musica del tuo evento.",
+    "Tienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.",
+    "Se ti è piaciuto taggami chi si sta per sposare o organizza una festa."
   ];
   return varianti[Math.floor(Math.random() * varianti.length)];
 }
@@ -147,14 +147,14 @@ function testoIncoraggiaSalvataggio(): string {
 export function testoCtaContatto(brand: Record<string, any>): string | null {
   if (!brand.contatti?.whatsapp && !brand.nomeArte) return null;
   const varianti = [
-    "📩 Scrivimi in DM per info e disponibilità!",
-    "📩 Mandami un messaggio privato per sapere di più!",
-    "📩 Scrivimi qui in DM: ti rispondo con tutti i dettagli!"
+    "Scrivimi in DM per info e disponibilità.",
+    "Mandami un messaggio privato se vuoi sapere di più.",
+    "Scrivimi qui in DM, ti rispondo con tutti i dettagli."
   ];
   if (brand.contatti?.whatsappBottoneAttivo) {
     varianti.push(
-      "📲 Scrivimi in DM o tocca il bottone WhatsApp sul mio profilo per info e disponibilità!",
-      "📲 Trovi il bottone WhatsApp sul mio profilo: scrivimi per tutti i dettagli!"
+      "Scrivimi in DM o tocca il bottone WhatsApp sul profilo per info e disponibilità.",
+      "Trovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli."
     );
   }
   return varianti[Math.floor(Math.random() * varianti.length)];
@@ -220,9 +220,11 @@ export async function eseguiContentAgent(): Promise<void> {
       const immagine = await preparaImmagineDelMedia(target.media);
       if (immagine) {
         const promptVisione = `Guarda l'immagine allegata: è una foto o un fotogramma reale ripreso durante un evento/matrimonio con DJ.
-Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), nel tono di questo brand: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
+Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), come se la scrivesse di getto Andrea stesso (il DJ), non un copywriter. Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
 Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
-Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
+
+Scrivi in modo naturale e diretto, come un vero messaggio scritto al volo dal telefono: frasi brevi, linguaggio colloquiale. EVITA lo stile tipico da AI: niente trattini lunghi (—), niente frasi a effetto costruite ("in quell'istante...", "un momento che racconta..."), niente elenchi di aggettivi in fila, niente metafore forzate, niente domande retoriche finali. Massimo 1 emoji, anche zero va benissimo, solo se aggiunge davvero qualcosa.
+Massimo 40 parole. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
         const testoVisione = await generaTestoConLLMEImmagine(promptVisione, immagine);
         if (testoVisione) {
           corpo = testoVisione;
@@ -231,11 +233,13 @@ Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare d
       }
 
       if (!corpo) {
-        const promptTesto = `Scrivi una didascalia Instagram in italiano per un DJ per matrimoni ed eventi.
+        const promptTesto = `Scrivi una didascalia Instagram in italiano per un DJ per matrimoni ed eventi, come se la scrivesse di getto Andrea stesso (il DJ), non un copywriter.
 Brand: ${JSON.stringify(brand)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
 Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
-Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
+
+Scrivi in modo naturale e diretto, come un vero messaggio scritto al volo dal telefono: frasi brevi, linguaggio colloquiale. EVITA lo stile tipico da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi in fila, niente metafore forzate, niente domande retoriche finali. Massimo 1 emoji, anche zero va benissimo.
+Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
         const testoLLM = await generaTestoConLLM(promptTesto);
         if (testoLLM) {
           corpo = testoLLM;
