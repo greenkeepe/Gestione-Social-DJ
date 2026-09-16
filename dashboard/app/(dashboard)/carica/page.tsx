@@ -1,5 +1,6 @@
 import { leggiDati } from "../../../lib/dataSource";
 import { UploadForm } from "../../../components/UploadForm";
+import { DeleteButton } from "../../../components/DeleteButton";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,7 @@ export default async function CaricaPage() {
               <img className="media-thumb" src={item.url} alt={item.filename} />
             )}
             <p className="note">{item.filename}</p>
+            <DeleteButton url={`/api/media/${item.id}`} conferma={`Eliminare "${item.filename}"? Il file viene rimosso anche da R2.`} />
           </div>
         ))}
       </div>
@@ -45,13 +47,14 @@ export default async function CaricaPage() {
         <>
           <h3>Già usati</h3>
           <table>
-            <thead><tr><th>File</th><th>Caricato il</th><th>Usato il</th></tr></thead>
+            <thead><tr><th>File</th><th>Caricato il</th><th>Usato il</th><th></th></tr></thead>
             <tbody>
               {giaUsati.slice(0, 20).map((item) => (
                 <tr key={item.id}>
                   <td>{item.filename}</td>
                   <td>{new Date(item.uploadedAt).toLocaleDateString("it-IT")}</td>
                   <td>{item.usatoIl ? new Date(item.usatoIl).toLocaleDateString("it-IT") : "—"}</td>
+                  <td><DeleteButton url={`/api/media/${item.id}`} conferma={`Eliminare "${item.filename}"? Il file viene rimosso anche da R2.`} /></td>
                 </tr>
               ))}
             </tbody>

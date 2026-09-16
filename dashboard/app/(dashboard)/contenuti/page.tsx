@@ -1,5 +1,7 @@
 import { leggiDati } from "../../../lib/dataSource";
 import type { PostsQueueFile, PublishedLogFile } from "../../../lib/types";
+import { DeleteButton } from "../../../components/DeleteButton";
+import { EditQueueItemForm } from "../../../components/EditQueueItemForm";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +26,12 @@ export default async function ContenutiPage() {
             <div className="label">{item.formato} — {item.status}</div>
             <p className="note">{item.media.filename}</p>
             {item.caption && <p>{item.caption}</p>}
+            {item.hashtags.length > 0 && <p className="note">{item.hashtags.join(" ")}</p>}
             {item.orarioProgrammato && <p className="note">Programmato per le {item.orarioProgrammato}</p>}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
+              <EditQueueItemForm id={item.id} caption={item.caption} hashtags={item.hashtags} orarioProgrammato={item.orarioProgrammato} />
+              <DeleteButton url={`/api/queue/${item.id}`} conferma="Eliminare questo contenuto dalla coda? Non verrà pubblicato." />
+            </div>
           </div>
         ))}
       </div>

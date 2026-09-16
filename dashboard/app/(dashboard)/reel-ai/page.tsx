@@ -1,6 +1,7 @@
 import { leggiDati } from "../../../lib/dataSource";
 import { ReelUploadForm } from "../../../components/ReelUploadForm";
 import { ReelJobActions } from "../../../components/ReelJobActions";
+import { DeleteButton } from "../../../components/DeleteButton";
 import type { ReelJobsFile } from "../../../lib/types";
 
 export const dynamic = "force-dynamic";
@@ -68,7 +69,10 @@ export default async function ReelAiPage() {
               </>
             )}
 
-            {job.status !== "usato" && <ReelJobActions jobId={job.id} pronto={job.status === "pronto"} />}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
+              {job.status !== "usato" && <ReelJobActions jobId={job.id} pronto={job.status === "pronto"} />}
+              <DeleteButton url={`/api/reel-jobs/${job.id}`} conferma={`Eliminare "${job.filename}"? Vengono rimossi anche i file video da R2.`} />
+            </div>
           </div>
         ))}
       </div>

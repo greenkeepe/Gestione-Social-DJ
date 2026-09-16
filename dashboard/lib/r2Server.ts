@@ -62,3 +62,37 @@ export async function caricaBufferSuR2(buffer: Buffer, contentType: string, este
 
   return `${publicBaseUrl.replace(/\/$/, "")}/${chiaveOggetto}`;
 }
+
+// Elimina l'oggetto corrispondente a un URL pubblico R2 (es. quando cancelli
+// un media dalla dashboard, per non lasciare file "orfani" a occupare spazio
+// nel piano gratuito). Best-effort: non blocca mai la cancellazione del
+// riferimento nei dati se il file non esiste più o R2 non è raggiungibile.
+export async function eliminaOggettoR2(url: string): Promise<void> {
+  const accountId = process.env.R2_ACCOUNT_ID;
+  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+  const bucketName = process.env.R2_BUCKET_NAME;
+  const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !publicBaseUrl) return;
+  if (!url.startsWith(publicBaseUrl.replace(/\/$/, ""))) return; // non è un file nostro su R2 (es. un vecchio URL Cloudinary)
+
+  const chiaveOggetto = url.slice(publicBaseUrl.replace(/\/$/, "").length + 1);
+  if (!chiaveOggetto) return;
+
+  const client = new AwsClient({ accessKeyId, secretAccessKey, service: "s3", region: "auto" });
+  const endpoint = `https://${accountId}.r2.cloudflarestorage.com/${bucketName}/${chiaveOggetto}`;
+  const signedRequest = await client.sign(endpoint, { method: "DELETE" });
+  const headers: Record<string, string> = {};
+  signedRequest.headers.forEach((value, key) => {
+    headers[key] = value;
+  });
+
+  await new Promise<void>((resolve) => {
+    const req = https.request(endpoint, { method: "DELETE", headers }, (res) => {
+      res.resume();
+      res.on("end", resolve);
+    });
+    req.on("error", () => resolve()); // best-effort: un errore qui non deve bloccare nulla
+    req.end();
+  });
+}
