@@ -46,10 +46,17 @@ export async function eseguiPublishingAgent(): Promise<void> {
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
     const oggi = new Date().toISOString().slice(0, 10);
 
+    // FORCE_PUBLISH_QUEUE_ID: pubblica SUBITO un contenuto specifico, ignorando
+    // sia il limite "1 al giorno" sia la finestra oraria — usato solo per test
+    // manuali voluti esplicitamente (dashboard/workflow_dispatch), mai dal
+    // ciclo schedulato normale. Richiede l'id esatto del contenuto: nessun
+    // rischio di doppie pubblicazioni accidentali sul resto della coda.
+    const forzaQueueId = process.env.FORCE_PUBLISH_QUEUE_ID?.trim() || null;
+
     const pubblicatoOggi = (await readData<PublishedLogFile>("published-log.json")).log.some(
       (p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi)
     );
-    if (pubblicatoOggi) {
+    if (pubblicatoOggi && !forzaQueueId) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,
@@ -59,18 +66,20 @@ export async function eseguiPublishingAgent(): Promise<void> {
       return;
     }
 
-    const target = queueFile.queue.find((p) => p.status === "pronto" && p.orarioProgrammato);
+    const target = forzaQueueId
+      ? queueFile.queue.find((p) => p.id === forzaQueueId && p.status === "pronto")
+      : queueFile.queue.find((p) => p.status === "pronto" && p.orarioProgrammato);
     if (!target) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,
         status: "nessuna-azione",
-        riepilogo: "Nessun contenuto pronto in coda."
+        riepilogo: forzaQueueId ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.` : "Nessun contenuto pronto in coda."
       });
       return;
     }
 
-    if (!siamoNellaFinestra(target.orarioProgrammato!)) {
+    if (!forzaQueueId && !siamoNellaFinestra(target.orarioProgrammato!)) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,

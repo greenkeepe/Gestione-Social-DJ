@@ -7,7 +7,12 @@ name: Controllo pubblicazione (trova l'orario migliore)
 on:
   schedule:
     - cron: "0 10,16,19,20 * * *" # ~11:00, 17:00, 20:00, 21:00 Europe/Rome (varia con l'ora legale)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      forza_pubblicazione_id:
+        description: "ID di un contenuto in coda da pubblicare SUBITO, ignorando limite giornaliero e orario (solo per test manuali)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -40,6 +45,7 @@ jobs:
           META_IG_BUSINESS_ACCOUNT_ID: ${{ secrets.META_IG_BUSINESS_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          FORCE_PUBLISH_QUEUE_ID: ${{ inputs.forza_pubblicazione_id }}
         run: npm run agent:publishing
 
       - name: Commit e push dei dati aggiornati
