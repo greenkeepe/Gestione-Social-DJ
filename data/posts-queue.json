@@ -61,7 +61,7 @@
         "#matrimonio2027"
       ],
       "orarioProgrammato": "11:10",
-      "status": "pronto",
+      "status": "in-pausa-verifica-manuale",
       "pillarId": "dietro-le-quinte"
     },
     {
@@ -82,7 +82,7 @@
         "#matrimonio2027"
       ],
       "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "status": "in-pausa-verifica-manuale",
       "pillarId": "dietro-le-quinte"
     }
   ]
