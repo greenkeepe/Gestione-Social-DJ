@@ -61,7 +61,11 @@
   "toneOfVoice": {
     "descrizione": "Il tono si adatta al tipo di evento e al contenuto della foto/video, non è fisso: più elegante, romantico e curato per matrimoni e cerimonie; più energico, diretto e scanzonato per feste, diciottesimi, aperitivi ed eventi aziendali. Sempre caldo, autentico e mai urlato o eccessivo. Emoji usate con moderazione (1-2 per post, mai a raffica), scelte in modo pertinente al momento (es. 💍 per momenti romantici, 🎉🔥 per momenti di festa).",
     "emojiConsentiti": true,
-    "_nota_hashtagFissi": "Aggiungi/togli hashtag liberamente nell'elenco qui sotto: ogni voce viene pubblicata così com'è, quindi NON scrivere note o istruzioni dentro l'elenco.",
-    "hashtagFissi": ["#djmatrimonio", "#weddingdj", "#matrimonio2027"]
+    "_nota_hashtagPool": "Copy pesca a rotazione da queste 3 liste (5 ampi + 4 di nicchia + 3 locali per post, mescolati) invece di usare sempre gli stessi hashtag: aumenta le ricerche diverse in cui il post può comparire e non sembra ripetitivo/spam agli occhi dell'algoritmo. Aggiungi/togli voci liberamente, ogni voce viene pubblicata così com'è.",
+    "hashtagPool": {
+      "ampi": ["#djmatrimonio", "#weddingdj", "#matrimonio2027", "#matrimonioitaliano", "#weddingday", "#weddingparty", "#weddingitaly", "#sposi2027"],
+      "nicchia": ["#djperfeste", "#djeventi", "#djwedding", "#discjockey", "#musicapermatrimoni", "#djprofessionista", "#animazionematrimonio", "#weddingmusic"],
+      "locali": ["#serravallescrivia", "#alessandria", "#piemonte", "#liguria", "#lombardia", "#matrimonioinpiemonte", "#weddingpiemonte"]
+    }
   }
 }

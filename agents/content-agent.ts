@@ -101,6 +101,39 @@ function templateBase(brand: Record<string, any>, pilastro: CalendarFile["pillar
   return opzioni[Math.floor(Math.random() * opzioni.length)].trim();
 }
 
+// Pesca N hashtag a caso da un pool senza ripetizioni: usato per non
+// pubblicare sempre lo stesso set fisso di hashtag (che l'algoritmo tende a
+// penalizzare come "ripetitivo") e per comparire in più ricerche diverse.
+function pescaHashtag(pool: string[] | undefined, n: number): string[] {
+  if (!pool || pool.length === 0) return [];
+  const mescolato = [...pool].sort(() => Math.random() - 0.5);
+  return mescolato.slice(0, Math.min(n, mescolato.length));
+}
+
+// Mix di hashtag ampi (molta concorrenza, molte ricerche), di nicchia
+// (settore DJ/matrimoni, concorrenza minore) e locali (zona servita): più
+// efficace per farsi scoprire da chi non segue ancora l'account rispetto a
+// ripetere sempre gli stessi 2-3 hashtag identici.
+function costruisciHashtag(brand: Record<string, any>): string[] {
+  const pool = brand.toneOfVoice?.hashtagPool;
+  if (pool) {
+    return [...pescaHashtag(pool.ampi, 5), ...pescaHashtag(pool.nicchia, 4), ...pescaHashtag(pool.locali, 3)];
+  }
+  return brand.toneOfVoice?.hashtagFissi ?? []; // retrocompatibilità se brand.json non è stato aggiornato
+}
+
+// Riga pensata per spingere salvataggi/tag/condivisioni: sono i segnali che
+// l'algoritmo di Instagram pesa di più per mostrare un post anche a chi non
+// segue ancora l'account (non solo ai follower esistenti come i like).
+function testoIncoraggiaSalvataggio(): string {
+  const varianti = [
+    "💾 Salva questo post: ti torna utile quando organizzi la musica del tuo evento!",
+    "📌 Tienilo a portata di mano per quando dovrai pensare alla musica del tuo matrimonio.",
+    "❤️ Se ti è piaciuto, taggami chi si sta per sposare o organizza una festa!"
+  ];
+  return varianti[Math.floor(Math.random() * varianti.length)];
+}
+
 function linkWhatsApp(numero: string | undefined): string | null {
   const cifre = numero?.replace(/[^\d]/g, "") ?? "";
   return cifre ? `https://wa.me/${cifre}` : null;
@@ -178,7 +211,7 @@ export async function eseguiContentAgent(): Promise<void> {
         const promptVisione = `Guarda l'immagine allegata: è una foto o un fotogramma reale ripreso durante un evento/matrimonio con DJ.
 Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), nel tono di questo brand: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
 Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
-Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag né una call to action: li aggiungo io dopo.`;
+Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action verso WhatsApp: li aggiungo io dopo.`;
         const testoVisione = await generaTestoConLLMEImmagine(promptVisione, immagine);
         if (testoVisione) {
           corpo = testoVisione;
@@ -191,7 +224,7 @@ Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare d
 Brand: ${JSON.stringify(brand)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
 Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
-Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag né una call to action nel corpo: li aggiungo io dopo.`;
+Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action verso WhatsApp: li aggiungo io dopo.`;
         const testoLLM = await generaTestoConLLM(promptTesto);
         if (testoLLM) {
           corpo = testoLLM;
@@ -204,11 +237,11 @@ Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inv
       corpo = templateBase(brand, pilastro);
     }
 
-    const caption = ctaWhatsapp ? `${corpo}\n\n${ctaWhatsapp}`.trim() : corpo.trim();
-    const hashtagFissi: string[] = brand.toneOfVoice?.hashtagFissi ?? [];
+    const righe = [corpo.trim(), testoIncoraggiaSalvataggio(), ctaWhatsapp].filter((r): r is string => Boolean(r));
+    const caption = righe.join("\n\n");
 
     target.caption = caption;
-    target.hashtags = hashtagFissi;
+    target.hashtags = costruisciHashtag(brand);
     target.pillarId = pilastro.id;
     target.orarioProgrammato = scegliOrarioDelGiorno(new Date().getDay()).ora;
     target.status = "pronto";
