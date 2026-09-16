@@ -224,6 +224,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-09-16"
+    },
+    {
+      "id": "ea658638-dbf8-40c0-8417-1585ef22e2a6",
+      "createdAt": "2026-09-16T17:39:35.705Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "7197e65a-33fd-4dea-a86f-2395755c002d",
+        "filename": "reel-telegram-1789571592073.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/a56fec81-8772-4c61-9b8f-2a87da8274f8.mp4"
+      },
+      "caption": "Sera d'estate, luci calde e voci che si mescolano alla musica sotto gli alberi 🌙 Prima ancora che parta il primo ballo, il momento più bello è questo: persone che si ritrovano, si abbracciano, si preparano a vivere la serata insieme. Dietro ogni festa c'è sempre cura nei dettagli.\n\n📌 Tienilo a portata di mano per quando dovrai pensare alla musica del tuo matrimonio.\n\n📩 Scrivimi in DM per info e disponibilità!",
+      "hashtags": [
+        "#weddingday",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#weddingmusic",
+        "#serravallescrivia",
+        "#alessandria",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-16"
     }
   ]
 }
