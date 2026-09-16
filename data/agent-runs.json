@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Recuperata la pubblicazione mancante su Instagram. Ora pubblicato su entrambe le piattaforme.",
+      "timestamp": "2026-09-16T17:45:54.386Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "errore",
       "riepilogo": "Pubblicazione PARZIALE, richiede la tua attenzione — Instagram FALLITO: Graph API error [/17841407374071951/media_publish]: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Impossibile pubblicare\",\"error_user_msg\":\"Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento\",\"fbtrace_id\":\"A4OIwHKya41JcGxtxY2zxXD\"}}; Facebook OK (1716187810516588)",
       "timestamp": "2026-09-16T17:44:16.733Z"
