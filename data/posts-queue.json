@@ -62,6 +62,37 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "1a6fb089-b3ee-4a70-956b-392ebad3eb1e",
+      "createdAt": "2026-09-16T15:14:41.695Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "5a06529e-573c-446d-b9ba-91cc30c0f850",
+        "filename": "reel-telegram-1789571586515.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/954e665c-5bcb-47e2-a617-32a58d4d6566.mp4"
+      },
+      "caption": "Luci che si accendono, fumo che avvolge la pista, mani alzate tra i riflessi: quell'attimo prima che tutto esploda 🔥 Ogni dettaglio preparato per creare l'atmosfera giusta, poi basta lasciare che la musica faccia il resto.\n\n💾 Salva questo post: ti torna utile quando organizzi la musica del tuo evento!\n\n📩 Scrivimi qui in DM: ti rispondo con tutti i dettagli!",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingparty",
+        "#weddingday",
+        "#matrimonio2027",
+        "#djwedding",
+        "#djeventi",
+        "#djprofessionista",
+        "#animazionematrimonio",
+        "#weddingpiemonte",
+        "#alessandria",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
