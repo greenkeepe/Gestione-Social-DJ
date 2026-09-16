@@ -352,6 +352,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "35b8e91d-64cf-45f7-bcbc-449096d66d9d",
+      "createdAt": "2026-09-16T23:15:55.884Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "2f559083-bc23-48f0-9112-5c20f9d53fae",
+        "filename": "reel-telegram-1789580293515.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/15da3f34-570e-40f7-8052-d540a7eda328.mp4"
+      },
+      "caption": "Momenti prima di iniziare, in mezzo alla gente che già si emoziona. Io controllo tutto, testa bassa e concentrazione. Poi parte la musica e non si ferma più.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità.",
+      "hashtags": [
+        "#weddingparty",
+        "#sposi2027",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#animazionematrimonio",
+        "#weddingmusic",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#matrimonioinpiemonte",
+        "#liguria",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-16"
     }
   ]
 }
