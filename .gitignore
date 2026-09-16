@@ -9,3 +9,4 @@ out/
 media-cache/
 dashboard/node_modules/
 dashboard/.next/
+*.tsbuildinfo
