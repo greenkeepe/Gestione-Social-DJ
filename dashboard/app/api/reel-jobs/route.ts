@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 
 const PROFILI_VALIDI: ProfiloReel[] = ["auto", "dj_party", "wedding", "event", "business", "talking_head", "promotional"];
 
-// Il video grezzo è già su Cloudinary a questo punto (stesso upload diretto
+// Il video grezzo è già su Cloudflare R2 a questo punto (stesso upload diretto
 // dal browser usato dalla pagina "Carica media"): qui salviamo solo il
 // riferimento in data/reel-jobs.json. Lo elabora poi il Regista
 // (agents/reel-maker-agent.ts), eseguito da .github/workflows/reel-maker.yml.

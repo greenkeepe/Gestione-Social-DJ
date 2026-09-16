@@ -15,7 +15,7 @@ interface MediaLibraryFile {
   }>;
 }
 
-// Il Reel è già pronto (renderizzato dal Regista e caricato su Cloudinary):
+// Il Reel è già pronto (renderizzato dal Regista e caricato su Cloudflare R2):
 // qui lo "consegniamo" alla pipeline già esistente aggiungendolo a
 // data/media-library.json, esattamente come un media caricato a mano dalla
 // pagina "Carica media". Da qui in poi lo gestiscono gli agenti già

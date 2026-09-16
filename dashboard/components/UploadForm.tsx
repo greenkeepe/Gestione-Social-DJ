@@ -2,17 +2,16 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { caricaSuR2 } from "../lib/r2Upload";
 
-// Il file va direttamente dal browser a Cloudinary (nessun limite di
-// dimensione lato server, nessun token segreto coinvolto: il "preset"
-// pubblico basta). Solo dopo, un piccolo messaggio JSON (senza il file)
-// salva il riferimento in data/media-library.json.
-const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-
+// Il file va direttamente dal browser a Cloudflare R2 (URL "presigned",
+// nessun limite di dimensione pratico, nessuna credenziale esposta al
+// browser — vedi lib/r2Upload.ts). Solo dopo, un piccolo messaggio JSON
+// (senza il file) salva il riferimento in data/media-library.json.
 export function UploadForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [stato, setStato] = useState<"inattivo" | "caricamento" | "errore">("inattivo");
+  const [percentuale, setPercentuale] = useState(0);
   const [errore, setErrore] = useState<string | null>(null);
   const router = useRouter();
 
@@ -21,31 +20,17 @@ export function UploadForm() {
     const file = inputRef.current?.files?.[0];
     if (!file) return;
 
-    if (!CLOUD_NAME || !UPLOAD_PRESET) {
-      setStato("errore");
-      setErrore("Configurazione Cloudinary mancante (NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME / NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET).");
-      return;
-    }
-
     setStato("caricamento");
+    setPercentuale(0);
     setErrore(null);
 
     try {
-      const cloudinaryForm = new FormData();
-      cloudinaryForm.append("file", file);
-      cloudinaryForm.append("upload_preset", UPLOAD_PRESET);
-
-      const cloudRes = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, {
-        method: "POST",
-        body: cloudinaryForm
-      });
-      const cloudJson = await cloudRes.json();
-      if (!cloudRes.ok) throw new Error(cloudJson.error?.message ?? "Caricamento su Cloudinary fallito.");
+      const url = await caricaSuR2(file, setPercentuale);
 
       const metaRes = await fetch("/api/upload", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ url: cloudJson.secure_url, filename: file.name, mimeType: file.type })
+        body: JSON.stringify({ url, filename: file.name, mimeType: file.type })
       });
       const metaJson = await metaRes.json();
       if (!metaRes.ok) throw new Error(metaJson.error ?? "Impossibile salvare il riferimento del media.");
@@ -66,7 +51,7 @@ export function UploadForm() {
       <input ref={inputRef} type="file" accept="image/*,video/*" required style={{ margin: "12px 0" }} />
       <br />
       <button type="submit" disabled={stato === "caricamento"} className="upload-btn">
-        {stato === "caricamento" ? "Caricamento in corso…" : "Carica"}
+        {stato === "caricamento" ? `Caricamento in corso… ${percentuale}%` : "Carica"}
       </button>
       {stato === "errore" && <p className="error-msg">{errore}</p>}
     </form>

@@ -16,7 +16,7 @@ interface MediaLibraryFile {
   }>;
 }
 
-// Il file è già su Cloudinary a questo punto (caricato direttamente dal
+// Il file è già su Cloudflare R2 a questo punto (caricato direttamente dal
 // browser): qui riceviamo solo l'URL pubblico risultante e lo salviamo
 // in data/media-library.json, che l'Agente Media legge in seguito.
 export async function POST(req: Request) {

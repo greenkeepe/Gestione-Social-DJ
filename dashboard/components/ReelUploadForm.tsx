@@ -2,17 +2,13 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { caricaVideoSuCloudinary } from "../lib/cloudinaryUpload";
+import { caricaSuR2 } from "../lib/r2Upload";
 
 // Stesso meccanismo di UploadForm.tsx (upload diretto dal browser a
-// Cloudinary, nessun limite di dimensione lato server grazie all'upload a
-// blocchi per i file più pesanti — vedi lib/cloudinaryUpload.ts): qui il
-// file finisce in data/reel-jobs.json invece che in data/media-library.json,
+// Cloudflare R2 con URL presigned — vedi lib/r2Upload.ts): qui il file
+// finisce in data/reel-jobs.json invece che in data/media-library.json,
 // così l'Agente Regista sa che è un video grezzo da elaborare, non un media
 // già pronto da pubblicare.
-const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-
 const PROFILI = [
   { valore: "auto", etichetta: "Automatico (consigliato)" },
   { valore: "dj_party", etichetta: "DJ / Party" },
@@ -37,18 +33,12 @@ export function ReelUploadForm() {
     const file = inputRef.current?.files?.[0];
     if (!file) return;
 
-    if (!CLOUD_NAME || !UPLOAD_PRESET) {
-      setStato("errore");
-      setErrore("Configurazione Cloudinary mancante (NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME / NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET).");
-      return;
-    }
-
     setStato("caricamento");
     setPercentuale(0);
     setErrore(null);
 
     try {
-      const url = await caricaVideoSuCloudinary(file, CLOUD_NAME, UPLOAD_PRESET, setPercentuale);
+      const url = await caricaSuR2(file, setPercentuale);
 
       const jobRes = await fetch("/api/reel-jobs", {
         method: "POST",

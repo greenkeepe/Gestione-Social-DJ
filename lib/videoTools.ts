@@ -9,10 +9,12 @@
 // disponibile, verificaFfmpegDisponibile() lancia un errore chiaro invece
 // di far finta che l'elaborazione sia andata a buon fine.
 import { execFile } from "node:child_process";
+import { randomUUID } from "node:crypto";
 import { promisify } from "node:util";
 import { mkdtemp, writeFile, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { AwsClient } from "aws4fetch";
 
 const execFileAsync = promisify(execFile);
 const MAX_BUFFER = 1024 * 1024 * 80;
@@ -335,22 +337,28 @@ export async function controllaQualita(filePath: string, durataAttesaSecondi: nu
   }
 }
 
-// Carica il Reel finito su Cloudinary (stesso account/preset "unsigned" già
-// usato dalla dashboard per i media grezzi — vedi dashboard/components/UploadForm.tsx)
-// così il risultato ha subito un URL pubblico utilizzabile da Meta Graph API.
-export async function caricaSuCloudinary(filePath: string, cloudName: string, uploadPreset: string): Promise<string> {
+// Carica il Reel finito su Cloudflare R2 (stesso bucket già usato dalla
+// dashboard per i media grezzi — vedi dashboard/lib/r2Upload.ts) così il
+// risultato ha subito un URL pubblico utilizzabile da Meta Graph API.
+// Nessun limite di dimensione pratico (PutObject S3-compatibile) ed
+// egress gratuito quando Meta scarica il video per pubblicarlo.
+export async function caricaSuR2(
+  filePath: string,
+  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string; publicBaseUrl: string }
+): Promise<string> {
   const buffer = await readFile(filePath);
-  const form = new FormData();
-  form.append("file", new Blob([buffer]), path.basename(filePath));
-  form.append("upload_preset", uploadPreset);
+  const chiaveOggetto = `${randomUUID()}${path.extname(filePath) || ".mp4"}`;
 
-  const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/video/upload`, {
-    method: "POST",
-    body: form
+  const client = new AwsClient({ accessKeyId: opts.accessKeyId, secretAccessKey: opts.secretAccessKey, service: "s3", region: "auto" });
+  const endpoint = `https://${opts.accountId}.r2.cloudflarestorage.com/${opts.bucketName}/${chiaveOggetto}`;
+
+  const res = await client.fetch(endpoint, {
+    method: "PUT",
+    headers: { "content-type": "video/mp4" },
+    body: buffer
   });
-  const json = (await res.json()) as { secure_url?: string; error?: { message?: string } };
-  if (!res.ok || !json.secure_url) {
-    throw new Error(`Upload del Reel su Cloudinary fallito: ${json.error?.message ?? res.status}`);
+  if (!res.ok) {
+    throw new Error(`Upload del Reel su Cloudflare R2 fallito (${res.status}): ${await res.text().catch(() => "")}`);
   }
-  return json.secure_url;
+  return `${opts.publicBaseUrl.replace(/\/$/, "")}/${chiaveOggetto}`;
 }

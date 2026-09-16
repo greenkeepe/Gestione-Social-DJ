@@ -43,20 +43,30 @@ Necessario per far pubblicare gli agenti sulle tue pagine.
 
 ### 3. I media si caricano dalla dashboard (non da Google Photos)
 
-Google ha limitato a marzo 2025 la possibilità per le app di leggere automaticamente un album esistente della libreria Google Photos ([dettagli](https://developers.google.com/photos/support/updates)), quindi il sistema non usa più questa via. Al suo posto, la pagina **"Carica media"** della dashboard ti permette di caricare foto/video direttamente dal telefono: il file va su **Cloudinary** (storage gratuito, il caricamento avviene direttamente dal browser senza passare dal server) e l'Agente Media pesca da lì, uno alla volta, nei giorni successivi.
+Google ha limitato a marzo 2025 la possibilità per le app di leggere automaticamente un album esistente della libreria Google Photos ([dettagli](https://developers.google.com/photos/support/updates)), quindi il sistema non usa più questa via. Al suo posto, la pagina **"Carica media"** della dashboard ti permette di caricare foto/video direttamente dal telefono: il file va su **Cloudflare R2** (storage gratuito, il caricamento avviene direttamente dal browser tramite un URL temporaneo, senza passare dai server Vercel) e l'Agente Media pesca da lì, uno alla volta, nei giorni successivi.
 
-Crea un account gratuito su **[cloudinary.com](https://cloudinary.com)** (nessuna carta richiesta), poi vai su **Settings → Upload → Upload presets → Add upload preset**, imposta **Signing Mode: Unsigned** e salva. Ti servono due valori (non sono segreti, vanno bene anche pubblici): il **Cloud name** (visibile nella home del dashboard Cloudinary) e il **nome del preset** appena creato.
+Vedi la sezione **"Storage media (Cloudflare R2)"** qui sotto per creare bucket e credenziali.
+
+### 3bis. Storage media (Cloudflare R2)
+
+Tutti i media (foto, video grezzi, Reel generati) vivono in un bucket **Cloudflare R2**: piano gratuito con 10GB di storage e — soprattutto per i video — **traffico in uscita sempre gratuito**, nessun limite pratico di dimensione file (a differenza di altri storage gratuiti che bloccano intorno ai 100MB).
+
+1. Crea un account gratuito su **[dash.cloudflare.com](https://dash.cloudflare.com)** (nessuna carta richiesta per il piano free di R2).
+2. Nel menu laterale vai su **R2 Object Storage** → **Create bucket**. Dai un nome (es. `gestione-social-dj-media`), location automatica, e crealo.
+3. Apri il bucket appena creato → **Settings** → sezione **Public access** → attiva **"Allow Access"** sul dominio `r2.dev` (o collega un tuo dominio, se ne hai uno su Cloudflare). Copia l'URL pubblico che ti mostra (tipo `https://pub-xxxxxxxxxxxx.r2.dev`): è il tuo `R2_PUBLIC_BASE_URL`.
+4. Torna alla pagina principale di **R2** → **Manage R2 API Tokens** → **Create API Token**. Permessi: **Object Read & Write**, limitato al bucket appena creato. Alla fine ti mostra tre valori: **Access Key ID**, **Secret Access Key** e l'**Account ID** (visibile anche nell'URL del cruscotto Cloudflare, o nella pagina principale di R2 sulla destra).
+5. Questi 5 valori (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`) sono **tutti segreti** tranne l'URL pubblico: vanno inseriti sia nei **GitHub Secrets** (per l'Agente Regista) sia nelle **variabili d'ambiente di Vercel** (per la dashboard) — mai incollati in chat.
 
 ### 4. Configura i secrets su GitHub
 
-Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_UPLOAD_PRESET` — stessi valori del punto 3 — e opzionalmente `ANTHROPIC_API_KEY`).
+Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`).
 
 ### 5. Metti online la dashboard (gratis, su Vercel)
 
 1. Vai su **[vercel.com](https://vercel.com)**, collega il tuo account GitHub.
 2. Importa questo repository, impostando come **Root Directory**: `dashboard`, e come **Framework Preset**: `Next.js`.
 3. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permesso **Contents: Read and write** limitato a questo repository — serve alla dashboard sia per leggere i dati sia per salvare i nuovi media caricati.
-4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` e `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` (dal passo 3).
+4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), e i 5 valori R2 dal passo 3bis (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`).
 5. Deploy. La dashboard sarà raggiungibile da un link tipo `https://tuo-progetto.vercel.app`, protetto da password, da qualsiasi dispositivo.
 
 ### 6. Attiva le automazioni
@@ -65,7 +75,7 @@ Le tre GitHub Actions (`.github/workflows/daily-agents.yml`, `publish-check.yml`
 
 ## AI Reel Maker (video grezzo → Reel)
 
-Dalla pagina **"🎬 Crea Reel AI"** della dashboard carichi un video grezzo (stesso upload diretto a Cloudinary già usato per "Carica media") scegliendo un profilo di montaggio — **Automatico**, DJ/Party, Matrimonio, Evento, Aziendale, Persona che parla in camera, Promozionale — ed eventuali note libere ("è il momento del primo ballo", ecc.).
+Dalla pagina **"🎬 Crea Reel AI"** della dashboard carichi un video grezzo (stesso upload diretto a Cloudflare R2 già usato per "Carica media" — nessun limite pratico di dimensione) scegliendo un profilo di montaggio — **Automatico**, DJ/Party, Matrimonio, Evento, Aziendale, Persona che parla in camera, Promozionale — ed eventuali note libere ("è il momento del primo ballo", ecc.).
 
 Il Regista (`agents/reel-maker-agent.ts`, eseguito da `.github/workflows/reel-maker.yml` ogni ~20 minuti) lo elabora con **ffmpeg** (installato gratis sul runner GitHub Actions), senza servizi cloud di editing a pagamento:
 
@@ -74,7 +84,7 @@ Il Regista (`agents/reel-maker-agent.ts`, eseguito da `.github/workflows/reel-ma
 3. **Piano di montaggio** (`lib/reelPlanner.ts`): sceglie l'hook (mai i primissimi istanti del video) e i segmenti migliori in base al punteggio, con stile Clean/Dynamic/Bold dedotto dal profilo (in **Automatico**, dedotto dall'energia audio e dalla frequenza dei cambi scena).
 4. **Montaggio**: ritaglio 9:16 centrato, concatenazione (hard-cut o dissolvenza a seconda dello stile), normalizzazione audio (`loudnorm`), testo di apertura opzionale.
 5. **Controllo qualità**: verifica reale (risoluzione 1080×1920, presenza audio, durata coerente) prima di segnare il job come pronto — se qualcosa non torna il job va in **errore** invece di essere spacciato per riuscito.
-6. Il Reel finito viene caricato su Cloudinary e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa".
+6. Il Reel finito viene caricato su Cloudflare R2 e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa".
 
 **Limiti noti (per restare a costo zero)**:
 - Il ritaglio 9:16 è **centrato**, non segue il soggetto: un vero tracking richiederebbe un modello di visione artificiale (GPU, servizio a pagamento).
@@ -101,7 +111,7 @@ npm run dev                 # dashboard su http://localhost:3000
 Oggi tutto gira a **costo zero**:
 - GitHub Actions: gratuito su repository pubblici (o incluso nel piano free su privati, entro i minuti mensili)
 - Vercel: piano free per la dashboard, nessuna carta di credito richiesta
-- Cloudinary: piano free con 25 "crediti" al mese (1 credito = 1GB di storage o di banda), nessuna carta richiesta — ampiamente sufficiente per uso personale
+- Cloudflare R2: piano free con 10GB di storage e traffico in uscita sempre gratuito, nessuna carta richiesta — ampiamente sufficiente per uso personale
 - Meta Graph API: gratuita entro i limiti standard
 - Generazione testi: template scritti a mano, zero costo
 - AI Reel Maker: ffmpeg (open source, gratuito) sul runner GitHub Actions — nessun servizio di editing/transcrizione a pagamento
@@ -127,5 +137,5 @@ docs/         piano marketing dettagliato verso i 30 matrimoni 2027
 
 - Il **Page Access Token** Meta scade periodicamente (~60 giorni, o prima se generato senza estenderlo esplicitamente su Graph API Explorer): se le pubblicazioni iniziano a fallire, è la prima cosa da controllare e rigenerare.
 - La ricerca lead si basa solo su **commenti su contenuti già pubblicati** (nessuna ricerca di sconosciuti), per restare nei limiti consentiti da Meta e dalla normativa privacy.
-- Il piano gratuito di Cloudinary (25 crediti/mese) è pensato per uso personale: se il volume di foto/video crescerà molto, valuta un piano a pagamento.
+- Il piano gratuito di Cloudflare R2 (10GB di storage) è pensato per uso personale: se il volume di foto/video crescerà molto, valuta un piano a pagamento (comunque economico: $0.015/GB/mese oltre i 10GB inclusi).
 - Il link Musiqua fornito non era raggiungibile dall'ambiente di sviluppo in fase di creazione del sistema: se vuoi che i testi riflettano esattamente i contenuti di quel profilo, incolla qui le informazioni principali (bio, prezzi, recensioni) e le integro in `config/brand.json`.

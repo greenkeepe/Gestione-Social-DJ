@@ -2,7 +2,7 @@
 // dalla pagina dashboard "Crea Reel AI" in un Reel verticale 1080x1920
 // pronto per i social: analizza scene/audio con ffmpeg (lib/videoTools.ts),
 // decide i momenti migliori (lib/reelPlanner.ts), monta, verifica il
-// risultato e lo carica su Cloudinary. Elabora un job alla volta, come gli
+// risultato e lo carica su Cloudflare R2. Elabora un job alla volta, come gli
 // altri agenti della coda (media/content/publishing).
 //
 // Gira su un workflow separato (.github/workflows/reel-maker.yml) invece
@@ -33,7 +33,7 @@ import {
   esportaClip,
   montaReel,
   controllaQualita,
-  caricaSuCloudinary
+  caricaSuR2
 } from "../lib/videoTools.js";
 import { generaSegmentiCandidati, costruisciPiano, testoHookDefault, parametriStile, type ProfiloReel, type PianoReel } from "../lib/reelPlanner.js";
 
@@ -68,11 +68,16 @@ function estensioneDaMime(mimeType: string): string {
 }
 
 async function elaboraJob(job: ReelJob): Promise<void> {
-  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-  const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
-  if (!cloudName || !uploadPreset) {
+  const r2 = {
+    accountId: process.env.R2_ACCOUNT_ID,
+    accessKeyId: process.env.R2_ACCESS_KEY_ID,
+    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+    bucketName: process.env.R2_BUCKET_NAME,
+    publicBaseUrl: process.env.R2_PUBLIC_BASE_URL
+  };
+  if (!r2.accountId || !r2.accessKeyId || !r2.secretAccessKey || !r2.bucketName || !r2.publicBaseUrl) {
     throw new Error(
-      "CLOUDINARY_CLOUD_NAME e CLOUDINARY_UPLOAD_PRESET mancanti nell'ambiente dell'agente: impossibile caricare il Reel renderizzato. Vedi .env.example."
+      "Variabili R2 mancanti nell'ambiente dell'agente (R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_BUCKET_NAME/R2_PUBLIC_BASE_URL): impossibile caricare il Reel renderizzato. Vedi .env.example."
     );
   }
 
@@ -162,7 +167,13 @@ Rispondi SOLO col testo da mostrare, senza virgolette né spiegazioni.`;
     }
 
     job.step = "caricamento";
-    const reelUrl = await caricaSuCloudinary(outputFinale, cloudName, uploadPreset);
+    const reelUrl = await caricaSuR2(outputFinale, {
+      accountId: r2.accountId,
+      accessKeyId: r2.accessKeyId,
+      secretAccessKey: r2.secretAccessKey,
+      bucketName: r2.bucketName,
+      publicBaseUrl: r2.publicBaseUrl
+    });
 
     job.status = "pronto";
     job.step = "completato";
