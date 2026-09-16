@@ -3,9 +3,12 @@
 // con i template in agents/content-agent.ts: zero costo, zero dipendenze.
 // Se la imposti, i testi diventano più naturali e variati (costo minimo a
 // consumo — vedi README "Upgrade path").
+import { anthropicPausato, registraChiamataAnthropic } from "./anthropicUsage.js";
+
 export async function generaTestoConLLM(prompt: string): Promise<string | null> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
+  if (await anthropicPausato()) return null; // soglia mensile scelta in dashboard superata: si torna ai template
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -28,6 +31,7 @@ export async function generaTestoConLLM(prompt: string): Promise<string | null> 
 
   const json = (await res.json()) as { content: Array<{ type: string; text?: string }> };
   const testo = json.content.find((c) => c.type === "text")?.text;
+  await registraChiamataAnthropic();
   return testo?.trim() ?? null;
 }
 
@@ -45,6 +49,7 @@ export interface ImmagineDaAnalizzare {
 export async function generaTestoConLLMEImmagine(prompt: string, immagine: ImmagineDaAnalizzare): Promise<string | null> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
+  if (await anthropicPausato()) return null; // soglia mensile scelta in dashboard superata: si torna ai template
 
   const sourceBlock = immagine.url
     ? { type: "url", url: immagine.url }
@@ -82,5 +87,6 @@ export async function generaTestoConLLMEImmagine(prompt: string, immagine: Immag
 
   const json = (await res.json()) as { content: Array<{ type: string; text?: string }> };
   const testo = json.content.find((c) => c.type === "text")?.text;
+  await registraChiamataAnthropic();
   return testo?.trim() ?? null;
 }

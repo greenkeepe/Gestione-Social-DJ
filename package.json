@@ -13,6 +13,7 @@
     "agent:analytics": "tsx agents/analytics-agent.ts",
     "agent:strategy": "tsx agents/strategy-agent.ts",
     "agent:reelmaker": "tsx agents/reel-maker-agent.ts",
+    "svuota-media": "tsx scripts/svuota-media.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

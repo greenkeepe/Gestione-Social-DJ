@@ -9,6 +9,15 @@
       "oggettiAttuali": 16,
       "aggiornatoIl": "2026-09-16T13:52:52.602Z",
       "pausatoIl": null
+    },
+    "anthropic": {
+      "nome": "Anthropic (didascalie/hashtag con visione)",
+      "limiteChiamateMese": 300,
+      "sogliaPercentualePausa": 90,
+      "chiamateEffettuateMese": 0,
+      "meseCorrente": "2026-09",
+      "aggiornatoIl": null,
+      "pausatoIl": null
     }
   }
 }
