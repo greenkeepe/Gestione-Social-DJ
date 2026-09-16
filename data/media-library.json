@@ -10,6 +10,16 @@
       "usatoIl": "2026-09-16T14:12:34.262Z",
       "source": "telegram",
       "istruzioniUtente": null
+    },
+    {
+      "id": "29443cd0-eb53-4d5c-90d3-fe3ef581edd5",
+      "url": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/c1f1708d-e6f0-4d0f-9f50-07d6b28eed55.jpg",
+      "filename": "telegram-1789571452258.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-16T15:10:52.410Z",
+      "usatoIl": null,
+      "source": "telegram",
+      "istruzioniUtente": null
     }
   ]
 }
