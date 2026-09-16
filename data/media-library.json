@@ -50,6 +50,16 @@
       "usatoIl": "2026-09-16T10:26:01.936Z",
       "source": "telegram",
       "istruzioniUtente": null
+    },
+    {
+      "id": "89f284da-3e7d-494a-b28f-ae85e8c528da",
+      "url": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/49dc84f2-d81e-4fec-9f77-8720850f6a0f.jpg",
+      "filename": "telegram-1789555729482.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-16T10:48:49.652Z",
+      "usatoIl": null,
+      "source": "telegram",
+      "istruzioniUtente": null
     }
   ]
 }
