@@ -92,7 +92,7 @@ export async function aggiornaDatiSuGitHub<T>(
 // Richiede che il GITHUB_TOKEN abbia anche il permesso "Actions: Read and
 // write" (oltre a "Contents"): se manca, l'errore è comunque recuperabile,
 // il ciclo giornaliero lo farà comunque più tardi.
-export async function lanciaWorkflow(nomeFileWorkflow: string): Promise<void> {
+export async function lanciaWorkflow(nomeFileWorkflow: string, inputs?: Record<string, string>): Promise<void> {
   const repo = process.env.GITHUB_REPO;
   const branch = process.env.GITHUB_BRANCH ?? "main";
   const token = process.env.GITHUB_TOKEN;
@@ -103,7 +103,7 @@ export async function lanciaWorkflow(nomeFileWorkflow: string): Promise<void> {
   const res = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/${nomeFileWorkflow}/dispatches`, {
     method: "POST",
     headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}`, "content-type": "application/json" },
-    body: JSON.stringify({ ref: branch })
+    body: JSON.stringify({ ref: branch, ...(inputs ? { inputs } : {}) })
   });
   if (!res.ok) {
     throw new Error(`Impossibile avviare il workflow ${nomeFileWorkflow} (${res.status}): ${await res.text()}`);
