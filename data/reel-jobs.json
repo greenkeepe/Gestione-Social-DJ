@@ -67,11 +67,64 @@
       "mimeType": "video/mp4",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-16T15:13:13.132Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-16T17:34:27.908Z",
       "erroreMessaggio": null,
-      "risultato": null,
+      "risultato": {
+        "reelUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/a56fec81-8772-4c61-9b8f-2a87da8274f8.mp4",
+        "durataSecondi": 18.4,
+        "piano": {
+          "categoria": "dj_event",
+          "stile": "bold",
+          "profiloUsato": "dj_party",
+          "durataTarget": 18.18,
+          "hook": {
+            "inizio": 3.28,
+            "fine": 6.279999999999999
+          },
+          "segmenti": [
+            {
+              "inizio": 3.28,
+              "fine": 6.279999999999999,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 0,
+              "fine": 2.11,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 6.279999999999999,
+              "fine": 9.28,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 12.28,
+              "fine": 15.28,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 15.28,
+              "fine": 18.28,
+              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 18.28,
+              "fine": 21.28,
+              "motivo": "spezzone #6 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 21.65,
+              "fine": 22.72,
+              "motivo": "spezzone #7 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Forte DJ"
+        }
+      },
       "source": "telegram"
     },
     {
