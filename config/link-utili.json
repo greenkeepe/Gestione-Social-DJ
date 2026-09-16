@@ -1,0 +1,40 @@
+{
+  "_istruzioni": "Link diretti ai pannelli di ogni servizio usato dal sistema, mostrati nella pagina 'Link utili' della dashboard. Modifica/aggiungi voci qui, non serve toccare codice. 'url' apre direttamente il pannello giusto (se sei già loggato nel browser, entri subito senza dover cercare).",
+  "categorie": [
+    {
+      "nome": "Social — Instagram & Facebook",
+      "link": [
+        { "nome": "Profilo Instagram (@forte_dj)", "url": "https://www.instagram.com/forte_dj/", "nota": "Il profilo pubblico che pubblica gli agenti." },
+        { "nome": "Pagina Facebook", "url": "https://www.facebook.com/266354304012276", "nota": "La Pagina Forte DJ." },
+        { "nome": "Meta for Developers — App \"Gestione Social DJ\"", "url": "https://developers.facebook.com/apps/1576413167852719/dashboard/", "nota": "Dashboard dell'app collegata al sistema (permessi, token, casi d'uso)." },
+        { "nome": "Graph API Explorer", "url": "https://developers.facebook.com/tools/explorer/", "nota": "Per generare un nuovo Page Access Token quando serve." },
+        { "nome": "Debugger token d'accesso", "url": "https://developers.facebook.com/tools/debug/accesstoken/", "nota": "Per controllare tipo, scadenza e permessi di un token." },
+        { "nome": "Meta Business Settings", "url": "https://business.facebook.com/settings/?business_id=527862330996095", "nota": "Portfolio business collegato alla Pagina Facebook." }
+      ]
+    },
+    {
+      "nome": "Intelligenza artificiale",
+      "link": [
+        { "nome": "Anthropic Console — Crediti e fatturazione", "url": "https://console.anthropic.com/settings/billing", "nota": "Ricarica crediti, controlla la spesa delle didascalie con visione." },
+        { "nome": "Anthropic Console — Chiavi API", "url": "https://console.anthropic.com/settings/keys", "nota": "Gestione della ANTHROPIC_API_KEY." }
+      ]
+    },
+    {
+      "nome": "Storage & infrastruttura",
+      "link": [
+        { "nome": "Cloudflare — Dashboard", "url": "https://dash.cloudflare.com/", "nota": "Bucket R2 dove sono salvati foto/video/Reel." },
+        { "nome": "GitHub — Repository", "url": "https://github.com/greenkeepe/Gestione-Social-DJ", "nota": "Codice e dati (file JSON) del sistema." },
+        { "nome": "GitHub — Esecuzioni agenti (Actions)", "url": "https://github.com/greenkeepe/Gestione-Social-DJ/actions", "nota": "Storico e log di ogni ciclo agenti/pubblicazione/Reel." },
+        { "nome": "GitHub — Secrets (chiavi/token)", "url": "https://github.com/greenkeepe/Gestione-Social-DJ/settings/secrets/actions", "nota": "Dove aggiornare i token quando scadono." },
+        { "nome": "Vercel — Dashboard", "url": "https://vercel.com/dashboard", "nota": "Hosting di questa dashboard." }
+      ]
+    },
+    {
+      "nome": "Automazione",
+      "link": [
+        { "nome": "Telegram — BotFather", "url": "https://t.me/BotFather", "nota": "Gestione del bot usato per inviare foto/video." },
+        { "nome": "Questa dashboard", "url": "https://gestione-social-dj.vercel.app/", "nota": "Link diretto da condividere/salvare sul telefono." }
+      ]
+    }
+  ]
+}
