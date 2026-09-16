@@ -2,6 +2,16 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "errore",
+      "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
+      "dettagli": {
+        "errore": "Error: Instagram: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:37:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AaMZair24V1iMe-4pf7QoDF\"}}. Facebook: Graph API error [/266354304012276/photos]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:37:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AHsAZsDLc2gr0KUaBQUGbhk\"}}"
+      },
+      "timestamp": "2026-09-16T17:37:12.329Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
