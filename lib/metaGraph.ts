@@ -71,6 +71,32 @@ async function attendiElaborazioneContainer(containerId: string, tentativiMax = 
   throw new Error(`Timeout in attesa dell'elaborazione del media Instagram (container ${containerId})`);
 }
 
+// --- Pubblicazione Instagram Stories -----------------------------------------
+// Stesso flusso a due passi dei post/reel ma con media_type=STORIES: contenuto
+// effimero (sparisce dopo 24h), nessuna didascalia (l'API Stories non supporta
+// testo sovrapposto). Pensato per tenere il profilo "vivo" tra un post
+// principale e l'altro senza affollare il feed né diluire l'engagement dei
+// post veri: le Stories non hanno un limite pratico di frequenza consigliata
+// come i post.
+export async function pubblicaStoriesSuInstagram(opts: { imageUrl?: string; videoUrl?: string }): Promise<{ id: string }> {
+  const igUserId = requireEnv("META_IG_BUSINESS_ACCOUNT_ID");
+
+  const containerParams: Record<string, string> = { media_type: "STORIES" };
+  if (opts.videoUrl) {
+    containerParams.video_url = opts.videoUrl;
+  } else if (opts.imageUrl) {
+    containerParams.image_url = opts.imageUrl;
+  } else {
+    throw new Error("Serve imageUrl o videoUrl per pubblicare una Storia Instagram");
+  }
+
+  const container = await graphFetch<{ id: string }>(`/${igUserId}/media`, containerParams, "POST");
+  if (opts.videoUrl) {
+    await attendiElaborazioneContainer(container.id);
+  }
+  return graphFetch<{ id: string }>(`/${igUserId}/media_publish`, { creation_id: container.id }, "POST");
+}
+
 // --- Pubblicazione Facebook Page -------------------------------------------
 export async function pubblicaSuFacebook(opts: { message: string; imageUrl?: string; videoUrl?: string }): Promise<{ id: string }> {
   const pageId = requireEnv("META_PAGE_ID");

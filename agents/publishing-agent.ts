@@ -6,7 +6,7 @@
 import "dotenv/config";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
-import { pubblicaSuInstagram, pubblicaSuFacebook } from "../lib/metaGraph.js";
+import { pubblicaSuInstagram, pubblicaSuFacebook, pubblicaStoriesSuInstagram } from "../lib/metaGraph.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
 
@@ -101,6 +101,22 @@ export async function eseguiPublishingAgent(): Promise<void> {
       erroreIg = err instanceof Error ? err.message : String(err);
     }
 
+    // Storia Instagram con lo stesso media: best-effort, non deve mai far
+    // fallire la pubblicazione principale (il post è già uscito o ha già
+    // fallito indipendentemente da questo). Tiene il profilo attivo tra un
+    // post e l'altro senza affollare il feed.
+    let storiaIg: { id: string } | null = null;
+    if (risultatoIg) {
+      try {
+        storiaIg = await pubblicaStoriesSuInstagram({
+          imageUrl: isVideo ? undefined : target.media.downloadUrl,
+          videoUrl: isVideo ? target.media.downloadUrl : undefined
+        });
+      } catch (err) {
+        console.error("[Editore] Pubblicazione Storia Instagram fallita (non bloccante):", err);
+      }
+    }
+
     let risultatoFb: { id: string } | null = null;
     let erroreFb: string | null = null;
     try {
@@ -130,6 +146,7 @@ export async function eseguiPublishingAgent(): Promise<void> {
       timestamp: nowIso(),
       instagramId: risultatoIg?.id ?? null,
       facebookId: risultatoFb?.id ?? null,
+      instagramStoryId: storiaIg?.id ?? null,
       formato: target.formato,
       pillarId: target.pillarId ?? null
     });
@@ -139,21 +156,23 @@ export async function eseguiPublishingAgent(): Promise<void> {
     const completo = Boolean(risultatoIg && risultatoFb);
     const dettaglioIg = risultatoIg ? `Instagram OK (${risultatoIg.id})` : `Instagram FALLITO: ${erroreIg}`;
     const dettaglioFb = risultatoFb ? `Facebook OK (${risultatoFb.id})` : `Facebook FALLITO: ${erroreFb}`;
+    const dettaglioStoria = risultatoIg ? (storiaIg ? " + Storia IG pubblicata." : " (Storia IG non riuscita, non bloccante.)") : "";
 
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
       identita: IDENTITA.publishing.ruolo,
       status: completo ? "ok" : "errore",
       riepilogo: completo
-        ? `Pubblicato su Instagram (${risultatoIg!.id}) e Facebook (${risultatoFb!.id}).`
-        : `Pubblicazione PARZIALE, richiede la tua attenzione — ${dettaglioIg}; ${dettaglioFb}`
+        ? `Pubblicato su Instagram (${risultatoIg!.id}) e Facebook (${risultatoFb!.id}).${dettaglioStoria}`
+        : `Pubblicazione PARZIALE, richiede la tua attenzione — ${dettaglioIg}; ${dettaglioFb}${dettaglioStoria}`
     });
 
     const anteprima = caption.length > 100 ? `${caption.slice(0, 100)}…` : caption;
+    const notaStoria = storiaIg ? "\n📱 + Storia Instagram pubblicata." : "";
     await inviaMessaggioTelegram(
       completo
-        ? `✅ Pubblicato su Instagram e Facebook!\n"${anteprima}"`
-        : `⚠️ Pubblicazione parziale, dai un'occhiata alla dashboard:\n${dettaglioIg}\n${dettaglioFb}`
+        ? `✅ Pubblicato su Instagram e Facebook!${notaStoria}\n"${anteprima}"`
+        : `⚠️ Pubblicazione parziale, dai un'occhiata alla dashboard:\n${dettaglioIg}\n${dettaglioFb}${notaStoria}`
     );
   } catch (err) {
     await logAgentRun({
