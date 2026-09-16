@@ -7,7 +7,12 @@ on:
     # buona parte dell'anno; in piena estate scatterà verso le 07:00 locali,
     # comunque prima della finestra di pubblicazione delle 12:30.
     - cron: "0 5 * * *"
-  workflow_dispatch: {} # permette di lanciarlo manualmente da GitHub per test
+  workflow_dispatch: # permette di lanciarlo manualmente da GitHub per test
+    inputs:
+      forza_resoconto:
+        description: "Invia comunque il resoconto mattutino su Telegram (solo per test manuali)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -53,7 +58,7 @@ jobs:
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
           # Il resoconto mattutino su Telegram parte SOLO dal vero ciclo
           # schedulato delle 06:00, mai da un lancio manuale/di test.
-          MORNING_REPORT: ${{ github.event_name == 'schedule' }}
+          MORNING_REPORT: ${{ github.event_name == 'schedule' || inputs.forza_resoconto == true }}
         run: npm run master
 
       - name: Commit e push dei dati aggiornati
