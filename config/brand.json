@@ -52,6 +52,8 @@
   "contatti": {
     "telefono": "+39 366 744 7280",
     "whatsapp": "+39 366 744 7280",
+    "_nota_whatsappBottoneAttivo": "Metti true solo dopo aver attivato il pulsante 'WhatsApp' nelle opzioni di contatto del profilo Instagram/Facebook (Impostazioni > Attività commerciale): da quel momento le didascalie possono nominarlo, perché è davvero cliccabile dal profilo (un link nel testo del post invece non lo è mai).",
+    "whatsappBottoneAttivo": true,
     "email": "info.andreaforte@gmail.com",
     "sitoWeb": "https://www.musiqua.it/band/forte-dj-eventi-e-matrimoni-14006",
     "instagram": "@forte_dj",

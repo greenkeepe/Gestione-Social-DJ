@@ -137,11 +137,12 @@ function testoIncoraggiaSalvataggio(): string {
 
 // Call to action fissa, generata sempre allo stesso modo (mai dall'LLM, per
 // non rischiare che la alteri) e aggiunta in coda a QUALSIASI didascalia.
-// Spinge al DM invece che a un link verso WhatsApp: nei post del feed
-// Instagram (e anche Facebook) un URL scritto nel testo NON è mai
-// cliccabile — solo la bio, le Stories con lo sticker link o il pulsante di
-// contatto del profilo lo sono. Il messaggio privato è invece nativo e a un
-// tocco su entrambe le piattaforme, senza bisogno di nessun setup.
+// Mai un link scritto nel testo: nei post del feed Instagram (e anche
+// Facebook) un URL nella didascalia NON è mai cliccabile — solo bio,
+// Stories con sticker link o pulsante di contatto del profilo lo sono.
+// Il DM è sempre nativo su entrambe le piattaforme, senza setup; il
+// pulsante WhatsApp sul profilo è citabile solo dopo averlo attivato
+// davvero (config/brand.json > contatti.whatsappBottoneAttivo).
 function testoCtaContatto(brand: Record<string, any>): string | null {
   if (!brand.contatti?.whatsapp && !brand.nomeArte) return null;
   const varianti = [
@@ -149,6 +150,12 @@ function testoCtaContatto(brand: Record<string, any>): string | null {
     "📩 Mandami un messaggio privato per sapere di più!",
     "📩 Scrivimi qui in DM: ti rispondo con tutti i dettagli!"
   ];
+  if (brand.contatti?.whatsappBottoneAttivo) {
+    varianti.push(
+      "📲 Scrivimi in DM o tocca il bottone WhatsApp sul mio profilo per info e disponibilità!",
+      "📲 Trovi il bottone WhatsApp sul mio profilo: scrivimi per tutti i dettagli!"
+    );
+  }
   return varianti[Math.floor(Math.random() * varianti.length)];
 }
 
