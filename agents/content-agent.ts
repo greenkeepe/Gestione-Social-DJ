@@ -116,7 +116,7 @@ function pescaHashtag(pool: string[] | undefined, n: number): string[] {
 // (settore DJ/matrimoni, concorrenza minore) e locali (zona servita): più
 // efficace per farsi scoprire da chi non segue ancora l'account rispetto a
 // ripetere sempre gli stessi 2-3 hashtag identici.
-function costruisciHashtag(brand: Record<string, any>): string[] {
+export function costruisciHashtag(brand: Record<string, any>): string[] {
   const pool = brand.toneOfVoice?.hashtagPool;
   if (pool) {
     return [...pescaHashtag(pool.ampi, 5), ...pescaHashtag(pool.nicchia, 4), ...pescaHashtag(pool.locali, 3)];
@@ -144,7 +144,7 @@ function testoIncoraggiaSalvataggio(): string {
 // Il DM è sempre nativo su entrambe le piattaforme, senza setup; il
 // pulsante WhatsApp sul profilo è citabile solo dopo averlo attivato
 // davvero (config/brand.json > contatti.whatsappBottoneAttivo).
-function testoCtaContatto(brand: Record<string, any>): string | null {
+export function testoCtaContatto(brand: Record<string, any>): string | null {
   if (!brand.contatti?.whatsapp && !brand.nomeArte) return null;
   const varianti = [
     "📩 Scrivimi in DM per info e disponibilità!",
