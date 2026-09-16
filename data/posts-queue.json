@@ -40,7 +40,7 @@
         "#matrimonio2027"
       ],
       "orarioProgrammato": "11:00",
-      "status": "pronto",
+      "status": "in-pausa-media-non-raggiungibile",
       "pillarId": "dietro-le-quinte"
     },
     {
@@ -60,7 +60,7 @@
         "#weddingdj",
         "#matrimonio2027"
       ],
-      "orarioProgrammato": "12:30",
+      "orarioProgrammato": "11:10",
       "status": "pronto",
       "pillarId": "dietro-le-quinte"
     },
