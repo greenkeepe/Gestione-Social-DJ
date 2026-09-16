@@ -106,6 +106,28 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "28de83a0-15d7-4de7-8732-e040be497cf6",
+      "createdAt": "2026-09-16T10:26:01.935Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "6e3ad3a5-94c6-44c7-ae48-00fb4612b789",
+        "filename": "telegram-1789554199109.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/53c9cb15-f33f-4fd9-89fd-ebb038feeff8.jpg"
+      },
+      "caption": "Dietro ogni serata perfetta c'è un lavoro fatto di cura e attenzione, anche nei minuti prima che tutto cominci 🎚️\n\n📲 Scrivimi su WhatsApp per info e disponibilità: https://wa.me/393667447280",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonio2027"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
