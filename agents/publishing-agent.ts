@@ -82,38 +82,70 @@ export async function eseguiPublishingAgent(): Promise<void> {
     const isVideo = target.media.mimeType.startsWith("video/");
     const caption = `${target.caption ?? ""}\n\n${(target.hashtags ?? []).join(" ")}`.trim();
 
-    const risultatoIg = await pubblicaSuInstagram({
-      imageUrl: isVideo ? undefined : target.media.downloadUrl,
-      videoUrl: isVideo ? target.media.downloadUrl : undefined,
-      isReel: target.formato === "reel",
-      caption
-    });
+    // Instagram e Facebook sono chiamati SEPARATAMENTE (mai il secondo dentro
+    // lo stesso try del primo): se una delle due piattaforme fallisce dopo che
+    // l'altra è già andata a buon fire, quel post è REALMENTE uscito e non va
+    // mai più ritentato, altrimenti al ciclo successivo lo pubblicheremmo una
+    // seconda volta sulla piattaforma che aveva già funzionato.
+    let risultatoIg: { id: string } | null = null;
+    let erroreIg: string | null = null;
+    try {
+      risultatoIg = await pubblicaSuInstagram({
+        imageUrl: isVideo ? undefined : target.media.downloadUrl,
+        videoUrl: isVideo ? target.media.downloadUrl : undefined,
+        isReel: target.formato === "reel",
+        caption
+      });
+    } catch (err) {
+      erroreIg = err instanceof Error ? err.message : String(err);
+    }
 
-    const risultatoFb = await pubblicaSuFacebook({
-      message: caption,
-      imageUrl: isVideo ? undefined : target.media.downloadUrl,
-      videoUrl: isVideo ? target.media.downloadUrl : undefined
-    });
+    let risultatoFb: { id: string } | null = null;
+    let erroreFb: string | null = null;
+    try {
+      risultatoFb = await pubblicaSuFacebook({
+        message: caption,
+        imageUrl: isVideo ? undefined : target.media.downloadUrl,
+        videoUrl: isVideo ? target.media.downloadUrl : undefined
+      });
+    } catch (err) {
+      erroreFb = err instanceof Error ? err.message : String(err);
+    }
 
-    target.status = "pubblicato";
+    if (!risultatoIg && !risultatoFb) {
+      // Nessuna pubblicazione è uscita davvero: il contenuto resta "pronto"
+      // e si può ritentare tranquillamente al prossimo ciclo.
+      throw new Error(`Instagram: ${erroreIg}. Facebook: ${erroreFb}`);
+    }
+
+    // Almeno una pubblicazione è uscita: il contenuto NON deve più tornare
+    // "pronto", altrimenti verrebbe ripubblicato in doppione sulla
+    // piattaforma che ha già funzionato.
+    target.status = risultatoIg && risultatoFb ? "pubblicato" : "pubblicato-parziale";
 
     const logFile = await readData<PublishedLogFile>("published-log.json");
     logFile.log.unshift({
       queueId: target.id,
       timestamp: nowIso(),
-      instagramId: risultatoIg.id,
-      facebookId: risultatoFb.id,
+      instagramId: risultatoIg?.id ?? null,
+      facebookId: risultatoFb?.id ?? null,
       formato: target.formato,
       pillarId: target.pillarId ?? null
     });
     await writeData("published-log.json", logFile);
     await writeData("posts-queue.json", queueFile);
 
+    const completo = Boolean(risultatoIg && risultatoFb);
+    const dettaglioIg = risultatoIg ? `Instagram OK (${risultatoIg.id})` : `Instagram FALLITO: ${erroreIg}`;
+    const dettaglioFb = risultatoFb ? `Facebook OK (${risultatoFb.id})` : `Facebook FALLITO: ${erroreFb}`;
+
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
       identita: IDENTITA.publishing.ruolo,
-      status: "ok",
-      riepilogo: `Pubblicato su Instagram (${risultatoIg.id}) e Facebook (${risultatoFb.id}).`
+      status: completo ? "ok" : "errore",
+      riepilogo: completo
+        ? `Pubblicato su Instagram (${risultatoIg!.id}) e Facebook (${risultatoFb!.id}).`
+        : `Pubblicazione PARZIALE, richiede la tua attenzione — ${dettaglioIg}; ${dettaglioFb}`
     });
   } catch (err) {
     await logAgentRun({

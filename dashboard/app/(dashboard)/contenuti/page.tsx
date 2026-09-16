@@ -9,7 +9,7 @@ export default async function ContenutiPage() {
     leggiDati<PublishedLogFile>("published-log.json")
   ]);
 
-  const inCoda = queueFile.queue.filter((q) => q.status !== "pubblicato");
+  const inCoda = queueFile.queue.filter((q) => q.status !== "pubblicato" && q.status !== "pubblicato-parziale");
   const pubblicati = publishedFile.log.slice(0, 20);
 
   return (
@@ -42,8 +42,8 @@ export default async function ContenutiPage() {
             <tr key={i}>
               <td>{p.formato}</td>
               <td>{new Date(p.timestamp).toLocaleString("it-IT")}</td>
-              <td>{p.instagramId}</td>
-              <td>{p.facebookId}</td>
+              <td>{p.instagramId ?? "✗ non riuscito"}</td>
+              <td>{p.facebookId ?? "✗ non riuscito"}</td>
             </tr>
           ))}
         </tbody>

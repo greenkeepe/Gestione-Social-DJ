@@ -36,10 +36,11 @@ export interface PostsQueueFile {
 export interface PublishedItem {
   queueId: string;
   timestamp: string;
-  instagramId: string;
-  facebookId: string;
+  instagramId: string | null;
+  facebookId: string | null;
   formato: string;
   pillarId: string | null;
+  nota?: string;
 }
 
 export interface PublishedLogFile {
