@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
+      "timestamp": "2026-09-16T19:21:10.459Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18194908381388982) e Facebook (1716242590511110). + Storia IG pubblicata.",
       "timestamp": "2026-09-16T18:59:20.446Z"
