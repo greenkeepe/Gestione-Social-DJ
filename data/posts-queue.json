@@ -21,6 +21,27 @@
       "orarioProgrammato": "18:30",
       "status": "in-pausa-revisione-brand",
       "pillarId": "call-to-action"
+    },
+    {
+      "id": "8ca7f1fd-cb91-4a2d-8443-269e1a3d0ab4",
+      "createdAt": "2026-09-16T08:44:20.943Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "f29c6bb7-205c-48a5-9287-800bcbdaf0a9",
+        "filename": "20260912_151451.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://res.cloudinary.com/zdjngwjy/image/upload/v1789484123/zkkhemhqcsrvn3lawvfd.jpg"
+      },
+      "caption": "Preparazione, check audio, tanta cura nei dettagli prima che inizi la festa 🎧✨\nCon Forte DJ il divertimento è assicurato: la musica diventa il cuore pulsante di una serata indimenticabile.\n\n#djmatrimonio #weddingdj #matrimonio2027",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonio2027"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
