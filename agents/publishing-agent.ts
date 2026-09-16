@@ -19,6 +19,7 @@ interface PostsQueueFile {
     caption: string | null;
     hashtags: string[];
     orarioProgrammato: string | null;
+    dataProgrammata?: string | null;
     media: { downloadUrl: string; mimeType: string };
     pillarId?: string;
   }>;

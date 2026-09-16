@@ -27,7 +27,7 @@ export async function DELETE(_req: Request, { params }: { params: { id: string }
 // ancora pubblicato) — per correggere a mano quello che gli agenti hanno
 // scritto, senza dover eliminare e ricaricare il media da capo.
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  const body = (await req.json()) as { caption?: string; hashtags?: string[]; orarioProgrammato?: string };
+  const body = (await req.json()) as { caption?: string; hashtags?: string[]; orarioProgrammato?: string; dataProgrammata?: string };
 
   try {
     await aggiornaDatiSuGitHub<PostsQueueFile>(
@@ -38,6 +38,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
         if (typeof body.caption === "string") item.caption = body.caption;
         if (Array.isArray(body.hashtags)) item.hashtags = body.hashtags;
         if (typeof body.orarioProgrammato === "string") item.orarioProgrammato = body.orarioProgrammato;
+        if (typeof body.dataProgrammata === "string") item.dataProgrammata = body.dataProgrammata;
         return attuale;
       },
       `chore(contenuti): modifica contenuto ${params.id}`

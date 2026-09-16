@@ -41,6 +41,7 @@ interface PostsQueueFile {
     caption: string | null;
     hashtags: string[];
     orarioProgrammato: string | null;
+    dataProgrammata?: string | null;
     pillarId?: string;
     istruzioniUtente?: string | null;
     media: { downloadUrl: string; mimeType: string; filename: string };
@@ -254,6 +255,10 @@ Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inv
     target.hashtags = costruisciHashtag(brand);
     target.pillarId = pilastro.id;
     target.orarioProgrammato = scegliOrarioDelGiorno(new Date().getDay()).ora;
+    // Il sistema pubblica sempre in giornata (l'Editore gira più volte al
+    // giorno cercando l'orario giusto, mai il giorno dopo): la data è quindi
+    // sempre oggi, salvata qui solo per mostrarla nelle anteprime.
+    target.dataProgrammata = new Date().toISOString().slice(0, 10);
     target.status = "pronto";
 
     await writeData("posts-queue.json", queueFile);

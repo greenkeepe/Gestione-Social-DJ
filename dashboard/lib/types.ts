@@ -25,6 +25,7 @@ export interface QueueItem {
   caption: string | null;
   hashtags: string[];
   orarioProgrammato: string | null;
+  dataProgrammata?: string | null;
   pillarId?: string;
   istruzioniUtente?: string | null;
   media: { filename: string; mimeType: string; downloadUrl: string; source?: string };

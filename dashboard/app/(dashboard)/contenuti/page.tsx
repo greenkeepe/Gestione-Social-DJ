@@ -27,9 +27,21 @@ export default async function ContenutiPage() {
             <p className="note">{item.media.filename}</p>
             {item.caption && <p>{item.caption}</p>}
             {item.hashtags.length > 0 && <p className="note">{item.hashtags.join(" ")}</p>}
-            {item.orarioProgrammato && <p className="note">Programmato per le {item.orarioProgrammato}</p>}
+            {item.orarioProgrammato && (
+              <p className="note">
+                Programmato per{" "}
+                {item.dataProgrammata ? `il ${new Date(`${item.dataProgrammata}T00:00:00`).toLocaleDateString("it-IT")} ` : ""}
+                alle {item.orarioProgrammato}
+              </p>
+            )}
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
-              <EditQueueItemForm id={item.id} caption={item.caption} hashtags={item.hashtags} orarioProgrammato={item.orarioProgrammato} />
+              <EditQueueItemForm
+                id={item.id}
+                caption={item.caption}
+                hashtags={item.hashtags}
+                orarioProgrammato={item.orarioProgrammato}
+                dataProgrammata={item.dataProgrammata ?? null}
+              />
               <DeleteButton url={`/api/queue/${item.id}`} conferma="Eliminare questo contenuto dalla coda? Non verrà pubblicato." />
             </div>
           </div>

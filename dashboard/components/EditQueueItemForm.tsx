@@ -8,16 +8,18 @@ interface Props {
   caption: string | null;
   hashtags: string[];
   orarioProgrammato: string | null;
+  dataProgrammata?: string | null;
 }
 
 // Form di modifica per un contenuto ancora in coda: correggi a mano quello
-// che gli agenti hanno scritto (didascalia, hashtag, orario) senza dover
+// che gli agenti hanno scritto (didascalia, hashtag, data/orario) senza dover
 // eliminare e ricaricare il media da capo.
-export function EditQueueItemForm({ id, caption, hashtags, orarioProgrammato }: Props) {
+export function EditQueueItemForm({ id, caption, hashtags, orarioProgrammato, dataProgrammata }: Props) {
   const [aperto, setAperto] = useState(false);
   const [testoCaption, setTestoCaption] = useState(caption ?? "");
   const [testoHashtag, setTestoHashtag] = useState(hashtags.join(" "));
   const [orario, setOrario] = useState(orarioProgrammato ?? "");
+  const [data, setData] = useState(dataProgrammata ?? "");
   const [salvataggio, setSalvataggio] = useState(false);
   const [errore, setErrore] = useState<string | null>(null);
   const router = useRouter();
@@ -32,7 +34,8 @@ export function EditQueueItemForm({ id, caption, hashtags, orarioProgrammato }: 
         body: JSON.stringify({
           caption: testoCaption,
           hashtags: testoHashtag.split(/\s+/).filter(Boolean),
-          orarioProgrammato: orario || undefined
+          orarioProgrammato: orario || undefined,
+          dataProgrammata: data || undefined
         })
       });
       const json = await res.json();
@@ -68,6 +71,12 @@ export function EditQueueItemForm({ id, caption, hashtags, orarioProgrammato }: 
         onChange={(e) => setTestoHashtag(e.target.value)}
         placeholder="#hashtag1 #hashtag2"
         style={{ width: "100%", marginBottom: 6 }}
+      />
+      <input
+        type="date"
+        value={data}
+        onChange={(e) => setData(e.target.value)}
+        style={{ marginBottom: 6, marginRight: 6 }}
       />
       <input
         type="time"

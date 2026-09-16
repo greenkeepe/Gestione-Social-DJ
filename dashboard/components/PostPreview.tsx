@@ -73,7 +73,9 @@ export function PostPreview({ item, handle, nomeArte }: { item: QueueItem; handl
 
       <div className="ig-post__meta">
         {item.formato === "reel" ? "Reel" : "Post"}
-        {item.orarioProgrammato ? ` · programmato per le ${item.orarioProgrammato}` : ""}
+        {item.orarioProgrammato
+          ? ` · programmato per ${item.dataProgrammata ? `il ${new Date(`${item.dataProgrammata}T00:00:00`).toLocaleDateString("it-IT")} ` : ""}alle ${item.orarioProgrammato}`
+          : ""}
       </div>
     </div>
   );
