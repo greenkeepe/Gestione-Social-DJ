@@ -2,12 +2,14 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { caricaVideoSuCloudinary } from "../lib/cloudinaryUpload";
 
 // Stesso meccanismo di UploadForm.tsx (upload diretto dal browser a
-// Cloudinary, nessun limite di dimensione lato server): qui il file finisce
-// in data/reel-jobs.json invece che in data/media-library.json, così
-// l'Agente Regista sa che è un video grezzo da elaborare, non un media già
-// pronto da pubblicare.
+// Cloudinary, nessun limite di dimensione lato server grazie all'upload a
+// blocchi per i file più pesanti — vedi lib/cloudinaryUpload.ts): qui il
+// file finisce in data/reel-jobs.json invece che in data/media-library.json,
+// così l'Agente Regista sa che è un video grezzo da elaborare, non un media
+// già pronto da pubblicare.
 const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
@@ -26,6 +28,7 @@ export function ReelUploadForm() {
   const [profilo, setProfilo] = useState("auto");
   const [istruzioni, setIstruzioni] = useState("");
   const [stato, setStato] = useState<"inattivo" | "caricamento" | "errore">("inattivo");
+  const [percentuale, setPercentuale] = useState(0);
   const [errore, setErrore] = useState<string | null>(null);
   const router = useRouter();
 
@@ -41,24 +44,16 @@ export function ReelUploadForm() {
     }
 
     setStato("caricamento");
+    setPercentuale(0);
     setErrore(null);
 
     try {
-      const cloudinaryForm = new FormData();
-      cloudinaryForm.append("file", file);
-      cloudinaryForm.append("upload_preset", UPLOAD_PRESET);
-
-      const cloudRes = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`, {
-        method: "POST",
-        body: cloudinaryForm
-      });
-      const cloudJson = await cloudRes.json();
-      if (!cloudRes.ok) throw new Error(cloudJson.error?.message ?? "Caricamento su Cloudinary fallito.");
+      const url = await caricaVideoSuCloudinary(file, CLOUD_NAME, UPLOAD_PRESET, setPercentuale);
 
       const jobRes = await fetch("/api/reel-jobs", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ url: cloudJson.secure_url, filename: file.name, mimeType: file.type, profilo, istruzioni })
+        body: JSON.stringify({ url, filename: file.name, mimeType: file.type, profilo, istruzioni })
       });
       const jobJson = await jobRes.json();
       if (!jobRes.ok) throw new Error(jobJson.error ?? "Impossibile mettere in coda il video.");
@@ -104,7 +99,7 @@ export function ReelUploadForm() {
       />
 
       <button type="submit" disabled={stato === "caricamento"} className="upload-btn">
-        {stato === "caricamento" ? "Caricamento in corso…" : "🎬 Crea Reel AI"}
+        {stato === "caricamento" ? `Caricamento in corso… ${percentuale}%` : "🎬 Crea Reel AI"}
       </button>
       {stato === "errore" && <p className="error-msg">{errore}</p>}
     </form>
