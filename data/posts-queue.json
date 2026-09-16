@@ -250,25 +250,11 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/1b16e632-0263-41d1-b00d-8cb8a5b5a08e.jpg"
       },
-      "caption": "Sabato 26 settembre si accendono le luci per la Festa della Birra 🍻 Boccali pronti, console e cuffie in postazione: tutto studiato nei minimi dettagli prima che parta il DJ set. Un brindisi, buona musica e atmosfera giusta per iniziare la serata nel modo migliore 🎧\n\n❤️ Se ti è piaciuto, taggami chi si sta per sposare o organizza una festa!\n\n📲 Scrivimi su WhatsApp per info e disponibilità: https://wa.me/393667447280",
-      "hashtags": [
-        "#weddingparty",
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonioitaliano",
-        "#weddingday",
-        "#discjockey",
-        "#musicapermatrimoni",
-        "#djeventi",
-        "#djprofessionista",
-        "#weddingpiemonte",
-        "#liguria",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "12:30",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte"
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
     }
   ]
 }
