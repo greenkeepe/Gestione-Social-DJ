@@ -160,6 +160,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "7f3654ac-e7f6-4c5b-b5c7-0291f78b4c80",
+      "createdAt": "2026-09-16T17:33:26.107Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "9c793904-a756-4139-98de-1181614c6340",
+        "filename": "reel-telegram-1789572345838.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/7fadcae7-d10c-4f7c-b465-4185434b9b67.mp4"
+      },
+      "caption": "Braccia alzate, tovaglioli che sventolano e quella luce calda che avvolge tutta la sala: è il momento in cui la festa esplode davvero 🎉 Dietro la console, la soddisfazione di sentire che tutto il lavoro fatto prima paga. Energia pura, pista piena, sorrisi ovunque 🔥\n\n❤️ Se ti è piaciuto, taggami chi si sta per sposare o organizza una festa!\n\n📩 Scrivimi in DM per info e disponibilità!",
+      "hashtags": [
+        "#weddingdj",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#weddingday",
+        "#weddingitaly",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#djwedding",
+        "#liguria",
+        "#piemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-16"
     }
   ]
 }
