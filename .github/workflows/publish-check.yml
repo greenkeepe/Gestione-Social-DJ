@@ -49,7 +49,12 @@ jobs:
           git add data/
           if ! git diff --cached --quiet; then
             git commit -m "chore(editore): pubblicazione contenuto [skip ci]"
-            git push
+            for i in 1 2 3 4 5; do
+              git push && break
+              echo "Push rifiutato (probabile scrittura concorrente su data/), riprovo dopo un rebase..."
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              sleep $((RANDOM % 5 + 1))
+            done
           else
             echo "Nessuna modifica ai dati da salvare."
           fi
