@@ -22,10 +22,16 @@ export async function caricaBufferSuR2(buffer: Buffer, contentType: string, este
   const chiaveOggetto = `${randomUUID()}${estensione}`;
   const endpoint = `https://${accountId}.r2.cloudflarestorage.com/${bucketName}/${chiaveOggetto}`;
 
+  // "content-length" è un header vietato dallo standard Fetch: anche
+  // impostandolo a mano viene scartato in silenzio prima dell'invio. Va
+  // lasciato calcolare al motore, cosa che avviene in modo affidabile solo
+  // passando un Blob come corpo (con un Buffer/Uint8Array puro, su alcuni
+  // runtime Node/Vercel la richiesta parte senza Content-Length e R2
+  // risponde 411 "you must provide the content-length").
   const res = await client.fetch(endpoint, {
     method: "PUT",
     headers: { "content-type": contentType },
-    body: new Uint8Array(buffer)
+    body: new Blob([new Uint8Array(buffer)], { type: contentType })
   });
   if (!res.ok) {
     throw new Error(`Upload su R2 fallito (${res.status}): ${await res.text()}`);
