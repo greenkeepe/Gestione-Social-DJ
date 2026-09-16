@@ -129,6 +129,13 @@ export async function analizzaVideo(filePath: string): Promise<VideoInfo> {
   };
 }
 
+// Estrae un singolo fotogramma da un video (usato dall'Agente Contenuti per
+// dare a Claude qualcosa di reale da "vedere" quando scrive la didascalia di
+// un Reel/video, invece di un template scollegato dal contenuto).
+export async function estraiFotogramma(inputPath: string, secondo: number, outputPath: string): Promise<void> {
+  await eseguiFfmpeg(["-ss", String(Math.max(secondo, 0)), "-i", inputPath, "-frames:v", "1", "-q:v", "3", "-y", outputPath]);
+}
+
 // Rileva i cambi di inquadratura reali analizzando il contenuto video
 // (filtro "scene" di ffmpeg): usati per non tagliare mai a metà di
 // un'inquadratura e per individuare i momenti migliori da usare nel Reel.

@@ -118,8 +118,15 @@ Oggi tutto gira a **costo zero**:
 
 **Quando vorrai investire** (vedi anche `docs/strategia-marketing-2027.md`):
 - **Sponsorizzazioni Meta Ads**: budget mirato geograficamente per accelerare la fase di crescita lead, quando il canale organico non basta più a sostenere il ritmo verso i 30 matrimoni.
-- **`ANTHROPIC_API_KEY`**: se impostata, il Content Agent e il Leads Agent generano testi più naturali e variati tramite Claude invece dei template (costo minimo a consumo, qualche centesimo al giorno).
+- **`ANTHROPIC_API_KEY`**: se impostata, il Content Agent **guarda davvero la foto (o un fotogramma del video/reel)** e scrive una didascalia pertinente a quello che è raffigurato, invece di un template fisso — e il Leads Agent scrive messaggi più naturali. Senza la chiave, tutto funziona comunque: il Content Agent usa più varianti scritte a mano per ogni tema, così due post con lo stesso tema non escono mai identici. Costo minimo a consumo, qualche centesimo al giorno.
 - Strumenti di scheduling/analytics più avanzati, se il volume di contenuti crescerà oltre quanto gestibile dal sistema attuale.
+
+### Didascalie con visione + call to action WhatsApp
+
+Il Content Agent (Copy) fa sempre due cose, con o senza `ANTHROPIC_API_KEY`:
+
+1. **Guarda il contenuto**: se la chiave è impostata, invia l'immagine (o un fotogramma estratto dal video con ffmpeg) a Claude insieme al tema del giorno, e la didascalia che ne esce descrive davvero quello che si vede — non un testo generico. Senza chiave, sceglie a caso tra più varianti scritte a mano per lo stesso tema, così i post non si ripetono mai identici.
+2. **Chiude sempre con una call to action verso WhatsApp**: usa il numero reale da `config/brand.json` (`contatti.whatsapp`) per generare un link `https://wa.me/...`, aggiunto in fondo a ogni didascalia — l'obiettivo non è solo il like, ma spingere chi guarda a scriverti per informazioni.
 
 ## Struttura del repository
 
