@@ -31,6 +31,37 @@
       "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "6b60fbf6-7008-4ce3-851c-70969e8f555f",
+      "createdAt": "2026-09-16T15:11:29.368Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "29443cd0-eb53-4d5c-90d3-fe3ef581edd5",
+        "filename": "telegram-1789571452258.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/c1f1708d-e6f0-4d0f-9f50-07d6b28eed55.jpg"
+      },
+      "caption": "Quando la musica prende il sopravvento e tutti finiscono in pista, abbracciati e sorridenti sotto le luci colorate 🎉 Questo è il momento che ogni DJ aspetta: vedere una festa trasformarsi in un unico grande abbraccio, tra risate, balli e la magia della notte ✨\n\n💾 Salva questo post: ti torna utile quando organizzi la musica del tuo evento!\n\n📲 Scrivimi in DM o tocca il bottone WhatsApp sul mio profilo per info e disponibilità!",
+      "hashtags": [
+        "#matrimonio2027",
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#weddingparty",
+        "#weddingmusic",
+        "#djwedding",
+        "#discjockey",
+        "#djeventi",
+        "#lombardia",
+        "#liguria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
