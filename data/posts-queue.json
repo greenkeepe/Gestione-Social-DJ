@@ -33,14 +33,10 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://res.cloudinary.com/zdjngwjy/image/upload/v1789484123/zkkhemhqcsrvn3lawvfd.jpg"
       },
-      "caption": "Preparazione, check audio, tanta cura nei dettagli prima che inizi la festa 🎧✨\nCon Forte DJ il divertimento è assicurato: la musica diventa il cuore pulsante di una serata indimenticabile.\n\n#djmatrimonio #weddingdj #matrimonio2027",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonio2027"
-      ],
-      "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
       "pillarId": "dietro-le-quinte"
     },
     {
@@ -54,14 +50,10 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/e2ad2d9e-72ad-4fac-b8dc-049ec3932469.mp4"
       },
-      "caption": "Preparazione, check audio, tanta cura nei dettagli prima che inizi la festa 🎧✨\nCon Forte DJ il divertimento è assicurato: la musica diventa il cuore pulsante di una serata indimenticabile.\n\n#djmatrimonio #weddingdj #matrimonio2027",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonio2027"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pronto",
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
       "pillarId": "dietro-le-quinte"
     }
   ]
