@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "errore",
+      "riepilogo": "Pubblicazione PARZIALE, richiede la tua attenzione — Instagram OK (18139950307523731); Facebook FALLITO: Graph API error [/266354304012276/photos]: {\"error\":{\"message\":\"(#200) The permission(s) pages_manage_posts are not available. It could because either they are deprecated or need to be approved by App Review.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AS94zwy3Px9V3LaFSVbVLhp\"}} + Storia IG pubblicata.",
+      "timestamp": "2026-09-16T14:15:46.309Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
       "timestamp": "2026-09-16T14:13:51.610Z"
