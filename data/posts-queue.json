@@ -93,6 +93,37 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte"
+    },
+    {
+      "id": "d5ba5de5-6500-4286-a1f5-6e9aac7c76f7",
+      "createdAt": "2026-09-16T15:21:36.444Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "78dafe1d-c893-4638-ad7c-3e28a39a2ae9",
+        "filename": "telegram-1789572055853.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/1c47a927-4039-4158-9705-4f9da7103602.jpg"
+      },
+      "caption": "Sabato di Festa della Birra: boccali che si scontrano, pretzel pronto e cuffie in stand-by sulla console 🍺\n\nPrima che parta il DJ set c'è sempre quel momento di attesa, luci che pulsano e voglia di far esplodere la serata 🔥\n\nPreparazione fatta, ora si balla.\n\n💾 Salva questo post: ti torna utile quando organizzi la musica del tuo evento!\n\n📩 Scrivimi in DM per info e disponibilità!",
+      "hashtags": [
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#discjockey",
+        "#weddingmusic",
+        "#djperfeste",
+        "#djwedding",
+        "#lombardia",
+        "#serravallescrivia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
     }
   ]
 }
