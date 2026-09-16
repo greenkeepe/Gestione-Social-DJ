@@ -1,4 +1,62 @@
 {
   "_istruzioni": "Coda dei lavori dell'AI Reel Maker. Un job nasce quando carichi un video grezzo dalla pagina 'Crea Reel AI' della dashboard (status: in-coda-analisi). Il Regista (agents/reel-maker-agent.ts, eseguito da .github/workflows/reel-maker.yml) lo elabora e lo porta a 'pronto' o 'errore'. Quando premi 'Usa per un post' su un job pronto, il Reel finito entra in data/media-library.json come un media normale e da lì lo gestiscono gli agenti già esistenti (Occhio -> Copy -> Editore).",
-  "jobs": []
+  "jobs": [
+    {
+      "id": "57bdc8f9-c87a-49f1-8d3e-7be2d01821e4",
+      "createdAt": "2026-09-16T08:19:53.847Z",
+      "videoUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/c85db048-d13d-4179-a732-750f3003ddb6.mp4",
+      "filename": "video1.mp4",
+      "mimeType": "video/mp4",
+      "profilo": "auto",
+      "istruzioni": null,
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-16T08:27:43.423Z",
+      "erroreMessaggio": null,
+      "risultato": {
+        "reelUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/87625cbf-5d3b-4447-9957-e88bc5204856.mp4",
+        "durataSecondi": 13.4,
+        "piano": {
+          "categoria": "wedding",
+          "stile": "clean",
+          "profiloUsato": "wedding",
+          "durataTarget": 14.86,
+          "hook": {
+            "inizio": 3,
+            "fine": 6
+          },
+          "segmenti": [
+            {
+              "inizio": 3,
+              "fine": 6,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 0,
+              "fine": 3,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 6,
+              "fine": 9,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 12,
+              "fine": 15,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 15,
+              "fine": 17.86,
+              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Forte DJ 💍"
+        }
+      }
+    }
+  ]
 }
