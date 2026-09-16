@@ -16,6 +16,10 @@ on:
         description: "Invia comunque il resoconto mattutino su Telegram (solo per test manuali)"
         type: boolean
         default: false
+      forza_testimonianza:
+        description: "Genera subito un post da una recensione, ignorando la probabilità casuale (solo per test manuali)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -63,6 +67,7 @@ jobs:
           # Il resoconto mattutino su Telegram parte SOLO dal vero ciclo
           # schedulato delle 06:00, mai da un lancio manuale/di test.
           MORNING_REPORT: ${{ github.event_name == 'schedule' || inputs.forza_resoconto == true }}
+          FORCE_TESTIMONIANZA: ${{ inputs.forza_testimonianza }}
         run: npm run master
 
       - name: Commit e push dei dati aggiornati

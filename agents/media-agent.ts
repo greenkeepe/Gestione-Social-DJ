@@ -139,7 +139,9 @@ export async function eseguiMediaAgent(): Promise<void> {
     const libreria = await readData<MediaLibraryFile>("media-library.json");
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
 
-    if (Math.random() < PROBABILITA_TESTIMONIANZA) {
+    // FORCE_TESTIMONIANZA: bypassa la probabilità casuale, solo per test
+    // manuali (workflow_dispatch), mai dal ciclo schedulato normale.
+    if (process.env.FORCE_TESTIMONIANZA === "true" || Math.random() < PROBABILITA_TESTIMONIANZA) {
       const scelta = await generaPostTestimonianza(queueFile).catch((err) => {
         console.error("[Occhio] Generazione post testimonianza fallita:", err);
         return null;
