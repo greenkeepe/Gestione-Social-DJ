@@ -320,6 +320,38 @@
       "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "5edf2898-bfde-43e8-815a-671fce2d5ed7",
+      "createdAt": "2026-09-16T20:27:08.984Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Chiara-V.-09-10-2021.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/c0686944-d8a4-44b3-9da8-03536970b4df.png"
+      },
+      "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Davvero un DJ di alto livello, professionale e anche molto simpatico e alla mano. Al diciottesimo di una mia amica ha davvero reso la serata memorabile!\"\n— Chiara V., Diciottesimo\n\nMandami un messaggio privato se vuoi sapere di più.",
+      "hashtags": [
+        "#sposi2027",
+        "#matrimonio2027",
+        "#weddingdj",
+        "#weddingparty",
+        "#weddingday",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#weddingmusic",
+        "#djperfeste",
+        "#serravallescrivia",
+        "#alessandria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-16",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
