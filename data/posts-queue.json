@@ -192,6 +192,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-09-16"
+    },
+    {
+      "id": "d40798de-2f83-4a79-b027-ad4b01054ced",
+      "createdAt": "2026-09-16T17:35:40.434Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "66b6067d-0676-46ed-a813-04cbe29d211e",
+        "filename": "telegram-1789579979600.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/50ff206e-8944-455d-9314-1271d4eb0836.jpg"
+      },
+      "caption": "Il primo bacio da marito e moglie, in una sala che trattiene il fiato. 💍 Dietro la consolle, la musica giusta al momento giusto: perché ogni dettaglio, anche il più discreto, serve a costruire l'emozione di un istante che resta per sempre.\n\n📌 Tienilo a portata di mano per quando dovrai pensare alla musica del tuo matrimonio.\n\n📩 Scrivimi in DM per info e disponibilità!",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingitaly",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#djeventi",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#animazionematrimonio",
+        "#liguria",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-16"
     }
   ]
 }
