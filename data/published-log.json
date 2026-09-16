@@ -2,6 +2,15 @@
   "_istruzioni": "Storico di tutto ciò che è stato pubblicato realmente, con id post Meta, orario, e metriche raccolte successivamente dall'Analytics Agent.",
   "log": [
     {
+      "queueId": "6b60fbf6-7008-4ce3-851c-70969e8f555f",
+      "timestamp": "2026-09-16T17:44:16.732Z",
+      "instagramId": null,
+      "facebookId": "1716187810516588",
+      "instagramStoryId": null,
+      "formato": "post",
+      "pillarId": "dietro-le-quinte"
+    },
+    {
       "queueId": "2379e382-3a2b-46d0-b6e3-3c0f7f08ca7a",
       "timestamp": "2026-09-16T14:15:46.308Z",
       "instagramId": "18139950307523731",
