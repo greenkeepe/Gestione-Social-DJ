@@ -2,6 +2,21 @@
   "_istruzioni": "Coda dei lavori dell'AI Reel Maker. Un job nasce quando carichi un video grezzo dalla pagina 'Crea Reel AI' della dashboard (status: in-coda-analisi). Il Regista (agents/reel-maker-agent.ts, eseguito da .github/workflows/reel-maker.yml) lo elabora e lo porta a 'pronto' o 'errore'. Quando premi 'Usa per un post' su un job pronto, il Reel finito entra in data/media-library.json come un media normale e da lì lo gestiscono gli agenti già esistenti (Occhio -> Copy -> Editore).",
   "jobs": [
     {
+      "id": "9c41b356-af69-4cf4-a02a-a2209a502822",
+      "createdAt": "2026-09-16T10:28:15.453Z",
+      "videoUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/84afd15d-cfb5-4310-aa38-3b5c662f513d.mp4",
+      "filename": "telegram-1789554494543.mp4",
+      "mimeType": "video/mp4",
+      "profilo": "auto",
+      "istruzioni": null,
+      "status": "in-coda-analisi",
+      "step": "in-coda",
+      "aggiornatoIl": "2026-09-16T10:28:15.453Z",
+      "erroreMessaggio": null,
+      "risultato": null,
+      "source": "telegram"
+    },
+    {
       "id": "8a6b997e-d104-49d2-98ae-0fded07705e0",
       "createdAt": "2026-09-16T08:35:08.847Z",
       "videoUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/4c817754-8d65-46de-9d2e-204f12c0b1d9.mp4",
