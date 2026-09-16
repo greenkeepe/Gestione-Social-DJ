@@ -233,8 +233,19 @@ Massimo 40 parole. NON inventare dettagli che non puoi vedere davvero nell'immag
       }
 
       if (!corpo) {
+        // Solo i campi utili a scrivere una didascalia generica: mai le
+        // testimonianze (tante, pesano inutilmente sul prompt e su questo
+        // percorso non servono, il post non parla di una recensione specifica).
+        const brandSintetico = {
+          nomeArte: brand.nomeArte,
+          tagline: brand.tagline,
+          generi: brand.generi,
+          tipologieEventi: brand.tipologieEventi,
+          puntiDiForza: brand.puntiDiForza,
+          areaServita: brand.areaServita
+        };
         const promptTesto = `Scrivi una didascalia Instagram in italiano per un DJ per matrimoni ed eventi, come se la scrivesse di getto Andrea stesso (il DJ), non un copywriter.
-Brand: ${JSON.stringify(brand)}
+Brand: ${JSON.stringify(brandSintetico)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
 Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
 
