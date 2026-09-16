@@ -7,7 +7,7 @@ import "dotenv/config";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { pubblicaSuInstagram, pubblicaSuFacebook, pubblicaStoriesSuInstagram } from "../lib/metaGraph.js";
-import { inviaMessaggioTelegram } from "../lib/telegram.js";
+import { inviaMessaggioTelegram, inviaMediaTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
 
 interface PostsQueueFile {
@@ -188,11 +188,18 @@ export async function eseguiPublishingAgent(): Promise<void> {
         : `Pubblicazione PARZIALE, richiede la tua attenzione — ${dettaglioIg}; ${dettaglioFb}${dettaglioStoria}`
     });
 
-    const anteprima = caption.length > 100 ? `${caption.slice(0, 100)}…` : caption;
+    // Manda il media appena pubblicato con la sua didascalia reale: così vedi
+    // subito COSA è uscito, non solo che è uscito. Best-effort: se fallisce
+    // (es. Telegram non riesce a scaricare l'URL) non blocca nulla, il testo
+    // di stato qui sotto arriva comunque.
+    if (risultatoIg || risultatoFb) {
+      await inviaMediaTelegram({ url: target.media.downloadUrl, isVideo, caption });
+    }
+
     const notaStoria = storiaIg ? "\n📱 + Storia Instagram pubblicata." : "";
     await inviaMessaggioTelegram(
       completo
-        ? `✅ Pubblicato su Instagram e Facebook!${notaStoria}\n"${anteprima}"`
+        ? `✅ Pubblicato su Instagram (${risultatoIg!.id}) e Facebook (${risultatoFb!.id})!${notaStoria}`
         : `⚠️ Pubblicazione parziale, dai un'occhiata alla dashboard:\n${dettaglioIg}\n${dettaglioFb}${notaStoria}`
     );
   } catch (err) {

@@ -23,3 +23,35 @@ export async function inviaMessaggioTelegram(testo: string): Promise<void> {
     console.error("[Telegram] invio notifica fallito:", err);
   }
 }
+
+// Manda il media appena pubblicato (foto o video) direttamente in chat, con
+// la stessa didascalia uscita sui social: così vedi subito cosa è stato
+// pubblicato senza dover aprire Instagram/Facebook. I limiti di Telegram per
+// la didascalia di un media (1024 caratteri) sono più stretti di quelli di
+// un messaggio di testo (4096): viene troncata se necessario.
+const LIMITE_CAPTION_MEDIA = 1024;
+
+export async function inviaMediaTelegram(opts: { url: string; isVideo: boolean; caption: string }): Promise<void> {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_ALLOWED_CHAT_ID;
+  if (!token || !chatId) return;
+
+  const captionTronca =
+    opts.caption.length > LIMITE_CAPTION_MEDIA ? `${opts.caption.slice(0, LIMITE_CAPTION_MEDIA - 1)}…` : opts.caption;
+
+  const metodo = opts.isVideo ? "sendVideo" : "sendPhoto";
+  const campo = opts.isVideo ? "video" : "photo";
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/${metodo}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, [campo]: opts.url, caption: captionTronca })
+    });
+    if (!res.ok) {
+      console.error("[Telegram] invio media fallito:", res.status, await res.text());
+    }
+  } catch (err) {
+    console.error("[Telegram] invio media fallito:", err);
+  }
+}
