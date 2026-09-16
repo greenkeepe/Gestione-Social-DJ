@@ -48,10 +48,12 @@ export async function pubblicaSuInstagram(opts: {
 
   const container = await graphFetch<{ id: string }>(`/${igUserId}/media`, containerParams, "POST");
 
-  // I reel/video richiedono un breve polling finché Meta finisce l'elaborazione.
-  if (opts.videoUrl) {
-    await attendiElaborazioneContainer(container.id);
-  }
+  // Aspetta che Meta finisca di elaborare il container prima di pubblicare:
+  // serve sempre, non solo per i video. Le foto di solito risultano già
+  // "FINISHED" al primo controllo (quindi nessun ritardo percepibile), ma
+  // sotto carico possono restare per un momento "IN_PROGRESS" — pubblicare
+  // subito in quel caso dà l'errore Meta "Media ID is not available".
+  await attendiElaborazioneContainer(container.id);
 
   const pubblicato = await graphFetch<{ id: string }>(
     `/${igUserId}/media_publish`,
