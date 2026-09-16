@@ -1,4 +1,36 @@
 {
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
-  "queue": []
+  "queue": [
+    {
+      "id": "2379e382-3a2b-46d0-b6e3-3c0f7f08ca7a",
+      "createdAt": "2026-09-16T14:12:34.261Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "f4dd35ae-f8e0-4ff0-a56a-dd3c942098ce",
+        "filename": "telegram-1789567920625.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/1aba0725-5558-4e70-99b9-26044f92c0fe.jpg"
+      },
+      "caption": "Cuffie pronte, console accesa, sguardo sulla terrazza che si prepara ad accogliere gli ospiti. Prima che tutto inizi c'è questo momento silenzioso, tra il check del suono e il panorama che aspetta la musica giusta. Ogni festa parte da qui 🎧☀️\n\n📌 Tienilo a portata di mano per quando dovrai pensare alla musica del tuo matrimonio.\n\n📲 Scrivimi in DM o tocca il bottone WhatsApp sul mio profilo per info e disponibilità!",
+      "hashtags": [
+        "#weddingdj",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#djperfeste",
+        "#weddingmusic",
+        "#musicapermatrimoni",
+        "#djeventi",
+        "#lombardia",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte"
+    }
+  ]
 }
