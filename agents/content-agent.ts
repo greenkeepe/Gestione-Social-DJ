@@ -11,9 +11,10 @@
 //  3) Template scritto a mano — zero costo, sempre funzionante, con più
 //     varianti per pilastro così due post con lo stesso tema non escono
 //     mai identici.
-// Ogni didascalia finisce con una call to action verso WhatsApp (numero
-// reale da config/brand.json): l'obiettivo di chi guarda non è solo mettere
-// like, ma scrivere per informazioni.
+// Ogni didascalia finisce con un invito a scrivere in DM: l'obiettivo di chi
+// guarda non è solo mettere like, ma contattare. Niente link a WhatsApp nel
+// testo del post: su Instagram (e Facebook) un URL scritto nella didascalia
+// non è mai cliccabile — solo bio, Stories e pulsante di contatto lo sono.
 import "dotenv/config";
 import path from "node:path";
 import { readFile } from "node:fs/promises";
@@ -134,19 +135,21 @@ function testoIncoraggiaSalvataggio(): string {
   return varianti[Math.floor(Math.random() * varianti.length)];
 }
 
-function linkWhatsApp(numero: string | undefined): string | null {
-  const cifre = numero?.replace(/[^\d]/g, "") ?? "";
-  return cifre ? `https://wa.me/${cifre}` : null;
-}
-
-// Call to action fissa verso WhatsApp: generata sempre allo stesso modo
-// (mai dall'LLM, per non rischiare che alteri il numero/link) e aggiunta
-// in coda a QUALSIASI didascalia, indipendentemente da come è stato scritto
-// il corpo del testo.
-function testoCtaWhatsapp(brand: Record<string, any>): string | null {
-  const link = linkWhatsApp(brand.contatti?.whatsapp);
-  if (!link) return null;
-  return `📲 Scrivimi su WhatsApp per info e disponibilità: ${link}`;
+// Call to action fissa, generata sempre allo stesso modo (mai dall'LLM, per
+// non rischiare che la alteri) e aggiunta in coda a QUALSIASI didascalia.
+// Spinge al DM invece che a un link verso WhatsApp: nei post del feed
+// Instagram (e anche Facebook) un URL scritto nel testo NON è mai
+// cliccabile — solo la bio, le Stories con lo sticker link o il pulsante di
+// contatto del profilo lo sono. Il messaggio privato è invece nativo e a un
+// tocco su entrambe le piattaforme, senza bisogno di nessun setup.
+function testoCtaContatto(brand: Record<string, any>): string | null {
+  if (!brand.contatti?.whatsapp && !brand.nomeArte) return null;
+  const varianti = [
+    "📩 Scrivimi in DM per info e disponibilità!",
+    "📩 Mandami un messaggio privato per sapere di più!",
+    "📩 Scrivimi qui in DM: ti rispondo con tutti i dettagli!"
+  ];
+  return varianti[Math.floor(Math.random() * varianti.length)];
 }
 
 // Prepara "qualcosa da vedere" per l'LLM: per una foto è direttamente il suo
@@ -197,7 +200,7 @@ export async function eseguiContentAgent(): Promise<void> {
     const brand = await readBrand<Record<string, any>>();
     const calendar = await readData<CalendarFile>("content-calendar.json");
     const pilastro = pilastroDelGiorno(calendar);
-    const ctaWhatsapp = testoCtaWhatsapp(brand);
+    const ctaContatto = testoCtaContatto(brand);
     const notaUtente = target.istruzioniUtente?.trim()
       ? `\nNote di Andrea su questo contenuto specifico (usale SOLO se pertinenti, non inventare fatti/nomi/date che non sono qui): "${target.istruzioniUtente.trim()}".`
       : "";
@@ -211,7 +214,7 @@ export async function eseguiContentAgent(): Promise<void> {
         const promptVisione = `Guarda l'immagine allegata: è una foto o un fotogramma reale ripreso durante un evento/matrimonio con DJ.
 Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), nel tono di questo brand: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
 Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
-Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action verso WhatsApp: li aggiungo io dopo.`;
+Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
         const testoVisione = await generaTestoConLLMEImmagine(promptVisione, immagine);
         if (testoVisione) {
           corpo = testoVisione;
@@ -224,7 +227,7 @@ Massimo 55 parole, 2-3 emoji pertinenti se il brand le consente. NON inventare d
 Brand: ${JSON.stringify(brand)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
 Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
-Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action verso WhatsApp: li aggiungo io dopo.`;
+Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
         const testoLLM = await generaTestoConLLM(promptTesto);
         if (testoLLM) {
           corpo = testoLLM;
@@ -237,7 +240,7 @@ Massimo 55 parole, includi 2-3 emoji pertinenti se il brand le consente, NON inv
       corpo = templateBase(brand, pilastro);
     }
 
-    const righe = [corpo.trim(), testoIncoraggiaSalvataggio(), ctaWhatsapp].filter((r): r is string => Boolean(r));
+    const righe = [corpo.trim(), testoIncoraggiaSalvataggio(), ctaContatto].filter((r): r is string => Boolean(r));
     const caption = righe.join("\n\n");
 
     target.caption = caption;
