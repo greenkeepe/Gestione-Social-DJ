@@ -65,7 +65,7 @@ Nel repository, vai su **Settings → Secrets and variables → Actions** e aggi
 
 1. Vai su **[vercel.com](https://vercel.com)**, collega il tuo account GitHub.
 2. Importa questo repository, impostando come **Root Directory**: `dashboard`, e come **Framework Preset**: `Next.js`.
-3. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permesso **Contents: Read and write** limitato a questo repository — serve alla dashboard sia per leggere i dati sia per salvare i nuovi media caricati.
+3. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permessi **Contents: Read and write** e **Actions: Read and write**, limitato a questo repository — il primo serve alla dashboard per leggere i dati e salvare i nuovi media caricati, il secondo per far scrivere subito la didascalia quando premi "Usa per un post" nella pagina "Crea Reel AI" (altrimenti aspetta comunque il ciclo automatico del giorno dopo).
 4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), e i 5 valori R2 dal passo 3bis (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`).
 5. Deploy. La dashboard sarà raggiungibile da un link tipo `https://tuo-progetto.vercel.app`, protetto da password, da qualsiasi dispositivo.
 

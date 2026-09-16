@@ -35,7 +35,7 @@ import {
   controllaQualita,
   caricaSuR2
 } from "../lib/videoTools.js";
-import { generaSegmentiCandidati, costruisciPiano, testoHookDefault, parametriStile, type ProfiloReel, type PianoReel } from "../lib/reelPlanner.js";
+import { generaSegmentiCandidati, costruisciPiano, testoHookDefault, rimuoviEmoji, parametriStile, type ProfiloReel, type PianoReel } from "../lib/reelPlanner.js";
 
 interface ReelJob {
   id: string;
@@ -127,12 +127,12 @@ async function elaboraJob(job: ReelJob): Promise<void> {
 
     let testoHook = testoHookDefault(brand.nomeArte, piano.categoria);
     if (job.istruzioni?.trim() && process.env.ANTHROPIC_API_KEY) {
-      const promptTesto = `Scrivi un brevissimo testo (massimo 5 parole, in italiano, niente punteggiatura finale) da sovraimprimere come apertura di un Reel Instagram verticale per un DJ per matrimoni/eventi.
+      const promptTesto = `Scrivi un brevissimo testo (massimo 5 parole, in italiano, niente punteggiatura finale, NESSUNA emoji: il font del video non le supporta) da sovraimprimere come apertura di un Reel Instagram verticale per un DJ per matrimoni/eventi.
 Categoria del Reel: ${piano.categoria}. Nome d'arte: ${brand.nomeArte ?? ""}.
 Note dell'utente su questo video specifico (usale SOLO se pertinenti, non inventare fatti/nomi/date non presenti qui): "${job.istruzioni}".
 Rispondi SOLO col testo da mostrare, senza virgolette né spiegazioni.`;
       const generato = await generaTestoConLLM(promptTesto);
-      if (generato) testoHook = generato.replace(/["\n]/g, "").trim().slice(0, 40) || testoHook;
+      if (generato) testoHook = rimuoviEmoji(generato.replace(/["\n]/g, "")).slice(0, 40) || testoHook;
     }
     piano = { ...piano, testoHook };
 

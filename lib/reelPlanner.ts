@@ -233,16 +233,20 @@ export function costruisciPiano(opts: OpzioniPiano): PianoReel {
 // Testo di apertura di default (usato solo se non c'è una LLM configurata e
 // l'utente non ha scritto istruzioni proprie): riusa solo dati reali del
 // brand, non inventa mai eventi/nomi/prezzi non forniti.
-export function testoHookDefault(nomeArte: string | undefined, categoria: string): string | null {
+export function testoHookDefault(nomeArte: string | undefined, _categoria: string): string | null {
   const nome = nomeArte?.trim();
   if (!nome || nome.startsWith("MODIFICA")) return null;
-  const etichette: Record<string, string> = {
-    dj_event: `${nome} 🎧`,
-    wedding: `${nome} 💍`,
-    talking_head: nome,
-    business: nome,
-    promozionale: `${nome} 🎉`,
-    evento: nome
-  };
-  return etichette[categoria] ?? nome;
+  return nome;
+}
+
+// Il filtro drawtext di ffmpeg usa un font senza glifi emoji: un'emoji nel
+// testo sovraimpresso sul video esce come riquadro vuoto ("tofu"), non come
+// disegno a colori. Le emoji restano benvenute nelle didascalie dei post
+// (le scrive l'Agente Copy, mostrate da Instagram/Facebook con il proprio
+// font) ma vanno tolte da qualsiasi testo destinato a essere "bruciato" nei
+// pixel del Reel.
+const REGEX_EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu;
+
+export function rimuoviEmoji(testo: string): string {
+  return testo.replace(REGEX_EMOJI, "").replace(/\s+/g, " ").trim();
 }

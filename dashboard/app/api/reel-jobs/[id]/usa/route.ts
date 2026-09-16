@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { leggiDati, aggiornaDatiSuGitHub } from "../../../../../lib/dataSource";
+import { leggiDati, aggiornaDatiSuGitHub, lanciaWorkflow } from "../../../../../lib/dataSource";
 import type { ReelJobsFile } from "../../../../../lib/types";
 
 export const runtime = "nodejs";
@@ -63,9 +63,22 @@ export async function POST(_req: Request, { params }: { params: { id: string } }
       },
       `chore(reel-ai): job ${params.id} usato per un post`
     );
+
+    // 3) Proviamo a far scrivere SUBITO la didascalia lanciando il ciclo
+    // giornaliero (Occhio -> Copy) invece di aspettare il prossimo orario
+    // pianificato: così la pagina "Anteprima" mostra caption/hashtag/orario
+    // entro un paio di minuti. Se il token non ha il permesso "Actions" (o
+    // qualcos'altro va storto) non è bloccante: il ciclo giornaliero lo farà
+    // comunque più tardi, segnaliamo solo che il fast-track non è partito.
+    let cicloAvviato = true;
+    try {
+      await lanciaWorkflow("daily-agents.yml");
+    } catch {
+      cicloAvviato = false;
+    }
+
+    return NextResponse.json({ ok: true, cicloAvviato });
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }
-
-  return NextResponse.json({ ok: true });
 }
