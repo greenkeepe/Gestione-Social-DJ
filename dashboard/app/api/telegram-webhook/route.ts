@@ -107,17 +107,13 @@ export async function POST(req: Request) {
         `chore(media): foto ricevuta da Telegram`
       );
 
-      let dettaglioFastTrackFoto = "";
       try {
         await lanciaWorkflow("daily-agents.yml");
-      } catch (err) {
-        dettaglioFastTrackFoto = `\n\n[debug fast-track] ${err instanceof Error ? err.message : String(err)}`.slice(0, 400);
+      } catch {
+        /* non bloccante: il ciclo giornaliero la prenderà comunque */
       }
 
-      await inviaMessaggio(
-        chatId,
-        `📸 Foto ricevuta! Scrivo la didascalia e la pubblico al momento migliore. La trovi in dashboard.${dettaglioFastTrackFoto}`
-      );
+      await inviaMessaggio(chatId, "📸 Foto ricevuta! Scrivo la didascalia e la pubblico al momento migliore. La trovi in dashboard.");
       return NextResponse.json({ ok: true });
     }
 
@@ -173,17 +169,13 @@ export async function POST(req: Request) {
         `chore(reel-ai): video ricevuto da Telegram`
       );
 
-      let dettaglioFastTrack = "";
       try {
         await lanciaWorkflow("reel-maker.yml");
-      } catch (err) {
-        dettaglioFastTrack = `\n\n[debug fast-track] ${err instanceof Error ? err.message : String(err)}`.slice(0, 400);
+      } catch {
+        /* non bloccante: gira comunque ogni ~20 minuti */
       }
 
-      await inviaMessaggio(
-        chatId,
-        `🎬 Video ricevuto! Lo monto in un Reel e lo pubblico automaticamente appena pronto (di solito entro 20-30 minuti).${dettaglioFastTrack}`
-      );
+      await inviaMessaggio(chatId, "🎬 Video ricevuto! Lo monto in un Reel e lo pubblico automaticamente appena pronto (di solito entro 20-30 minuti).");
       return NextResponse.json({ ok: true });
     }
 
