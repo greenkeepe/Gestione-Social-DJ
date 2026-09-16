@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "errore",
+      "riepilogo": "Nuovo tentativo su Facebook ancora fallito: Graph API error [/266354304012276/photos]: {\"error\":{\"message\":\"(#200) Subject does not have permission to post photos on this page\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AIQ8C1URDucykWZhhiTNX50\"}}",
+      "timestamp": "2026-09-16T14:48:14.060Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
       "timestamp": "2026-09-16T14:34:04.520Z"
