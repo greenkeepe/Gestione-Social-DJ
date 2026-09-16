@@ -50,6 +50,16 @@
       "usatoIl": null,
       "source": "telegram",
       "istruzioniUtente": null
+    },
+    {
+      "id": "9c793904-a756-4139-98de-1181614c6340",
+      "url": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/7fadcae7-d10c-4f7c-b465-4185434b9b67.mp4",
+      "filename": "reel-telegram-1789572345838.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-16T15:26:37.309Z",
+      "usatoIl": null,
+      "source": "telegram",
+      "istruzioniUtente": null
     }
   ]
 }
