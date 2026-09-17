@@ -6,12 +6,14 @@ export const dynamic = "force-dynamic";
 
 const IDENTITA_DESCRIZIONI: Record<string, string> = {
   Direttore: "Agente Master: coordina tutti gli altri agenti ogni giorno nell'ordine corretto.",
-  Occhio: "Agente Media: sceglie il prossimo file caricato dalla pagina \"Carica media\", evitando ripetizioni.",
-  Copy: "Agente Contenuti: scrive didascalie e hashtag seguendo il calendario editoriale.",
+  Occhio: "Agente Media: sceglie il prossimo file caricato dalla pagina \"Carica media\", preferendo un video (Reel) quando disponibile.",
+  Copy: "Agente Contenuti: scrive didascalia e hashtag, imparando dai post già pubblicati quali pilastri/hashtag funzionano meglio.",
   Editore: "Agente Pubblicazione: pubblica su Instagram/Facebook nell'orario migliore della giornata.",
-  Cacciatore: "Agente Lead: individua chi ha interagito con i contenuti e prepara bozze di messaggi (mai invio automatico).",
-  Analista: "Agente Analytics: raccoglie le metriche e aggiorna i KPI.",
-  Stratega: "Agente Strategia: aggiorna l'avanzamento verso i 30 matrimoni 2027."
+  Cacciatore: "Agente Lead: individua chi ha interagito con i contenuti e prepara bozze di messaggi privati (mai invio automatico).",
+  Portavoce: "Agente Risposte Pubbliche: risponde in fretta ai nuovi commenti sotto gli ultimi post (mai in privato, mai prezzi/disponibilità).",
+  Analista: "Agente Analytics: raccoglie le metriche, aggiorna i KPI e misura il punteggio reale dei post pubblicati.",
+  Stratega: "Agente Strategia: aggiorna l'avanzamento verso i 30 matrimoni 2027.",
+  Regista: "Agente AI Reel Maker: trasforma un video grezzo caricato dalla pagina \"Crea Reel AI\" in un Reel verticale montato e verificato."
 };
 
 export default async function AgentiPage() {

@@ -36,9 +36,12 @@ export async function eseguiReplyAgent(): Promise<void> {
     const rispostiFile = await readData<RispostiFile>("comment-replies.json");
     const giaRisposti = new Set(rispostiFile.idCommentiRisposti);
 
+    // Non solo gli ultimissimi post: controlla più indietro nello storico, così
+    // trova ed evade anche i commenti rimasti indietro su post meno recenti
+    // (es. la prima volta che gira, o dopo un periodo senza commenti nuovi).
     let media: Awaited<ReturnType<typeof leggiUltimiMediaInstagram>> = [];
     try {
-      media = await leggiUltimiMediaInstagram(10);
+      media = await leggiUltimiMediaInstagram(30);
     } catch (err) {
       await logAgentRun({
         agente: IDENTITA.reply.nome,
