@@ -768,6 +768,38 @@
       "istruzioniUtente": null,
       "pillarId": "location",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "ac33f2cf-bbdb-41a3-903f-bda679ffa88e",
+      "createdAt": "2026-09-17T10:29:56.669Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "708fbd42-bf11-44a6-b964-78386be98f8f",
+        "filename": "telegram-1789635509938.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/1dc08f96-2bde-407d-8d7e-c9fe495b3d04.jpg"
+      },
+      "caption": "Pista piena, luci basse e quella canzone che fa alzare tutti in piedi. Momenti così me li tengo stretti. Questo è il vibe che porto io, Forte DJ.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM o tocca il bottone WhatsApp sul profilo per info e disponibilità.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#weddingdj",
+        "#sposi2027",
+        "#djperfeste",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#djeventi",
+        "#weddingpiemonte",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "playlist",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
