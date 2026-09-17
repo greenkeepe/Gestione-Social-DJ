@@ -15,13 +15,17 @@ recensioni) e i servizi elencati sono presi da `config/brand.json` nella root
 del repository — nessun dato è stato inventato. Due cose mancano ancora e sono
 segnalate chiaramente nel sito invece di essere finte:
 
-- **Foto e video**: non ci sono ancora asset reali in questo repository. La
-  Gallery (`data/gallery.ts`) e lo Showreel (`data/media.ts`) mostrano uno
-  stato "in arrivo" finché non vengono aggiunti file reali in
-  `public/images/` / `public/videos/`.
-- **Recensioni testuali**: non vengono riprodotte a mano (richiesta esplicita
-  del brief), ma mostrate tramite il widget ufficiale Musiqua nella sezione
-  Recensioni.
+- **Foto**: la Hero e la Gallery (`data/gallery.ts`) usano foto reali fornite
+  da Andrea (Forte DJ) da eventi realmente animati da lui. Mancano ancora un
+  ritratto reale per la sezione "Chi è Forte DJ" (`aboutMedia` in
+  `data/media.ts`) e scatti per la categoria "eventi aziendali": finché non
+  arrivano restano un placeholder editoriale, mai spacciato per una foto vera.
+- **Video/Showreel**: non c'è ancora un video reale in formato orizzontale
+  adatto alla sezione Showreel (`data/media.ts`); mostra uno stato "in arrivo"
+  finché non viene aggiunto un file in `public/videos/`.
+- **Recensioni**: 50 recensioni reali fornite direttamente dal cliente,
+  mostrate come schede native in `data/testimonials.ts` (nessun widget
+  esterno).
 
 ## Sviluppo
 

@@ -11,9 +11,8 @@ export const showreel = {
 // Aggiungere il file in public/images/ e valorizzare il campo corrispondente:
 // il componente passa automaticamente da placeholder a next/image reale.
 export const heroMedia = {
-  // Immagine o poster video a piena pagina per la Hero (formato paesaggio, es. 1920x1280).
-  imageSrc: "",
-  imageAlt: "",
+  imageSrc: "/images/hero-ceremony.jpg",
+  imageAlt: "Allestimento di una cerimonia di matrimonio con vista sulle colline",
 };
 
 export const aboutMedia = {
