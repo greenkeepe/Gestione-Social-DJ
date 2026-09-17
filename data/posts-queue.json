@@ -640,6 +640,38 @@
       "istruzioniUtente": null,
       "pillarId": "testimonianze",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "ae0b0492-9dd7-4800-980c-28b48e76dac7",
+      "createdAt": "2026-09-17T09:50:18.094Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Michela-D.-05-07-2021.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/9755221b-acdd-4a6b-8f9c-eb5669870f15.png"
+      },
+      "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Divertimento, educazione, eleganza e tanta, tanta musica. Siamo soddisfatti, sei il top. Grazie.\"\n— Michela D., Festa privata\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingday",
+        "#weddingdj",
+        "#weddingmusic",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#djperfeste",
+        "#serravallescrivia",
+        "#alessandria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-17",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }

@@ -6,6 +6,62 @@
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-17T09:50:38.229Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "ok",
+      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Ogni consolle ha una storia, stasera scrivo la mia.\"",
+      "timestamp": "2026-09-17T09:50:38.227Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-17T09:50:36.067Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-17T09:50:36.064Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-17T09:50:35.718Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-17T09:50:24.268Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-17T09:50:18.098Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "Generato un post dalla recensione di Michela D. (Festa privata), a rotazione con le foto/video.",
+      "timestamp": "2026-09-17T09:50:18.096Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-17T09:16:50.282Z"
     },
     {
