@@ -544,6 +544,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "9a10acae-b80a-4e16-bd71-b7bf09d04733",
+      "createdAt": "2026-09-17T09:10:45.847Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "8032c52c-fe3e-4790-934c-e739e50c2be2",
+        "filename": "reel-telegram-1789635371455.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/1ed31b46-03db-4147-8d8d-d20127fe456e.mp4"
+      },
+      "caption": "Solo il logo stasera, ma la serata sta per partire. Forte DJ in console, pronto a far succedere le cose.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#sposi2027",
+        "#weddingdj",
+        "#weddingday",
+        "#djperfeste",
+        "#djeventi",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#piemonte",
+        "#weddingpiemonte",
+        "#liguria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "momenti-forti",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
