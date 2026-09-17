@@ -49,13 +49,18 @@ export interface LocaleTrovato {
 // "out center N" limita la risposta a N risultati (con centro calcolato
 // anche per i poligoni, non solo per i punti) — evita risposte enormi su
 // raggi larghi che coprono più città.
-export async function cercaLocaliVicini(centro: Coordinate, raggioMetri: number, limite = 200): Promise<LocaleTrovato[]> {
+export async function cercaLocaliVicini(centro: Coordinate, raggioMetri: number, limite = 300): Promise<LocaleTrovato[]> {
+  // Niente filtro ["website"] qui: su OpenStreetMap il sito a volte è salvato
+  // come "website", a volte come "contact:website" — meglio prendere tutti i
+  // ristoranti/hotel con un nome e filtrare per la presenza di UNO dei due
+  // tag dopo, lato codice (vedi sotto), altrimenti si escludono metà dei
+  // locali veri solo per una differenza di tag.
   const query = `[out:json][timeout:25];
 (
-  node["amenity"="restaurant"]["website"](around:${raggioMetri},${centro.lat},${centro.lon});
-  way["amenity"="restaurant"]["website"](around:${raggioMetri},${centro.lat},${centro.lon});
-  node["tourism"="hotel"]["website"](around:${raggioMetri},${centro.lat},${centro.lon});
-  way["tourism"="hotel"]["website"](around:${raggioMetri},${centro.lat},${centro.lon});
+  node["amenity"="restaurant"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
+  way["amenity"="restaurant"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
+  node["tourism"="hotel"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
+  way["tourism"="hotel"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
 );
 out center ${limite};`;
 
@@ -79,13 +84,14 @@ out center ${limite};`;
   const risultati: LocaleTrovato[] = [];
   for (const el of json.elements) {
     const tags = el.tags;
-    if (!tags?.name || !tags?.website) continue;
+    const sitoWeb = tags?.website || tags?.["contact:website"];
+    if (!tags?.name || !sitoWeb) continue;
     const indirizzoParti = [tags["addr:street"], tags["addr:housenumber"], tags["addr:city"]].filter(Boolean);
     risultati.push({
       osmId: `${el.type}/${el.id}`,
       nome: tags.name,
       categoria: tags.amenity === "restaurant" ? "restaurant" : "hotel",
-      sitoWeb: tags.website,
+      sitoWeb,
       indirizzo: indirizzoParti.length > 0 ? indirizzoParti.join(" ") : null
     });
   }
