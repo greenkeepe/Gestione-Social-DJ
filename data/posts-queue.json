@@ -384,6 +384,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-09-16"
+    },
+    {
+      "id": "26a9bb25-ca58-42ba-842b-763c061aedbc",
+      "createdAt": "2026-09-17T06:04:00.647Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "cd5f3d1d-75fb-4f75-9ba6-aa781d2af5a6",
+        "filename": "reel-telegram-1789580298627.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/38cbbed0-6425-4d6e-a8bc-fbf4732214d0.mp4"
+      },
+      "caption": "Momenti così mi fanno amare questo lavoro. Prato, sole che scende, tutti con le braccia alzate senza nemmeno accorgersene. Le date per la prossima stagione stanno finendo in fretta, se avete un matrimonio in ballo muovetevi.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più.",
+      "hashtags": [
+        "#weddingdj",
+        "#weddingparty",
+        "#djmatrimonio",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#discjockey",
+        "#djprofessionista",
+        "#djwedding",
+        "#musicapermatrimoni",
+        "#liguria",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "call-to-action",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
