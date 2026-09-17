@@ -672,6 +672,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "63a3012e-767a-4ba2-ab27-fad5f28e3c48",
+      "createdAt": "2026-09-17T10:19:14.439Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "2eef3b48-f66c-4325-ac72-bff709054ecc",
+        "filename": "telegram-1789625102922.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/83f705ac-c819-41bd-b791-82bff7db9c0e.jpg"
+      },
+      "caption": "Sotto la pergola è tutto un movimento, mani in alto e nessuno fermo un attimo. Questo è il momento che aspetto ogni volta, dopo ore di prove e sistemazioni la pista si riempie così. Forte DJ.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#matrimonio2027",
+        "#weddingparty",
+        "#weddingdj",
+        "#weddingday",
+        "#djperfeste",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#djwedding",
+        "#piemonte",
+        "#liguria",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
