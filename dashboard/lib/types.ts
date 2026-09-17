@@ -97,6 +97,10 @@ export interface OutreachFile {
   contatti: ContattoLocale[];
 }
 
+export interface OutreachConfigFile {
+  province: string[];
+}
+
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
 
 export interface PianoReel {

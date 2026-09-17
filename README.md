@@ -142,7 +142,9 @@ Invece di aprire la dashboard per caricare foto/video, puoi mandarli direttament
 
 ## Contatti locali (email) — pagina "Locali"
 
-L'Agente Esploratore trova ogni giorno fino a 10 ristoranti/hotel nella zona servita (`config/brand.json > areaServita`) usando **OpenStreetMap** (gratuito, nessuna chiave API) e prepara una bozza di email di collaborazione per chi ha un'email pubblica sul sito. **Nessun invio automatico**: le bozze restano in attesa nella pagina "Locali" della dashboard finché non premi tu "Invia" — un contatto alla volta, mai un invio di massa, per non far passare la tua casella vera per spam e restare sempre sotto revisione umana.
+L'Agente Esploratore trova ogni giorno fino a 10 ristoranti/hotel con un'email pubblica sul sito e prepara una bozza di email di collaborazione, firmata con i tuoi contatti veri (telefono, email, Instagram, Facebook, sito — da `config/brand.json > contatti`, mai inventati). Usa **OpenStreetMap** (gratuito, nessuna chiave API). **Nessun invio automatico**: le bozze restano in attesa nella pagina "Locali" della dashboard finché non premi tu "Invia" — un contatto alla volta, mai un invio di massa, per non far passare la tua casella vera per spam e restare sempre sotto revisione umana. La stessa email non viene mai riproposta due volte (deduplica sia per locale sia per indirizzo email, per non ricontattare due volte una catena con un unico indirizzo condiviso).
+
+**Dove cerca**: dalla pagina "Locali" puoi scegliere in una tendina una o più province (Piemonte/Liguria/Lombardia) — se non ne scegli nessuna, l'Esploratore cerca nel raggio intorno alla tua sede (`config/brand.json > areaServita`, limitato a 60km per non appesantire troppo la ricerca su OpenStreetMap).
 
 **Limite onesto**: OpenStreetMap non segna in modo affidabile quali locali "fanno eventi/matrimoni" — l'Esploratore filtra solo per categoria (ristorante/hotel) e presenza di un sito web, non per rilevanza. Guarda sempre la bozza prima di inviarla. Allo stesso modo non ha quasi mai il nome di chi gestisce il locale: le email si rivolgono sempre al locale in generale, mai a una persona inventata.
 

@@ -1,0 +1,4 @@
+{
+  "_istruzioni": "Province in cui l'Agente Esploratore cerca i locali (sigle, vedi lib/province.ts). Modificabile dalla pagina 'Locali' della dashboard. Vuoto = usa il raggio intorno alla sede (config/brand.json > areaServita.base).",
+  "province": []
+}

@@ -1,6 +1,7 @@
 // Agente "Esploratore" — ogni giorno trova fino a 10 locali (ristoranti/
-// hotel) nell'area servita con un'email pubblica sul sito, e prepara una
-// bozza di email di collaborazione personalizzata sul locale trovato.
+// hotel) nell'area servita (o nelle province scelte dalla dashboard) con
+// un'email pubblica sul sito, e prepara una bozza di email di
+// collaborazione personalizzata sul locale trovato.
 //
 // REGOLA FERREA, come il Cacciatore: non invia MAI nulla in autonomia.
 // Ogni bozza resta "bozza-da-rivedere" finché non la spunti e invii tu
@@ -19,6 +20,7 @@ import { logAgentRun } from "../lib/agentLog.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { generaTestoConLLM } from "../lib/llm.js";
 import { geocodifica, cercaLocaliVicini, trovaEmailSulSito, type LocaleTrovato } from "../lib/openStreetMap.js";
+import { PROVINCE } from "../lib/province.js";
 import { IDENTITA } from "./identities.js";
 
 interface ContattoLocale {
@@ -42,11 +44,32 @@ interface OutreachFile {
   contatti: ContattoLocale[];
 }
 
+interface OutreachConfigFile {
+  _istruzioni: string;
+  province: string[]; // sigle, vedi lib/province.ts
+}
+
 // Serravalle Scrivia (AL): posizione approssimativa nota, usata solo se la
 // geocodifica in tempo reale (Nominatim) non dovesse rispondere.
 const FALLBACK_COORDINATE = { lat: 44.7166, lon: 8.8555 };
 
 const MASSIMO_AL_GIORNO = 10;
+
+// Firma reale, mai toccata dall'LLM (stesso principio della CTA nelle
+// didascalie social — vedi content-agent.ts): l'LLM/il template chiudono
+// solo con "Andrea", i contatti veri vengono sempre aggiunti qui in coda,
+// mai inventati o lasciati generare a un modello.
+function firma(brand: Record<string, any>): string {
+  const righe = [
+    `Andrea${brand.nomeArte ? ` — ${brand.nomeArte}` : ""}`,
+    brand.contatti?.telefono ? `Tel: ${brand.contatti.telefono}` : null,
+    brand.contatti?.email ? `Email: ${brand.contatti.email}` : null,
+    brand.contatti?.instagram ? `Instagram: instagram.com/${String(brand.contatti.instagram).replace(/^@/, "")}` : null,
+    brand.contatti?.facebook ? `Facebook: cerca "${brand.contatti.facebook}"` : null,
+    brand.contatti?.sitoWeb ? `Sito/recensioni: ${brand.contatti.sitoWeb}` : null
+  ].filter((r): r is string => Boolean(r));
+  return righe.join("\n");
+}
 
 function oggettoECorpoTemplate(nomeLocale: string, brand: Record<string, any>): { oggetto: string; corpo: string } {
   const nome = brand.nomeArte ?? "Forte DJ";
@@ -61,8 +84,7 @@ Mi piacerebbe presentarmi a voi di ${nomeLocale} come possibile fornitore di fid
 Se vi va, sarei felice di mandarvi qualche referenza o fissare un sopralluogo tecnico quando preferite.
 
 Grazie per l'attenzione,
-Andrea — ${nome}
-${brand.contatti?.telefono ?? ""}`.trim()
+Andrea`
   };
 }
 
@@ -74,9 +96,10 @@ async function scriviEmailPersonalizzata(
 Destinatario: il locale "${locale.nome}" (${locale.categoria === "hotel" ? "hotel/location per eventi" : "ristorante"}${locale.indirizzo ? `, ${locale.indirizzo}` : ""}). Non conosci il nome di chi gestisce il locale: rivolgiti genericamente ("Gentile team di ${locale.nome}" o simile), non inventare MAI un nome di persona.
 Contenuto: presentati (DJ per matrimoni/eventi, ${brand.anniEsperienza ?? "20"} anni di esperienza, ${brand.numeroEventiFatti ?? "200+"} eventi, oltre 75 recensioni 5 stelle), proponi di segnalarvi a vicenda per i rispettivi clienti che organizzano eventi, chiedi se sono disponibili a un contatto/sopralluogo.
 Tono: professionale, cordiale, mai invadente. Non inventare dettagli sul locale che non conosci (menu, stile, capienza). Non usare emoji.
+Chiudi SOLO con "Andrea" come firma: NON aggiungere telefono, email, social o altri contatti, li aggiungo io dopo in automatico.
 Rispondi ESATTAMENTE in questo formato, niente altro testo:
 OGGETTO: <riga oggetto>
-CORPO: <corpo della mail, con "Andrea" come firma>`;
+CORPO: <corpo della mail, chiusa con "Andrea">`;
 
   const risposta = await generaTestoConLLM(prompt);
   if (risposta) {
@@ -90,25 +113,51 @@ CORPO: <corpo della mail, con "Andrea" come firma>`;
   return { ...template, metodo: "template" };
 }
 
+// Cerca i locali nelle province scelte dalla dashboard (una ricerca per
+// ogni capoluogo, raggio più piccolo perché copre una sola provincia) — o,
+// se non ne è stata scelta nessuna, nel raggio intorno alla sede come
+// prima. Deduplica per osmId: la stessa struttura può comparire dalla
+// ricerca di più province confinanti.
+async function cercaCandidati(brand: Record<string, any>, province: string[]): Promise<LocaleTrovato[]> {
+  const trovati = new Map<string, LocaleTrovato>();
+
+  if (province.length > 0) {
+    const selezionate = PROVINCE.filter((p) => province.includes(p.sigla));
+    for (const provincia of selezionate) {
+      const centro = await geocodifica(`${provincia.capoluogo}, Italia`, FALLBACK_COORDINATE);
+      // 25km da un capoluogo copre bene una provincia media senza appesantire
+      // troppo la query Overpass (vedi lib/openStreetMap.ts per la storia
+      // dei tentativi precedenti con raggi più larghi).
+      const locali = await cercaLocaliVicini(centro, 25000);
+      for (const l of locali) trovati.set(l.osmId, l);
+    }
+  } else {
+    const indirizzoBase = brand.areaServita?.base ?? "Serravalle Scrivia, Italia";
+    const raggioKmConfigurato = parseInt(brand.areaServita?.raggioAzione ?? "100", 10) || 100;
+    const raggioKm = Math.min(raggioKmConfigurato, 60);
+    const centro = await geocodifica(indirizzoBase, FALLBACK_COORDINATE);
+    const locali = await cercaLocaliVicini(centro, raggioKm * 1000);
+    for (const l of locali) trovati.set(l.osmId, l);
+  }
+
+  return [...trovati.values()];
+}
+
 export async function eseguiOutreachAgent(): Promise<void> {
   try {
     const brand = await readBrand<Record<string, any>>();
     const outreachFile = await readData<OutreachFile>("outreach-locali.json");
-    const osmIdGiaTrattati = new Set(outreachFile.contatti.map((c) => c.osmId));
+    const config = await readData<OutreachConfigFile>("outreach-config.json").catch(() => ({ _istruzioni: "", province: [] }));
 
-    const indirizzoBase = brand.areaServita?.base ?? "Serravalle Scrivia, Italia";
-    // Il raggio dell'area servita (fino a 150km in brand.json) è troppo
-    // costoso da interrogare in un colpo solo su Overpass (query lenta,
-    // rischio di timeout lato server su un'area che copre più regioni):
-    // per una ricerca di 10 locali al giorno un raggio più piccolo è più
-    // che sufficiente, e resta comunque denso di ristoranti/hotel.
-    const raggioKmConfigurato = parseInt(brand.areaServita?.raggioAzione ?? "100", 10) || 100;
-    const raggioKm = Math.min(raggioKmConfigurato, 60);
-    const centro = await geocodifica(indirizzoBase, FALLBACK_COORDINATE);
+    // Doppio controllo: mai due volte lo stesso locale (osmId) E mai due
+    // volte la stessa casella email (es. una catena con più sedi che
+    // condividono lo stesso indirizzo di contatto).
+    const osmIdGiaTrattati = new Set(outreachFile.contatti.map((c) => c.osmId));
+    const emailGiaTrattate = new Set(outreachFile.contatti.map((c) => c.email.toLowerCase()));
 
     let trovati: LocaleTrovato[] = [];
     try {
-      trovati = await cercaLocaliVicini(centro, raggioKm * 1000);
+      trovati = await cercaCandidati(brand, config.province ?? []);
     } catch (err) {
       await logAgentRun({
         agente: IDENTITA.outreach.nome,
@@ -128,6 +177,7 @@ export async function eseguiOutreachAgent(): Promise<void> {
 
       const email = await trovaEmailSulSito(locale.sitoWeb).catch(() => null);
       if (!email) continue; // nessuna email trovata: si salta, mai inventata
+      if (emailGiaTrattate.has(email.toLowerCase())) continue; // stessa casella già contattata da un altro locale
 
       const { oggetto, corpo, metodo } = await scriviEmailPersonalizzata(locale, brand);
 
@@ -140,12 +190,13 @@ export async function eseguiOutreachAgent(): Promise<void> {
         sitoWeb: locale.sitoWeb,
         email,
         oggetto,
-        corpo,
+        corpo: `${corpo}\n\n${firma(brand)}`,
         metodo,
         status: "bozza-da-rivedere",
         creatoIl: nowIso(),
         inviataIl: null
       });
+      emailGiaTrattate.add(email.toLowerCase());
       nuoviContatti++;
     }
 
