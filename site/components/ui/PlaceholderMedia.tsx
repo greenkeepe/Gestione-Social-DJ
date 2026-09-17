@@ -5,14 +5,20 @@ import { cn } from "@/lib/utils";
  * Segnaposto editoriale per foto/video non ancora disponibili.
  * Non deve mai essere scambiato per un evento reale: va sostituito con
  * next/image reali non appena i contenuti sono disponibili.
+ *
+ * Il numero (stile "tavola" di un lookbook) sostituisce l'iconcina generica
+ * ripetuta ovunque: rende il placeholder un sistema editoriale coerente
+ * invece di un unico asset copiato/incollato in ogni sezione.
  */
 export function PlaceholderMedia({
   label,
+  number,
   className,
   tone = "dark",
   showIcon = true,
 }: {
   label?: string;
+  number?: string;
   className?: string;
   tone?: "dark" | "darker";
   showIcon?: boolean;
@@ -38,13 +44,25 @@ export function PlaceholderMedia({
         }}
         aria-hidden
       />
-      {showIcon ? (
-        <div className="relative flex flex-col items-center gap-3 text-champagne/70">
-          <Music2 className="h-6 w-6" strokeWidth={1.25} aria-hidden />
-          {label ? (
-            <span className="eyebrow text-champagne/60">{label}</span>
-          ) : null}
-        </div>
+      {number ? (
+        <span
+          className="font-display absolute -bottom-[0.15em] right-[0.05em] select-none text-[6rem] leading-none text-ivory/[0.06] sm:text-[8rem]"
+          aria-hidden
+        >
+          {number}
+        </span>
+      ) : null}
+      {label ? (
+        <span className="eyebrow absolute bottom-4 left-4 text-champagne/50">
+          {label}
+        </span>
+      ) : null}
+      {showIcon && !number && !label ? (
+        <Music2
+          className="relative h-6 w-6 text-champagne/70"
+          strokeWidth={1.25}
+          aria-hidden
+        />
       ) : null}
     </div>
   );

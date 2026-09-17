@@ -1,34 +1,41 @@
-import { Reveal } from "@/components/ui/Reveal";
+"use client";
+
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 export function Intro() {
+  const ref = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.95", "start 0.35"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.86, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.15, 1]);
+
   return (
-    <section id="intro" className="relative bg-ink py-28 md:py-40">
-      <div className="container-edit">
-        <div className="grid gap-10 md:grid-cols-12 md:gap-6">
-          <div className="md:col-span-4">
-            <Reveal>
-              <p className="eyebrow">The Forte DJ Experience</p>
-            </Reveal>
-          </div>
-          <div className="md:col-span-8">
-            <Reveal delay={0.08}>
-              <h2 className="font-display text-balance text-3xl leading-[1.15] text-ivory sm:text-4xl md:text-5xl">
-                NON È SOLO MUSICA.
-                <br />
-                <span className="text-champagne">
-                  È QUEL MOMENTO IN CUI TUTTI INIZIANO A BALLARE.
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <p className="mt-8 max-w-xl text-balance text-lg leading-relaxed text-ivory-dim">
-                Forte DJ costruisce esperienze musicali intorno alle persone,
-                all&rsquo;atmosfera e ai momenti più importanti del tuo evento —
-                leggendo la pista e adattando ogni scelta a chi la vive.
-              </p>
-            </Reveal>
-          </div>
-        </div>
+    <section
+      id="intro"
+      ref={ref}
+      className="flex min-h-[85svh] items-center justify-center bg-ink py-28"
+    >
+      <div className="container-edit text-center">
+        <p className="eyebrow mb-8">The Forte DJ Experience</p>
+        <motion.h2
+          style={
+            shouldReduceMotion
+              ? undefined
+              : { scale, opacity }
+          }
+          className="font-display text-balance text-3xl leading-[1.05] text-ivory sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          NON È SOLO MUSICA.
+          <br />
+          <span className="text-champagne">
+            È QUEL MOMENTO IN CUI TUTTI INIZIANO A BALLARE.
+          </span>
+        </motion.h2>
       </div>
     </section>
   );

@@ -113,7 +113,8 @@ export function Gallery({ full = false }: { full?: boolean }) {
                 style={{ breakInside: "avoid" }}
               >
                 <PlaceholderMedia
-                  label={`${slot.category} · foto in arrivo`}
+                  number={`0${index + 1}`}
+                  label={slot.category}
                   tone={index % 2 === 0 ? "dark" : "darker"}
                 />
               </div>

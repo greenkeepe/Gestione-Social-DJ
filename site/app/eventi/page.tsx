@@ -35,7 +35,7 @@ export default function EventiPage() {
                 className={index % 2 === 1 ? "md:order-2" : undefined}
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line">
-                  <PlaceholderMedia label={event.title} />
+                  <PlaceholderMedia number={`0${index + 1}`} />
                 </div>
               </Reveal>
               <div>

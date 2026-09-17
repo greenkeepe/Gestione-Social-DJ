@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Intro } from "@/components/sections/Intro";
 import { Wedding } from "@/components/sections/Wedding";
+import { TheMoment } from "@/components/sections/TheMoment";
 import { Numbers } from "@/components/sections/Numbers";
 import { Events } from "@/components/sections/Events";
 import { Experience } from "@/components/sections/Experience";
@@ -23,6 +24,7 @@ export default function Home() {
       <TrustBar />
       <Intro />
       <Wedding />
+      <TheMoment />
       <Numbers />
       <Events />
       <Experience />

@@ -20,6 +20,7 @@ export function Events() {
             <EventCard
               event={wedding}
               href={`/eventi#${wedding.slug}`}
+              index={0}
               variant="feature"
               className="h-full"
             />
@@ -28,6 +29,7 @@ export function Events() {
             <EventCard
               event={privateEvents}
               href={`/eventi#${privateEvents.slug}`}
+              index={1}
               className="h-full"
             />
           </Reveal>
@@ -35,6 +37,7 @@ export function Events() {
             <EventCard
               event={corporate}
               href={`/eventi#${corporate.slug}`}
+              index={2}
               className="h-full"
             />
           </Reveal>
@@ -42,6 +45,7 @@ export function Events() {
             <EventCard
               event={party}
               href={`/eventi#${party.slug}`}
+              index={3}
               variant="wide"
               className="h-full"
             />

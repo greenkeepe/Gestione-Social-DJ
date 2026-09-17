@@ -1,10 +1,29 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+import { cn } from "@/lib/utils";
 import { weddingMoments } from "@/data/events";
 
+// Non ogni tappa merita lo stesso peso visivo: alterniamo fotografia e pura
+// tipografia per costruire un'escalation verso il picco della serata (Party)
+// invece di ripetere sei volte lo stesso riquadro.
+const photoSteps = new Set([1, 3, 4]);
+const intenseSteps = new Set([4]);
+
 export function Wedding() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 0.7", "end 0.6"],
+  });
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
     <section className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
@@ -21,13 +40,29 @@ export function Wedding() {
           }
         />
 
-        <div className="relative mt-20 flex flex-col gap-16 md:mt-28 md:gap-28">
+        <div
+          ref={timelineRef}
+          className="relative mt-20 flex flex-col gap-16 md:mt-28 md:gap-28"
+        >
           <div
             className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-line md:block"
             aria-hidden
           />
+          <motion.div
+            className="absolute left-1/2 top-0 hidden w-px -translate-x-1/2 bg-champagne md:block"
+            style={{
+              height: "100%",
+              scaleY: shouldReduceMotion ? 1 : lineScale,
+              transformOrigin: "top",
+            }}
+            aria-hidden
+          />
+
           {weddingMoments.map((moment, index) => {
             const reversed = index % 2 === 1;
+            const isPhoto = photoSteps.has(index);
+            const isIntense = intenseSteps.has(index);
+
             return (
               <div
                 key={moment.key}
@@ -37,9 +72,36 @@ export function Wedding() {
                   className={reversed ? "md:order-2" : undefined}
                   y={28}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line">
-                    <PlaceholderMedia label={moment.title} />
-                  </div>
+                  {isPhoto ? (
+                    <div
+                      className={cn(
+                        "relative aspect-[4/3] overflow-hidden rounded-2xl border",
+                        isIntense
+                          ? "border-champagne/40 shadow-[0_0_60px_-10px_rgba(201,168,118,0.35)]"
+                          : "border-line",
+                      )}
+                    >
+                      <PlaceholderMedia
+                        number={`0${index + 1}`}
+                        tone={isIntense ? "darker" : "dark"}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={cn(
+                        "flex aspect-[4/3] items-center overflow-hidden px-2",
+                        reversed ? "md:justify-end" : "md:justify-start",
+                      )}
+                    >
+                      <span
+                        className="font-display select-none text-6xl uppercase leading-[0.95] text-transparent sm:text-7xl"
+                        style={{ WebkitTextStroke: "1.5px rgba(201,168,118,0.35)" }}
+                        aria-hidden
+                      >
+                        {moment.title}
+                      </span>
+                    </div>
+                  )}
                 </Reveal>
                 <Reveal
                   delay={0.1}

@@ -46,12 +46,38 @@ export function Hero() {
         />
       )}
       <motion.div
-        className="absolute -left-1/4 top-1/3 h-[40rem] w-[40rem] rounded-full bg-champagne/10 blur-[140px]"
-        animate={shouldReduceMotion ? undefined : { scale: [1, 1.15, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-1/4 left-[12%] h-[150%] w-[22vw]"
+        style={{
+          transform: "rotate(-16deg)",
+          background:
+            "linear-gradient(180deg, rgba(226,200,150,0.5) 0%, rgba(201,168,118,0.12) 45%, transparent 80%)",
+          filter: "blur(30px)",
+        }}
+        animate={shouldReduceMotion ? undefined : { opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden
+      />
+      <motion.div
+        className="absolute -top-1/4 right-[16%] h-[150%] w-[16vw]"
+        style={{
+          transform: "rotate(12deg)",
+          background:
+            "linear-gradient(180deg, rgba(226,200,150,0.35) 0%, rgba(201,168,118,0.1) 45%, transparent 80%)",
+          filter: "blur(30px)",
+        }}
+        animate={shouldReduceMotion ? undefined : { opacity: [0.7, 0.4, 0.7] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
       <div className="grain-overlay" aria-hidden />
+
+      <div
+        className="absolute bottom-16 left-8 hidden -rotate-90 text-[0.65rem] uppercase tracking-[0.4em] text-ivory-dim/50 lg:block"
+        style={{ transformOrigin: "left bottom" }}
+        aria-hidden
+      >
+        Forte DJ — Dj &amp; Events
+      </div>
 
       <motion.div
         variants={shouldReduceMotion ? undefined : container}

@@ -15,11 +15,13 @@ const imageAspect: Record<Variant, string> = {
 export function EventCard({
   event,
   href,
+  index,
   variant = "default",
   className,
 }: {
   event: EventCategory;
   href: string;
+  index: number;
   variant?: Variant;
   className?: string;
 }) {
@@ -37,7 +39,7 @@ export function EventCard({
     >
       <div className={cn("relative w-full shrink-0 overflow-hidden", imageAspect[variant], isWide && "sm:w-2/5")}>
         <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105">
-          <PlaceholderMedia label={event.title} />
+          <PlaceholderMedia number={`0${index + 1}`} />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" />
       </div>
