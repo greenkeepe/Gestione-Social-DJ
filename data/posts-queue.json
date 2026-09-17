@@ -576,6 +576,38 @@
       "istruzioniUtente": null,
       "pillarId": "momenti-forti",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "e51d830b-97ea-45cc-9d71-3141c824c647",
+      "createdAt": "2026-09-17T09:14:35.666Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "1a8c92e1-aa3f-4a17-95fa-7e6052af40c2",
+        "filename": "reel-telegram-1789635750371.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/5359fa27-9e41-4cae-a2dd-fc01d58c8a17.mp4"
+      },
+      "caption": "Pista piena, luci verdi, gente che balla senza pensarci due volte. Questo è il momento che cerco quando costruisco la scaletta: capire quando spingere e quando lasciare respirare la serata.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità.",
+      "hashtags": [
+        "#weddingdj",
+        "#weddingparty",
+        "#djmatrimonio",
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#discjockey",
+        "#piemonte",
+        "#alessandria",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "consigli",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
