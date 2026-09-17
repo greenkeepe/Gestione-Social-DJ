@@ -2,6 +2,10 @@
 
 Sistema di agenti autonomi che gestiscono la presenza social del tuo profilo DJ (matrimoni, eventi, party): pubblicano le foto/video che carichi dalla dashboard, individuano potenziali sposi interessati, tengono aggiornata una strategia verso l'obiettivo di **30 matrimoni nel 2027**, e tutto è controllabile da una dashboard raggiungibile da remoto. Costo attuale: **zero** (GitHub Actions + Vercel free tier).
 
+## Sito pubblico (`site/`)
+
+Oltre agli agenti (root) e alla dashboard privata (`dashboard/`), il repository contiene anche il sito vetrina pubblico di Forte DJ in `site/`: un progetto Next.js separato e deployabile in autonomia (stesso schema di `dashboard/`, Root Directory `site` su Vercel). Vedi `site/README.md` per contenuti, variabili d'ambiente e come popolare gallery/showreel con foto e video reali.
+
 ## Come è fatto il sistema
 
 Un **Agente Master ("Direttore")** coordina ogni giorno 8 agenti specializzati, ciascuno con un ruolo preciso; un nono agente (il **Regista**) lavora in coda separata trasformando i video grezzi in Reel:
