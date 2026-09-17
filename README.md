@@ -68,6 +68,14 @@ Per farlo funzionare servono due cose in più, oltre ai secrets GitHub del punto
 
 Se salti questi due passaggi la dashboard funziona lo stesso, semplicemente quella card non compare/il tasto non funziona.
 
+**Automazione completa (opzionale):** senza altro, dopo un rinnovo devi comunque incollare tu il nuovo token anche su Vercel in `META_PAGE_ACCESS_TOKEN` e rifare un Redeploy, perché la card legga quello giusto. Per evitare anche questo, aggiungi su Vercel:
+
+- `VERCEL_TOKEN`: un Personal Access Token creato su **vercel.com → Account Settings → Tokens → Create Token**.
+- `VERCEL_PROJECT_ID`: da **Project Settings → General → Project ID**.
+- `VERCEL_TEAM_ID`: da **Team Settings → General → Team ID**, solo se il progetto è sotto un account con più progetti/team (su un account personale singolo puoi lasciarlo vuoto).
+
+Con queste impostate, "Rinnova token ora" salva il nuovo token sia su GitHub sia su Vercel e riavvia da solo un deployment: non devi incollare nulla a mano.
+
 ### 4. Configura i secrets su GitHub
 
 Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`).

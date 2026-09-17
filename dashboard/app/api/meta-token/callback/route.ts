@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { GRAPH_BASE } from "../../../../lib/metaToken";
 import { aggiornaSecretGitHub } from "../../../../lib/githubSecret";
+import { aggiornaEnvVercel, riavviaDeploymentVercel } from "../../../../lib/vercelEnv";
 
 export const runtime = "nodejs";
 
@@ -81,22 +82,48 @@ export async function GET(req: Request) {
     }
 
     const nuovoToken = paginaTrovata.access_token;
-    const scrittura = await aggiornaSecretGitHub("META_PAGE_ACCESS_TOKEN", nuovoToken);
+    const scritturaGitHub = await aggiornaSecretGitHub("META_PAGE_ACCESS_TOKEN", nuovoToken);
 
-    if (scrittura.ok) {
+    const vercelConfigurato = Boolean(process.env.VERCEL_TOKEN && process.env.VERCEL_PROJECT_ID);
+    let scritturaVercel: { ok: boolean; errore?: string } | null = null;
+    let redeploy: { ok: boolean; errore?: string } | null = null;
+    if (vercelConfigurato) {
+      scritturaVercel = await aggiornaEnvVercel("META_PAGE_ACCESS_TOKEN", nuovoToken);
+      if (scritturaVercel.ok) {
+        redeploy = await riavviaDeploymentVercel();
+      }
+    }
+
+    const textarea = `<textarea rows="4" readonly onclick="this.select()">${nuovoToken}</textarea>`;
+
+    if (!scritturaGitHub.ok) {
       return pagina(
-        "Token rinnovato ✅",
-        `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è stato salvato automaticamente nel secret <code>META_PAGE_ACCESS_TOKEN</code> su GitHub. Non serve fare altro — i prossimi cicli agenti lo useranno da soli.</p>
-         <p>Per far comparire anche qui in dashboard il conto alla rovescia corretto, incolla lo stesso token anche su Vercel in <code>META_PAGE_ACCESS_TOKEN</code> (Settings → Environment Variables), poi fai un Redeploy:</p>
-         <textarea rows="4" readonly onclick="this.select()">${nuovoToken}</textarea>`
+        "Token generato, salvalo tu",
+        `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è pronto, ma non sono riuscito a salvarlo da solo nei secrets di GitHub: ${scritturaGitHub.errore}</p>
+         <p>Copialo e incollalo in <strong>Settings → Secrets and variables → Actions → META_PAGE_ACCESS_TOKEN → Update</strong>:</p>
+         ${textarea}`
       );
     }
 
+    if (vercelConfigurato && scritturaVercel?.ok && redeploy?.ok) {
+      return pagina(
+        "Token rinnovato ✅",
+        `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è stato salvato da solo sia su GitHub (<code>META_PAGE_ACCESS_TOKEN</code>) sia su Vercel, e ho avviato un nuovo deployment per farlo leggere subito. Non devi fare nulla: tra un minuto circa il conto alla rovescia qui in dashboard sarà già aggiornato.</p>`
+      );
+    }
+
+    const dettaglioVercel = !vercelConfigurato
+      ? `<p>Il salvataggio automatico su Vercel non è attivo (<code>VERCEL_TOKEN</code>/<code>VERCEL_PROJECT_ID</code> non configurati) — vedi README &gt; "Rinnovo del token Meta dalla dashboard" per attivarlo una volta per tutte.</p>`
+      : !scritturaVercel?.ok
+        ? `<p>Il salvataggio automatico su Vercel non è riuscito: ${scritturaVercel?.errore}</p>`
+        : `<p>Salvato su Vercel, ma il riavvio automatico del deployment non è riuscito: ${redeploy?.errore}. Fai un Redeploy a mano da Vercel → Deployments.</p>`;
+
     return pagina(
-      "Token generato, salvalo tu",
-      `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è pronto, ma non sono riuscito a salvarlo da solo nei secrets di GitHub: ${scrittura.errore}</p>
-       <p>Copialo e incollalo in <strong>Settings → Secrets and variables → Actions → META_PAGE_ACCESS_TOKEN → Update</strong>:</p>
-       <textarea rows="4" readonly onclick="this.select()">${nuovoToken}</textarea>`
+      "Token rinnovato su GitHub ✅ — completa su Vercel",
+      `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è stato salvato automaticamente nel secret <code>META_PAGE_ACCESS_TOKEN</code> su GitHub: le pubblicazioni continuano a funzionare da sole, non serve altro per quelle.</p>
+       ${dettaglioVercel}
+       <p>Per completare a mano, incollalo su Vercel in <code>META_PAGE_ACCESS_TOKEN</code> (Settings → Environment Variables) e fai un Redeploy:</p>
+       ${textarea}`
     );
   } catch (err) {
     return pagina("Errore imprevisto", `<p>${err instanceof Error ? err.message : String(err)}</p>`);
