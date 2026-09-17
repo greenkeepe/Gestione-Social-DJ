@@ -704,6 +704,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "ff0f9cc8-82bd-4731-9ed5-298850036a93",
+      "createdAt": "2026-09-17T10:23:11.202Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "a64e1d7e-bb97-480a-8e8f-7476b3dad330",
+        "filename": "telegram-1789635454432.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/da24f7df-ecda-470e-8405-fccdb4f165a8.jpg"
+      },
+      "caption": "Serata a tema anni '20, cappelli e frange ovunque, pista piena e gente che balla senza pensieri. Momenti così ripagano tutte le serate passate a scegliere la scaletta giusta.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nTrovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingitaly",
+        "#weddingparty",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#djwedding",
+        "#piemonte",
+        "#liguria",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
