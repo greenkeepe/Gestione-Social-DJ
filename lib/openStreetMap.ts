@@ -50,17 +50,20 @@ export interface LocaleTrovato {
 // anche per i poligoni, non solo per i punti) — evita risposte enormi su
 // raggi larghi che coprono più città.
 export async function cercaLocaliVicini(centro: Coordinate, raggioMetri: number, limite = 300): Promise<LocaleTrovato[]> {
-  // Niente filtro ["website"] qui: su OpenStreetMap il sito a volte è salvato
-  // come "website", a volte come "contact:website" — meglio prendere tutti i
-  // ristoranti/hotel con un nome e filtrare per la presenza di UNO dei due
-  // tag dopo, lato codice (vedi sotto), altrimenti si escludono metà dei
-  // locali veri solo per una differenza di tag.
+  // Su OpenStreetMap il sito web di un locale è salvato a volte come
+  // "website", a volte come "contact:website": niente filtro sul tag esatto
+  // (primo tentativo) escludeva chi usa il secondo; nessun filtro affatto
+  // (secondo tentativo) fa esplodere il costo della query su un raggio di
+  // 150km e va in timeout dal lato server Overpass. La via giusta è questo
+  // filtro con chiave a regex — [~"chiave"~"valore"] — che riconosce
+  // ENTRAMBE le varianti del tag già lato server, restando comunque leggero.
+  const filtroSito = `[~"^(website|contact:website)$"~"."]`;
   const query = `[out:json][timeout:25];
 (
-  node["amenity"="restaurant"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
-  way["amenity"="restaurant"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
-  node["tourism"="hotel"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
-  way["tourism"="hotel"]["name"](around:${raggioMetri},${centro.lat},${centro.lon});
+  node["amenity"="restaurant"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
+  way["amenity"="restaurant"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
+  node["tourism"="hotel"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
+  way["tourism"="hotel"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
 );
 out center ${limite};`;
 
