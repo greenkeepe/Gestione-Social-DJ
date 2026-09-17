@@ -63,7 +63,9 @@ export function MusiquaWidgetMount() {
     const tryClaim = () => {
       if (claimedRootRef.current) return;
 
-      const item = document.querySelector<HTMLElement>(".feedbacks__item");
+      const item = document.querySelector<HTMLElement>(
+        ".musiqua-rw-item, .feedbacks__item",
+      );
       if (!item) return;
 
       let root: HTMLElement | null = item;

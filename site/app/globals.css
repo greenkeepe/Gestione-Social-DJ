@@ -99,14 +99,12 @@ body {
 }
 
 /*
- * Il widget Musiqua renderizza ogni recensione con la classe reale
- * ".feedbacks__item" (verificata via DevTools sul sito live), dentro un
- * contenitore a lista verticale. Selezioniamo il genitore diretto delle
- * card con :has() — senza bisogno di conoscerne il nome — per trasformarlo
- * in uno scroller orizzontale, mantenendo i colori del sito per scrollbar
- * e sfumatura ai bordi. Il fallback generico sotto copre il caso in cui la
- * struttura cambi in futuro.
+ * Classi reali del widget Musiqua, verificate via DevTools sul sito live:
+ * ul.musiqua-rw-list > li.musiqua-rw-item (dentro div.musiqua-rw.musiqua-rw--card).
+ * Selettori mirati come target primario, con il vecchio fallback generico
+ * ".feedbacks__item"/:has() nel caso la struttura cambi in futuro.
  */
+.musiqua-widget-wrap .musiqua-rw-list,
 .musiqua-widget-wrap :has(> .feedbacks__item),
 .musiqua-widget-wrap :has(> li > .feedbacks__item),
 .musiqua-widget-wrap :has(> div > .feedbacks__item),
@@ -132,6 +130,7 @@ body {
   );
 }
 
+.musiqua-widget-wrap .musiqua-rw-item,
 .feedbacks__item,
 .musiqua-widget-wrap > div:has(> * + *) > *,
 .musiqua-widget-wrap > div > div:has(> * + *) > * {
@@ -147,6 +146,7 @@ body {
   flex-shrink: 0 !important;
 }
 
+.musiqua-widget-wrap .musiqua-rw-list::-webkit-scrollbar,
 .musiqua-widget-wrap :has(> .feedbacks__item)::-webkit-scrollbar,
 .musiqua-widget-wrap :has(> li > .feedbacks__item)::-webkit-scrollbar,
 .musiqua-widget-wrap :has(> div > .feedbacks__item)::-webkit-scrollbar,
@@ -155,6 +155,7 @@ body {
   height: 6px;
 }
 
+.musiqua-widget-wrap .musiqua-rw-list::-webkit-scrollbar-thumb,
 .musiqua-widget-wrap :has(> .feedbacks__item)::-webkit-scrollbar-thumb,
 .musiqua-widget-wrap :has(> li > .feedbacks__item)::-webkit-scrollbar-thumb,
 .musiqua-widget-wrap :has(> div > .feedbacks__item)::-webkit-scrollbar-thumb,
@@ -164,6 +165,7 @@ body {
   border-radius: 999px;
 }
 
+.musiqua-widget-wrap .musiqua-rw-list::-webkit-scrollbar-track,
 .musiqua-widget-wrap :has(> .feedbacks__item)::-webkit-scrollbar-track,
 .musiqua-widget-wrap :has(> li > .feedbacks__item)::-webkit-scrollbar-track,
 .musiqua-widget-wrap :has(> div > .feedbacks__item)::-webkit-scrollbar-track,
