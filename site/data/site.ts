@@ -30,8 +30,6 @@ export const siteConfig = {
 
   musiquaProfileUrl:
     "https://www.musiqua.it/band/forte-dj-eventi-e-matrimoni-14006",
-  musiquaWidgetSrc:
-    "https://www.musiqua.it/widget/reviews/forte-dj-eventi-e-matrimoni-14006.js",
 
   yearsExperience: "20",
   eventsCount: "200+",

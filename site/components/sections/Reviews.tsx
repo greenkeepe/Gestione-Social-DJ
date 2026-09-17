@@ -2,7 +2,8 @@ import { Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { MusiquaWidgetMount } from "@/components/sections/MusiquaWidgetMount";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
+import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/data/site";
 
 export function Reviews() {
@@ -15,7 +16,6 @@ export function Reviews() {
           description="Le esperienze di chi ha scelto Forte DJ per il proprio momento speciale."
           align="center"
         />
-
         <Reveal delay={0.1}>
           <div className="mt-8 flex items-center justify-center gap-3">
             <div className="flex items-center gap-1" aria-hidden>
@@ -24,18 +24,25 @@ export function Reviews() {
               ))}
             </div>
             <span className="text-sm text-ivory-dim">
-              <span className="font-display text-lg text-ivory">
-                {siteConfig.ratingValue}
-              </span>{" "}
+              <span className="font-display text-lg text-ivory">{siteConfig.ratingValue}</span>{" "}
               su 5 — verificato su Musiqua
             </span>
           </div>
         </Reveal>
+      </div>
 
-        <div className="musiqua-widget-wrap mx-auto mt-14 max-w-6xl rounded-2xl border border-line bg-ivory p-1 sm:p-4">
-          <MusiquaWidgetMount />
+      <Reveal delay={0.15}>
+        <div
+          className="mt-14 flex gap-5 overflow-x-auto px-5 pb-6 [scroll-padding-inline:1.25rem] [scrollbar-width:thin] sm:px-10 md:px-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]"
+          style={{ scrollSnapType: "x proximity" }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={`${testimonial.name}-${index}`} testimonial={testimonial} />
+          ))}
         </div>
+      </Reveal>
 
+      <div className="container-edit">
         <div className="mt-10 flex flex-col items-center gap-4">
           <a
             href={siteConfig.musiquaProfileUrl}
