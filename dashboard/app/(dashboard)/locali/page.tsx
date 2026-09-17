@@ -1,7 +1,7 @@
 import { leggiDati } from "../../../lib/dataSource";
 import type { OutreachConfigFile, OutreachFile } from "../../../lib/types";
-import { InviaEmailButton } from "../../../components/InviaEmailButton";
 import { ProvinceSelector } from "../../../components/ProvinceSelector";
+import { TabellaBozzeLocali } from "../../../components/TabellaBozzeLocali";
 
 export const dynamic = "force-dynamic";
 
@@ -24,32 +24,7 @@ export default async function LocaliPage() {
 
       <h3>Da rivedere ({daRivedere.length})</h3>
       {daRivedere.length === 0 && <p className="note">Nessuna nuova bozza al momento.</p>}
-      <div className="grid">
-        {daRivedere.map((c) => (
-          <div className="card" key={c.id}>
-            <div className="label">{c.nomeLocale}</div>
-            <p className="note">
-              {c.categoria === "hotel" ? "Hotel/location" : c.categoria === "restaurant" ? "Ristorante" : "Test"}
-              {c.indirizzo ? ` · ${c.indirizzo}` : ""}
-            </p>
-            <p className="note">
-              A: {c.email}
-              {c.sitoWeb && (
-                <>
-                  {" · "}
-                  <a href={c.sitoWeb} target="_blank" rel="noreferrer">sito web</a>
-                </>
-              )}
-            </p>
-            <p>
-              <strong>{c.oggetto}</strong>
-            </p>
-            <p style={{ whiteSpace: "pre-wrap" }}>{c.corpo}</p>
-            <p className="note">{new Date(c.creatoIl).toLocaleString("it-IT")}</p>
-            <InviaEmailButton id={c.id} nomeLocale={c.nomeLocale} />
-          </div>
-        ))}
-      </div>
+      {daRivedere.length > 0 && <TabellaBozzeLocali contatti={daRivedere} />}
 
       {storico.length > 0 && (
         <>

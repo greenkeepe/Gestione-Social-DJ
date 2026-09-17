@@ -439,6 +439,10 @@ tbody tr:hover td {
   background: var(--color-primary-soft);
 }
 
+.riga-cliccabile {
+  cursor: pointer;
+}
+
 th {
   color: var(--text-dim);
   font-weight: 700;
