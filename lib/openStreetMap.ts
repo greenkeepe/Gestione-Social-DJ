@@ -58,7 +58,7 @@ export async function cercaLocaliVicini(centro: Coordinate, raggioMetri: number,
   // filtro con chiave a regex — [~"chiave"~"valore"] — che riconosce
   // ENTRAMBE le varianti del tag già lato server, restando comunque leggero.
   const filtroSito = `[~"^(website|contact:website)$"~"."]`;
-  const query = `[out:json][timeout:25];
+  const query = `[out:json][timeout:45];
 (
   node["amenity"="restaurant"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
   way["amenity"="restaurant"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
@@ -71,7 +71,7 @@ out center ${limite};`;
     method: "POST",
     headers: { "content-type": "application/x-www-form-urlencoded", "User-Agent": USER_AGENT },
     body: `data=${encodeURIComponent(query)}`,
-    signal: AbortSignal.timeout(30000)
+    signal: AbortSignal.timeout(60000)
   });
   if (!res.ok) {
     throw new Error(`Overpass API ha risposto ${res.status}: ${await res.text()}`);

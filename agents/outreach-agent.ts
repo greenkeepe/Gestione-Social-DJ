@@ -97,7 +97,13 @@ export async function eseguiOutreachAgent(): Promise<void> {
     const osmIdGiaTrattati = new Set(outreachFile.contatti.map((c) => c.osmId));
 
     const indirizzoBase = brand.areaServita?.base ?? "Serravalle Scrivia, Italia";
-    const raggioKm = parseInt(brand.areaServita?.raggioAzione ?? "100", 10) || 100;
+    // Il raggio dell'area servita (fino a 150km in brand.json) è troppo
+    // costoso da interrogare in un colpo solo su Overpass (query lenta,
+    // rischio di timeout lato server su un'area che copre più regioni):
+    // per una ricerca di 10 locali al giorno un raggio più piccolo è più
+    // che sufficiente, e resta comunque denso di ristoranti/hotel.
+    const raggioKmConfigurato = parseInt(brand.areaServita?.raggioAzione ?? "100", 10) || 100;
+    const raggioKm = Math.min(raggioKmConfigurato, 60);
     const centro = await geocodifica(indirizzoBase, FALLBACK_COORDINATE);
 
     let trovati: LocaleTrovato[] = [];
