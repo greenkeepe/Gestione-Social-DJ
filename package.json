@@ -12,6 +12,7 @@
     "agent:leads": "tsx agents/leads-agent.ts",
     "agent:reply": "tsx agents/reply-agent.ts",
     "agent:note": "tsx agents/note-agent.ts",
+    "agent:outreach": "tsx agents/outreach-agent.ts",
     "agent:analytics": "tsx agents/analytics-agent.ts",
     "agent:strategy": "tsx agents/strategy-agent.ts",
     "agent:reelmaker": "tsx agents/reel-maker-agent.ts",

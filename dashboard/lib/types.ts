@@ -77,6 +77,26 @@ export interface RispostiFile {
   risposte: RispostaCommento[];
 }
 
+export interface ContattoLocale {
+  id: string;
+  osmId: string;
+  nomeLocale: string;
+  categoria: string;
+  indirizzo: string | null;
+  sitoWeb: string;
+  email: string;
+  oggetto: string;
+  corpo: string;
+  metodo: string;
+  status: "bozza-da-rivedere" | "inviata" | "scartata";
+  creatoIl: string;
+  inviataIl: string | null;
+}
+
+export interface OutreachFile {
+  contatti: ContattoLocale[];
+}
+
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
 
 export interface PianoReel {

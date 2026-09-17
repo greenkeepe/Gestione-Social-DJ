@@ -4,7 +4,7 @@ Sistema di agenti autonomi che gestiscono la presenza social del tuo profilo DJ 
 
 ## Come è fatto il sistema
 
-Un **Agente Master ("Direttore")** coordina ogni giorno 6 agenti specializzati, ciascuno con un ruolo preciso; un settimo agente (il **Regista**) lavora in coda separata trasformando i video grezzi in Reel:
+Un **Agente Master ("Direttore")** coordina ogni giorno 8 agenti specializzati, ciascuno con un ruolo preciso; un nono agente (il **Regista**) lavora in coda separata trasformando i video grezzi in Reel:
 
 | Agente | Nome | Cosa fa |
 |---|---|---|
@@ -13,6 +13,8 @@ Un **Agente Master ("Direttore")** coordina ogni giorno 6 agenti specializzati, 
 | Pubblicazione | **Editore** | Pubblica su Instagram e Facebook nell'orario storicamente più efficace della giornata |
 | Lead | **Cacciatore** | Individua chi ha commentato/interagito con interesse e prepara bozze di messaggi privati — **non invia mai nulla da solo** |
 | Risposte | **Portavoce** | Risponde pubblicamente e in fretta ai nuovi commenti sugli ultimi post (mai in privato, mai prezzi/disponibilità): la conversazione attiva sotto un post ne aumenta la visibilità algoritmica |
+| Note Instagram | **Appunti** | Propone ogni tanto su Telegram il testo di una Nota Instagram (max 60 caratteri) da incollare a mano — le Note non sono pubblicabili via API, nessuna eccezione possibile |
+| Partnership locali | **Esploratore** | Trova ogni giorno fino a 10 ristoranti/hotel della zona con un'email pubblica e prepara una bozza di collaborazione — **non invia mai nulla da solo**, invii tu con un tap dalla pagina "Locali" (vedi sezione dedicata sotto) |
 | Analytics | **Analista** | Legge le statistiche da Meta, aggiorna i KPI e misura il punteggio reale (like/commenti/salvataggi/condivisioni pesati) dei post pubblicati da almeno 2 giorni, per alimentare l'apprendimento del Copy |
 | Strategia | **Stratega** | Tiene aggiornato l'avanzamento verso l'obiettivo dei 30 matrimoni 2027 |
 | AI Reel Maker | **Regista** | Trasforma un video grezzo caricato dalla pagina "Crea Reel AI" in un Reel verticale montato e verificato (vedi sezione dedicata sotto) |
@@ -137,6 +139,19 @@ Invece di aprire la dashboard per caricare foto/video, puoi mandarli direttament
 6. Fatto: manda una foto al bot e in pochi secondi dovresti ricevere una risposta di conferma.
 
 **Limite noto**: la Bot API di Telegram permette di **scaricare** al massimo file da **20MB**, anche se in chat puoi inviarne di più grandi (limite della piattaforma Telegram, non di questo progetto — servirebbe un Bot API server self-hosted per aggirarlo, fuori scope per un sistema a costo zero). Per video più pesanti, comprimili prima di inviarli oppure carica il file direttamente dalla pagina "Crea Reel AI" della dashboard, che non ha questo limite.
+
+## Contatti locali (email) — pagina "Locali"
+
+L'Agente Esploratore trova ogni giorno fino a 10 ristoranti/hotel nella zona servita (`config/brand.json > areaServita`) usando **OpenStreetMap** (gratuito, nessuna chiave API) e prepara una bozza di email di collaborazione per chi ha un'email pubblica sul sito. **Nessun invio automatico**: le bozze restano in attesa nella pagina "Locali" della dashboard finché non premi tu "Invia" — un contatto alla volta, mai un invio di massa, per non far passare la tua casella vera per spam e restare sempre sotto revisione umana.
+
+**Limite onesto**: OpenStreetMap non segna in modo affidabile quali locali "fanno eventi/matrimoni" — l'Esploratore filtra solo per categoria (ristorante/hotel) e presenza di un sito web, non per rilevanza. Guarda sempre la bozza prima di inviarla. Allo stesso modo non ha quasi mai il nome di chi gestisce il locale: le email si rivolgono sempre al locale in generale, mai a una persona inventata.
+
+**Setup (una tantum) per l'invio con un tap:**
+1. Attiva la **verifica in due passaggi** sul tuo account Google, se non ce l'hai già (myaccount.google.com → Sicurezza).
+2. Sempre in Sicurezza, cerca **"Password per le app"**, creane una nuova (nome a piacere, es. "Gestione Social DJ") e copia la stringa di 16 caratteri che ti mostra — **non è la tua password normale**, è una chiave dedicata solo a questo, revocabile in qualsiasi momento senza toccare l'account.
+3. Aggiungi su **Vercel** (variabili d'ambiente della dashboard) `GMAIL_ADDRESS` (la tua casella Gmail, es. `info.andreaforte@gmail.com`) e `GMAIL_APP_PASSWORD` (la stringa del passo 2).
+
+Senza questa configurazione, l'Esploratore continua comunque a preparare le bozze (le vedi lo stesso nella dashboard), semplicemente il tasto "Invia" darà errore finché non è impostata.
 
 ## Provare il sistema in locale (facoltativo, per sviluppatori)
 

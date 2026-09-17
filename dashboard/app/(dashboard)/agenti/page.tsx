@@ -13,7 +13,9 @@ const IDENTITA_DESCRIZIONI: Record<string, string> = {
   Portavoce: "Agente Risposte Pubbliche: risponde in fretta ai nuovi commenti sotto gli ultimi post (mai in privato, mai prezzi/disponibilità).",
   Analista: "Agente Analytics: raccoglie le metriche, aggiorna i KPI e misura il punteggio reale dei post pubblicati.",
   Stratega: "Agente Strategia: aggiorna l'avanzamento verso i 30 matrimoni 2027.",
-  Regista: "Agente AI Reel Maker: trasforma un video grezzo caricato dalla pagina \"Crea Reel AI\" in un Reel verticale montato e verificato."
+  Regista: "Agente AI Reel Maker: trasforma un video grezzo caricato dalla pagina \"Crea Reel AI\" in un Reel verticale montato e verificato.",
+  Appunti: "Agente Note Instagram: propone ogni tanto su Telegram il testo di una Nota (max 60 caratteri) da incollare a mano.",
+  Esploratore: "Agente Partnership Locali: trova ogni giorno fino a 10 ristoranti/hotel della zona e prepara bozze di email (mai invio automatico)."
 };
 
 export default async function AgentiPage() {

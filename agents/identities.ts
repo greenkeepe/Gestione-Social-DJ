@@ -48,6 +48,11 @@ export const IDENTITA = {
     ruolo: "Agente Strategia",
     descrizione: "Tiene aggiornato il piano verso l'obiettivo dei 30 matrimoni 2027 e suggerisce aggiustamenti di rotta."
   },
+  outreach: {
+    nome: "Esploratore",
+    ruolo: "Agente Partnership Locali",
+    descrizione: "Trova ogni giorno fino a 10 ristoranti/hotel della zona con email pubblica e prepara bozze di collaborazione — non invia mai nulla in autonomia, solo bozze da rivedere e mandare con un tap dalla dashboard."
+  },
   note: {
     nome: "Appunti",
     ruolo: "Agente Note Instagram",

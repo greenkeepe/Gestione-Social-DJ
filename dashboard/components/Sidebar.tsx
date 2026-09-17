@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: "/contenuti", label: "Contenuti" },
   { href: "/lead", label: "Lead" },
   { href: "/risposte", label: "Risposte" },
+  { href: "/locali", label: "Locali" },
   { href: "/strategia", label: "Strategia 2027" },
   { href: "/utilizzo", label: "📊 Utilizzo servizi" },
   { href: "/link-utili", label: "🔗 Link utili" }
