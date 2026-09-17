@@ -46,8 +46,8 @@ export function FinalCTA() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-xl text-balance text-lg text-ivory-dim">
-            Raccontaci il tuo evento e scopri come possiamo trasformarlo nella
-            serata che avevi immaginato.
+            Raccontami il tuo evento e costruiamo insieme la sua colonna
+            sonora.
           </p>
         </Reveal>
         <Reveal delay={0.2}>

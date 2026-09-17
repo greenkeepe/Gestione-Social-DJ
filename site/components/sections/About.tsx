@@ -20,7 +20,7 @@ export function About() {
                 className="object-cover"
               />
             ) : (
-              <PlaceholderMedia label="Ritratto in arrivo" />
+              <PlaceholderMedia number={siteConfig.realName.charAt(0)} />
             )}
           </div>
         </Reveal>

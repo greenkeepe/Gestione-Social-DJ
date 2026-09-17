@@ -99,13 +99,13 @@ export function Showreel() {
           ) : (
             <>
               <PlaceholderMedia tone="darker" showIcon={false} />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-champagne/40 bg-ink/60 backdrop-blur-sm">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className="flex h-20 w-20 items-center justify-center rounded-full border border-champagne/40 bg-ink/60 backdrop-blur-sm"
+                  aria-hidden
+                >
                   <Play className="ml-1 h-7 w-7 text-champagne" aria-hidden />
                 </div>
-                <span className="eyebrow text-champagne/60">
-                  Showreel in arrivo
-                </span>
               </div>
             </>
           )}

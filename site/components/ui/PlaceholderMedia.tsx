@@ -8,7 +8,9 @@ import { cn } from "@/lib/utils";
  *
  * Il numero (stile "tavola" di un lookbook) sostituisce l'iconcina generica
  * ripetuta ovunque: rende il placeholder un sistema editoriale coerente
- * invece di un unico asset copiato/incollato in ogni sezione.
+ * invece di un unico asset copiato/incollato in ogni sezione. È sempre
+ * puramente decorativo (aria-hidden): un'etichetta a schermo con "label"
+ * viene esposta solo quando comunica un'informazione reale (es. categoria).
  */
 export function PlaceholderMedia({
   label,
@@ -32,8 +34,9 @@ export function PlaceholderMedia({
           : "bg-gradient-to-br from-charcoal via-ink to-black",
         className,
       )}
-      role="img"
-      aria-label={label ?? "Immagine in arrivo"}
+      aria-hidden={label ? undefined : "true"}
+      role={label ? "img" : undefined}
+      aria-label={label}
     >
       <div className="grain-overlay" aria-hidden />
       <div

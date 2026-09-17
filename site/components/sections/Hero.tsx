@@ -104,8 +104,8 @@ export function Hero() {
           variants={item}
           className="mt-8 max-w-xl text-balance text-lg text-ivory-dim md:text-xl"
         >
-          DJ &amp; Entertainment per matrimoni, eventi e party costruiti
-          intorno alle persone, alla musica e all&rsquo;energia della serata.
+          DJ &amp; Entertainment per matrimoni, eventi e party in cui musica,
+          atmosfera e persone diventano parte della stessa esperienza.
         </motion.p>
         <motion.div
           variants={item}
@@ -114,8 +114,8 @@ export function Hero() {
           <Button href="/contatti" size="lg">
             Verifica la disponibilità
           </Button>
-          <Button href="#matrimoni" variant="secondary" size="lg">
-            Scopri i matrimoni
+          <Button href="#showreel" variant="secondary" size="lg">
+            Vivi l&rsquo;esperienza
           </Button>
         </motion.div>
       </motion.div>
