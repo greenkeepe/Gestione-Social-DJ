@@ -120,6 +120,16 @@
       "usatoIl": null,
       "source": "telegram",
       "istruzioniUtente": null
+    },
+    {
+      "id": "0c350b78-4bd2-4ebe-bb39-384ef568b052",
+      "url": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/725fee3f-ed2c-4f3a-9fe1-f307f13bb9f5.jpg",
+      "filename": "telegram-1789625046061.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-17T06:04:06.186Z",
+      "usatoIl": null,
+      "source": "telegram",
+      "istruzioniUtente": null
     }
   ]
 }
