@@ -48,26 +48,32 @@ export async function riavviaDeploymentVercel(): Promise<{ ok: boolean; errore?:
     if (!progettoRes.ok) {
       return { ok: false, errore: `Impossibile leggere il progetto Vercel (${progettoRes.status}): ${await progettoRes.text()}` };
     }
-    const progetto = (await progettoRes.json()) as { id: string; name: string };
+    const progetto = (await progettoRes.json()) as {
+      id: string;
+      name: string;
+      link?: { type?: string; repoId?: number };
+    };
 
-    const deployRes = await fetch(
-      `${VERCEL_BASE}/v6/deployments${query({ projectId: progetto.id, target: "production", limit: "1", state: "READY" })}`,
-      { headers: headers() }
-    );
-    if (!deployRes.ok) {
-      return { ok: false, errore: `Impossibile leggere l'ultimo deployment (${deployRes.status}): ${await deployRes.text()}` };
+    const repoId = progetto.link?.repoId;
+    if (!repoId) {
+      return { ok: false, errore: "Il progetto Vercel non risulta collegato a un repository GitHub (link.repoId mancante)." };
     }
-    const deployJson = (await deployRes.json()) as { deployments?: Array<{ uid?: string; id?: string }> };
-    const ultimo = deployJson.deployments?.[0];
-    const deploymentId = ultimo?.uid ?? ultimo?.id;
-    if (!deploymentId) {
-      return { ok: false, errore: "Nessun deployment di produzione trovato da cui ripartire." };
-    }
+    // Stesso branch da cui la dashboard legge/scrive i dati (vedi dataSource.ts),
+    // così codice e dati restano sempre allineati. Deploy sempre dalla sorgente
+    // Git reale (mai clonando un deployment precedente): un clone riusa il
+    // codice di quel vecchio build e ignora i commit successivi, congelando la
+    // produzione a una versione vecchia per sempre.
+    const branch = process.env.GITHUB_BRANCH ?? "main";
 
     const nuovoRes = await fetch(`${VERCEL_BASE}/v13/deployments${query()}`, {
       method: "POST",
       headers: headers(),
-      body: JSON.stringify({ name: progetto.name, project: progetto.id, deploymentId, target: "production" })
+      body: JSON.stringify({
+        name: progetto.name,
+        project: progetto.id,
+        target: "production",
+        gitSource: { type: "github", ref: branch, repoId }
+      })
     });
     if (!nuovoRes.ok) {
       return { ok: false, errore: `Avvio del redeploy fallito (${nuovoRes.status}): ${await nuovoRes.text()}` };
