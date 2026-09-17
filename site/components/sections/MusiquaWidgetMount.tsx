@@ -7,12 +7,14 @@ import { siteConfig } from "@/data/site";
 /**
  * Il widget Musiqua non è un embed inline: si comporta come un badge
  * flottante, si aggiunge da solo come figlio diretto di <body> e si
- * autoposiziona con position:fixed in un angolo dello schermo, restando
- * "incollato" alla viewport invece di stare nel flusso della pagina.
- * Spostarlo nel DOM non basta (la sua stessa posizione fixed lo rimette
- * comunque in overlay): dobbiamo anche neutralizzare via stile inline la
- * sua posizione fixed/sticky, e farlo di nuovo ogni volta che il widget
- * prova a riapplicarla (osservando i cambi di style/class sull'elemento).
+ * autoposiziona con position:fixed in un angolo dello schermo. Inoltre ha
+ * un proprio foglio di stile che impila le recensioni in verticale e che,
+ * in certi casi, può avere una specificità/​!important pari o superiore al
+ * nostro CSS esterno. Per essere sicuri di vincere sempre la cascata,
+ * scriviamo lo stile chiave (posizione, layout orizzontale) direttamente
+ * come stile inline con !important via JS: uno stile inline !important ha
+ * la priorità più alta possibile, superiore a qualunque regola in un
+ * foglio di stile esterno, indipendentemente dalla sua specificità.
  */
 function neutralizeFixedPositioning(el: HTMLElement) {
   const computed = window.getComputedStyle(el);
@@ -30,11 +32,43 @@ function neutralizeFixedPositioning(el: HTMLElement) {
   }
 }
 
-// La posizione fixed potrebbe essere su un wrapper interno, non solo sulla
-// radice: controlliamo l'intero sottoalbero (è piccolo, un widget recensioni).
-function neutralizeSubtree(root: HTMLElement) {
+function forceHorizontalScroll(root: HTMLElement) {
+  const list =
+    root.querySelector<HTMLElement>(".musiqua-rw-list") ??
+    root.querySelector<HTMLElement>("ul");
+
+  if (list) {
+    list.style.setProperty("display", "flex", "important");
+    list.style.setProperty("flex-wrap", "nowrap", "important");
+    list.style.setProperty("align-items", "stretch", "important");
+    list.style.setProperty("overflow-x", "auto", "important");
+    list.style.setProperty("overflow-y", "hidden", "important");
+    list.style.setProperty("gap", "1.25rem", "important");
+    list.style.setProperty("padding-bottom", "1rem", "important");
+    list.style.setProperty("margin", "0", "important");
+    list.style.setProperty("list-style", "none", "important");
+    list.style.setProperty("scroll-snap-type", "x proximity", "important");
+    list.style.setProperty("-webkit-overflow-scrolling", "touch", "important");
+  }
+
+  const items = root.querySelectorAll<HTMLElement>(
+    ".musiqua-rw-item, .feedbacks__item",
+  );
+  items.forEach((item) => {
+    item.style.setProperty("flex", "0 0 auto", "important");
+    item.style.setProperty("width", "min(22rem, 82vw)", "important");
+    item.style.setProperty("margin", "0", "important");
+    item.style.setProperty("scroll-snap-align", "start", "important");
+  });
+}
+
+// La posizione fixed e il layout potrebbero essere su un wrapper interno,
+// non solo sulla radice: controlliamo l'intero sottoalbero (è piccolo, un
+// widget recensioni).
+function applyFixes(root: HTMLElement) {
   neutralizeFixedPositioning(root);
   root.querySelectorAll<HTMLElement>("*").forEach(neutralizeFixedPositioning);
+  forceHorizontalScroll(root);
 }
 
 export function MusiquaWidgetMount() {
@@ -48,15 +82,16 @@ export function MusiquaWidgetMount() {
     let styleObserver: MutationObserver | null = null;
 
     const watchAndFix = (root: HTMLElement) => {
-      neutralizeSubtree(root);
-      // Alcuni widget flottanti riapplicano la propria posizione fixed
-      // dopo il caricamento (onload, resize, scroll): continuiamo a
-      // correggerla se succede, sull'intero sottoalbero.
-      styleObserver = new MutationObserver(() => neutralizeSubtree(root));
+      applyFixes(root);
+      // Il widget potrebbe riapplicare la propria posizione/layout dopo il
+      // caricamento (onload, resize, scroll, o un suo re-render interno):
+      // continuiamo a correggerlo se succede.
+      styleObserver = new MutationObserver(() => applyFixes(root));
       styleObserver.observe(root, {
         attributes: true,
         attributeFilter: ["style", "class"],
         subtree: true,
+        childList: true,
       });
     };
 
