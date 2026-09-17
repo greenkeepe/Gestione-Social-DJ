@@ -512,6 +512,38 @@
       "istruzioniUtente": null,
       "pillarId": "consigli",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "0860438e-de3a-415c-a79e-a39d75284d7b",
+      "createdAt": "2026-09-17T09:04:06.037Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Stefano-e-Marta-M.-26-01-2023.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/2292cdec-d06f-4927-80f0-41407559cefb.png"
+      },
+      "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Non ci sono molte parole per descrivere il suo operato. Matrimonio e festa riuscitissime. Un professionista!\"\n— Stefano e Marta M., Matrimonio\n\nTrovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli.",
+      "hashtags": [
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#weddingdj",
+        "#weddingitaly",
+        "#sposi2027",
+        "#animazionematrimonio",
+        "#djwedding",
+        "#weddingmusic",
+        "#djeventi",
+        "#serravallescrivia",
+        "#lombardia",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-09-17",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
