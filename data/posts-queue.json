@@ -736,6 +736,38 @@
       "istruzioniUtente": null,
       "pillarId": "testimonianze",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "63d502aa-e73c-4fce-8c37-3e6d9cd7a40f",
+      "createdAt": "2026-09-17T10:26:29.456Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "1ee003b5-9fae-4f55-8381-399222a02230",
+        "filename": "telegram-1789635458694.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/042f3273-459a-4645-9dea-a86a16d19434.jpg"
+      },
+      "caption": "Cantina d'altri tempi, mattoni a vista e bottiglie ovunque. Ci siamo montati in mezzo con luci verdi e casse, un contrasto che mi piace da matti. Setup pronto, si aspetta solo che parta la festa.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nTrovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#sposi2027",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#djperfeste",
+        "#djeventi",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#serravallescrivia",
+        "#weddingpiemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "location",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
