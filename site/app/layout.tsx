@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { MobileCTA } from "@/components/layout/MobileCTA";
+import { ExitIntent } from "@/components/layout/ExitIntent";
 import { siteConfig, technicalBaseUrl } from "@/data/site";
 import { localBusinessJsonLd } from "@/lib/seo";
 
@@ -93,6 +94,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <MobileCTA />
+        <ExitIntent />
       </body>
     </html>
   );

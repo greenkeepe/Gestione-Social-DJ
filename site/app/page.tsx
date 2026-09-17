@@ -27,11 +27,11 @@ export default function Home() {
       <TheMoment />
       <Numbers />
       <Events />
+      <Reviews />
       <Experience />
       <Gallery />
       <Showreel />
       <Services />
-      <Reviews />
       <About />
       <MusicGenres />
       <Process />

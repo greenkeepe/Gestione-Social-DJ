@@ -113,7 +113,7 @@ export function Showreel() {
 
         <div className="mt-12 flex justify-center">
           <Button href="/contatti" size="lg">
-            Viviamo il tuo evento
+            Verifica la disponibilità
           </Button>
         </div>
       </div>

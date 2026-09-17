@@ -47,7 +47,7 @@ export function Gallery({ full = false }: { full?: boolean }) {
   const hasRealImages = images.length > 0;
 
   return (
-    <section className="bg-ink py-28 md:py-40">
+    <section id="gallery" className="scroll-mt-20 bg-ink py-28 md:py-40">
       <div className="container-edit">
         <SectionHeading
           eyebrow="Gallery"

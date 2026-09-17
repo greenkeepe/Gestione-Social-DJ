@@ -66,7 +66,7 @@ export default function EventiPage() {
                 </Reveal>
                 <Reveal delay={0.26}>
                   <div className="mt-8">
-                    <Button href="/contatti">Parliamo del tuo evento</Button>
+                    <Button href="/contatti">Verifica la disponibilità</Button>
                   </div>
                 </Reveal>
               </div>

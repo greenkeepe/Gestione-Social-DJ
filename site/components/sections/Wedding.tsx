@@ -25,7 +25,7 @@ export function Wedding() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="bg-charcoal py-28 md:py-40">
+    <section id="matrimoni" className="scroll-mt-20 bg-charcoal py-28 md:py-40">
       <div className="container-edit">
         <SectionHeading
           eyebrow="Matrimoni"
@@ -123,9 +123,12 @@ export function Wedding() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="mt-20 flex justify-center md:mt-28">
-            <Button href="/matrimoni" size="lg">
-              Parliamo del tuo matrimonio
+          <div className="mt-20 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:mt-28">
+            <Button href="/contatti" size="lg">
+              Verifica la disponibilità
+            </Button>
+            <Button href="#gallery" variant="secondary" size="lg">
+              Guarda la gallery
             </Button>
           </div>
         </Reveal>

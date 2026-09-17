@@ -114,8 +114,8 @@ export function Hero() {
           <Button href="/contatti" size="lg">
             Verifica la disponibilità
           </Button>
-          <Button href="#showreel" variant="secondary" size="lg">
-            Guarda l&rsquo;esperienza
+          <Button href="#matrimoni" variant="secondary" size="lg">
+            Scopri i matrimoni
           </Button>
         </motion.div>
       </motion.div>
