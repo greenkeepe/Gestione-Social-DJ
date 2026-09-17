@@ -39,6 +39,14 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      # Vedi lo stesso commento in daily-agents.yml: questo workflow gira
+      # ogni 20 minuti e a volte innesca lui stesso daily-agents.yml (vedi
+      # "Fast-track" sotto) — ci si allinea sempre all'ultimissima versione
+      # del branch prima di elaborare, così le due esecuzioni non si
+      # scontrano al momento del push.
+      - name: Allinea con l'ultima versione del branch
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}"
+
       - name: Esegui Agente Reel Maker (Regista)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

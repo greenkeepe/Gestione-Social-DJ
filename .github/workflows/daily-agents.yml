@@ -49,6 +49,17 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      # actions/checkout blocca il codice al commit che esisteva nel momento
+      # in cui QUESTO workflow è stato innescato, non a quello reale al
+      # momento in cui parte davvero: se un'altra esecuzione (es. il Regista
+      # che fa "fast-track" di questo stesso workflow subito dopo un suo
+      # push) ha nel frattempo aggiornato data/, gli agenti qui sotto
+      # leggerebbero dati già superati e il push finale fallirebbe. Ci si
+      # allinea sempre all'ultimissima versione prima di far girare gli
+      # agenti, invece di scoprirlo solo al momento del push.
+      - name: Allinea con l'ultima versione del branch
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}"
+
       - name: Esegui Agente Master (Direttore)
         env:
           META_APP_ID: ${{ secrets.META_APP_ID }}

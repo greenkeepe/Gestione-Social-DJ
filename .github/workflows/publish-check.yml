@@ -37,6 +37,13 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      # Vedi lo stesso commento in daily-agents.yml: ci si allinea sempre
+      # all'ultimissima versione del branch prima di pubblicare, così
+      # l'Editore controlla lo stato vero (es. "già pubblicato oggi?") e
+      # non uno superato da un'altra esecuzione nel frattempo.
+      - name: Allinea con l'ultima versione del branch
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}"
+
       - name: Esegui Agente Pubblicazione (Editore)
         env:
           TZ: Europe/Rome
