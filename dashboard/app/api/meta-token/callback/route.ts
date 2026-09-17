@@ -86,7 +86,9 @@ export async function GET(req: Request) {
     if (scrittura.ok) {
       return pagina(
         "Token rinnovato ✅",
-        `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è stato salvato automaticamente nel secret <code>META_PAGE_ACCESS_TOKEN</code> su GitHub. Non serve fare altro — i prossimi cicli agenti lo useranno da soli.</p>`
+        `<p>Il nuovo token per <strong>${paginaTrovata.name}</strong> è stato salvato automaticamente nel secret <code>META_PAGE_ACCESS_TOKEN</code> su GitHub. Non serve fare altro — i prossimi cicli agenti lo useranno da soli.</p>
+         <p>Per far comparire anche qui in dashboard il conto alla rovescia corretto, incolla lo stesso token anche su Vercel in <code>META_PAGE_ACCESS_TOKEN</code> (Settings → Environment Variables), poi fai un Redeploy:</p>
+         <textarea rows="4" readonly onclick="this.select()">${nuovoToken}</textarea>`
       );
     }
 
