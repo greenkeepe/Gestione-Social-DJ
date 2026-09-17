@@ -9,11 +9,49 @@
       "mimeType": "video/mp4",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-17T09:13:04.447Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-17T09:13:57.517Z",
       "erroreMessaggio": null,
-      "risultato": null,
+      "risultato": {
+        "reelUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/7d25ffc1-4b81-4f27-bf1e-5e0075320df6.mp4",
+        "durataSecondi": 10.9,
+        "piano": {
+          "categoria": "wedding",
+          "stile": "clean",
+          "profiloUsato": "wedding",
+          "durataTarget": 12,
+          "hook": {
+            "inizio": 3,
+            "fine": 6
+          },
+          "segmenti": [
+            {
+              "inizio": 3,
+              "fine": 6,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 0,
+              "fine": 3,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 6,
+              "fine": 9,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 9,
+              "fine": 12,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Forte DJ"
+        }
+      },
       "source": "telegram"
     },
     {
