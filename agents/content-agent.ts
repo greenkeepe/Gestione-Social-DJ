@@ -23,6 +23,7 @@ import { logAgentRun } from "../lib/agentLog.js";
 import { generaTestoConLLM, generaTestoConLLMEImmagine, type ImmagineDaAnalizzare } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
 import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
+import { campionaPesato, type VoceLogPerformance } from "../lib/performanceLearning.js";
 import {
   verificaFfmpegDisponibile,
   creaCartellaTemporanea,
@@ -53,12 +54,25 @@ interface CalendarFile {
   settimanaTipo: Record<string, string>;
 }
 
+interface PublishedLogFile {
+  log: VoceLogPerformance[];
+}
+
 const GIORNI = ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"];
 
-function pilastroDelGiorno(calendar: CalendarFile): CalendarFile["pillars"][number] {
+// Nei giorni con un tema fisso nel calendario editoriale, quello resta
+// invariato (è una scelta esplicita di Andrea). Negli altri giorni, invece
+// di scegliere a caso, impara dai post già pubblicati quali pilastri hanno
+// portato più interazione reale — vedi lib/performanceLearning.ts. Con poco
+// storico misurato si comporta comunque come una scelta casuale.
+function pilastroDelGiorno(calendar: CalendarFile, log: VoceLogPerformance[]): CalendarFile["pillars"][number] {
   const nomeGiorno = GIORNI[new Date().getDay()];
   const idPreferito = calendar.settimanaTipo[nomeGiorno];
-  return calendar.pillars.find((p) => p.id === idPreferito) ?? calendar.pillars[Math.floor(Math.random() * calendar.pillars.length)];
+  if (idPreferito) {
+    return calendar.pillars.find((p) => p.id === idPreferito) ?? calendar.pillars[Math.floor(Math.random() * calendar.pillars.length)];
+  }
+  const [scelto] = campionaPesato(calendar.pillars, 1, (p) => p.id, log, (v) => (v.pillarId ? [v.pillarId] : []));
+  return scelto ?? calendar.pillars[Math.floor(Math.random() * calendar.pillars.length)];
 }
 
 // Più varianti per pilastro: senza LLM configurata il template resta comunque
@@ -103,35 +117,39 @@ function templateBase(brand: Record<string, any>, pilastro: CalendarFile["pillar
   return opzioni[Math.floor(Math.random() * opzioni.length)].trim();
 }
 
-// Pesca N hashtag a caso da un pool senza ripetizioni: usato per non
-// pubblicare sempre lo stesso set fisso di hashtag (che l'algoritmo tende a
-// penalizzare come "ripetitivo") e per comparire in più ricerche diverse.
-function pescaHashtag(pool: string[] | undefined, n: number): string[] {
-  if (!pool || pool.length === 0) return [];
-  const mescolato = [...pool].sort(() => Math.random() - 0.5);
-  return mescolato.slice(0, Math.min(n, mescolato.length));
-}
-
 // Mix di hashtag ampi (molta concorrenza, molte ricerche), di nicchia
 // (settore DJ/matrimoni, concorrenza minore) e locali (zona servita): più
 // efficace per farsi scoprire da chi non segue ancora l'account rispetto a
-// ripetere sempre gli stessi 2-3 hashtag identici.
-export function costruisciHashtag(brand: Record<string, any>): string[] {
+// ripetere sempre gli stessi 2-3 hashtag identici. Dentro ogni pool, pesca
+// pesando per quali hashtag hanno già portato più interazione reale in
+// passato (vedi lib/performanceLearning.ts) — con poco storico misurato si
+// comporta come una pesca casuale uniforme, esattamente come prima.
+export function costruisciHashtag(brand: Record<string, any>, log: VoceLogPerformance[] = []): string[] {
   const pool = brand.toneOfVoice?.hashtagPool;
   if (pool) {
-    return [...pescaHashtag(pool.ampi, 5), ...pescaHashtag(pool.nicchia, 4), ...pescaHashtag(pool.locali, 3)];
+    const chiaviVoceDi = (v: VoceLogPerformance) => v.hashtags ?? [];
+    const chiaveHashtag = (h: string) => h;
+    return [
+      ...campionaPesato<string>(pool.ampi ?? [], 5, chiaveHashtag, log, chiaviVoceDi),
+      ...campionaPesato<string>(pool.nicchia ?? [], 4, chiaveHashtag, log, chiaviVoceDi),
+      ...campionaPesato<string>(pool.locali ?? [], 3, chiaveHashtag, log, chiaviVoceDi)
+    ];
   }
   return brand.toneOfVoice?.hashtagFissi ?? []; // retrocompatibilità se brand.json non è stato aggiornato
 }
 
-// Riga pensata per spingere salvataggi/tag/condivisioni: sono i segnali che
-// l'algoritmo di Instagram pesa di più per mostrare un post anche a chi non
-// segue ancora l'account (non solo ai follower esistenti come i like).
+// Riga pensata per spingere salvataggi/tag/condivisioni/follow: sono i
+// segnali che l'algoritmo di Instagram pesa di più per mostrare un post
+// anche a chi non segue ancora l'account (non solo ai follower esistenti
+// come i like) — un invito esplicito a seguire converte quella visibilità
+// in più follower, non solo in più interazioni sul singolo post.
 function testoIncoraggiaSalvataggio(): string {
   const varianti = [
     "Salva questo post, ti torna utile quando organizzi la musica del tuo evento.",
     "Tienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.",
-    "Se ti è piaciuto taggami chi si sta per sposare o organizza una festa."
+    "Se ti è piaciuto taggami chi si sta per sposare o organizza una festa.",
+    "Seguimi per altri momenti così: ne pubblico spesso.",
+    "Se ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli."
   ];
   return varianti[Math.floor(Math.random() * varianti.length)];
 }
@@ -207,7 +225,8 @@ export async function eseguiContentAgent(): Promise<void> {
 
     const brand = await readBrand<Record<string, any>>();
     const calendar = await readData<CalendarFile>("content-calendar.json");
-    const pilastro = pilastroDelGiorno(calendar);
+    const publishedLog = await readData<PublishedLogFile>("published-log.json").catch(() => ({ log: [] }));
+    const pilastro = pilastroDelGiorno(calendar, publishedLog.log);
     const ctaContatto = testoCtaContatto(brand);
     const notaUtente = target.istruzioniUtente?.trim()
       ? `\nNote di Andrea su questo contenuto specifico (usale SOLO se pertinenti, non inventare fatti/nomi/date che non sono qui): "${target.istruzioniUtente.trim()}".`
@@ -267,7 +286,7 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
     const caption = righe.join("\n\n");
 
     target.caption = caption;
-    target.hashtags = costruisciHashtag(brand);
+    target.hashtags = costruisciHashtag(brand, publishedLog.log);
     target.pillarId = pilastro.id;
     target.orarioProgrammato = scegliOrarioDelGiorno(new Date().getDay()).ora;
     // Il sistema pubblica sempre in giornata (l'Editore gira più volte al

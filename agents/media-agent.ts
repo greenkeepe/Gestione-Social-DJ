@@ -169,7 +169,12 @@ export async function eseguiMediaAgent(): Promise<void> {
       return;
     }
 
-    const prossimo = libreria.items.find((m) => m.usatoIl === null);
+    // Preferisce un video non ancora usato quando disponibile: su Instagram
+    // i Reel hanno molta più portata organica dei post statici. Se non ci
+    // sono video in attesa, prende comunque la foto più vecchia — nessun
+    // media aspetta mai per sempre solo perché non è un video.
+    const nonUsati = libreria.items.filter((m) => m.usatoIl === null);
+    const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
 
     if (!prossimo) {
       await logAgentRun({

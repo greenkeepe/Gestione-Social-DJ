@@ -169,7 +169,9 @@ export async function eseguiPublishingAgent(): Promise<void> {
       facebookId: risultatoFb?.id ?? null,
       instagramStoryId: storiaIg?.id ?? null,
       formato: target.formato,
-      pillarId: target.pillarId ?? null
+      pillarId: target.pillarId ?? null,
+      hashtags: target.hashtags ?? [],
+      punteggio: null
     });
     await writeData("published-log.json", logFile);
     await writeData("posts-queue.json", queueFile);

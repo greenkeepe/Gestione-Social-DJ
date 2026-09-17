@@ -33,6 +33,11 @@ export const IDENTITA = {
     ruolo: "Agente Lead & Outreach",
     descrizione: "Individua chi interagisce con i contenuti (commenti, menzioni) e prepara bozze di messaggi personalizzati. Non invia mai nulla in autonomia: prepara solo la bozza per revisione e invio manuale."
   },
+  reply: {
+    nome: "Portavoce",
+    ruolo: "Agente Risposte Pubbliche",
+    descrizione: "Risponde pubblicamente e in fretta ai nuovi commenti sugli ultimi post, per aumentare la visibilità algoritmica. Mai in privato, mai prezzi o disponibilità: solo cordialità sotto al post."
+  },
   analytics: {
     nome: "Analista",
     ruolo: "Agente Analytics",

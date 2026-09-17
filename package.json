@@ -10,6 +10,7 @@
     "agent:content": "tsx agents/content-agent.ts",
     "agent:publishing": "tsx agents/publishing-agent.ts",
     "agent:leads": "tsx agents/leads-agent.ts",
+    "agent:reply": "tsx agents/reply-agent.ts",
     "agent:analytics": "tsx agents/analytics-agent.ts",
     "agent:strategy": "tsx agents/strategy-agent.ts",
     "agent:reelmaker": "tsx agents/reel-maker-agent.ts",

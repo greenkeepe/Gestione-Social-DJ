@@ -149,3 +149,11 @@ export async function leggiUltimiMediaInstagram(limit = 10): Promise<Array<{ id:
   });
   return res.data;
 }
+
+// --- Risposta pubblica a un commento (per Agente Portavoce) -----------------
+// Risponde SOTTO al post, in pubblico — diverso da un DM privato. È un
+// segnale di conversazione attiva che l'algoritmo di Instagram considera
+// nel decidere quanto mostrare un post anche a chi non segue ancora.
+export async function rispondiCommento(commentId: string, message: string): Promise<{ id: string }> {
+  return graphFetch(`/${commentId}/replies`, { message }, "POST");
+}

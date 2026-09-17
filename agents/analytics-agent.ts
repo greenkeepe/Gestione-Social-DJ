@@ -3,9 +3,10 @@
 import "dotenv/config";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
-import { leggiInsightsAccountInstagram } from "../lib/metaGraph.js";
+import { leggiInsightsAccountInstagram, leggiInsightsPost } from "../lib/metaGraph.js";
 import { misuraUsoR2 } from "../lib/r2Usage.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
+import { calcolaPunteggio } from "../lib/performanceLearning.js";
 import { IDENTITA } from "./identities.js";
 
 interface ServiceLimitsFile {
@@ -59,6 +60,56 @@ async function aggiornaUsoR2(): Promise<void> {
   await writeData("service-limits.json", limiti);
 }
 
+interface PublishedLogEntry {
+  timestamp: string;
+  instagramId: string | null;
+  punteggio?: number | null;
+}
+
+interface PublishedLogFile {
+  _istruzioni: string;
+  log: PublishedLogEntry[];
+}
+
+// Misura il punteggio reale (like, commenti, salvataggi, condivisioni
+// pesati — vedi lib/performanceLearning.ts) dei post pubblicati da almeno 2
+// giorni (tempo perché le metriche si stabilizzino) e non ancora misurati.
+// Alimenta il Content Agent, che lo usa per imparare quali pilastri
+// editoriali e hashtag portano più interazione reale (vedi content-agent.ts
+// > pilastroDelGiorno/costruisciHashtag). Separato dal resto del ciclo (try/
+// catch proprio): un problema qui non deve mai bloccare la misura di R2 o
+// dei follower.
+async function aggiornaPunteggiPubblicati(): Promise<number> {
+  const logFile = await readData<PublishedLogFile>("published-log.json");
+  const dueGiorniFa = Date.now() - 2 * 24 * 60 * 60 * 1000;
+  let misurati = 0;
+
+  for (const voce of logFile.log) {
+    if (!voce.instagramId || voce.punteggio != null) continue;
+    if (new Date(voce.timestamp).getTime() > dueGiorniFa) continue;
+
+    try {
+      const insights = await leggiInsightsPost(voce.instagramId);
+      const dati = (insights as { data?: Array<{ name: string; values?: Array<{ value: number }> }> }).data ?? [];
+      const mappa = Object.fromEntries(dati.map((m) => [m.name, m.values?.[0]?.value ?? 0]));
+      voce.punteggio = calcolaPunteggio({
+        likes: mappa.likes,
+        comments: mappa.comments,
+        saved: mappa.saved,
+        shares: mappa.shares,
+        impressions: mappa.impressions,
+        reach: mappa.reach
+      });
+      misurati++;
+    } catch (err) {
+      console.error(`[Analista] Impossibile leggere gli insights del post ${voce.instagramId}:`, err);
+    }
+  }
+
+  if (misurati > 0) await writeData("published-log.json", logFile);
+  return misurati;
+}
+
 interface KpisFile {
   ultimoAggiornamento: string | null;
   instagram: { followers: number | null; followersTrend7g: number | null; reachMedio30g: number | null; engagementRateMedio30g: number | null };
@@ -72,6 +123,10 @@ interface LeadsFile {
 
 export async function eseguiAnalyticsAgent(): Promise<void> {
   await aggiornaUsoR2().catch((err) => console.error("[Analista] Misura uso R2 fallita:", err));
+  const punteggiMisurati = await aggiornaPunteggiPubblicati().catch((err) => {
+    console.error("[Analista] Misura punteggi post pubblicati fallita:", err);
+    return 0;
+  });
 
   try {
     const kpis = await readData<KpisFile>("kpis.json");
@@ -107,7 +162,7 @@ export async function eseguiAnalyticsAgent(): Promise<void> {
       agente: IDENTITA.analytics.nome,
       identita: IDENTITA.analytics.ruolo,
       status: "ok",
-      riepilogo: `KPI aggiornati: ${kpis.instagram.followers ?? "n/d"} follower Instagram, ${kpis.obiettivo2027.leadAttivi} lead attivi.`
+      riepilogo: `KPI aggiornati: ${kpis.instagram.followers ?? "n/d"} follower Instagram, ${kpis.obiettivo2027.leadAttivi} lead attivi.${punteggiMisurati > 0 ? ` Misurato il punteggio di ${punteggiMisurati} post pubblicati.` : ""}`
     });
   } catch (err) {
     await logAgentRun({

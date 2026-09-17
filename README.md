@@ -4,19 +4,24 @@ Sistema di agenti autonomi che gestiscono la presenza social del tuo profilo DJ 
 
 ## Come è fatto il sistema
 
-Un **Agente Master ("Direttore")** coordina ogni giorno 5 agenti specializzati, ciascuno con un ruolo preciso; un sesto agente (il **Regista**) lavora in coda separata trasformando i video grezzi in Reel:
+Un **Agente Master ("Direttore")** coordina ogni giorno 6 agenti specializzati, ciascuno con un ruolo preciso; un settimo agente (il **Regista**) lavora in coda separata trasformando i video grezzi in Reel:
 
 | Agente | Nome | Cosa fa |
 |---|---|---|
-| Media | **Occhio** | Sceglie il prossimo file caricato dalla pagina "Carica media" della dashboard, evitando ripetizioni |
-| Contenuti | **Copy** | Scrive didascalia e hashtag seguendo il calendario editoriale e il tono di voce del brand |
+| Media | **Occhio** | Sceglie il prossimo file caricato dalla pagina "Carica media" della dashboard, preferendo un video (Reel) quando disponibile — su Instagram ottengono molta più portata organica dei post statici |
+| Contenuti | **Copy** | Scrive didascalia e hashtag seguendo il calendario editoriale e il tono di voce del brand. Nei giorni senza un tema fisso, e nella scelta degli hashtag, impara dai post già pubblicati quali pilastri/hashtag hanno portato più interazione reale (mai a scapito della varietà — vedi `lib/performanceLearning.ts`) |
 | Pubblicazione | **Editore** | Pubblica su Instagram e Facebook nell'orario storicamente più efficace della giornata |
-| Lead | **Cacciatore** | Individua chi ha commentato/interagito con interesse e prepara bozze di messaggi — **non invia mai nulla da solo** |
-| Analytics | **Analista** | Legge le statistiche da Meta e aggiorna i KPI |
+| Lead | **Cacciatore** | Individua chi ha commentato/interagito con interesse e prepara bozze di messaggi privati — **non invia mai nulla da solo** |
+| Risposte | **Portavoce** | Risponde pubblicamente e in fretta ai nuovi commenti sugli ultimi post (mai in privato, mai prezzi/disponibilità): la conversazione attiva sotto un post ne aumenta la visibilità algoritmica |
+| Analytics | **Analista** | Legge le statistiche da Meta, aggiorna i KPI e misura il punteggio reale (like/commenti/salvataggi/condivisioni pesati) dei post pubblicati da almeno 2 giorni, per alimentare l'apprendimento del Copy |
 | Strategia | **Stratega** | Tiene aggiornato l'avanzamento verso l'obiettivo dei 30 matrimoni 2027 |
 | AI Reel Maker | **Regista** | Trasforma un video grezzo caricato dalla pagina "Crea Reel AI" in un Reel verticale montato e verificato (vedi sezione dedicata sotto) |
 
 Tutto gira **automaticamente** tramite GitHub Actions (gratuito), scrive i risultati in file dati (`data/*.json`) versionati su git, e la **dashboard** (`dashboard/`, deployabile gratis su Vercel) li legge in tempo reale per farteli controllare da telefono o computer, ovunque tu sia.
+
+### Crescita follower: cosa fa il sistema (e cosa non farà mai)
+
+Nessuna automazione garantisce una crescita "esponenziale" senza rischi: le tattiche che lo farebbero (follow/unfollow di massa, commenti spam su profili altrui, follower comprati) violano i Termini di Servizio di Meta e rischiano la sospensione dell'account, quindi non sono mai state implementate. Le leve usate sono tutte lecite e già attive: preferenza per i Reel (più portata organica), risposte pubbliche rapide ai commenti (Portavoce), CTA "seguimi"/"salva" più forti nelle didascalie, hashtag e pilastri editoriali scelti in base a cosa ha già funzionato davvero (non a rotazione fissa). L'unica leva che dà davvero un salto di scala resta la pubblicità a pagamento (Meta Ads), che richiede un budget reale e non è automatizzata qui.
 
 ### Perché il contatto con potenziali sposi è "solo bozze"
 

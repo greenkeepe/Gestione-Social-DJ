@@ -11,6 +11,7 @@ import { IDENTITA } from "./identities.js";
 import { eseguiMediaAgent } from "./media-agent.js";
 import { eseguiContentAgent } from "./content-agent.js";
 import { eseguiLeadsAgent } from "./leads-agent.js";
+import { eseguiReplyAgent } from "./reply-agent.js";
 import { eseguiAnalyticsAgent } from "./analytics-agent.js";
 import { eseguiStrategyAgent } from "./strategy-agent.js";
 
@@ -84,6 +85,7 @@ export async function eseguiMasterAgent(): Promise<void> {
   await eseguiPasso("Agente Media (Occhio)", eseguiMediaAgent);
   await eseguiPasso("Agente Contenuti (Copy)", eseguiContentAgent);
   await eseguiPasso("Agente Lead (Cacciatore)", eseguiLeadsAgent);
+  await eseguiPasso("Agente Risposte (Portavoce)", eseguiReplyAgent);
   await eseguiPasso("Agente Analytics (Analista)", eseguiAnalyticsAgent);
   await eseguiPasso("Agente Strategia (Stratega)", eseguiStrategyAgent);
 
