@@ -48,6 +48,11 @@ export const IDENTITA = {
     ruolo: "Agente Strategia",
     descrizione: "Tiene aggiornato il piano verso l'obiettivo dei 30 matrimoni 2027 e suggerisce aggiustamenti di rotta."
   },
+  note: {
+    nome: "Appunti",
+    ruolo: "Agente Note Instagram",
+    descrizione: "Propone ogni tanto su Telegram il testo di una Nota Instagram (max 60 caratteri) da incollare a mano — le Note non sono pubblicabili via API, quindi non pubblica mai nulla da solo."
+  },
   reelMaker: {
     nome: "Regista",
     ruolo: "Agente AI Reel Maker",
