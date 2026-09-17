@@ -32,7 +32,7 @@ export function Reviews() {
           </div>
         </Reveal>
 
-        <div className="musiqua-widget-wrap mx-auto mt-14 max-w-4xl rounded-2xl border border-line bg-ivory p-1 sm:p-4">
+        <div className="musiqua-widget-wrap mx-auto mt-14 max-w-6xl rounded-2xl border border-line bg-ivory p-1 sm:p-4">
           <div id="musiqua-reviews-widget" />
           <Script src={siteConfig.musiquaWidgetSrc} strategy="lazyOnload" />
         </div>

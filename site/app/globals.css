@@ -95,6 +95,81 @@ body {
 .musiqua-widget-wrap {
   isolation: isolate;
   color-scheme: light;
+  position: relative;
+}
+
+/*
+ * Il widget Musiqua renderizza ogni recensione con la classe reale
+ * ".feedbacks__item" (verificata via DevTools sul sito live), dentro un
+ * contenitore a lista verticale. Selezioniamo il genitore diretto delle
+ * card con :has() — senza bisogno di conoscerne il nome — per trasformarlo
+ * in uno scroller orizzontale, mantenendo i colori del sito per scrollbar
+ * e sfumatura ai bordi. Il fallback generico sotto copre il caso in cui la
+ * struttura cambi in futuro.
+ */
+.musiqua-widget-wrap :has(> .feedbacks__item),
+.musiqua-widget-wrap :has(> li > .feedbacks__item),
+.musiqua-widget-wrap :has(> div > .feedbacks__item),
+.musiqua-widget-wrap > div:has(> * + *),
+.musiqua-widget-wrap > div > div:has(> * + *) {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1.25rem;
+  padding-block: 0.25rem 1rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-champagne) transparent;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.feedbacks__item,
+.musiqua-widget-wrap > div:has(> * + *) > *,
+.musiqua-widget-wrap > div > div:has(> * + *) > * {
+  flex: 0 0 auto !important;
+  width: min(22rem, 82vw) !important;
+  margin-bottom: 0 !important;
+  scroll-snap-align: start;
+}
+
+/* Solo prevenzione shrink per un eventuale wrapper <li>: mai un nome di
+   tag che possa coincidere con il contenitore di riga stesso. */
+.musiqua-widget-wrap li:has(> .feedbacks__item) {
+  flex-shrink: 0 !important;
+}
+
+.musiqua-widget-wrap :has(> .feedbacks__item)::-webkit-scrollbar,
+.musiqua-widget-wrap :has(> li > .feedbacks__item)::-webkit-scrollbar,
+.musiqua-widget-wrap :has(> div > .feedbacks__item)::-webkit-scrollbar,
+.musiqua-widget-wrap > div:has(> * + *)::-webkit-scrollbar,
+.musiqua-widget-wrap > div > div:has(> * + *)::-webkit-scrollbar {
+  height: 6px;
+}
+
+.musiqua-widget-wrap :has(> .feedbacks__item)::-webkit-scrollbar-thumb,
+.musiqua-widget-wrap :has(> li > .feedbacks__item)::-webkit-scrollbar-thumb,
+.musiqua-widget-wrap :has(> div > .feedbacks__item)::-webkit-scrollbar-thumb,
+.musiqua-widget-wrap > div:has(> * + *)::-webkit-scrollbar-thumb,
+.musiqua-widget-wrap > div > div:has(> * + *)::-webkit-scrollbar-thumb {
+  background: var(--color-champagne);
+  border-radius: 999px;
+}
+
+.musiqua-widget-wrap :has(> .feedbacks__item)::-webkit-scrollbar-track,
+.musiqua-widget-wrap :has(> li > .feedbacks__item)::-webkit-scrollbar-track,
+.musiqua-widget-wrap :has(> div > .feedbacks__item)::-webkit-scrollbar-track,
+.musiqua-widget-wrap > div:has(> * + *)::-webkit-scrollbar-track,
+.musiqua-widget-wrap > div > div:has(> * + *)::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Marquee tipografico — sezione Musica/generi */
