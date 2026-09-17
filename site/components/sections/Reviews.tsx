@@ -1,8 +1,8 @@
-import Script from "next/script";
 import { Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { MusiquaWidgetMount } from "@/components/sections/MusiquaWidgetMount";
 import { siteConfig } from "@/data/site";
 
 export function Reviews() {
@@ -33,8 +33,7 @@ export function Reviews() {
         </Reveal>
 
         <div className="musiqua-widget-wrap mx-auto mt-14 max-w-6xl rounded-2xl border border-line bg-ivory p-1 sm:p-4">
-          <div id="musiqua-reviews-widget" />
-          <Script src={siteConfig.musiquaWidgetSrc} strategy="lazyOnload" />
+          <MusiquaWidgetMount />
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-4">
