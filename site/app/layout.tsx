@@ -24,12 +24,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(technicalBaseUrl),
   title: {
-    default: "Forte DJ — DJ per matrimoni ed eventi",
+    default: "Forte DJ — DJ per matrimoni ed eventi in Piemonte",
     template: "%s — Forte DJ",
   },
   description: siteConfig.description,
   openGraph: {
-    title: "Forte DJ — DJ per matrimoni ed eventi",
+    title: "Forte DJ — DJ per matrimoni ed eventi in Piemonte",
     description: siteConfig.description,
     siteName: siteConfig.name,
     locale: "it_IT",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Forte DJ — DJ per matrimoni ed eventi",
+    title: "Forte DJ — DJ per matrimoni ed eventi in Piemonte",
     description: siteConfig.description,
   },
   robots: { index: true, follow: true },

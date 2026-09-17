@@ -6,7 +6,10 @@ export function Process() {
   return (
     <section className="bg-ink py-28 md:py-40">
       <div className="container-edit">
-        <SectionHeading eyebrow="Come funziona" title="DALL'IDEA ALLA PISTA DA BALLO" />
+        <SectionHeading
+          eyebrow="Come funziona"
+          title="DAL PRIMO MESSAGGIO ALL'ULTIMO BALLO."
+        />
 
         <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (

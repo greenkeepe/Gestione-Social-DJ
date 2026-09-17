@@ -1,18 +1,36 @@
 import Script from "next/script";
+import { Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 import { siteConfig } from "@/data/site";
 
 export function Reviews() {
   return (
-    <section className="bg-charcoal py-28 md:py-40">
+    <section id="recensioni" className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
         <SectionHeading
           eyebrow="Recensioni"
-          title="PAROLA A CHI HA GIÀ VISSUTO LA SERATA"
+          title={`${siteConfig.reviewsCount} VOLTE UNA STORIA DA RACCONTARE`}
           description="Le esperienze di chi ha scelto Forte DJ per il proprio momento speciale."
           align="center"
         />
+
+        <Reveal delay={0.1}>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <div className="flex items-center gap-1" aria-hidden>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-4 w-4 fill-champagne text-champagne" />
+              ))}
+            </div>
+            <span className="text-sm text-ivory-dim">
+              <span className="font-display text-lg text-ivory">
+                {siteConfig.ratingValue}
+              </span>{" "}
+              su 5 — verificato su Musiqua
+            </span>
+          </div>
+        </Reveal>
 
         <div className="musiqua-widget-wrap mx-auto mt-14 max-w-4xl rounded-2xl border border-line bg-ivory p-1 sm:p-4">
           <div id="musiqua-reviews-widget" />
@@ -24,9 +42,9 @@ export function Reviews() {
             href={siteConfig.musiquaProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-champagne underline-offset-4 hover:underline"
+            className="eyebrow hover:text-champagne-bright"
           >
-            Vedi tutte le recensioni su Musiqua
+            Leggi tutte le recensioni →
           </a>
           <Button href="/contatti" size="lg">
             Verifica la disponibilità

@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { siteConfig } from "@/data/site";
+import { aboutMedia } from "@/data/media";
 import { strengths, musicGenres } from "@/data/services";
 
 export function About() {
@@ -9,7 +11,17 @@ export function About() {
       <div className="container-edit grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line">
-            <PlaceholderMedia label="Ritratto in arrivo" />
+            {aboutMedia.imageSrc ? (
+              <Image
+                src={aboutMedia.imageSrc}
+                alt={aboutMedia.imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            ) : (
+              <PlaceholderMedia label="Ritratto in arrivo" />
+            )}
           </div>
         </Reveal>
 
@@ -19,17 +31,20 @@ export function About() {
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="font-display text-balance text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl">
-              {siteConfig.realName}, la persona dietro la consolle
+              DIETRO LA CONSOLLE
+              <br />
+              <span className="text-champagne">CI SONO IO.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-6 text-balance leading-relaxed text-ivory-dim">
-              DJ per matrimoni ed eventi con {siteConfig.yearsExperience} anni
-              di esperienza e un repertorio vasto e sempre aggiornato: dagli
-              anni &lsquo;70/&rsquo;80/&rsquo;90 al pop, rock, dance, R&amp;B/soul,
-              musica latina e lounge. Ogni playlist viene costruita su misura
-              insieme ai clienti, leggendo la pista e adattando la selezione
-              musicale al pubblico presente.
+              Sono {siteConfig.realName}: DJ per matrimoni ed eventi con{" "}
+              {siteConfig.yearsExperience} anni di esperienza e un repertorio
+              vasto e sempre aggiornato, dagli anni &lsquo;70/&rsquo;80/&rsquo;90 al
+              pop, rock, dance, R&amp;B/soul, musica latina e lounge. Ogni
+              playlist viene costruita su misura insieme ai clienti, leggendo
+              la pista e adattando la selezione musicale al pubblico
+              presente, momento per momento.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

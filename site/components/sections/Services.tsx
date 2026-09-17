@@ -13,9 +13,9 @@ export function Services() {
           description="Ogni servizio pensato per integrarsi con gli altri, senza soluzione di continuità."
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 max-w-2xl">
           {services.map((service, index) => (
-            <Reveal key={service.slug} delay={index * 0.06}>
+            <Reveal key={service.slug} delay={index * 0.05}>
               <ServiceCard service={service} />
             </Reveal>
           ))}

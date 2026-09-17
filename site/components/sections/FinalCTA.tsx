@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/data/site";
 
 export function FinalCTA() {
   return (
@@ -16,9 +17,11 @@ export function FinalCTA() {
       <div className="container-edit relative flex flex-col items-center text-center">
         <Reveal>
           <h2 className="font-display text-balance text-4xl leading-tight text-ivory sm:text-5xl md:text-6xl">
-            PRONTO A CREARE
+            LA TUA DATA.
             <br />
-            <span className="text-champagne">IL TUO MOMENTO?</span>
+            LA TUA MUSICA.
+            <br />
+            <span className="text-champagne">IL TUO MOMENTO.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
@@ -28,10 +31,21 @@ export function FinalCTA() {
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
             <Button href="/contatti" size="lg">
               Verifica la disponibilità
             </Button>
+            {siteConfig.whatsappNumber ? (
+              <Button
+                href={siteConfig.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="secondary"
+                size="lg"
+              >
+                Scrivi su WhatsApp
+              </Button>
+            ) : null}
           </div>
         </Reveal>
       </div>

@@ -6,3 +6,18 @@ export const showreel = {
   videoSrc: "",
   posterSrc: "",
 };
+
+// Nessuna fotografia/video reale ancora disponibile per queste sezioni.
+// Aggiungere il file in public/images/ e valorizzare il campo corrispondente:
+// il componente passa automaticamente da placeholder a next/image reale.
+export const heroMedia = {
+  // Immagine o poster video a piena pagina per la Hero (formato paesaggio, es. 1920x1280).
+  imageSrc: "",
+  imageAlt: "",
+};
+
+export const aboutMedia = {
+  // Ritratto di Andrea per la sezione "Chi è Forte DJ" (formato verticale, es. 4:5).
+  imageSrc: "",
+  imageAlt: "",
+};

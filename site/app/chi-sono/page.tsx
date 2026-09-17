@@ -17,7 +17,8 @@ export default function ChiSonoPage() {
     <>
       <PageHero
         eyebrow="Chi è Forte DJ"
-        title={`${siteConfig.realName.toUpperCase()}, LA PERSONA DIETRO LA CONSOLLE`}
+        title="LA PERSONA DIETRO LA MUSICA"
+        description={`${siteConfig.realName}, DJ per matrimoni ed eventi con ${siteConfig.yearsExperience} anni di esperienza.`}
       />
       <About />
       <Reviews />

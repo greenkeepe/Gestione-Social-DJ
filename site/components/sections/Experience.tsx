@@ -4,12 +4,13 @@ const lines = [
   "ARRIVA LA MUSICA.",
   "SI ACCENDONO LE LUCI.",
   "IL DANCEFLOOR SI RIEMPIE.",
-  "E QUEL MOMENTO DIVENTA UN RICORDO.",
+  "E POI...",
+  "NON VUOI PIÙ ANDARE A CASA.",
 ];
 
 export function Experience() {
   return (
-    <section className="relative overflow-hidden bg-charcoal py-32 md:py-48">
+    <section className="relative flex min-h-[80svh] items-center overflow-hidden bg-charcoal py-32 md:py-48">
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{
@@ -18,13 +19,14 @@ export function Experience() {
         }}
         aria-hidden
       />
-      <div className="container-edit relative flex flex-col items-center gap-4 text-center">
+      <div className="grain-overlay" aria-hidden />
+      <div className="container-edit relative flex flex-col items-center gap-3 text-center">
         {lines.map((line, index) => (
           <Reveal key={line} delay={index * 0.15}>
             <p
               className={
                 index === lines.length - 1
-                  ? "font-display text-balance text-3xl text-champagne sm:text-4xl md:text-5xl"
+                  ? "font-display text-balance text-4xl text-champagne sm:text-5xl md:text-6xl"
                   : "font-display text-balance text-3xl text-ivory sm:text-4xl md:text-5xl"
               }
             >

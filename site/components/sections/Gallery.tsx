@@ -2,11 +2,27 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { Camera } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Lightbox } from "@/components/ui/Lightbox";
+import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { cn } from "@/lib/utils";
 import { galleryImages, galleryFilters, type GalleryImage } from "@/data/gallery";
+
+// Struttura pronta per il portfolio reale: finché non arrivano le foto,
+// occupa gli stessi slot con placeholder chiaramente etichettati (mai
+// spacciati per eventi reali) e con la stessa variazione di formati di una
+// vera gallery editoriale (verticale/orizzontale/quadrata).
+const placeholderSlots: { category: GalleryImage["category"]; aspect: string }[] = [
+  { category: "wedding", aspect: "aspect-[3/4]" },
+  { category: "party", aspect: "aspect-square" },
+  { category: "events", aspect: "aspect-[4/5]" },
+  { category: "wedding", aspect: "aspect-[4/5]" },
+  { category: "party", aspect: "aspect-[3/4]" },
+  { category: "wedding", aspect: "aspect-square" },
+  { category: "events", aspect: "aspect-[3/4]" },
+  { category: "party", aspect: "aspect-[4/5]" },
+  { category: "events", aspect: "aspect-square" },
+];
 
 export function Gallery({ full = false }: { full?: boolean }) {
   const [filter, setFilter] = useState<"all" | GalleryImage["category"]>("all");
@@ -19,6 +35,16 @@ export function Gallery({ full = false }: { full?: boolean }) {
         : galleryImages.filter((image) => image.category === filter);
     return full ? filtered : filtered.slice(0, 8);
   }, [filter, full]);
+
+  const placeholders = useMemo(
+    () =>
+      filter === "all"
+        ? placeholderSlots
+        : placeholderSlots.filter((slot) => slot.category === filter),
+    [filter],
+  );
+
+  const hasRealImages = images.length > 0;
 
   return (
     <section className="bg-ink py-28 md:py-40">
@@ -53,7 +79,7 @@ export function Gallery({ full = false }: { full?: boolean }) {
           ))}
         </div>
 
-        {images.length > 0 ? (
+        {hasRealImages ? (
           <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
             {images.map((image, index) => (
               <button
@@ -76,13 +102,22 @@ export function Gallery({ full = false }: { full?: boolean }) {
             ))}
           </div>
         ) : (
-          <div className="mt-10 flex flex-col items-center gap-4 rounded-2xl border border-dashed border-line bg-charcoal-soft/40 py-20 text-center">
-            <Camera className="h-8 w-8 text-champagne/60" aria-hidden />
-            <p className="eyebrow">Gallery in aggiornamento</p>
-            <p className="max-w-sm text-sm text-ivory-dim">
-              Le foto degli eventi più recenti arriveranno presto. Nel
-              frattempo scopri le recensioni di chi c&rsquo;era.
-            </p>
+          <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
+            {placeholders.map((slot, index) => (
+              <div
+                key={`${slot.category}-${index}`}
+                className={cn(
+                  "group relative mb-4 block w-full overflow-hidden rounded-xl border border-line",
+                  slot.aspect,
+                )}
+                style={{ breakInside: "avoid" }}
+              >
+                <PlaceholderMedia
+                  label={`${slot.category} · foto in arrivo`}
+                  tone={index % 2 === 0 ? "dark" : "darker"}
+                />
+              </div>
+            ))}
           </div>
         )}
       </div>

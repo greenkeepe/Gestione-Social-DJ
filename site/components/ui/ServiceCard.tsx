@@ -15,14 +15,14 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
   const Icon = icons[service.icon];
 
   return (
-    <div className="group flex h-full flex-col gap-5 rounded-2xl border border-line bg-charcoal-soft/60 p-8 transition-colors duration-300 hover:border-champagne/40">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-champagne/30 text-champagne">
-        <Icon className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+    <div className="group flex items-start gap-6 border-t border-line py-8 first:border-t-0">
+      <Icon className="mt-1 h-6 w-6 shrink-0 text-champagne" strokeWidth={1.25} aria-hidden />
+      <div>
+        <h3 className="font-display text-xl text-ivory">{service.title}</h3>
+        <p className="mt-2 max-w-md text-sm leading-relaxed text-ivory-dim">
+          {service.description}
+        </p>
       </div>
-      <h3 className="font-display text-xl text-ivory">{service.title}</h3>
-      <p className="text-sm leading-relaxed text-ivory-dim">
-        {service.description}
-      </p>
     </div>
   );
 }

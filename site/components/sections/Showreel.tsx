@@ -1,9 +1,10 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Maximize, Pause, Play, Volume2, VolumeX, Clapperboard } from "lucide-react";
+import { Maximize, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { showreel } from "@/data/media";
 
 export function Showreel() {
@@ -35,11 +36,12 @@ export function Showreel() {
   };
 
   return (
-    <section className="bg-charcoal py-28 md:py-40">
+    <section id="showreel" className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
         <SectionHeading
           eyebrow="Showreel"
           title="FEEL THE ENERGY"
+          description="Guarda cosa succede quando la musica prende il controllo della serata."
           align="center"
         />
 
@@ -95,13 +97,17 @@ export function Showreel() {
               </div>
             </>
           ) : (
-            <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
-              <Clapperboard className="h-8 w-8 text-champagne/60" aria-hidden />
-              <p className="eyebrow">Showreel in arrivo</p>
-              <p className="max-w-sm px-6 text-sm text-ivory-dim">
-                Il video racconto di Forte DJ sarà disponibile a breve.
-              </p>
-            </div>
+            <>
+              <PlaceholderMedia tone="darker" showIcon={false} />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-champagne/40 bg-ink/60 backdrop-blur-sm">
+                  <Play className="ml-1 h-7 w-7 text-champagne" aria-hidden />
+                </div>
+                <span className="eyebrow text-champagne/60">
+                  Showreel in arrivo
+                </span>
+              </div>
+            </>
           )}
         </div>
 

@@ -10,10 +10,12 @@ export function PlaceholderMedia({
   label,
   className,
   tone = "dark",
+  showIcon = true,
 }: {
   label?: string;
   className?: string;
   tone?: "dark" | "darker";
+  showIcon?: boolean;
 }) {
   return (
     <div
@@ -36,12 +38,14 @@ export function PlaceholderMedia({
         }}
         aria-hidden
       />
-      <div className="relative flex flex-col items-center gap-3 text-champagne/70">
-        <Music2 className="h-6 w-6" strokeWidth={1.25} aria-hidden />
-        {label ? (
-          <span className="eyebrow text-champagne/60">{label}</span>
-        ) : null}
-      </div>
+      {showIcon ? (
+        <div className="relative flex flex-col items-center gap-3 text-champagne/70">
+          <Music2 className="h-6 w-6" strokeWidth={1.25} aria-hidden />
+          {label ? (
+            <span className="eyebrow text-champagne/60">{label}</span>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

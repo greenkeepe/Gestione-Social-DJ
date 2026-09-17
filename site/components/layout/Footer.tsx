@@ -79,7 +79,8 @@ export function Footer() {
         <div>
           <p className="eyebrow mb-4">Area servita</p>
           <p className="text-sm leading-relaxed text-ivory-dim">
-            {siteConfig.serviceAreas.join(", ")} — base a {siteConfig.baseLocation}
+            DJ per matrimoni ed eventi con base a {siteConfig.baseLocation} e
+            disponibile in {siteConfig.serviceAreas.join(", ")}.
           </p>
           <p className="mt-6 eyebrow mb-4">Legale</p>
           <ul className="flex flex-col gap-2 text-sm text-ivory-dim">
@@ -97,7 +98,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-line py-6">
+      <div className="border-t border-line py-6 pb-24 lg:pb-6">
         <p className="container-edit text-center text-xs text-ivory-dim/70">
           © {new Date().getFullYear()} Forte DJ. Tutti i diritti riservati.
         </p>

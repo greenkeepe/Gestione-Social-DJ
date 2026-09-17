@@ -8,9 +8,9 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { eventCategories } from "@/data/events";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Eventi privati, aziendali e party",
+  title: "DJ per eventi privati, aziendali e party in Piemonte",
   description:
-    "Compleanni, diciottesimi, feste private, eventi aziendali e party ad alta energia: Forte DJ costruisce l'atmosfera giusta per ogni occasione.",
+    "DJ per eventi in Piemonte, Liguria e Lombardia: compleanni, diciottesimi, feste private, eventi aziendali e party ad alta energia, con l'atmosfera giusta per ogni occasione.",
   path: "/eventi",
 });
 

@@ -73,18 +73,23 @@ export const weddingMoments: WeddingMoment[] = [
     description: "Momenti musicali scelti con cura per accompagnare la tavola.",
   },
   {
+    key: "first-dance",
+    title: "First Dance",
+    description: "Il primo ballo, costruito sul brano che vi rappresenta.",
+  },
+  {
     key: "party",
     title: "Party",
     description: "L'energia sale e la pista da ballo si riempie.",
   },
   {
-    key: "finale",
-    title: "Fine serata",
+    key: "final-dance",
+    title: "Final Dance",
     description: "Il momento che nessuno vuole veda finire.",
   },
 ];
 
-// Fasi del processo — sezione "Come funziona".
+// Fasi del processo — sezione "Dal primo messaggio all'ultimo ballo".
 export const processSteps = [
   {
     number: "01",

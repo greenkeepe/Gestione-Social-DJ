@@ -7,7 +7,7 @@ export function Intro() {
         <div className="grid gap-10 md:grid-cols-12 md:gap-6">
           <div className="md:col-span-4">
             <Reveal>
-              <p className="eyebrow">Forte DJ</p>
+              <p className="eyebrow">The Forte DJ Experience</p>
             </Reveal>
           </div>
           <div className="md:col-span-8">
@@ -16,7 +16,7 @@ export function Intro() {
                 NON È SOLO MUSICA.
                 <br />
                 <span className="text-champagne">
-                  È L&rsquo;ATMOSFERA CHE RICORDERAI.
+                  È QUEL MOMENTO IN CUI TUTTI INIZIANO A BALLARE.
                 </span>
               </h2>
             </Reveal>
