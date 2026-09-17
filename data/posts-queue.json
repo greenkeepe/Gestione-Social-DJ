@@ -608,6 +608,38 @@
       "istruzioniUtente": null,
       "pillarId": "consigli",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "7139ee81-7bb6-494f-a72d-e512b10723b7",
+      "createdAt": "2026-09-17T09:16:15.321Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "07b2862c-c02a-4115-a6e1-16a2ef489c26",
+        "filename": "reel-telegram-1789636382877.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/7d25ffc1-4b81-4f27-bf1e-5e0075320df6.mp4"
+      },
+      "caption": "Piccolo corridoio, tanta gente, e tutti a ballare stretti stretti. Questo per me è il segnale che la serata è partita davvero.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nTrovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#weddingparty",
+        "#sposi2027",
+        "#djmatrimonio",
+        "#musicapermatrimoni",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#discjockey",
+        "#matrimonioinpiemonte",
+        "#serravallescrivia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }

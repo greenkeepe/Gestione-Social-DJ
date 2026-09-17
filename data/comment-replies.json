@@ -1,4 +1,9 @@
 {
   "_istruzioni": "Elenco degli ID commento Instagram a cui l'Agente Portavoce ha già risposto pubblicamente, per non rispondere due volte allo stesso commento.",
-  "idCommentiRisposti": []
+  "idCommentiRisposti": [
+    "17943279785966029",
+    "17956629257901083",
+    "18073614158062951",
+    "18073408970126005"
+  ]
 }

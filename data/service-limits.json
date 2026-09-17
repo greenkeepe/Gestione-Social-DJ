@@ -7,16 +7,16 @@
       "sogliaPercentualePausa": 90,
       "usoAttualeBytes": 158088173,
       "oggettiAttuali": 39,
-      "aggiornatoIl": "2026-09-17T09:14:52.346Z",
+      "aggiornatoIl": "2026-09-17T09:16:50.154Z",
       "pausatoIl": null
     },
     "anthropic": {
       "nome": "Anthropic (didascalie/hashtag con visione)",
       "limiteChiamateMese": 300,
       "sogliaPercentualePausa": 90,
-      "chiamateEffettuateMese": 15,
+      "chiamateEffettuateMese": 20,
       "meseCorrente": "2026-09",
-      "aggiornatoIl": "2026-09-17T09:14:39.553Z",
+      "aggiornatoIl": "2026-09-17T09:16:46.997Z",
       "pausatoIl": null
     }
   }

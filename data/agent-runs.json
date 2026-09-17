@@ -6,6 +6,55 @@
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-17T09:16:50.282Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-17T09:16:50.280Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-17T09:16:50.277Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "ok",
+      "riepilogo": "Risposto pubblicamente a 4 nuovi commenti sugli ultimi post.",
+      "timestamp": "2026-09-17T09:16:49.817Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-17T09:16:24.709Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Testimonianze sposi\" (LLM con visione). Programmato per le 18:30.",
+      "timestamp": "2026-09-17T09:16:19.069Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "Selezionato nuovo media \"reel-telegram-1789636382877.mp4\" (video/reel) e messo in coda per la didascalia.",
+      "timestamp": "2026-09-17T09:16:15.323Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-17T09:14:52.763Z"
     },
     {
