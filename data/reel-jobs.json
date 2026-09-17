@@ -118,64 +118,6 @@
       "source": "telegram"
     },
     {
-      "id": "8032c52c-fe3e-4790-934c-e739e50c2be2",
-      "createdAt": "2026-09-17T08:56:12.317Z",
-      "videoUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/91149ee3-dcf4-4a0f-a492-87786f97c088.mp4",
-      "filename": "telegram-1789635371455.mp4",
-      "mimeType": "video/mp4",
-      "profilo": "auto",
-      "istruzioni": null,
-      "status": "usato",
-      "step": "completato",
-      "aggiornatoIl": "2026-09-17T08:57:03.874Z",
-      "erroreMessaggio": null,
-      "risultato": {
-        "reelUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/1ed31b46-03db-4147-8d8d-d20127fe456e.mp4",
-        "durataSecondi": 13.5,
-        "piano": {
-          "categoria": "wedding",
-          "stile": "clean",
-          "profiloUsato": "wedding",
-          "durataTarget": 15,
-          "hook": {
-            "inizio": 18,
-            "fine": 21
-          },
-          "segmenti": [
-            {
-              "inizio": 18,
-              "fine": 21,
-              "motivo": "momento con più energia scelto come apertura del Reel"
-            },
-            {
-              "inizio": 0,
-              "fine": 3,
-              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
-            },
-            {
-              "inizio": 3,
-              "fine": 6,
-              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
-            },
-            {
-              "inizio": 12,
-              "fine": 15,
-              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
-            },
-            {
-              "inizio": 15,
-              "fine": 18,
-              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
-            }
-          ],
-          "sottotitoli": false,
-          "musica": false,
-          "testoHook": "Forte DJ"
-        }
-      },
-      "source": "telegram"
-    },
-    {
       "id": "dafb6845-f528-4bd6-9370-a260c4e41bf1",
       "createdAt": "2026-09-17T06:02:15.078Z",
       "videoUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/b4776f3d-c262-44d7-8ba6-633f49b59de4.mp4",
