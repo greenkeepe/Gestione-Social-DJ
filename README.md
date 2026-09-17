@@ -57,6 +57,17 @@ Tutti i media (foto, video grezzi, Reel generati) vivono in un bucket **Cloudfla
 4. Torna alla pagina principale di **R2** → **Manage R2 API Tokens** → **Create API Token**. Permessi: **Object Read & Write**, limitato al bucket appena creato. Alla fine ti mostra tre valori: **Access Key ID**, **Secret Access Key** e l'**Account ID** (visibile anche nell'URL del cruscotto Cloudflare, o nella pagina principale di R2 sulla destra).
 5. Questi 5 valori (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`) sono **tutti segreti** tranne l'URL pubblico: vanno inseriti sia nei **GitHub Secrets** (per l'Agente Regista) sia nelle **variabili d'ambiente di Vercel** (per la dashboard) — mai incollati in chat.
 
+### 3ter. Rinnovo del token Meta dalla dashboard
+
+Il **Page Access Token** del punto 2 dura ~60 giorni. La pagina **"Utilizzo servizi"** della dashboard mostra quanti giorni mancano alla scadenza (e un avviso quando è vicina) con un tasto **"🔄 Rinnova token ora"**: ti porta al login Facebook, e una volta confermato salva da solo il nuovo token nel secret GitHub `META_PAGE_ACCESS_TOKEN` — niente più Strumento Grafico Explorer a mano.
+
+Per farlo funzionare servono due cose in più, oltre ai secrets GitHub del punto 2:
+
+1. Sulla dashboard (Vercel), aggiungi **di nuovo** `META_APP_ID`, `META_APP_SECRET`, `META_PAGE_ID`, `META_PAGE_ACCESS_TOKEN` come variabili d'ambiente (sono due runtime separati — GitHub Actions e Vercel non si scambiano da soli le variabili, anche se il nome è identico). Il `GITHUB_TOKEN` già configurato al punto 5 deve avere anche permesso di scrittura sui secrets del repository (`Secrets: write` se è un fine-grained PAT), altrimenti il tasto genera comunque il token ma te lo mostra da incollare a mano.
+2. Nell'app Meta, in **Prodotti → Facebook Login → Impostazioni**, aggiungi ai **"Valid OAuth Redirect URIs"**: `https://tuo-progetto.vercel.app/api/meta-token/callback` (con il dominio vero della tua dashboard).
+
+Se salti questi due passaggi la dashboard funziona lo stesso, semplicemente quella card non compare/il tasto non funziona.
+
 ### 4. Configura i secrets su GitHub
 
 Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`).

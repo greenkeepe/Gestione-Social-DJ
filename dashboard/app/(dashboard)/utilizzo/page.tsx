@@ -1,6 +1,7 @@
 import { leggiDati } from "../../../lib/dataSource";
 import { ServiceLimitsForm } from "../../../components/ServiceLimitsForm";
 import { ProgressRing } from "../../../components/ProgressRing";
+import { controllaTokenMeta } from "../../../lib/metaToken";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,16 @@ export default async function UtilizzoPage() {
   const limiti = await leggiDati<ServiceLimitsFile>("service-limits.json");
   const r2 = limiti.servizi.r2;
   const anthropic = limiti.servizi.anthropic;
+  const tokenMeta = await controllaTokenMeta();
+  const giorniRimanenti = tokenMeta.scadeIl
+    ? Math.ceil((new Date(tokenMeta.scadeIl).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+    : null;
+  const coloreToken =
+    tokenMeta.errore || (giorniRimanenti !== null && giorniRimanenti <= 7)
+      ? "var(--color-err)"
+      : giorniRimanenti !== null && giorniRimanenti <= 21
+        ? "#c98a1a"
+        : "var(--color-primary)";
 
   const percentualeR2 = r2.limiteBytes > 0 ? Math.min(100, (r2.usoAttualeBytes / r2.limiteBytes) * 100) : 0;
   const pausatoR2 = r2.pausatoIl !== null;
@@ -144,6 +155,57 @@ export default async function UtilizzoPage() {
             costo.
           </p>
         )}
+      </div>
+
+      <div className="card" style={{ marginTop: 16 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+          <div className="label">Token Facebook/Instagram</div>
+          {tokenMeta.errore && <span className="badge errore">⚠️ Non valido</span>}
+        </div>
+
+        {!tokenMeta.configurato && (
+          <p className="note" style={{ marginTop: 6 }}>
+            <code>META_APP_ID</code>/<code>META_APP_SECRET</code>/<code>META_PAGE_ACCESS_TOKEN</code> non sono impostati su Vercel, quindi
+            da qui non posso controllare la scadenza. Gli agenti pubblicano comunque regolarmente usando le loro credenziali su GitHub
+            Actions: questo riguarda solo il controllo e il rinnovo da questa dashboard.
+          </p>
+        )}
+
+        {tokenMeta.configurato && tokenMeta.errore && (
+          <p className="error-msg" style={{ marginTop: 6 }}>
+            Il token attuale non è valido o è scaduto: {tokenMeta.errore}. Rinnovalo subito per non interrompere le pubblicazioni.
+          </p>
+        )}
+
+        {tokenMeta.configurato && !tokenMeta.errore && tokenMeta.permanente && (
+          <p className="note" style={{ marginTop: 6 }}>✅ Token valido, senza scadenza. Nessuna azione necessaria.</p>
+        )}
+
+        {tokenMeta.configurato && !tokenMeta.errore && !tokenMeta.permanente && giorniRimanenti !== null && (
+          <div className="stat-with-ring" style={{ marginTop: 10 }}>
+            <ProgressRing
+              percentage={Math.max(0, Math.min(100, (giorniRimanenti / 60) * 100))}
+              color={coloreToken}
+              label={`${giorniRimanenti}g`}
+              sublabel="rimanenti"
+            />
+            <div className="stat-with-ring__details">
+              <p className="note" style={{ marginTop: 6 }}>
+                Scade il {new Date(tokenMeta.scadeIl!).toLocaleString("it-IT")} ({giorniRimanenti} giorni da oggi).
+              </p>
+              {giorniRimanenti <= 21 && (
+                <p className="note">Meglio rinnovarlo ora, prima che scada e le pubblicazioni si blocchino.</p>
+              )}
+            </div>
+          </div>
+        )}
+
+        <a href="/api/meta-token/start" className="upload-btn" style={{ marginTop: 12, display: "inline-block" }}>
+          🔄 Rinnova token ora
+        </a>
+        <p className="note" style={{ marginTop: 8 }}>
+          Ti porta al login Facebook per confermare l&apos;accesso alla Pagina; una volta confermato, il nuovo token viene salvato da solo.
+        </p>
       </div>
 
       <h3 style={{ marginTop: 24 }}>Altri servizi</h3>
