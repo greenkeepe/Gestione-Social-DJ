@@ -8,15 +8,29 @@
 // stesso. Mai un messaggio privato, mai un prezzo o una disponibilità
 // specifica (quelli restano al Cacciatore/a te) — solo cordialità breve.
 import "dotenv/config";
-import { readData, writeData, readBrand } from "../lib/storage.js";
+import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { leggiUltimiMediaInstagram, leggiCommentiRecenti, leggiUsernameAccountInstagram, rispondiCommento } from "../lib/metaGraph.js";
 import { generaTestoConLLM } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
 
+interface RispostaCommento {
+  commentId: string;
+  mediaId: string;
+  permalink: string | null;
+  username: string;
+  commentoOriginale: string;
+  risposta: string;
+  timestamp: string;
+}
+
 interface RispostiFile {
   _istruzioni: string;
-  idCommentiRisposti: string[];
+  risposte: RispostaCommento[];
+  // Risposte pubblicate prima che questo file registrasse i dettagli
+  // completi: restano qui solo per non rispondere due volte agli stessi
+  // commenti, non compaiono nella dashboard (nessun testo salvato).
+  idCommentiRispostiLegacy?: string[];
 }
 
 const RISPOSTE_TEMPLATE = [
@@ -27,14 +41,17 @@ const RISPOSTE_TEMPLATE = [
 ];
 
 // Tiene il file da crescere all'infinito: bastano le ultime risposte per
-// evitare doppioni, un commento più vecchio di così non torna mai più tra
-// gli "ultimi post" letti a ogni ciclo.
+// evitare doppioni e per la dashboard, un commento più vecchio di così non
+// torna mai più tra gli "ultimi post" letti a ogni ciclo.
 const MASSIMO_STORICO = 500;
 
 export async function eseguiReplyAgent(): Promise<void> {
   try {
     const rispostiFile = await readData<RispostiFile>("comment-replies.json");
-    const giaRisposti = new Set(rispostiFile.idCommentiRisposti);
+    const giaRisposti = new Set([
+      ...rispostiFile.risposte.map((r) => r.commentId),
+      ...(rispostiFile.idCommentiRispostiLegacy ?? [])
+    ]);
 
     // Non solo gli ultimissimi post: controlla più indietro nello storico, così
     // trova ed evade anche i commenti rimasti indietro su post meno recenti
@@ -72,7 +89,15 @@ disponibilità specifiche, non invitare a scrivere altrove: è solo un grazie/ri
 
         try {
           await rispondiCommento(c.id, testo);
-          rispostiFile.idCommentiRisposti.push(c.id);
+          rispostiFile.risposte.unshift({
+            commentId: c.id,
+            mediaId: m.id,
+            permalink: m.permalink ?? null,
+            username: c.username,
+            commentoOriginale: c.text,
+            risposta: testo,
+            timestamp: nowIso()
+          });
           nuoveRisposte++;
         } catch (err) {
           console.error(`[Portavoce] Risposta al commento ${c.id} fallita:`, err);
@@ -80,8 +105,8 @@ disponibilità specifiche, non invitare a scrivere altrove: è solo un grazie/ri
       }
     }
 
-    if (rispostiFile.idCommentiRisposti.length > MASSIMO_STORICO) {
-      rispostiFile.idCommentiRisposti = rispostiFile.idCommentiRisposti.slice(-MASSIMO_STORICO);
+    if (rispostiFile.risposte.length > MASSIMO_STORICO) {
+      rispostiFile.risposte = rispostiFile.risposte.slice(0, MASSIMO_STORICO);
     }
 
     if (nuoveRisposte > 0) {

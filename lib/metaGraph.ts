@@ -141,10 +141,10 @@ export async function leggiCommentiRecenti(mediaId: string): Promise<Array<{ id:
   return res.data;
 }
 
-export async function leggiUltimiMediaInstagram(limit = 10): Promise<Array<{ id: string; timestamp: string; caption?: string }>> {
+export async function leggiUltimiMediaInstagram(limit = 10): Promise<Array<{ id: string; timestamp: string; caption?: string; permalink?: string }>> {
   const igUserId = requireEnv("META_IG_BUSINESS_ACCOUNT_ID");
-  const res = await graphFetch<{ data: Array<{ id: string; timestamp: string; caption?: string }> }>(`/${igUserId}/media`, {
-    fields: "id,timestamp,caption",
+  const res = await graphFetch<{ data: Array<{ id: string; timestamp: string; caption?: string; permalink?: string }> }>(`/${igUserId}/media`, {
+    fields: "id,timestamp,caption,permalink",
     limit: String(limit)
   });
   return res.data;

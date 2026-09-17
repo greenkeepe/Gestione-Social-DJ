@@ -1,6 +1,7 @@
 {
-  "_istruzioni": "Elenco degli ID commento Instagram a cui l'Agente Portavoce ha già risposto pubblicamente, per non rispondere due volte allo stesso commento.",
-  "idCommentiRisposti": [
+  "_istruzioni": "Risposte pubbliche già date dall'Agente Portavoce ai commenti, per non rispondere due volte allo stesso commento e per mostrarle nella pagina 'Risposte' della dashboard.",
+  "risposte": [],
+  "idCommentiRispostiLegacy": [
     "17943279785966029",
     "17956629257901083",
     "18073614158062951",

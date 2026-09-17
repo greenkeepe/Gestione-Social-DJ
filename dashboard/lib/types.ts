@@ -63,6 +63,20 @@ export interface LeadsFile {
   leads: Lead[];
 }
 
+export interface RispostaCommento {
+  commentId: string;
+  mediaId: string;
+  permalink: string | null;
+  username: string;
+  commentoOriginale: string;
+  risposta: string;
+  timestamp: string;
+}
+
+export interface RispostiFile {
+  risposte: RispostaCommento[];
+}
+
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
 
 export interface PianoReel {
