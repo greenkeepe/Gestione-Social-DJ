@@ -41,7 +41,12 @@ export default async function UtilizzoPage() {
 
   const percentualeAnthropic = anthropic.limiteChiamateMese > 0 ? Math.min(100, (anthropic.chiamateEffettuateMese / anthropic.limiteChiamateMese) * 100) : 0;
   const pausatoAnthropic = anthropic.pausatoIl !== null;
-  const anthropicConfigurata = Boolean(process.env.ANTHROPIC_API_KEY);
+  // La chiave è nei secrets di GitHub Actions (dove gira davvero l'Agente
+  // Contenuti), non nelle variabili d'ambiente di Vercel: process.env qui
+  // sarebbe sempre vuoto anche a chiave impostata e funzionante. Il segnale
+  // giusto è quindi l'uso reale già registrato, non una variabile che su
+  // questo runtime non esisterà mai.
+  const anthropicConfigurata = anthropic.aggiornatoIl !== null || anthropic.chiamateEffettuateMese > 0;
 
   return (
     <div>
@@ -134,7 +139,9 @@ export default async function UtilizzoPage() {
           </>
         ) : (
           <p className="note" style={{ marginTop: 6 }}>
-            Non configurata: il sistema usa i template scritti a mano, zero costo, zero chiamate da misurare.
+            Ancora nessuna chiamata registrata questo mese: se <code>ANTHROPIC_API_KEY</code> è impostata nei secrets di GitHub Actions,
+            comparirà qui alla prima didascalia scritta con la visione; se non è impostata, il sistema usa i template scritti a mano, zero
+            costo.
           </p>
         )}
       </div>
