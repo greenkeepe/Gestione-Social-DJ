@@ -480,6 +480,38 @@
       "istruzioniUtente": null,
       "pillarId": "call-to-action",
       "dataProgrammata": "2026-09-17"
+    },
+    {
+      "id": "52e92826-a18e-42da-9c52-ee77cbdb6971",
+      "createdAt": "2026-09-17T08:58:56.128Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "0c350b78-4bd2-4ebe-bb39-384ef568b052",
+        "filename": "telegram-1789625046061.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/725fee3f-ed2c-4f3a-9fe1-f307f13bb9f5.jpg"
+      },
+      "caption": "Tableau con le fiabe Disney per ogni tavolo, tovaglie bianche e fiori gialli. Un dettaglio così fa la differenza vera. Piccolo consiglio: pensate anche a questi particolari quando organizzate la timeline, non solo alla musica.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#weddingdj",
+        "#weddingparty",
+        "#sposi2027",
+        "#djmatrimonio",
+        "#weddingmusic",
+        "#discjockey",
+        "#djwedding",
+        "#djprofessionista",
+        "#liguria",
+        "#serravallescrivia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "consigli",
+      "dataProgrammata": "2026-09-17"
     }
   ]
 }
