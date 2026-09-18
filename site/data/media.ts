@@ -16,7 +16,6 @@ export const heroMedia = {
 };
 
 export const aboutMedia = {
-  // Ritratto di Andrea per la sezione "Chi è Forte DJ" (formato verticale, es. 4:5).
-  imageSrc: "",
-  imageAlt: "",
+  imageSrc: "/images/about-andrea.jpg",
+  imageAlt: "Andrea, Forte DJ, con le cuffie durante un evento",
 };
