@@ -1,15 +1,12 @@
 name: Ciclo giornaliero agenti (contenuti, lead, analytics, strategia)
 
 on:
-  schedule:
-    # 08:00 Europe/Rome fissi tutto l'anno. GitHub Actions gira sempre in
-    # UTC e non conosce l'ora legale, quindi servono due orari diversi a
-    # seconda del periodo (approssimati ai mesi pieni, non al giorno esatto
-    # del cambio ora: nella settimana della transizione può arrivare con
-    # un'ora di scarto, poi si assesta da sola). Un solo cron scatta ogni
-    # giorno, l'altro resta silenzioso: nessun doppio ciclo.
-    - cron: "0 6 * 4,5,6,7,8,9 *" # CEST (UTC+2, aprile-settembre) -> 08:00 locali
-    - cron: "0 7 * 1,2,3,10,11,12 *" # CET (UTC+1, ottobre-marzo) -> 08:00 locali
+  # Niente più trigger "schedule" qui: lo "schedule" di GitHub Actions può
+  # arrivare con ore di ritardo sui repository con poca attività continua
+  # (visto dal vivo: 4-5 ore di scarto sui giorni scorsi). L'orario preciso
+  # delle 08:00 Europe/Rome è gestito da un Vercel Cron Job (vedi
+  # dashboard/vercel.json + dashboard/app/api/cron/daily-agents), che innesca
+  # questo stesso workflow via workflow_dispatch con forza_resoconto=true.
   workflow_dispatch: # permette di lanciarlo manualmente da GitHub per test
     inputs:
       forza_resoconto:

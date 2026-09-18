@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/daily-agents", "schedule": "0 6 * 4,5,6,7,8,9 *" },
+    { "path": "/api/cron/daily-agents", "schedule": "0 7 * 1,2,3,10,11,12 *" }
+  ]
+}
