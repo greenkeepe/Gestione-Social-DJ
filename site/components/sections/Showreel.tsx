@@ -5,7 +5,16 @@ import { Maximize, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+import { InstagramIcon, FacebookIcon, YoutubeIcon, TiktokIcon } from "@/components/ui/SocialIcons";
 import { showreel } from "@/data/media";
+import { siteConfig } from "@/data/site";
+
+const socialLinks = [
+  { href: siteConfig.instagramUrl, label: "Instagram", Icon: InstagramIcon },
+  { href: siteConfig.facebookUrl, label: "Facebook", Icon: FacebookIcon },
+  { href: siteConfig.tiktokUrl, label: "TikTok", Icon: TiktokIcon },
+  { href: siteConfig.youtubeUrl, label: "YouTube", Icon: YoutubeIcon },
+].filter((link) => Boolean(link.href));
 
 export function Showreel() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -53,6 +62,7 @@ export function Showreel() {
                 className="h-full w-full object-cover"
                 poster={showreel.posterSrc || undefined}
                 muted={muted}
+                loop
                 playsInline
                 onPlay={() => setPlaying(true)}
                 onPause={() => setPlaying(false)}
@@ -111,10 +121,26 @@ export function Showreel() {
           )}
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 flex flex-col items-center gap-6">
           <Button href="/contatti" size="lg">
             Verifica la disponibilità
           </Button>
+          {socialLinks.length > 0 ? (
+            <div className="flex items-center gap-4">
+              {socialLinks.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="rounded-full border border-line p-3 text-ivory-dim transition-colors hover:border-champagne hover:text-champagne"
+                >
+                  <Icon className="h-5 w-5" aria-hidden />
+                </a>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
