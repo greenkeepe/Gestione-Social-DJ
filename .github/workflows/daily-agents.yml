@@ -1,12 +1,20 @@
 name: Ciclo giornaliero agenti (contenuti, lead, analytics, strategia)
 
 on:
-  # Niente più trigger "schedule" qui: lo "schedule" di GitHub Actions può
-  # arrivare con ore di ritardo sui repository con poca attività continua
-  # (visto dal vivo: 4-5 ore di scarto sui giorni scorsi). L'orario preciso
-  # delle 08:00 Europe/Rome è gestito da un Vercel Cron Job (vedi
-  # dashboard/vercel.json + dashboard/app/api/cron/daily-agents), che innesca
-  # questo stesso workflow via workflow_dispatch con forza_resoconto=true.
+  # Rete di sicurezza: un Vercel Cron Job (dashboard/vercel.json +
+  # dashboard/app/api/cron/daily-agents) innesca questo stesso workflow via
+  # workflow_dispatch all'orario preciso delle 08:00 Europe/Rome — ma solo se
+  # la dashboard è online (può essere bloccata dal limite di build gratuite
+  # di Vercel, visto dal vivo). Se il cron di Vercel salta un giorno, questo
+  # schedule fa comunque partire il ciclo, anche se con qualche ora di
+  # ritardo (limite noto di GitHub Actions sui repository con poca attività
+  # continua). Se per caso scattano entrambi lo stesso giorno, il ciclo gira
+  # due volte (innocuo: la pubblicazione ha già il suo limite di 1/giorno,
+  # l'Esploratore dedupe da solo) — solo il resoconto Telegram viene evitato
+  # la seconda volta, vedi il controllo in master-agent.ts.
+  schedule:
+    - cron: "0 6 * 4,5,6,7,8,9 *" # CEST (UTC+2, aprile-settembre) -> 08:00 locali
+    - cron: "0 7 * 1,2,3,10,11,12 *" # CET (UTC+1, ottobre-marzo) -> 08:00 locali
   workflow_dispatch: # permette di lanciarlo manualmente da GitHub per test
     inputs:
       forza_resoconto:
