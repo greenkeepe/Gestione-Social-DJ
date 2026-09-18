@@ -15,11 +15,9 @@ recensioni) e i servizi elencati sono presi da `config/brand.json` nella root
 del repository — nessun dato è stato inventato. Due cose mancano ancora e sono
 segnalate chiaramente nel sito invece di essere finte:
 
-- **Foto**: la Hero e la Gallery (`data/gallery.ts`) usano foto reali fornite
-  da Andrea (Forte DJ) da eventi realmente animati da lui. Mancano ancora un
-  ritratto reale per la sezione "Chi è Forte DJ" (`aboutMedia` in
-  `data/media.ts`) e scatti per la categoria "eventi aziendali": finché non
-  arrivano restano un placeholder editoriale, mai spacciato per una foto vera.
+- **Foto**: Hero, "Chi è Forte DJ" (`aboutMedia` in `data/media.ts`) e Gallery
+  (`data/gallery.ts`, tutte e tre le categorie) usano foto reali fornite da
+  Andrea (Forte DJ) da eventi realmente animati da lui.
 - **Video/Showreel**: non c'è ancora un video reale in formato orizzontale
   adatto alla sezione Showreel (`data/media.ts`); mostra uno stato "in arrivo"
   finché non viene aggiunto un file in `public/videos/`.

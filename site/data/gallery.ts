@@ -1,7 +1,5 @@
 // Foto reali fornite direttamente da Andrea (Forte DJ), tratte da eventi
-// realmente animati da lui. Nessuna foto stock. La categoria "events"
-// (aziendali) non ha ancora scatti reali: finché non arrivano, la Gallery
-// mostra un placeholder editoriale solo per quel filtro (vedi Gallery.tsx).
+// realmente animati da lui. Nessuna foto stock.
 
 export type GalleryImage = {
   src: string;
@@ -83,6 +81,62 @@ export const galleryImages: GalleryImage[] = [
     category: "party",
     width: 1800,
     height: 1012,
+  },
+  {
+    src: "/images/gallery/events-corporate-buffet.jpg",
+    alt: "Console DJ durante un evento aziendale con buffet",
+    category: "events",
+    width: 1080,
+    height: 810,
+  },
+  {
+    src: "/images/gallery/events-garden-dinner.jpg",
+    alt: "Cena di gala in giardino con console DJ in primo piano",
+    category: "events",
+    width: 2000,
+    height: 1500,
+  },
+  {
+    src: "/images/gallery/wedding-terrace-booth-hills.jpg",
+    alt: "Consolle allestita in terrazza con vista sulle colline",
+    category: "wedding",
+    width: 2000,
+    height: 1500,
+  },
+  {
+    src: "/images/gallery/party-dj-smoke-garden.jpg",
+    alt: "DJ set in giardino tra le luci e il fumo scenico",
+    category: "party",
+    width: 1600,
+    height: 1149,
+  },
+  {
+    src: "/images/gallery/party-nightclub-518.jpg",
+    alt: "Festa in discoteca con la pista animata",
+    category: "party",
+    width: 1800,
+    height: 1350,
+  },
+  {
+    src: "/images/gallery/party-terrace-dinner-lights.jpg",
+    alt: "Cena in terrazza tra le luci sospese e la consolle",
+    category: "party",
+    width: 2000,
+    height: 1500,
+  },
+  {
+    src: "/images/gallery/party-pool-night.jpg",
+    alt: "Consolle allestita a bordo piscina in notturna",
+    category: "party",
+    width: 1800,
+    height: 1350,
+  },
+  {
+    src: "/images/gallery/wedding-poolside-console-view.jpg",
+    alt: "Consolle a bordo piscina con vista sulle colline",
+    category: "wedding",
+    width: 2000,
+    height: 1500,
   },
 ];
 
