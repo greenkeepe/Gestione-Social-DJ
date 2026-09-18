@@ -10,7 +10,8 @@
 // Vedi anche l'Ignored Build Step del progetto Vercel: usa
 // $VERCEL_GIT_PREVIOUS_SHA, non HEAD^ (che sui checkout superficiali di
 // Vercel non si risolve, facendo saltare build vere per errore) — e un
-// "git fetch origin <sha> --depth=1" mirato prima del diff, perché anche
+// "git fetch origin <sha> --depth=1" mirato prima del diff (verifica in
+// corso — vedi commit successivi se cambia ancora), perché anche
 // quel commit precedente può non esistere nella copia scaricata da Vercel
 // ("git fetch --unshallow" fallisce silenziosamente lì: non è un clone
 // shallow classico che --unshallow sappia estendere).
