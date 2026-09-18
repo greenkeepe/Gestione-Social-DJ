@@ -104,6 +104,8 @@ Nel repository, vai su **Settings → Secrets and variables → Actions** e aggi
 
 Le tre GitHub Actions (`.github/workflows/daily-agents.yml`, `publish-check.yml` e `reel-maker.yml`) partono da sole secondo lo schedule una volta che i secrets sono impostati. Puoi anche lanciarle manualmente da **Actions → [nome workflow] → Run workflow** per un primo test.
 
+**Ciclo giornaliero: orario preciso via Vercel Cron.** `daily-agents.yml` non ha più un trigger `schedule` proprio — lo "schedule" di GitHub Actions può arrivare con ore di ritardo sui repository con poca attività continua (osservato dal vivo: 4-5 ore). Il file `dashboard/vercel.json` definisce invece un Cron Job di Vercel (gratis anche sul piano Hobby, fino a 2 cron/giorno) che ogni mattina alle 08:00 Europe/Rome chiama `dashboard/app/api/cron/daily-agents`, che a sua volta innesca il ciclo su GitHub con precisione. Serve solo aggiungere `CRON_SECRET` (una stringa a caso) tra le variabili d'ambiente di Vercel — vedi `dashboard/.env.example`.
+
 ## AI Reel Maker (video grezzo → Reel)
 
 Dalla pagina **"🎬 Crea Reel AI"** della dashboard carichi un video grezzo (stesso upload diretto a Cloudflare R2 già usato per "Carica media" — nessun limite pratico di dimensione) scegliendo un profilo di montaggio — **Automatico**, DJ/Party, Matrimonio, Evento, Aziendale, Persona che parla in camera, Promozionale — ed eventuali note libere ("è il momento del primo ballo", ecc.).
