@@ -13,7 +13,7 @@ import { weddingMoments } from "@/data/events";
 // Non ogni tappa merita lo stesso peso visivo: alterniamo fotografia e pura
 // tipografia per costruire un'escalation verso il picco della serata (Party)
 // invece di ripetere sei volte lo stesso riquadro.
-const photoSteps = new Set([1, 3, 4]);
+const photoSteps = new Set([0, 1, 3, 4]);
 const intenseSteps = new Set([4]);
 
 export function Wedding() {

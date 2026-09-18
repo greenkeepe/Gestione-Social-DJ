@@ -63,11 +63,15 @@ export const weddingMoments: WeddingMoment[] = [
     key: "cerimonia",
     title: "Cerimonia",
     description: "Atmosfera e musica pensate per l'inizio della celebrazione.",
+    imageSrc: "/images/gallery/wedding-ceremony-chairs.jpg",
+    imageAlt: "Allestimento della cerimonia con vista sulle colline",
   },
   {
     key: "aperitivo",
     title: "Aperitivo",
     description: "Sottofondo elegante per accogliere gli invitati.",
+    imageSrc: "/images/gallery/party-terrace-dinner-lights.jpg",
+    imageAlt: "Cena in terrazza tra le luci sospese e la consolle",
   },
   {
     key: "cena",
