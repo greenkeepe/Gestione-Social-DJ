@@ -70,8 +70,8 @@ export const weddingMoments: WeddingMoment[] = [
     key: "aperitivo",
     title: "Aperitivo",
     description: "Sottofondo elegante per accogliere gli invitati.",
-    imageSrc: "/images/gallery/party-terrace-dinner-lights.jpg",
-    imageAlt: "Cena in terrazza tra le luci sospese e la consolle",
+    imageSrc: "/images/gallery/wedding-aperitivo-garden.jpg",
+    imageAlt: "Aperitivo in giardino sotto la magnolia",
   },
   {
     key: "cena",
