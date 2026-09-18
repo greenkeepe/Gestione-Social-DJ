@@ -124,7 +124,9 @@
     "_nota_whatsappBottoneAttivo": "Metti true solo dopo aver attivato il pulsante 'WhatsApp' nelle opzioni di contatto del profilo Instagram/Facebook (Impostazioni > Attività commerciale): da quel momento le didascalie possono nominarlo, perché è davvero cliccabile dal profilo (un link nel testo del post invece non lo è mai).",
     "whatsappBottoneAttivo": true,
     "email": "info.andreaforte@gmail.com",
-    "sitoWeb": "https://www.musiqua.it/band/forte-dj-eventi-e-matrimoni-14006",
+    "sitoWeb": "https://www.fortedj.it",
+    "_nota_sitoWebBottoneAttivo": "Metti true solo dopo aver messo davvero questo link nel bio di Instagram/Facebook: da quel momento le didascalie possono dire 'link in bio' (un post nel feed non ha mai link cliccabili nel testo, solo il bio ce l'ha) — stessa logica di whatsappBottoneAttivo qui sopra.",
+    "sitoWebBottoneAttivo": true,
     "instagram": "@forte_dj",
     "facebook": "Forte DJ"
   },
