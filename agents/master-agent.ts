@@ -83,6 +83,17 @@ async function eseguiPasso(nome: string, fn: () => Promise<void>): Promise<void>
 export async function eseguiMasterAgent(): Promise<void> {
   console.log("=== Direttore: avvio del ciclo giornaliero degli agenti ===");
   const inizioCiclo = nowIso();
+  const oggi = inizioCiclo.slice(0, 10);
+
+  // Se il cron di Vercel e lo schedule di GitHub Actions scattano entrambi
+  // lo stesso giorno (rete di sicurezza voluta, vedi daily-agents.yml), il
+  // ciclo gira innocuamente due volte — ma il resoconto mattutino su
+  // Telegram no, altrimenti Andrea lo riceve doppio. Controllato PRIMA che
+  // questo ciclo registri il proprio "Direttore ok" qui sotto.
+  const runsGiaOggi = await readData<AgentRunsFile>("agent-runs.json").catch(() => ({ runs: [] }));
+  const resocontoGiaInviatoOggi = runsGiaOggi.runs.some(
+    (r) => r.agente === IDENTITA.master.nome && r.timestamp.startsWith(oggi)
+  );
 
   await eseguiPasso("Agente Media (Occhio)", eseguiMediaAgent);
   await eseguiPasso("Agente Contenuti (Copy)", eseguiContentAgent);
@@ -103,8 +114,10 @@ export async function eseguiMasterAgent(): Promise<void> {
   // Il resoconto via Telegram parte solo dal vero ciclo automatico delle
   // 06:00 (flag impostato da .github/workflows/daily-agents.yml in base a
   // github.event_name), mai dai lanci manuali/di test: altrimenti ogni
-  // trigger manuale spammerebbe un resoconto in chat.
-  if (process.env.MORNING_REPORT === "true") {
+  // trigger manuale spammerebbe un resoconto in chat. E solo la prima volta
+  // al giorno, anche se sia il cron di Vercel che lo schedule di GitHub
+  // scattano lo stesso giorno (vedi controllo in cima alla funzione).
+  if (process.env.MORNING_REPORT === "true" && !resocontoGiaInviatoOggi) {
     await inviaResocontoMattutino(inizioCiclo).catch((err) => {
       console.error("[Direttore] Invio resoconto mattutino Telegram fallito:", err);
     });
