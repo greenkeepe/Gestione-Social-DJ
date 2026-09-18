@@ -32,13 +32,20 @@ export function Reviews() {
       </div>
 
       <Reveal delay={0.15}>
-        <div
-          className="mt-14 flex gap-5 overflow-x-auto px-5 pb-6 [scroll-padding-inline:1.25rem] [scrollbar-width:thin] sm:px-10 md:px-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]"
-          style={{ scrollSnapType: "x proximity" }}
-        >
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={`${testimonial.name}-${index}`} testimonial={testimonial} />
-          ))}
+        <div className="reviews-marquee-viewport mt-14">
+          <div className="reviews-marquee-track">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={`a-${testimonial.name}-${index}`} testimonial={testimonial} />
+            ))}
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={`b-${testimonial.name}-${index}`}
+                testimonial={testimonial}
+                ariaHidden
+                className="reviews-marquee-duplicate"
+              />
+            ))}
+          </div>
         </div>
       </Reveal>
 
