@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
 import { faqItems } from "@/data/faq";
@@ -19,6 +20,14 @@ export function FAQ({
         )}
         <div className={hideHeading ? "max-w-3xl" : "mt-14 max-w-3xl"}>
           <Accordion items={items} />
+          {full ? null : (
+            <Link
+              href="/faq"
+              className="eyebrow mt-8 inline-block hover:text-champagne-bright"
+            >
+              Vedi tutte le domande frequenti →
+            </Link>
+          )}
         </div>
       </div>
     </section>

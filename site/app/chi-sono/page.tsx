@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata, personJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { About } from "@/components/sections/About";
@@ -33,6 +34,13 @@ export default function ChiSonoPage() {
         description={`${siteConfig.realName}, DJ per matrimoni ed eventi con ${siteConfig.yearsExperience} anni di esperienza.`}
       />
       <About />
+      <div className="bg-charcoal pb-4">
+        <div className="container-edit text-center">
+          <Link href="/servizi" className="eyebrow hover:text-champagne-bright">
+            Scopri tutti i servizi inclusi →
+          </Link>
+        </div>
+      </div>
       <Reviews />
       <FinalCTA />
     </>

@@ -15,6 +15,15 @@ export const metadata: Metadata = buildMetadata({
   path: "/eventi",
 });
 
+// Anchor text differenziato per categoria (stesso link, testo più
+// pertinente al contesto invece di un'unica CTA generica ripetuta 4 volte).
+const ctaLabels: Record<string, string> = {
+  matrimoni: "Verifica la disponibilità per il tuo matrimonio",
+  "eventi-privati": "Verifica la disponibilità per la tua festa",
+  corporate: "Richiedi disponibilità per il tuo evento aziendale",
+  party: "Verifica la disponibilità per il tuo party",
+};
+
 export default function EventiPage() {
   return (
     <>
@@ -85,7 +94,9 @@ export default function EventiPage() {
                 </Reveal>
                 <Reveal delay={0.26}>
                   <div className="mt-8">
-                    <Button href="/contatti">Verifica la disponibilità</Button>
+                    <Button href="/contatti">
+                      {ctaLabels[event.slug] ?? "Verifica la disponibilità"}
+                    </Button>
                   </div>
                 </Reveal>
               </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Services } from "@/components/sections/Services";
@@ -29,6 +30,13 @@ export default function ServiziPage() {
         description="Ogni servizio pensato per integrarsi con gli altri, senza soluzione di continuità."
       />
       <Services hideHeading />
+      <div className="bg-ink pb-4">
+        <div className="container-edit text-center">
+          <Link href="/chi-sono" className="eyebrow hover:text-champagne-bright">
+            Scopri chi si occupa personalmente di ogni evento →
+          </Link>
+        </div>
+      </div>
       <Process />
       <FinalCTA />
     </>
