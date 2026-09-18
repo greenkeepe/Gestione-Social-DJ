@@ -15,7 +15,9 @@ export const siteConfig = {
     "DJ & Entertainment per matrimoni, eventi e party che meritano di essere ricordati.",
 
   // Lasciare vuoto finché non esiste un dominio reale: non va inventato.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
+  // Letta solo lato server (sitemap, robots, metadata, JSON-LD): niente
+  // prefisso NEXT_PUBLIC_, così non finisce nel bundle del browser.
+  url: process.env.SITE_URL ?? "",
 
   email: "info.andreaforte@gmail.com",
   phone: "+39 366 744 7280",

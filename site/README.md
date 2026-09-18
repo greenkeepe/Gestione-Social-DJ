@@ -42,8 +42,9 @@ Vedi `.env.example`. In particolare:
   crea un account su [resend.com](https://resend.com), verifica un mittente e
   incolla qui la chiave per attivare l'invio reale. Nel frattempo il
   visitatore ha comunque il bottone WhatsApp e i contatti diretti in pagina.
-- `NEXT_PUBLIC_SITE_URL` — dominio pubblico del sito, da valorizzare solo
-  quando esiste davvero (usato per canonical URL e sitemap).
+- `SITE_URL` — dominio del sito, da valorizzare solo quando esiste davvero
+  (usato per canonical URL, sitemap, robots.txt e JSON-LD). Variabile privata
+  su Vercel: nessun prefisso `NEXT_PUBLIC_`, è letta solo lato server.
 - `NEXT_PUBLIC_GA_ID` / `NEXT_PUBLIC_GTM_ID` / `NEXT_PUBLIC_META_PIXEL_ID` —
   opzionali, attivano i rispettivi script solo se valorizzati.
 
