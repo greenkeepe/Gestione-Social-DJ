@@ -87,6 +87,8 @@ export const weddingMoments: WeddingMoment[] = [
     key: "cena",
     title: "Cena",
     description: "Momenti musicali scelti con cura per accompagnare la tavola.",
+    imageSrc: "/images/gallery/party-terrace-dinner-lights.jpg",
+    imageAlt: "Cena in terrazza tra le luci sospese e la consolle",
   },
   {
     key: "first-dance",
@@ -106,6 +108,8 @@ export const weddingMoments: WeddingMoment[] = [
     key: "final-dance",
     title: "Final Dance",
     description: "Il momento che nessuno vuole veda finire.",
+    imageSrc: "/images/gallery/wedding-courtyard-dance.jpg",
+    imageAlt: "Balli nel cortile tra le luci sospese",
   },
 ];
 

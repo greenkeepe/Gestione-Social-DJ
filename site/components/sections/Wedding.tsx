@@ -6,14 +6,12 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { cn } from "@/lib/utils";
 import { weddingMoments } from "@/data/events";
 
-// Non ogni tappa merita lo stesso peso visivo: alterniamo fotografia e pura
-// tipografia per costruire un'escalation verso il picco della serata (Party)
-// invece di ripetere sei volte lo stesso riquadro.
-const photoSteps = new Set([0, 1, 3, 4]);
+// Il momento "Party" resta il picco visivo della timeline (bordo/ombra
+// champagne più marcati); ogni tappa senza una foto reale ancora disponibile
+// torna automaticamente al trattamento tipografico invece di un placeholder.
 const intenseSteps = new Set([4]);
 
 export function Wedding() {
@@ -61,7 +59,6 @@ export function Wedding() {
 
           {weddingMoments.map((moment, index) => {
             const reversed = index % 2 === 1;
-            const isPhoto = photoSteps.has(index);
             const isIntense = intenseSteps.has(index);
 
             return (
@@ -73,7 +70,7 @@ export function Wedding() {
                   className={reversed ? "md:order-2" : undefined}
                   y={28}
                 >
-                  {isPhoto ? (
+                  {moment.imageSrc ? (
                     <div
                       className={cn(
                         "relative aspect-[4/3] overflow-hidden rounded-2xl border",
@@ -82,20 +79,13 @@ export function Wedding() {
                           : "border-line",
                       )}
                     >
-                      {moment.imageSrc ? (
-                        <Image
-                          src={moment.imageSrc}
-                          alt={moment.imageAlt ?? moment.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover"
-                        />
-                      ) : (
-                        <PlaceholderMedia
-                          number={`0${index + 1}`}
-                          tone={isIntense ? "darker" : "dark"}
-                        />
-                      )}
+                      <Image
+                        src={moment.imageSrc}
+                        alt={moment.imageAlt ?? moment.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
                     </div>
                   ) : (
                     <div
