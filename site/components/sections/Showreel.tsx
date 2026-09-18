@@ -5,8 +5,10 @@ import { Maximize, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+import { VideoCard } from "@/components/ui/VideoCard";
+import { VideoLightbox } from "@/components/ui/VideoLightbox";
 import { InstagramIcon, FacebookIcon, YoutubeIcon, TiktokIcon } from "@/components/ui/SocialIcons";
-import { showreel } from "@/data/media";
+import { showreel, reelVideos } from "@/data/media";
 import { siteConfig } from "@/data/site";
 
 const socialLinks = [
@@ -20,6 +22,7 @@ export function Showreel() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [activeReelIndex, setActiveReelIndex] = useState<number | null>(null);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -120,7 +123,30 @@ export function Showreel() {
             </>
           )}
         </div>
+      </div>
 
+      {reelVideos.length > 0 ? (
+        <div className="mt-10 flex justify-center gap-5 overflow-x-auto px-5 pb-4 sm:px-10 md:px-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]">
+          {reelVideos.map((video, index) => (
+            <VideoCard
+              key={video.videoSrc}
+              video={video}
+              onOpen={() => setActiveReelIndex(index)}
+            />
+          ))}
+        </div>
+      ) : null}
+
+      {activeReelIndex !== null ? (
+        <VideoLightbox
+          videos={reelVideos}
+          activeIndex={activeReelIndex}
+          onClose={() => setActiveReelIndex(null)}
+          onNavigate={setActiveReelIndex}
+        />
+      ) : null}
+
+      <div className="container-edit">
         <div className="mt-12 flex flex-col items-center gap-6">
           <Button href="/contatti" size="lg">
             Verifica la disponibilità
