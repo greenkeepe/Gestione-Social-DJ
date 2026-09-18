@@ -3,6 +3,10 @@
 // funzioni serverless la rileggono senza bisogno di un redeploy manuale.
 // Richiede un Personal Access Token Vercel con accesso al progetto — vedi
 // README > "Rinnovo del token Meta dalla dashboard".
+//
+// riavviaDeploymentVercel() usa gitSource (mai deploymentId): un clone
+// dell'ultimo deployment "Ready" ignora i commit successivi e congela la
+// produzione a una versione vecchia per sempre (bug reale, risolto qui).
 const VERCEL_BASE = "https://api.vercel.com";
 
 function query(extra: Record<string, string> = {}): string {
