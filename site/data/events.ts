@@ -54,6 +54,8 @@ export type WeddingMoment = {
   key: string;
   title: string;
   description: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 export const weddingMoments: WeddingMoment[] = [
@@ -76,11 +78,15 @@ export const weddingMoments: WeddingMoment[] = [
     key: "first-dance",
     title: "First Dance",
     description: "Il primo ballo, costruito sul brano che vi rappresenta.",
+    imageSrc: "/images/gallery/wedding-sparklers-dance.jpg",
+    imageAlt: "Primo ballo degli sposi tra le stelle filanti",
   },
   {
     key: "party",
     title: "Party",
     description: "L'energia sale e la pista da ballo si riempie.",
+    imageSrc: "/images/gallery/wedding-reception-dance.jpg",
+    imageAlt: "Balli al ricevimento con luci scenografiche",
   },
   {
     key: "final-dance",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -81,10 +82,20 @@ export function Wedding() {
                           : "border-line",
                       )}
                     >
-                      <PlaceholderMedia
-                        number={`0${index + 1}`}
-                        tone={isIntense ? "darker" : "dark"}
-                      />
+                      {moment.imageSrc ? (
+                        <Image
+                          src={moment.imageSrc}
+                          alt={moment.imageAlt ?? moment.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
+                        />
+                      ) : (
+                        <PlaceholderMedia
+                          number={`0${index + 1}`}
+                          tone={isIntense ? "darker" : "dark"}
+                        />
+                      )}
                     </div>
                   ) : (
                     <div
