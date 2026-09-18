@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
@@ -35,7 +36,17 @@ export default function EventiPage() {
                 className={index % 2 === 1 ? "md:order-2" : undefined}
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line">
-                  <PlaceholderMedia number={`0${index + 1}`} />
+                  {event.imageSrc ? (
+                    <Image
+                      src={event.imageSrc}
+                      alt={event.imageAlt ?? event.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <PlaceholderMedia number={`0${index + 1}`} />
+                  )}
                 </div>
               </Reveal>
               <div>
