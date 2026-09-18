@@ -5,8 +5,16 @@ name: Controllo pubblicazione (trova l'orario migliore)
 # finestra di tolleranza di 90 minuti). Così la pubblicazione avviene
 # sempre nella fascia storicamente più efficace, non a un orario fisso.
 on:
+  # Orari allineati alle 3 fasce di lib/bestTime.ts (12:30, 18:30 feriali;
+  # 21:15 weekend) con 30-45 minuti di margine, dentro la finestra di
+  # tolleranza di 90 minuti di publishing-agent.ts: un controllo troppo
+  # presto o troppo tardi rispetto al target non pubblica mai (bug reale
+  # trovato dal vivo — con "0 10,16,19,20 * * *" nessuno dei due orari
+  # feriali cadeva mai in una finestra valida). Doppio cron per gestire
+  # l'ora legale come in daily-agents.yml.
   schedule:
-    - cron: "0 10,16,19,20 * * *" # ~11:00, 17:00, 20:00, 21:00 Europe/Rome (varia con l'ora legale)
+    - cron: "0 11,17,20 * 4,5,6,7,8,9 *" # CEST -> 13:00, 19:00, 22:00 locali
+    - cron: "0 12,18,21 * 1,2,3,10,11,12 *" # CET -> 13:00, 19:00, 22:00 locali
   workflow_dispatch:
     inputs:
       forza_pubblicazione_id:
