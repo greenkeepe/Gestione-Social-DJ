@@ -94,7 +94,7 @@ export function Gallery({ full = false }: { full?: boolean }) {
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
-                  priority={image.priority}
+                  preload={image.priority}
                   className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
