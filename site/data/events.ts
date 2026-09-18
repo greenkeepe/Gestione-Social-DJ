@@ -7,6 +7,8 @@ export type EventCategory = {
   short: string;
   description: string;
   includes: string[];
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 export const eventCategories: EventCategory[] = [
@@ -17,6 +19,8 @@ export const eventCategories: EventCategory[] = [
     description:
       "La colonna sonora dell'intera giornata: dalla cerimonia al fine serata, con musica pensata per ogni momento.",
     includes: ["Matrimoni", "Matrimoni in chiesa", "Cerimonie e comunioni"],
+    imageSrc: "/images/gallery/wedding-coldspark-cake.jpg",
+    imageAlt: "Taglio della torta tra i fuochi freddi",
   },
   {
     slug: "eventi-privati",
@@ -30,6 +34,8 @@ export const eventCategories: EventCategory[] = [
       "Addio al nubilato/celibato",
       "Feste private",
     ],
+    imageSrc: "/images/gallery/party-indoor-handsup.jpg",
+    imageAlt: "Pista da ballo al coperto con le mani alzate",
   },
   {
     slug: "corporate",
@@ -38,6 +44,8 @@ export const eventCategories: EventCategory[] = [
     description:
       "Musica calibrata sull'identità del brand, dall'aperitivo di networking al momento di intrattenimento.",
     includes: ["Feste aziendali", "Ricevimenti e inaugurazioni"],
+    imageSrc: "/images/gallery/events-corporate-buffet.jpg",
+    imageAlt: "Console DJ durante un evento aziendale con buffet",
   },
   {
     slug: "party",
@@ -46,6 +54,8 @@ export const eventCategories: EventCategory[] = [
     description:
       "Serate pensate per far salire l'energia dal primo all'ultimo brano.",
     includes: ["Capodanno ed eventi stagionali", "Locali, club e bar"],
+    imageSrc: "/images/gallery/party-nightclub-518.jpg",
+    imageAlt: "Festa in discoteca con la pista animata",
   },
 ];
 

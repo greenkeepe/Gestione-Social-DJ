@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { cn } from "@/lib/utils";
@@ -39,7 +40,17 @@ export function EventCard({
     >
       <div className={cn("relative w-full shrink-0 overflow-hidden", imageAspect[variant], isWide && "sm:w-2/5")}>
         <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105">
-          <PlaceholderMedia number={`0${index + 1}`} />
+          {event.imageSrc ? (
+            <Image
+              src={event.imageSrc}
+              alt={event.imageAlt ?? event.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          ) : (
+            <PlaceholderMedia number={`0${index + 1}`} />
+          )}
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" />
       </div>
