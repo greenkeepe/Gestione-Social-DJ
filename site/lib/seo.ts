@@ -30,22 +30,38 @@ export function buildMetadata(opts: {
   };
 }
 
-// Person + servizio musicale — solo fatti confermati in config/brand.json.
+// Attività di intrattenimento — solo fatti confermati in config/brand.json.
+// Coordinate di Serravalle Scrivia (AL) approssimate: da verificare/correggere
+// con un pin preciso su Google Maps prima di considerarle definitive.
 export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "MusicGroup",
+    "@type": "EntertainmentBusiness",
     name: siteConfig.name,
     description: siteConfig.description,
     ...(siteConfig.url ? { url: siteConfig.url } : {}),
     email: siteConfig.email,
     telephone: siteConfig.phone,
-    areaServed: siteConfig.serviceAreas,
-    genre: [
-      "Wedding DJ",
-      "Party DJ",
-      "Event entertainment",
-    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Serravalle Scrivia",
+      addressRegion: "AL",
+      addressCountry: "IT",
+    },
+    areaServed: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: 44.7167,
+        longitude: 8.85,
+      },
+      geoRadius: "150000",
+    },
+    founder: {
+      "@type": "Person",
+      name: siteConfig.realName,
+      jobTitle: "DJ",
+    },
     sameAs: [siteConfig.instagramUrl, siteConfig.musiquaProfileUrl].filter(Boolean),
     aggregateRating: {
       "@type": "AggregateRating",
@@ -57,11 +73,42 @@ export function localBusinessJsonLd() {
   };
 }
 
-export function faqJsonLd() {
+// Entità "persona" per la pagina /chi-sono — solo fatti confermati.
+export function personJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.realName,
+    alternateName: siteConfig.name,
+    jobTitle: "DJ per matrimoni ed eventi",
+    description: `${siteConfig.realName}, DJ per matrimoni ed eventi con ${siteConfig.yearsExperience} anni di esperienza, attivo in ${siteConfig.serviceAreas.join(", ")}.`,
+    ...(siteConfig.url ? { url: `${siteConfig.url}/chi-sono` } : {}),
+    sameAs: [siteConfig.instagramUrl].filter(Boolean),
+  };
+}
+
+// Breadcrumb di navigazione (solo dato strutturato, nessun elemento visivo).
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { name: "Home", path: "" },
+      ...items,
+    ].map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${technicalBaseUrl}${item.path}`,
+    })),
+  };
+}
+
+export function faqJsonLd(items: typeof faqItems = faqItems) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
+    mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {

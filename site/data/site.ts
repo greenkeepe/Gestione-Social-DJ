@@ -7,6 +7,10 @@ export const siteConfig = {
   realName: "Andrea",
   description:
     "Forte DJ è DJ per matrimoni ed eventi con base a Serravalle Scrivia (AL), attivo in Piemonte, Liguria e Lombardia: musica su misura, impianto audio, luci e regia dell'atmosfera per cerimonie, ricevimenti, compleanni ed eventi aziendali.",
+  // Versione corta della description, pensata per restare entro i limiti
+  // indicativi di visualizzazione di una SERP (title/meta description).
+  metaDescriptionHome:
+    "DJ per matrimoni ed eventi in Piemonte, Liguria e Lombardia: musica su misura, impianto audio, luci e regia dell'atmosfera per cerimonie e ricevimenti.",
   tagline:
     "DJ & Entertainment per matrimoni, eventi e party che meritano di essere ricordati.",
 

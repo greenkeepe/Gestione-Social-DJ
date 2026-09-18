@@ -1,3 +1,5 @@
+import { faqJsonLd } from "@/lib/seo";
+import { faqItems } from "@/data/faq";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Intro } from "@/components/sections/Intro";
@@ -20,6 +22,12 @@ import { ContactForm } from "@/components/sections/ContactForm";
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd(faqItems.slice(0, 6))),
+        }}
+      />
       <Hero />
       <TrustBar />
       <Intro />

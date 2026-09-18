@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Wedding } from "@/components/sections/Wedding";
 import { Numbers } from "@/components/sections/Numbers";
@@ -9,15 +9,23 @@ import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DJ per matrimoni a Serravalle Scrivia, Alessandria e in Piemonte",
+  title: "DJ per matrimoni in Piemonte, Liguria e Lombardia",
   description:
-    "DJ per matrimoni a Serravalle Scrivia (AL) e in tutto il Piemonte, Liguria e Lombardia: musica su misura per cerimonia, aperitivo, cena e party.",
+    "DJ per matrimoni in Piemonte, Liguria e Lombardia: musica su misura per cerimonia, aperitivo, cena e party, con base a Serravalle Scrivia (AL).",
   path: "/matrimoni",
 });
 
 export default function MatrimoniPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([{ name: "Matrimoni", path: "/matrimoni" }]),
+          ),
+        }}
+      />
       <PageHero
         eyebrow="Matrimoni"
         title="LA COLONNA SONORA DEL VOSTRO GIORNO"

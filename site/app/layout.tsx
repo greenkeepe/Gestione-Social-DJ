@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     default: "Forte DJ — DJ per matrimoni ed eventi in Piemonte",
     template: "%s — Forte DJ",
   },
-  description: siteConfig.description,
+  description: siteConfig.metaDescriptionHome,
   openGraph: {
     title: "Forte DJ — DJ per matrimoni ed eventi in Piemonte",
-    description: siteConfig.description,
+    description: siteConfig.metaDescriptionHome,
     siteName: siteConfig.name,
     locale: "it_IT",
     type: "website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Forte DJ — DJ per matrimoni ed eventi in Piemonte",
-    description: siteConfig.description,
+    description: siteConfig.metaDescriptionHome,
   },
   robots: { index: true, follow: true },
 };

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { Reveal } from "@/components/ui/Reveal";
@@ -18,6 +18,14 @@ export const metadata: Metadata = buildMetadata({
 export default function EventiPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([{ name: "Eventi", path: "/eventi" }]),
+          ),
+        }}
+      />
       <PageHero
         eyebrow="Eventi"
         title="OGNI EVENTO HA LA SUA MUSICA"

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Servizi",
+  title: "Servizi DJ per matrimoni ed eventi: audio, luci, consolle",
   description:
     "DJ set, impianto audio professionale, luci, macchina del fumo e microfoni per cerimonia: tutti i servizi Forte DJ per il tuo evento.",
   path: "/servizi",
@@ -15,6 +15,14 @@ export const metadata: Metadata = buildMetadata({
 export default function ServiziPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([{ name: "Servizi", path: "/servizi" }]),
+          ),
+        }}
+      />
       <PageHero
         eyebrow="Servizi"
         title="TUTTO CIÒ CHE SERVE PER LA SERATA"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Reveal } from "@/components/ui/Reveal";
@@ -16,6 +16,14 @@ export const metadata: Metadata = buildMetadata({
 export default function ContattiPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([{ name: "Contatti", path: "/contatti" }]),
+          ),
+        }}
+      />
       <PageHero
         eyebrow="Contatti"
         title="VERIFICA LA DISPONIBILITÀ"
