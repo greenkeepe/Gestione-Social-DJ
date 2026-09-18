@@ -4,7 +4,9 @@ Sistema di agenti autonomi che gestiscono la presenza social del tuo profilo DJ 
 
 ## Sito pubblico (`site/`)
 
-Oltre agli agenti (root) e alla dashboard privata (`dashboard/`), il repository contiene anche il sito vetrina pubblico di Forte DJ in `site/`: un progetto Next.js separato e deployabile in autonomia (stesso schema di `dashboard/`, Root Directory `site` su Vercel). Vedi `site/README.md` per contenuti, variabili d'ambiente e come popolare gallery/showreel con foto e video reali.
+Oltre agli agenti (root) e alla dashboard privata (`dashboard/`), il repository contiene anche il sito vetrina pubblico di Forte DJ in `site/`: un progetto Next.js separato, online su **[www.fortedj.it](https://www.fortedj.it)** (deploy indipendente, attualmente su Netlify). Vedi `site/README.md` per contenuti, variabili d'ambiente e come popolare gallery/showreel con foto e video reali.
+
+Il link è registrato in `config/brand.json > contatti.sitoWeb`: da lì lo leggono sia l'Agente Esploratore (firma delle email di collaborazione) sia l'Agente Contenuti, che può chiudere un post con un CTA "link in bio" (solo perché `sitoWebBottoneAttivo` è `true` — vero solo se il link è davvero impostato nel bio Instagram/Facebook, altrimenti sarebbe un invito a vuoto).
 
 ## Come è fatto il sistema
 

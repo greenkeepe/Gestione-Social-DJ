@@ -175,6 +175,12 @@ export function testoCtaContatto(brand: Record<string, any>): string | null {
       "Trovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli."
     );
   }
+  if (brand.contatti?.sitoWebBottoneAttivo) {
+    varianti.push(
+      "Trovi foto, recensioni e tutti i dettagli sul sito, link in bio.",
+      "Il sito con portfolio e recensioni è in bio: dai un'occhiata!"
+    );
+  }
   return varianti[Math.floor(Math.random() * varianti.length)];
 }
 
