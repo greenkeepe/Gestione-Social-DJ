@@ -20,7 +20,7 @@ export default function ServiziPage() {
         title="TUTTO CIÒ CHE SERVE PER LA SERATA"
         description="Ogni servizio pensato per integrarsi con gli altri, senza soluzione di continuità."
       />
-      <Services />
+      <Services hideHeading />
       <Process />
       <FinalCTA />
     </>

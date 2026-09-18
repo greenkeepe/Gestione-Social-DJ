@@ -19,7 +19,7 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
       />
       <PageHero eyebrow="FAQ" title="DOMANDE FREQUENTI" />
-      <FAQ full />
+      <FAQ full hideHeading />
       <FinalCTA />
     </>
   );

@@ -14,7 +14,7 @@ import { weddingMoments } from "@/data/events";
 // torna automaticamente al trattamento tipografico invece di un placeholder.
 const intenseSteps = new Set([4]);
 
-export function Wedding() {
+export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
   const timelineRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -26,22 +26,27 @@ export function Wedding() {
   return (
     <section id="matrimoni" className="scroll-mt-20 bg-charcoal py-28 md:py-40">
       <div className="container-edit">
-        <SectionHeading
-          eyebrow="Matrimoni"
-          title={
-            <>
-              IL TUO MATRIMONIO.
-              <br />
-              <span className="text-champagne">
-                LA SUA COLONNA SONORA.
-              </span>
-            </>
-          }
-        />
+        {hideHeading ? null : (
+          <SectionHeading
+            eyebrow="Matrimoni"
+            title={
+              <>
+                IL TUO MATRIMONIO.
+                <br />
+                <span className="text-champagne">
+                  LA SUA COLONNA SONORA.
+                </span>
+              </>
+            }
+          />
+        )}
 
         <div
           ref={timelineRef}
-          className="relative mt-20 flex flex-col gap-16 md:mt-28 md:gap-28"
+          className={cn(
+            "relative flex flex-col gap-16 md:gap-28",
+            hideHeading ? undefined : "mt-20 md:mt-28",
+          )}
         >
           <div
             className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-line md:block"

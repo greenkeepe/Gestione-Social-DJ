@@ -6,16 +6,18 @@ import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/data/site";
 
-export function Reviews() {
+export function Reviews({ hideHeading = false }: { hideHeading?: boolean }) {
   return (
     <section id="recensioni" className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
-        <SectionHeading
-          eyebrow="Recensioni"
-          title={`${siteConfig.reviewsCount} VOLTE UNA STORIA DA RACCONTARE`}
-          description="Le esperienze di chi ha scelto Forte DJ per il proprio momento speciale."
-          align="center"
-        />
+        {hideHeading ? null : (
+          <SectionHeading
+            eyebrow="Recensioni"
+            title={`${siteConfig.reviewsCount} VOLTE UNA STORIA DA RACCONTARE`}
+            description="Le esperienze di chi ha scelto Forte DJ per il proprio momento speciale."
+            align="center"
+          />
+        )}
         <Reveal delay={0.1}>
           <div className="mt-8 flex items-center justify-center gap-3">
             <div className="flex items-center gap-1" aria-hidden>

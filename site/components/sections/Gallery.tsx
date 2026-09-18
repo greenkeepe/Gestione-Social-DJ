@@ -24,7 +24,13 @@ const placeholderSlots: { category: GalleryImage["category"]; aspect: string }[]
   { category: "events", aspect: "aspect-square" },
 ];
 
-export function Gallery({ full = false }: { full?: boolean }) {
+export function Gallery({
+  full = false,
+  hideHeading = false,
+}: {
+  full?: boolean;
+  hideHeading?: boolean;
+}) {
   const [filter, setFilter] = useState<"all" | GalleryImage["category"]>("all");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -49,16 +55,18 @@ export function Gallery({ full = false }: { full?: boolean }) {
   return (
     <section id="gallery" className="scroll-mt-20 bg-ink py-28 md:py-40">
       <div className="container-edit">
-        <SectionHeading
-          eyebrow="Gallery"
-          title="MOMENTI, NON SOLO FOTO"
-          description="Un assaggio delle atmosfere costruite evento dopo evento."
-        />
+        {hideHeading ? null : (
+          <SectionHeading
+            eyebrow="Gallery"
+            title="MOMENTI, NON SOLO FOTO"
+            description="Un assaggio delle atmosfere costruite evento dopo evento."
+          />
+        )}
 
         <div
           role="tablist"
           aria-label="Filtra la gallery"
-          className="mt-10 flex flex-wrap gap-3"
+          className={cn("flex flex-wrap gap-3", hideHeading ? undefined : "mt-10")}
         >
           {galleryFilters.map((f) => (
             <button

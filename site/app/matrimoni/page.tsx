@@ -23,7 +23,7 @@ export default function MatrimoniPage() {
         title="LA COLONNA SONORA DEL VOSTRO GIORNO"
         description="Dalla cerimonia al fine serata, ogni momento del matrimonio ha la sua musica, pensata insieme a voi."
       />
-      <Wedding />
+      <Wedding hideHeading />
       <Numbers />
       <Gallery />
       <Reviews />

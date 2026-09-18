@@ -18,7 +18,7 @@ export default function GalleryPage() {
         title="MOMENTI, NON SOLO FOTO"
         description="Wedding, party ed eventi raccontati per immagini."
       />
-      <Gallery full />
+      <Gallery full hideHeading />
       <FinalCTA />
     </>
   );
