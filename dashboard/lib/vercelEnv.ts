@@ -7,6 +7,9 @@
 // riavviaDeploymentVercel() usa gitSource (mai deploymentId): un clone
 // dell'ultimo deployment "Ready" ignora i commit successivi e congela la
 // produzione a una versione vecchia per sempre (bug reale, risolto qui).
+// Vedi anche l'Ignored Build Step del progetto Vercel: usa
+// $VERCEL_GIT_PREVIOUS_SHA, non HEAD^ (che sui checkout superficiali di
+// Vercel non si risolve, facendo saltare build vere per errore).
 const VERCEL_BASE = "https://api.vercel.com";
 
 function query(extra: Record<string, string> = {}): string {
