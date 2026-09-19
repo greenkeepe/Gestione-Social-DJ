@@ -2,6 +2,69 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-19T10:24:34.436Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "ok",
+      "riepilogo": "Preparate 10 bozze di email per locali della zona con email pubblica trovata.",
+      "timestamp": "2026-09-19T10:24:34.433Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "nessuna-azione",
+      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
+      "timestamp": "2026-09-19T10:22:19.063Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-19T10:22:19.061Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 387 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-19T10:22:19.058Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-19T10:22:16.805Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-19T10:21:53.306Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-19T10:21:42.835Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-09-19T10:21:42.832Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
