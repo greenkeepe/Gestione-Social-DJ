@@ -9,12 +9,12 @@
 // produzione a una versione vecchia per sempre (bug reale, risolto qui).
 // Vedi anche l'Ignored Build Step del progetto Vercel: usa
 // $VERCEL_GIT_PREVIOUS_SHA, non HEAD^ (che sui checkout superficiali di
-// Vercel non si risolve, facendo saltare build vere per errore) — e un
-// "git fetch origin <sha> --depth=1" mirato prima del diff (verifica in
-// corso — vedi commit successivi se cambia ancora), perché anche
-// quel commit precedente può non esistere nella copia scaricata da Vercel
-// ("git fetch --unshallow" fallisce silenziosamente lì: non è un clone
-// shallow classico che --unshallow sappia estendere).
+// Vercel non si risolve, facendo saltare build vere per errore). Sia
+// "git fetch --unshallow" sia un fetch mirato sullo SHA esatto sono
+// falliti nei test dal vivo (GitHub non permette di scaricare uno SHA
+// arbitrario che non sia la punta di un branch/tag) — funziona invece
+// "git fetch origin $VERCEL_GIT_COMMIT_REF --depth=100", che scarica più
+// storia reale del branch (un ref, sempre permesso) prima del diff.
 const VERCEL_BASE = "https://api.vercel.com";
 
 function query(extra: Record<string, string> = {}): string {
