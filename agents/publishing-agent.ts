@@ -30,7 +30,14 @@ interface PublishedLogFile {
   log: Array<Record<string, unknown>>;
 }
 
-const FINESTRA_TOLLERANZA_MINUTI = 90;
+// I trigger "schedule" di GitHub Actions su questo repository arrivano
+// regolarmente in ritardo di 2-5 ore (visto dal vivo più volte: un
+// controllo delle 19:00 può partire davvero solo alle 21:29) — limite
+// noto di GitHub sui repository con poca attività continua, non
+// risolvibile lato nostro. Una finestra di 90 minuti perdeva quindi quasi
+// sempre la pubblicazione. Allargata per assorbire il ritardo tipico
+// osservato, restando comunque "lo stesso giorno".
+const FINESTRA_TOLLERANZA_MINUTI = 300;
 
 function siamoNellaFinestra(orarioProgrammato: string): boolean {
   const ora = new Date();
