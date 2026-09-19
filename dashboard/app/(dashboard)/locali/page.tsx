@@ -2,6 +2,7 @@ import { leggiDati } from "../../../lib/dataSource";
 import type { OutreachConfigFile, OutreachFile } from "../../../lib/types";
 import { ProvinceSelector } from "../../../components/ProvinceSelector";
 import { TabellaBozzeLocali } from "../../../components/TabellaBozzeLocali";
+import { CercaLocaliButton } from "../../../components/CercaLocaliButton";
 
 export const dynamic = "force-dynamic";
 
@@ -15,12 +16,13 @@ export default async function LocaliPage() {
     <div>
       <h2>Locali</h2>
       <p className="note">
-        Ogni giorno l&apos;Agente Esploratore trova fino a 10 ristoranti/hotel della zona con un&apos;email pubblica e prepara una bozza di
-        collaborazione. <strong>Nessun invio automatico</strong>: rivedi ogni bozza e premi &ldquo;Invia&rdquo; solo su quelle che vuoi mandare
-        davvero — parte dalla tua casella Gmail vera, un contatto alla volta.
+        Tocca &ldquo;Cerca nuovi locali&rdquo; quando vuoi: trova fino a 10 ristoranti/hotel della zona con un&apos;email pubblica e prepara una
+        bozza di collaborazione. <strong>Nessun invio automatico</strong>: rivedi ogni bozza e premi &ldquo;Invia&rdquo; solo su quelle che vuoi
+        mandare davvero — parte dalla tua casella Gmail vera, un contatto alla volta.
       </p>
 
       <ProvinceSelector selezionateIniziali={config.province ?? []} />
+      <CercaLocaliButton />
 
       <h3>Da rivedere ({daRivedere.length})</h3>
       {daRivedere.length === 0 && <p className="note">Nessuna nuova bozza al momento.</p>}

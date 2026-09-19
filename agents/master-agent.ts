@@ -15,7 +15,6 @@ import { eseguiReplyAgent } from "./reply-agent.js";
 import { eseguiAnalyticsAgent } from "./analytics-agent.js";
 import { eseguiStrategyAgent } from "./strategy-agent.js";
 import { eseguiNoteAgent } from "./note-agent.js";
-import { eseguiOutreachAgent } from "./outreach-agent.js";
 
 interface AgentRun {
   agente: string;
@@ -102,7 +101,9 @@ export async function eseguiMasterAgent(): Promise<void> {
   await eseguiPasso("Agente Analytics (Analista)", eseguiAnalyticsAgent);
   await eseguiPasso("Agente Strategia (Stratega)", eseguiStrategyAgent);
   await eseguiPasso("Agente Note (Appunti)", eseguiNoteAgent);
-  await eseguiPasso("Agente Partnership Locali (Esploratore)", eseguiOutreachAgent);
+  // L'Esploratore non gira più in automatico nel ciclo giornaliero: si
+  // avvia solo a comando, con il tasto "Cerca nuovi locali" nella pagina
+  // "Locali" della dashboard (vedi .github/workflows/outreach-search.yml).
 
   await logAgentRun({
     agente: IDENTITA.master.nome,
