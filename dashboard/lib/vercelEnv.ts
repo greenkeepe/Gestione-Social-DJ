@@ -7,13 +7,11 @@
 // riavviaDeploymentVercel() usa gitSource (mai deploymentId): un clone
 // dell'ultimo deployment "Ready" ignora i commit successivi e congela la
 // produzione a una versione vecchia per sempre (bug reale, risolto qui).
-// Vedi anche l'Ignored Build Step del progetto Vercel: usa
-// $VERCEL_GIT_PREVIOUS_SHA, non HEAD^ (che sui checkout superficiali di
-// Vercel non si risolve, facendo saltare build vere per errore). La causa
-// vera di tutti i tentativi falliti: il checkout di Vercel non ha un
-// remote "origin" configurato ("fatal: 'origin' does not appear to be a
-// git repository", visto nei log reali) — va aggiunto a mano prima di
-// qualunque fetch.
+// Ignored Build Step del progetto Vercel: dopo vari tentativi falliti
+// (HEAD^, VERCEL_GIT_PREVIOUS_SHA, remote "origin" mancante nel
+// checkout) rimesso su "Automatic" — più affidabile della logica
+// personalizzata, anche se consuma qualche build in più sui commit di
+// solo dato.
 const VERCEL_BASE = "https://api.vercel.com";
 
 function query(extra: Record<string, string> = {}): string {
