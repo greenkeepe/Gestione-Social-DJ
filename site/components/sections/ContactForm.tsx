@@ -83,14 +83,16 @@ export function ContactForm() {
           </div>
         ) : (
           <form action={formAction} className="mt-12">
-            {/* Honeypot anti-spam: nome generico apposta, vedi lib/validation.ts */}
+            {/* Honeypot anti-spam: display:none (non solo fuori schermo), è
+                l'unico modo per cui autofill e gestori di password lo
+                ignorano davvero invece di riempirlo comunque. */}
             <input
               type="text"
               name="hp_field"
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
-              className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              className="hidden"
             />
 
             {state.status === "error" && state.message ? (
