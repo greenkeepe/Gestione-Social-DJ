@@ -1,0 +1,98 @@
+{
+  "generatedAt": "2026-09-21T06:57:07.191Z",
+  "note": "Conteggio dei link interni editoriali (pagine app/ e sezioni di contenuto), esclusi Navbar/Footer/CTA globali presenti su ogni pagina. Link con URL dinamici (es. template string con variabili) non vengono rilevati.",
+  "routes": [
+    {
+      "path": "/",
+      "label": "Home",
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "app/not-found.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
+    },
+    {
+      "path": "/matrimoni",
+      "label": "Matrimoni",
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
+    },
+    {
+      "path": "/eventi",
+      "label": "Eventi",
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
+    },
+    {
+      "path": "/servizi",
+      "label": "Servizi",
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "app/chi-sono/page.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
+    },
+    {
+      "path": "/gallery",
+      "label": "Gallery",
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
+    },
+    {
+      "path": "/recensioni",
+      "label": "Recensioni",
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
+    },
+    {
+      "path": "/chi-sono",
+      "label": "Chi è Forte DJ",
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "app/servizi/page.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
+    },
+    {
+      "path": "/faq",
+      "label": "FAQ",
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "components/sections/FAQ.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
+    },
+    {
+      "path": "/contatti",
+      "label": "Contatti",
+      "inboundContextualLinks": 6,
+      "linkedFrom": [
+        "app/eventi/page.tsx",
+        "components/sections/FinalCTA.tsx",
+        "components/sections/Hero.tsx",
+        "components/sections/Reviews.tsx",
+        "components/sections/Showreel.tsx",
+        "components/sections/Wedding.tsx"
+      ],
+      "status": "OK"
+    },
+    {
+      "path": "/privacy",
+      "label": "Privacy",
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
+    },
+    {
+      "path": "/cookie",
+      "label": "Cookie",
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
+    }
+  ]
+}

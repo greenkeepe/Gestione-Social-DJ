@@ -61,3 +61,10 @@ Vedi `.env.example`. In particolare:
 Come `dashboard/`, è pensato per Vercel: importa il repository impostando
 **Root Directory**: `site` e **Framework Preset**: `Next.js`, poi aggiungi le
 variabili d'ambiente sopra elencate.
+
+## SEO Engine (dashboard interna, opzionale)
+
+`/admin/seo` (protetta da Basic Auth) mostra dati reali da Google Search
+Console, opportunità SEO e stato dell'internal linking, aggiornati
+automaticamente una volta a settimana. Non modifica mai contenuti pubblici.
+Setup e architettura: [`docs/seo-engine.md`](./docs/seo-engine.md).

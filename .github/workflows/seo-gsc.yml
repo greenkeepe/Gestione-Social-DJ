@@ -1,0 +1,64 @@
+name: SEO Engine - sincronizzazione Search Console
+
+# Gira una volta a settimana: scarica i dati di Google Search Console,
+# individua le opportunità SEO e controlla l'internal linking. Aggiorna solo
+# i JSON in site/data/seo/ (costo zero, nessun database): la dashboard
+# privata /admin/seo li legge a build time, quindi il prossimo deploy su
+# Vercel li mostra automaticamente.
+on:
+  schedule:
+    - cron: "0 5 * * 1" # ogni lunedì alle 05:00 UTC (06:00/07:00 locali)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gestione-social-dj-seo-engine
+  cancel-in-progress: false
+
+jobs:
+  seo-sync:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: site/package-lock.json
+
+      - name: Installa dipendenze
+        run: npm ci
+
+      - name: Allinea con l'ultima versione del branch
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}"
+
+      - name: Esegui SEO Engine (Search Console + opportunità + internal linking)
+        env:
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+        run: npm run seo:all
+
+      - name: Commit e push dei dati SEO aggiornati
+        run: |
+          git config user.name "gestione-social-dj-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/seo/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(seo): aggiornamento settimanale dati Search Console e opportunità"
+            for i in 1 2 3 4 5; do
+              git push && break
+              echo "Push rifiutato (probabile scrittura concorrente), riprovo dopo un rebase..."
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              sleep $((RANDOM % 5 + 1))
+            done
+          else
+            echo "Nessuna modifica ai dati SEO da salvare."
+          fi

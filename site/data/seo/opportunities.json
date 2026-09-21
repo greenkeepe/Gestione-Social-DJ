@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-09-21T06:57:14.571Z",
+  "sourceGeneratedAt": null,
+  "period": null,
+  "rules": {
+    "positionRange": [
+      5,
+      20
+    ],
+    "minImpressions": 30,
+    "lowCtrThreshold": 0.03,
+    "highImpressionsThreshold": 300,
+    "mediumImpressionsThreshold": 100
+  },
+  "opportunities": []
+}

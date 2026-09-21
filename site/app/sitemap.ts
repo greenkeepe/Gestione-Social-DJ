@@ -1,25 +1,12 @@
 import type { MetadataRoute } from "next";
 import { technicalBaseUrl } from "@/data/site";
-
-const routes = [
-  "",
-  "/matrimoni",
-  "/eventi",
-  "/servizi",
-  "/gallery",
-  "/recensioni",
-  "/chi-sono",
-  "/faq",
-  "/contatti",
-  "/privacy",
-  "/cookie",
-];
+import { siteRoutes } from "@/data/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `${technicalBaseUrl}${route}`,
+  return siteRoutes.map(({ path }) => ({
+    url: `${technicalBaseUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: route === "" ? 1 : 0.7,
+    priority: path === "" ? 1 : 0.7,
   }));
 }
