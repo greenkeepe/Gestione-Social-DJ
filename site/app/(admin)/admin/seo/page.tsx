@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import gscDataRaw from "@/data/seo/gsc-data.json";
 import opportunitiesRaw from "@/data/seo/opportunities.json";
 import internalLinksRaw from "@/data/seo/internal-links.json";
+import indexingRaw from "@/data/seo/indexing.json";
 import { siteRoutes } from "@/data/routes";
-import type { GscDataFile, OpportunitiesFile, InternalLinksFile } from "@/lib/seoEngineTypes";
+import type {
+  GscDataFile,
+  OpportunitiesFile,
+  InternalLinksFile,
+  IndexingFile,
+} from "@/lib/seoEngineTypes";
 
 // Pagina puramente di lettura: i dati sono generati da scripts/seo/ (vedi
 // site/docs/seo-engine.md) e committati come JSON, quindi ogni nuovo deploy
@@ -21,6 +27,7 @@ export const metadata: Metadata = {
 const gscData = gscDataRaw as unknown as GscDataFile;
 const opportunitiesData = opportunitiesRaw as unknown as OpportunitiesFile;
 const internalLinksData = internalLinksRaw as unknown as InternalLinksFile;
+const indexingData = indexingRaw as unknown as IndexingFile;
 
 function formatDate(iso: string | null): string {
   if (!iso) return "mai";
@@ -48,6 +55,13 @@ const statusStyles: Record<string, string> = {
   OK: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
 };
 
+const verdictStyles: Record<string, string> = {
+  PASS: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+  NEUTRAL: "bg-slate-500/20 text-slate-300 border-slate-500/40",
+  PARTIAL: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+  FAIL: "bg-red-500/20 text-red-300 border-red-500/40",
+};
+
 export default function AdminSeoPage() {
   const overallCtr = gscData.totals.impressions > 0 ? gscData.totals.clicks / gscData.totals.impressions : 0;
   const avgPosition = average(gscData.byDate.map((row) => row.position));
@@ -69,6 +83,67 @@ export default function AdminSeoPage() {
         <p className="mt-3 text-xs text-neutral-500">
           Periodo: {gscData.period ? `${gscData.period.startDate} → ${gscData.period.endDate}` : "nessuno"} · Ultimo aggiornamento Search Console: {formatDate(gscData.generatedAt)}
         </p>
+
+        <section className="mt-14">
+          <h2 className="font-display text-xl">Indicizzazione ({indexingData.rows.length} URL)</h2>
+          <p className="mt-1 text-xs text-neutral-500">
+            Stato reale riportato da Google (URL Inspection API), una riga per ogni pagina × lingua pubblicata. Ultimo controllo: {formatDate(indexingData.generatedAt)}
+            {indexingData.siteUrl ? ` · proprietà: ${indexingData.siteUrl}` : ""}.
+          </p>
+          {indexingData.rows.length === 0 ? (
+            <EmptyState text="Non ancora controllato. Serve almeno una sincronizzazione Search Console (npm run seo:all o npm run seo:indexing)." />
+          ) : (
+            <>
+              <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <Stat
+                  label="Indicizzate"
+                  value={indexingData.rows.filter((r) => r.coverageState === "Submitted and indexed").length.toString()}
+                />
+                <Stat
+                  label="Non indicizzate"
+                  value={indexingData.rows.filter((r) => r.coverageState && r.coverageState !== "Submitted and indexed" && !r.error).length.toString()}
+                />
+                <Stat
+                  label="Non ancora controllate"
+                  value={indexingData.rows.filter((r) => !r.coverageState && !r.error).length.toString()}
+                />
+                <Stat label="Errori" value={indexingData.rows.filter((r) => r.error).length.toString()} />
+              </div>
+              <div className="mt-4 overflow-x-auto rounded-lg border border-neutral-800">
+                <table className="w-full min-w-[760px] text-left text-sm">
+                  <thead className="bg-neutral-900 text-xs uppercase tracking-wide text-neutral-400">
+                    <tr>
+                      <th className="px-4 py-3">URL</th>
+                      <th className="px-4 py-3">Verdetto</th>
+                      <th className="px-4 py-3">Stato copertura</th>
+                      <th className="px-4 py-3">Ultima scansione Google</th>
+                      <th className="px-4 py-3">Nota</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {indexingData.rows.map((row) => (
+                      <tr key={row.url} className="border-t border-neutral-800 align-top">
+                        <td className="px-4 py-3 font-medium text-neutral-300">{row.url}</td>
+                        <td className="px-4 py-3">
+                          {row.verdict ? (
+                            <span className={`rounded-full border px-2 py-0.5 text-xs ${verdictStyles[row.verdict] ?? verdictStyles.NEUTRAL}`}>
+                              {row.verdict}
+                            </span>
+                          ) : (
+                            "—"
+                          )}
+                        </td>
+                        <td className="px-4 py-3">{row.coverageState ?? "—"}</td>
+                        <td className="px-4 py-3">{formatDate(row.lastCrawlTime)}</td>
+                        <td className="px-4 py-3 max-w-md text-xs text-red-400">{row.error ?? ""}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </section>
 
         <section className="mt-14">
           <h2 className="font-display text-xl">Opportunità SEO ({opportunitiesData.opportunities.length})</h2>

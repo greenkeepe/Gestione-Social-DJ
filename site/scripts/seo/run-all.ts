@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SCRIPTS = ["sync-gsc.ts", "detect-opportunities.ts", "check-internal-links.ts"];
+const SCRIPTS = ["sync-gsc.ts", "check-indexing.ts", "detect-opportunities.ts", "check-internal-links.ts"];
 const failures: string[] = [];
 
 for (const script of SCRIPTS) {

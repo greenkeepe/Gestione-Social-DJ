@@ -70,3 +70,25 @@ export interface InternalLinksFile {
   note: string;
   routes: InternalLinkRoute[];
 }
+
+// Stato reale di indicizzazione (URL Inspection API), una riga per ogni
+// combinazione pagina×lingua pubblicata (sitemap.ts genera la stessa lista).
+export interface IndexingRow {
+  url: string;
+  verdict: string | null;
+  coverageState: string | null;
+  robotsTxtState: string | null;
+  indexingState: string | null;
+  pageFetchState: string | null;
+  lastCrawlTime: string | null;
+  googleCanonical: string | null;
+  userCanonical: string | null;
+  sitemaps: string[];
+  error: string | null;
+}
+
+export interface IndexingFile {
+  generatedAt: string | null;
+  siteUrl: string | null;
+  rows: IndexingRow[];
+}

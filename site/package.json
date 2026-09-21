@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "seo:sync": "tsx scripts/seo/sync-gsc.ts",
+    "seo:indexing": "tsx scripts/seo/check-indexing.ts",
     "seo:opportunities": "tsx scripts/seo/detect-opportunities.ts",
     "seo:internal-links": "tsx scripts/seo/check-internal-links.ts",
     "seo:all": "tsx scripts/seo/run-all.ts"

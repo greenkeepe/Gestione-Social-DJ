@@ -7,12 +7,30 @@ import { JWT } from "google-auth-library";
 const SEARCH_ANALYTICS_ENDPOINT = (siteUrl: string) =>
   `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/searchAnalytics/query`;
 
+const URL_INSPECTION_ENDPOINT = "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect";
+
 export interface GscApiRow {
   keys: string[];
   clicks: number;
   impressions: number;
   ctr: number;
   position: number;
+}
+
+export interface UrlInspectionRaw {
+  inspectionResult?: {
+    indexStatusResult?: {
+      verdict?: string;
+      coverageState?: string;
+      robotsTxtState?: string;
+      indexingState?: string;
+      pageFetchState?: string;
+      lastCrawlTime?: string;
+      googleCanonical?: string;
+      userCanonical?: string;
+      sitemap?: string[];
+    };
+  };
 }
 
 function requireEnv(name: string): string {
@@ -86,4 +104,28 @@ export async function fetchSearchAnalytics(opts: {
 
   const data = (await response.json()) as { rows?: GscApiRow[] };
   return data.rows ?? [];
+}
+
+// URL Inspection API: stesso Service Account e stesso scope readonly della
+// Search Analytics API (nessun permesso aggiuntivo da concedere in Search
+// Console). Restituisce lo stato di indicizzazione reale di un singolo URL.
+export async function inspectUrl(url: string): Promise<UrlInspectionRaw> {
+  const siteUrl = requireEnv("GSC_SITE_URL");
+  const token = await getAccessToken();
+
+  const response = await fetch(URL_INSPECTION_ENDPOINT, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ inspectionUrl: url, siteUrl }),
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`URL Inspection API ha risposto ${response.status}: ${body}`);
+  }
+
+  return (await response.json()) as UrlInspectionRaw;
 }

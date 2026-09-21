@@ -13,6 +13,7 @@ repository per l'automazione social (`lib/storage.ts`).
 Google Search Console
   → GitHub Actions (settimanale, .github/workflows/seo-gsc.yml)
     → scripts/seo/sync-gsc.ts        → data/seo/gsc-data.json
+    → scripts/seo/check-indexing.ts  → data/seo/indexing.json
     → scripts/seo/detect-opportunities.ts → data/seo/opportunities.json
     → scripts/seo/check-internal-links.ts → data/seo/internal-links.json
   → commit automatico dei JSON aggiornati
@@ -29,11 +30,16 @@ solo segnalazioni da valutare manualmente.
   controllo internal linking, per non avere due liste che disallineano).
 - `site/lib/seoEngineTypes.ts` — tipi condivisi tra script e dashboard.
 - `site/scripts/seo/lib/gsc-client.ts` — autenticazione Service Account e
-  chiamata alla Search Analytics API.
+  chiamata alla Search Analytics API e alla URL Inspection API (stesso
+  Service Account e stesso scope readonly, nessun permesso aggiuntivo).
 - `site/scripts/seo/lib/local-areas.ts` — elenco di comuni reali entro
   ~150km, usato solo per etichettare un'opportunità come "locale".
-- `site/scripts/seo/sync-gsc.ts`, `detect-opportunities.ts`,
-  `check-internal-links.ts`, `run-all.ts` — pipeline.
+- `site/scripts/seo/sync-gsc.ts`, `check-indexing.ts`,
+  `detect-opportunities.ts`, `check-internal-links.ts`, `run-all.ts` —
+  pipeline. `check-indexing.ts` interroga l'URL Inspection API per ogni
+  combinazione pagina×lingua (`data/routes.ts` × `i18n/routing.ts`, stessa
+  lista usata da `app/sitemap.ts`) e riporta lo stato reale di
+  indicizzazione (indicizzata/non indicizzata/mai scansionata/errore).
 - `site/data/seo/*.json` — dati generati (placeholder finché non gira la
   prima sincronizzazione).
 - `site/proxy.ts` — Basic Auth per `/admin/*` (Next.js 16 ha rinominato
@@ -106,6 +112,7 @@ cd site
 npm install
 npm run seo:all              # tutta la pipeline
 npm run seo:sync             # solo Search Console (richiede le env GSC_*)
+npm run seo:indexing         # solo lo stato di indicizzazione (richiede le env GSC_*)
 npm run seo:opportunities    # solo l'analisi (usa l'ultimo gsc-data.json)
 npm run seo:internal-links   # solo il controllo dei link interni
 ```
