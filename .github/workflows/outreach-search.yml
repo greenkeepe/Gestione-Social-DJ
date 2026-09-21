@@ -1,0 +1,59 @@
+name: Cerca nuovi locali (Esploratore, su richiesta)
+
+# Non gira più in automatico nel ciclo giornaliero: si avvia solo dal tasto
+# "Cerca nuovi locali" nella pagina "Locali" della dashboard (o a mano da
+# qui). Ogni esecuzione propone fino a 10 nuovi contatti (MASSIMO_AL_GIORNO
+# in agents/outreach-agent.ts), sempre come bozze da rivedere — nessun
+# invio automatico in nessun caso.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gestione-social-dj-outreach
+  cancel-in-progress: false
+
+jobs:
+  cerca:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Installa dipendenze
+        run: npm install
+
+      - name: Allinea con l'ultima versione del branch
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}"
+
+      - name: Esegui Agente Esploratore
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+        run: npm run agent:outreach
+
+      - name: Commit e push dei dati aggiornati
+        run: |
+          git config user.name "gestione-social-dj-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(esploratore): nuova ricerca locali [skip ci]"
+            for i in 1 2 3 4 5; do
+              git push && break
+              echo "Push rifiutato (probabile scrittura concorrente su data/), riprovo dopo un rebase..."
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              sleep $((RANDOM % 5 + 1))
+            done
+          else
+            echo "Nessuna modifica ai dati da salvare."
+          fi

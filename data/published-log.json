@@ -2,6 +2,54 @@
   "_istruzioni": "Storico di tutto ciò che è stato pubblicato realmente, con id post Meta, orario, e metriche raccolte successivamente dall'Analytics Agent.",
   "log": [
     {
+      "queueId": "d40798de-2f83-4a79-b027-ad4b01054ced",
+      "timestamp": "2026-09-20T14:38:52.378Z",
+      "instagramId": "18030194303901745",
+      "facebookId": "1720115703457132",
+      "instagramStoryId": "18117053429084086",
+      "formato": "post",
+      "pillarId": "dietro-le-quinte",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingitaly",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#djeventi",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#animazionematrimonio",
+        "#liguria",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "punteggio": null
+    },
+    {
+      "queueId": "14fe03b2-d4a4-49bc-9a76-f69d6ff43f0b",
+      "timestamp": "2026-09-19T16:48:15.512Z",
+      "instagramId": "18033695153836574",
+      "facebookId": "1719242216877814",
+      "instagramStoryId": "18155930731519083",
+      "formato": "post",
+      "pillarId": "dietro-le-quinte",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingparty",
+        "#weddingdj",
+        "#weddingitaly",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#djprofessionista",
+        "#musicapermatrimoni",
+        "#piemonte",
+        "#lombardia",
+        "#weddingpiemonte"
+      ],
+      "punteggio": null
+    },
+    {
       "queueId": "d5ba5de5-6500-4286-a1f5-6e9aac7c76f7",
       "timestamp": "2026-09-17T08:02:20.892Z",
       "instagramId": "18116644576802865",

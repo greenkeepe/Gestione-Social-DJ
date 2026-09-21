@@ -2,6 +2,293 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-20T23:06:07.916Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
+      "timestamp": "2026-09-20T22:19:46.758Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-20T20:55:44.488Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
+      "timestamp": "2026-09-20T19:19:27.112Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-20T18:08:33.588Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-20T14:40:28.138Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18030194303901745) e Facebook (1720115703457132). + Storia IG pubblicata.",
+      "timestamp": "2026-09-20T14:38:52.380Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-20T10:59:49.834Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-20T10:40:50.326Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "ok",
+      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore già a mille per stasera.\"",
+      "timestamp": "2026-09-20T10:40:50.324Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-20T10:40:47.725Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-20T10:40:47.722Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-20T10:40:45.583Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-20T10:40:30.552Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-20T10:40:22.420Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-09-20T10:40:22.417Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-19T23:58:48.022Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
+      "timestamp": "2026-09-19T22:16:43.010Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-19T21:45:20.523Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-19T19:23:18.708Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
+      "timestamp": "2026-09-19T19:15:38.635Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-19T17:12:04.927Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18033695153836574) e Facebook (1719242216877814). + Storia IG pubblicata.",
+      "timestamp": "2026-09-19T16:48:15.514Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-09-19T14:17:32.748Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-19T13:59:30.628Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-19T10:37:21.528Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-19T10:24:34.436Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "ok",
+      "riepilogo": "Preparate 10 bozze di email per locali della zona con email pubblica trovata.",
+      "timestamp": "2026-09-19T10:24:34.433Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "nessuna-azione",
+      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
+      "timestamp": "2026-09-19T10:22:19.063Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-19T10:22:19.061Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 387 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-19T10:22:19.058Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-19T10:22:16.805Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-19T10:21:53.306Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-19T10:21:42.835Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-09-19T10:21:42.832Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-18T23:14:12.547Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-09-18T22:26:35.160Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-18T21:00:07.257Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-09-18T19:29:32.183Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-18T18:12:16.333Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-18T14:52:31.940Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
