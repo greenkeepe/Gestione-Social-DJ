@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T07:45:36.490Z",
+  "generatedAt": "2026-09-21T12:59:51.751Z",
   "note": "Conteggio dei link interni editoriali (pagine app/ e sezioni di contenuto), esclusi Navbar/Footer/CTA globali presenti su ogni pagina. Link con URL dinamici (es. template string con variabili) non vengono rilevati.",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "label": "Home",
       "inboundContextualLinks": 1,
       "linkedFrom": [
-        "app/not-found.tsx"
+        "app/[locale]/not-found.tsx"
       ],
       "status": "POCO_COLLEGATA"
     },
@@ -16,7 +16,7 @@
       "label": "Matrimoni",
       "inboundContextualLinks": 1,
       "linkedFrom": [
-        "app/eventi/page.tsx"
+        "app/[locale]/eventi/page.tsx"
       ],
       "status": "POCO_COLLEGATA"
     },
@@ -25,7 +25,7 @@
       "label": "Eventi",
       "inboundContextualLinks": 1,
       "linkedFrom": [
-        "app/matrimoni/page.tsx"
+        "app/[locale]/matrimoni/page.tsx"
       ],
       "status": "POCO_COLLEGATA"
     },
@@ -34,7 +34,7 @@
       "label": "Servizi",
       "inboundContextualLinks": 1,
       "linkedFrom": [
-        "app/chi-sono/page.tsx"
+        "app/[locale]/chi-sono/page.tsx"
       ],
       "status": "POCO_COLLEGATA"
     },
@@ -61,7 +61,7 @@
       "label": "Chi è Forte DJ",
       "inboundContextualLinks": 1,
       "linkedFrom": [
-        "app/servizi/page.tsx"
+        "app/[locale]/servizi/page.tsx"
       ],
       "status": "POCO_COLLEGATA"
     },
@@ -79,7 +79,7 @@
       "label": "Contatti",
       "inboundContextualLinks": 6,
       "linkedFrom": [
-        "app/eventi/page.tsx",
+        "app/[locale]/eventi/page.tsx",
         "components/sections/FinalCTA.tsx",
         "components/sections/Hero.tsx",
         "components/sections/Reviews.tsx",
