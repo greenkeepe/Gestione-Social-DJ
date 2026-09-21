@@ -1,0 +1,23 @@
+{
+  "Metadata": {
+    "homeTitle": "Forte DJ — Wedding and Event DJ in Piedmont",
+    "homeDescription": "Wedding and event DJ in Piedmont, Liguria and Lombardy: tailor-made music, professional sound and lighting, and full atmosphere direction for ceremonies and receptions."
+  },
+  "Nav": {
+    "home": "Home",
+    "matrimoni": "Weddings",
+    "eventi": "Events",
+    "servizi": "Services",
+    "prezzi": "Pricing",
+    "gallery": "Gallery",
+    "recensioni": "Reviews",
+    "faq": "FAQ",
+    "contatti": "Contact",
+    "checkAvailability": "Check availability",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "changeLanguage": "Change language"
+  }
+}

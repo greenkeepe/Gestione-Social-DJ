@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { cn } from "@/lib/utils";
 import type { EventCategory } from "@/data/events";

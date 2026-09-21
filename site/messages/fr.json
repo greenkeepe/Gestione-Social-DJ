@@ -1,0 +1,23 @@
+{
+  "Metadata": {
+    "homeTitle": "Forte DJ — DJ mariages et événements en Piémont",
+    "homeDescription": "DJ pour mariages et événements en Piémont, Ligurie et Lombardie : musique sur mesure, sonorisation, éclairage et mise en scène de l'ambiance pour cérémonies et réceptions."
+  },
+  "Nav": {
+    "home": "Accueil",
+    "matrimoni": "Mariages",
+    "eventi": "Événements",
+    "servizi": "Services",
+    "prezzi": "Tarifs",
+    "gallery": "Galerie",
+    "recensioni": "Avis",
+    "faq": "FAQ",
+    "contatti": "Contact",
+    "checkAvailability": "Vérifier la disponibilité",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mainNav": "Navigation principale",
+    "mobileNav": "Navigation mobile",
+    "changeLanguage": "Changer de langue"
+  }
+}

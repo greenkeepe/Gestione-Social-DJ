@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import NextLink from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { siteConfig } from "@/data/site";
@@ -101,13 +102,15 @@ export function Footer() {
       <div className="border-t border-line py-6 pb-24 lg:pb-6">
         <p className="container-edit text-center text-xs text-ivory-dim/70">
           © {new Date().getFullYear()} Forte DJ. Tutti i diritti riservati.{" "}
-          <Link
+          {/* Link Next.js "semplice" (non quello i18n): /admin non fa parte
+              delle rotte multilingua, un prefisso di lingua lo romperebbe. */}
+          <NextLink
             href="/admin/seo"
             aria-label="Area SEO"
             className="opacity-30 hover:opacity-100"
           >
             ·
-          </Link>{" "}
+          </NextLink>{" "}
           <a
             href={siteConfig.socialDashboardUrl}
             target="_blank"

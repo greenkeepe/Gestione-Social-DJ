@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
