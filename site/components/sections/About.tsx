@@ -1,11 +1,17 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/ui/Reveal";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { siteConfig } from "@/data/site";
 import { aboutMedia } from "@/data/media";
-import { strengths, musicGenres } from "@/data/services";
 
 export function About() {
+  const t = useTranslations("About");
+  const tStrengths = useTranslations("Strengths");
+  const tGenres = useTranslations("MusicGenreTags");
+  const strengthItems = tStrengths.raw("items") as string[];
+  const genreItems = tGenres.raw("items") as string[];
+
   return (
     <section className="bg-charcoal py-28 md:py-40">
       <div className="container-edit grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
@@ -27,24 +33,21 @@ export function About() {
 
         <div>
           <Reveal>
-            <p className="eyebrow mb-4">Chi è Forte DJ</p>
+            <p className="eyebrow mb-4">{t("eyebrow")}</p>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="font-display text-balance text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl">
-              DIETRO LA CONSOLLE
+              {t("titleLine1")}
               <br />
-              <span className="text-champagne">CI SONO IO.</span>
+              <span className="text-champagne">{t("titleLine2")}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-6 text-balance leading-relaxed text-ivory-dim">
-              Sono {siteConfig.realName}: DJ per matrimoni ed eventi con{" "}
-              {siteConfig.yearsExperience} anni di esperienza e un repertorio
-              vasto e sempre aggiornato, dagli anni &lsquo;70/&rsquo;80/&rsquo;90 al
-              pop, rock, dance, R&amp;B/soul, musica latina e lounge. Ogni
-              playlist viene costruita su misura insieme ai clienti, leggendo
-              la pista e adattando la selezione musicale al pubblico
-              presente, momento per momento.
+              {t("bio", {
+                name: siteConfig.realName,
+                years: siteConfig.yearsExperience,
+              })}
             </p>
           </Reveal>
           <Reveal delay={0.2}>
@@ -54,7 +57,7 @@ export function About() {
                   {siteConfig.yearsExperience}
                 </span>
                 <p className="text-xs uppercase tracking-wide text-ivory-dim">
-                  Anni di esperienza
+                  {t("years")}
                 </p>
               </div>
               <div>
@@ -62,14 +65,14 @@ export function About() {
                   {siteConfig.eventsCount}
                 </span>
                 <p className="text-xs uppercase tracking-wide text-ivory-dim">
-                  Eventi realizzati
+                  {t("events")}
                 </p>
               </div>
             </div>
           </Reveal>
           <Reveal delay={0.28}>
             <ul className="mt-8 flex flex-col gap-3">
-              {strengths.slice(0, 4).map((strength) => (
+              {strengthItems.slice(0, 4).map((strength) => (
                 <li
                   key={strength}
                   className="flex gap-3 text-sm leading-relaxed text-ivory-dim"
@@ -82,7 +85,7 @@ export function About() {
           </Reveal>
           <Reveal delay={0.34}>
             <div className="mt-8 flex flex-wrap gap-2">
-              {musicGenres.map((genre) => (
+              {genreItems.map((genre) => (
                 <span
                   key={genre}
                   className="rounded-full border border-line px-3 py-1 text-xs text-ivory-dim"

@@ -1,7 +1,9 @@
 import { Star, Zap } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { siteConfig } from "@/data/site";
 
 export function TrustBar() {
+  const t = useTranslations("TrustBar");
   return (
     <section className="border-b border-line bg-ink py-8">
       <div className="container-edit flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-center">
@@ -14,7 +16,7 @@ export function TrustBar() {
           <span className="font-display text-lg text-ivory">
             {siteConfig.ratingValue} / 5
           </span>{" "}
-          — {siteConfig.reviewsCount}+ recensioni verificate
+          — {siteConfig.reviewsCount}+ {t("reviewsSuffix")}
         </p>
         <a
           href={siteConfig.musiquaProfileUrl}
@@ -22,11 +24,11 @@ export function TrustBar() {
           rel="noopener noreferrer"
           className="eyebrow hover:text-champagne-bright"
         >
-          su Musiqua
+          {t("musiquaLink")}
         </a>
         <a href="#preventivo" className="eyebrow flex items-center gap-1.5 hover:text-champagne-bright">
           <Zap className="h-3.5 w-3.5 text-champagne" aria-hidden />
-          Preventivo veloce, senza impegno
+          {t("quickQuote")}
         </a>
       </div>
     </section>

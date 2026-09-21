@@ -2,11 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
 
 export function FinalCTA() {
+  const t = useTranslations("FinalCTA");
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -37,23 +39,22 @@ export function FinalCTA() {
       >
         <Reveal>
           <h2 className="font-display text-balance text-5xl leading-[1.05] text-ivory sm:text-6xl md:text-7xl lg:text-8xl">
-            LA TUA DATA.
+            {t("titleLine1")}
             <br />
-            LA TUA MUSICA.
+            {t("titleLine2")}
             <br />
-            <span className="text-champagne">IL TUO MOMENTO.</span>
+            <span className="text-champagne">{t("titleLine3")}</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-xl text-balance text-lg text-ivory-dim">
-            Raccontami il tuo evento e costruiamo insieme la sua colonna
-            sonora.
+            {t("description")}
           </p>
         </Reveal>
         <Reveal delay={0.2}>
           <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
             <Button href="/contatti" size="lg">
-              Verifica la disponibilità
+              {t("ctaAvailability")}
             </Button>
             {siteConfig.whatsappNumber ? (
               <Button
@@ -63,7 +64,7 @@ export function FinalCTA() {
                 variant="secondary"
                 size="lg"
               >
-                Scrivi su WhatsApp
+                {t("ctaWhatsapp")}
               </Button>
             ) : null}
           </div>

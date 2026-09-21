@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
@@ -10,13 +11,14 @@ export function FAQ({
   full?: boolean;
   hideHeading?: boolean;
 }) {
+  const t = useTranslations("FAQ");
   const items = full ? faqItems : faqItems.slice(0, 6);
 
   return (
     <section className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
         {hideHeading ? null : (
-          <SectionHeading eyebrow="FAQ" title="DOMANDE FREQUENTI" />
+          <SectionHeading eyebrow={t("eyebrow")} title={t("title")} />
         )}
         <div className={hideHeading ? "max-w-3xl" : "mt-14 max-w-3xl"}>
           <Accordion items={items} />
@@ -25,7 +27,7 @@ export function FAQ({
               href="/faq"
               className="eyebrow mt-8 inline-block hover:text-champagne-bright"
             >
-              Vedi tutte le domande frequenti →
+              {t("viewAll")}
             </Link>
           )}
         </div>

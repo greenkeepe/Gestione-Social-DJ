@@ -19,5 +19,262 @@
     "mainNav": "Navigation principale",
     "mobileNav": "Navigation mobile",
     "changeLanguage": "Changer de langue"
+  },
+  "Footer": {
+    "tagline": "DJ & Entertainment pour mariages, événements et fêtes qui méritent de rester dans les mémoires.",
+    "sitemapAriaLabel": "Plan du site",
+    "navigate": "Naviguer",
+    "servedArea": "Zone desservie",
+    "servedAreaText": "DJ pour mariages et événements basé à {location} et disponible en {areas}.",
+    "legal": "Mentions légales",
+    "privacyPolicy": "Politique de confidentialité",
+    "cookiePolicy": "Politique relative aux cookies",
+    "seoAreaLabel": "Espace SEO",
+    "socialDashboardLabel": "Gestion des réseaux sociaux",
+    "rightsReserved": "Tous droits réservés."
+  },
+  "Hero": {
+    "eyebrow": "DJ • MARIAGES • ÉVÉNEMENTS",
+    "brandLine": "Forte DJ — Dj & Events",
+    "titleLine1": "LA MUSIQUE",
+    "titleLine2": "QUI TRANSFORME",
+    "titleLine3": "UN INSTANT",
+    "titleLine4": "EN SOUVENIR.",
+    "description": "DJ & Entertainment pour mariages, événements et fêtes où musique, ambiance et invités font partie d'une même expérience.",
+    "ctaAvailability": "Vérifier la disponibilité",
+    "ctaExperience": "Vivre l'expérience",
+    "scrollToExplore": "Scroll to explore"
+  },
+  "TrustBar": {
+    "reviewsSuffix": "avis vérifiés",
+    "musiquaLink": "sur Musiqua",
+    "quickQuote": "Devis rapide, sans engagement"
+  },
+  "Intro": {
+    "eyebrow": "The Forte DJ Experience",
+    "titleLine1": "CE N'EST PAS QUE DE LA MUSIQUE.",
+    "titleLine2": "C'EST CE MOMENT OÙ TOUT LE MONDE SE MET À DANSER."
+  },
+  "Wedding": {
+    "eyebrow": "Mariages",
+    "titleLine1": "VOTRE MARIAGE.",
+    "titleLine2": "SA BANDE-SON.",
+    "ctaAvailability": "Vérifier la disponibilité",
+    "ctaGallery": "Voir la galerie"
+  },
+  "TheMoment": {
+    "eyebrow": "Ce qui se passe quand la bonne chanson arrive",
+    "that": "That",
+    "moment": "Moment."
+  },
+  "Numbers": {
+    "years": "Ans d'expérience",
+    "events": "Événements réalisés",
+    "rating": "Note moyenne",
+    "reviews": "Avis vérifiés"
+  },
+  "Events": {
+    "eyebrow": "Événements",
+    "title": "CHAQUE ÉVÉNEMENT A SA MUSIQUE",
+    "description": "Quatre façons différentes de vivre une soirée, un seul niveau d'exigence."
+  },
+  "Experience": {
+    "line1": "LA MUSIQUE ARRIVE.",
+    "line2": "LES LUMIÈRES S'ALLUMENT.",
+    "line3": "LA PISTE SE REMPLIT.",
+    "line4": "ET PUIS...",
+    "line5": "VOUS NE VOULEZ PLUS RENTRER."
+  },
+  "Showreel": {
+    "eyebrow": "Showreel",
+    "title": "FEEL THE ENERGY",
+    "description": "Découvrez ce qui se passe quand la musique prend le contrôle de la soirée.",
+    "pause": "Mettre en pause",
+    "play": "Lecture",
+    "unmute": "Activer le son",
+    "mute": "Couper le son",
+    "fullscreen": "Plein écran",
+    "ctaAvailability": "Vérifier la disponibilité"
+  },
+  "ServicesSection": {
+    "eyebrow": "Services",
+    "title": "TOUT CE QU'IL FAUT POUR LA SOIRÉE",
+    "description": "Chaque service pensé pour s'intégrer parfaitement aux autres."
+  },
+  "About": {
+    "eyebrow": "Qui est Forte DJ",
+    "titleLine1": "DERRIÈRE LA PLATINE,",
+    "titleLine2": "C'EST MOI.",
+    "bio": "Je suis {name} : DJ pour mariages et événements avec {years} ans d'expérience et un répertoire vaste et toujours actualisé, des années 70/80/90 à la pop, au rock, à la dance, au R&B/soul, à la musique latine et à la lounge. Chaque playlist est construite sur mesure avec les clients, en lisant la piste et en adaptant la sélection musicale au public présent, moment après moment.",
+    "years": "Ans d'expérience",
+    "events": "Événements réalisés"
+  },
+  "MusicGenresSection": {
+    "eyebrow": "Un répertoire sans frontières",
+    "srList": "Genres musicaux : {genres}.",
+    "rowA": ["70S", "80S", "90S", "POP", "DANCE"],
+    "rowB": ["LATIN", "ROCK", "R&B", "LOUNGE", "VARIÉTÉ"]
+  },
+  "Process": {
+    "eyebrow": "Comment ça marche",
+    "title": "DU PREMIER MESSAGE À LA DERNIÈRE DANSE."
+  },
+  "Pricing": {
+    "eyebrow": "Tarifs",
+    "title": "UN DEVIS SUR MESURE, PAS UNE GRILLE TARIFAIRE",
+    "description": "Chaque événement est différent : lieu, horaires et services demandés font varier le juste prix. Pas de grille standard — racontez-moi quelques détails et je vous réponds avec un devis réel, en quelques heures et sans engagement."
+  },
+  "QuickQuoteForm": {
+    "eventTypeLabel": "Type d'événement",
+    "eventDateLabel": "Date de l'événement",
+    "locationLabel": "Lieu de l'événement",
+    "locationPlaceholder": "Lieu de l'événement (ex. commune)",
+    "phoneLabel": "Téléphone",
+    "phonePlaceholder": "Téléphone",
+    "submit": "Demander un devis",
+    "submitting": "Envoi…",
+    "successMessage": "Demande reçue ! Nous vous contactons sous peu."
+  },
+  "Reviews": {
+    "eyebrow": "Avis",
+    "title": "{count} HISTOIRES À RACONTER",
+    "description": "Les expériences de ceux qui ont choisi Forte DJ pour leur moment spécial.",
+    "ratingSuffix": "sur 5 — vérifié sur Musiqua",
+    "readAllExternal": "Lire tous les avis →",
+    "readAllInternal": "Tous les avis sur le site →",
+    "ctaAvailability": "Vérifier la disponibilité"
+  },
+  "Gallery": {
+    "eyebrow": "Galerie",
+    "title": "DES MOMENTS, PAS SEULEMENT DES PHOTOS",
+    "description": "Un aperçu des ambiances créées événement après événement.",
+    "filterAriaLabel": "Filtrer la galerie",
+    "viewAll": "Voir toute la galerie →"
+  },
+  "FAQ": {
+    "eyebrow": "FAQ",
+    "title": "QUESTIONS FRÉQUENTES",
+    "viewAll": "Voir toutes les questions fréquentes →"
+  },
+  "FinalCTA": {
+    "titleLine1": "VOTRE DATE.",
+    "titleLine2": "VOTRE MUSIQUE.",
+    "titleLine3": "VOTRE MOMENT.",
+    "description": "Racontez-moi votre événement et construisons ensemble sa bande-son.",
+    "ctaAvailability": "Vérifier la disponibilité",
+    "ctaWhatsapp": "Écrire sur WhatsApp"
+  },
+  "ContactForm": {
+    "eyebrow": "Contact",
+    "title": "RACONTEZ-MOI VOTRE ÉVÉNEMENT",
+    "description": "5 informations suffisent : le reste, on le définit ensemble.",
+    "successTitle": "Demande reçue",
+    "successMessage": "Merci ! Nous vous répondrons rapidement pour confirmer la disponibilité. Pour une réponse plus rapide, vous pouvez aussi nous écrire sur WhatsApp.",
+    "nameLabel": "Nom *",
+    "emailLabel": "Email *",
+    "phoneLabel": "Téléphone *",
+    "eventTypeLabel": "Type d'événement *",
+    "selectPlaceholder": "Sélectionner",
+    "eventDateLabel": "Date de l'événement *",
+    "showMore": "Ajouter des détails sur votre événement (facultatif)",
+    "hideMore": "Masquer les détails supplémentaires",
+    "locationLabel": "Lieu",
+    "guestCountLabel": "Nombre approximatif d'invités",
+    "referralLabel": "Comment avez-vous connu Forte DJ ?",
+    "desiredServicesLabel": "Services souhaités",
+    "messageLabel": "Message",
+    "noCommitment": "Aucun engagement. Racontez-moi simplement ce que vous organisez.",
+    "submit": "Vérifier la disponibilité",
+    "submitting": "Envoi en cours…"
+  },
+  "EventTypeLabels": {
+    "Matrimonio": "Mariage",
+    "Compleanno / Diciottesimo": "Anniversaire / 18 ans",
+    "Evento aziendale": "Événement d'entreprise",
+    "Festa privata": "Fête privée",
+    "Altro": "Autre"
+  },
+  "DesiredServiceLabels": {
+    "DJ set": "DJ set",
+    "Impianto audio": "Sonorisation",
+    "Luci": "Éclairage",
+    "Macchina del fumo": "Machine à fumée",
+    "Microfoni per cerimonia": "Micros pour la cérémonie"
+  },
+  "ReferralLabels": {
+    "Instagram": "Instagram",
+    "Facebook": "Facebook",
+    "Musiqua": "Musiqua",
+    "Passaparola": "Bouche-à-oreille",
+    "Google": "Google",
+    "Altro": "Autre"
+  },
+  "EventCategories": {
+    "matrimoni": {
+      "short": "Mariages et soirées de mariage",
+      "description": "La bande-son de toute la journée : de la cérémonie à la fin de soirée, avec une musique pensée pour chaque moment.",
+      "includes": ["Mariages", "Mariages religieux", "Cérémonies et communions"]
+    },
+    "eventi-privati": {
+      "short": "Anniversaires, 18 ans et fêtes privées",
+      "description": "Des fêtes sur mesure pour tous les âges et toutes les occasions, avec une énergie construite avec les invités sur la piste de danse.",
+      "includes": ["Anniversaires et anniversaires de mariage", "Fêtes des 18 ans", "Enterrements de vie de garçon/jeune fille", "Fêtes privées"]
+    },
+    "corporate": {
+      "short": "Événements d'entreprise et occasions professionnelles",
+      "description": "Une musique calibrée sur l'identité de la marque, de l'apéritif networking au moment de divertissement.",
+      "includes": ["Fêtes d'entreprise", "Réceptions et inaugurations"]
+    },
+    "party": {
+      "short": "Événements haute énergie",
+      "description": "Des soirées pensées pour faire monter l'énergie du premier au dernier morceau.",
+      "includes": ["Réveillon du Nouvel An et événements saisonniers", "Établissements, clubs et bars"]
+    }
+  },
+  "EventCard": {
+    "discoverMore": "En savoir plus"
+  },
+  "WeddingMoments": {
+    "cerimonia": { "title": "Cérémonie", "description": "Ambiance et musique pensées pour le début de la célébration." },
+    "aperitivo": { "title": "Apéritif", "description": "Une ambiance sonore élégante pour accueillir vos invités." },
+    "cena": { "title": "Dîner", "description": "Des moments musicaux choisis avec soin pour accompagner la tablée." },
+    "first-dance": { "title": "First Dance", "description": "La première danse, construite autour de la chanson qui vous représente." },
+    "party": { "title": "Party", "description": "L'énergie monte et la piste de danse se remplit." },
+    "final-dance": { "title": "Final Dance", "description": "Le moment que personne ne veut voir se terminer." }
+  },
+  "ProcessSteps": {
+    "step1": { "title": "Racontez-moi votre événement", "description": "Date, lieu, type d'événement et ambiance souhaitée." },
+    "step2": { "title": "Nous construisons l'expérience", "description": "Musique, services et détails sont planifiés ensemble." },
+    "step3": { "title": "Le grand jour arrive", "description": "Tout est prêt." },
+    "step4": { "title": "On danse.", "description": "L'expérience commence." }
+  },
+  "ServiceItems": {
+    "dj-set": { "title": "DJ set", "description": "Une platine gérée du début à la fin par un seul professionnel, avec une sélection musicale construite en temps réel selon le public présent." },
+    "impianto-audio": { "title": "Sonorisation professionnelle", "description": "Un système audio dimensionné selon le lieu et le nombre d'invités, pour un son propre en tout espace." },
+    "luci": { "title": "Éclairage", "description": "Une conception lumière pensée pour accompagner les moments de la soirée, de l'ambiance de la réception à l'énergie de la fête." },
+    "macchina-del-fumo": { "title": "Machine à fumée", "description": "Une touche scénique en plus dans les moments forts de la piste de danse." },
+    "microfoni-cerimonia": { "title": "Micros pour discours et cérémonie", "description": "Un son dédié aux discours, toasts et moments parlés, coordonné avec la musique de la cérémonie." },
+    "coordinamento-musicale": { "title": "Coordination musicale de l'événement", "description": "Une playlist sur mesure avec une réunion de planification avant l'événement, de la cérémonie à la fin de soirée." }
+  },
+  "Strengths": {
+    "items": [
+      "Un DJ set entièrement géré par un seul professionnel, du début à la fin de la soirée",
+      "Un répertoire immense et toujours actualisé : des années 70/80/90 à la pop, au rock, à la dance, à la musique latine et à la lounge",
+      "Une grande capacité à lire la piste et à adapter la musique au public présent",
+      "Une expérience dans des lieux comme les relais, restaurants, club houses et golfs",
+      "Une playlist construite sur mesure avec les clients, avec une réunion de planification avant l'événement",
+      "Un montage et démontage rapide du matériel"
+    ]
+  },
+  "MusicGenreTags": {
+    "items": ["Variété", "Années 70/80/90", "Latino", "Dance", "Pop", "Rock", "R&B/Soul", "Lounge"]
+  },
+  "Lightbox": {
+    "closeGallery": "Fermer la galerie",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "closeVideo": "Fermer la vidéo",
+    "previousVideo": "Vidéo précédente",
+    "nextVideo": "Vidéo suivante"
   }
 }

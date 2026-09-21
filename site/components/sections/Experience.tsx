@@ -1,14 +1,16 @@
+import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/ui/Reveal";
 
-const lines = [
-  "ARRIVA LA MUSICA.",
-  "SI ACCENDONO LE LUCI.",
-  "IL DANCEFLOOR SI RIEMPIE.",
-  "E POI...",
-  "NON VUOI PIÙ ANDARE A CASA.",
-];
-
 export function Experience() {
+  const t = useTranslations("Experience");
+  const lines = [
+    t("line1"),
+    t("line2"),
+    t("line3"),
+    t("line4"),
+    t("line5"),
+  ];
+
   return (
     <section className="relative flex min-h-[80svh] items-center overflow-hidden bg-charcoal py-32 md:py-48">
       <div

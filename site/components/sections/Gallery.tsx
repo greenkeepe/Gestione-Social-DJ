@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Lightbox } from "@/components/ui/Lightbox";
@@ -32,6 +33,7 @@ export function Gallery({
   full?: boolean;
   hideHeading?: boolean;
 }) {
+  const t = useTranslations("Gallery");
   const [filter, setFilter] = useState<"all" | GalleryImage["category"]>("all");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -58,15 +60,15 @@ export function Gallery({
       <div className="container-edit">
         {hideHeading ? null : (
           <SectionHeading
-            eyebrow="Gallery"
-            title="MOMENTI, NON SOLO FOTO"
-            description="Un assaggio delle atmosfere costruite evento dopo evento."
+            eyebrow={t("eyebrow")}
+            title={t("title")}
+            description={t("description")}
           />
         )}
 
         <div
           role="tablist"
-          aria-label="Filtra la gallery"
+          aria-label={t("filterAriaLabel")}
           className={cn("flex flex-wrap gap-3", hideHeading ? undefined : "mt-10")}
         >
           {galleryFilters.map((f) => (
@@ -134,7 +136,7 @@ export function Gallery({
         {full ? null : (
           <div className="mt-8">
             <Link href="/gallery" className="eyebrow hover:text-champagne-bright">
-              Vedi tutta la gallery →
+              {t("viewAll")}
             </Link>
           </div>
         )}

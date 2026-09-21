@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { cn } from "@/lib/utils";
@@ -26,6 +27,10 @@ export function EventCard({
   variant?: Variant;
   className?: string;
 }) {
+  const t = useTranslations("EventCategories");
+  const tCard = useTranslations("EventCard");
+  const short = t(`${event.slug}.short`);
+  const description = t(`${event.slug}.description`);
   const isWide = variant === "wide";
 
   return (
@@ -43,7 +48,7 @@ export function EventCard({
           {event.imageSrc ? (
             <Image
               src={event.imageSrc}
-              alt={event.imageAlt ?? event.title}
+              alt={event.imageAlt ?? short}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
@@ -67,13 +72,13 @@ export function EventCard({
             variant === "feature" ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl",
           )}
         >
-          {event.short}
+          {short}
         </h3>
         <p className="max-w-sm text-sm leading-relaxed text-ivory-dim">
-          {event.description}
+          {description}
         </p>
         <span className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-champagne transition-transform duration-300 group-hover:translate-x-1">
-          Scopri di più
+          {tCard("discoverMore")}
           <ArrowUpRight
             className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden

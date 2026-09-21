@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 // Momento cinematografico full-bleed: fasci di luce da palco al posto del
 // solito blur radiale — un linguaggio grafico specifico da dancefloor,
@@ -13,6 +14,7 @@ const beams = [
 ];
 
 export function TheMoment() {
+  const t = useTranslations("TheMoment");
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -51,12 +53,12 @@ export function TheMoment() {
       <div className="grain-overlay" aria-hidden />
 
       <div className="relative text-center">
-        <p className="eyebrow mb-4 text-ivory-dim">Quello che succede quando arriva la musica giusta</p>
+        <p className="eyebrow mb-4 text-ivory-dim">{t("eyebrow")}</p>
         <p className="font-display text-4xl uppercase tracking-[0.08em] text-ivory sm:text-5xl">
-          That
+          {t("that")}
         </p>
         <p className="font-display text-[18vw] leading-[0.85] text-champagne sm:text-[13vw] md:text-[11vw]">
-          Moment.
+          {t("moment")}
         </p>
       </div>
     </section>

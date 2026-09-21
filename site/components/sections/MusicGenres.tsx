@@ -1,7 +1,4 @@
-// Restyling tipografico dei generi reali in config/brand.json (generi[]):
-// Anni 70/80/90 → 70S/80S/90S, R&B/Soul → R&B, Latino → LATIN.
-const rowA = ["70S", "80S", "90S", "POP", "DANCE"];
-const rowB = ["LATIN", "ROCK", "R&B", "LOUNGE", "COMMERCIALE"];
+import { useTranslations } from "next-intl";
 
 function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
   const track = [...items, ...items];
@@ -21,17 +18,21 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
 }
 
 export function MusicGenres() {
+  const t = useTranslations("MusicGenresSection");
+  const rowA = t.raw("rowA") as string[];
+  const rowB = t.raw("rowB") as string[];
+
   return (
     <section className="overflow-hidden border-y border-line bg-ink py-20 md:py-28">
       <div className="container-edit mb-10">
-        <p className="eyebrow">Un repertorio senza confini</p>
+        <p className="eyebrow">{t("eyebrow")}</p>
       </div>
       <div className="flex flex-col gap-2">
         <Row items={rowA} />
         <Row items={rowB} reverse />
       </div>
       <p className="sr-only">
-        Generi musicali: {[...rowA, ...rowB].join(", ")}.
+        {t("srList", { genres: [...rowA, ...rowB].join(", ") })}
       </p>
     </section>
   );

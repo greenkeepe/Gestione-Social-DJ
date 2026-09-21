@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -14,14 +15,15 @@ export function Reviews({
   hideHeading?: boolean;
   hideInternalLink?: boolean;
 }) {
+  const t = useTranslations("Reviews");
   return (
     <section id="recensioni" className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
         {hideHeading ? null : (
           <SectionHeading
-            eyebrow="Recensioni"
-            title={`${siteConfig.reviewsCount} VOLTE UNA STORIA DA RACCONTARE`}
-            description="Le esperienze di chi ha scelto Forte DJ per il proprio momento speciale."
+            eyebrow={t("eyebrow")}
+            title={t("title", { count: siteConfig.reviewsCount })}
+            description={t("description")}
             align="center"
           />
         )}
@@ -34,7 +36,7 @@ export function Reviews({
             </div>
             <span className="text-sm text-ivory-dim">
               <span className="font-display text-lg text-ivory">{siteConfig.ratingValue}</span>{" "}
-              su 5 — verificato su Musiqua
+              {t("ratingSuffix")}
             </span>
           </div>
         </Reveal>
@@ -66,15 +68,15 @@ export function Reviews({
             rel="noopener noreferrer"
             className="eyebrow hover:text-champagne-bright"
           >
-            Leggi tutte le recensioni →
+            {t("readAllExternal")}
           </a>
           {hideInternalLink ? null : (
             <Link href="/recensioni" className="eyebrow hover:text-champagne-bright">
-              Tutte le recensioni sul sito →
+              {t("readAllInternal")}
             </Link>
           )}
           <Button href="/contatti" size="lg">
-            Verifica la disponibilità
+            {t("ctaAvailability")}
           </Button>
         </div>
       </div>

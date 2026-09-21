@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Maximize, Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
@@ -19,6 +20,7 @@ const socialLinks = [
 ].filter((link) => Boolean(link.href));
 
 export function Showreel() {
+  const t = useTranslations("Showreel");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
@@ -51,9 +53,9 @@ export function Showreel() {
     <section id="showreel" className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
         <SectionHeading
-          eyebrow="Showreel"
-          title="FEEL THE ENERGY"
-          description="Guarda cosa succede quando la musica prende il controllo della serata."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
           align="center"
         />
 
@@ -76,7 +78,7 @@ export function Showreel() {
                 <button
                   type="button"
                   onClick={togglePlay}
-                  aria-label={playing ? "Metti in pausa" : "Riproduci"}
+                  aria-label={playing ? t("pause") : t("play")}
                   className="rounded-full border border-ivory/30 p-3 text-ivory hover:border-champagne hover:text-champagne"
                 >
                   {playing ? (
@@ -89,7 +91,7 @@ export function Showreel() {
                   <button
                     type="button"
                     onClick={toggleMute}
-                    aria-label={muted ? "Attiva audio" : "Disattiva audio"}
+                    aria-label={muted ? t("unmute") : t("mute")}
                     className="rounded-full border border-ivory/30 p-3 text-ivory hover:border-champagne hover:text-champagne"
                   >
                     {muted ? (
@@ -101,7 +103,7 @@ export function Showreel() {
                   <button
                     type="button"
                     onClick={requestFullscreen}
-                    aria-label="Schermo intero"
+                    aria-label={t("fullscreen")}
                     className="rounded-full border border-ivory/30 p-3 text-ivory hover:border-champagne hover:text-champagne"
                   >
                     <Maximize className="h-5 w-5" aria-hidden />
@@ -149,7 +151,7 @@ export function Showreel() {
       <div className="container-edit">
         <div className="mt-12 flex flex-col items-center gap-6">
           <Button href="/contatti" size="lg">
-            Verifica la disponibilità
+            {t("ctaAvailability")}
           </Button>
           {socialLinks.length > 0 ? (
             <div className="flex items-center gap-4">

@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 
 export function MobileCTA() {
+  const t = useTranslations("Nav");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ export function MobileCTA() {
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 0.75rem)" }}
     >
       <Button href="/contatti" className="w-full">
-        Verifica la disponibilità
+        {t("checkAvailability")}
       </Button>
     </div>
   );

@@ -1,18 +1,20 @@
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EventCard } from "@/components/ui/EventCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { eventCategories } from "@/data/events";
 
 export function Events() {
+  const t = useTranslations("Events");
   const [wedding, privateEvents, corporate, party] = eventCategories;
 
   return (
     <section className="bg-ink py-28 md:py-40">
       <div className="container-edit">
         <SectionHeading
-          eyebrow="Eventi"
-          title="OGNI EVENTO HA LA SUA MUSICA"
-          description="Quattro modi diversi di vivere una serata, un unico standard di cura."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
         />
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3 lg:grid-rows-2">

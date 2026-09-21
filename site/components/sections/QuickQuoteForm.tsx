@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { submitQuickQuoteForm, type QuickQuoteState } from "@/app/actions/quickQuote";
 import { eventTypeOptions } from "@/lib/validation";
@@ -21,6 +22,7 @@ function FieldError({ messages }: { messages?: string[] }) {
 }
 
 function SubmitButton() {
+  const t = useTranslations("QuickQuoteForm");
   const { pending } = useFormStatus();
   return (
     <button
@@ -31,10 +33,10 @@ function SubmitButton() {
       {pending ? (
         <>
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-          Invio…
+          {t("submitting")}
         </>
       ) : (
-        "Richiedi il preventivo"
+        t("submit")
       )}
     </button>
   );
@@ -47,6 +49,8 @@ const initialQuickQuoteState: QuickQuoteState = { status: "idle" };
 // /contatti resta invariato per chi preferisce dare più dettagli da
 // subito.
 export function QuickQuoteForm() {
+  const t = useTranslations("QuickQuoteForm");
+  const tEventTypes = useTranslations("EventTypeLabels");
   const [state, formAction] = useActionState(
     submitQuickQuoteForm,
     initialQuickQuoteState,
@@ -56,9 +60,7 @@ export function QuickQuoteForm() {
     return (
       <div role="status" className="flex flex-col items-center gap-2 py-2 text-center">
         <CheckCircle2 className="h-6 w-6 text-champagne" aria-hidden />
-        <p className="text-sm text-ivory">
-          Richiesta ricevuta! Ti contattiamo entro poche ore.
-        </p>
+        <p className="text-sm text-ivory">{t("successMessage")}</p>
       </div>
     );
   }
@@ -89,7 +91,7 @@ export function QuickQuoteForm() {
 
       <div>
         <label htmlFor="quick-eventType" className="sr-only">
-          Tipo di evento
+          {t("eventTypeLabel")}
         </label>
         <select
           id="quick-eventType"
@@ -99,11 +101,11 @@ export function QuickQuoteForm() {
           className={cn(inputClasses, "appearance-none")}
         >
           <option value="" disabled>
-            Tipo di evento
+            {t("eventTypeLabel")}
           </option>
           {eventTypeOptions.map((option) => (
             <option key={option} value={option}>
-              {option}
+              {tEventTypes(option)}
             </option>
           ))}
         </select>
@@ -112,7 +114,7 @@ export function QuickQuoteForm() {
 
       <div>
         <label htmlFor="quick-eventDate" className="sr-only">
-          Data evento
+          {t("eventDateLabel")}
         </label>
         <input
           id="quick-eventDate"
@@ -126,14 +128,14 @@ export function QuickQuoteForm() {
 
       <div>
         <label htmlFor="quick-location" className="sr-only">
-          Località evento
+          {t("locationLabel")}
         </label>
         <input
           id="quick-location"
           name="location"
           type="text"
           required
-          placeholder="Località evento (es. comune)"
+          placeholder={t("locationPlaceholder")}
           className={inputClasses}
         />
         <FieldError messages={state.fieldErrors?.location} />
@@ -141,14 +143,14 @@ export function QuickQuoteForm() {
 
       <div>
         <label htmlFor="quick-phone" className="sr-only">
-          Telefono
+          {t("phoneLabel")}
         </label>
         <input
           id="quick-phone"
           name="phone"
           type="tel"
           required
-          placeholder="Telefono"
+          placeholder={t("phonePlaceholder")}
           className={inputClasses}
         />
         <FieldError messages={state.fieldErrors?.phone} />

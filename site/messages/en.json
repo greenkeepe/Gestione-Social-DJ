@@ -19,5 +19,262 @@
     "mainNav": "Main navigation",
     "mobileNav": "Mobile navigation",
     "changeLanguage": "Change language"
+  },
+  "Footer": {
+    "tagline": "DJ & Entertainment for weddings, events and parties worth remembering.",
+    "sitemapAriaLabel": "Site map",
+    "navigate": "Navigate",
+    "servedArea": "Service area",
+    "servedAreaText": "Wedding and event DJ based in {location}, available across {areas}.",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "seoAreaLabel": "SEO area",
+    "socialDashboardLabel": "Social management",
+    "rightsReserved": "All rights reserved."
+  },
+  "Hero": {
+    "eyebrow": "DJ • WEDDING • EVENTS",
+    "brandLine": "Forte DJ — Dj & Events",
+    "titleLine1": "MUSIC THAT",
+    "titleLine2": "TURNS A MOMENT",
+    "titleLine3": "INTO",
+    "titleLine4": "A MEMORY.",
+    "description": "DJ & Entertainment for weddings, events and parties where music, atmosphere and people become part of the same experience.",
+    "ctaAvailability": "Check availability",
+    "ctaExperience": "Live the experience",
+    "scrollToExplore": "Scroll to explore"
+  },
+  "TrustBar": {
+    "reviewsSuffix": "verified reviews",
+    "musiquaLink": "on Musiqua",
+    "quickQuote": "Quick quote, no commitment"
+  },
+  "Intro": {
+    "eyebrow": "The Forte DJ Experience",
+    "titleLine1": "IT'S NOT JUST MUSIC.",
+    "titleLine2": "IT'S THE MOMENT EVERYONE STARTS DANCING."
+  },
+  "Wedding": {
+    "eyebrow": "Weddings",
+    "titleLine1": "YOUR WEDDING.",
+    "titleLine2": "ITS SOUNDTRACK.",
+    "ctaAvailability": "Check availability",
+    "ctaGallery": "View the gallery"
+  },
+  "TheMoment": {
+    "eyebrow": "What happens when the right song comes on",
+    "that": "That",
+    "moment": "Moment."
+  },
+  "Numbers": {
+    "years": "Years of experience",
+    "events": "Events delivered",
+    "rating": "Average rating",
+    "reviews": "Verified reviews"
+  },
+  "Events": {
+    "eyebrow": "Events",
+    "title": "EVERY EVENT HAS ITS OWN MUSIC",
+    "description": "Four different ways to experience an evening, one standard of care."
+  },
+  "Experience": {
+    "line1": "THE MUSIC STARTS.",
+    "line2": "THE LIGHTS COME ON.",
+    "line3": "THE DANCEFLOOR FILLS UP.",
+    "line4": "AND THEN...",
+    "line5": "YOU DON'T WANT TO GO HOME."
+  },
+  "Showreel": {
+    "eyebrow": "Showreel",
+    "title": "FEEL THE ENERGY",
+    "description": "Watch what happens when the music takes over the night.",
+    "pause": "Pause",
+    "play": "Play",
+    "unmute": "Unmute",
+    "mute": "Mute",
+    "fullscreen": "Fullscreen",
+    "ctaAvailability": "Check availability"
+  },
+  "ServicesSection": {
+    "eyebrow": "Services",
+    "title": "EVERYTHING YOUR NIGHT NEEDS",
+    "description": "Every service designed to work seamlessly with the others."
+  },
+  "About": {
+    "eyebrow": "About Forte DJ",
+    "titleLine1": "BEHIND THE DECKS",
+    "titleLine2": "IT'S ME.",
+    "bio": "I'm {name}: a wedding and event DJ with {years} years of experience and a vast, always up-to-date repertoire, from the '70s/'80s/'90s to pop, rock, dance, R&B/soul, Latin and lounge. Every playlist is built together with clients, reading the crowd and adapting the music to the audience, moment by moment.",
+    "years": "Years of experience",
+    "events": "Events delivered"
+  },
+  "MusicGenresSection": {
+    "eyebrow": "A repertoire without borders",
+    "srList": "Music genres: {genres}.",
+    "rowA": ["70S", "80S", "90S", "POP", "DANCE"],
+    "rowB": ["LATIN", "ROCK", "R&B", "LOUNGE", "CHARTS"]
+  },
+  "Process": {
+    "eyebrow": "How it works",
+    "title": "FROM THE FIRST MESSAGE TO THE LAST DANCE."
+  },
+  "Pricing": {
+    "eyebrow": "Pricing",
+    "title": "A TAILORED QUOTE, NOT A PRICE LIST",
+    "description": "Every event is different: venue, timings and requested services all change the right price. No standard price lists — tell me a few details and I'll get back to you with a real quote within a few hours, no commitment."
+  },
+  "QuickQuoteForm": {
+    "eventTypeLabel": "Event type",
+    "eventDateLabel": "Event date",
+    "locationLabel": "Event location",
+    "locationPlaceholder": "Event location (e.g. town)",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "Phone",
+    "submit": "Request a quote",
+    "submitting": "Sending…",
+    "successMessage": "Request received! We'll contact you within a few hours."
+  },
+  "Reviews": {
+    "eyebrow": "Reviews",
+    "title": "{count} STORIES WORTH TELLING",
+    "description": "The experiences of those who chose Forte DJ for their special moment.",
+    "ratingSuffix": "out of 5 — verified on Musiqua",
+    "readAllExternal": "Read all reviews →",
+    "readAllInternal": "All reviews on the site →",
+    "ctaAvailability": "Check availability"
+  },
+  "Gallery": {
+    "eyebrow": "Gallery",
+    "title": "MOMENTS, NOT JUST PHOTOS",
+    "description": "A glimpse of the atmospheres built event after event.",
+    "filterAriaLabel": "Filter the gallery",
+    "viewAll": "View the full gallery →"
+  },
+  "FAQ": {
+    "eyebrow": "FAQ",
+    "title": "FREQUENTLY ASKED QUESTIONS",
+    "viewAll": "See all frequently asked questions →"
+  },
+  "FinalCTA": {
+    "titleLine1": "YOUR DATE.",
+    "titleLine2": "YOUR MUSIC.",
+    "titleLine3": "YOUR MOMENT.",
+    "description": "Tell me about your event and let's build its soundtrack together.",
+    "ctaAvailability": "Check availability",
+    "ctaWhatsapp": "Message on WhatsApp"
+  },
+  "ContactForm": {
+    "eyebrow": "Contact",
+    "title": "TELL ME ABOUT YOUR EVENT",
+    "description": "Just 5 details: we'll work out the rest together.",
+    "successTitle": "Request received",
+    "successMessage": "Thank you! We'll get back to you shortly to confirm availability. For a faster reply you can also message us on WhatsApp.",
+    "nameLabel": "Name *",
+    "emailLabel": "Email *",
+    "phoneLabel": "Phone *",
+    "eventTypeLabel": "Event type *",
+    "selectPlaceholder": "Select",
+    "eventDateLabel": "Event date *",
+    "showMore": "Add more details about your event (optional)",
+    "hideMore": "Hide additional details",
+    "locationLabel": "Location",
+    "guestCountLabel": "Approximate number of guests",
+    "referralLabel": "How did you hear about Forte DJ?",
+    "desiredServicesLabel": "Requested services",
+    "messageLabel": "Message",
+    "noCommitment": "No commitment. Just tell me what you're planning.",
+    "submit": "Check availability",
+    "submitting": "Sending…"
+  },
+  "EventTypeLabels": {
+    "Matrimonio": "Wedding",
+    "Compleanno / Diciottesimo": "Birthday / 18th birthday",
+    "Evento aziendale": "Corporate event",
+    "Festa privata": "Private party",
+    "Altro": "Other"
+  },
+  "DesiredServiceLabels": {
+    "DJ set": "DJ set",
+    "Impianto audio": "Sound system",
+    "Luci": "Lighting",
+    "Macchina del fumo": "Smoke machine",
+    "Microfoni per cerimonia": "Ceremony microphones"
+  },
+  "ReferralLabels": {
+    "Instagram": "Instagram",
+    "Facebook": "Facebook",
+    "Musiqua": "Musiqua",
+    "Passaparola": "Word of mouth",
+    "Google": "Google",
+    "Altro": "Other"
+  },
+  "EventCategories": {
+    "matrimoni": {
+      "short": "Weddings and wedding parties",
+      "description": "The soundtrack to the whole day: from the ceremony to the last dance, with music designed for every moment.",
+      "includes": ["Weddings", "Church weddings", "Ceremonies and christenings"]
+    },
+    "eventi-privati": {
+      "short": "Birthdays, 18th birthdays and private parties",
+      "description": "Tailor-made parties for every age and occasion, with energy built together with guests on the dancefloor.",
+      "includes": ["Birthdays and anniversaries", "18th birthdays", "Bachelor/bachelorette parties", "Private parties"]
+    },
+    "corporate": {
+      "short": "Corporate events and professional occasions",
+      "description": "Music calibrated to your brand identity, from the networking aperitif to the entertainment moment.",
+      "includes": ["Corporate parties", "Receptions and openings"]
+    },
+    "party": {
+      "short": "High-energy events",
+      "description": "Nights designed to raise the energy from the first to the last track.",
+      "includes": ["New Year's Eve and seasonal events", "Venues, clubs and bars"]
+    }
+  },
+  "EventCard": {
+    "discoverMore": "Discover more"
+  },
+  "WeddingMoments": {
+    "cerimonia": { "title": "Ceremony", "description": "Atmosphere and music designed for the start of the celebration." },
+    "aperitivo": { "title": "Aperitif", "description": "An elegant soundtrack to welcome your guests." },
+    "cena": { "title": "Dinner", "description": "Carefully chosen musical moments to accompany the table." },
+    "first-dance": { "title": "First Dance", "description": "The first dance, built around the song that represents you." },
+    "party": { "title": "Party", "description": "The energy rises and the dancefloor fills up." },
+    "final-dance": { "title": "Final Dance", "description": "The moment nobody wants to see end." }
+  },
+  "ProcessSteps": {
+    "step1": { "title": "Tell me about your event", "description": "Date, venue, event type and the atmosphere you want." },
+    "step2": { "title": "We build the experience", "description": "Music, services and details are planned together." },
+    "step3": { "title": "The big day arrives", "description": "Everything is ready." },
+    "step4": { "title": "Let's dance.", "description": "The experience begins." }
+  },
+  "ServiceItems": {
+    "dj-set": { "title": "DJ set", "description": "The decks handled from start to finish by a single professional, with music chosen live based on the crowd in the room." },
+    "impianto-audio": { "title": "Professional sound system", "description": "Sound system sized to the venue and guest count, for clean sound in any space." },
+    "luci": { "title": "Lighting", "description": "Lighting design built to follow the moments of the night, from the reception atmosphere to the party's energy." },
+    "macchina-del-fumo": { "title": "Smoke machine", "description": "An extra scenic touch for the dancefloor's key moments." },
+    "microfoni-cerimonia": { "title": "Microphones for speeches and ceremony", "description": "Dedicated audio for speeches, toasts and spoken moments, coordinated with the ceremony music." },
+    "coordinamento-musicale": { "title": "Musical coordination of the event", "description": "A tailor-made playlist with a planning meeting before the event, from the ceremony to the last dance." }
+  },
+  "Strengths": {
+    "items": [
+      "A DJ set handled entirely by a single professional, from the start to the end of the night",
+      "A vast, always up-to-date repertoire: from the '70s/'80s/'90s to pop, rock, dance, Latin and lounge",
+      "A strong ability to read the crowd and adapt the music to the audience in the room",
+      "Experience in venues such as relais, restaurants, club houses and golf clubs",
+      "A tailor-made playlist built together with clients, with a planning meeting before the event",
+      "Quick equipment setup and teardown"
+    ]
+  },
+  "MusicGenreTags": {
+    "items": ["Charts", "70s/80s/90s", "Latin", "Dance", "Pop", "Rock", "R&B/Soul", "Lounge"]
+  },
+  "Lightbox": {
+    "closeGallery": "Close gallery",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "closeVideo": "Close video",
+    "previousVideo": "Previous video",
+    "nextVideo": "Next video"
   }
 }

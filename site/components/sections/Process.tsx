@@ -1,15 +1,16 @@
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { processSteps } from "@/data/events";
 
 export function Process() {
+  const t = useTranslations("Process");
+  const tSteps = useTranslations("ProcessSteps");
+
   return (
     <section className="bg-ink py-28 md:py-40">
       <div className="container-edit">
-        <SectionHeading
-          eyebrow="Come funziona"
-          title="DAL PRIMO MESSAGGIO ALL'ULTIMO BALLO."
-        />
+        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} />
 
         <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (
@@ -19,10 +20,10 @@ export function Process() {
                   {step.number}
                 </span>
                 <h3 className="font-display text-xl text-ivory">
-                  {step.title}
+                  {tSteps(`step${index + 1}.title`)}
                 </h3>
                 <p className="text-sm leading-relaxed text-ivory-dim">
-                  {step.description}
+                  {tSteps(`step${index + 1}.description`)}
                 </p>
               </div>
             </Reveal>

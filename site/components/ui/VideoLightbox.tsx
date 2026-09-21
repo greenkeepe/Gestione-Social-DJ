@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { ReelVideo } from "@/data/media";
 
 export function VideoLightbox({
@@ -16,6 +17,7 @@ export function VideoLightbox({
   onClose: () => void;
   onNavigate: (index: number) => void;
 }) {
+  const t = useTranslations("Lightbox");
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const goNext = useCallback(
@@ -57,7 +59,7 @@ export function VideoLightbox({
         ref={closeButtonRef}
         type="button"
         onClick={onClose}
-        aria-label="Chiudi video"
+        aria-label={t("closeVideo")}
         className="absolute right-4 top-4 rounded-full border border-ivory/20 p-2 text-ivory hover:border-champagne hover:text-champagne sm:right-8 sm:top-8"
       >
         <X className="h-5 w-5" aria-hidden />
@@ -67,7 +69,7 @@ export function VideoLightbox({
         <button
           type="button"
           onClick={goPrev}
-          aria-label="Video precedente"
+          aria-label={t("previousVideo")}
           className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-ivory/20 p-2 text-ivory hover:border-champagne hover:text-champagne sm:left-6"
         >
           <ChevronLeft className="h-6 w-6" aria-hidden />
@@ -91,7 +93,7 @@ export function VideoLightbox({
         <button
           type="button"
           onClick={goNext}
-          aria-label="Video successivo"
+          aria-label={t("nextVideo")}
           className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-ivory/20 p-2 text-ivory hover:border-champagne hover:text-champagne sm:right-6"
         >
           <ChevronRight className="h-6 w-6" aria-hidden />

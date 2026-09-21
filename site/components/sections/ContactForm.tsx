@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { CheckCircle2, Loader2, AlertCircle, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 import {
@@ -29,6 +30,7 @@ function FieldError({ messages }: { messages?: string[] }) {
 }
 
 function SubmitButton() {
+  const t = useTranslations("ContactForm");
   const { pending } = useFormStatus();
   return (
     <button
@@ -39,10 +41,10 @@ function SubmitButton() {
       {pending ? (
         <>
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-          Invio in corso…
+          {t("submitting")}
         </>
       ) : (
-        "Verifica la disponibilità"
+        t("submit")
       )}
     </button>
   );
@@ -51,6 +53,10 @@ function SubmitButton() {
 const initialContactFormState: ContactFormState = { status: "idle" };
 
 export function ContactForm() {
+  const t = useTranslations("ContactForm");
+  const tEventTypes = useTranslations("EventTypeLabels");
+  const tDesiredServices = useTranslations("DesiredServiceLabels");
+  const tReferral = useTranslations("ReferralLabels");
   const [state, formAction] = useActionState(
     submitContactForm,
     initialContactFormState,
@@ -61,9 +67,9 @@ export function ContactForm() {
     <section id="contatti-form" className="bg-ink py-28 md:py-40">
       <div className="container-edit max-w-3xl">
         <SectionHeading
-          eyebrow="Contatti"
-          title="RACCONTA IL TUO EVENTO"
-          description="Bastano 5 informazioni: il resto lo definiamo insieme."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
         />
 
         {state.status === "success" ? (
@@ -73,12 +79,10 @@ export function ContactForm() {
           >
             <CheckCircle2 className="h-8 w-8 text-champagne" aria-hidden />
             <h3 className="font-display text-2xl text-ivory">
-              Richiesta ricevuta
+              {t("successTitle")}
             </h3>
             <p className="max-w-md text-sm text-ivory-dim">
-              Grazie! Ti risponderemo al più presto per confermare la
-              disponibilità. Per una risposta più rapida puoi anche scriverci
-              su WhatsApp.
+              {t("successMessage")}
             </p>
           </div>
         ) : (
@@ -108,7 +112,7 @@ export function ContactForm() {
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm text-ivory-dim">
-                  Nome *
+                  {t("nameLabel")}
                 </label>
                 <input id="name" name="name" required className={inputClasses} />
                 <FieldError messages={state.fieldErrors?.name} />
@@ -116,7 +120,7 @@ export function ContactForm() {
 
               <div>
                 <label htmlFor="email" className="mb-2 block text-sm text-ivory-dim">
-                  Email *
+                  {t("emailLabel")}
                 </label>
                 <input
                   id="email"
@@ -130,7 +134,7 @@ export function ContactForm() {
 
               <div>
                 <label htmlFor="phone" className="mb-2 block text-sm text-ivory-dim">
-                  Telefono *
+                  {t("phoneLabel")}
                 </label>
                 <input
                   id="phone"
@@ -147,7 +151,7 @@ export function ContactForm() {
                   htmlFor="eventType"
                   className="mb-2 block text-sm text-ivory-dim"
                 >
-                  Tipo di evento *
+                  {t("eventTypeLabel")}
                 </label>
                 <select
                   id="eventType"
@@ -157,11 +161,11 @@ export function ContactForm() {
                   className={cn(inputClasses, "appearance-none")}
                 >
                   <option value="" disabled>
-                    Seleziona
+                    {t("selectPlaceholder")}
                   </option>
                   {eventTypeOptions.map((option) => (
                     <option key={option} value={option}>
-                      {option}
+                      {tEventTypes(option)}
                     </option>
                   ))}
                 </select>
@@ -173,7 +177,7 @@ export function ContactForm() {
                   htmlFor="eventDate"
                   className="mb-2 block text-sm text-ivory-dim"
                 >
-                  Data evento *
+                  {t("eventDateLabel")}
                 </label>
                 <input
                   id="eventDate"
@@ -200,9 +204,7 @@ export function ContactForm() {
                 )}
                 aria-hidden
               />
-              {showMore
-                ? "Nascondi dettagli aggiuntivi"
-                : "Aggiungi dettagli sul tuo evento (facoltativo)"}
+              {showMore ? t("hideMore") : t("showMore")}
             </button>
 
             <div
@@ -216,7 +218,7 @@ export function ContactForm() {
                 <div className="grid gap-6 pt-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="location" className="mb-2 block text-sm text-ivory-dim">
-                      Location
+                      {t("locationLabel")}
                     </label>
                     <input id="location" name="location" className={inputClasses} />
                   </div>
@@ -226,14 +228,14 @@ export function ContactForm() {
                       htmlFor="guestCount"
                       className="mb-2 block text-sm text-ivory-dim"
                     >
-                      Numero indicativo invitati
+                      {t("guestCountLabel")}
                     </label>
                     <input id="guestCount" name="guestCount" className={inputClasses} />
                   </div>
 
                   <div>
                     <label htmlFor="referral" className="mb-2 block text-sm text-ivory-dim">
-                      Come hai conosciuto Forte DJ?
+                      {t("referralLabel")}
                     </label>
                     <select
                       id="referral"
@@ -242,11 +244,11 @@ export function ContactForm() {
                       className={cn(inputClasses, "appearance-none")}
                     >
                       <option value="" disabled>
-                        Seleziona
+                        {t("selectPlaceholder")}
                       </option>
                       {referralOptions.map((option) => (
                         <option key={option} value={option}>
-                          {option}
+                          {tReferral(option)}
                         </option>
                       ))}
                     </select>
@@ -254,7 +256,7 @@ export function ContactForm() {
 
                   <fieldset className="sm:col-span-2">
                     <legend className="mb-2 block text-sm text-ivory-dim">
-                      Servizi desiderati
+                      {t("desiredServicesLabel")}
                     </legend>
                     <div className="flex flex-wrap gap-3">
                       {desiredServiceOptions.map((option) => (
@@ -268,7 +270,7 @@ export function ContactForm() {
                             value={option}
                             className="h-3.5 w-3.5 accent-[color:var(--color-champagne)]"
                           />
-                          {option}
+                          {tDesiredServices(option)}
                         </label>
                       ))}
                     </div>
@@ -276,7 +278,7 @@ export function ContactForm() {
 
                   <div className="sm:col-span-2">
                     <label htmlFor="message" className="mb-2 block text-sm text-ivory-dim">
-                      Messaggio
+                      {t("messageLabel")}
                     </label>
                     <textarea
                       id="message"
@@ -290,7 +292,7 @@ export function ContactForm() {
             </div>
 
             <p className="mt-8 text-sm text-ivory-dim">
-              Nessun impegno. Raccontami semplicemente cosa stai organizzando.
+              {t("noCommitment")}
             </p>
             <div className="mt-4">
               <SubmitButton />

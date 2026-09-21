@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { heroMedia } from "@/data/media";
 
@@ -18,6 +19,7 @@ const item: Variants = {
 };
 
 export function Hero() {
+  const t = useTranslations("Hero");
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -75,7 +77,7 @@ export function Hero() {
         style={{ transformOrigin: "left bottom" }}
         aria-hidden
       >
-        Forte DJ — Dj &amp; Events
+        {t("brandLine")}
       </div>
 
       <motion.div
@@ -85,36 +87,35 @@ export function Hero() {
         className="container-edit relative z-10 flex flex-col items-center pt-24 text-center"
       >
         <motion.p variants={item} className="eyebrow mb-6">
-          DJ • WEDDING • EVENTS
+          {t("eyebrow")}
         </motion.p>
         <motion.h1
           variants={item}
           className="font-display text-balance text-5xl leading-[1.05] text-ivory sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          LA MUSICA
+          {t("titleLine1")}
           <br />
-          CHE TRASFORMA
+          {t("titleLine2")}
           <br />
-          UN MOMENTO
+          {t("titleLine3")}
           <br />
-          <span className="text-champagne">IN UN RICORDO.</span>
+          <span className="text-champagne">{t("titleLine4")}</span>
         </motion.h1>
         <motion.p
           variants={item}
           className="mt-8 max-w-xl text-balance text-lg text-ivory-dim md:text-xl"
         >
-          DJ &amp; Entertainment per matrimoni, eventi e party in cui musica,
-          atmosfera e persone diventano parte della stessa esperienza.
+          {t("description")}
         </motion.p>
         <motion.div
           variants={item}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
           <Button href="/contatti" size="lg">
-            Verifica la disponibilità
+            {t("ctaAvailability")}
           </Button>
           <Button href="#showreel" variant="secondary" size="lg">
-            Vivi l&rsquo;esperienza
+            {t("ctaExperience")}
           </Button>
         </motion.div>
       </motion.div>
@@ -125,7 +126,7 @@ export function Hero() {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
         <span className="text-[0.65rem] uppercase tracking-[0.3em]">
-          Scroll to explore
+          {t("scrollToExplore")}
         </span>
         <span aria-hidden>↓</span>
       </motion.div>

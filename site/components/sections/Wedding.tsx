@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
@@ -15,6 +16,8 @@ import { weddingMoments } from "@/data/events";
 const intenseSteps = new Set([4]);
 
 export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
+  const t = useTranslations("Wedding");
+  const tMoments = useTranslations("WeddingMoments");
   const timelineRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -28,14 +31,12 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
       <div className="container-edit">
         {hideHeading ? null : (
           <SectionHeading
-            eyebrow="Matrimoni"
+            eyebrow={t("eyebrow")}
             title={
               <>
-                IL TUO MATRIMONIO.
+                {t("titleLine1")}
                 <br />
-                <span className="text-champagne">
-                  LA SUA COLONNA SONORA.
-                </span>
+                <span className="text-champagne">{t("titleLine2")}</span>
               </>
             }
           />
@@ -65,6 +66,8 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
           {weddingMoments.map((moment, index) => {
             const reversed = index % 2 === 1;
             const isIntense = intenseSteps.has(index);
+            const momentTitle = tMoments(`${moment.key}.title`);
+            const momentDescription = tMoments(`${moment.key}.description`);
 
             return (
               <div
@@ -86,7 +89,7 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
                     >
                       <Image
                         src={moment.imageSrc}
-                        alt={moment.imageAlt ?? moment.title}
+                        alt={moment.imageAlt ?? momentTitle}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover"
@@ -104,7 +107,7 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
                         style={{ WebkitTextStroke: "1.5px rgba(201,168,118,0.35)" }}
                         aria-hidden
                       >
-                        {moment.title}
+                        {momentTitle}
                       </span>
                     </div>
                   )}
@@ -117,10 +120,10 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
                     0{index + 1}
                   </span>
                   <h3 className="mt-2 font-display text-2xl text-ivory md:text-3xl">
-                    {moment.title}
+                    {momentTitle}
                   </h3>
                   <p className="mt-3 max-w-sm text-sm leading-relaxed text-ivory-dim md:ml-auto md:mr-0">
-                    {moment.description}
+                    {momentDescription}
                   </p>
                 </Reveal>
               </div>
@@ -131,10 +134,10 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
         <Reveal delay={0.2}>
           <div className="mt-20 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:mt-28">
             <Button href="/contatti" size="lg">
-              Verifica la disponibilità
+              {t("ctaAvailability")}
             </Button>
             <Button href="#gallery" variant="secondary" size="lg">
-              Guarda la gallery
+              {t("ctaGallery")}
             </Button>
           </div>
         </Reveal>
