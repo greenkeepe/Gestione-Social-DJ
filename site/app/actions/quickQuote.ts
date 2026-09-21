@@ -29,7 +29,7 @@ export async function submitQuickQuoteForm(
     eventDate: formData.get("eventDate") ?? "",
     location: formData.get("location") ?? "",
     phone: formData.get("phone") ?? "",
-    company: formData.get("company") ?? "",
+    hp_field: formData.get("hp_field") ?? "",
   };
 
   const parsed = quickQuoteSchema.safeParse(raw);
@@ -43,7 +43,7 @@ export async function submitQuickQuoteForm(
   }
 
   // Honeypot: se compilato è uno spambot. Rispondiamo "successo" senza inviare nulla.
-  if (parsed.data.company) {
+  if (parsed.data.hp_field) {
     return { status: "success" };
   }
 

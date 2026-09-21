@@ -65,10 +65,10 @@ export function QuickQuoteForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-3">
-      {/* Honeypot anti-spam */}
+      {/* Honeypot anti-spam: nome generico apposta, vedi lib/validation.ts */}
       <input
         type="text"
-        name="company"
+        name="hp_field"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"

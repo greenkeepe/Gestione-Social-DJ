@@ -49,8 +49,11 @@ export const contactFormSchema = z.object({
   desiredServices: z.array(z.enum(desiredServiceOptions)).optional().default([]),
   message: z.string().trim().max(2000).optional(),
   referral: z.enum(referralOptions).optional(),
-  // Honeypot anti-spam: deve arrivare vuoto.
-  company: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot anti-spam: deve arrivare vuoto. Nome volutamente generico
+  // (non "company"/"website"/ecc.) per non farlo compilare dagli
+  // autofill dei browser, che altrimenti lo riempiono anche se invisibile
+  // e fanno fallire la validazione a utenti reali.
+  hp_field: z.string().max(0).optional().or(z.literal("")),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -77,8 +80,8 @@ export const quickQuoteSchema = z.object({
     .trim()
     .min(6, "Inserisci un numero di telefono valido.")
     .max(20, "Numero di telefono troppo lungo."),
-  // Honeypot anti-spam: deve arrivare vuoto.
-  company: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot anti-spam: vedi commento su contactFormSchema.hp_field.
+  hp_field: z.string().max(0).optional().or(z.literal("")),
 });
 
 export type QuickQuoteValues = z.infer<typeof quickQuoteSchema>;

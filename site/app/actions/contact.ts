@@ -43,7 +43,7 @@ export async function submitContactForm(
     desiredServices: formData.getAll("desiredServices"),
     message: formData.get("message") || undefined,
     referral: formData.get("referral") || undefined,
-    company: formData.get("company") ?? "",
+    hp_field: formData.get("hp_field") ?? "",
   };
 
   const parsed = contactFormSchema.safeParse(raw);
@@ -57,7 +57,7 @@ export async function submitContactForm(
   }
 
   // Honeypot: se compilato è uno spambot. Rispondiamo "successo" senza inviare nulla.
-  if (parsed.data.company) {
+  if (parsed.data.hp_field) {
     return { status: "success" };
   }
 

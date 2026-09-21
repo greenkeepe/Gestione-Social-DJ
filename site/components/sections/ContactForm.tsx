@@ -83,10 +83,10 @@ export function ContactForm() {
           </div>
         ) : (
           <form action={formAction} className="mt-12">
-            {/* Honeypot anti-spam */}
+            {/* Honeypot anti-spam: nome generico apposta, vedi lib/validation.ts */}
             <input
               type="text"
-              name="company"
+              name="hp_field"
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
