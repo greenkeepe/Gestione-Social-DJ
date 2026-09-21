@@ -89,7 +89,8 @@ export async function submitContactForm(
     });
 
     if (!response.ok) {
-      throw new Error(`Resend ha risposto con status ${response.status}`);
+      const body = await response.text();
+      throw new Error(`Resend ha risposto con status ${response.status}: ${body}`);
     }
   } catch (error) {
     console.error("[contatti] invio email fallito", error);
