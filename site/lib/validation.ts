@@ -39,11 +39,8 @@ export const contactFormSchema = z.object({
   eventDate: z
     .string()
     .trim()
-    .optional()
-    .refine(
-      (value) => !value || !Number.isNaN(Date.parse(value)),
-      "Inserisci una data valida.",
-    ),
+    .min(1, "Inserisci la data dell'evento.")
+    .refine((value) => !Number.isNaN(Date.parse(value)), "Inserisci una data valida."),
   location: z.string().trim().max(160).optional(),
   guestCount: z.string().trim().max(20).optional(),
   desiredServices: z.array(z.enum(desiredServiceOptions)).optional().default([]),

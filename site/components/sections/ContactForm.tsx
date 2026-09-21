@@ -63,7 +63,7 @@ export function ContactForm() {
         <SectionHeading
           eyebrow="Contatti"
           title="RACCONTA IL TUO EVENTO"
-          description="Bastano 4 informazioni: il resto lo definiamo insieme."
+          description="Bastano 5 informazioni: il resto lo definiamo insieme."
         />
 
         {state.status === "success" ? (
@@ -167,6 +167,23 @@ export function ContactForm() {
                 </select>
                 <FieldError messages={state.fieldErrors?.eventType} />
               </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="eventDate"
+                  className="mb-2 block text-sm text-ivory-dim"
+                >
+                  Data evento *
+                </label>
+                <input
+                  id="eventDate"
+                  name="eventDate"
+                  type="date"
+                  required
+                  className={inputClasses}
+                />
+                <FieldError messages={state.fieldErrors?.eventDate} />
+              </div>
             </div>
 
             <button
@@ -197,22 +214,6 @@ export function ContactForm() {
             >
               <div className="min-h-0">
                 <div className="grid gap-6 pt-6 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="eventDate"
-                      className="mb-2 block text-sm text-ivory-dim"
-                    >
-                      Data evento
-                    </label>
-                    <input
-                      id="eventDate"
-                      name="eventDate"
-                      type="date"
-                      className={inputClasses}
-                    />
-                    <FieldError messages={state.fieldErrors?.eventDate} />
-                  </div>
-
                   <div>
                     <label htmlFor="location" className="mb-2 block text-sm text-ivory-dim">
                       Location

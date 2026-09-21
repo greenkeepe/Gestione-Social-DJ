@@ -37,7 +37,7 @@ export async function submitContactForm(
     email: formData.get("email") ?? "",
     phone: formData.get("phone") ?? "",
     eventType: formData.get("eventType") ?? "",
-    eventDate: formData.get("eventDate") || undefined,
+    eventDate: formData.get("eventDate") ?? "",
     location: formData.get("location") || undefined,
     guestCount: formData.get("guestCount") || undefined,
     desiredServices: formData.getAll("desiredServices"),
