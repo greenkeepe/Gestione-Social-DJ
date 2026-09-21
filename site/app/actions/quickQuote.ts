@@ -35,10 +35,12 @@ export async function submitQuickQuoteForm(
   const parsed = quickQuoteSchema.safeParse(raw);
 
   if (!parsed.success) {
+    const fieldErrors = parsed.error.flatten().fieldErrors;
+    console.warn("[preventivo-veloce] validazione fallita, campi:", Object.keys(fieldErrors), fieldErrors);
     return {
       status: "error",
       message: "Controlla i campi evidenziati e riprova.",
-      fieldErrors: parsed.error.flatten().fieldErrors,
+      fieldErrors,
     };
   }
 
