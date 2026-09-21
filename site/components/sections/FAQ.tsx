@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
-import { faqItems } from "@/data/faq";
+import type { FaqItem } from "@/data/faq";
 
 export function FAQ({
   full = false,
@@ -12,7 +12,9 @@ export function FAQ({
   hideHeading?: boolean;
 }) {
   const t = useTranslations("FAQ");
-  const items = full ? faqItems : faqItems.slice(0, 6);
+  const tItems = useTranslations("FaqItems");
+  const allItems = tItems.raw("items") as FaqItem[];
+  const items = full ? allItems : allItems.slice(0, 6);
 
   return (
     <section className="bg-charcoal py-28 md:py-40">

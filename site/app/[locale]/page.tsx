@@ -1,5 +1,6 @@
+import { getTranslations } from "next-intl/server";
 import { faqJsonLd } from "@/lib/seo";
-import { faqItems } from "@/data/faq";
+import type { FaqItem } from "@/data/faq";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Intro } from "@/components/sections/Intro";
@@ -20,7 +21,15 @@ import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ContactForm } from "@/components/sections/ContactForm";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const tFaq = await getTranslations({ locale, namespace: "FaqItems" });
+  const faqItems = tFaq.raw("items") as FaqItem[];
+
   return (
     <>
       <script

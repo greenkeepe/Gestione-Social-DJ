@@ -349,5 +349,58 @@
     "heroTitle": "COOKIE POLICY",
     "p1": "Questa pagina è un segnaposto: contenuto da completare con un'informativa cookie conforme prima della pubblicazione del sito, comprensiva di un banner di consenso reale (nessun meccanismo di consenso è ancora implementato).",
     "p2": "Il sito integra il widget recensioni di Musiqua e, se configurati tramite variabili d'ambiente, script di analytics (Google Analytics, Google Tag Manager, Meta Pixel): ciascuno può impostare cookie o tecnologie simili secondo le proprie policy."
+  },
+  "FaqItems": {
+    "items": [
+      { "question": "Quanto tempo prima bisogna prenotare?", "answer": "Le tempistiche dipendono dal periodo e dalla data richiesta. Il modo più rapido per saperlo è verificare la disponibilità per la tua data specifica." },
+      { "question": "Come posso verificare la disponibilità?", "answer": "Compila il modulo qui sotto con data, location e tipo di evento, oppure scrivi direttamente su WhatsApp: riceverai una risposta con la disponibilità per la tua data." },
+      { "question": "Fate matrimoni?", "answer": "Sì, i matrimoni sono una parte centrale dell'attività: dalla cerimonia al fine serata, inclusi ricevimenti in relais, ristoranti, club house e location analoghe." },
+      { "question": "Vi occupate anche della cerimonia?", "answer": "Sì, è possibile curare la musica della cerimonia (anche in chiesa) e gli interventi parlati, con microfoni dedicati." },
+      { "question": "È possibile scegliere la musica?", "answer": "Sì. La playlist viene costruita su misura insieme agli sposi o a chi organizza l'evento, con un incontro di pianificazione prima della data, e viene poi adattata dal vivo leggendo la pista." },
+      { "question": "Portate voi l'impianto audio?", "answer": "Sì, l'impianto audio professionale è incluso e viene dimensionato in base alla location e al numero di invitati." },
+      { "question": "Vi occupate delle luci?", "answer": "Sì, il servizio include un impianto luci pensato per accompagnare i diversi momenti della serata." },
+      { "question": "Fate eventi aziendali?", "answer": "Sì, feste aziendali, ricevimenti e inaugurazioni rientrano tra le tipologie di evento seguite abitualmente." },
+      { "question": "Fate feste private?", "answer": "Sì: compleanni, anniversari, diciottesimi, addii al nubilato/celibato e feste private in genere." },
+      { "question": "Sono disponibili servizi aggiuntivi?", "answer": "Sì: oltre al DJ set, sono disponibili impianto audio, luci, macchina del fumo e microfoni per interventi e cerimonia. Scrivici per capire cosa serve al tuo evento." },
+      { "question": "Come viene organizzata la musica del matrimonio?", "answer": "Attraverso un incontro di pianificazione in cui si definiscono insieme i momenti chiave (cerimonia, aperitivo, cena, party) e le preferenze musicali, poi adattati dal vivo il giorno stesso." },
+      { "question": "Come posso richiedere un preventivo?", "answer": "Compila il modulo di contatto con i dettagli del tuo evento, oppure scrivi su WhatsApp o via email: riceverai una proposta su misura." }
+    ]
+  },
+  "GalleryFilters": {
+    "all": "Tutto",
+    "wedding": "Wedding",
+    "party": "Party",
+    "events": "Eventi"
+  },
+  "GalleryImages": {
+    "wedding-ceremony-chairs": "Allestimento della cerimonia con vista sulle colline",
+    "wedding-couple-goldenhour": "Sposi in terrazza al tramonto",
+    "wedding-sparklers-dance": "Primo ballo degli sposi tra le stelle filanti",
+    "wedding-bride-celebration": "La sposa festeggia sulla pista da ballo",
+    "party-indoor-dancefloor": "Pista da ballo animata durante una festa privata",
+    "wedding-firstdance-twirl": "Sposi che ballano circondati dagli invitati",
+    "party-foggy-dancefloor": "Pista da ballo tra luci e fumo scenico",
+    "wedding-garden-lights": "Balli in giardino tra le luci sospese",
+    "wedding-reception-dance": "Balli al ricevimento con luci scenografiche",
+    "party-tent-dancefloor": "Festa sotto il tendone con luci colorate",
+    "events-corporate-buffet": "Console DJ durante un evento aziendale con buffet",
+    "events-garden-dinner": "Cena di gala in giardino con console DJ in primo piano",
+    "wedding-terrace-booth-hills": "Consolle allestita in terrazza con vista sulle colline",
+    "party-dj-smoke-garden": "DJ set in giardino tra le luci e il fumo scenico",
+    "party-nightclub-518": "Festa in discoteca con la pista animata",
+    "party-terrace-dinner-lights": "Cena in terrazza tra le luci sospese e la consolle",
+    "party-pool-night": "Consolle allestita a bordo piscina in notturna",
+    "wedding-poolside-console-view": "Consolle a bordo piscina con vista sulle colline",
+    "wedding-coldspark-cake": "Taglio della torta tra i fuochi freddi",
+    "wedding-aperitivo-garden": "Aperitivo in giardino sotto la magnolia",
+    "wedding-ceremony-arch-hills": "Cerimonia con arco floreale e vista sulle colline",
+    "wedding-booth-jasmine": "Consolle allestita tra i fiori di gelsomino",
+    "wedding-circle-dance": "Girotondo di invitati sulla pista da ballo",
+    "wedding-group-hug": "Invitati abbracciati durante la festa",
+    "wedding-courtyard-dance": "Balli nel cortile tra le luci sospese",
+    "party-indoor-handsup": "Pista da ballo al coperto con le mani alzate",
+    "party-tent-nightdance": "Festa sotto il tendone in notturna",
+    "party-terrace-seaview": "Festa in terrazza con vista sul mare",
+    "events-gala-tent": "Aperitivo di gala sotto il gazebo con lampadari"
   }
 }

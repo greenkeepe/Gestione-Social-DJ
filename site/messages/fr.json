@@ -349,5 +349,58 @@
     "heroTitle": "POLITIQUE RELATIVE AUX COOKIES",
     "p1": "Cette page est un espace réservé : contenu à compléter avec une politique cookies conforme avant la mise en ligne du site, incluant une bannière de consentement réelle (aucun mécanisme de consentement n'est encore mis en place).",
     "p2": "Le site intègre le widget d'avis Musiqua et, si configurés via des variables d'environnement, des scripts d'analyse (Google Analytics, Google Tag Manager, Meta Pixel) : chacun peut déposer des cookies ou technologies similaires selon sa propre politique."
+  },
+  "FaqItems": {
+    "items": [
+      { "question": "Combien de temps à l'avance faut-il réserver ?", "answer": "Les délais dépendent de la période et de la date demandée. Le moyen le plus rapide de le savoir est de vérifier la disponibilité pour votre date précise." },
+      { "question": "Comment puis-je vérifier la disponibilité ?", "answer": "Remplissez le formulaire ci-dessous avec la date, le lieu et le type d'événement, ou écrivez directement sur WhatsApp : vous recevrez une réponse avec la disponibilité pour votre date." },
+      { "question": "Faites-vous des mariages ?", "answer": "Oui, les mariages sont un pilier de l'activité : de la cérémonie à la fin de soirée, y compris les réceptions dans des relais, restaurants, club houses et lieux similaires." },
+      { "question": "Vous occupez-vous aussi de la cérémonie ?", "answer": "Oui, il est possible de prendre en charge la musique de la cérémonie (même à l'église) et les interventions parlées, avec des micros dédiés." },
+      { "question": "Peut-on choisir la musique ?", "answer": "Oui. La playlist est construite sur mesure avec les mariés ou l'organisateur de l'événement, avec une réunion de planification avant la date, puis adaptée en direct en lisant la piste." },
+      { "question": "Apportez-vous la sonorisation ?", "answer": "Oui, la sonorisation professionnelle est incluse et dimensionnée selon le lieu et le nombre d'invités." },
+      { "question": "Vous occupez-vous de l'éclairage ?", "answer": "Oui, le service inclut une installation lumineuse pensée pour accompagner les différents moments de la soirée." },
+      { "question": "Faites-vous des événements d'entreprise ?", "answer": "Oui, les fêtes d'entreprise, réceptions et inaugurations font partie des types d'événements habituellement pris en charge." },
+      { "question": "Faites-vous des fêtes privées ?", "answer": "Oui : anniversaires, anniversaires de mariage, fêtes des 18 ans, enterrements de vie de garçon/jeune fille et fêtes privées en général." },
+      { "question": "Des services supplémentaires sont-ils disponibles ?", "answer": "Oui : en plus du DJ set, sonorisation, éclairage, machine à fumée et micros pour les discours et la cérémonie sont disponibles. Écrivez-nous pour définir ce dont votre événement a besoin." },
+      { "question": "Comment est organisée la musique du mariage ?", "answer": "Grâce à une réunion de planification où sont définis ensemble les moments clés (cérémonie, apéritif, dîner, fête) et les préférences musicales, puis adaptés en direct le jour même." },
+      { "question": "Comment puis-je demander un devis ?", "answer": "Remplissez le formulaire de contact avec les détails de votre événement, ou écrivez sur WhatsApp ou par email : vous recevrez une proposition sur mesure." }
+    ]
+  },
+  "GalleryFilters": {
+    "all": "Tout",
+    "wedding": "Mariage",
+    "party": "Fête",
+    "events": "Événements"
+  },
+  "GalleryImages": {
+    "wedding-ceremony-chairs": "Installation de la cérémonie avec vue sur les collines",
+    "wedding-couple-goldenhour": "Les mariés sur la terrasse au coucher du soleil",
+    "wedding-sparklers-dance": "Première danse des mariés parmi les étincelles",
+    "wedding-bride-celebration": "La mariée fait la fête sur la piste de danse",
+    "party-indoor-dancefloor": "Piste de danse animée lors d'une fête privée",
+    "wedding-firstdance-twirl": "Les mariés dansent entourés des invités",
+    "party-foggy-dancefloor": "Piste de danse entre lumières et fumée scénique",
+    "wedding-garden-lights": "Danses dans le jardin sous les lumières suspendues",
+    "wedding-reception-dance": "Danses à la réception sous un éclairage scénographique",
+    "party-tent-dancefloor": "Fête sous la tente avec des lumières colorées",
+    "events-corporate-buffet": "Cabine DJ pendant un événement d'entreprise avec buffet",
+    "events-garden-dinner": "Dîner de gala dans le jardin avec la cabine DJ au premier plan",
+    "wedding-terrace-booth-hills": "Cabine installée en terrasse avec vue sur les collines",
+    "party-dj-smoke-garden": "DJ set dans le jardin entre lumières et fumée scénique",
+    "party-nightclub-518": "Fête en discothèque avec la piste animée",
+    "party-terrace-dinner-lights": "Dîner en terrasse entre les lumières suspendues et la cabine DJ",
+    "party-pool-night": "Cabine installée au bord de la piscine de nuit",
+    "wedding-poolside-console-view": "Cabine au bord de la piscine avec vue sur les collines",
+    "wedding-coldspark-cake": "Découpe du gâteau parmi les étincelles froides",
+    "wedding-aperitivo-garden": "Apéritif dans le jardin sous le magnolia",
+    "wedding-ceremony-arch-hills": "Cérémonie avec arche florale et vue sur les collines",
+    "wedding-booth-jasmine": "Cabine installée parmi les fleurs de jasmin",
+    "wedding-circle-dance": "Ronde des invités sur la piste de danse",
+    "wedding-group-hug": "Invités qui s'enlacent pendant la fête",
+    "wedding-courtyard-dance": "Danses dans la cour parmi les lumières suspendues",
+    "party-indoor-handsup": "Piste de danse couverte, mains levées",
+    "party-tent-nightdance": "Fête sous la tente de nuit",
+    "party-terrace-seaview": "Fête en terrasse avec vue sur la mer",
+    "events-gala-tent": "Apéritif de gala sous le chapiteau avec lustres"
   }
 }

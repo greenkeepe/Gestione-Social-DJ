@@ -14,6 +14,10 @@ import { galleryImages, galleryFilters, type GalleryImage } from "@/data/gallery
 // occupa gli stessi slot con placeholder chiaramente etichettati (mai
 // spacciati per eventi reali) e con la stessa variazione di formati di una
 // vera gallery editoriale (verticale/orizzontale/quadrata).
+function keyFromSrc(src: string) {
+  return src.split("/").pop()!.replace(/\.[^.]+$/, "");
+}
+
 const placeholderSlots: { category: GalleryImage["category"]; aspect: string }[] = [
   { category: "wedding", aspect: "aspect-[3/4]" },
   { category: "party", aspect: "aspect-square" },
@@ -34,6 +38,8 @@ export function Gallery({
   hideHeading?: boolean;
 }) {
   const t = useTranslations("Gallery");
+  const tFilters = useTranslations("GalleryFilters");
+  const tImages = useTranslations("GalleryImages");
   const [filter, setFilter] = useState<"all" | GalleryImage["category"]>("all");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -42,8 +48,12 @@ export function Gallery({
       filter === "all"
         ? galleryImages
         : galleryImages.filter((image) => image.category === filter);
-    return full ? filtered : filtered.slice(0, 8);
-  }, [filter, full]);
+    const localized = filtered.map((image) => ({
+      ...image,
+      alt: tImages(keyFromSrc(image.src)),
+    }));
+    return full ? localized : localized.slice(0, 8);
+  }, [filter, full, tImages]);
 
   const placeholders = useMemo(
     () =>
@@ -85,7 +95,7 @@ export function Gallery({
                   : "border-line text-ivory-dim hover:border-champagne/50 hover:text-champagne",
               )}
             >
-              {f.label}
+              {tFilters(f.value)}
             </button>
           ))}
         </div>

@@ -349,5 +349,58 @@
     "heroTitle": "COOKIE POLICY",
     "p1": "This page is a placeholder: content to be completed with a compliant cookie notice before the site goes live, including a real consent banner (no consent mechanism is implemented yet).",
     "p2": "The site integrates the Musiqua reviews widget and, if configured via environment variables, analytics scripts (Google Analytics, Google Tag Manager, Meta Pixel): each may set cookies or similar technologies according to its own policy."
+  },
+  "FaqItems": {
+    "items": [
+      { "question": "How far in advance should I book?", "answer": "Timing depends on the season and the date requested. The fastest way to find out is to check availability for your specific date." },
+      { "question": "How can I check availability?", "answer": "Fill in the form below with the date, venue and type of event, or message directly on WhatsApp: you'll get a reply with availability for your date." },
+      { "question": "Do you do weddings?", "answer": "Yes, weddings are a core part of the business: from the ceremony to the last dance, including receptions at relais, restaurants, club houses and similar venues." },
+      { "question": "Do you also handle the ceremony?", "answer": "Yes, it's possible to take care of the ceremony music (including in church) and spoken moments, with dedicated microphones." },
+      { "question": "Can I choose the music?", "answer": "Yes. The playlist is built together with the couple or event organizer, with a planning meeting before the date, and is then adapted live by reading the crowd." },
+      { "question": "Do you provide the sound system?", "answer": "Yes, the professional sound system is included and sized according to the venue and guest count." },
+      { "question": "Do you take care of the lighting?", "answer": "Yes, the service includes a lighting setup designed to follow the different moments of the evening." },
+      { "question": "Do you do corporate events?", "answer": "Yes, corporate parties, receptions and openings are among the event types regularly covered." },
+      { "question": "Do you do private parties?", "answer": "Yes: birthdays, anniversaries, 18th birthdays, bachelor/bachelorette parties and private parties in general." },
+      { "question": "Are additional services available?", "answer": "Yes: besides the DJ set, a sound system, lighting, smoke machine and microphones for speeches and the ceremony are available. Write to us to work out what your event needs." },
+      { "question": "How is the wedding music organized?", "answer": "Through a planning meeting where the key moments (ceremony, aperitif, dinner, party) and music preferences are defined together, then adapted live on the day itself." },
+      { "question": "How can I request a quote?", "answer": "Fill in the contact form with your event details, or message us on WhatsApp or by email: you'll receive a tailor-made proposal." }
+    ]
+  },
+  "GalleryFilters": {
+    "all": "All",
+    "wedding": "Wedding",
+    "party": "Party",
+    "events": "Events"
+  },
+  "GalleryImages": {
+    "wedding-ceremony-chairs": "Ceremony setup overlooking the hills",
+    "wedding-couple-goldenhour": "Newlyweds on the terrace at sunset",
+    "wedding-sparklers-dance": "The couple's first dance amid sparklers",
+    "wedding-bride-celebration": "The bride celebrating on the dancefloor",
+    "party-indoor-dancefloor": "Lively dancefloor during a private party",
+    "wedding-firstdance-twirl": "Newlyweds dancing surrounded by guests",
+    "party-foggy-dancefloor": "Dancefloor amid lights and stage smoke",
+    "wedding-garden-lights": "Dancing in the garden under hanging lights",
+    "wedding-reception-dance": "Dancing at the reception under scenic lighting",
+    "party-tent-dancefloor": "Party under the marquee with colored lights",
+    "events-corporate-buffet": "DJ booth during a corporate event with buffet",
+    "events-garden-dinner": "Gala dinner in the garden with the DJ booth in the foreground",
+    "wedding-terrace-booth-hills": "DJ booth set up on the terrace overlooking the hills",
+    "party-dj-smoke-garden": "DJ set in the garden amid lights and stage smoke",
+    "party-nightclub-518": "Nightclub party with a lively dancefloor",
+    "party-terrace-dinner-lights": "Terrace dinner among hanging lights and the DJ booth",
+    "party-pool-night": "Poolside DJ booth at night",
+    "wedding-poolside-console-view": "Poolside DJ booth overlooking the hills",
+    "wedding-coldspark-cake": "Cutting the cake amid cold sparklers",
+    "wedding-aperitivo-garden": "Aperitif in the garden under the magnolia",
+    "wedding-ceremony-arch-hills": "Ceremony with a floral arch overlooking the hills",
+    "wedding-booth-jasmine": "DJ booth set up among jasmine flowers",
+    "wedding-circle-dance": "Guests dancing in a circle on the dancefloor",
+    "wedding-group-hug": "Guests hugging during the party",
+    "wedding-courtyard-dance": "Dancing in the courtyard among hanging lights",
+    "party-indoor-handsup": "Indoor dancefloor with hands up",
+    "party-tent-nightdance": "Party under the marquee at night",
+    "party-terrace-seaview": "Terrace party with sea view",
+    "events-gala-tent": "Gala aperitif under the gazebo with chandeliers"
   }
 }

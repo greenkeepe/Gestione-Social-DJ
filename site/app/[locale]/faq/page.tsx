@@ -4,6 +4,7 @@ import { buildMetadata, faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import type { FaqItem } from "@/data/faq";
 
 export async function generateMetadata({
   params,
@@ -28,12 +29,14 @@ export default async function FaqPage({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "FAQ" });
   const tNav = await getTranslations({ locale, namespace: "Nav" });
+  const tFaqItems = await getTranslations({ locale, namespace: "FaqItems" });
+  const faqItems = tFaqItems.raw("items") as FaqItem[];
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqItems)) }}
       />
       <script
         type="application/ld+json"

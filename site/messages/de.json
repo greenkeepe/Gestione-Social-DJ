@@ -349,5 +349,58 @@
     "heroTitle": "COOKIE-RICHTLINIE",
     "p1": "Diese Seite ist ein Platzhalter: Inhalt, der vor der Veröffentlichung der Website mit einer konformen Cookie-Richtlinie vervollständigt werden muss, einschließlich eines echten Einwilligungsbanners (es ist noch kein Einwilligungsmechanismus implementiert).",
     "p2": "Die Website bindet das Musiqua-Bewertungswidget sowie, falls über Umgebungsvariablen konfiguriert, Analyse-Skripte (Google Analytics, Google Tag Manager, Meta Pixel) ein: Jedes davon kann gemäß seiner eigenen Richtlinie Cookies oder ähnliche Technologien setzen."
+  },
+  "FaqItems": {
+    "items": [
+      { "question": "Wie weit im Voraus sollte man buchen?", "answer": "Der Zeitrahmen hängt von der Saison und dem gewünschten Termin ab. Der schnellste Weg, es herauszufinden, ist die Verfügbarkeit für dein konkretes Datum zu prüfen." },
+      { "question": "Wie kann ich die Verfügbarkeit prüfen?", "answer": "Fülle das untenstehende Formular mit Datum, Location und Art des Events aus oder schreib direkt auf WhatsApp: Du erhältst eine Antwort mit der Verfügbarkeit für dein Datum." },
+      { "question": "Macht ihr Hochzeiten?", "answer": "Ja, Hochzeiten sind ein zentraler Teil der Tätigkeit: von der Zeremonie bis zum späten Abend, einschließlich Feiern in Relais, Restaurants, Clubhäusern und ähnlichen Locations." },
+      { "question": "Kümmert ihr euch auch um die Zeremonie?", "answer": "Ja, die Musik der Zeremonie (auch in der Kirche) sowie gesprochene Beiträge können mit eigenen Mikrofonen begleitet werden." },
+      { "question": "Kann ich die Musik selbst auswählen?", "answer": "Ja. Die Playlist wird gemeinsam mit dem Brautpaar oder der Veranstaltungsorganisation maßgeschneidert erstellt, mit einem Planungstreffen vor dem Termin, und anschließend live an die Stimmung angepasst." },
+      { "question": "Bringt ihr die Tonanlage mit?", "answer": "Ja, die professionelle Tonanlage ist inbegriffen und wird passend zu Location und Gästezahl dimensioniert." },
+      { "question": "Kümmert ihr euch um die Beleuchtung?", "answer": "Ja, die Leistung umfasst eine Lichtanlage, die die verschiedenen Momente des Abends begleitet." },
+      { "question": "Macht ihr Firmenevents?", "answer": "Ja, Firmenfeiern, Empfänge und Eröffnungen gehören zu den regelmäßig betreuten Veranstaltungsarten." },
+      { "question": "Macht ihr private Feiern?", "answer": "Ja: Geburtstage, Jubiläen, 18. Geburtstage, Junggesellen-/Junggesellinnenabschiede und private Feiern im Allgemeinen." },
+      { "question": "Sind Zusatzleistungen verfügbar?", "answer": "Ja: Neben dem DJ-Set sind Tonanlage, Lichttechnik, Nebelmaschine und Mikrofone für Reden und die Zeremonie verfügbar. Schreib uns, um zu klären, was dein Event braucht." },
+      { "question": "Wie wird die Hochzeitsmusik organisiert?", "answer": "Durch ein Planungstreffen, bei dem gemeinsam die Schlüsselmomente (Zeremonie, Aperitif, Abendessen, Party) und die Musikwünsche festgelegt werden, die dann am Tag selbst live angepasst werden." },
+      { "question": "Wie kann ich ein Angebot anfragen?", "answer": "Fülle das Kontaktformular mit den Details deines Events aus oder schreib uns auf WhatsApp oder per E-Mail: Du erhältst ein maßgeschneidertes Angebot." }
+    ]
+  },
+  "GalleryFilters": {
+    "all": "Alle",
+    "wedding": "Hochzeit",
+    "party": "Party",
+    "events": "Events"
+  },
+  "GalleryImages": {
+    "wedding-ceremony-chairs": "Aufbau der Zeremonie mit Blick auf die Hügel",
+    "wedding-couple-goldenhour": "Brautpaar bei Sonnenuntergang auf der Terrasse",
+    "wedding-sparklers-dance": "Erster Tanz des Brautpaars zwischen Wunderkerzen",
+    "wedding-bride-celebration": "Die Braut feiert auf der Tanzfläche",
+    "party-indoor-dancefloor": "Lebendige Tanzfläche bei einer privaten Feier",
+    "wedding-firstdance-twirl": "Brautpaar tanzt umringt von Gästen",
+    "party-foggy-dancefloor": "Tanzfläche zwischen Licht und Bühnennebel",
+    "wedding-garden-lights": "Tanz im Garten unter hängenden Lichtern",
+    "wedding-reception-dance": "Tanz beim Empfang unter stimmungsvoller Beleuchtung",
+    "party-tent-dancefloor": "Feier unter dem Festzelt mit bunten Lichtern",
+    "events-corporate-buffet": "DJ-Pult bei einem Firmenevent mit Buffet",
+    "events-garden-dinner": "Galadinner im Garten mit dem DJ-Pult im Vordergrund",
+    "wedding-terrace-booth-hills": "DJ-Pult auf der Terrasse mit Blick auf die Hügel",
+    "party-dj-smoke-garden": "DJ-Set im Garten zwischen Licht und Bühnennebel",
+    "party-nightclub-518": "Feier im Nachtclub mit lebendiger Tanzfläche",
+    "party-terrace-dinner-lights": "Abendessen auf der Terrasse zwischen hängenden Lichtern und dem DJ-Pult",
+    "party-pool-night": "DJ-Pult am Pool bei Nacht",
+    "wedding-poolside-console-view": "DJ-Pult am Pool mit Blick auf die Hügel",
+    "wedding-coldspark-cake": "Anschneiden der Torte zwischen kalten Funkenfontänen",
+    "wedding-aperitivo-garden": "Aperitif im Garten unter der Magnolie",
+    "wedding-ceremony-arch-hills": "Zeremonie mit Blumenbogen und Blick auf die Hügel",
+    "wedding-booth-jasmine": "DJ-Pult zwischen Jasminblüten aufgebaut",
+    "wedding-circle-dance": "Gäste tanzen im Kreis auf der Tanzfläche",
+    "wedding-group-hug": "Gäste umarmen sich während der Feier",
+    "wedding-courtyard-dance": "Tanz im Innenhof zwischen hängenden Lichtern",
+    "party-indoor-handsup": "Überdachte Tanzfläche mit erhobenen Händen",
+    "party-tent-nightdance": "Feier unter dem Festzelt bei Nacht",
+    "party-terrace-seaview": "Terrassenfeier mit Meerblick",
+    "events-gala-tent": "Gala-Aperitif unter dem Pavillon mit Kronleuchtern"
   }
 }
