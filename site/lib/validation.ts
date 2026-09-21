@@ -54,3 +54,25 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+// Versione ridotta per il "preventivo veloce" (popup exit-intent): solo i 3
+// campi indispensabili per farsi richiamare, niente nome/email.
+export const quickQuoteSchema = z.object({
+  eventType: z.enum(eventTypeOptions, {
+    message: "Seleziona il tipo di evento.",
+  }),
+  eventDate: z
+    .string()
+    .trim()
+    .min(1, "Inserisci la data (anche indicativa).")
+    .refine((value) => !Number.isNaN(Date.parse(value)), "Inserisci una data valida."),
+  phone: z
+    .string()
+    .trim()
+    .min(6, "Inserisci un numero di telefono valido.")
+    .max(20, "Numero di telefono troppo lungo."),
+  // Honeypot anti-spam: deve arrivare vuoto.
+  company: z.string().max(0).optional().or(z.literal("")),
+});
+
+export type QuickQuoteValues = z.infer<typeof quickQuoteSchema>;

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
+import { QuickQuoteForm } from "@/components/sections/QuickQuoteForm";
 
 const STORAGE_KEY = "forte-dj-exit-intent-shown";
 const MIN_TIME_ON_PAGE_MS = 8000;
@@ -45,7 +45,7 @@ export function ExitIntent() {
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           role="dialog"
-          aria-label="Verifica la disponibilità"
+          aria-label="Richiedi un preventivo veloce"
           className="fixed bottom-8 left-8 z-50 hidden w-[min(22rem,calc(100vw-4rem))] rounded-2xl border border-champagne/30 bg-charcoal-soft/95 p-6 shadow-2xl shadow-black/40 backdrop-blur-sm lg:block"
         >
           <button
@@ -60,12 +60,10 @@ export function ExitIntent() {
             Stai organizzando un evento?
           </p>
           <p className="mt-2 text-sm text-ivory-dim">
-            Raccontaci data e location: scopri subito se siamo liberi.
+            3 informazioni veloci: ti mandiamo un preventivo entro poche ore.
           </p>
           <div className="mt-5">
-            <Button href="/contatti" onClick={() => setVisible(false)}>
-              Verifica la disponibilità
-            </Button>
+            <QuickQuoteForm />
           </div>
         </motion.div>
       ) : null}
