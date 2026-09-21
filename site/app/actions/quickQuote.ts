@@ -13,9 +13,10 @@ function buildPlainTextEmail(data: QuickQuoteValues) {
   return [
     `Tipo di evento: ${data.eventType}`,
     `Data evento: ${data.eventDate}`,
+    `Location: ${data.location}`,
     `Telefono: ${data.phone}`,
     "",
-    "Richiesta di preventivo veloce (popup exit-intent): nessuna email fornita, richiamare al numero indicato.",
+    "Richiesta di preventivo veloce (widget sul sito): nessuna email fornita, richiamare al numero indicato.",
   ].join("\n");
 }
 
@@ -26,6 +27,7 @@ export async function submitQuickQuoteForm(
   const raw = {
     eventType: formData.get("eventType") ?? "",
     eventDate: formData.get("eventDate") ?? "",
+    location: formData.get("location") ?? "",
     phone: formData.get("phone") ?? "",
     company: formData.get("company") ?? "",
   };

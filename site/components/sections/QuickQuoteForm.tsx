@@ -42,10 +42,10 @@ function SubmitButton() {
 
 const initialQuickQuoteState: QuickQuoteState = { status: "idle" };
 
-// Versione minimale del form contatti (3 campi, niente nome/email): pensata
-// per il momento a più alta intenzione ma più bassa pazienza, il popup
-// exit-intent. Il form completo in /contatti resta invariato per chi
-// preferisce dare più dettagli da subito.
+// Versione minimale del form contatti (niente nome/email): usata dal
+// widget "preventivo veloce" sempre visibile. Il form completo in
+// /contatti resta invariato per chi preferisce dare più dettagli da
+// subito.
 export function QuickQuoteForm() {
   const [state, formAction] = useActionState(
     submitQuickQuoteForm,
@@ -120,6 +120,21 @@ export function QuickQuoteForm() {
           className={inputClasses}
         />
         <FieldError messages={state.fieldErrors?.eventDate} />
+      </div>
+
+      <div>
+        <label htmlFor="quick-location" className="sr-only">
+          Località evento
+        </label>
+        <input
+          id="quick-location"
+          name="location"
+          type="text"
+          required
+          placeholder="Località evento (es. comune)"
+          className={inputClasses}
+        />
+        <FieldError messages={state.fieldErrors?.location} />
       </div>
 
       <div>

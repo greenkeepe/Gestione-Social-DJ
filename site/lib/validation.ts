@@ -55,8 +55,9 @@ export const contactFormSchema = z.object({
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-// Versione ridotta per il "preventivo veloce" (popup exit-intent): solo i 3
-// campi indispensabili per farsi richiamare, niente nome/email.
+// Versione ridotta per il widget "preventivo veloce": solo i campi
+// indispensabili per farsi richiamare e valutare un preventivo (serve la
+// location per stimare la distanza), niente nome/email.
 export const quickQuoteSchema = z.object({
   eventType: z.enum(eventTypeOptions, {
     message: "Seleziona il tipo di evento.",
@@ -66,6 +67,11 @@ export const quickQuoteSchema = z.object({
     .trim()
     .min(1, "Inserisci la data (anche indicativa).")
     .refine((value) => !Number.isNaN(Date.parse(value)), "Inserisci una data valida."),
+  location: z
+    .string()
+    .trim()
+    .min(2, "Inserisci la località dell'evento.")
+    .max(160, "Nome località troppo lungo."),
   phone: z
     .string()
     .trim()

@@ -39,7 +39,7 @@ export function QuickQuoteWidget() {
             </button>
             <p className="font-display text-xl text-ivory">Preventivo veloce</p>
             <p className="mt-2 text-sm text-ivory-dim">
-              3 informazioni veloci: ti mandiamo un preventivo entro poche ore.
+              Poche informazioni, senza impegno: ti mandiamo un preventivo entro poche ore.
             </p>
             <div className="mt-5">
               <QuickQuoteForm />
@@ -48,15 +48,29 @@ export function QuickQuoteWidget() {
         ) : null}
       </AnimatePresence>
 
-      <button
+      <motion.button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="fixed bottom-24 left-4 z-40 flex items-center gap-2 rounded-full bg-champagne py-3 pl-3 pr-4 text-sm font-medium text-ink shadow-md shadow-black/20 ring-1 ring-ink/10 transition-colors hover:bg-champagne-bright sm:bottom-8 sm:left-8"
+        animate={
+          open
+            ? undefined
+            : {
+                boxShadow: [
+                  "0 0 0 0 rgba(201,168,118,0.55)",
+                  "0 0 0 12px rgba(201,168,118,0)",
+                ],
+              }
+        }
+        transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 2.4, ease: "easeOut" }}
+        className="fixed bottom-24 left-4 z-40 flex items-center gap-2.5 rounded-full bg-champagne py-3.5 pl-3.5 pr-5 text-ink ring-1 ring-ink/10 transition-colors hover:bg-champagne-bright sm:bottom-8 sm:left-8"
       >
-        <Zap className="h-4 w-4" aria-hidden />
-        Preventivo veloce
-      </button>
+        <Zap className="h-5 w-5 shrink-0" aria-hidden />
+        <span className="flex flex-col items-start leading-tight">
+          <span className="text-sm font-semibold">Preventivo veloce</span>
+          <span className="text-[11px] font-normal text-ink/70">Senza impegno</span>
+        </span>
+      </motion.button>
     </>
   );
 }
