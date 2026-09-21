@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Zap } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 export function TrustBar() {
@@ -24,6 +24,10 @@ export function TrustBar() {
         >
           su Musiqua
         </a>
+        <span className="eyebrow flex items-center gap-1.5">
+          <Zap className="h-3.5 w-3.5 text-champagne" aria-hidden />
+          Preventivo veloce, senza impegno
+        </span>
       </div>
     </section>
   );
