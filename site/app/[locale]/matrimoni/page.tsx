@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
@@ -9,28 +10,47 @@ import { Reviews } from "@/components/sections/Reviews";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
-export const metadata: Metadata = buildMetadata({
-  title: "DJ per matrimoni in Piemonte, Liguria e Lombardia",
-  description:
-    "DJ per matrimoni in Piemonte, Liguria e Lombardia: musica su misura per cerimonia, aperitivo, cena e party, con base a Serravalle Scrivia (AL).",
-  path: "/matrimoni",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "MatrimoniPage" });
+  return buildMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/matrimoni",
+    locale,
+  });
+}
 
-export default function MatrimoniPage() {
+export default async function MatrimoniPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "MatrimoniPage" });
+  const tNav = await getTranslations({ locale, namespace: "Nav" });
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbJsonLd([{ name: "Matrimoni", path: "/matrimoni" }]),
+            breadcrumbJsonLd(
+              [{ name: tNav("matrimoni"), path: "/matrimoni" }],
+              tNav("home"),
+            ),
           ),
         }}
       />
       <PageHero
-        eyebrow="Matrimoni"
-        title="LA COLONNA SONORA DEL VOSTRO GIORNO"
-        description="Dalla cerimonia al fine serata, ogni momento del matrimonio ha la sua musica, pensata insieme a voi."
+        eyebrow={tNav("matrimoni")}
+        title={t("heroTitle")}
+        description={t("heroDescription")}
       />
       <Wedding hideHeading />
       <Numbers />
@@ -40,7 +60,7 @@ export default function MatrimoniPage() {
       <div className="bg-charcoal pb-4">
         <div className="container-edit text-center">
           <Link href="/eventi" className="eyebrow hover:text-champagne-bright">
-            Organizzi un altro tipo di evento? Scopri le altre categorie →
+            {t("otherCategoriesLink")}
           </Link>
         </div>
       </div>

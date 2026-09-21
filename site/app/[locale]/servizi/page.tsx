@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
@@ -6,34 +7,53 @@ import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Servizi DJ per matrimoni ed eventi: audio, luci, consolle",
-  description:
-    "DJ set, impianto audio professionale, luci, macchina del fumo e microfoni per cerimonia: tutti i servizi Forte DJ per il tuo evento.",
-  path: "/servizi",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ServiziPage" });
+  return buildMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/servizi",
+    locale,
+  });
+}
 
-export default function ServiziPage() {
+export default async function ServiziPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ServiziPage" });
+  const tNav = await getTranslations({ locale, namespace: "Nav" });
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbJsonLd([{ name: "Servizi", path: "/servizi" }]),
+            breadcrumbJsonLd(
+              [{ name: tNav("servizi"), path: "/servizi" }],
+              tNav("home"),
+            ),
           ),
         }}
       />
       <PageHero
-        eyebrow="Servizi"
-        title="TUTTO CIÒ CHE SERVE PER LA SERATA"
-        description="Ogni servizio pensato per integrarsi con gli altri, senza soluzione di continuità."
+        eyebrow={tNav("servizi")}
+        title={t("heroTitle")}
+        description={t("heroDescription")}
       />
       <Services hideHeading />
       <div className="bg-ink pb-4">
         <div className="container-edit text-center">
           <Link href="/chi-sono" className="eyebrow hover:text-champagne-bright">
-            Scopri chi si occupa personalmente di ogni evento →
+            {t("aboutLink")}
           </Link>
         </div>
       </div>

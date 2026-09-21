@@ -276,5 +276,78 @@
     "closeVideo": "Close video",
     "previousVideo": "Previous video",
     "nextVideo": "Next video"
+  },
+  "MatrimoniPage": {
+    "metaTitle": "Wedding DJ in Piedmont, Liguria and Lombardy",
+    "metaDescription": "Wedding DJ in Piedmont, Liguria and Lombardy: tailor-made music for the ceremony, aperitif, dinner and party, based in Serravalle Scrivia (AL).",
+    "heroTitle": "THE SOUNDTRACK TO YOUR DAY",
+    "heroDescription": "From the ceremony to the last dance, every moment of the wedding has its own music, designed together with you.",
+    "otherCategoriesLink": "Planning a different kind of event? Discover the other categories →"
+  },
+  "EventiPage": {
+    "metaTitle": "DJ for private, corporate events and parties in Piedmont",
+    "metaDescription": "Event DJ in Piedmont, Liguria and Lombardy: birthdays, 18th birthdays, private parties, corporate events and high-energy parties, with the right atmosphere for every occasion.",
+    "heroTitle": "EVERY EVENT HAS ITS OWN MUSIC",
+    "heroDescription": "Four different ways to experience an evening, one standard of care for every detail.",
+    "ctaWedding": "Check availability for your wedding",
+    "ctaPrivate": "Check availability for your party",
+    "ctaCorporate": "Request availability for your corporate event",
+    "ctaParty": "Check availability for your party",
+    "ctaDefault": "Check availability",
+    "weddingPageLink": "Discover the dedicated weddings page →"
+  },
+  "ServiziPage": {
+    "metaTitle": "DJ services for weddings and events: sound, lights, decks",
+    "metaDescription": "DJ set, professional sound system, lighting, smoke machine and ceremony microphones: all the Forte DJ services for your event.",
+    "heroTitle": "EVERYTHING YOUR NIGHT NEEDS",
+    "heroDescription": "Every service designed to work seamlessly with the others.",
+    "aboutLink": "Discover who personally takes care of every event →"
+  },
+  "GalleryPage": {
+    "metaTitle": "Wedding, party and event gallery",
+    "metaDescription": "A glimpse of the atmospheres Forte DJ builds event after event.",
+    "heroTitle": "MOMENTS, NOT JUST PHOTOS",
+    "heroDescription": "Weddings, parties and events told through images."
+  },
+  "RecensioniPage": {
+    "metaTitle": "Reviews",
+    "metaDescription": "The experiences of those who chose Forte DJ for their wedding or event, collected on Musiqua.",
+    "heroTitle": "IN THEIR OWN WORDS",
+    "heroDescription": "Real reviews, collected and verified on Musiqua."
+  },
+  "ChiSonoPage": {
+    "metaTitle": "About Forte DJ",
+    "breadcrumb": "About Forte DJ",
+    "heroTitle": "THE PERSON BEHIND THE MUSIC",
+    "bio": "{name}, wedding and event DJ with {years} years of experience.",
+    "servicesLink": "Discover all included services →"
+  },
+  "FaqPage": {
+    "metaTitle": "Frequently asked questions",
+    "metaDescription": "Bookings, ceremony, sound system, lighting and add-on services: answers to the most common questions about Forte DJ."
+  },
+  "ContattiPage": {
+    "metaTitle": "Contact",
+    "metaDescription": "Tell us about your event and check Forte DJ's availability for weddings, private parties, corporate events and parties.",
+    "heroTitle": "CHECK AVAILABILITY",
+    "heroDescription": "Tell us the date, venue and type of event: we'll get back to you with availability for your day."
+  },
+  "Legal": {
+    "eyebrow": "Legal"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "Information on the processing of personal data collected through this website.",
+    "heroTitle": "PRIVACY POLICY",
+    "p1": "This page is a placeholder: content to be completed with a GDPR-compliant privacy notice before the site goes live, drafted together with a legal advisor or a dedicated service.",
+    "p2": "Data collected through the contact form (name, email, phone and event details) is used solely to respond to availability requests.",
+    "p3": "For any question about the processing of your data you can write to"
+  },
+  "CookiePage": {
+    "metaTitle": "Cookie Policy",
+    "metaDescription": "Information on cookies and third-party scripts used by this website.",
+    "heroTitle": "COOKIE POLICY",
+    "p1": "This page is a placeholder: content to be completed with a compliant cookie notice before the site goes live, including a real consent banner (no consent mechanism is implemented yet).",
+    "p2": "The site integrates the Musiqua reviews widget and, if configured via environment variables, analytics scripts (Google Analytics, Google Tag Manager, Meta Pixel): each may set cookies or similar technologies according to its own policy."
   }
 }

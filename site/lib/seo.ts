@@ -1,25 +1,44 @@
 import type { Metadata } from "next";
 import { siteConfig, technicalBaseUrl } from "@/data/site";
 import { faqItems } from "@/data/faq";
+import { routing } from "@/i18n/routing";
+
+const ogLocales: Record<string, string> = {
+  it: "it_IT",
+  en: "en_US",
+  fr: "fr_FR",
+  de: "de_DE",
+};
+
+function localizedPath(path: string, locale: string) {
+  return locale === routing.defaultLocale ? path : `/${locale}${path}`;
+}
 
 export function buildMetadata(opts: {
   title: string;
   description: string;
   path: string;
+  locale: string;
 }): Metadata {
-  const { title, description, path } = opts;
-  const url = `${technicalBaseUrl}${path}`;
+  const { title, description, path, locale } = opts;
+  const canonicalPath = localizedPath(path, locale);
+  const url = `${technicalBaseUrl}${canonicalPath}`;
 
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: canonicalPath,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, localizedPath(path, l)]),
+      ),
+    },
     openGraph: {
       title,
       description,
       url,
       siteName: siteConfig.name,
-      locale: "it_IT",
+      locale: ogLocales[locale] ?? "it_IT",
       type: "website",
     },
     twitter: {
@@ -88,12 +107,15 @@ export function personJsonLd() {
 }
 
 // Breadcrumb di navigazione (solo dato strutturato, nessun elemento visivo).
-export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+export function breadcrumbJsonLd(
+  items: { name: string; path: string }[],
+  homeName = "Home",
+) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { name: "Home", path: "" },
+      { name: homeName, path: "" },
       ...items,
     ].map((item, index) => ({
       "@type": "ListItem",

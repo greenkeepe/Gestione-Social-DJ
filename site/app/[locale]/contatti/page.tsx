@@ -1,33 +1,53 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { siteConfig } from "@/data/site";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Contatti",
-  description:
-    "Racconta il tuo evento e verifica la disponibilità di Forte DJ per matrimoni, eventi privati, aziendali e party.",
-  path: "/contatti",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ContattiPage" });
+  return buildMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/contatti",
+    locale,
+  });
+}
 
-export default function ContattiPage() {
+export default async function ContattiPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ContattiPage" });
+  const tNav = await getTranslations({ locale, namespace: "Nav" });
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbJsonLd([{ name: "Contatti", path: "/contatti" }]),
+            breadcrumbJsonLd(
+              [{ name: tNav("contatti"), path: "/contatti" }],
+              tNav("home"),
+            ),
           ),
         }}
       />
       <PageHero
-        eyebrow="Contatti"
-        title="VERIFICA LA DISPONIBILITÀ"
-        description="Raccontaci data, location e tipo di evento: ti risponderemo con la disponibilità per la tua giornata."
+        eyebrow={tNav("contatti")}
+        title={t("heroTitle")}
+        description={t("heroDescription")}
       />
 
       <ContactForm />

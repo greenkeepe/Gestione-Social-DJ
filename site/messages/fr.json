@@ -276,5 +276,78 @@
     "closeVideo": "Fermer la vidéo",
     "previousVideo": "Vidéo précédente",
     "nextVideo": "Vidéo suivante"
+  },
+  "MatrimoniPage": {
+    "metaTitle": "DJ mariage en Piémont, Ligurie et Lombardie",
+    "metaDescription": "DJ pour mariages en Piémont, Ligurie et Lombardie : musique sur mesure pour la cérémonie, l'apéritif, le dîner et la fête, basé à Serravalle Scrivia (AL).",
+    "heroTitle": "LA BANDE-SON DE VOTRE JOURNÉE",
+    "heroDescription": "De la cérémonie à la fin de soirée, chaque moment du mariage a sa musique, pensée avec vous.",
+    "otherCategoriesLink": "Vous organisez un autre type d'événement ? Découvrez les autres catégories →"
+  },
+  "EventiPage": {
+    "metaTitle": "DJ pour événements privés, d'entreprise et fêtes en Piémont",
+    "metaDescription": "DJ pour événements en Piémont, Ligurie et Lombardie : anniversaires, 18 ans, fêtes privées, événements d'entreprise et soirées à haute énergie, avec l'ambiance juste pour chaque occasion.",
+    "heroTitle": "CHAQUE ÉVÉNEMENT A SA MUSIQUE",
+    "heroDescription": "Quatre façons différentes de vivre une soirée, un même niveau de soin du détail.",
+    "ctaWedding": "Vérifier la disponibilité pour votre mariage",
+    "ctaPrivate": "Vérifier la disponibilité pour votre fête",
+    "ctaCorporate": "Demander la disponibilité pour votre événement d'entreprise",
+    "ctaParty": "Vérifier la disponibilité pour votre soirée",
+    "ctaDefault": "Vérifier la disponibilité",
+    "weddingPageLink": "Découvrez la page dédiée aux mariages →"
+  },
+  "ServiziPage": {
+    "metaTitle": "Services DJ pour mariages et événements : son, lumières, platines",
+    "metaDescription": "DJ set, sonorisation professionnelle, éclairage, machine à fumée et micros pour la cérémonie : tous les services Forte DJ pour votre événement.",
+    "heroTitle": "TOUT CE QU'IL FAUT POUR LA SOIRÉE",
+    "heroDescription": "Chaque service pensé pour s'intégrer parfaitement aux autres.",
+    "aboutLink": "Découvrez qui s'occupe personnellement de chaque événement →"
+  },
+  "GalleryPage": {
+    "metaTitle": "Galerie mariages, fêtes et événements",
+    "metaDescription": "Un aperçu des ambiances construites par Forte DJ événement après événement.",
+    "heroTitle": "DES MOMENTS, PAS SEULEMENT DES PHOTOS",
+    "heroDescription": "Mariages, fêtes et événements racontés en images."
+  },
+  "RecensioniPage": {
+    "metaTitle": "Avis",
+    "metaDescription": "Les expériences de ceux qui ont choisi Forte DJ pour leur mariage ou événement, recueillies sur Musiqua.",
+    "heroTitle": "LA PAROLE À CEUX QUI Y ÉTAIENT",
+    "heroDescription": "Des avis réels, recueillis et vérifiés sur Musiqua."
+  },
+  "ChiSonoPage": {
+    "metaTitle": "Qui est Forte DJ",
+    "breadcrumb": "Qui est Forte DJ",
+    "heroTitle": "LA PERSONNE DERRIÈRE LA MUSIQUE",
+    "bio": "{name}, DJ pour mariages et événements avec {years} ans d'expérience.",
+    "servicesLink": "Découvrez tous les services inclus →"
+  },
+  "FaqPage": {
+    "metaTitle": "Questions fréquentes",
+    "metaDescription": "Réservations, cérémonie, sonorisation, éclairage et services complémentaires : les réponses aux questions les plus fréquentes sur Forte DJ."
+  },
+  "ContattiPage": {
+    "metaTitle": "Contact",
+    "metaDescription": "Racontez-nous votre événement et vérifiez la disponibilité de Forte DJ pour mariages, fêtes privées, événements d'entreprise et soirées.",
+    "heroTitle": "VÉRIFIER LA DISPONIBILITÉ",
+    "heroDescription": "Indiquez-nous la date, le lieu et le type d'événement : nous vous répondrons avec la disponibilité pour votre journée."
+  },
+  "Legal": {
+    "eyebrow": "Mentions légales"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Politique de confidentialité",
+    "metaDescription": "Informations sur le traitement des données personnelles collectées via ce site.",
+    "heroTitle": "POLITIQUE DE CONFIDENTIALITÉ",
+    "p1": "Cette page est un espace réservé : contenu à compléter avec une politique de confidentialité conforme au RGPD avant la mise en ligne du site, rédigée avec un conseiller juridique ou un service dédié.",
+    "p2": "Les données recueillies via le formulaire de contact (nom, email, téléphone et détails de l'événement) sont utilisées exclusivement pour répondre à la demande de disponibilité.",
+    "p3": "Pour toute question sur le traitement de vos données, vous pouvez écrire à"
+  },
+  "CookiePage": {
+    "metaTitle": "Politique relative aux cookies",
+    "metaDescription": "Informations sur les cookies et les scripts tiers utilisés par ce site.",
+    "heroTitle": "POLITIQUE RELATIVE AUX COOKIES",
+    "p1": "Cette page est un espace réservé : contenu à compléter avec une politique cookies conforme avant la mise en ligne du site, incluant une bannière de consentement réelle (aucun mécanisme de consentement n'est encore mis en place).",
+    "p2": "Le site intègre le widget d'avis Musiqua et, si configurés via des variables d'environnement, des scripts d'analyse (Google Analytics, Google Tag Manager, Meta Pixel) : chacun peut déposer des cookies ou technologies similaires selon sa propre politique."
   }
 }

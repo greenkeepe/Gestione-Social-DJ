@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
@@ -9,37 +10,57 @@ import { Button } from "@/components/ui/Button";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { eventCategories } from "@/data/events";
 
-export const metadata: Metadata = buildMetadata({
-  title: "DJ per eventi privati, aziendali e party in Piemonte",
-  description:
-    "DJ per eventi in Piemonte, Liguria e Lombardia: compleanni, diciottesimi, feste private, eventi aziendali e party ad alta energia, con l'atmosfera giusta per ogni occasione.",
-  path: "/eventi",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "EventiPage" });
+  return buildMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/eventi",
+    locale,
+  });
+}
 
-// Anchor text differenziato per categoria (stesso link, testo più
-// pertinente al contesto invece di un'unica CTA generica ripetuta 4 volte).
-const ctaLabels: Record<string, string> = {
-  matrimoni: "Verifica la disponibilità per il tuo matrimonio",
-  "eventi-privati": "Verifica la disponibilità per la tua festa",
-  corporate: "Richiedi disponibilità per il tuo evento aziendale",
-  party: "Verifica la disponibilità per il tuo party",
-};
+export default async function EventiPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "EventiPage" });
+  const tNav = await getTranslations({ locale, namespace: "Nav" });
+  const tEvents = await getTranslations({ locale, namespace: "EventCategories" });
 
-export default function EventiPage() {
+  // Anchor text differenziato per categoria (stesso link, testo più
+  // pertinente al contesto invece di un'unica CTA generica ripetuta 4 volte).
+  const ctaLabels: Record<string, string> = {
+    matrimoni: t("ctaWedding"),
+    "eventi-privati": t("ctaPrivate"),
+    corporate: t("ctaCorporate"),
+    party: t("ctaParty"),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbJsonLd([{ name: "Eventi", path: "/eventi" }]),
+            breadcrumbJsonLd(
+              [{ name: tNav("eventi"), path: "/eventi" }],
+              tNav("home"),
+            ),
           ),
         }}
       />
       <PageHero
-        eyebrow="Eventi"
-        title="OGNI EVENTO HA LA SUA MUSICA"
-        description="Quattro modi diversi di vivere una serata, un unico standard di cura nei dettagli."
+        eyebrow={tNav("eventi")}
+        title={t("heroTitle")}
+        description={t("heroDescription")}
       />
 
       <section className="bg-ink pb-28 md:pb-40">
@@ -57,7 +78,7 @@ export default function EventiPage() {
                   {event.imageSrc ? (
                     <Image
                       src={event.imageSrc}
-                      alt={event.imageAlt ?? event.title}
+                      alt={event.imageAlt ?? tEvents(`${event.slug}.short`)}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
@@ -73,17 +94,17 @@ export default function EventiPage() {
                 </Reveal>
                 <Reveal delay={0.08}>
                   <h2 className="mt-4 font-display text-3xl text-ivory sm:text-4xl">
-                    {event.short}
+                    {tEvents(`${event.slug}.short`)}
                   </h2>
                 </Reveal>
                 <Reveal delay={0.14}>
                   <p className="mt-5 max-w-md text-ivory-dim leading-relaxed">
-                    {event.description}
+                    {tEvents(`${event.slug}.description`)}
                   </p>
                 </Reveal>
                 <Reveal delay={0.2}>
                   <ul className="mt-6 flex flex-wrap gap-2">
-                    {event.includes.map((item) => (
+                    {(tEvents.raw(`${event.slug}.includes`) as string[]).map((item) => (
                       <li
                         key={item}
                         className="rounded-full border border-line px-3 py-1 text-xs text-ivory-dim"
@@ -96,11 +117,11 @@ export default function EventiPage() {
                 <Reveal delay={0.26}>
                   <div className="mt-8 flex flex-col items-start gap-4">
                     <Button href="/contatti">
-                      {ctaLabels[event.slug] ?? "Verifica la disponibilità"}
+                      {ctaLabels[event.slug] ?? t("ctaDefault")}
                     </Button>
                     {event.slug === "matrimoni" ? (
                       <Link href="/matrimoni" className="eyebrow hover:text-champagne-bright">
-                        Scopri la pagina dedicata ai matrimoni →
+                        {t("weddingPageLink")}
                       </Link>
                     ) : null}
                   </div>

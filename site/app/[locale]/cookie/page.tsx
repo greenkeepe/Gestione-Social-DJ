@@ -1,31 +1,39 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Cookie Policy",
-  description: "Informazioni sui cookie e sugli script di terze parti utilizzati da questo sito.",
-  path: "/cookie",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "CookiePage" });
+  return buildMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/cookie",
+    locale,
+  });
+}
 
-export default function CookiePage() {
+export default async function CookiePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "CookiePage" });
+  const tLegal = await getTranslations({ locale, namespace: "Legal" });
+
   return (
     <>
-      <PageHero eyebrow="Legale" title="COOKIE POLICY" />
+      <PageHero eyebrow={tLegal("eyebrow")} title={t("heroTitle")} />
       <section className="bg-ink pb-28">
         <div className="container-edit max-w-2xl space-y-6 text-sm leading-relaxed text-ivory-dim">
-          <p>
-            Questa pagina è un segnaposto: contenuto da completare con
-            un&rsquo;informativa cookie conforme prima della pubblicazione del
-            sito, comprensiva di un banner di consenso reale (nessun
-            meccanismo di consenso è ancora implementato).
-          </p>
-          <p>
-            Il sito integra il widget recensioni di Musiqua e, se configurati
-            tramite variabili d&rsquo;ambiente, script di analytics (Google
-            Analytics, Google Tag Manager, Meta Pixel): ciascuno può
-            impostare cookie o tecnologie simili secondo le proprie policy.
-          </p>
+          <p>{t("p1")}</p>
+          <p>{t("p2")}</p>
         </div>
       </section>
     </>
