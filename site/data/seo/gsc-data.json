@@ -1,7 +1,53 @@
 {
-  "generatedAt": null,
-  "period": null,
-  "totals": { "clicks": 0, "impressions": 0 },
-  "byQueryPage": [],
-  "byDate": []
+  "generatedAt": "2026-09-21T07:31:19.976Z",
+  "period": {
+    "startDate": "2026-08-21",
+    "endDate": "2026-09-18"
+  },
+  "totals": {
+    "clicks": 0,
+    "impressions": 5
+  },
+  "byQueryPage": [
+    {
+      "keys": [
+        "dj",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "dj set genova",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5
+    }
+  ],
+  "byDate": [
+    {
+      "keys": [
+        "2026-09-17"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": 0
+    },
+    {
+      "keys": [
+        "2026-09-18"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 5.8
+    }
+  ]
 }
