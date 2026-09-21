@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/matrimoni", label: "Matrimoni" },
   { href: "/eventi", label: "Eventi" },
   { href: "/servizi", label: "Servizi" },
+  { href: "/#preventivo", label: "Prezzi" },
   { href: "/gallery", label: "Gallery" },
   { href: "/recensioni", label: "Recensioni" },
   { href: "/faq", label: "FAQ" },
