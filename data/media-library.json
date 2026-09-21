@@ -2,16 +2,6 @@
   "_istruzioni": "Libreria dei media caricati dalla dashboard (pagina 'Carica media'). Il Media Agent pesca da qui il prossimo file non ancora usato e lo mette in coda per la didascalia.",
   "items": [
     {
-      "id": "2eef3b48-f66c-4325-ac72-bff709054ecc",
-      "url": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/83f705ac-c819-41bd-b791-82bff7db9c0e.jpg",
-      "filename": "telegram-1789625102922.jpg",
-      "mimeType": "image/jpeg",
-      "uploadedAt": "2026-09-17T06:05:03.057Z",
-      "usatoIl": "2026-09-17T10:19:14.440Z",
-      "source": "telegram",
-      "istruzioniUtente": null
-    },
-    {
       "id": "1ee003b5-9fae-4f55-8381-399222a02230",
       "url": "https://pub-f4e52bde0ac3445289e6bc2e73c16fb6.r2.dev/042f3273-459a-4645-9dea-a86a16d19434.jpg",
       "filename": "telegram-1789635458694.jpg",
