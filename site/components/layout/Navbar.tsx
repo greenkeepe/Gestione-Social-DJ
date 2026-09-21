@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -19,10 +19,36 @@ const navLinks = [
   { href: "/contatti", label: "Contatti" },
 ];
 
+// Un link come "/#preventivo" punta alla home ma a una sezione precisa:
+// senza controllare anche l'hash corrente, "Home" e "Prezzi" risultano
+// entrambi (o nessuno dei due) attivi in modo scorretto quando si arriva
+// direttamente su un'ancora.
+function isLinkActive(href: string, pathname: string, hash: string): boolean {
+  const [linkPath, linkHash] = href.split("#");
+  if (pathname !== linkPath) return false;
+  return linkHash ? hash === `#${linkHash}` : hash === "";
+}
+
+function subscribeToHashChange(callback: () => void) {
+  window.addEventListener("hashchange", callback);
+  return () => window.removeEventListener("hashchange", callback);
+}
+
+function getHashSnapshot() {
+  return window.location.hash;
+}
+
+function getServerHashSnapshot() {
+  return "";
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  // usePathname da solo non basta per link come "/#preventivo": la parte
+  // dopo "#" va letta direttamente dal browser (e aggiornata quando cambia).
+  const hash = useSyncExternalStore(subscribeToHashChange, getHashSnapshot, getServerHashSnapshot);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -62,7 +88,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "text-sm tracking-wide text-ivory-dim transition-colors hover:text-champagne",
-                pathname === link.href && "text-champagne",
+                isLinkActive(link.href, pathname, hash) && "text-champagne",
               )}
             >
               {link.label}
@@ -107,7 +133,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className={cn(
                   "rounded-lg px-3 py-3 font-display text-lg text-ivory-dim transition-colors hover:bg-charcoal-soft hover:text-champagne",
-                  pathname === link.href && "text-champagne",
+                  isLinkActive(link.href, pathname, hash) && "text-champagne",
                 )}
               >
                 {link.label}
