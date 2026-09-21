@@ -100,7 +100,23 @@ export function Footer() {
 
       <div className="border-t border-line py-6 pb-24 lg:pb-6">
         <p className="container-edit text-center text-xs text-ivory-dim/70">
-          © {new Date().getFullYear()} Forte DJ. Tutti i diritti riservati.
+          © {new Date().getFullYear()} Forte DJ. Tutti i diritti riservati.{" "}
+          <Link
+            href="/admin/seo"
+            aria-label="Area SEO"
+            className="opacity-30 hover:opacity-100"
+          >
+            ·
+          </Link>{" "}
+          <a
+            href={siteConfig.socialDashboardUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Gestione social"
+            className="opacity-30 hover:opacity-100"
+          >
+            ·
+          </a>
         </p>
       </div>
     </footer>

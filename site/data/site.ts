@@ -37,6 +37,11 @@ export const siteConfig = {
   musiquaProfileUrl:
     "https://www.musiqua.it/band/forte-dj-eventi-e-matrimoni-14006",
 
+  // Dashboard privata di gestione social (progetto separato, protetto da
+  // password propria): non è un dato sensibile in sé, ma va confermato da
+  // Andrea prima di linkarlo, mai inventato.
+  socialDashboardUrl: "https://gestione-social-dj.vercel.app/",
+
   yearsExperience: "20",
   eventsCount: "200+",
   // Numero di recensioni verificate presenti in config/brand.json (testimonianze[]),
