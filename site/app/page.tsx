@@ -12,6 +12,7 @@ import { Gallery } from "@/components/sections/Gallery";
 import { Showreel } from "@/components/sections/Showreel";
 import { Services } from "@/components/sections/Services";
 import { Reviews } from "@/components/sections/Reviews";
+import { Pricing } from "@/components/sections/Pricing";
 import { About } from "@/components/sections/About";
 import { MusicGenres } from "@/components/sections/MusicGenres";
 import { Process } from "@/components/sections/Process";
@@ -40,6 +41,7 @@ export default function Home() {
       <Gallery />
       <Showreel />
       <Services />
+      <Pricing />
       <About />
       <MusicGenres />
       <Process />

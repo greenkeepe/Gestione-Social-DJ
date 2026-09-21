@@ -24,10 +24,10 @@ export function TrustBar() {
         >
           su Musiqua
         </a>
-        <span className="eyebrow flex items-center gap-1.5">
+        <a href="#preventivo" className="eyebrow flex items-center gap-1.5 hover:text-champagne-bright">
           <Zap className="h-3.5 w-3.5 text-champagne" aria-hidden />
           Preventivo veloce, senza impegno
-        </span>
+        </a>
       </div>
     </section>
   );
