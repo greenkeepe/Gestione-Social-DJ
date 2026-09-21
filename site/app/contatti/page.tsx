@@ -30,10 +30,12 @@ export default function ContattiPage() {
         description="Raccontaci data, location e tipo di evento: ti risponderemo con la disponibilità per la tua giornata."
       />
 
-      <section className="bg-ink pb-4">
+      <ContactForm />
+
+      <section className="bg-ink pb-16">
         <div className="container-edit">
           <Reveal>
-            <div className="flex flex-wrap gap-8 border-y border-line py-8 text-sm text-ivory-dim">
+            <div className="flex flex-wrap gap-8 border-t border-line pt-8 text-sm text-ivory-dim">
               <a
                 href={siteConfig.phoneHref}
                 className="inline-flex items-center gap-2 hover:text-champagne"
@@ -54,8 +56,6 @@ export default function ContattiPage() {
           </Reveal>
         </div>
       </section>
-
-      <ContactForm />
     </>
   );
 }
