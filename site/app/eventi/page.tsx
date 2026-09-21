@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
@@ -93,10 +94,15 @@ export default function EventiPage() {
                   </ul>
                 </Reveal>
                 <Reveal delay={0.26}>
-                  <div className="mt-8">
+                  <div className="mt-8 flex flex-col items-start gap-4">
                     <Button href="/contatti">
                       {ctaLabels[event.slug] ?? "Verifica la disponibilità"}
                     </Button>
+                    {event.slug === "matrimoni" ? (
+                      <Link href="/matrimoni" className="eyebrow hover:text-champagne-bright">
+                        Scopri la pagina dedicata ai matrimoni →
+                      </Link>
+                    ) : null}
                   </div>
                 </Reveal>
               </div>

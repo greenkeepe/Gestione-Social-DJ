@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
@@ -127,6 +128,14 @@ export function Gallery({
                 />
               </div>
             ))}
+          </div>
+        )}
+
+        {full ? null : (
+          <div className="mt-8">
+            <Link href="/gallery" className="eyebrow hover:text-champagne-bright">
+              Vedi tutta la gallery →
+            </Link>
           </div>
         )}
       </div>

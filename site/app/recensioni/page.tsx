@@ -27,7 +27,7 @@ export default function RecensioniPage() {
         title="PAROLA A CHI C'ERA"
         description="Recensioni reali, raccolte e verificate su Musiqua."
       />
-      <Reviews hideHeading />
+      <Reviews hideHeading hideInternalLink />
       <FinalCTA />
     </>
   );

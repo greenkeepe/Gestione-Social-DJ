@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -6,7 +7,13 @@ import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { testimonials } from "@/data/testimonials";
 import { siteConfig } from "@/data/site";
 
-export function Reviews({ hideHeading = false }: { hideHeading?: boolean }) {
+export function Reviews({
+  hideHeading = false,
+  hideInternalLink = false,
+}: {
+  hideHeading?: boolean;
+  hideInternalLink?: boolean;
+}) {
   return (
     <section id="recensioni" className="bg-charcoal py-28 md:py-40">
       <div className="container-edit">
@@ -61,6 +68,11 @@ export function Reviews({ hideHeading = false }: { hideHeading?: boolean }) {
           >
             Leggi tutte le recensioni →
           </a>
+          {hideInternalLink ? null : (
+            <Link href="/recensioni" className="eyebrow hover:text-champagne-bright">
+              Tutte le recensioni sul sito →
+            </Link>
+          )}
           <Button href="/contatti" size="lg">
             Verifica la disponibilità
           </Button>

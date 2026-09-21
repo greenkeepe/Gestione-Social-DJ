@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T06:57:07.191Z",
+  "generatedAt": "2026-09-21T07:38:35.310Z",
   "note": "Conteggio dei link interni editoriali (pagine app/ e sezioni di contenuto), esclusi Navbar/Footer/CTA globali presenti su ogni pagina. Link con URL dinamici (es. template string con variabili) non vengono rilevati.",
   "routes": [
     {
@@ -14,16 +14,20 @@
     {
       "path": "/matrimoni",
       "label": "Matrimoni",
-      "inboundContextualLinks": 0,
-      "linkedFrom": [],
-      "status": "ORPHAN"
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "app/eventi/page.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
     },
     {
       "path": "/eventi",
       "label": "Eventi",
-      "inboundContextualLinks": 0,
-      "linkedFrom": [],
-      "status": "ORPHAN"
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "app/matrimoni/page.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
     },
     {
       "path": "/servizi",
@@ -37,16 +41,20 @@
     {
       "path": "/gallery",
       "label": "Gallery",
-      "inboundContextualLinks": 0,
-      "linkedFrom": [],
-      "status": "ORPHAN"
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "components/sections/Gallery.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
     },
     {
       "path": "/recensioni",
       "label": "Recensioni",
-      "inboundContextualLinks": 0,
-      "linkedFrom": [],
-      "status": "ORPHAN"
+      "inboundContextualLinks": 1,
+      "linkedFrom": [
+        "components/sections/Reviews.tsx"
+      ],
+      "status": "POCO_COLLEGATA"
     },
     {
       "path": "/chi-sono",

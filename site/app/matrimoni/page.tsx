@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Wedding } from "@/components/sections/Wedding";
@@ -36,6 +37,13 @@ export default function MatrimoniPage() {
       <Gallery />
       <Reviews />
       <FAQ />
+      <div className="bg-charcoal pb-4">
+        <div className="container-edit text-center">
+          <Link href="/eventi" className="eyebrow hover:text-champagne-bright">
+            Organizzi un altro tipo di evento? Scopri le altre categorie →
+          </Link>
+        </div>
+      </div>
       <FinalCTA />
     </>
   );
