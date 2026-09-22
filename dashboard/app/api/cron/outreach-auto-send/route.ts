@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import { leggiDati, aggiornaDatiSuGitHub } from "../../../../lib/dataSource";
+import { leggiDati, leggiConfig, aggiornaDatiSuGitHub } from "../../../../lib/dataSource";
 import { inviaEmail } from "../../../../lib/email";
 import { registraEsitoAgente } from "../../../../lib/agentLog";
+import { firmaTesto, firmaHtml, corpoHtml, type BrandFile } from "../../../../lib/firma";
 import type { ContattoLocale, OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../../lib/types";
 
 export const runtime = "nodejs";
@@ -86,6 +87,8 @@ export async function GET(req: Request) {
     return NextResponse.json({ ok: true, inviate: 0 });
   }
 
+  const brand = await leggiConfig<BrandFile>("brand.json").catch(() => ({}) as BrandFile);
+
   const inviati: string[] = [];
   const falliti: string[] = [];
 
@@ -96,8 +99,10 @@ export async function GET(req: Request) {
   for (const contatto of candidati) {
     const oggetto = applicaModello(template.oggetto, contatto.nomeLocale);
     const corpo = applicaModello(template.corpo, contatto.nomeLocale);
+    const testoFinale = `${corpo}\n\n${firmaTesto(brand)}`;
+    const htmlFinale = `${corpoHtml(corpo)}<br><br>${firmaHtml(brand)}`;
     try {
-      await inviaEmail({ to: contatto.email, subject: oggetto, text: corpo });
+      await inviaEmail({ to: contatto.email, subject: oggetto, text: testoFinale, html: htmlFinale });
     } catch (err) {
       falliti.push(`${contatto.nomeLocale} (${err instanceof Error ? err.message : String(err)})`);
       continue;
@@ -110,7 +115,7 @@ export async function GET(req: Request) {
           const c = attuale.contatti.find((x) => x.id === contatto.id);
           if (c) {
             c.oggetto = oggetto;
-            c.corpo = corpo;
+            c.corpo = testoFinale;
             c.status = "inviata";
             c.inviataIl = new Date().toISOString();
             (c as ContattoLocale).inviataAutomaticamente = true;

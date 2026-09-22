@@ -14,6 +14,10 @@
 // Limite onesto: i dati di OpenStreetMap non includono quasi mai il nome
 // di chi gestisce il locale, quindi le email si rivolgono al locale in
 // generale ("Gentile team di..."), mai a una persona inventata.
+//
+// La bozza salvata qui è solo il messaggio: la firma coi contatti veri
+// (telefono, email, WhatsApp, Instagram, sito) viene aggiunta al momento
+// dell'invio, non qui — vedi dashboard/lib/firma.ts.
 import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
@@ -56,22 +60,6 @@ const FALLBACK_COORDINATE = { lat: 44.7166, lon: 8.8555 };
 
 const MASSIMO_AL_GIORNO = 10;
 
-// Firma reale, mai toccata dall'LLM (stesso principio della CTA nelle
-// didascalie social — vedi content-agent.ts): l'LLM/il template chiudono
-// solo con "Andrea", i contatti veri vengono sempre aggiunti qui in coda,
-// mai inventati o lasciati generare a un modello.
-function firma(brand: Record<string, any>): string {
-  const righe = [
-    `Andrea${brand.nomeArte ? ` — ${brand.nomeArte}` : ""}`,
-    brand.contatti?.telefono ? `Tel: ${brand.contatti.telefono}` : null,
-    brand.contatti?.email ? `Email: ${brand.contatti.email}` : null,
-    brand.contatti?.instagram ? `Instagram: instagram.com/${String(brand.contatti.instagram).replace(/^@/, "")}` : null,
-    brand.contatti?.facebook ? `Facebook: cerca "${brand.contatti.facebook}"` : null,
-    brand.contatti?.sitoWeb ? `Sito/recensioni: ${brand.contatti.sitoWeb}` : null
-  ].filter((r): r is string => Boolean(r));
-  return righe.join("\n");
-}
-
 interface OutreachTemplateFile {
   oggetto: string;
   corpo: string;
@@ -80,7 +68,11 @@ interface OutreachTemplateFile {
 
 // Modello di riserva, usato solo se data/outreach-template.json non fosse
 // leggibile per qualche motivo: stesso testo che Andrea trova già pronto
-// (e può modificare) la prima volta che apre la pagina "Locali".
+// (e può modificare) la prima volta che apre la pagina "Locali". Il corpo
+// qui è SOLO il messaggio: la firma coi contatti veri (telefono, email,
+// WhatsApp, Instagram, sito) viene aggiunta al momento dell'invio da
+// dashboard/lib/firma.ts, letta ogni volta da config/brand.json — mai
+// salvata in questo file, così resta sempre aggiornata da sola.
 const MODELLO_DI_RISERVA: { oggetto: string; corpo: string } = {
   oggetto: "Proposta di collaborazione — Forte DJ",
   corpo: `Buongiorno,
@@ -89,10 +81,9 @@ sono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di e
 
 Mi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.
 
-Se vi va, sarei felice di mandarvi qualche referenza o fissare un sopralluogo tecnico quando preferite.
+Se vi va, sarei felice di fissare un sopralluogo tecnico quando preferite.
 
-Grazie per l'attenzione,
-Andrea`
+Grazie per l'attenzione,`
 };
 
 // {{LOCALE}} è l'unica parte che cambia da un'email all'altra: il resto
@@ -188,7 +179,7 @@ export async function eseguiOutreachAgent(): Promise<void> {
         sitoWeb: locale.sitoWeb,
         email,
         oggetto,
-        corpo: `${corpo}\n\n${firma(brand)}`,
+        corpo,
         metodo,
         status: "bozza-da-rivedere",
         creatoIl: nowIso(),

@@ -6,7 +6,9 @@ import { InviaEmailButton } from "./InviaEmailButton";
 
 // Riga compatta (cliente | oggetto | invia) — tap sulla riga per aprire i
 // dettagli (indirizzo, email, sito, testo completo) prima di decidere.
-export function TabellaBozzeLocali({ contatti }: { contatti: ContattoLocale[] }) {
+// anteprimaFirma mostra come apparirà la firma reale, aggiunta solo al
+// momento dell'invio (non è salvata nella bozza, vedi lib/firma.ts).
+export function TabellaBozzeLocali({ contatti, anteprimaFirma }: { contatti: ContattoLocale[]; anteprimaFirma: string }) {
   const [apertaId, setApertaId] = useState<string | null>(null);
 
   return (
@@ -57,6 +59,11 @@ export function TabellaBozzeLocali({ contatti }: { contatti: ContattoLocale[] })
                       {new Date(c.creatoIl).toLocaleString("it-IT")}
                     </p>
                     <p style={{ whiteSpace: "pre-wrap" }}>{c.corpo}</p>
+                    <p className="note" style={{ whiteSpace: "pre-wrap" }}>
+                      {anteprimaFirma}
+                      <br />
+                      <em>(firma aggiunta in automatico all&apos;invio, non fa parte della bozza salvata)</em>
+                    </p>
                   </td>
                 </tr>
               )}

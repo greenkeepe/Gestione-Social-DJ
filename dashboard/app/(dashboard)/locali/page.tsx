@@ -1,5 +1,6 @@
-import { leggiDati } from "../../../lib/dataSource";
+import { leggiDati, leggiConfig } from "../../../lib/dataSource";
 import type { OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../lib/types";
+import { firmaTesto, type BrandFile } from "../../../lib/firma";
 import { ProvinceSelector } from "../../../components/ProvinceSelector";
 import { TabellaBozzeLocali } from "../../../components/TabellaBozzeLocali";
 import { CercaLocaliButton } from "../../../components/CercaLocaliButton";
@@ -11,7 +12,7 @@ export const dynamic = "force-dynamic";
 const MODELLO_DI_RISERVA: OutreachTemplateFile = {
   oggetto: "Proposta di collaborazione — Forte DJ",
   corpo:
-    "Buongiorno,\n\nsono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di esperienza, 200+ eventi, oltre 75 recensioni a 5 stelle).\n\nMi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.\n\nSe vi va, sarei felice di mandarvi qualche referenza o fissare un sopralluogo tecnico quando preferite.\n\nGrazie per l'attenzione,\nAndrea",
+    "Buongiorno,\n\nsono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di esperienza, 200+ eventi, oltre 75 recensioni a 5 stelle).\n\nMi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.\n\nSe vi va, sarei felice di fissare un sopralluogo tecnico quando preferite.\n\nGrazie per l'attenzione,",
   validatoIl: null
 };
 
@@ -19,9 +20,11 @@ export default async function LocaliPage() {
   const file = await leggiDati<OutreachFile>("outreach-locali.json");
   const config = await leggiDati<OutreachConfigFile>("outreach-config.json").catch((): OutreachConfigFile => ({ province: [] }));
   const template = await leggiDati<OutreachTemplateFile>("outreach-template.json").catch(() => MODELLO_DI_RISERVA);
+  const brand = await leggiConfig<BrandFile>("brand.json").catch(() => ({}) as BrandFile);
   const daRivedere = file.contatti.filter((c) => c.status === "bozza-da-rivedere");
   const storico = file.contatti.filter((c) => c.status !== "bozza-da-rivedere");
   const invioAutomatico = config.invioAutomatico ?? { attivo: false, maxAlGiorno: 3 };
+  const anteprimaFirma = firmaTesto(brand);
 
   return (
     <div>
@@ -44,7 +47,7 @@ export default async function LocaliPage() {
 
       <h3>Da rivedere ({daRivedere.length})</h3>
       {daRivedere.length === 0 && <p className="note">Nessuna nuova bozza al momento.</p>}
-      {daRivedere.length > 0 && <TabellaBozzeLocali contatti={daRivedere} />}
+      {daRivedere.length > 0 && <TabellaBozzeLocali contatti={daRivedere} anteprimaFirma={anteprimaFirma} />}
 
       {storico.length > 0 && (
         <>
