@@ -88,12 +88,20 @@ Andrea`
   };
 }
 
+const DESCRIZIONE_CATEGORIA: Record<LocaleTrovato["categoria"], string> = {
+  "location-eventi": "location per eventi/matrimoni",
+  castello: "castello utilizzato come location per eventi",
+  agriturismo: "agriturismo/villa con possibile uso per eventi",
+  hotel: "hotel/location per eventi",
+  restaurant: "ristorante con possibile uso per eventi"
+};
+
 async function scriviEmailPersonalizzata(
   locale: LocaleTrovato,
   brand: Record<string, any>
 ): Promise<{ oggetto: string; corpo: string; metodo: string }> {
   const prompt = `Scrivi una breve email professionale (max 120 parole) in italiano per proporre una collaborazione, a nome di Andrea, DJ per matrimoni ed eventi (nome d'arte "${brand.nomeArte ?? ""}").
-Destinatario: il locale "${locale.nome}" (${locale.categoria === "hotel" ? "hotel/location per eventi" : "ristorante"}${locale.indirizzo ? `, ${locale.indirizzo}` : ""}). Non conosci il nome di chi gestisce il locale: rivolgiti genericamente ("Gentile team di ${locale.nome}" o simile), non inventare MAI un nome di persona.
+Destinatario: il locale "${locale.nome}" (${DESCRIZIONE_CATEGORIA[locale.categoria]}${locale.indirizzo ? `, ${locale.indirizzo}` : ""}). Non conosci il nome di chi gestisce il locale: rivolgiti genericamente ("Gentile team di ${locale.nome}" o simile), non inventare MAI un nome di persona.
 Contenuto: presentati (DJ per matrimoni/eventi, ${brand.anniEsperienza ?? "20"} anni di esperienza, ${brand.numeroEventiFatti ?? "200+"} eventi, oltre 75 recensioni 5 stelle), proponi di segnalarvi a vicenda per i rispettivi clienti che organizzano eventi, chiedi se sono disponibili a un contatto/sopralluogo.
 Tono: professionale, cordiale, mai invadente. Non inventare dettagli sul locale che non conosci (menu, stile, capienza). Non usare emoji.
 Chiudi SOLO con "Andrea" come firma: NON aggiungere telefono, email, social o altri contatti, li aggiungo io dopo in automatico.

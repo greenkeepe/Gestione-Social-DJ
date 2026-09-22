@@ -37,15 +37,33 @@ export async function geocodifica(indirizzo: string, fallback: Coordinate): Prom
   }
 }
 
+export type CategoriaLocale = "location-eventi" | "castello" | "agriturismo" | "hotel" | "restaurant";
+
 export interface LocaleTrovato {
   osmId: string;
   nome: string;
-  categoria: "restaurant" | "hotel";
+  categoria: CategoriaLocale;
   sitoWeb: string;
   indirizzo: string | null;
 }
 
-// Cerca ristoranti/hotel con un sito web pubblico entro il raggio indicato.
+// Parole che in Italia compaiono tipicamente nel nome di posti adatti a
+// matrimoni/eventi (ville, casali, tenute...) — usate per filtrare
+// ristoranti/hotel/agriturismi generici (categorie troppo ampie per essere
+// prese tutte: la maggior parte non fa eventi), MAI per le categorie già
+// dedicate agli eventi (events_venue, castle), che passano senza bisogno di
+// parola chiave nel nome.
+const PAROLE_CHIAVE_EVENTI = "villa|tenuta|casale|castello|dimora|relais|resort|borgo|masseria|convento|abbazia|fattoria|cascina|palazzo|residenza";
+
+// Cerca location con un sito web pubblico entro il raggio indicato, dando
+// priorità a categorie OSM realmente orientate a matrimoni/eventi invece
+// che a "ristorante qualsiasi" o "hotel qualsiasi" (la maggior parte non fa
+// eventi, da qui il filtro): location per eventi dedicate (amenity=
+// events_venue) e castelli passano sempre; agriturismi/ristoranti/hotel
+// passano solo se il nome richiama una location da eventi (vedi
+// PAROLE_CHIAVE_EVENTI) — OSM non ha un tag affidabile "fa matrimoni",
+// quindi resta un'euristica, non una garanzia: la selezione fine resta a
+// chi rivede le bozze prima di inviarle.
 // "out center N" limita la risposta a N risultati (con centro calcolato
 // anche per i poligoni, non solo per i punti) — evita risposte enormi su
 // raggi larghi che coprono più città.
@@ -58,12 +76,20 @@ export async function cercaLocaliVicini(centro: Coordinate, raggioMetri: number,
   // filtro con chiave a regex — [~"chiave"~"valore"] — che riconosce
   // ENTRAMBE le varianti del tag già lato server, restando comunque leggero.
   const filtroSito = `[~"^(website|contact:website)$"~"."]`;
-  const query = `[out:json][timeout:45];
+  const filtroNomeEventi = `["name"~"${PAROLE_CHIAVE_EVENTI}",i]`;
+  const attorno = `(around:${raggioMetri},${centro.lat},${centro.lon})`;
+  const query = `[out:json][timeout:60];
 (
-  node["amenity"="restaurant"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
-  way["amenity"="restaurant"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
-  node["tourism"="hotel"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
-  way["tourism"="hotel"]${filtroSito}(around:${raggioMetri},${centro.lat},${centro.lon});
+  node["amenity"="events_venue"]${filtroSito}${attorno};
+  way["amenity"="events_venue"]${filtroSito}${attorno};
+  node["historic"="castle"]${filtroSito}${attorno};
+  way["historic"="castle"]${filtroSito}${attorno};
+  node["tourism"="guest_house"]${filtroSito}${filtroNomeEventi}${attorno};
+  way["tourism"="guest_house"]${filtroSito}${filtroNomeEventi}${attorno};
+  node["amenity"="restaurant"]${filtroSito}${filtroNomeEventi}${attorno};
+  way["amenity"="restaurant"]${filtroSito}${filtroNomeEventi}${attorno};
+  node["tourism"="hotel"]${filtroSito}${filtroNomeEventi}${attorno};
+  way["tourism"="hotel"]${filtroSito}${filtroNomeEventi}${attorno};
 );
 out center ${limite};`;
 
@@ -90,10 +116,16 @@ out center ${limite};`;
     const sitoWeb = tags?.website || tags?.["contact:website"];
     if (!tags?.name || !sitoWeb) continue;
     const indirizzoParti = [tags["addr:street"], tags["addr:housenumber"], tags["addr:city"]].filter(Boolean);
+    let categoria: CategoriaLocale;
+    if (tags.amenity === "events_venue") categoria = "location-eventi";
+    else if (tags.historic === "castle") categoria = "castello";
+    else if (tags.tourism === "guest_house") categoria = "agriturismo";
+    else if (tags.amenity === "restaurant") categoria = "restaurant";
+    else categoria = "hotel";
     risultati.push({
       osmId: `${el.type}/${el.id}`,
       nome: tags.name,
-      categoria: tags.amenity === "restaurant" ? "restaurant" : "hotel",
+      categoria,
       sitoWeb,
       indirizzo: indirizzoParti.length > 0 ? indirizzoParti.join(" ") : null
     });

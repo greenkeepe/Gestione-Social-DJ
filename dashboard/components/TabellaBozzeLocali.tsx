@@ -34,7 +34,15 @@ export function TabellaBozzeLocali({ contatti }: { contatti: ContattoLocale[] })
                 <tr>
                   <td colSpan={3}>
                     <p className="note">
-                      {c.categoria === "hotel" ? "Hotel/location" : c.categoria === "restaurant" ? "Ristorante" : "Test"}
+                      {
+                        {
+                          "location-eventi": "Location per eventi",
+                          castello: "Castello",
+                          agriturismo: "Agriturismo/villa",
+                          hotel: "Hotel/location",
+                          restaurant: "Ristorante"
+                        }[c.categoria] ?? "Test"
+                      }
                       {c.indirizzo ? ` · ${c.indirizzo}` : ""}
                     </p>
                     <p className="note">
