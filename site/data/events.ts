@@ -94,8 +94,8 @@ export const weddingMoments: WeddingMoment[] = [
     key: "first-dance",
     title: "First Dance",
     description: "Il primo ballo, costruito sul brano che vi rappresenta.",
-    imageSrc: "/images/gallery/wedding-sparklers-dance.jpg",
-    imageAlt: "Primo ballo degli sposi tra le stelle filanti",
+    imageSrc: "/images/gallery/wedding-firstdance-twirl.jpg",
+    imageAlt: "Sposi che ballano circondati dagli invitati",
   },
   {
     key: "party",
