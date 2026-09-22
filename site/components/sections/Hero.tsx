@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { heroMedia } from "@/data/media";
 
@@ -110,12 +109,8 @@ export function Hero() {
         </motion.p>
         <motion.div
           variants={item}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
+          className="mt-10 flex justify-center"
         >
-          <Button href="/#preventivo" size="lg">
-            <Zap className="h-4 w-4" aria-hidden />
-            {t("ctaAvailability")}
-          </Button>
           <Button href="#showreel" variant="secondary" size="lg">
             {t("ctaExperience")}
           </Button>
