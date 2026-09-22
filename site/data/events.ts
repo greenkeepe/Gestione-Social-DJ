@@ -87,8 +87,8 @@ export const weddingMoments: WeddingMoment[] = [
     key: "cena",
     title: "Cena",
     description: "Momenti musicali scelti con cura per accompagnare la tavola.",
-    imageSrc: "/images/gallery/party-terrace-dinner-lights.jpg",
-    imageAlt: "Cena in terrazza tra le luci sospese e la consolle",
+    imageSrc: "/images/gallery/events-garden-dinner.jpg",
+    imageAlt: "Cena di gala in giardino con console DJ in primo piano",
   },
   {
     key: "first-dance",
