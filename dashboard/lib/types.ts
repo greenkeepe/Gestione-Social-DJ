@@ -91,6 +91,7 @@ export interface ContattoLocale {
   status: "bozza-da-rivedere" | "inviata" | "scartata";
   creatoIl: string;
   inviataIl: string | null;
+  inviataAutomaticamente?: boolean;
 }
 
 export interface OutreachFile {
@@ -99,6 +100,13 @@ export interface OutreachFile {
 
 export interface OutreachConfigFile {
   province: string[];
+  invioAutomatico?: { attivo: boolean; maxAlGiorno: number };
+}
+
+export interface OutreachTemplateFile {
+  oggetto: string;
+  corpo: string;
+  validatoIl: string | null;
 }
 
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";

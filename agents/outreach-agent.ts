@@ -1,14 +1,15 @@
 // Agente "Esploratore" — ogni giorno trova fino a 10 locali (ristoranti/
 // hotel) nell'area servita (o nelle province scelte dalla dashboard) con
 // un'email pubblica sul sito, e prepara una bozza di email di
-// collaborazione personalizzata sul locale trovato.
+// collaborazione usando SEMPRE lo stesso modello che Andrea ha validato
+// nella pagina "Locali" (data/outreach-template.json) — l'unica parte che
+// cambia da un locale all'altro è il nome del locale stesso.
 //
-// REGOLA FERREA, come il Cacciatore: non invia MAI nulla in autonomia.
-// Ogni bozza resta "bozza-da-rivedere" finché non la spunti e invii tu
-// dalla dashboard (pagina "Locali"), un tap alla volta — mai un invio
-// massivo automatico: evita di far passare la tua email vera per spam e
-// tiene ogni contatto sotto revisione umana, coerente con le norme sulle
-// comunicazioni commerciali non richieste.
+// Questo agente non invia MAI nulla in autonomia: ogni bozza resta
+// "bozza-da-rivedere". L'invio (manuale con un tap, o automatico entro un
+// limite giornaliero) è deciso da Andrea dalla dashboard — l'invio
+// automatico opzionale gira su Vercel, vedi
+// dashboard/app/api/cron/outreach-auto-send/route.ts.
 //
 // Limite onesto: i dati di OpenStreetMap non includono quasi mai il nome
 // di chi gestisce il locale, quindi le email si rivolgono al locale in
@@ -18,7 +19,6 @@ import { randomUUID } from "node:crypto";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
-import { generaTestoConLLM } from "../lib/llm.js";
 import { geocodifica, cercaLocaliVicini, trovaEmailSulSito, type LocaleTrovato } from "../lib/openStreetMap.js";
 import { PROVINCE } from "../lib/province.js";
 import { IDENTITA } from "./identities.js";
@@ -37,6 +37,7 @@ interface ContattoLocale {
   status: "bozza-da-rivedere" | "inviata" | "scartata";
   creatoIl: string;
   inviataIl: string | null;
+  inviataAutomaticamente?: boolean;
 }
 
 interface OutreachFile {
@@ -71,54 +72,43 @@ function firma(brand: Record<string, any>): string {
   return righe.join("\n");
 }
 
-function oggettoECorpoTemplate(nomeLocale: string, brand: Record<string, any>): { oggetto: string; corpo: string } {
-  const nome = brand.nomeArte ?? "Forte DJ";
-  return {
-    oggetto: `Proposta di collaborazione — ${nome}`,
-    corpo: `Buongiorno,
+interface OutreachTemplateFile {
+  oggetto: string;
+  corpo: string;
+  validatoIl: string | null;
+}
 
-sono Andrea di ${nome}, DJ professionista per matrimoni ed eventi (${brand.anniEsperienza ?? "20"} anni di esperienza, ${brand.numeroEventiFatti ?? "200+"} eventi, oltre 75 recensioni a 5 stelle).
+// Modello di riserva, usato solo se data/outreach-template.json non fosse
+// leggibile per qualche motivo: stesso testo che Andrea trova già pronto
+// (e può modificare) la prima volta che apre la pagina "Locali".
+const MODELLO_DI_RISERVA: { oggetto: string; corpo: string } = {
+  oggetto: "Proposta di collaborazione — Forte DJ",
+  corpo: `Buongiorno,
 
-Mi piacerebbe presentarmi a voi di ${nomeLocale} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.
+sono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di esperienza, 200+ eventi, oltre 75 recensioni a 5 stelle).
+
+Mi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.
 
 Se vi va, sarei felice di mandarvi qualche referenza o fissare un sopralluogo tecnico quando preferite.
 
 Grazie per l'attenzione,
 Andrea`
-  };
-}
-
-const DESCRIZIONE_CATEGORIA: Record<LocaleTrovato["categoria"], string> = {
-  "location-eventi": "location per eventi/matrimoni",
-  castello: "castello utilizzato come location per eventi",
-  agriturismo: "agriturismo/villa con possibile uso per eventi",
-  hotel: "hotel/location per eventi",
-  restaurant: "ristorante con possibile uso per eventi"
 };
 
-async function scriviEmailPersonalizzata(
-  locale: LocaleTrovato,
-  brand: Record<string, any>
-): Promise<{ oggetto: string; corpo: string; metodo: string }> {
-  const prompt = `Scrivi una breve email professionale (max 120 parole) in italiano per proporre una collaborazione, a nome di Andrea, DJ per matrimoni ed eventi (nome d'arte "${brand.nomeArte ?? ""}").
-Destinatario: il locale "${locale.nome}" (${DESCRIZIONE_CATEGORIA[locale.categoria]}${locale.indirizzo ? `, ${locale.indirizzo}` : ""}). Non conosci il nome di chi gestisce il locale: rivolgiti genericamente ("Gentile team di ${locale.nome}" o simile), non inventare MAI un nome di persona.
-Contenuto: presentati (DJ per matrimoni/eventi, ${brand.anniEsperienza ?? "20"} anni di esperienza, ${brand.numeroEventiFatti ?? "200+"} eventi, oltre 75 recensioni 5 stelle), proponi di segnalarvi a vicenda per i rispettivi clienti che organizzano eventi, chiedi se sono disponibili a un contatto/sopralluogo.
-Tono: professionale, cordiale, mai invadente. Non inventare dettagli sul locale che non conosci (menu, stile, capienza). Non usare emoji.
-Chiudi SOLO con "Andrea" come firma: NON aggiungere telefono, email, social o altri contatti, li aggiungo io dopo in automatico.
-Rispondi ESATTAMENTE in questo formato, niente altro testo:
-OGGETTO: <riga oggetto>
-CORPO: <corpo della mail, chiusa con "Andrea">`;
+// {{LOCALE}} è l'unica parte che cambia da un'email all'altra: il resto
+// del testo è sempre quello che Andrea ha validato nella pagina "Locali"
+// (o il modello di riserva sopra, finché non ne salva uno).
+function applicaModello(testo: string, nomeLocale: string): string {
+  return testo.replace(/\{\{\s*LOCALE\s*\}\}/g, nomeLocale);
+}
 
-  const risposta = await generaTestoConLLM(prompt);
-  if (risposta) {
-    const matchOggetto = risposta.match(/OGGETTO:\s*(.+)/i);
-    const matchCorpo = risposta.match(/CORPO:\s*([\s\S]+)/i);
-    if (matchOggetto && matchCorpo) {
-      return { oggetto: matchOggetto[1].trim(), corpo: matchCorpo[1].trim(), metodo: "LLM" };
-    }
-  }
-  const template = oggettoECorpoTemplate(locale.nome, brand);
-  return { ...template, metodo: "template" };
+async function scriviEmailDaModello(nomeLocale: string): Promise<{ oggetto: string; corpo: string; metodo: string }> {
+  const modello = await readData<OutreachTemplateFile>("outreach-template.json").catch(() => MODELLO_DI_RISERVA);
+  return {
+    oggetto: applicaModello(modello.oggetto, nomeLocale),
+    corpo: applicaModello(modello.corpo, nomeLocale),
+    metodo: "modello-validato"
+  };
 }
 
 // Cerca i locali nelle province scelte dalla dashboard (una ricerca per
@@ -187,7 +177,7 @@ export async function eseguiOutreachAgent(): Promise<void> {
       if (!email) continue; // nessuna email trovata: si salta, mai inventata
       if (emailGiaTrattate.has(email.toLowerCase())) continue; // stessa casella già contattata da un altro locale
 
-      const { oggetto, corpo, metodo } = await scriviEmailPersonalizzata(locale, brand);
+      const { oggetto, corpo, metodo } = await scriviEmailDaModello(locale.nome);
 
       outreachFile.contatti.unshift({
         id: randomUUID(),
@@ -211,7 +201,7 @@ export async function eseguiOutreachAgent(): Promise<void> {
     if (nuoviContatti > 0) {
       await writeData("outreach-locali.json", outreachFile);
       await inviaMessaggioTelegram(
-        `📍 ${nuoviContatti} nuove bozze di email per locali della zona, pronte da rivedere e inviare con un tap dalla dashboard (pagina "Locali"). Nessun invio automatico.`
+        `📍 ${nuoviContatti} nuove bozze di email per locali della zona, pronte in "Da rivedere" nella dashboard (pagina "Locali"). Invio manuale con un tap, oppure automatico entro il limite giornaliero se l'hai attivato.`
       );
     }
 

@@ -51,7 +51,12 @@ export const IDENTITA = {
   outreach: {
     nome: "Esploratore",
     ruolo: "Agente Partnership Locali",
-    descrizione: "Trova ogni giorno fino a 10 ristoranti/hotel della zona con email pubblica e prepara bozze di collaborazione — non invia mai nulla in autonomia, solo bozze da rivedere e mandare con un tap dalla dashboard."
+    descrizione: "Trova ogni giorno fino a 10 ristoranti/hotel della zona con email pubblica e prepara bozze di collaborazione, sempre con lo stesso modello validato da Andrea nella pagina 'Locali' (solo il nome del locale cambia) — non invia mai nulla in autonomia, solo bozze da rivedere."
+  },
+  outreachSender: {
+    nome: "Postino",
+    ruolo: "Agente Invio Automatico Locali",
+    descrizione: "Solo se attivato da Andrea nella pagina 'Locali': invia in automatico, entro il limite giornaliero che Andrea ha scelto e può cambiare in ogni momento, le bozze già pronte dell'Esploratore — sempre lo stesso modello validato, mai testo diverso, mai due volte allo stesso indirizzo."
   },
   note: {
     nome: "Appunti",

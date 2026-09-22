@@ -1,8 +1,9 @@
 // Invio email reale dalla casella Gmail di Andrea, via SMTP con una
 // "password per le app" dedicata (mai la password vera dell'account) —
-// vedi README > "Contatti locali (email)". Usato SOLO quando Andrea preme
-// "Invia" su una bozza già scritta: nessun invio automatico/massivo da
-// nessuna parte del sistema.
+// vedi README > "Contatti locali (email)". Usato quando Andrea preme
+// "Invia" su una singola bozza, e dal cron di invio automatico opzionale
+// (dashboard/app/api/cron/outreach-auto-send) entro il limite giornaliero
+// che Andrea sceglie — mai altrove nel sistema.
 import nodemailer from "nodemailer";
 
 export async function inviaEmail(opts: { to: string; subject: string; text: string }): Promise<void> {

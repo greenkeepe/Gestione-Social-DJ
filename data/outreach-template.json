@@ -1,0 +1,6 @@
+{
+  "_istruzioni": "Modello base dell'email di collaborazione ai locali (ristoranti/hotel/location). Modificalo e salvalo dalla pagina 'Locali' della dashboard: ogni salvataggio aggiorna 'validatoIl'. {{LOCALE}} viene sostituito automaticamente col nome del locale, sia nelle bozze sia negli invii automatici — è l'unica parte che cambia da un'email all'altra. La firma con i contatti veri (telefono/email/social) viene aggiunta automaticamente da config/brand.json, non va scritta qui. Finché 'validatoIl' è null, l'invio automatico resta disattivato anche se attivato dalla dashboard.",
+  "oggetto": "Proposta di collaborazione — Forte DJ",
+  "corpo": "Buongiorno,\n\nsono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di esperienza, 200+ eventi, oltre 75 recensioni a 5 stelle).\n\nMi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.\n\nSe vi va, sarei felice di mandarvi qualche referenza o fissare un sopralluogo tecnico quando preferite.\n\nGrazie per l'attenzione,\nAndrea",
+  "validatoIl": null
+}
