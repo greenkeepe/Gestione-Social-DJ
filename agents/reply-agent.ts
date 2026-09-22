@@ -10,6 +10,7 @@
 import "dotenv/config";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { leggiUltimiMediaInstagram, leggiCommentiRecenti, leggiUsernameAccountInstagram, rispondiCommento } from "../lib/metaGraph.js";
 import { generaTestoConLLM } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
@@ -67,6 +68,7 @@ export async function eseguiReplyAgent(): Promise<void> {
         riepilogo: "Impossibile leggere i media recenti da Instagram. Controlla i token Meta.",
         dettagli: { errore: String(err) }
       });
+      await inviaMessaggioTelegram(`⚠️ ${IDENTITA.reply.nome}: Impossibile leggere i media recenti da Instagram. Controlla i token Meta.\n${String(err)}`);
       return;
     }
 
@@ -113,15 +115,19 @@ disponibilità specifiche, non invitare a scrivere altrove: è solo un grazie/ri
       await writeData("comment-replies.json", rispostiFile);
     }
 
+    const riepilogo =
+      nuoveRisposte > 0
+        ? `Risposto pubblicamente a ${nuoveRisposte} nuovi commenti sugli ultimi post.`
+        : "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.";
     await logAgentRun({
       agente: IDENTITA.reply.nome,
       identita: IDENTITA.reply.ruolo,
       status: nuoveRisposte > 0 ? "ok" : "nessuna-azione",
-      riepilogo:
-        nuoveRisposte > 0
-          ? `Risposto pubblicamente a ${nuoveRisposte} nuovi commenti sugli ultimi post.`
-          : "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta."
+      riepilogo
     });
+    if (nuoveRisposte > 0) {
+      await inviaMessaggioTelegram(`✅ ${IDENTITA.reply.nome}: ${riepilogo}`);
+    }
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.reply.nome,
@@ -130,6 +136,7 @@ disponibilità specifiche, non invitare a scrivere altrove: è solo un grazie/ri
       riepilogo: "Errore imprevisto nell'Agente Portavoce.",
       dettagli: { errore: String(err) }
     });
+    await inviaMessaggioTelegram(`⚠️ ${IDENTITA.reply.nome}: Errore imprevisto nell'Agente Portavoce.\n${String(err)}`);
   }
 }
 

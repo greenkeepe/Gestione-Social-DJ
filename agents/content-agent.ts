@@ -20,6 +20,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import { readData, writeData, readBrand } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { generaTestoConLLM, generaTestoConLLMEImmagine, type ImmagineDaAnalizzare } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
 import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
@@ -303,12 +304,14 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
 
     await writeData("posts-queue.json", queueFile);
 
+    const riepilogo = `Scritta didascalia per il contenuto "${pilastro.nome}" (${metodo}). Programmato per le ${target.orarioProgrammato}.`;
     await logAgentRun({
       agente: IDENTITA.content.nome,
       identita: IDENTITA.content.ruolo,
       status: "ok",
-      riepilogo: `Scritta didascalia per il contenuto "${pilastro.nome}" (${metodo}). Programmato per le ${target.orarioProgrammato}.`
+      riepilogo
     });
+    await inviaMessaggioTelegram(`✅ ${IDENTITA.content.nome}: ${riepilogo}\n\n"${caption}"`);
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.content.nome,
@@ -317,6 +320,7 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
       riepilogo: "Errore imprevisto nell'Agente Contenuti.",
       dettagli: { errore: String(err) }
     });
+    await inviaMessaggioTelegram(`⚠️ ${IDENTITA.content.nome}: Errore imprevisto nell'Agente Contenuti.\n${String(err)}`);
   }
 }
 

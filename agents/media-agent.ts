@@ -8,6 +8,7 @@ import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
 import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
 import { generaCartTestimonianza, type Testimonianza } from "../lib/testimonialCard.js";
@@ -148,12 +149,14 @@ export async function eseguiMediaAgent(): Promise<void> {
       });
       if (scelta) {
         await writeData("posts-queue.json", queueFile);
+        const riepilogo = `Generato un post dalla recensione di ${scelta.cliente} (${scelta.tipoEvento}), a rotazione con le foto/video.`;
         await logAgentRun({
           agente: IDENTITA.media.nome,
           identita: IDENTITA.media.ruolo,
           status: "ok",
-          riepilogo: `Generato un post dalla recensione di ${scelta.cliente} (${scelta.tipoEvento}), a rotazione con le foto/video.`
+          riepilogo
         });
+        await inviaMessaggioTelegram(`✅ ${IDENTITA.media.nome}: ${riepilogo}`);
         return;
       }
     }
@@ -209,12 +212,14 @@ export async function eseguiMediaAgent(): Promise<void> {
     prossimo.usatoIl = nowIso();
     await writeData("media-library.json", libreria);
 
+    const riepilogo = `Selezionato nuovo media "${prossimo.filename}" (${isVideo ? "video/reel" : "foto"}) e messo in coda per la didascalia.`;
     await logAgentRun({
       agente: IDENTITA.media.nome,
       identita: IDENTITA.media.ruolo,
       status: "ok",
-      riepilogo: `Selezionato nuovo media "${prossimo.filename}" (${isVideo ? "video/reel" : "foto"}) e messo in coda per la didascalia.`
+      riepilogo
     });
+    await inviaMessaggioTelegram(`✅ ${IDENTITA.media.nome}: ${riepilogo}`);
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.media.nome,
@@ -223,6 +228,7 @@ export async function eseguiMediaAgent(): Promise<void> {
       riepilogo: "Errore imprevisto nell'Agente Media.",
       dettagli: { errore: String(err) }
     });
+    await inviaMessaggioTelegram(`⚠️ ${IDENTITA.media.nome}: Errore imprevisto nell'Agente Media.\n${String(err)}`);
   }
 }
 

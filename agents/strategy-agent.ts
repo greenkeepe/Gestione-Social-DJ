@@ -4,6 +4,7 @@
 import "dotenv/config";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
 
 interface StrategyFile {
@@ -45,6 +46,7 @@ export async function eseguiStrategyAgent(): Promise<void> {
       status: "ok",
       riepilogo: nota
     });
+    await inviaMessaggioTelegram(`✅ ${IDENTITA.strategy.nome}: ${nota}`);
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.strategy.nome,
@@ -53,6 +55,7 @@ export async function eseguiStrategyAgent(): Promise<void> {
       riepilogo: "Errore imprevisto nell'Agente Strategia.",
       dettagli: { errore: String(err) }
     });
+    await inviaMessaggioTelegram(`⚠️ ${IDENTITA.strategy.nome}: Errore imprevisto nell'Agente Strategia.\n${String(err)}`);
   }
 }
 

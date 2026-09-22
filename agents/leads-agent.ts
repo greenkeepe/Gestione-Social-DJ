@@ -11,6 +11,7 @@ import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
+import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { leggiUltimiMediaInstagram, leggiCommentiRecenti, leggiUsernameAccountInstagram } from "../lib/metaGraph.js";
 import { generaTestoConLLM } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
@@ -57,6 +58,7 @@ export async function eseguiLeadsAgent(): Promise<void> {
         riepilogo: "Impossibile leggere i media recenti da Instagram. Controlla i token Meta.",
         dettagli: { errore: String(err) }
       });
+      await inviaMessaggioTelegram(`⚠️ ${IDENTITA.leads.nome}: Impossibile leggere i media recenti da Instagram. Controlla i token Meta.\n${String(err)}`);
       return;
     }
 
@@ -97,14 +99,18 @@ brevemente se pertinente, e invita a scrivere in DM per maggiori informazioni su
       await writeData("leads.json", leadsFile);
     }
 
+    const riepilogo = nuoviLead > 0
+      ? `Trovati ${nuoviLead} nuovi lead da chi ha commentato con interesse. Bozze pronte da rivedere nella dashboard.`
+      : "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.";
     await logAgentRun({
       agente: IDENTITA.leads.nome,
       identita: IDENTITA.leads.ruolo,
       status: nuoviLead > 0 ? "ok" : "nessuna-azione",
-      riepilogo: nuoviLead > 0
-        ? `Trovati ${nuoviLead} nuovi lead da chi ha commentato con interesse. Bozze pronte da rivedere nella dashboard.`
-        : "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta."
+      riepilogo
     });
+    if (nuoviLead > 0) {
+      await inviaMessaggioTelegram(`✅ ${IDENTITA.leads.nome}: ${riepilogo}`);
+    }
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.leads.nome,
@@ -113,6 +119,7 @@ brevemente se pertinente, e invita a scrivere in DM per maggiori informazioni su
       riepilogo: "Errore imprevisto nell'Agente Lead.",
       dettagli: { errore: String(err) }
     });
+    await inviaMessaggioTelegram(`⚠️ ${IDENTITA.leads.nome}: Errore imprevisto nell'Agente Lead.\n${String(err)}`);
   }
 }
 
