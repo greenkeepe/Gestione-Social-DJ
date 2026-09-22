@@ -2,6 +2,16 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "errore",
+      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
+      "dettagli": {
+        "errore": "TimeoutError: The operation was aborted due to timeout"
+      },
+      "timestamp": "2026-09-22T08:43:28.787Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
