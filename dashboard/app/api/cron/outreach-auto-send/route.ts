@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { leggiDati, leggiConfig, aggiornaDatiSuGitHub } from "../../../../lib/dataSource";
 import { inviaEmail } from "../../../../lib/email";
+import { inviaMessaggioTelegram } from "../../../../lib/telegram";
 import { registraEsitoAgente } from "../../../../lib/agentLog";
 import { firmaTesto, firmaHtml, corpoHtml, type BrandFile } from "../../../../lib/firma";
 import type { ContattoLocale, OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../../lib/types";
@@ -133,14 +134,19 @@ export async function GET(req: Request) {
     }
   }
 
+  const riepilogo = `Inviate automaticamente ${inviati.length} email${inviati.length ? `: ${inviati.join(", ")}` : ""}.${
+    falliti.length ? ` Falliti: ${falliti.join("; ")}.` : ""
+  }`;
+  const status = falliti.length > 0 && inviati.length === 0 ? "errore" : "ok";
+
   await registraEsitoAgente({
     agente: AGENTE.nome,
     identita: AGENTE.ruolo,
-    status: falliti.length > 0 && inviati.length === 0 ? "errore" : "ok",
-    riepilogo: `Inviate automaticamente ${inviati.length} email${inviati.length ? `: ${inviati.join(", ")}` : ""}.${
-      falliti.length ? ` Falliti: ${falliti.join("; ")}.` : ""
-    }`
+    status,
+    riepilogo
   });
+
+  await inviaMessaggioTelegram(`${status === "errore" ? "⚠️" : "✅"} ${AGENTE.nome}: ${riepilogo}`);
 
   return NextResponse.json({ ok: true, inviate: inviati.length, falliti: falliti.length });
 }

@@ -22,6 +22,30 @@ function tokenBot(): string {
   return token;
 }
 
+// Equivalente di lib/telegram.ts (inviaMessaggioTelegram, usato dagli
+// agenti su GitHub Actions): notifica Andrea sulla chat autorizzata, senza
+// bisogno di conoscere il chatId di chi ha scritto. Del tutto opzionale: se
+// TELEGRAM_BOT_TOKEN o TELEGRAM_ALLOWED_CHAT_ID non sono impostati, non fa
+// nulla (nessun errore, nessun blocco).
+export async function inviaMessaggioTelegram(testo: string): Promise<void> {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_ALLOWED_CHAT_ID;
+  if (!token || !chatId) return;
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text: testo })
+    });
+    if (!res.ok) {
+      console.error("[Telegram] invio notifica fallito:", res.status, await res.text());
+    }
+  } catch (err) {
+    console.error("[Telegram] invio notifica fallito:", err);
+  }
+}
+
 export async function inviaMessaggio(chatId: number | string, testo: string): Promise<void> {
   const token = tokenBot();
   try {

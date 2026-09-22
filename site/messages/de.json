@@ -13,7 +13,7 @@
     "recensioni": "Bewertungen",
     "faq": "FAQ",
     "contatti": "Kontakt",
-    "checkAvailability": "Verfügbarkeit prüfen",
+    "checkAvailability": "Schnelles Angebot",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
     "mainNav": "Hauptnavigation",
@@ -41,7 +41,7 @@
     "titleLine3": "IN EINE",
     "titleLine4": "ERINNERUNG VERWANDELT.",
     "description": "DJ & Entertainment für Hochzeiten, Events und Partys, bei denen Musik, Atmosphäre und Menschen Teil derselben Erfahrung werden.",
-    "ctaAvailability": "Verfügbarkeit prüfen",
+    "ctaAvailability": "Schnelles Angebot",
     "ctaExperience": "Erlebnis erleben",
     "scrollToExplore": "Scroll to explore"
   },
@@ -59,7 +59,7 @@
     "eyebrow": "Hochzeiten",
     "titleLine1": "DEINE HOCHZEIT.",
     "titleLine2": "IHR SOUNDTRACK.",
-    "ctaAvailability": "Verfügbarkeit prüfen",
+    "ctaAvailability": "Schnelles Angebot",
     "ctaGallery": "Galerie ansehen"
   },
   "TheMoment": {
@@ -94,7 +94,7 @@
     "unmute": "Ton einschalten",
     "mute": "Ton ausschalten",
     "fullscreen": "Vollbild",
-    "ctaAvailability": "Verfügbarkeit prüfen"
+    "ctaAvailability": "Schnelles Angebot"
   },
   "ServicesSection": {
     "eyebrow": "Leistungen",
@@ -142,7 +142,7 @@
     "ratingSuffix": "von 5 — verifiziert auf Musiqua",
     "readAllExternal": "Alle Bewertungen lesen →",
     "readAllInternal": "Alle Bewertungen auf der Website →",
-    "ctaAvailability": "Verfügbarkeit prüfen"
+    "ctaAvailability": "Schnelles Angebot"
   },
   "Gallery": {
     "eyebrow": "Galerie",
@@ -161,7 +161,7 @@
     "titleLine2": "DEINE MUSIK.",
     "titleLine3": "DEIN MOMENT.",
     "description": "Erzähl mir von deinem Event und lass uns gemeinsam seinen Soundtrack gestalten.",
-    "ctaAvailability": "Verfügbarkeit prüfen",
+    "ctaAvailability": "Schnelles Angebot",
     "ctaWhatsapp": "Auf WhatsApp schreiben"
   },
   "ContactForm": {
@@ -184,7 +184,7 @@
     "desiredServicesLabel": "Gewünschte Leistungen",
     "messageLabel": "Nachricht",
     "noCommitment": "Unverbindlich. Erzähl mir einfach, was du planst.",
-    "submit": "Verfügbarkeit prüfen",
+    "submit": "Schnelles Angebot",
     "submitting": "Wird gesendet…"
   },
   "EventTypeLabels": {
@@ -289,11 +289,11 @@
     "metaDescription": "Event-DJ im Piemont, in Ligurien und der Lombardei: Geburtstage, 18. Geburtstage, private Feiern, Firmenevents und energiegeladene Partys, mit der richtigen Atmosphäre für jeden Anlass.",
     "heroTitle": "JEDES EVENT HAT SEINE EIGENE MUSIK",
     "heroDescription": "Vier verschiedene Arten, einen Abend zu erleben, ein einziger Anspruch an jedes Detail.",
-    "ctaWedding": "Verfügbarkeit für deine Hochzeit prüfen",
-    "ctaPrivate": "Verfügbarkeit für deine Feier prüfen",
-    "ctaCorporate": "Verfügbarkeit für dein Firmenevent anfragen",
-    "ctaParty": "Verfügbarkeit für deine Party prüfen",
-    "ctaDefault": "Verfügbarkeit prüfen",
+    "ctaWedding": "Schnelles Angebot für deine Hochzeit",
+    "ctaPrivate": "Schnelles Angebot für deine Feier",
+    "ctaCorporate": "Schnelles Angebot für dein Firmenevent",
+    "ctaParty": "Schnelles Angebot für deine Party",
+    "ctaDefault": "Schnelles Angebot",
     "weddingPageLink": "Entdecke die eigene Seite für Hochzeiten →"
   },
   "ServiziPage": {
@@ -329,7 +329,7 @@
   "ContattiPage": {
     "metaTitle": "Kontakt",
     "metaDescription": "Erzähl uns von deinem Event und prüfe die Verfügbarkeit von Forte DJ für Hochzeiten, private Feiern, Firmenevents und Partys.",
-    "heroTitle": "VERFÜGBARKEIT PRÜFEN",
+    "heroTitle": "SCHNELLES ANGEBOT",
     "heroDescription": "Nenn uns Datum, Location und Art des Events: wir melden uns mit der Verfügbarkeit für deinen Tag."
   },
   "Legal": {

@@ -13,7 +13,7 @@
     "recensioni": "Reviews",
     "faq": "FAQ",
     "contatti": "Contact",
-    "checkAvailability": "Check availability",
+    "checkAvailability": "Quick quote",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mainNav": "Main navigation",
@@ -41,7 +41,7 @@
     "titleLine3": "INTO",
     "titleLine4": "A MEMORY.",
     "description": "DJ & Entertainment for weddings, events and parties where music, atmosphere and people become part of the same experience.",
-    "ctaAvailability": "Check availability",
+    "ctaAvailability": "Quick quote",
     "ctaExperience": "Live the experience",
     "scrollToExplore": "Scroll to explore"
   },
@@ -59,7 +59,7 @@
     "eyebrow": "Weddings",
     "titleLine1": "YOUR WEDDING.",
     "titleLine2": "ITS SOUNDTRACK.",
-    "ctaAvailability": "Check availability",
+    "ctaAvailability": "Quick quote",
     "ctaGallery": "View the gallery"
   },
   "TheMoment": {
@@ -94,7 +94,7 @@
     "unmute": "Unmute",
     "mute": "Mute",
     "fullscreen": "Fullscreen",
-    "ctaAvailability": "Check availability"
+    "ctaAvailability": "Quick quote"
   },
   "ServicesSection": {
     "eyebrow": "Services",
@@ -142,7 +142,7 @@
     "ratingSuffix": "out of 5 — verified on Musiqua",
     "readAllExternal": "Read all reviews →",
     "readAllInternal": "All reviews on the site →",
-    "ctaAvailability": "Check availability"
+    "ctaAvailability": "Quick quote"
   },
   "Gallery": {
     "eyebrow": "Gallery",
@@ -161,7 +161,7 @@
     "titleLine2": "YOUR MUSIC.",
     "titleLine3": "YOUR MOMENT.",
     "description": "Tell me about your event and let's build its soundtrack together.",
-    "ctaAvailability": "Check availability",
+    "ctaAvailability": "Quick quote",
     "ctaWhatsapp": "Message on WhatsApp"
   },
   "ContactForm": {
@@ -184,7 +184,7 @@
     "desiredServicesLabel": "Requested services",
     "messageLabel": "Message",
     "noCommitment": "No commitment. Just tell me what you're planning.",
-    "submit": "Check availability",
+    "submit": "Quick quote",
     "submitting": "Sending…"
   },
   "EventTypeLabels": {
@@ -289,11 +289,11 @@
     "metaDescription": "Event DJ in Piedmont, Liguria and Lombardy: birthdays, 18th birthdays, private parties, corporate events and high-energy parties, with the right atmosphere for every occasion.",
     "heroTitle": "EVERY EVENT HAS ITS OWN MUSIC",
     "heroDescription": "Four different ways to experience an evening, one standard of care for every detail.",
-    "ctaWedding": "Check availability for your wedding",
-    "ctaPrivate": "Check availability for your party",
-    "ctaCorporate": "Request availability for your corporate event",
-    "ctaParty": "Check availability for your party",
-    "ctaDefault": "Check availability",
+    "ctaWedding": "Quick quote for your wedding",
+    "ctaPrivate": "Quick quote for your party",
+    "ctaCorporate": "Quick quote for your corporate event",
+    "ctaParty": "Quick quote for your party",
+    "ctaDefault": "Quick quote",
     "weddingPageLink": "Discover the dedicated weddings page →"
   },
   "ServiziPage": {
@@ -329,7 +329,7 @@
   "ContattiPage": {
     "metaTitle": "Contact",
     "metaDescription": "Tell us about your event and check Forte DJ's availability for weddings, private parties, corporate events and parties.",
-    "heroTitle": "CHECK AVAILABILITY",
+    "heroTitle": "QUICK QUOTE",
     "heroDescription": "Tell us the date, venue and type of event: we'll get back to you with availability for your day."
   },
   "Legal": {

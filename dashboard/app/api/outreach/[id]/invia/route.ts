@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { leggiDati, leggiConfig, aggiornaDatiSuGitHub } from "../../../../../lib/dataSource";
 import { inviaEmail } from "../../../../../lib/email";
+import { inviaMessaggioTelegram } from "../../../../../lib/telegram";
 import { firmaTesto, firmaHtml, corpoHtml, type BrandFile } from "../../../../../lib/firma";
 import type { OutreachFile } from "../../../../../lib/types";
 
@@ -40,6 +41,8 @@ export async function POST(_req: Request, { params }: { params: { id: string } }
       },
       `chore(locali): email inviata a "${contatto.nomeLocale}"`
     );
+
+    await inviaMessaggioTelegram(`✅ Postino: Email inviata a "${contatto.nomeLocale}" (${contatto.email}).`);
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }

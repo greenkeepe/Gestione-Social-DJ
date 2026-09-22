@@ -13,7 +13,7 @@
     "recensioni": "Recensioni",
     "faq": "FAQ",
     "contatti": "Contatti",
-    "checkAvailability": "Verifica la disponibilità",
+    "checkAvailability": "Preventivo veloce",
     "openMenu": "Apri menu",
     "closeMenu": "Chiudi menu",
     "mainNav": "Navigazione principale",
@@ -41,7 +41,7 @@
     "titleLine3": "UN MOMENTO",
     "titleLine4": "IN UN RICORDO.",
     "description": "DJ & Entertainment per matrimoni, eventi e party in cui musica, atmosfera e persone diventano parte della stessa esperienza.",
-    "ctaAvailability": "Verifica la disponibilità",
+    "ctaAvailability": "Preventivo veloce",
     "ctaExperience": "Vivi l'esperienza",
     "scrollToExplore": "Scroll to explore"
   },
@@ -59,7 +59,7 @@
     "eyebrow": "Matrimoni",
     "titleLine1": "IL TUO MATRIMONIO.",
     "titleLine2": "LA SUA COLONNA SONORA.",
-    "ctaAvailability": "Verifica la disponibilità",
+    "ctaAvailability": "Preventivo veloce",
     "ctaGallery": "Guarda la gallery"
   },
   "TheMoment": {
@@ -94,7 +94,7 @@
     "unmute": "Attiva audio",
     "mute": "Disattiva audio",
     "fullscreen": "Schermo intero",
-    "ctaAvailability": "Verifica la disponibilità"
+    "ctaAvailability": "Preventivo veloce"
   },
   "ServicesSection": {
     "eyebrow": "Servizi",
@@ -142,7 +142,7 @@
     "ratingSuffix": "su 5 — verificato su Musiqua",
     "readAllExternal": "Leggi tutte le recensioni →",
     "readAllInternal": "Tutte le recensioni sul sito →",
-    "ctaAvailability": "Verifica la disponibilità"
+    "ctaAvailability": "Preventivo veloce"
   },
   "Gallery": {
     "eyebrow": "Gallery",
@@ -161,7 +161,7 @@
     "titleLine2": "LA TUA MUSICA.",
     "titleLine3": "IL TUO MOMENTO.",
     "description": "Raccontami il tuo evento e costruiamo insieme la sua colonna sonora.",
-    "ctaAvailability": "Verifica la disponibilità",
+    "ctaAvailability": "Preventivo veloce",
     "ctaWhatsapp": "Scrivi su WhatsApp"
   },
   "ContactForm": {
@@ -184,7 +184,7 @@
     "desiredServicesLabel": "Servizi desiderati",
     "messageLabel": "Messaggio",
     "noCommitment": "Nessun impegno. Raccontami semplicemente cosa stai organizzando.",
-    "submit": "Verifica la disponibilità",
+    "submit": "Preventivo veloce",
     "submitting": "Invio in corso…"
   },
   "EventTypeLabels": {
@@ -289,11 +289,11 @@
     "metaDescription": "DJ per eventi in Piemonte, Liguria e Lombardia: compleanni, diciottesimi, feste private, eventi aziendali e party ad alta energia, con l'atmosfera giusta per ogni occasione.",
     "heroTitle": "OGNI EVENTO HA LA SUA MUSICA",
     "heroDescription": "Quattro modi diversi di vivere una serata, un unico standard di cura nei dettagli.",
-    "ctaWedding": "Verifica la disponibilità per il tuo matrimonio",
-    "ctaPrivate": "Verifica la disponibilità per la tua festa",
-    "ctaCorporate": "Richiedi disponibilità per il tuo evento aziendale",
-    "ctaParty": "Verifica la disponibilità per il tuo party",
-    "ctaDefault": "Verifica la disponibilità",
+    "ctaWedding": "Preventivo veloce per il tuo matrimonio",
+    "ctaPrivate": "Preventivo veloce per la tua festa",
+    "ctaCorporate": "Preventivo veloce per il tuo evento aziendale",
+    "ctaParty": "Preventivo veloce per il tuo party",
+    "ctaDefault": "Preventivo veloce",
     "weddingPageLink": "Scopri la pagina dedicata ai matrimoni →"
   },
   "ServiziPage": {
@@ -329,7 +329,7 @@
   "ContattiPage": {
     "metaTitle": "Contatti",
     "metaDescription": "Racconta il tuo evento e verifica la disponibilità di Forte DJ per matrimoni, eventi privati, aziendali e party.",
-    "heroTitle": "VERIFICA LA DISPONIBILITÀ",
+    "heroTitle": "PREVENTIVO VELOCE",
     "heroDescription": "Raccontaci data, location e tipo di evento: ti risponderemo con la disponibilità per la tua giornata."
   },
   "Legal": {

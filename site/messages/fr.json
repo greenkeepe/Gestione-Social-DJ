@@ -13,7 +13,7 @@
     "recensioni": "Avis",
     "faq": "FAQ",
     "contatti": "Contact",
-    "checkAvailability": "Vérifier la disponibilité",
+    "checkAvailability": "Devis rapide",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "mainNav": "Navigation principale",
@@ -41,7 +41,7 @@
     "titleLine3": "UN INSTANT",
     "titleLine4": "EN SOUVENIR.",
     "description": "DJ & Entertainment pour mariages, événements et fêtes où musique, ambiance et invités font partie d'une même expérience.",
-    "ctaAvailability": "Vérifier la disponibilité",
+    "ctaAvailability": "Devis rapide",
     "ctaExperience": "Vivre l'expérience",
     "scrollToExplore": "Scroll to explore"
   },
@@ -59,7 +59,7 @@
     "eyebrow": "Mariages",
     "titleLine1": "VOTRE MARIAGE.",
     "titleLine2": "SA BANDE-SON.",
-    "ctaAvailability": "Vérifier la disponibilité",
+    "ctaAvailability": "Devis rapide",
     "ctaGallery": "Voir la galerie"
   },
   "TheMoment": {
@@ -94,7 +94,7 @@
     "unmute": "Activer le son",
     "mute": "Couper le son",
     "fullscreen": "Plein écran",
-    "ctaAvailability": "Vérifier la disponibilité"
+    "ctaAvailability": "Devis rapide"
   },
   "ServicesSection": {
     "eyebrow": "Services",
@@ -142,7 +142,7 @@
     "ratingSuffix": "sur 5 — vérifié sur Musiqua",
     "readAllExternal": "Lire tous les avis →",
     "readAllInternal": "Tous les avis sur le site →",
-    "ctaAvailability": "Vérifier la disponibilité"
+    "ctaAvailability": "Devis rapide"
   },
   "Gallery": {
     "eyebrow": "Galerie",
@@ -161,7 +161,7 @@
     "titleLine2": "VOTRE MUSIQUE.",
     "titleLine3": "VOTRE MOMENT.",
     "description": "Racontez-moi votre événement et construisons ensemble sa bande-son.",
-    "ctaAvailability": "Vérifier la disponibilité",
+    "ctaAvailability": "Devis rapide",
     "ctaWhatsapp": "Écrire sur WhatsApp"
   },
   "ContactForm": {
@@ -184,7 +184,7 @@
     "desiredServicesLabel": "Services souhaités",
     "messageLabel": "Message",
     "noCommitment": "Aucun engagement. Racontez-moi simplement ce que vous organisez.",
-    "submit": "Vérifier la disponibilité",
+    "submit": "Devis rapide",
     "submitting": "Envoi en cours…"
   },
   "EventTypeLabels": {
@@ -289,11 +289,11 @@
     "metaDescription": "DJ pour événements en Piémont, Ligurie et Lombardie : anniversaires, 18 ans, fêtes privées, événements d'entreprise et soirées à haute énergie, avec l'ambiance juste pour chaque occasion.",
     "heroTitle": "CHAQUE ÉVÉNEMENT A SA MUSIQUE",
     "heroDescription": "Quatre façons différentes de vivre une soirée, un même niveau de soin du détail.",
-    "ctaWedding": "Vérifier la disponibilité pour votre mariage",
-    "ctaPrivate": "Vérifier la disponibilité pour votre fête",
-    "ctaCorporate": "Demander la disponibilité pour votre événement d'entreprise",
-    "ctaParty": "Vérifier la disponibilité pour votre soirée",
-    "ctaDefault": "Vérifier la disponibilité",
+    "ctaWedding": "Devis rapide pour votre mariage",
+    "ctaPrivate": "Devis rapide pour votre fête",
+    "ctaCorporate": "Devis rapide pour votre événement d'entreprise",
+    "ctaParty": "Devis rapide pour votre soirée",
+    "ctaDefault": "Devis rapide",
     "weddingPageLink": "Découvrez la page dédiée aux mariages →"
   },
   "ServiziPage": {
@@ -329,7 +329,7 @@
   "ContattiPage": {
     "metaTitle": "Contact",
     "metaDescription": "Racontez-nous votre événement et vérifiez la disponibilité de Forte DJ pour mariages, fêtes privées, événements d'entreprise et soirées.",
-    "heroTitle": "VÉRIFIER LA DISPONIBILITÉ",
+    "heroTitle": "DEVIS RAPIDE",
     "heroDescription": "Indiquez-nous la date, le lieu et le type d'événement : nous vous répondrons avec la disponibilité pour votre journée."
   },
   "Legal": {
