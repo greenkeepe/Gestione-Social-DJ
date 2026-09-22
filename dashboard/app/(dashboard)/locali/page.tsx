@@ -10,9 +10,9 @@ import { InvioAutomaticoSettings } from "../../../components/InvioAutomaticoSett
 export const dynamic = "force-dynamic";
 
 const MODELLO_DI_RISERVA: OutreachTemplateFile = {
-  oggetto: "Proposta di collaborazione — Forte DJ",
+  oggetto: "Collaborazione per Eventi e/o Matrimoni.",
   corpo:
-    "Buongiorno,\n\nsono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di esperienza, 200+ eventi, oltre 75 recensioni a 5 stelle).\n\nMi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.\n\nSe vi va, sarei felice di fissare un sopralluogo tecnico quando preferite.\n\nGrazie per l'attenzione,",
+    "Buongiorno,\nsono Andrea di Forte DJ, DJ professionista specializzato in matrimoni ed eventi, con oltre 20 anni di esperienza, più di 200 eventi realizzati e oltre 75 recensioni a 5 stelle.\nMi piacerebbe entrare in contatto con {{LOCALE}} per valutare una possibile collaborazione come vostro DJ e fornitore di fiducia per matrimoni ed eventi.\nOffro un servizio completo e personalizzato, che comprende:\n\n* 🎧 DJ set e playlist personalizzate in base agli sposi e al tipo di evento\n* 🔊 Impianto audio professionale\n* 💡 Luci scenografiche\n* 🌫️ Effetti fumo\n* ⚡ Montaggio e preparazione tecnica in meno di un'ora\n* 🤝 Massima attenzione alla collaborazione con location e staff durante l'evento\n\nL'obiettivo è offrirvi un servizio affidabile e professionale, che possa diventare un valore aggiunto per gli eventi organizzati presso la vostra struttura.\nSe siete interessati, sarei felice di conoscervi di persona e fissare un breve sopralluogo, così da presentarvi il mio servizio e valutare insieme eventuali modalità di collaborazione.\nGrazie per l'attenzione e resto a disposizione.\nUn saluto,",
   validatoIl: null
 };
 

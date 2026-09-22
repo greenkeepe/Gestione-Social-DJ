@@ -74,16 +74,23 @@ interface OutreachTemplateFile {
 // dashboard/lib/firma.ts, letta ogni volta da config/brand.json — mai
 // salvata in questo file, così resta sempre aggiornata da sola.
 const MODELLO_DI_RISERVA: { oggetto: string; corpo: string } = {
-  oggetto: "Proposta di collaborazione — Forte DJ",
+  oggetto: "Collaborazione per Eventi e/o Matrimoni.",
   corpo: `Buongiorno,
+sono Andrea di Forte DJ, DJ professionista specializzato in matrimoni ed eventi, con oltre 20 anni di esperienza, più di 200 eventi realizzati e oltre 75 recensioni a 5 stelle.
+Mi piacerebbe entrare in contatto con {{LOCALE}} per valutare una possibile collaborazione come vostro DJ e fornitore di fiducia per matrimoni ed eventi.
+Offro un servizio completo e personalizzato, che comprende:
 
-sono Andrea di Forte DJ, DJ professionista per matrimoni ed eventi (20 anni di esperienza, 200+ eventi, oltre 75 recensioni a 5 stelle).
+* 🎧 DJ set e playlist personalizzate in base agli sposi e al tipo di evento
+* 🔊 Impianto audio professionale
+* 💡 Luci scenografiche
+* 🌫️ Effetti fumo
+* ⚡ Montaggio e preparazione tecnica in meno di un'ora
+* 🤝 Massima attenzione alla collaborazione con location e staff durante l'evento
 
-Mi piacerebbe presentarmi a voi di {{LOCALE}} come possibile fornitore di fiducia per i matrimoni ed eventi che ospitate: playlist su misura, impianto audio/luci/fumo completo, montaggio in meno di un'ora.
-
-Se vi va, sarei felice di fissare un sopralluogo tecnico quando preferite.
-
-Grazie per l'attenzione,`
+L'obiettivo è offrirvi un servizio affidabile e professionale, che possa diventare un valore aggiunto per gli eventi organizzati presso la vostra struttura.
+Se siete interessati, sarei felice di conoscervi di persona e fissare un breve sopralluogo, così da presentarvi il mio servizio e valutare insieme eventuali modalità di collaborazione.
+Grazie per l'attenzione e resto a disposizione.
+Un saluto,`
 };
 
 // {{LOCALE}} è l'unica parte che cambia da un'email all'altra: il resto
