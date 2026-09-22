@@ -4,7 +4,7 @@
     "AL"
   ],
   "invioAutomatico": {
-    "attivo": false,
-    "maxAlGiorno": 3
+    "attivo": true,
+    "maxAlGiorno": 5
   }
 }
