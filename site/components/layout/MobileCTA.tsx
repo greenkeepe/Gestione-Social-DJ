@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function MobileCTA() {
@@ -22,7 +23,8 @@ export function MobileCTA() {
       }`}
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 0.75rem)" }}
     >
-      <Button href="/contatti" className="w-full">
+      <Button href="/#preventivo" className="w-full">
+        <Zap className="h-4 w-4" aria-hidden />
         {t("checkAvailability")}
       </Button>
     </div>

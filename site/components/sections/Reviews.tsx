@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -75,7 +75,8 @@ export function Reviews({
               {t("readAllInternal")}
             </Link>
           )}
-          <Button href="/contatti" size="lg">
+          <Button href="/#preventivo" size="lg">
+            <Zap className="h-4 w-4" aria-hidden />
             {t("ctaAvailability")}
           </Button>
         </div>

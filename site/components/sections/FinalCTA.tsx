@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Zap } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
@@ -53,7 +54,8 @@ export function FinalCTA() {
         </Reveal>
         <Reveal delay={0.2}>
           <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
-            <Button href="/contatti" size="lg">
+            <Button href="/#preventivo" size="lg">
+              <Zap className="h-4 w-4" aria-hidden />
               {t("ctaAvailability")}
             </Button>
             {siteConfig.whatsappNumber ? (

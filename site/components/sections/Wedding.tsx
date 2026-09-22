@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Zap } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
@@ -133,7 +134,8 @@ export function Wedding({ hideHeading = false }: { hideHeading?: boolean }) {
 
         <Reveal delay={0.2}>
           <div className="mt-20 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:mt-28">
-            <Button href="/contatti" size="lg">
+            <Button href="/#preventivo" size="lg">
+              <Zap className="h-4 w-4" aria-hidden />
               {t("ctaAvailability")}
             </Button>
             <Button href="#gallery" variant="secondary" size="lg">

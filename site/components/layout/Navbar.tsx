@@ -3,7 +3,7 @@
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { routing } from "@/i18n/routing";
@@ -137,7 +137,8 @@ export function Navbar() {
 
         <div className="hidden items-center gap-6 lg:flex">
           <LanguageSwitcher pathname={pathname} />
-          <Button href="/contatti" size="md">
+          <Button href="/#preventivo" size="md">
+            <Zap className="h-4 w-4" aria-hidden />
             {t("checkAvailability")}
           </Button>
         </div>
@@ -183,10 +184,11 @@ export function Navbar() {
               <LanguageSwitcher pathname={pathname} />
             </div>
             <Button
-              href="/contatti"
+              href="/#preventivo"
               onClick={() => setOpen(false)}
               className="mt-4 w-full"
             >
+              <Zap className="h-4 w-4" aria-hidden />
               {t("checkAvailability")}
             </Button>
           </nav>

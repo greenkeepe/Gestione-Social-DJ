@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Maximize, Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { Maximize, Pause, Play, Volume2, VolumeX, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -150,7 +150,8 @@ export function Showreel() {
 
       <div className="container-edit">
         <div className="mt-12 flex flex-col items-center gap-6">
-          <Button href="/contatti" size="lg">
+          <Button href="/#preventivo" size="lg">
+            <Zap className="h-4 w-4" aria-hidden />
             {t("ctaAvailability")}
           </Button>
           {socialLinks.length > 0 ? (

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Zap } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
@@ -116,7 +117,8 @@ export default async function EventiPage({
                 </Reveal>
                 <Reveal delay={0.26}>
                   <div className="mt-8 flex flex-col items-start gap-4">
-                    <Button href="/contatti">
+                    <Button href="/#preventivo">
+                      <Zap className="h-4 w-4" aria-hidden />
                       {ctaLabels[event.slug] ?? t("ctaDefault")}
                     </Button>
                     {event.slug === "matrimoni" ? (
