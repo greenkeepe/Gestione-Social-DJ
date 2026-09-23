@@ -2,6 +2,16 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "errore",
+      "riepilogo": "Errore nella creazione del Reel da \"video1.mp4\" (fermato allo step \"analisi\"): Command failed: ffprobe -hide_banner -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name,duration -show_entries format=duration -of json /tmp/reel-maker-9dJiiw/input.mp4\n[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5560ab12d900] moov atom not found\n/tmp/reel-maker-9dJiiw/input.mp4: Invalid data found when processing input\n",
+      "dettagli": {
+        "errore": "Error: Command failed: ffprobe -hide_banner -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name,duration -show_entries format=duration -of json /tmp/reel-maker-9dJiiw/input.mp4\n[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5560ab12d900] moov atom not found\n/tmp/reel-maker-9dJiiw/input.mp4: Invalid data found when processing input\n"
+      },
+      "timestamp": "2026-09-23T07:55:25.704Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "errore",
