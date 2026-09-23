@@ -51,21 +51,6 @@
       "source": "dashboard"
     },
     {
-      "id": "9ab68667-e970-44e8-8134-c7aedf51853f",
-      "createdAt": "2026-09-23T07:56:51.112Z",
-      "videoUrl": "https://gestione-social-dj.vercel.app/api/r2-file/86f4d05d-8d41-4c14-9b5f-d34fcf2a3868.MP4",
-      "filename": "IMG_4483.MP4",
-      "mimeType": "video/mp4",
-      "profilo": "auto",
-      "istruzioni": null,
-      "status": "errore",
-      "step": "analisi",
-      "aggiornatoIl": "2026-09-23T08:17:54.618Z",
-      "erroreMessaggio": "Video troppo corto (2.8s): serve almeno qualche secondo di materiale per montare un Reel.",
-      "risultato": null,
-      "source": "dashboard"
-    },
-    {
       "id": "f507af46-fcf0-4ab9-a8dd-4dfbcde7af04",
       "createdAt": "2026-09-23T07:56:42.989Z",
       "videoUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4e1251f2-1a0f-4c37-a271-6311fed2af37.MOV",
