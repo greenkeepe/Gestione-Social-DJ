@@ -364,11 +364,26 @@
         "mimeType": "video/quicktime",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/635f2309-2908-4e75-bee5-ef9c41f0361c.MOV"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Girotondo finale, tutti per mano sotto le luci del terrazzo. Questo è il bello del mio lavoro: vedere la pista che si trasforma in un cerchio unico. Serata perfetta, energia altissima fino all'ultimo ballo.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingitaly",
+        "#weddingdj",
+        "#matrimonioitaliano",
+        "#djeventi",
+        "#weddingmusic",
+        "#djperfeste",
+        "#djwedding",
+        "#liguria",
+        "#piemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "d6602d2f-da56-433a-a7d7-81b3cc6f8347",
