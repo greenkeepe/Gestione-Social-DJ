@@ -57,5 +57,16 @@ export async function GET(req: NextRequest, { params }: { params: { chiave: stri
   if (!headers.has("accept-ranges")) headers.set("accept-ranges", "bytes");
   headers.set("cache-control", "public, max-age=31536000, immutable");
 
-  return new NextResponse(upstream.body, { status: upstream.status, headers });
+  // Bug reale trovato dal vivo: passare "upstream.body" (uno stream) come
+  // corpo della risposta troncava il file a pochi KB — sempre, non solo sui
+  // file grandi — perché il runtime serverless di Vercel può chiudere la
+  // funzione (e quindi lo stream in corso) prima che finisca di scorrere
+  // tutti i byte. Un'immagine da 726 KB arrivava a Meta come 5,7 KB,
+  // rifiutata con "formato non riconosciuto"/"file corrotto" — la stessa
+  // causa, con messaggi diversi, di più errori di pubblicazione visti in
+  // giornata. Bufferizzare l'intera risposta (o il singolo "pezzo" quando
+  // Meta chiede un Range, quindi comunque limitato) prima di restituirla
+  // elimina la dipendenza dal completamento dello stream in background.
+  const buffer = await upstream.arrayBuffer();
+  return new NextResponse(buffer, { status: upstream.status, headers });
 }
