@@ -319,23 +319,56 @@ function testoEscape(testo: string): string {
   return testo.replace(/\\/g, "\\\\").replace(/:/g, "\\:").replace(/'/g, "\\'");
 }
 
-// Disegna un testo con dissolvenza in entrata/uscita SOLO nella finestra di
-// tempo [inizio, fine] indicata, invece che per tutta la durata del video
-// (il comportamento precedente: un testo fisso a bruciare per l'intero Reel
-// sembra un watermark incollato allo schermo, non un gancio o una call to
-// action mirata). Le virgole dentro le espressioni "enable"/"alpha" vanno
-// escapate (\,): ffmpeg le leggerebbe come separatore tra filtri della
-// catena invece che come argomento della funzione if()/between().
-function filtroTestoAnimato(testo: string, inizio: number, fine: number, y: string, fontsize: number): string {
-  const testoEscaped = testoEscape(testo);
-  const fade = Math.min(0.35, Math.max(0.12, (fine - inizio) / 4));
+// Va a capo un testo su più righe restando entro una larghezza indicativa
+// (in "caratteri", non pixel: drawtext non misura il testo per noi prima di
+// disegnarlo, ma per un font bold a fontsize~50-58 su un frame di 1080px
+// ~24-26 caratteri a riga è una stima ragionevole). Mai più di `maxRighe`
+// righe: oltre, il testo overlay diventa illeggibile su un Reel verticale.
+function vaACapo(testo: string, larghezzaCaratteri: number, maxRighe: number): string {
+  const parole = testo.split(/\s+/).filter(Boolean);
+  const righe: string[] = [];
+  let corrente = "";
+  for (const parola of parole) {
+    const candidata = corrente ? `${corrente} ${parola}` : parola;
+    if (candidata.length > larghezzaCaratteri && corrente) {
+      righe.push(corrente);
+      corrente = parola;
+    } else {
+      corrente = candidata;
+    }
+  }
+  if (corrente) righe.push(corrente);
+  if (righe.length > maxRighe) {
+    return righe.slice(0, maxRighe).join("\n");
+  }
+  return righe.join("\n");
+}
+
+// Disegna un testo (anche su più righe) con un'animazione in entrata/uscita
+// nella finestra di tempo [inizio, fine] indicata, invece che per tutta la
+// durata del video (un testo fisso a bruciare per l'intero Reel sembra un
+// watermark incollato allo schermo, non un gancio o una call to action
+// mirata). Oltre alla dissolvenza (alpha) il testo entra anche con un
+// leggero scorrimento verticale (slide-up, ~24px) che si assesta nella
+// prima parte della finestra "fade": più dinamico di un semplice fade fisso.
+// Le virgole dentro le espressioni "enable"/"alpha"/"y" vanno escapate (\,):
+// ffmpeg le leggerebbe come separatore tra filtri della catena invece che
+// come argomento della funzione if()/between().
+function filtroTestoAnimato(testo: string, inizio: number, fine: number, yBase: string, fontsize: number, larghezzaCaratteri = 24, maxRighe = 3): string {
+  const testoACapo = vaACapo(testo, larghezzaCaratteri, maxRighe);
+  const testoEscaped = testoEscape(testoACapo);
+  const fade = Math.min(0.4, Math.max(0.15, (fine - inizio) / 4));
   const finoIn = (inizio + fade).toFixed(2);
   const finoHold = (fine - fade).toFixed(2);
   const i = inizio.toFixed(2);
   const f = fine.toFixed(2);
   const alpha = `if(lt(t\\,${finoIn})\\,(t-${i})/${fade.toFixed(2)}\\,if(lt(t\\,${finoHold})\\,1\\,if(lt(t\\,${f})\\,(${f}-t)/${fade.toFixed(2)}\\,0)))`;
+  // Scorrimento: 20px sotto la posizione finale al primo istante della
+  // finestra, che si annulla esattamente quando l'ingresso in dissolvenza è
+  // completato (finoIn) — dopodiché il testo resta fermo in yBase.
+  const yAnimata = `(${yBase})+if(lt(t\\,${finoIn})\\,20*(1-(t-${i})/${fade.toFixed(2)})\\,0)`;
   return (
-    `drawtext=text='${testoEscaped}':fontcolor=white:fontsize=${fontsize}:x=(w-text_w)/2:y=${y}:` +
+    `drawtext=text='${testoEscaped}':fontcolor=white:fontsize=${fontsize}:line_spacing=10:x=(w-text_w)/2:y='${yAnimata}':` +
     `box=1:boxcolor=black@0.45:boxborderw=22:enable='between(t\\,${i}\\,${f})':alpha='${alpha}'`
   );
 }
@@ -391,16 +424,22 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
   // davvero il segnale e lo riporta a un livello coerente per Instagram)
   filtri.push(`[${audioLabel}]loudnorm[afinal]`);
 
+  // Tempo di lettura stimato (~2.3 parole/secondo, un ritmo comodo per un
+  // testo che compare e sparisce sullo schermo, con un minimo di "tenuta"
+  // anche per i testi cortissimi): un testo più lungo resta a schermo di
+  // più invece di sfarfallare via prima di poter essere letto.
+  const durataLettura = (testo: string) => Math.max(1.4, Math.min(4.5, (testo.split(/\s+/).filter(Boolean).length / 2.3) + 0.9));
+
   let videoFinaleLabel = videoLabel;
   if (opts.testoHook) {
-    const fineHook = Math.min(3, Math.max(1.2, opts.durateClip[0]));
-    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoHook, 0, fineHook, "140", 58)}[vhook]`);
+    const fineHook = Math.min(durataLettura(opts.testoHook), Math.max(1.2, opts.durateClip[0]));
+    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoHook, 0, fineHook, "150", 52, 22, 3)}[vhook]`);
     videoFinaleLabel = "vhook";
   }
   if (opts.testoChiusura) {
-    const durataChiusura = Math.min(2.2, Math.max(1.2, durataFinale * 0.2));
+    const durataChiusura = Math.min(durataLettura(opts.testoChiusura), Math.max(1.2, durataFinale * 0.35));
     const inizioChiusura = Math.max(0, durataFinale - durataChiusura);
-    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoChiusura, inizioChiusura, durataFinale, "h-260", 50)}[vchiusura]`);
+    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoChiusura, inizioChiusura, durataFinale, "h-280", 46, 22, 3)}[vchiusura]`);
     videoFinaleLabel = "vchiusura";
   }
 

@@ -31,8 +31,9 @@ export default async function ReelAiPage() {
     <div>
       <h2>🎬 Crea Reel AI</h2>
       <p className="note">
-        Carica un video grezzo: il Regista lo analizza, sceglie i momenti migliori e monta un Reel verticale (9:16) pronto per Instagram/Facebook.
-        L&apos;elaborazione gira in background su GitHub Actions (ogni ~20 minuti, non è istantanea) — questa pagina non richiede di restare aperta.
+        Carica un video grezzo: il Regista parte subito, lo analizza, sceglie i momenti migliori e monta un Reel verticale (9:16). Appena pronto entra
+        da solo nella pipeline di pubblicazione (didascalia scritta dall&apos;AI, pubblicato nell&apos;orario migliore) — non serve nessuna conferma manuale.
+        Questa pagina non richiede di restare aperta durante l&apos;elaborazione.
       </p>
 
       <ReelUploadForm />

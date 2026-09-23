@@ -162,28 +162,31 @@ function testoIncoraggiaSalvataggio(): string {
 // Facebook) un URL nella didascalia NON è mai cliccabile — solo bio,
 // Stories con sticker link o pulsante di contatto del profilo lo sono.
 // Il DM è sempre nativo su entrambe le piattaforme, senza setup; il
-// pulsante WhatsApp sul profilo è citabile solo dopo averlo attivato
-// davvero (config/brand.json > contatti.whatsappBottoneAttivo).
+// pulsante WhatsApp sul profilo e il link al sito in bio sono citabili solo
+// dopo averli attivati davvero (config/brand.json > contatti.
+// whatsappBottoneAttivo / sitoWebBottoneAttivo).
+//
+// TUTTI e tre i modi di contatto disponibili vengono nominati insieme,
+// sempre (non uno a caso tra i tre): il DM è sempre presente, WhatsApp e
+// sito si aggiungono quando davvero attivi — mai lasciarne fuori uno per
+// caso solo perché la scelta casuale ha pescato un'altra variante.
 export function testoCtaContatto(brand: Record<string, any>): string | null {
   if (!brand.contatti?.whatsapp && !brand.nomeArte) return null;
-  const varianti = [
+
+  const variantiDM = [
     "Scrivimi in DM per info e disponibilità.",
     "Mandami un messaggio privato se vuoi sapere di più.",
     "Scrivimi qui in DM, ti rispondo con tutti i dettagli."
   ];
+  const pezzi = [variantiDM[Math.floor(Math.random() * variantiDM.length)]];
+
   if (brand.contatti?.whatsappBottoneAttivo) {
-    varianti.push(
-      "Scrivimi in DM o tocca il bottone WhatsApp sul profilo per info e disponibilità.",
-      "Trovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli."
-    );
+    pezzi.push("Trovi anche il bottone WhatsApp sul mio profilo, se preferisci.");
   }
   if (brand.contatti?.sitoWebBottoneAttivo) {
-    varianti.push(
-      "Trovi foto, recensioni e tutti i dettagli sul sito, link in bio.",
-      "Il sito con portfolio e recensioni è in bio: dai un'occhiata!"
-    );
+    pezzi.push("Sul sito in bio trovi foto, recensioni e tutti i dettagli.");
   }
-  return varianti[Math.floor(Math.random() * varianti.length)];
+  return pezzi.join(" ");
 }
 
 // Prepara "qualcosa da vedere" per l'LLM: per una foto è direttamente il suo

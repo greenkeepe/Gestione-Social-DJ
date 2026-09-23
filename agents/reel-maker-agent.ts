@@ -1,25 +1,25 @@
-// Agente "Regista" (AI Reel Maker) — trasforma UN video grezzo caricato
-// dalla pagina dashboard "Crea Reel AI" in un Reel verticale 1080x1920
-// pronto per i social: analizza scene/audio con ffmpeg (lib/videoTools.ts),
-// decide i momenti migliori (lib/reelPlanner.ts), monta, verifica il
-// risultato e lo carica su Cloudflare R2. Elabora un job alla volta, come gli
-// altri agenti della coda (media/content/publishing).
+// Agente "Regista" (AI Reel Maker) — trasforma i video grezzi caricati
+// dalla pagina dashboard "Crea Reel AI" (o mandati su Telegram) in Reel
+// verticali 1080x1920 pronti per i social: analizza scene/audio con ffmpeg
+// (lib/videoTools.ts), decide i momenti migliori (lib/reelPlanner.ts),
+// monta, verifica il risultato e lo carica su Cloudflare R2.
 //
 // Gira su un workflow separato (.github/workflows/reel-maker.yml) invece
 // che dentro il ciclo giornaliero del Direttore: il rendering video è
 // potenzialmente lungo, quindi ha una sua schedulazione dedicata (come già
 // avviene per l'Agente Pubblicazione in publish-check.yml).
 //
-// Il Reel finito NON viene pubblicato automaticamente: entra nella libreria
-// media (data/media-library.json) solo quando l'utente preme "Usa per un
-// post" dalla dashboard. Da quel momento lo gestiscono gli agenti già
-// esistenti (Occhio -> Copy -> Editore), senza nessuna duplicazione.
+// Ogni Reel pronto entra subito nella libreria media (data/media-library.json),
+// qualunque sia la sua origine: da lì lo gestiscono gli agenti già esistenti
+// (Occhio -> Copy -> Editore) esattamente come qualsiasi altro media, senza
+// nessuna duplicazione e senza passaggi di conferma manuale da aspettare.
 import "dotenv/config";
 import path from "node:path";
+import { readFile } from "node:fs/promises";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { IDENTITA } from "./identities.js";
-import { generaTestoConLLM } from "../lib/llm.js";
+import { generaTestoConLLM, generaTestoConLLMEImmagine } from "../lib/llm.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { commitEPush, innescaWorkflow } from "../lib/gitCommit.js";
 import {
@@ -33,6 +33,7 @@ import {
   misuraVolume,
   calcolaRitaglio9x16,
   esportaClip,
+  estraiFotogramma,
   montaReel,
   controllaQualita,
   caricaSuR2
@@ -151,15 +152,42 @@ async function elaboraJob(job: ReelJob): Promise<void> {
     });
 
     let testoHook = testoHookDefault(brand.nomeArte, piano.categoria);
-    if (job.istruzioni?.trim() && process.env.ANTHROPIC_API_KEY) {
-      const promptTesto = `Scrivi un brevissimo testo (massimo 5 parole, in italiano, niente punteggiatura finale, NESSUNA emoji: il font del video non le supporta) da sovraimprimere come apertura di un Reel Instagram verticale per un DJ per matrimoni/eventi.
-Categoria del Reel: ${piano.categoria}. Nome d'arte: ${brand.nomeArte ?? ""}.
-Note dell'utente su questo video specifico (usale SOLO se pertinenti, non inventare fatti/nomi/date non presenti qui): "${job.istruzioni}".
-Rispondi SOLO col testo da mostrare, senza virgolette né spiegazioni.`;
-      const generato = await generaTestoConLLM(promptTesto);
-      if (generato) testoHook = rimuoviEmoji(generato.replace(/["\n]/g, "")).slice(0, 40) || testoHook;
+    let testoChiusura = testoChiusuraDefault();
+    if (process.env.ANTHROPIC_API_KEY) {
+      // Un fotogramma reale preso dal momento scelto come apertura (hook):
+      // dà a Claude qualcosa di vero da "vedere" invece di indovinare il
+      // contenuto del video dal solo nome del file o dalle note utente.
+      const framePath = path.join(cartella, "frame-hook.jpg");
+      let immagine: { base64: { mediaType: string; data: string } } | null = null;
+      try {
+        await estraiFotogramma(inputPath, (piano.hook.inizio + piano.hook.fine) / 2, framePath);
+        const buffer = await readFile(framePath);
+        immagine = { base64: { mediaType: "image/jpeg", data: buffer.toString("base64") } };
+      } catch (err) {
+        console.error("[Regista] impossibile estrarre il fotogramma per la visione:", err);
+      }
+
+      const noteUtente = job.istruzioni?.trim()
+        ? `\nNote di Andrea su questo video specifico (usale SOLO se pertinenti, non inventare fatti/nomi/date non presenti qui): "${job.istruzioni}".`
+        : "";
+      const promptComune = `Categoria del Reel: ${piano.categoria}. Nome d'arte del DJ: ${brand.nomeArte ?? ""}.${noteUtente}
+Regole: italiano, NESSUNA emoji (il font del video non le supporta), niente punteggiatura finale, niente virgolette. Rispondi SOLO col testo da mostrare, senza spiegazioni.`;
+
+      const promptHook = immagine
+        ? `Guarda il fotogramma allegato: è un momento reale ripreso durante l'apertura di questo Reel.
+Scrivi un testo breve ma d'impatto (tra le 4 e le 10 parole, anche su più righe) da sovraimprimere come apertura del Reel, pertinente a quello che vedi davvero nell'immagine (persone, atmosfera, luci, momento della serata) — non un template generico.
+${promptComune}`
+        : `Scrivi un testo breve ma d'impatto (tra le 4 e le 8 parole) da sovraimprimere come apertura di un Reel Instagram verticale per un DJ per matrimoni/eventi.
+${promptComune}`;
+      const generatoHook = immagine ? await generaTestoConLLMEImmagine(promptHook, immagine) : await generaTestoConLLM(promptHook);
+      if (generatoHook) testoHook = rimuoviEmoji(generatoHook.replace(/["\n]/g, " ").trim()).slice(0, 90) || testoHook;
+
+      const promptChiusura = `Scrivi una breve call to action di chiusura (tra le 4 e le 9 parole) da sovraimprimere negli ultimi secondi di questo Reel, che inviti a scrivere in DM per informazioni/disponibilità (deve essere chiaro che si scrive in direct/messaggio privato).
+${promptComune}`;
+      const generatoChiusura = await generaTestoConLLM(promptChiusura);
+      if (generatoChiusura) testoChiusura = rimuoviEmoji(generatoChiusura.replace(/["\n]/g, " ").trim()).slice(0, 70) || testoChiusura;
     }
-    piano = { ...piano, testoHook, testoChiusura: testoChiusuraDefault() };
+    piano = { ...piano, testoHook, testoChiusura };
 
     job.step = "montaggio";
     const { cropW, cropH } = calcolaRitaglio9x16(info);
@@ -265,14 +293,13 @@ export async function eseguiReelMakerAgent(): Promise<void> {
       await elaboraJob(job);
       job.aggiornatoIl = nowIso();
 
-      // I video ricevuti via Telegram non hanno un passaggio di revisione in
-      // dashboard: appena il Reel è pronto entra direttamente nella libreria
-      // media (esattamente come premere "Usa per un post"), così la pipeline
-      // Occhio -> Copy -> Editore lo prende in carico da sola. I job creati
-      // dalla pagina "Crea Reel AI" restano invece in stato "pronto" in attesa
-      // di conferma manuale, comportamento invariato.
-      let promossoAutomaticamente = false;
-      if (job.source === "telegram" && job.risultato) {
+      // Qualunque sia l'origine (dashboard o Telegram), il Reel pronto entra
+      // subito nella libreria media, così la pipeline Occhio -> Copy ->
+      // Editore lo prende in carico da sola: didascalia scritta dall'AI e
+      // pubblicazione nell'orario migliore, stessa logica di ogni altro
+      // media. Nessun passaggio manuale "Usa per un post" da aspettare.
+      let promosso = false;
+      if (job.risultato) {
         const libreria = await readData<MediaLibraryFile>("media-library.json");
         libreria.items.push({
           id: job.id,
@@ -281,12 +308,12 @@ export async function eseguiReelMakerAgent(): Promise<void> {
           mimeType: "video/mp4",
           uploadedAt: nowIso(),
           usatoIl: null,
-          source: "telegram",
+          source: job.source ?? "dashboard",
           istruzioniUtente: job.istruzioni
         });
         await writeData("media-library.json", libreria);
         job.status = "usato";
-        promossoAutomaticamente = true;
+        promosso = true;
       }
 
       await writeData("reel-jobs.json", jobsFile);
@@ -295,23 +322,23 @@ export async function eseguiReelMakerAgent(): Promise<void> {
         agente: IDENTITA.reelMaker.nome,
         identita: IDENTITA.reelMaker.ruolo,
         status: "ok",
-        riepilogo: promossoAutomaticamente
-          ? `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).`
-          : `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s). Pronto in "Crea Reel AI" per essere usato in un post.`
+        riepilogo: promosso
+          ? `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s) e messo in coda per la didascalia e la pubblicazione automatica.`
+          : `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s).`
       });
 
       await commitEPush(`chore(regista): Reel creato da "${job.filename}"`);
 
-      if (promossoAutomaticamente) {
+      if (promosso) {
         // Innescato subito da qui (non solo alla fine dell'intera coda): il
-        // Reel da Telegram può così ricevere la didascalia ed essere
-        // pubblicato senza aspettare il resto dei video ancora in lavorazione.
+        // Reel riceve così la didascalia senza aspettare il resto dei video
+        // ancora in lavorazione in questa stessa esecuzione.
         try {
           await innescaWorkflow("daily-agents.yml");
         } catch {
           /* non bloccante: il ciclo giornaliero lo prenderà comunque più tardi */
         }
-        await inviaMessaggioTelegram("🎬 Il tuo Reel è pronto! Lo pubblico automaticamente al momento migliore, te lo faccio sapere.");
+        await inviaMessaggioTelegram(`🎬 Reel pronto da "${job.filename}"! Lo pubblico automaticamente al momento migliore, te lo faccio sapere.`);
       }
     } catch (err) {
       job.status = "errore";
@@ -329,9 +356,7 @@ export async function eseguiReelMakerAgent(): Promise<void> {
 
       await commitEPush(`chore(regista): errore nel Reel da "${job.filename}"`);
 
-      if (job.source === "telegram") {
-        await inviaMessaggioTelegram(`⚠️ Non sono riuscito a montare il video che mi hai mandato: ${job.erroreMessaggio}`);
-      }
+      await inviaMessaggioTelegram(`⚠️ Non sono riuscito a montare "${job.filename}": ${job.erroreMessaggio}`);
     }
 
     elaborati++;
