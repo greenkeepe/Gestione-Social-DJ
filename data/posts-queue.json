@@ -908,11 +908,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e1a2272f-0d91-4d93-b75c-ad19c4349d69.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Serata che si scioglie fuori, tra vestiti eleganti e quattro chiacchiere sotto le luci. Si respira festa vera.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingdj",
+        "#weddingparty",
+        "#djwedding",
+        "#djperfeste",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#liguria",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-11"
     },
     {
       "id": "434bcd41-e757-42a1-a06b-1517d9f38f9a",
