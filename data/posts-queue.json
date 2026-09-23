@@ -428,12 +428,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/432746b7-6685-4c99-a40d-2a942bd344b8.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Luci blu ovunque, si respira già l'atmosfera giusta prima di iniziare. Console pronta, si parte.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#weddingday",
+        "#weddingdj",
+        "#djeventi",
+        "#djperfeste",
+        "#animazionematrimonio",
+        "#djprofessionista",
+        "#serravallescrivia",
+        "#liguria",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-28",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "55ed805d-e5d9-4553-b5eb-2600139968e7",
