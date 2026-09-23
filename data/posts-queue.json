@@ -876,11 +876,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/08127164-9e87-48dd-bf09-4932e8283a0c.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Fuori, sotto le luci tra gli alberi, si balla ancora. Momenti così valgono più di mille parole.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingparty",
+        "#weddingdj",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#djprofessionista",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#animazionematrimonio",
+        "#piemonte",
+        "#alessandria",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-10"
     },
     {
       "id": "0de65c4d-f404-426b-9540-fb6c1e7a53d0",
