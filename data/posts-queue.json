@@ -332,12 +332,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/42930d99-bd5f-4779-ad6b-6a69d6decc2a.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Luci basse e chiacchiere in un angolo della serata, si respira già l'atmosfera giusta.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingday",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#djperfeste",
+        "#djeventi",
+        "#djprofessionista",
+        "#djwedding",
+        "#matrimonioinpiemonte",
+        "#liguria",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-25",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "23b92d9b-74a1-454f-b6ec-1ddf77c48959",
