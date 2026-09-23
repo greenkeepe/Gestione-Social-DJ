@@ -620,12 +620,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2afeac63-a680-439b-ae18-274f44975791.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Console pronta, serata già calda dietro di me. Da qui la vista è questa, tavoli pieni e giardino che si anima.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingday",
+        "#matrimonio2027",
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#djwedding",
+        "#discjockey",
+        "#serravallescrivia",
+        "#weddingpiemonte",
+        "#liguria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-10-01",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "96799fb1-4a59-4243-9a20-cacaf377cb6c",
