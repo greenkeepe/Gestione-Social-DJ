@@ -8,7 +8,16 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith("/api/login") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon") ||
-    pathname.startsWith("/api/telegram-webhook")
+    pathname.startsWith("/api/telegram-webhook") ||
+    // Deve restare raggiungibile senza autenticazione: è l'endpoint da cui
+    // Meta (Instagram/Facebook) scarica i media dei post da pubblicare, una
+    // richiesta anonima che non ha mai il cookie di sessione della
+    // dashboard. Senza questa eccezione il middleware la reindirizzava a
+    // /login, e Meta riceveva la pagina di login HTML al posto del file
+    // (root cause reale, trovata dal vivo, di ogni "formato non
+    // supportato"/"file corrotto" visto oggi: l'header di risposta
+    // "x-matched-path: /login" lo confermava).
+    pathname.startsWith("/api/r2-file")
   ) {
     return NextResponse.next();
   }
