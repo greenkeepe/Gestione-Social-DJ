@@ -6,9 +6,28 @@ import { caricaSuR2 } from "../lib/r2Upload";
 
 interface RigaFile {
   nome: string;
-  stato: "in-coda" | "caricamento" | "fatto" | "errore";
+  stato: "in-coda" | "conversione" | "caricamento" | "fatto" | "errore";
   percentuale: number;
   errore?: string;
+}
+
+function isHeic(file: File): boolean {
+  return /^image\/hei[cf]$/i.test(file.type) || /\.hei[cf]$/i.test(file.name);
+}
+
+// Le foto iPhone sono quasi sempre in formato HEIC: il browser spesso non
+// gli assegna nessun "type" (causa l'errore "Dati mancanti" a valle) e,
+// anche quando lo fa, Instagram/Facebook non accettano comunque HEIC per
+// pubblicare — serve JPEG. Convertiamo qui, nel browser, PRIMA di caricare
+// su R2: heic2any include il suo decoder (nessun browser sa leggere HEIC
+// nativamente tranne Safari), quindi funziona ovunque allo stesso modo.
+async function convertiSeHeic(file: File): Promise<File> {
+  if (!isHeic(file)) return file;
+  const heic2any = (await import("heic2any")).default;
+  const risultato = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.9 });
+  const blob = Array.isArray(risultato) ? risultato[0] : risultato;
+  const nuovoNome = file.name.replace(/\.hei[cf]$/i, "") + ".jpg";
+  return new File([blob], nuovoNome, { type: "image/jpeg" });
 }
 
 // Il file va direttamente dal browser a Cloudflare R2 (URL "presigned",
@@ -37,10 +56,15 @@ export function UploadForm() {
     setRighe(lista.map((f) => ({ nome: f.name, stato: "in-coda", percentuale: 0 })));
 
     for (let i = 0; i < lista.length; i++) {
-      const file = lista[i];
-      setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "caricamento" } : r)));
+      let file = lista[i];
 
       try {
+        if (isHeic(file)) {
+          setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "conversione" } : r)));
+          file = await convertiSeHeic(file);
+        }
+
+        setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "caricamento" } : r)));
         const url = await caricaSuR2(file, (percentuale) => {
           setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, percentuale } : r)));
         });
@@ -48,7 +72,7 @@ export function UploadForm() {
         const metaRes = await fetch("/api/upload", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ url, filename: file.name, mimeType: file.type })
+          body: JSON.stringify({ url, filename: file.name, mimeType: file.type || "application/octet-stream" })
         });
         const metaJson = await metaRes.json();
         if (!metaRes.ok) throw new Error(metaJson.error ?? "Impossibile salvare il riferimento del media.");
@@ -70,7 +94,7 @@ export function UploadForm() {
     <form onSubmit={handleSubmit} className="card" style={{ marginBottom: 24 }}>
       <div className="label">Carica una o più foto/video</div>
       <p className="note">Puoi selezionarne più di uno insieme: verranno messi in coda e usati dagli agenti uno al giorno, nell&apos;ordine in cui li carichi.</p>
-      <input ref={inputRef} type="file" accept="image/*,video/*" multiple required style={{ margin: "12px 0" }} />
+      <input ref={inputRef} type="file" accept="image/*,video/*,.heic,.heif" multiple required style={{ margin: "12px 0" }} />
       <br />
       <button type="submit" disabled={inCorso} className="upload-btn">
         {inCorso ? "Caricamento in corso…" : "Carica"}
@@ -82,6 +106,7 @@ export function UploadForm() {
             <li key={i} className="note" style={{ marginTop: 4 }}>
               {r.stato === "fatto" && "✅ "}
               {r.stato === "errore" && "❌ "}
+              {r.stato === "conversione" && "🔄 Conversione HEIC→JPEG… "}
               {r.stato === "caricamento" && `⏳ ${r.percentuale}% — `}
               {r.stato === "in-coda" && "⏳ "}
               {r.nome}
