@@ -35,11 +35,18 @@ console.log("\n=== Scarico tramite il proxy della dashboard ===");
 const proxyUrl = `${DASHBOARD_PUBLIC_URL.replace(/\/$/, "")}/api/r2-file/${CHIAVE}`;
 console.log(`URL: ${proxyUrl}`);
 const resProxy = await fetch(proxyUrl);
+console.log(`Status: ${resProxy.status}`);
+console.log("Header risposta:");
+for (const [nome, valore] of resProxy.headers.entries()) {
+  console.log(`  ${nome}: ${valore}`);
+}
 if (!resProxy.ok) throw new Error(`Proxy ha risposto ${resProxy.status}: ${await resProxy.text().catch(() => "")}`);
 const bufProxy = Buffer.from(await resProxy.arrayBuffer());
 await writeFile("/tmp/proxy.mp4", bufProxy);
 console.log(`Dimensione: ${bufProxy.byteLength} byte`);
 console.log(`sha256: ${sha256(bufProxy)}`);
+console.log("Primi 500 caratteri del corpo (per capire se è HTML/testo invece del file):");
+console.log(bufProxy.subarray(0, 500).toString("utf8"));
 
 console.log("\n=== Confronto ===");
 if (bufDiretto.equals(bufProxy)) {
