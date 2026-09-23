@@ -780,12 +780,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/343e7304-bf6d-4028-a848-2a8e05a4b4e5.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Fumo, luci blu e la console accesa. Si balla, si suda, si sta bene così.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#sposi2027",
+        "#weddingparty",
+        "#weddingitaly",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#weddingmusic",
+        "#djperfeste",
+        "#weddingpiemonte",
+        "#liguria",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-10-08",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "75f37b98-d447-4ef6-8c7b-c72b832f40dc",
