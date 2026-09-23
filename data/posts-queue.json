@@ -844,11 +844,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e8c40fdd-405d-499d-81e0-00031ca1aa14.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Sotto il gazebo, tra un saluto e l'altro, la serata scorre così. Momenti come questi valgono più di mille foto in posa.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#weddingparty",
+        "#weddingday",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#discjockey",
+        "#djperfeste",
+        "#weddingpiemonte",
+        "#serravallescrivia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-09"
     },
     {
       "id": "3e1905ad-acf1-46aa-80db-3373f2d304ba",
