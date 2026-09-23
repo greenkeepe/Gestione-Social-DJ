@@ -812,11 +812,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5566c36c-ed97-4075-8b22-41741d7a3b16.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Terrazza, verde tutto intorno e la gente che balla in piedi tra i tavoli. Momenti così valgono più di mille casse.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingdj",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djwedding",
+        "#djprofessionista",
+        "#lombardia",
+        "#liguria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-05"
     },
     {
       "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
@@ -828,6 +843,74 @@
         "filename": "reel-IMG_4187.mp4",
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e8c40fdd-405d-499d-81e0-00031ca1aa14.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "3e1905ad-acf1-46aa-80db-3373f2d304ba",
+      "createdAt": "2026-09-23T13:02:11.958Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "d6602d2f-da56-433a-a7d7-81b3cc6f8347",
+        "filename": "reel-IMG_4181.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/08127164-9e87-48dd-bf09-4932e8283a0c.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "0de65c4d-f404-426b-9540-fb6c1e7a53d0",
+      "createdAt": "2026-09-23T13:02:11.958Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
+        "filename": "reel-IMG_4167.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e1a2272f-0d91-4d93-b75c-ad19c4349d69.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "434bcd41-e757-42a1-a06b-1517d9f38f9a",
+      "createdAt": "2026-09-23T13:02:11.958Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "171bc915-5b9d-4c24-8800-cc7c2e42e738",
+        "filename": "reel-IMG_4084.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/034e1692-406e-436a-a28d-8f7e7176c894.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "9ec420fa-a69d-4b13-ad88-c95eaff066f7",
+      "createdAt": "2026-09-23T13:02:11.958Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "e3ee4116-1f44-49e3-baf0-533b267b138f",
+        "filename": "reel-IMG_4067.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/38309615-d7b3-4a52-a758-a4b209c1d063.mp4"
       },
       "caption": null,
       "hashtags": [],

@@ -2,6 +2,20 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-05 alle 12:30.",
+      "timestamp": "2026-09-23T13:02:17.510Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "4 contenuti (foto o Reel già montati) messi in coda per la didascalia.",
+      "timestamp": "2026-09-23T13:02:11.961Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "errore",
@@ -3549,26 +3563,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"20260912_235720.jpg\" (foto) e messo in coda per la didascalia.",
       "timestamp": "2026-09-16T09:45:57.119Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "errore",
-      "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/266354304012276/videos]: {\"error\":{\"message\":\"(#100) No permission to publish the video\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AAOYWDA85RTUc2hVWeGeTDz\"}}"
-      },
-      "timestamp": "2026-09-16T09:17:19.817Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "errore",
-      "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Only photo or video can be accepted as media type.\",\"type\":\"OAuthException\",\"code\":9004,\"error_subcode\":2207052,\"is_transient\":false,\"error_user_title\":\"Il download del contenuto multimediale non è riuscito. L'URI del contenuto multimediale non rispetta i nostri requisiti.\",\"error_user_msg\":\"Non è stato possibile recuperare il contenuto multimediale da questo URI: https://res.cloudinary.com/zdjngwjy/image/upload/v1789484123/zkkhemhqcsrvn3lawvfd.jpg.Per maggiori informazioni, consulta la sezione relativa alle limitazioni nel nostro documento per gli sviluppatori: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating\",\"fbtrace_id\":\"AoSHuzIAkX6uYe9YZ9ZdyjZ\"}}"
-      },
-      "timestamp": "2026-09-16T09:14:44.944Z"
     }
   ]
 }
