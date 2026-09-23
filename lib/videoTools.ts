@@ -87,6 +87,35 @@ export async function scaricaFile(url: string, destinazione: string): Promise<vo
   await writeFile(destinazione, buf);
 }
 
+// Scarica un media dallo STESSO bucket R2 con una richiesta firmata diretta
+// (accountId.r2.cloudflarestorage.com), invece che dall'URL salvato che
+// passa dal proxy della dashboard (dashboard/app/api/r2-file/[chiave]).
+// Quel proxy serve a Meta per scaricare i media da pubblicare (vedi
+// lib/r2Upload.ts), ma qui il download lo fa direttamente questo agente,
+// che gira su GitHub Actions e ha già le credenziali R2 — non ha senso far
+// rimbalzare un file video, magari grande, su una funzione serverless
+// Vercel in mezzo. Bug reale visto dal vivo: per i video più grandi il
+// proxy troncava il download (limite di tempo/dimensione della funzione),
+// producendo un file corrotto ("moov atom not found" da ffprobe).
+// L'URL salvato può essere sia il nuovo formato proxy (.../api/r2-file/
+// <chiave>) sia il vecchio URL diretto R2_PUBLIC_BASE_URL: in entrambi la
+// chiave dell'oggetto è sempre l'ultimo segmento del percorso.
+export async function scaricaDaR2(
+  urlSalvato: string,
+  destinazione: string,
+  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string }
+): Promise<void> {
+  const chiave = urlSalvato.split("/").pop();
+  if (!chiave) throw new Error(`Impossibile ricavare la chiave dell'oggetto R2 dall'URL: ${urlSalvato}`);
+
+  const client = new AwsClient({ accessKeyId: opts.accessKeyId, secretAccessKey: opts.secretAccessKey, service: "s3", region: "auto" });
+  const endpoint = `https://${opts.accountId}.r2.cloudflarestorage.com/${opts.bucketName}/${chiave}`;
+  const res = await client.fetch(endpoint);
+  if (!res.ok) throw new Error(`Download diretto da R2 fallito (${res.status}): ${chiave}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  await writeFile(destinazione, buf);
+}
+
 export async function analizzaVideo(filePath: string): Promise<VideoInfo> {
   const videoOutput = await eseguiFfprobe([
     "-v", "error",

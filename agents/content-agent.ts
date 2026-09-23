@@ -29,7 +29,7 @@ import {
   verificaFfmpegDisponibile,
   creaCartellaTemporanea,
   rimuoviCartella,
-  scaricaFile,
+  scaricaDaR2,
   analizzaVideo,
   estraiFotogramma
 } from "../lib/videoTools.js";
@@ -196,12 +196,23 @@ async function preparaImmagineDelMedia(media: { downloadUrl: string; mimeType: s
   }
   if (!media.mimeType.startsWith("video/")) return null;
 
+  const accountId = process.env.R2_ACCOUNT_ID;
+  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+  const bucketName = process.env.R2_BUCKET_NAME;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName) return null;
+
   let cartella: string | null = null;
   try {
     await verificaFfmpegDisponibile();
     cartella = await creaCartellaTemporanea("content-agent-");
     const videoPath = path.join(cartella, "input.mp4");
-    await scaricaFile(media.downloadUrl, videoPath);
+    // Scarica direttamente da R2 (richiesta firmata), non dall'URL salvato
+    // che passa dal proxy della dashboard: per i video più grandi quel
+    // passaggio può troncare il download (limite della funzione serverless
+    // Vercel), producendo un file corrotto — vedi lib/videoTools.ts >
+    // scaricaDaR2 per i dettagli.
+    await scaricaDaR2(media.downloadUrl, videoPath, { accountId, accessKeyId, secretAccessKey, bucketName });
     const info = await analizzaVideo(videoPath);
     const framePath = path.join(cartella, "frame.jpg");
     await estraiFotogramma(videoPath, info.durataSecondi * 0.4, framePath);

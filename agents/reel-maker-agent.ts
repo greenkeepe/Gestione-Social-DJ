@@ -25,7 +25,7 @@ import {
   verificaFfmpegDisponibile,
   creaCartellaTemporanea,
   rimuoviCartella,
-  scaricaFile,
+  scaricaDaR2,
   analizzaVideo,
   rilevaCambiScena,
   rilevaSilenzi,
@@ -103,7 +103,12 @@ async function elaboraJob(job: ReelJob): Promise<void> {
   try {
     job.step = "analisi";
     const inputPath = path.join(cartella, `input${estensioneDaMime(job.mimeType)}`);
-    await scaricaFile(job.videoUrl, inputPath);
+    await scaricaDaR2(job.videoUrl, inputPath, {
+      accountId: r2.accountId,
+      accessKeyId: r2.accessKeyId,
+      secretAccessKey: r2.secretAccessKey,
+      bucketName: r2.bucketName
+    });
 
     const info = await analizzaVideo(inputPath);
     if (info.durataSecondi < 3) {
