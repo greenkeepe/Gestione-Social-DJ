@@ -58,21 +58,20 @@ jobs:
           ENABLE_AI_REEL_MAKER: ${{ vars.ENABLE_AI_REEL_MAKER }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          # Serve a "gh" (letto in automatico da GITHUB_TOKEN/GH_TOKEN)
+          # perché l'agente stesso possa commit+push il progresso video per
+          # video (vedi lib/gitCommit.ts) e, per un Reel da Telegram, far
+          # partire subito daily-agents.yml per la didascalia — invece di
+          # aspettare la fine di tutta la coda in elaborazione.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run agent:reelmaker
 
-      - name: Commit e push dei dati aggiornati
-        id: commit
+      - name: Commit e push di eventuali dati non ancora salvati
         run: |
           git config user.name "gestione-social-dj-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/
           if ! git diff --cached --quiet; then
-            # Un Reel ricevuto da Telegram viene promosso automaticamente a
-            # media-library.json (vedi reel-maker-agent.ts): se questo file
-            # cambia, c'è un nuovo contenuto pronto per la didascalia.
-            if git diff --cached --name-only | grep -q "^data/media-library.json$"; then
-              echo "promosso=true" >> "$GITHUB_OUTPUT"
-            fi
             git commit -m "chore(regista): elaborazione AI Reel Maker [skip ci]"
             for i in 1 2 3 4 5; do
               git push && break
@@ -81,13 +80,5 @@ jobs:
               sleep $((RANDOM % 5 + 1))
             done
           else
-            echo "Nessuna modifica ai dati da salvare."
+            echo "Nessuna modifica da salvare: l'agente ha già commit+push il progresso di ogni video man mano."
           fi
-
-      - name: Fast-track del ciclo agenti (Reel da Telegram pronto per la didascalia)
-        if: steps.commit.outputs.promosso == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh workflow run daily-agents.yml --ref "${GITHUB_REF_NAME}" \
-            || echo "Fast-track non avviato (non bloccante): il ciclo giornaliero lo farà comunque più tardi."

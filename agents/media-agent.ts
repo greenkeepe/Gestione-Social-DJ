@@ -161,25 +161,43 @@ export async function eseguiMediaAgent(): Promise<void> {
       }
     }
 
-    const cePostaInAttesaDiMedia = queueFile.queue.some((p) => p.status === "in-coda-caption");
-    if (cePostaInAttesaDiMedia) {
-      await logAgentRun({
-        agente: IDENTITA.media.nome,
-        identita: IDENTITA.media.ruolo,
-        status: "nessuna-azione",
-        riepilogo: "C'è già un contenuto in coda in attesa di didascalia, non serve selezionare altro media oggi."
+    // Mette in coda TUTTI i media non ancora usati in questo stesso giro
+    // (non solo il primo): chi carica più foto/video insieme dalla
+    // dashboard li vede così avanzare tutti subito verso "Anteprima",
+    // invece che uno al giorno (il ritmo di 1 pubblicazione/giorno resta
+    // comunque garantito da publishing-agent.ts, che non dipende da
+    // quanti contenuti sono "pronto" in coda — sono due limiti separati).
+    // Preferisce sempre un video quando disponibile: su Instagram i Reel
+    // hanno molta più portata organica dei post statici.
+    let messiInCoda = 0;
+    for (;;) {
+      const nonUsati = libreria.items.filter((m) => m.usatoIl === null);
+      const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
+      if (!prossimo) break;
+
+      const isVideo = prossimo.mimeType.startsWith("video/");
+      queueFile.queue.push({
+        id: randomUUID(),
+        createdAt: nowIso(),
+        formato: isVideo ? "reel" : "post",
+        media: {
+          source: prossimo.source ?? "dashboard-upload",
+          mediaId: prossimo.id,
+          filename: prossimo.filename,
+          mimeType: prossimo.mimeType,
+          downloadUrl: prossimo.url
+        },
+        caption: null,
+        hashtags: [],
+        orarioProgrammato: null,
+        status: "in-coda-caption",
+        istruzioniUtente: prossimo.istruzioniUtente ?? null
       });
-      return;
+      prossimo.usatoIl = nowIso();
+      messiInCoda++;
     }
 
-    // Preferisce un video non ancora usato quando disponibile: su Instagram
-    // i Reel hanno molta più portata organica dei post statici. Se non ci
-    // sono video in attesa, prende comunque la foto più vecchia — nessun
-    // media aspetta mai per sempre solo perché non è un video.
-    const nonUsati = libreria.items.filter((m) => m.usatoIl === null);
-    const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
-
-    if (!prossimo) {
+    if (messiInCoda === 0) {
       await logAgentRun({
         agente: IDENTITA.media.nome,
         identita: IDENTITA.media.ruolo,
@@ -189,30 +207,12 @@ export async function eseguiMediaAgent(): Promise<void> {
       return;
     }
 
-    const isVideo = prossimo.mimeType.startsWith("video/");
-    queueFile.queue.push({
-      id: randomUUID(),
-      createdAt: nowIso(),
-      formato: isVideo ? "reel" : "post",
-      media: {
-        source: prossimo.source ?? "dashboard-upload",
-        mediaId: prossimo.id,
-        filename: prossimo.filename,
-        mimeType: prossimo.mimeType,
-        downloadUrl: prossimo.url
-      },
-      caption: null,
-      hashtags: [],
-      orarioProgrammato: null,
-      status: "in-coda-caption",
-      istruzioniUtente: prossimo.istruzioniUtente ?? null
-    });
     await writeData("posts-queue.json", queueFile);
-
-    prossimo.usatoIl = nowIso();
     await writeData("media-library.json", libreria);
 
-    const riepilogo = `Selezionato nuovo media "${prossimo.filename}" (${isVideo ? "video/reel" : "foto"}) e messo in coda per la didascalia.`;
+    const riepilogo = messiInCoda === 1
+      ? `Selezionato 1 nuovo media e messo in coda per la didascalia.`
+      : `Selezionati ${messiInCoda} nuovi media e messi in coda per la didascalia.`;
     await logAgentRun({
       agente: IDENTITA.media.nome,
       identita: IDENTITA.media.ruolo,

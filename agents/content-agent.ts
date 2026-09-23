@@ -21,6 +21,7 @@ import { readFile } from "node:fs/promises";
 import { readData, writeData, readBrand } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
+import { commitEPush } from "../lib/gitCommit.js";
 import { generaTestoConLLM, generaTestoConLLMEImmagine, type ImmagineDaAnalizzare } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
 import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
@@ -226,20 +227,56 @@ async function preparaImmagineDelMedia(media: { downloadUrl: string; mimeType: s
   }
 }
 
+// Limite di sicurezza per una singola esecuzione (stesso motivo del limite
+// gemello in reel-maker-agent.ts): se sono in coda tantissimi contenuti,
+// il resto lo prende comunque il prossimo giro, invece di far girare
+// un'unica esecuzione all'infinito o generare troppe chiamate LLM in un colpo.
+const MASSIMO_DIDASCALIE_PER_ESECUZIONE = 15;
+
 export async function eseguiContentAgent(): Promise<void> {
+  let scritte = 0;
+  // Un contenuto fallito resta "in-coda-caption" (per poterlo rivedere/
+  // ritentare al prossimo giro), quindi senza questo elenco il prossimo
+  // .find() di scriviProssimaDidascalia() ripescherebbe SEMPRE lo stesso
+  // contenuto già fallito, in un ciclo che non avanza mai.
+  const giaFalliti = new Set<string>();
+  for (let i = 0; i < MASSIMO_DIDASCALIE_PER_ESECUZIONE; i++) {
+    const esito = await scriviProssimaDidascalia(giaFalliti);
+    if (esito.stato === "nessuno") break;
+    if (esito.stato === "fatto") scritte++;
+    else if (esito.stato === "errore" && esito.id) giaFalliti.add(esito.id);
+    // "errore": già segnalato dentro scriviProssimaDidascalia, ma non è
+    // detto che riguardi anche gli altri contenuti in coda — si continua
+    // con il prossimo invece di fermare tutto il giro per un solo errore.
+  }
+
+  if (scritte === 0) {
+    await logAgentRun({
+      agente: IDENTITA.content.nome,
+      identita: IDENTITA.content.ruolo,
+      status: "nessuna-azione",
+      riepilogo: "Nessun contenuto in attesa di didascalia oggi."
+    });
+  }
+}
+
+interface EsitoDidascalia {
+  stato: "nessuno" | "fatto" | "errore";
+  id?: string;
+}
+
+// Scrive la didascalia per UN contenuto in coda (il prossimo trovato con
+// status "in-coda-caption", escludendo quelli già falliti in questo stesso
+// giro) e salva subito il progresso con un commit+push dedicato (vedi
+// lib/gitCommit.ts), così chi carica più foto insieme le vede comparire in
+// "Anteprima" una alla volta man mano che sono pronte, non tutte insieme
+// solo alla fine del giro.
+async function scriviProssimaDidascalia(giaFalliti: Set<string>): Promise<EsitoDidascalia> {
+  let target: PostsQueueFile["queue"][number] | undefined;
   try {
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
-    const target = queueFile.queue.find((p) => p.status === "in-coda-caption");
-
-    if (!target) {
-      await logAgentRun({
-        agente: IDENTITA.content.nome,
-        identita: IDENTITA.content.ruolo,
-        status: "nessuna-azione",
-        riepilogo: "Nessun contenuto in attesa di didascalia oggi."
-      });
-      return;
-    }
+    target = queueFile.queue.find((p) => p.status === "in-coda-caption" && !giaFalliti.has(p.id));
+    if (!target) return { stato: "nessuno" };
 
     const brand = await readBrand<Record<string, any>>();
     const calendar = await readData<CalendarFile>("content-calendar.json");
@@ -322,7 +359,9 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
       status: "ok",
       riepilogo
     });
+    await commitEPush(`chore(copy): ${riepilogo}`);
     await inviaMessaggioTelegram(`✅ ${IDENTITA.content.nome}: ${riepilogo}\n\n"${caption}"`);
+    return { stato: "fatto" };
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.content.nome,
@@ -331,7 +370,9 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
       riepilogo: "Errore imprevisto nell'Agente Contenuti.",
       dettagli: { errore: String(err) }
     });
+    await commitEPush("chore(copy): errore nella scrittura di una didascalia").catch(() => {});
     await inviaMessaggioTelegram(`⚠️ ${IDENTITA.content.nome}: Errore imprevisto nell'Agente Contenuti.\n${String(err)}`);
+    return { stato: "errore", id: target?.id };
   }
 }
 

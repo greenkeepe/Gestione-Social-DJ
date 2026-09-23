@@ -21,6 +21,7 @@ import { logAgentRun } from "../lib/agentLog.js";
 import { IDENTITA } from "./identities.js";
 import { generaTestoConLLM } from "../lib/llm.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
+import { commitEPush, innescaWorkflow } from "../lib/gitCommit.js";
 import {
   verificaFfmpegDisponibile,
   creaCartellaTemporanea,
@@ -213,6 +214,12 @@ Rispondi SOLO col testo da mostrare, senza virgolette né spiegazioni.`;
   }
 }
 
+// Limite di sicurezza per una singola esecuzione: se qualcuno carica
+// tantissimi video insieme, il resto lo prende comunque la prossima
+// esecuzione (il prossimo upload la innesca subito, altrimenti il giro
+// ogni ~20 minuti) invece di far girare un'unica esecuzione all'infinito.
+const MASSIMO_JOB_PER_ESECUZIONE = 15;
+
 export async function eseguiReelMakerAgent(): Promise<void> {
   if (!ABILITATO) {
     await logAgentRun({
@@ -237,78 +244,106 @@ export async function eseguiReelMakerAgent(): Promise<void> {
     return;
   }
 
-  const jobsFile = await readData<ReelJobsFile>("reel-jobs.json");
-  const job = jobsFile.jobs.find((j) => j.status === "in-coda-analisi");
+  // Elabora TUTTI i video in coda in questa stessa esecuzione, uno alla
+  // volta, invece di uno solo per esecuzione: con tanti video caricati
+  // insieme, GitHub annulla in automatico le esecuzioni rimaste "in coda"
+  // (non ancora partite) quando ne arriva una più recente per lo stesso
+  // workflow — un video alla volta per esecuzione lasciava quindi gran
+  // parte della coda ferma per ore, in attesa del prossimo giro
+  // programmato. Rilegge reel-jobs.json a ogni giro (non una sola volta
+  // all'inizio) e salva subito il risultato di ognuno con un commit+push
+  // dedicato (vedi lib/gitCommit.ts): la coda in dashboard mostra così i
+  // video via via completati mentre l'esecuzione è ancora in corso, non
+  // tutti insieme solo alla fine.
+  let elaborati = 0;
+  while (elaborati < MASSIMO_JOB_PER_ESECUZIONE) {
+    const jobsFile = await readData<ReelJobsFile>("reel-jobs.json");
+    const job = jobsFile.jobs.find((j) => j.status === "in-coda-analisi");
+    if (!job) break;
 
-  if (!job) {
+    try {
+      await elaboraJob(job);
+      job.aggiornatoIl = nowIso();
+
+      // I video ricevuti via Telegram non hanno un passaggio di revisione in
+      // dashboard: appena il Reel è pronto entra direttamente nella libreria
+      // media (esattamente come premere "Usa per un post"), così la pipeline
+      // Occhio -> Copy -> Editore lo prende in carico da sola. I job creati
+      // dalla pagina "Crea Reel AI" restano invece in stato "pronto" in attesa
+      // di conferma manuale, comportamento invariato.
+      let promossoAutomaticamente = false;
+      if (job.source === "telegram" && job.risultato) {
+        const libreria = await readData<MediaLibraryFile>("media-library.json");
+        libreria.items.push({
+          id: job.id,
+          url: job.risultato.reelUrl,
+          filename: `reel-${job.filename.replace(/\.[^.]+$/, "")}.mp4`,
+          mimeType: "video/mp4",
+          uploadedAt: nowIso(),
+          usatoIl: null,
+          source: "telegram",
+          istruzioniUtente: job.istruzioni
+        });
+        await writeData("media-library.json", libreria);
+        job.status = "usato";
+        promossoAutomaticamente = true;
+      }
+
+      await writeData("reel-jobs.json", jobsFile);
+
+      await logAgentRun({
+        agente: IDENTITA.reelMaker.nome,
+        identita: IDENTITA.reelMaker.ruolo,
+        status: "ok",
+        riepilogo: promossoAutomaticamente
+          ? `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).`
+          : `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s). Pronto in "Crea Reel AI" per essere usato in un post.`
+      });
+
+      await commitEPush(`chore(regista): Reel creato da "${job.filename}"`);
+
+      if (promossoAutomaticamente) {
+        // Innescato subito da qui (non solo alla fine dell'intera coda): il
+        // Reel da Telegram può così ricevere la didascalia ed essere
+        // pubblicato senza aspettare il resto dei video ancora in lavorazione.
+        try {
+          await innescaWorkflow("daily-agents.yml");
+        } catch {
+          /* non bloccante: il ciclo giornaliero lo prenderà comunque più tardi */
+        }
+        await inviaMessaggioTelegram("🎬 Il tuo Reel è pronto! Lo pubblico automaticamente al momento migliore, te lo faccio sapere.");
+      }
+    } catch (err) {
+      job.status = "errore";
+      job.erroreMessaggio = err instanceof Error ? err.message : String(err);
+      job.aggiornatoIl = nowIso();
+      await writeData("reel-jobs.json", jobsFile);
+
+      await logAgentRun({
+        agente: IDENTITA.reelMaker.nome,
+        identita: IDENTITA.reelMaker.ruolo,
+        status: "errore",
+        riepilogo: `Errore nella creazione del Reel da "${job.filename}" (fermato allo step "${job.step}"): ${job.erroreMessaggio}`,
+        dettagli: { errore: String(err) }
+      });
+
+      await commitEPush(`chore(regista): errore nel Reel da "${job.filename}"`);
+
+      if (job.source === "telegram") {
+        await inviaMessaggioTelegram(`⚠️ Non sono riuscito a montare il video che mi hai mandato: ${job.erroreMessaggio}`);
+      }
+    }
+
+    elaborati++;
+  }
+
+  if (elaborati === 0) {
     await logAgentRun({
       agente: IDENTITA.reelMaker.nome,
       identita: IDENTITA.reelMaker.ruolo,
       status: "nessuna-azione",
       riepilogo: "Nessun video grezzo in coda per l'AI Reel Maker."
     });
-    return;
-  }
-
-  try {
-    await elaboraJob(job);
-    job.aggiornatoIl = nowIso();
-
-    // I video ricevuti via Telegram non hanno un passaggio di revisione in
-    // dashboard: appena il Reel è pronto entra direttamente nella libreria
-    // media (esattamente come premere "Usa per un post"), così la pipeline
-    // Occhio -> Copy -> Editore lo prende in carico da sola. I job creati
-    // dalla pagina "Crea Reel AI" restano invece in stato "pronto" in attesa
-    // di conferma manuale, comportamento invariato.
-    let promossoAutomaticamente = false;
-    if (job.source === "telegram" && job.risultato) {
-      const libreria = await readData<MediaLibraryFile>("media-library.json");
-      libreria.items.push({
-        id: job.id,
-        url: job.risultato.reelUrl,
-        filename: `reel-${job.filename.replace(/\.[^.]+$/, "")}.mp4`,
-        mimeType: "video/mp4",
-        uploadedAt: nowIso(),
-        usatoIl: null,
-        source: "telegram",
-        istruzioniUtente: job.istruzioni
-      });
-      await writeData("media-library.json", libreria);
-      job.status = "usato";
-      promossoAutomaticamente = true;
-    }
-
-    await writeData("reel-jobs.json", jobsFile);
-
-    await logAgentRun({
-      agente: IDENTITA.reelMaker.nome,
-      identita: IDENTITA.reelMaker.ruolo,
-      status: "ok",
-      riepilogo: promossoAutomaticamente
-        ? `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).`
-        : `Reel creato da "${job.filename}" (categoria ${job.risultato?.piano.categoria}, stile ${job.risultato?.piano.stile}, ${job.risultato?.durataSecondi.toFixed(0)}s). Pronto in "Crea Reel AI" per essere usato in un post.`
-    });
-
-    if (promossoAutomaticamente) {
-      await inviaMessaggioTelegram("🎬 Il tuo Reel è pronto! Lo pubblico automaticamente al momento migliore, te lo faccio sapere.");
-    }
-  } catch (err) {
-    job.status = "errore";
-    job.erroreMessaggio = err instanceof Error ? err.message : String(err);
-    job.aggiornatoIl = nowIso();
-    await writeData("reel-jobs.json", jobsFile);
-
-    await logAgentRun({
-      agente: IDENTITA.reelMaker.nome,
-      identita: IDENTITA.reelMaker.ruolo,
-      status: "errore",
-      riepilogo: `Errore nella creazione del Reel da "${job.filename}" (fermato allo step "${job.step}"): ${job.erroreMessaggio}`,
-      dettagli: { errore: String(err) }
-    });
-
-    if (job.source === "telegram") {
-      await inviaMessaggioTelegram(`⚠️ Non sono riuscito a montare il video che mi hai mandato: ${job.erroreMessaggio}`);
-    }
   }
 }
 
