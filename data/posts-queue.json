@@ -832,6 +832,40 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "f07ef283-9561-408b-815f-1b5f03463029",
+      "createdAt": "2026-09-23T12:29:22.155Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "f07ef283-9561-408b-815f-1b5f03463029",
+        "filename": "reel-IMG_5427.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5566c36c-ed97-4075-8b22-41741d7a3b16.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
+      "createdAt": "2026-09-23T12:29:22.155Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "11c97058-70e7-451f-b6a3-570aaf06c371",
+        "filename": "reel-IMG_4187.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e8c40fdd-405d-499d-81e0-00031ca1aa14.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
     }
   ]
 }

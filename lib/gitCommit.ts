@@ -33,7 +33,24 @@ export async function commitEPush(messaggio: string): Promise<boolean> {
       await execFileAsync("git", ["push"]);
       return true;
     } catch {
-      await execFileAsync("git", comandoPull);
+      try {
+        await execFileAsync("git", comandoPull);
+      } catch (erroreRebase) {
+        // Un rebase che fallisce per un vero conflitto (due esecuzioni
+        // concorrenti che hanno modificato lo stesso file in modo diverso,
+        // non impossibile con più workflow che girano in parallelo) lascia
+        // i marker "<<<<<<< HEAD" scritti dentro i file JSON su disco, a
+        // metà di un rebase mai completato. Se non annullato subito, il
+        // prossimo readData() di QUALSIASI file dati leggerebbe quei
+        // marker come se fossero contenuto vero, mandando in crash ogni
+        // lettura successiva in questa stessa esecuzione (visto dal vivo:
+        // un intero giro del Regista è morto così). "git rebase --abort"
+        // riporta sempre l'albero di lavoro a uno stato pulito e coerente,
+        // anche se poi si rilancia comunque l'errore per far ritentare
+        // (o fallire in modo pulito) il commit a chi ha chiamato.
+        await execFileAsync("git", ["rebase", "--abort"]).catch(() => {});
+        throw erroreRebase;
+      }
       await new Promise((r) => setTimeout(r, 1000 + Math.random() * 4000));
     }
   }

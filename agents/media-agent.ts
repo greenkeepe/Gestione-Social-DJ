@@ -186,14 +186,24 @@ export async function eseguiMediaAgent(): Promise<void> {
     // Preferisce sempre un video quando disponibile: su Instagram i Reel
     // hanno molta più portata organica dei post statici.
     //
-    // Un video trovato qui NON va mai in coda pubblicazione direttamente:
-    // qualunque sia la sua origine (un residuo vecchio, un caricamento che
-    // ha saltato il percorso giusto, ecc.) passa SEMPRE prima dal Regista
-    // (data/reel-jobs.json), che lo ritaglia in 9:16, applica transizioni/
-    // zoom e il testo in sovraimpressione — esattamente come un video
-    // caricato dalla pagina "Crea Reel AI" o mandato su Telegram. Un Reel
-    // pubblicato senza essere passato di là sarebbe il video grezzo
-    // tale e quale, senza nessun montaggio: bug reale, visto dal vivo.
+    // Un video GREZZO trovato qui non va mai in coda pubblicazione
+    // direttamente: qualunque sia la sua origine (un residuo vecchio, un
+    // caricamento che ha saltato il percorso giusto, ecc.) passa SEMPRE
+    // prima dal Regista (data/reel-jobs.json), che lo ritaglia in 9:16,
+    // applica transizioni/zoom e il testo in sovraimpressione — esattamente
+    // come un video caricato dalla pagina "Crea Reel AI" o mandato su
+    // Telegram. Un Reel pubblicato senza essere passato di là sarebbe il
+    // video grezzo tale e quale, senza nessun montaggio: bug reale, visto
+    // dal vivo.
+    //
+    // Un video il cui nome inizia per "reel-" invece è GIÀ un Reel finito:
+    // è esattamente il prefisso che reel-maker-agent.ts aggiunge sempre
+    // quando promuove il proprio output in questa stessa libreria media
+    // (vedi la sezione "promozione" lì). Rimandarlo al Regista lo
+    // farebbe rimontare da capo un video già montato (doppio ritaglio,
+    // doppie transizioni, effetto pessimo) invece di metterlo in coda per
+    // la didascalia: bug reale, visto dal vivo appena dopo aver introdotto
+    // il controllo qui sopra.
     let messiInCoda = 0;
     let videoAlRegista = 0;
     const reelJobsFile = await readData<ReelJobsFile>("reel-jobs.json");
@@ -202,8 +212,8 @@ export async function eseguiMediaAgent(): Promise<void> {
       const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
       if (!prossimo) break;
 
-      const isVideo = prossimo.mimeType.startsWith("video/");
-      if (isVideo) {
+      const isVideoGrezzo = prossimo.mimeType.startsWith("video/") && !prossimo.filename.startsWith("reel-");
+      if (isVideoGrezzo) {
         reelJobsFile.jobs.unshift({
           id: randomUUID(),
           createdAt: nowIso(),
@@ -221,10 +231,13 @@ export async function eseguiMediaAgent(): Promise<void> {
         });
         videoAlRegista++;
       } else {
+        // Qui arrivano le foto (sempre "post") e i Reel già montati dal
+        // Regista, riconosciuti sopra dal prefisso "reel-" (sempre "reel",
+        // mai fatti passare per un generico "post").
         queueFile.queue.push({
           id: randomUUID(),
           createdAt: nowIso(),
-          formato: "post",
+          formato: prossimo.mimeType.startsWith("video/") ? "reel" : "post",
           media: {
             source: prossimo.source ?? "dashboard-upload",
             mediaId: prossimo.id,
@@ -264,10 +277,10 @@ export async function eseguiMediaAgent(): Promise<void> {
       }
     }
 
-    const fotoInCoda = messiInCoda - videoAlRegista;
+    const inCodaDidascalia = messiInCoda - videoAlRegista;
     const pezzi = [
-      fotoInCoda > 0 ? `${fotoInCoda} foto messe in coda per la didascalia` : null,
-      videoAlRegista > 0 ? `${videoAlRegista} video mandati al Regista per il montaggio` : null
+      inCodaDidascalia > 0 ? `${inCodaDidascalia} contenuti (foto o Reel già montati) messi in coda per la didascalia` : null,
+      videoAlRegista > 0 ? `${videoAlRegista} video grezzi mandati al Regista per il montaggio` : null
     ].filter((r): r is string => Boolean(r));
     const riepilogo = `${pezzi.join(" e ")}.`;
     await logAgentRun({

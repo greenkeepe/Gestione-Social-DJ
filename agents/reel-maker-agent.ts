@@ -354,7 +354,13 @@ export async function eseguiReelMakerAgent(): Promise<void> {
         dettagli: { errore: String(err) }
       });
 
-      await commitEPush(`chore(regista): errore nel Reel da "${job.filename}"`);
+      // .catch() qui (non un semplice await): siamo già dentro il catch
+      // esterno, un altro errore di commitEPush (es. conflitto di rebase
+      // concorrente, sempre possibile con più esecuzioni in parallelo) non
+      // deve propagare e uccidere l'intero giro — al prossimo giro
+      // programmato lo stato "errore" di questo job resta comunque salvato
+      // in locale e verrà ricommittato al prossimo salvataggio riuscito.
+      await commitEPush(`chore(regista): errore nel Reel da "${job.filename}"`).catch(() => {});
 
       await inviaMessaggioTelegram(`⚠️ Non sono riuscito a montare "${job.filename}": ${job.erroreMessaggio}`);
     }
