@@ -320,6 +320,361 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-09-23"
+    },
+    {
+      "id": "171bc915-5b9d-4c24-8800-cc7c2e42e738",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "33ec2a84-d158-4442-b6e5-2efb78603168",
+        "filename": "IMG_4084.MOV",
+        "mimeType": "video/quicktime",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/016a044f-8367-4661-b87a-cf40d35c9ab3.MOV"
+      },
+      "caption": "Pista piena, mani alzate, luci verdi e rosse che si mischiano nel tendone. Questo è il momento in cui tutto il lavoro dietro la console si vede: gente che si diverte così, senza pensarci due volte.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#weddingparty",
+        "#weddingdj",
+        "#discjockey",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#djeventi",
+        "#serravallescrivia",
+        "#liguria",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
+    },
+    {
+      "id": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "49ed9f89-2870-4f17-afca-3b48959d8782",
+        "filename": "IMG_4167.MOV",
+        "mimeType": "video/quicktime",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/635f2309-2908-4e75-bee5-ef9c41f0361c.MOV"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "d6602d2f-da56-433a-a7d7-81b3cc6f8347",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "c17343a4-45b8-4b9c-bba0-98b45af1a32b",
+        "filename": "IMG_4181.MOV",
+        "mimeType": "video/quicktime",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/80331ecd-469f-484e-a2de-6d8f072838e6.MOV"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "00c06ce6-82cb-4a63-9485-ea02e2db040e",
+        "filename": "IMG_4187.MOV",
+        "mimeType": "video/quicktime",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/dc373b7e-b5c2-413b-860f-647a1e7d93f5.MOV"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "f07ef283-9561-408b-815f-1b5f03463029",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "d99bf4f0-5af3-45d9-9671-ec487b0a71a2",
+        "filename": "IMG_5427.MOV",
+        "mimeType": "video/quicktime",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4a57e234-45a2-48ed-a00a-2554e5e21419.MOV"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "f5e46b55-8773-4d50-8a2b-aacf06a7ba9f",
+        "filename": "IMG_4893.MP4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/489cdd4c-6015-481c-8e24-d980aec762dc.MP4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "8346f4ac-5ee5-4e33-9147-11654a3f2f0e",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard",
+        "mediaId": "151ad571-940d-4bd6-b09e-3f8fd5ffe74d",
+        "filename": "reel-IMG_4496.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0bae3df4-69ba-46d6-b230-6edf900f6e38.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "4bd7712d-f645-458a-9c79-9e2ec278884b",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard",
+        "mediaId": "f507af46-fcf0-4ab9-a8dd-4dfbcde7af04",
+        "filename": "reel-IMG_1792.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/42930d99-bd5f-4779-ad6b-6a69d6decc2a.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "23b92d9b-74a1-454f-b6ec-1ddf77c48959",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard",
+        "mediaId": "182d216d-2ea0-495b-898b-55aa06857b89",
+        "filename": "reel-20260913_020356.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1dd21ba3-9b08-4d29-9ccc-48120f42c2a9.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "29158769-3e20-4cb6-b48c-fe32553ba611",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard",
+        "mediaId": "adbb14ef-2f57-4ef0-ac4c-3cf72bf511b8",
+        "filename": "reel-20260912_235706.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ebd2bbb9-ce9e-48cd-a262-736f868af74c.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "34cb7516-fdbf-4d64-b71d-a8440c3399d0",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard",
+        "mediaId": "99224835-b22c-44b0-92c3-6484fc0b4496",
+        "filename": "reel-111762.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/432746b7-6685-4c99-a40d-2a942bd344b8.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "55ed805d-e5d9-4553-b5eb-2600139968e7",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard",
+        "mediaId": "c20e68d9-8a9d-440f-9588-907ce56ae7f0",
+        "filename": "reel-video1.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e929895d-2c67-4f98-8325-f6255b7d3d2a.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "2c023b1b-ea54-44bf-adc8-076f89e8b7e0",
+        "filename": "IMG_4184.JPG",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a0bae141-f51c-466f-8aa6-7ece84153a15.JPG"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "3c679d61-eb68-47cb-832f-14902f22faf8",
+        "filename": "IMG_4195.JPG",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9b76107a-92f1-4e87-9b14-d34dd759d81e.JPG"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "e7998f6a-6570-4206-8e7e-5f99a87039fd",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "ec7aeb9a-3fa0-4648-a330-1e220dc759d2",
+        "filename": "6cbbb101-1e5a-43cf-b914-b04ac7a162b5.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/343e7304-bf6d-4028-a848-2a8e05a4b4e5.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "75f37b98-d447-4ef6-8c7b-c72b832f40dc",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "32095a67-1f8a-4648-a06e-c8cd16552bff",
+        "filename": "FB_IMG_1620810286217.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "b4847c0d-f14e-49a1-95f1-5c15ecb390b0",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "ae924d53-b59f-4837-be1b-84fa85ae83bb",
+        "filename": "IMG_20190721_220227.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2afeac63-a680-439b-ae18-274f44975791.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "96799fb1-4a59-4243-9a20-cacaf377cb6c",
+      "createdAt": "2026-09-23T09:02:55.036Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "231f1e9a-5038-4e5b-921d-aaf362b28ea4",
+        "filename": "IMG_20210717_225433.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/b5e6e8df-a88d-4830-af75-30a2329a84fe.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "ff042241-6a24-49cd-82ef-37dbe6cc1243",
+      "createdAt": "2026-09-23T09:02:55.037Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "f5f771a0-1bcc-41cd-bd15-7b229a047b67",
+        "filename": "IMG_5603.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "af059bc4-1202-420d-a035-6da764919d0e",
+      "createdAt": "2026-09-23T09:02:55.037Z",
+      "formato": "post",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "4800ee04-55ed-4987-af28-e25fdccded25",
+        "filename": "IMG_4483.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
     }
   ]
 }
