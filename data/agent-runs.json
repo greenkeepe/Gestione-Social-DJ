@@ -2,6 +2,20 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-09-24 alle 18:30.",
+      "timestamp": "2026-09-23T12:05:34.629Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "Generato un post dalla recensione di Chiara M. (Matrimonio), a rotazione con le foto/video.",
+      "timestamp": "2026-09-23T12:05:30.831Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
@@ -3582,20 +3596,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"video1.mp4\" (categoria wedding, stile clean, 13s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
       "timestamp": "2026-09-16T08:40:57.511Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"video1.mp4\" (categoria wedding, stile clean, 13s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
-      "timestamp": "2026-09-16T08:27:02.440Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto in coda.",
-      "timestamp": "2026-09-15T22:41:51.331Z"
     }
   ]
 }

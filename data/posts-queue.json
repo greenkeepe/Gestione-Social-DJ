@@ -300,12 +300,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0bae3df4-69ba-46d6-b230-6edf900f6e38.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Luce calda, gente stretta stretta, si respira quell'aria di festa vera. Qui il bello sta succedendo adesso.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingparty",
+        "#matrimonio2027",
+        "#weddingday",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#weddingmusic",
+        "#weddingpiemonte",
+        "#matrimonioinpiemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-24",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "4bd7712d-f645-458a-9c79-9e2ec278884b",
@@ -646,6 +660,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "5abec4e8-82be-4bf9-b7e2-964ca7f2a4c0",
+      "createdAt": "2026-09-23T12:05:30.828Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Chiara-M.-07-07-2022.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7ae0be92-d29b-43fd-92ec-335edc81593a.png"
+      },
+      "caption": "Recensioni così sono il motivo per cui faccio questo lavoro.\n\n\"La scelta migliore che si possa fare. Ha reso la nostra festa una vera e propria esplosione di felicità e divertimento. Un DJ che ama il suo lavoro e si vede che lo ama perché lo diverte e ama vedere la gente divertirsi.\"\n— Chiara M., Matrimonio\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#matrimonio2027",
+        "#weddingdj",
+        "#djperfeste",
+        "#weddingmusic",
+        "#djeventi",
+        "#djprofessionista",
+        "#liguria",
+        "#piemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-23",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
