@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-02 alle 21:15.",
+      "timestamp": "2026-09-23T12:06:19.780Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-01 alle 18:30.",
       "timestamp": "2026-09-23T12:06:14.015Z"
     },
@@ -3583,13 +3590,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (template). Programmato per le 18:30.",
       "timestamp": "2026-09-16T08:47:13.119Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"reel-video1.mp4\" (video/reel) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-16T08:47:13.108Z"
     }
   ]
 }
