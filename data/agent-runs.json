@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-09-27 alle 21:15.",
+      "timestamp": "2026-09-23T12:05:50.588Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-09-26 alle 21:15.",
       "timestamp": "2026-09-23T12:05:45.592Z"
     },
@@ -3589,13 +3596,6 @@
         "errore": "Error: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Tuesday, 15-Sep-26 07:00:00 PDT. The current time is Wednesday, 16-Sep-26 01:44:21 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AbVLBrMNXlipC9erTubDiIo\"}}"
       },
       "timestamp": "2026-09-16T08:44:21.235Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (template). Programmato per le 12:30.",
-      "timestamp": "2026-09-16T08:44:20.946Z"
     }
   ]
 }

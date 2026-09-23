@@ -396,12 +396,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ebd2bbb9-ce9e-48cd-a262-736f868af74c.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Notte fonda e pista ancora viva, si balla stretti stretti tra luci soffuse. Momenti così non hanno prezzo.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingday",
+        "#weddingparty",
+        "#weddingdj",
+        "#discjockey",
+        "#djwedding",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#weddingpiemonte",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-27",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "34cb7516-fdbf-4d64-b71d-a8440c3399d0",
