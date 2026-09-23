@@ -1,0 +1,49 @@
+name: Diagnostica media (debug, manuale)
+
+# Solo manuale, mai automatico: confronta un oggetto R2 scaricato
+# direttamente con lo stesso scaricato tramite il proxy della dashboard
+# (dashboard/app/api/r2-file/[chiave]), e ne controlla la validità con
+# ffprobe. Non pubblica nulla su Instagram/Facebook — serve solo a isolare
+# se un video "corrotto" secondo Meta lo era già in origine o se la
+# corruzione avviene nel proxy. Vedi scripts/diagnostica-media.mjs.
+on:
+  workflow_dispatch:
+    inputs:
+      chiave:
+        description: "Chiave dell'oggetto R2 da controllare (es. 6027ee80-....mp4)"
+        required: true
+
+jobs:
+  diagnostica:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Installa dipendenze
+        run: npm install
+
+      - name: Installa ffmpeg (per ffprobe)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Scarica da R2 diretto e dal proxy, confronta i byte
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
+          CHIAVE: ${{ inputs.chiave }}
+        run: node scripts/diagnostica-media.mjs
+
+      - name: ffprobe sul file scaricato direttamente da R2
+        run: ffprobe -v error -show_format -show_streams /tmp/diretto.mp4 || echo "::warning::ffprobe FALLITO sul file diretto da R2: la corruzione era già presente sull'oggetto originale."
+
+      - name: ffprobe sul file scaricato tramite il proxy
+        run: ffprobe -v error -show_format -show_streams /tmp/proxy.mp4 || echo "::warning::ffprobe FALLITO sul file dal proxy: la corruzione avviene nel proxy."
