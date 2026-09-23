@@ -5,6 +5,16 @@
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "errore",
+      "riepilogo": "Errore nella creazione del Reel da \"IMG_4496.MOV\" (fermato allo step \"analisi\"): Command failed: ffprobe -hide_banner -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name,duration -show_entries format=duration -of json /tmp/reel-maker-glt3lR/input.mov\n[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5642fcb6f900] moov atom not found\n/tmp/reel-maker-glt3lR/input.mov: Invalid data found when processing input\n",
+      "dettagli": {
+        "errore": "Error: Command failed: ffprobe -hide_banner -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name,duration -show_entries format=duration -of json /tmp/reel-maker-glt3lR/input.mov\n[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5642fcb6f900] moov atom not found\n/tmp/reel-maker-glt3lR/input.mov: Invalid data found when processing input\n"
+      },
+      "timestamp": "2026-09-23T07:57:00.913Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "errore",
       "riepilogo": "Errore nella creazione del Reel da \"video1.mp4\" (fermato allo step \"analisi\"): Command failed: ffprobe -hide_banner -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name,duration -show_entries format=duration -of json /tmp/reel-maker-9dJiiw/input.mp4\n[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5560ab12d900] moov atom not found\n/tmp/reel-maker-9dJiiw/input.mp4: Invalid data found when processing input\n",
       "dettagli": {
         "errore": "Error: Command failed: ffprobe -hide_banner -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name,duration -show_entries format=duration -of json /tmp/reel-maker-9dJiiw/input.mp4\n[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5560ab12d900] moov atom not found\n/tmp/reel-maker-9dJiiw/input.mp4: Invalid data found when processing input\n"
