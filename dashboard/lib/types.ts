@@ -123,6 +123,7 @@ export interface PianoReel {
   sottotitoli: boolean;
   musica: boolean;
   testoHook: string | null;
+  testoChiusura: string | null;
 }
 
 export interface ReelJob {

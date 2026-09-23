@@ -36,7 +36,7 @@ import {
   controllaQualita,
   caricaSuR2
 } from "../lib/videoTools.js";
-import { generaSegmentiCandidati, costruisciPiano, testoHookDefault, rimuoviEmoji, parametriStile, type ProfiloReel, type PianoReel } from "../lib/reelPlanner.js";
+import { generaSegmentiCandidati, costruisciPiano, testoHookDefault, testoChiusuraDefault, rimuoviEmoji, parametriStile, type ProfiloReel, type PianoReel } from "../lib/reelPlanner.js";
 
 interface ReelJob {
   id: string;
@@ -140,7 +140,8 @@ async function elaboraJob(job: ReelJob): Promise<void> {
       candidati,
       volumiMediaDb,
       profiloRichiesto: job.profilo,
-      testoHook: null
+      testoHook: null,
+      testoChiusura: null
     });
 
     let testoHook = testoHookDefault(brand.nomeArte, piano.categoria);
@@ -152,29 +153,34 @@ Rispondi SOLO col testo da mostrare, senza virgolette né spiegazioni.`;
       const generato = await generaTestoConLLM(promptTesto);
       if (generato) testoHook = rimuoviEmoji(generato.replace(/["\n]/g, "")).slice(0, 40) || testoHook;
     }
-    piano = { ...piano, testoHook };
+    piano = { ...piano, testoHook, testoChiusura: testoChiusuraDefault() };
 
     job.step = "montaggio";
     const { cropW, cropH } = calcolaRitaglio9x16(info);
+    const parametri = parametriStile(piano.stile);
     const clipPaths: string[] = [];
     const durateClip: number[] = [];
     for (let i = 0; i < piano.segmenti.length; i++) {
       const s = piano.segmenti[i];
       const outputClip = path.join(cartella, `clip-${i}.mp4`);
-      await esportaClip({ inputPath, outputPath: outputClip, inizio: s.inizio, durata: s.fine - s.inizio, cropW, cropH });
+      // Zoom lento alternato (dentro/fuori) tra uno spezzone e l'altro: dà
+      // varietà invece di far "respirare" ogni clip sempre allo stesso modo.
+      const zoom = { direzione: (i % 2 === 0 ? "in" : "out") as "in" | "out", intensita: parametri.intensitaZoom };
+      await esportaClip({ inputPath, outputPath: outputClip, inizio: s.inizio, durata: s.fine - s.inizio, cropW, cropH, zoom });
       clipPaths.push(outputClip);
       durateClip.push(s.fine - s.inizio);
     }
 
-    const parametri = parametriStile(piano.stile);
     const outputFinale = path.join(cartella, "reel-finale.mp4");
     await montaReel({
       clipPaths,
       outputPath: outputFinale,
       durateClip,
       transizione: parametri.transizione,
-      crossfadeSec: 0.4,
-      testoHook: piano.testoHook ?? undefined
+      crossfadeSec: parametri.crossfadeSec,
+      paletteTransizioni: parametri.paletteTransizioni,
+      testoHook: piano.testoHook ?? undefined,
+      testoChiusura: piano.testoChiusura ?? undefined
     });
 
     job.step = "verifica-qualita";

@@ -218,17 +218,49 @@ export interface OpzioniClip {
   durata: number;
   cropW: number;
   cropH: number;
+  // Leggero "effetto Ken Burns" (zoom lento continuo): "in" parte fermo e si
+  // stringe, "out" parte già stretto e si allarga verso l'inquadratura
+  // piena. intensita 0.06 = arriva/parte da uno zoom del 6%. Facoltativo:
+  // senza, il fotogramma resta fisso come prima.
+  zoom?: { direzione: "in" | "out"; intensita: number };
 }
 
 // Ritaglia ed esporta un singolo spezzone già in 1080x1920, pronto per essere
 // concatenato. Normalizzare ogni clip (stesso fps/formato pixel) prima del
 // montaggio evita errori di concatenazione con ffmpeg.
+//
+// Lo zoom usa la variabile 'on' di zoompan (indice assoluto del fotogramma
+// in uscita) invece della forma più comune "zoom+step" basata sul valore
+// del fotogramma precedente: quella seconda forma parte sempre da zoom=1 al
+// primo fotogramma, quindi per un "zoom out" farebbe uno scatto istantaneo
+// al valore massimo sul primo fotogramma prima di scendere gradualmente.
+// Con 'on' il valore è calcolato in modo assoluto e deterministico, niente
+// scatti. Rampa completata in 75 fotogrammi (~2.5s a 30fps): sugli spezzoni
+// più lunghi resta ferma al valore raggiunto, mai un secondo scatto.
 export async function esportaClip(opts: OpzioniClip): Promise<void> {
+  const filtri = [`crop=${opts.cropW}:${opts.cropH}`, "scale=1080:1920", "setsar=1", "fps=30"];
+
+  if (opts.zoom) {
+    const rampaFrame = 75;
+    // Le virgole dentro l'espressione min()/max() vanno escapate (\,):
+    // ffmpeg altrimenti le legge come separatore tra filtri della catena,
+    // non come argomento della funzione.
+    const z = opts.zoom.direzione === "in"
+      ? `1+${opts.zoom.intensita}*min(on/${rampaFrame}\\,1)`
+      : `1+${opts.zoom.intensita}*max(1-on/${rampaFrame}\\,0)`;
+    filtri.push(`zoompan=z='${z}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30`);
+  }
+
+  // Piccola correzione colore uniforme (più contrasto/saturazione): niente
+  // di specifico per scena, solo un tocco che rende il risultato meno
+  // "piatto" del video grezzo originale.
+  filtri.push("eq=contrast=1.05:saturation=1.08");
+
   await eseguiFfmpeg([
     "-ss", String(opts.inizio),
     "-t", String(opts.durata),
     "-i", opts.inputPath,
-    "-vf", `crop=${opts.cropW}:${opts.cropH},scale=1080:1920,setsar=1,fps=30`,
+    "-vf", filtri.join(","),
     "-c:v", "libx264",
     "-preset", "veryfast",
     "-pix_fmt", "yuv420p",
@@ -245,12 +277,45 @@ export interface OpzioniMontaggio {
   durateClip: number[]; // durata reale (secondi) di ciascun clip, nello stesso ordine di clipPaths
   transizione: "hard-cut" | "crossfade";
   crossfadeSec?: number;
+  // Tipi di transizione xfade da alternare tra un taglio e l'altro (usato
+  // solo con transizione="crossfade"): senza, resta sempre "fade" come
+  // prima. Vedi la documentazione del filtro xfade di ffmpeg per l'elenco
+  // dei nomi validi (wipeleft, circleopen, smoothright, ...).
+  paletteTransizioni?: string[];
   testoHook?: string;
+  testoChiusura?: string;
 }
 
-// Concatena i clip già normalizzati, applica (se richiesto) una dissolvenza
-// incrociata video+audio tra uno spezzone e l'altro, normalizza il volume
-// finale (loudnorm) e disegna un eventuale testo hook in sovraimpressione.
+function testoEscape(testo: string): string {
+  return testo.replace(/\\/g, "\\\\").replace(/:/g, "\\:").replace(/'/g, "\\'");
+}
+
+// Disegna un testo con dissolvenza in entrata/uscita SOLO nella finestra di
+// tempo [inizio, fine] indicata, invece che per tutta la durata del video
+// (il comportamento precedente: un testo fisso a bruciare per l'intero Reel
+// sembra un watermark incollato allo schermo, non un gancio o una call to
+// action mirata). Le virgole dentro le espressioni "enable"/"alpha" vanno
+// escapate (\,): ffmpeg le leggerebbe come separatore tra filtri della
+// catena invece che come argomento della funzione if()/between().
+function filtroTestoAnimato(testo: string, inizio: number, fine: number, y: string, fontsize: number): string {
+  const testoEscaped = testoEscape(testo);
+  const fade = Math.min(0.35, Math.max(0.12, (fine - inizio) / 4));
+  const finoIn = (inizio + fade).toFixed(2);
+  const finoHold = (fine - fade).toFixed(2);
+  const i = inizio.toFixed(2);
+  const f = fine.toFixed(2);
+  const alpha = `if(lt(t\\,${finoIn})\\,(t-${i})/${fade.toFixed(2)}\\,if(lt(t\\,${finoHold})\\,1\\,if(lt(t\\,${f})\\,(${f}-t)/${fade.toFixed(2)}\\,0)))`;
+  return (
+    `drawtext=text='${testoEscaped}':fontcolor=white:fontsize=${fontsize}:x=(w-text_w)/2:y=${y}:` +
+    `box=1:boxcolor=black@0.45:boxborderw=22:enable='between(t\\,${i}\\,${f})':alpha='${alpha}'`
+  );
+}
+
+// Concatena i clip già normalizzati, applica (se richiesto) transizioni
+// incrociate video+audio tra uno spezzone e l'altro (alternando i tipi
+// dalla paletteTransizioni per varietà, invece di un'unica dissolvenza
+// sempre uguale), normalizza il volume finale (loudnorm) e disegna
+// l'eventuale testo di apertura e/o chiusura in sovraimpressione animata.
 export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
   const n = opts.clipPaths.length;
   if (n === 0) throw new Error("Nessuno spezzone da montare.");
@@ -260,6 +325,7 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
   let filtri: string[];
   let videoLabel: string;
   let audioLabel: string;
+  let durataFinale: number;
 
   if (n === 1 || opts.transizione === "hard-cut") {
     const videoInputs = opts.clipPaths.map((_, i) => `[${i}:v]`).join("");
@@ -267,8 +333,10 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
     filtri = [`${videoInputs}concat=n=${n}:v=1:a=0[vraw]`, `${audioInputs}concat=n=${n}:v=0:a=1[araw]`];
     videoLabel = "vraw";
     audioLabel = "araw";
+    durataFinale = opts.durateClip.reduce((a, b) => a + b, 0);
   } else {
     const cf = opts.crossfadeSec ?? 0.4;
+    const palette = opts.paletteTransizioni?.length ? opts.paletteTransizioni : ["fade"];
     filtri = [];
     let videoCorrente = "0:v";
     let audioCorrente = "0:a";
@@ -276,9 +344,10 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
     for (let i = 1; i < n; i++) {
       const cfEffettiva = Math.min(cf, opts.durateClip[i - 1] * 0.4, opts.durateClip[i] * 0.4);
       const offset = Math.max(durataCumulata - cfEffettiva, 0.1);
+      const tipoTransizione = palette[(i - 1) % palette.length];
       const vOut = `v${i}`;
       const aOut = `a${i}`;
-      filtri.push(`[${videoCorrente}][${i}:v]xfade=transition=fade:duration=${cfEffettiva.toFixed(2)}:offset=${offset.toFixed(2)}[${vOut}]`);
+      filtri.push(`[${videoCorrente}][${i}:v]xfade=transition=${tipoTransizione}:duration=${cfEffettiva.toFixed(2)}:offset=${offset.toFixed(2)}[${vOut}]`);
       filtri.push(`[${audioCorrente}][${i}:a]acrossfade=d=${cfEffettiva.toFixed(2)}[${aOut}]`);
       videoCorrente = vOut;
       audioCorrente = aOut;
@@ -286,6 +355,7 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
     }
     videoLabel = videoCorrente;
     audioLabel = audioCorrente;
+    durataFinale = durataCumulata;
   }
 
   // normalizzazione audio finale (sempre reale, mai "finta": loudnorm legge
@@ -294,11 +364,15 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
 
   let videoFinaleLabel = videoLabel;
   if (opts.testoHook) {
-    const testoEscaped = opts.testoHook.replace(/\\/g, "\\\\").replace(/:/g, "\\:").replace(/'/g, "\\'");
-    filtri.push(
-      `[${videoLabel}]drawtext=text='${testoEscaped}':fontcolor=white:fontsize=58:x=(w-text_w)/2:y=140:box=1:boxcolor=black@0.45:boxborderw=24[vfinal]`
-    );
-    videoFinaleLabel = "vfinal";
+    const fineHook = Math.min(3, Math.max(1.2, opts.durateClip[0]));
+    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoHook, 0, fineHook, "140", 58)}[vhook]`);
+    videoFinaleLabel = "vhook";
+  }
+  if (opts.testoChiusura) {
+    const durataChiusura = Math.min(2.2, Math.max(1.2, durataFinale * 0.2));
+    const inizioChiusura = Math.max(0, durataFinale - durataChiusura);
+    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoChiusura, inizioChiusura, durataFinale, "h-260", 50)}[vchiusura]`);
+    videoFinaleLabel = "vchiusura";
   }
 
   await eseguiFfmpeg([
