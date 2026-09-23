@@ -492,11 +492,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/489cdd4c-6015-481c-8e24-d980aec762dc.MP4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Console pronta, vista pazzesca sulla piscina e le colline. Prima di ogni evento controllo tutto, anche qui dove il panorama fa quasi più scena della musica. Preparazione fatta bene, poi si parte.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingdj",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#djperfeste",
+        "#matrimonioinpiemonte",
+        "#serravallescrivia",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "8346f4ac-5ee5-4e33-9147-11654a3f2f0e",
