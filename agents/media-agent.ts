@@ -69,8 +69,8 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucketName = process.env.R2_BUCKET_NAME;
-  const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
-  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !publicBaseUrl) return null;
+  const dashboardPublicUrl = process.env.DASHBOARD_PUBLIC_URL;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !dashboardPublicUrl) return null;
 
   const brand = await readBrand<BrandFile>();
   const testimonianze = brand.testimonianze ?? [];
@@ -91,7 +91,7 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
     accessKeyId,
     secretAccessKey,
     bucketName,
-    publicBaseUrl,
+    dashboardPublicUrl,
     contentType: "image/png",
     estensione: ".png"
   });

@@ -91,11 +91,11 @@ async function elaboraJob(job: ReelJob): Promise<void> {
     accessKeyId: process.env.R2_ACCESS_KEY_ID,
     secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
     bucketName: process.env.R2_BUCKET_NAME,
-    publicBaseUrl: process.env.R2_PUBLIC_BASE_URL
+    dashboardPublicUrl: process.env.DASHBOARD_PUBLIC_URL
   };
-  if (!r2.accountId || !r2.accessKeyId || !r2.secretAccessKey || !r2.bucketName || !r2.publicBaseUrl) {
+  if (!r2.accountId || !r2.accessKeyId || !r2.secretAccessKey || !r2.bucketName || !r2.dashboardPublicUrl) {
     throw new Error(
-      "Variabili R2 mancanti nell'ambiente dell'agente (R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_BUCKET_NAME/R2_PUBLIC_BASE_URL): impossibile caricare il Reel renderizzato. Vedi .env.example."
+      "Variabili R2 mancanti nell'ambiente dell'agente (R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_BUCKET_NAME/DASHBOARD_PUBLIC_URL): impossibile caricare il Reel renderizzato. Vedi .env.example."
     );
   }
 
@@ -190,7 +190,7 @@ Rispondi SOLO col testo da mostrare, senza virgolette né spiegazioni.`;
       accessKeyId: r2.accessKeyId,
       secretAccessKey: r2.secretAccessKey,
       bucketName: r2.bucketName,
-      publicBaseUrl: r2.publicBaseUrl
+      dashboardPublicUrl: r2.dashboardPublicUrl
     });
 
     job.status = "pronto";

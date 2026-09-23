@@ -351,7 +351,7 @@ export async function controllaQualita(filePath: string, durataAttesaSecondi: nu
 // egress gratuito quando Meta scarica il video per pubblicarlo.
 export async function caricaSuR2(
   filePath: string,
-  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string; publicBaseUrl: string }
+  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string; dashboardPublicUrl: string }
 ): Promise<string> {
   const buffer = await readFile(filePath);
   const chiaveOggetto = `${randomUUID()}${path.extname(filePath) || ".mp4"}`;
@@ -367,5 +367,7 @@ export async function caricaSuR2(
   if (!res.ok) {
     throw new Error(`Upload del Reel su Cloudflare R2 fallito (${res.status}): ${await res.text().catch(() => "")}`);
   }
-  return `${opts.publicBaseUrl.replace(/\/$/, "")}/${chiaveOggetto}`;
+  // Passa dal proxy della dashboard, non dall'URL diretto di R2 — vedi
+  // lib/r2Upload.ts per il motivo (limite di frequenza sul dominio r2.dev).
+  return `${opts.dashboardPublicUrl.replace(/\/$/, "")}/api/r2-file/${chiaveOggetto}`;
 }
