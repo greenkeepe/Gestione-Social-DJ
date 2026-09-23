@@ -940,11 +940,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/034e1692-406e-436a-a28d-8f7e7176c894.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Pista strapiena e mani in aria, luci verdi che colorano tutto. Momenti così mi ripagano di ogni fatica.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#weddingparty",
+        "#weddingday",
+        "#sposi2027",
+        "#matrimonioitaliano",
+        "#discjockey",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#serravallescrivia",
+        "#alessandria",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-12"
     },
     {
       "id": "9ec420fa-a69d-4b13-ad88-c95eaff066f7",
