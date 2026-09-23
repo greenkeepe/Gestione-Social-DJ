@@ -1,6 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { NOME_COOKIE, tokenValido } from "./lib/session";
 
+// Nota: /api/r2-file è pubblico (vedi eccezione sotto) perché Meta
+// scarica i media dei post da lì con una richiesta anonima.
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   if (
