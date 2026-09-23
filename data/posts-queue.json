@@ -992,6 +992,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-10-13"
+    },
+    {
+      "id": "b7237f7f-29d3-4f95-9260-c4234dc6c28b",
+      "createdAt": "2026-09-23T13:03:00.102Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-IT.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/eacefb62-4aa6-4af5-81fb-58c82cefc6a2.png"
+      },
+      "caption": "La musica che trasforma un momento in un ricordo. Sul sito trovi tutto quello che facciamo per i vostri matrimoni.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#djperfeste",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#djeventi",
+        "#piemonte",
+        "#alessandria",
+        "#liguria"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-23",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
