@@ -142,11 +142,55 @@
       "mimeType": "video/quicktime",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-23T09:45:44.737Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-23T12:30:52.427Z",
       "erroreMessaggio": null,
-      "risultato": null,
+      "risultato": {
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/08127164-9e87-48dd-bf09-4932e8283a0c.mp4",
+        "durataSecondi": 11.8,
+        "piano": {
+          "categoria": "wedding",
+          "stile": "clean",
+          "profiloUsato": "wedding",
+          "durataTarget": 13.459999999999997,
+          "hook": {
+            "inizio": 19.28,
+            "fine": 22.28
+          },
+          "segmenti": [
+            {
+              "inizio": 19.28,
+              "fine": 22.28,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 16.28,
+              "fine": 19.28,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 22.28,
+              "fine": 25.28,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 25.28,
+              "fine": 28.28,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 28.28,
+              "fine": 29.74,
+              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Sotto il tendone la festa esplode Forte DJ accende la notte",
+          "testoChiusura": "Scrivi in DM a Forte DJ per info e disponibilità"
+        }
+      },
       "source": "dashboard-upload"
     },
     {
