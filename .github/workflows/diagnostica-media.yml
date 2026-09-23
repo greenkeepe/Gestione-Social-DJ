@@ -43,7 +43,9 @@ jobs:
         run: node scripts/diagnostica-media.mjs
 
       - name: ffprobe sul file scaricato direttamente da R2
-        run: ffprobe -v error -show_format -show_streams /tmp/diretto.mp4 || echo "::warning::ffprobe FALLITO sul file diretto da R2: la corruzione era già presente sull'oggetto originale."
+        run: |
+          ffprobe -v error -show_format -show_streams /tmp/diretto.mp4 || echo "::warning::ffprobe FALLITO sul file diretto da R2 (corruzione già presente sull'oggetto originale)"
 
       - name: ffprobe sul file scaricato tramite il proxy
-        run: ffprobe -v error -show_format -show_streams /tmp/proxy.mp4 || echo "::warning::ffprobe FALLITO sul file dal proxy: la corruzione avviene nel proxy."
+        run: |
+          ffprobe -v error -show_format -show_streams /tmp/proxy.mp4 || echo "::warning::ffprobe FALLITO sul file dal proxy (la corruzione avviene nel proxy)"
