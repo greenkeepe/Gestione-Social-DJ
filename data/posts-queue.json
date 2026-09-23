@@ -556,11 +556,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/42930d99-bd5f-4779-ad6b-6a69d6decc2a.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Luci basse, prime chiacchiere tra gli invitati mentre finisco gli ultimi dettagli in console. Mi piace questo momento, la calma prima che parta tutto.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingday",
+        "#sposi2027",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#djprofessionista",
+        "#serravallescrivia",
+        "#alessandria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "23b92d9b-74a1-454f-b6ec-1ddf77c48959",
