@@ -288,6 +288,38 @@
       "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "e3ee4116-1f44-49e3-baf0-533b267b138f",
+      "createdAt": "2026-09-23T07:57:21.926Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "de710c6d-99c5-419f-a284-10a8d7549124",
+        "filename": "IMG_4067.MOV",
+        "mimeType": "video/quicktime",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/49c65875-2d05-42b4-ad86-9dfeb90a8665.MOV"
+      },
+      "caption": "Un'ora prima che arrivi qualcuno c'è già tutto un mondo qui.\n\nCavi sistemati, prove audio, ogni cassa al suo posto. La gente vede solo la festa, io vedo il lavoro che c'è dietro.\n\nEd è proprio questo che mi piace.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nIl sito con portfolio e recensioni è in bio: dai un'occhiata!",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#sposi2027",
+        "#weddingday",
+        "#matrimonio2027",
+        "#musicapermatrimoni",
+        "#djeventi",
+        "#djprofessionista",
+        "#djperfeste",
+        "#piemonte",
+        "#weddingpiemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     }
   ]
 }
