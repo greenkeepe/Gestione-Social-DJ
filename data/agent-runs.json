@@ -6,6 +6,69 @@
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-23T12:08:13.881Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "nessuna-azione",
+      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
+      "timestamp": "2026-09-23T12:08:13.878Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-23T12:08:13.473Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 387 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-23T12:08:13.469Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-23T12:08:11.499Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-23T12:07:59.486Z"
+    },
+    {
+      "agente": "Vetrina",
+      "identita": "Agente Vetrina Sito Web",
+      "status": "nessuna-azione",
+      "riepilogo": "Già generata una vetrina del sito oggi.",
+      "timestamp": "2026-09-23T12:07:53.653Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-23T12:07:53.650Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "2 video mandati al Regista per il montaggio.",
+      "timestamp": "2026-09-23T12:07:53.270Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-23T12:07:00.139Z"
     },
     {
@@ -3509,75 +3572,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (template). Programmato per le 12:30.",
       "timestamp": "2026-09-16T09:03:48.705Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"20260711_231034.jpg\" (foto) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-16T09:03:48.702Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-16T09:00:30.336Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
-      "timestamp": "2026-09-16T09:00:30.336Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere gli Insights Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Tuesday, 15-Sep-26 07:00:00 PDT. The current time is Wednesday, 16-Sep-26 02:00:30 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AFOD-SkiHDzf2Xj0zWLJWMI\"}}"
-      },
-      "timestamp": "2026-09-16T09:00:30.334Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere i media recenti da Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Tuesday, 15-Sep-26 07:00:00 PDT. The current time is Wednesday, 16-Sep-26 02:00:30 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AJ-hxp_o4_CeFtQrOHE6c-2\"}}"
-      },
-      "timestamp": "2026-09-16T09:00:30.296Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (template). Programmato per le 12:30.",
-      "timestamp": "2026-09-16T09:00:30.166Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "nessuna-azione",
-      "riepilogo": "C'è già un contenuto in coda in attesa di didascalia, non serve selezionare altro media oggi.",
-      "timestamp": "2026-09-16T09:00:30.163Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-16T08:58:26.992Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
-      "timestamp": "2026-09-16T08:58:26.991Z"
     }
   ]
 }

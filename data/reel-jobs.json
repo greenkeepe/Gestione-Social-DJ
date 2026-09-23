@@ -2,6 +2,36 @@
   "_istruzioni": "Coda dei lavori dell'AI Reel Maker. Un job nasce quando carichi un video grezzo dalla pagina 'Crea Reel AI' della dashboard (status: in-coda-analisi). Il Regista (agents/reel-maker-agent.ts, eseguito da .github/workflows/reel-maker.yml) lo elabora e lo porta a 'pronto' o 'errore'. Quando premi 'Usa per un post' su un job pronto, il Reel finito entra in data/media-library.json come un media normale e da lì lo gestiscono gli agenti già esistenti (Occhio -> Copy -> Editore).",
   "jobs": [
     {
+      "id": "90794454-095b-44b0-b266-57786a0c05da",
+      "createdAt": "2026-09-23T12:07:51.449Z",
+      "videoUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e8c40fdd-405d-499d-81e0-00031ca1aa14.mp4",
+      "filename": "reel-IMG_4187.mp4",
+      "mimeType": "video/mp4",
+      "profilo": "auto",
+      "istruzioni": null,
+      "status": "in-coda-analisi",
+      "step": "in-coda",
+      "aggiornatoIl": "2026-09-23T12:07:51.449Z",
+      "erroreMessaggio": null,
+      "risultato": null,
+      "source": "dashboard-upload"
+    },
+    {
+      "id": "85ff5bc5-93c4-453f-a48b-ebf18db8ff89",
+      "createdAt": "2026-09-23T12:07:51.449Z",
+      "videoUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5566c36c-ed97-4075-8b22-41741d7a3b16.mp4",
+      "filename": "reel-IMG_5427.mp4",
+      "mimeType": "video/mp4",
+      "profilo": "auto",
+      "istruzioni": null,
+      "status": "in-coda-analisi",
+      "step": "in-coda",
+      "aggiornatoIl": "2026-09-23T12:07:51.449Z",
+      "erroreMessaggio": null,
+      "risultato": null,
+      "source": "dashboard-upload"
+    },
+    {
       "id": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
       "createdAt": "2026-09-23T09:45:44.737Z",
       "videoUrl": "https://gestione-social-dj.vercel.app/api/r2-file/489cdd4c-6015-481c-8e24-d980aec762dc.MP4",
