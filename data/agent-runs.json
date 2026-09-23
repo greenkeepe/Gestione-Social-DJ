@@ -7,6 +7,16 @@
       "status": "errore",
       "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
       "dettagli": {
+        "errore": "Error: Instagram: Elaborazione media Instagram fallita (container 18367315414245803). Facebook: Graph API error [/266354304012276/videos]: {\"error\":{\"message\":\"There was a problem with your video file. Please try again with another file,\",\"type\":\"OAuthException\",\"code\":351,\"error_subcode\":1363027,\"is_transient\":false,\"error_user_title\":\"Video corrotto\",\"error_user_msg\":\"Il video che stai cercando di caricare non è leggibile. Potrebbe essere corrotto o includere contenuti dannosi. Riprova con un altro video.\",\"fbtrace_id\":\"AldDgzpjdQCOLKytKasmB67\"}}"
+      },
+      "timestamp": "2026-09-23T07:04:09.326Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "errore",
+      "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
+      "dettagli": {
         "errore": "Error: Instagram: Elaborazione media Instagram fallita (container 18367314124245803). Facebook: Graph API error [/266354304012276/videos]: {\"error\":{\"message\":\"Unable to fetch video file from URL.\",\"type\":\"OAuthException\",\"code\":389,\"error_subcode\":1363057,\"is_transient\":false,\"error_user_title\":\"Impossibile recuperare il file video dall'URL\",\"error_user_msg\":\"Impossibile recuperare il file video dall'URL.\",\"fbtrace_id\":\"AzfhEPMW7-jAdVTsr191rT5\"}}"
       },
       "timestamp": "2026-09-23T06:52:15.001Z"
