@@ -55,7 +55,16 @@ export async function GET(req: NextRequest, { params }: { params: { chiave: stri
     if (valore) headers.set(nome, valore);
   }
   if (!headers.has("accept-ranges")) headers.set("accept-ranges", "bytes");
-  headers.set("cache-control", "public, max-age=31536000, immutable");
+  // "immutable, max-age=31536000" (un anno) sembrava una scelta sicura dato
+  // che ogni chiave R2 è un UUID nuovo che non cambia mai — ma se anche una
+  // sola risposta viene messa in cache mentre è già danneggiata (visto dal
+  // vivo: il bug del troncamento qui sopra), resta bloccata così per un
+  // anno intero, a prescindere da qualunque correzione lato codice. 5
+  // minuti bastano per gli utilizzi reali (Meta scarica il media subito
+  // dopo che gli passiamo l'URL, non lo ririchiede a distanza di giorni) e
+  // limitano il danno di una futura risposta cattiva a pochi minuti invece
+  // che a un anno.
+  headers.set("cache-control", "public, max-age=300");
 
   // Bug reale trovato dal vivo: passare "upstream.body" (uno stream) come
   // corpo della risposta troncava il file a pochi KB — sempre, non solo sui

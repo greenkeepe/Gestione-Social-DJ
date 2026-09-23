@@ -21,19 +21,29 @@ export default async function AnteprimaPage() {
     : "@il_tuo_handle";
   const nomeArte = brand.nomeArte && !brand.nomeArte.startsWith("MODIFICA") ? brand.nomeArte : "DJ";
 
-  // Ordinati per data/ora di pubblicazione programmata (i più vicini prima),
-  // non per ordine di inserimento in coda: così l'Anteprima si legge come un
-  // vero calendario editoriale. I contenuti senza ancora una data (in attesa
-  // di didascalia) restano in fondo, non essendo ancora "in calendario".
+  // In cima quelli in pubblicazione OGGI (o rimasti indietro da un giorno
+  // passato): sono il turno di adesso, quello che a chi guarda la pagina
+  // interessa vedere per primo — con la possibilità di premere "Pubblica
+  // ora" senza dover cercare la riga giusta in mezzo a tutte le altre. Poi
+  // il resto in ordine di data/ora di pubblicazione programmata (i più
+  // vicini prima). I contenuti senza ancora una data (in attesa di
+  // didascalia) restano in fondo a tutto, non essendo ancora "in calendario".
+  const oggi = new Date().toISOString().slice(0, 10);
+  const inPubblicazioneOggi = (item: (typeof queueFile.queue)[number]) =>
+    item.status === "pronto" && Boolean(item.dataProgrammata) && item.dataProgrammata! <= oggi;
   const chiaveData = (item: (typeof queueFile.queue)[number]) =>
     item.dataProgrammata ? `${item.dataProgrammata} ${item.orarioProgrammato ?? "00:00"}` : "9999-99-99 99:99";
-  const items = [...queueFile.queue].sort((a, b) => chiaveData(a).localeCompare(chiaveData(b)));
+  const items = [...queueFile.queue].sort((a, b) => {
+    const priorita = Number(inPubblicazioneOggi(b)) - Number(inPubblicazioneOggi(a));
+    if (priorita !== 0) return priorita;
+    return chiaveData(a).localeCompare(chiaveData(b));
+  });
 
   return (
     <div>
       <h2>Anteprima</h2>
       <p className="note">
-        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. Ordinati per data di pubblicazione programmata. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro), in pubblicazione (è il turno di oggi, l&apos;Editore lo pubblica al prossimo controllo), o già pubblicato.
+        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine di data. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro), in pubblicazione (è il turno di oggi, l&apos;Editore lo pubblica al prossimo controllo), o già pubblicato. Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare.
       </p>
 
       {items.length === 0 && (
