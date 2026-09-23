@@ -960,6 +960,70 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-10-13"
+    },
+    {
+      "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
+      "createdAt": "2026-09-23T09:34:08.633Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Cristina-R.-11-09-2023.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/de8ef902-33d9-43a6-9ed2-abbeca02af74.png"
+      },
+      "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Con grande maestria è riuscito ad animare la nostra festa con musica adeguata in ogni momento: musiche d'atmosfera per la conversazione, brani coinvolgenti per lo svago, hit che spaccano per ballare tutta la notte.\"\n— Cristina R., Matrimonio\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#matrimonioitaliano",
+        "#weddingparty",
+        "#weddingitaly",
+        "#sposi2027",
+        "#discjockey",
+        "#djperfeste",
+        "#djprofessionista",
+        "#weddingmusic",
+        "#serravallescrivia",
+        "#liguria",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-10-14",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
+    },
+    {
+      "id": "6cd4fa39-3145-47ed-93dc-1d0cec191e3d",
+      "createdAt": "2026-09-23T09:34:16.239Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-FR.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/44cf8ea4-17d6-421b-8371-faaa6d73dedb.png"
+      },
+      "caption": "Ogni matrimonio ha il suo momento che resta per sempre. Sul sito trovate tutto quello che serve per il vostro.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#matrimonio2027",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#animazionematrimonio",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#serravallescrivia",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-09-23",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
