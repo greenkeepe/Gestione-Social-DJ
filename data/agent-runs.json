@@ -5,6 +5,13 @@
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
+      "riepilogo": "Reel creato da \"IMG_4067.MOV\" (categoria wedding, stile clean, 13s) e messo in coda per la didascalia e la pubblicazione automatica.",
+      "timestamp": "2026-09-23T12:32:34.659Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
       "riepilogo": "Reel creato da \"IMG_4084.MOV\" (categoria evento, stile dynamic, 14s) e messo in coda per la didascalia e la pubblicazione automatica.",
       "timestamp": "2026-09-23T12:32:01.639Z"
     },
@@ -3559,13 +3566,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-16T09:03:48.963Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
-      "timestamp": "2026-09-16T09:03:48.929Z"
     }
   ]
 }
