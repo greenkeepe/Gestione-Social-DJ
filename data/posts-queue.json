@@ -588,12 +588,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Console pronta, luci viola accese, gente ancora al buffet a chiacchierare. Si parte tra poco.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingday",
+        "#sposi2027",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#djwedding",
+        "#djperfeste",
+        "#weddingmusic",
+        "#djeventi",
+        "#piemonte",
+        "#liguria",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-30",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "b4847c0d-f14e-49a1-95f1-5c15ecb390b0",
