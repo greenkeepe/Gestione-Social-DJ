@@ -972,11 +972,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/38309615-d7b3-4a52-a758-a4b209c1d063.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Serata buia ma l'atmosfera si sente tutta, gente ancora lì a godersi il momento.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingdj",
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingday",
+        "#djwedding",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#animazionematrimonio",
+        "#liguria",
+        "#piemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-13"
     }
   ]
 }
