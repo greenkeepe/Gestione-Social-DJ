@@ -299,11 +299,55 @@
       "mimeType": "video/mp4",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-23T08:03:05.631Z",
+      "status": "pronto",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-23T08:25:40.310Z",
       "erroreMessaggio": null,
-      "risultato": null,
+      "risultato": {
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e929895d-2c67-4f98-8325-f6255b7d3d2a.mp4",
+        "durataSecondi": 13.2,
+        "piano": {
+          "categoria": "wedding",
+          "stile": "clean",
+          "profiloUsato": "wedding",
+          "durataTarget": 14.86,
+          "hook": {
+            "inizio": 3,
+            "fine": 6
+          },
+          "segmenti": [
+            {
+              "inizio": 3,
+              "fine": 6,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 0,
+              "fine": 3,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 6,
+              "fine": 9,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 12,
+              "fine": 15,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 15,
+              "fine": 17.86,
+              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Forte DJ",
+          "testoChiusura": "Scrivimi in DM"
+        }
+      },
       "source": "dashboard"
     },
     {
