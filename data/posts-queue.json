@@ -684,12 +684,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Il taglio della torta con i fuochi freddi accesi, questo sì che è un finale.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingdj",
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#matrimonio2027",
+        "#weddingday",
+        "#djperfeste",
+        "#djeventi",
+        "#weddingmusic",
+        "#djwedding",
+        "#liguria",
+        "#lombardia",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-10-03",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "af059bc4-1202-420d-a035-6da764919d0e",
