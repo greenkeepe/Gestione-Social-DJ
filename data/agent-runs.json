@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Reel creato da \"IMG_4496.MOV\" (categoria wedding, stile clean, 8s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
+      "timestamp": "2026-09-23T08:17:51.916Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
