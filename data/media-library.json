@@ -1,4 +1,13 @@
 {
   "_istruzioni": "Libreria dei media caricati dalla dashboard (pagina 'Carica media'). Il Media Agent pesca da qui il prossimo file non ancora usato e lo mette in coda per la didascalia.",
-  "items": []
+  "items": [
+    {
+      "id": "de710c6d-99c5-419f-a284-10a8d7549124",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/49c65875-2d05-42b4-ad86-9dfeb90a8665.MOV",
+      "filename": "IMG_4067.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:20:50.719Z",
+      "usatoIl": null
+    }
+  ]
 }
