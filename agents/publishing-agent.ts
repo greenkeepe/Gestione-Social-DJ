@@ -22,6 +22,8 @@ interface PostsQueueFile {
     dataProgrammata?: string | null;
     media: { downloadUrl: string; mimeType: string };
     pillarId?: string;
+    ultimoErrore?: string | null;
+    tentativiFalliti?: number;
   }>;
 }
 
@@ -160,14 +162,24 @@ export async function eseguiPublishingAgent(): Promise<void> {
 
     if (!risultatoIg && !risultatoFb) {
       // Nessuna pubblicazione è uscita davvero: il contenuto resta "pronto"
-      // e si può ritentare tranquillamente al prossimo ciclo.
-      throw new Error(`Instagram: ${erroreIg}. Facebook: ${erroreFb}`);
+      // e si può ritentare tranquillamente al prossimo ciclo. Salviamo
+      // comunque l'errore sul contenuto stesso (non solo nel log agenti):
+      // così la pagina "Contenuti" può segnalarlo ed è facile da eliminare
+      // se è un errore permanente (es. media cancellato da R2) invece di
+      // continuare a ritentarlo in eterno bloccando la coda.
+      const messaggioErrore = `Instagram: ${erroreIg}. Facebook: ${erroreFb}`;
+      target.tentativiFalliti = (target.tentativiFalliti ?? 0) + 1;
+      target.ultimoErrore = messaggioErrore;
+      await writeData("posts-queue.json", queueFile);
+      throw new Error(messaggioErrore);
     }
 
     // Almeno una pubblicazione è uscita: il contenuto NON deve più tornare
     // "pronto", altrimenti verrebbe ripubblicato in doppione sulla
     // piattaforma che ha già funzionato.
     target.status = risultatoIg && risultatoFb ? "pubblicato" : "pubblicato-parziale";
+    target.ultimoErrore = null;
+    target.tentativiFalliti = 0;
 
     logFile.log.unshift({
       queueId: target.id,
@@ -301,6 +313,9 @@ async function riprovaPubblicazioneParziale(
   await writeData("published-log.json", logFile);
 
   if (nuovoErrore) {
+    target.tentativiFalliti = (target.tentativiFalliti ?? 0) + 1;
+    target.ultimoErrore = `${piattaforma}: ${nuovoErrore}`;
+    await writeData("posts-queue.json", queueFile);
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
       identita: IDENTITA.publishing.ruolo,
@@ -313,6 +328,8 @@ async function riprovaPubblicazioneParziale(
 
   const oraCompleto = Boolean(voce.instagramId && voce.facebookId);
   target.status = oraCompleto ? "pubblicato" : "pubblicato-parziale";
+  target.ultimoErrore = null;
+  target.tentativiFalliti = 0;
   await writeData("posts-queue.json", queueFile);
 
   await logAgentRun({

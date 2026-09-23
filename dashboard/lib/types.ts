@@ -29,6 +29,8 @@ export interface QueueItem {
   pillarId?: string;
   istruzioniUtente?: string | null;
   media: { filename: string; mimeType: string; downloadUrl: string; source?: string };
+  ultimoErrore?: string | null;
+  tentativiFalliti?: number;
 }
 
 export interface PostsQueueFile {

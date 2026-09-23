@@ -25,6 +25,12 @@ export default async function ContenutiPage() {
           <div className="card" key={item.id}>
             <div className="label">{item.formato} — {item.status}</div>
             <p className="note">{item.media.filename}</p>
+            {(item.tentativiFalliti ?? 0) > 0 && (
+              <p className="error-msg">
+                ⚠️ Fallito {item.tentativiFalliti}× — {item.ultimoErrore}
+                {item.tentativiFalliti! >= 3 && " — probabilmente un errore permanente (es. media non più su R2): valuta di eliminarlo."}
+              </p>
+            )}
             {item.caption && <p>{item.caption}</p>}
             {item.hashtags.length > 0 && <p className="note">{item.hashtags.join(" ")}</p>}
             {item.orarioProgrammato && (
