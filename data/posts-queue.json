@@ -960,38 +960,6 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-10-13"
-    },
-    {
-      "id": "15c3d053-2ecd-4974-ba42-701743b55544",
-      "createdAt": "2026-09-23T09:30:06.326Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "sito-Cookie-Policy.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/40edc085-abd3-4ada-ba54-2ed965e553bd.png"
-      },
-      "caption": "Trasparenza anche nelle piccole cose: ho aggiornato la cookie policy del sito. Tutti i dettagli sono online.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#weddingday",
-        "#weddingitaly",
-        "#djprofessionista",
-        "#discjockey",
-        "#weddingmusic",
-        "#djperfeste",
-        "#matrimonioinpiemonte",
-        "#lombardia",
-        "#liguria"
-      ],
-      "orarioProgrammato": "12:30",
-      "dataProgrammata": "2026-09-23",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     }
   ]
 }

@@ -9,6 +9,28 @@ export interface PaginaSito {
   etichetta: string;
 }
 
+// Pagine di servizio/legali che un sito ha quasi sempre in fondo, ma che
+// non hanno alcun senso come "vetrina" promozionale su Instagram (nessuno
+// vuole un post sulla cookie policy). Filtrate via sia sul percorso URL sia
+// sul testo del link, per beccarle anche quando il link è tradotto o ha un
+// percorso diverso dall'atteso.
+const PAROLE_ESCLUSE = [
+  "cookie",
+  "privacy",
+  "termini",
+  "condizioni",
+  "legal",
+  "note-legali",
+  "disclaimer",
+  "gdpr",
+  "informativa"
+];
+
+function paginaDaEscludere(percorso: string, etichetta: string): boolean {
+  const testo = `${percorso} ${etichetta}`.toLowerCase();
+  return PAROLE_ESCLUSE.some((parola) => testo.includes(parola));
+}
+
 export async function verificaChromiumDisponibile(): Promise<void> {
   try {
     const browser = await chromium.launch();
@@ -47,6 +69,7 @@ export async function scopriPagineSito(baseUrl: string): Promise<PaginaSito[]> {
         const percorso = u.pathname.replace(/\/$/, "") || "/";
         if (viste.has(percorso)) continue;
         viste.add(percorso);
+        if (paginaDaEscludere(percorso, testo)) continue;
         pagine.push({ url: `${u.origin}${u.pathname}`, etichetta: testo || percorso });
       } catch {
         // href non valido (es. "javascript:void(0)", "mailto:...", ecc.): ignorato
