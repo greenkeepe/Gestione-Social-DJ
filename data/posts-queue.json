@@ -652,11 +652,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/432746b7-6685-4c99-a40d-2a942bd344b8.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Buio quasi totale, solo un po' di luce blu che filtra. Momento di raccoglimento prima che parta tutto. Console pronta, io pronto. Manca poco.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#weddingdj",
+        "#sposi2027",
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#weddingmusic",
+        "#djperfeste",
+        "#discjockey",
+        "#djeventi",
+        "#serravallescrivia",
+        "#alessandria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "55ed805d-e5d9-4553-b5eb-2600139968e7",
