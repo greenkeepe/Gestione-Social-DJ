@@ -15,6 +15,7 @@ import { eseguiReplyAgent } from "./reply-agent.js";
 import { eseguiAnalyticsAgent } from "./analytics-agent.js";
 import { eseguiStrategyAgent } from "./strategy-agent.js";
 import { eseguiNoteAgent } from "./note-agent.js";
+import { eseguiSitoAgent } from "./sito-agent.js";
 
 interface AgentRun {
   agente: string;
@@ -96,6 +97,7 @@ export async function eseguiMasterAgent(): Promise<void> {
 
   await eseguiPasso("Agente Media (Occhio)", eseguiMediaAgent);
   await eseguiPasso("Agente Contenuti (Copy)", eseguiContentAgent);
+  await eseguiPasso("Agente Vetrina (Sito)", eseguiSitoAgent);
   await eseguiPasso("Agente Lead (Cacciatore)", eseguiLeadsAgent);
   await eseguiPasso("Agente Risposte (Portavoce)", eseguiReplyAgent);
   await eseguiPasso("Agente Analytics (Analista)", eseguiAnalyticsAgent);

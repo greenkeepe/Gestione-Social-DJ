@@ -67,5 +67,10 @@ export const IDENTITA = {
     nome: "Regista",
     ruolo: "Agente AI Reel Maker",
     descrizione: "Trasforma un video grezzo caricato dalla dashboard in un Reel verticale pronto per i social: analizza scene e audio, sceglie i momenti migliori, monta e verifica il risultato prima di metterlo in libreria media."
+  },
+  sito: {
+    nome: "Vetrina",
+    ruolo: "Agente Vetrina Sito Web",
+    descrizione: "Ogni giorno cattura uno screenshot reale di una pagina del sito (ruotando tra tutte, mai la stessa due giorni di fila) e lo mette in coda come post extra, separato dal contenuto foto/video del giorno."
   }
 } as const satisfies Record<string, Identita>;

@@ -189,22 +189,48 @@ export function testoCtaContatto(brand: Record<string, any>): string | null {
   return pezzi.join(" ");
 }
 
-// Prepara "qualcosa da vedere" per l'LLM: per una foto è direttamente il suo
-// URL pubblico; per un video/reel è un fotogramma estratto con ffmpeg
-// (scaricato temporaneamente, mai salvato altrove). Ritorna null se non è
+// Prepara "qualcosa da vedere" per l'LLM: per una foto scarica i byte reali
+// e li manda in base64 (mai il solo URL — vedi nota sotto); per un
+// video/reel è un fotogramma estratto con ffmpeg. Ritorna null se non è
 // possibile (niente ffmpeg, download fallito, ecc.): chi chiama ricade sul
 // livello successivo, non blocca mai l'agente.
+//
+// Prima si passava direttamente l'URL pubblico della foto (media.downloadUrl)
+// all'API Anthropic, lasciando che fosse lei a scaricarla: se quel fetch
+// falliva silenziosamente (rete, redirect, timeout) la funzione tornava
+// null e chi chiama scriveva una didascalia "alla cieca" basata solo sul
+// tema del giorno — visto dal vivo più volte con foto di pista da ballo
+// piena di gente pubblicate con una didascalia su "un'ora prima che
+// arrivino gli ospiti, cavi, prove audio": un testo totalmente scollegato
+// dalla foto vera, perché quella foto Claude non l'aveva mai vista.
+// Scaricare noi stessi i byte (stessa identica via usata per i video, R2
+// diretto) toglie questa dipendenza dalla raggiungibilità dell'URL.
 async function preparaImmagineDelMedia(media: { downloadUrl: string; mimeType: string }): Promise<ImmagineDaAnalizzare | null> {
-  if (media.mimeType.startsWith("image/")) {
-    return { url: media.downloadUrl };
-  }
-  if (!media.mimeType.startsWith("video/")) return null;
+  if (!media.mimeType.startsWith("image/") && !media.mimeType.startsWith("video/")) return null;
 
   const accountId = process.env.R2_ACCOUNT_ID;
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucketName = process.env.R2_BUCKET_NAME;
   if (!accountId || !accessKeyId || !secretAccessKey || !bucketName) return null;
+
+  const r2Opts = { accountId, accessKeyId, secretAccessKey, bucketName };
+
+  if (media.mimeType.startsWith("image/")) {
+    let cartella: string | null = null;
+    try {
+      cartella = await creaCartellaTemporanea("content-agent-img-");
+      const imgPath = path.join(cartella, "input");
+      await scaricaDaR2(media.downloadUrl, imgPath, r2Opts);
+      const buffer = await readFile(imgPath);
+      return { base64: { mediaType: media.mimeType, data: buffer.toString("base64") } };
+    } catch (err) {
+      console.error("[Copy] impossibile scaricare la foto per la visione:", err);
+      return null;
+    } finally {
+      if (cartella) await rimuoviCartella(cartella);
+    }
+  }
 
   let cartella: string | null = null;
   try {
@@ -216,7 +242,7 @@ async function preparaImmagineDelMedia(media: { downloadUrl: string; mimeType: s
     // passaggio può troncare il download (limite della funzione serverless
     // Vercel), producendo un file corrotto — vedi lib/videoTools.ts >
     // scaricaDaR2 per i dettagli.
-    await scaricaDaR2(media.downloadUrl, videoPath, { accountId, accessKeyId, secretAccessKey, bucketName });
+    await scaricaDaR2(media.downloadUrl, videoPath, r2Opts);
     const info = await analizzaVideo(videoPath);
     const framePath = path.join(cartella, "frame.jpg");
     await estraiFotogramma(videoPath, info.durataSecondi * 0.4, framePath);
@@ -297,11 +323,11 @@ async function scriviProssimaDidascalia(giaFalliti: Set<string>): Promise<EsitoD
       const immagine = await preparaImmagineDelMedia(target.media);
       if (immagine) {
         const promptVisione = `Guarda l'immagine allegata: è una foto o un fotogramma reale ripreso durante un evento/matrimonio con DJ.
-Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), come se la scrivesse di getto Andrea stesso (il DJ), non un copywriter. Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
-Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
+Scrivi una didascalia Instagram in italiano BASATA SOLO SU QUELLO CHE VEDI DAVVERO in questa immagine specifica (persone, atmosfera, luci, che momento della serata sembra essere — pista piena, cerimonia, preparativi, ecc: guardalo, non darlo per scontato), come se la scrivesse di getto Andrea stesso (il DJ) col telefono in mano, non un copywriter. Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
+Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (solo uno spunto secondario, MAI in contraddizione con quello che vedi davvero nell'immagine — se non c'entra nulla, ignoralo del tutto): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
 
-Scrivi in modo naturale e diretto, come un vero messaggio scritto al volo dal telefono: frasi brevi, linguaggio colloquiale. EVITA lo stile tipico da AI: niente trattini lunghi (—), niente frasi a effetto costruite ("in quell'istante...", "un momento che racconta..."), niente elenchi di aggettivi in fila, niente metafore forzate, niente domande retoriche finali. Massimo 1 emoji, anche zero va benissimo, solo se aggiunge davvero qualcosa.
-Massimo 40 parole. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
+Massimo 2 frasi brevi, dirette, colloquiali — un commento al volo, non un racconto. EVITA lo stile da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi, niente metafore forzate, niente domande retoriche. Al massimo 1 emoji, meglio zero.
+Massimo 22 parole in tutto. NON inventare dettagli che non vedi davvero (nomi degli sposi, date, location). Non scrivere hashtag, non chiedere di salvare/taggare/condividere, non scrivere una call to action: li aggiungo io dopo.`;
         const testoVisione = await generaTestoConLLMEImmagine(promptVisione, immagine);
         if (testoVisione) {
           corpo = testoVisione;
@@ -326,8 +352,9 @@ Brand: ${JSON.stringify(brandSintetico)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
 Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
 
-Scrivi in modo naturale e diretto, come un vero messaggio scritto al volo dal telefono: frasi brevi, linguaggio colloquiale. EVITA lo stile tipico da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi in fila, niente metafore forzate, niente domande retoriche finali. Massimo 1 emoji, anche zero va benissimo.
-Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
+IMPORTANTE: non hai nessuna foto/video reale sotto mano in questo caso, quindi NON descrivere una scena visiva specifica come se la stessi guardando (niente "in questo momento vedi...", niente dettagli concreti inventati tipo cavi/luci/persone che fanno una certa azione, niente "questo scatto"): scrivi invece un pensiero breve legato al tema, che valga in generale e stia bene accanto a una foto qualsiasi di un evento vero.
+Massimo 2 frasi brevi, dirette, colloquiali. EVITA lo stile da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi, niente metafore forzate, niente domande retoriche.
+Massimo 22 parole in tutto, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
         const testoLLM = await generaTestoConLLM(promptTesto);
         if (testoLLM) {
           corpo = testoLLM;
@@ -343,14 +370,16 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
     const righe = [corpo.trim(), testoIncoraggiaSalvataggio(), ctaContatto].filter((r): r is string => Boolean(r));
     const caption = righe.join("\n\n");
 
-    // Un solo contenuto pubblicato al giorno (limite reale imposto da
-    // publishing-agent.ts): il primo giorno libero da qui in avanti è
-    // quello che NESSUN altro contenuto "pronto"/pubblicato occupa già,
-    // così un caricamento massivo di più foto/video si spalma su più
+    // Un solo contenuto "evento" pubblicato al giorno (limite reale imposto
+    // da publishing-agent.ts): il primo giorno libero da qui in avanti è
+    // quello che NESSUN altro contenuto evento "pronto"/pubblicato occupa
+    // già, così un caricamento massivo di più foto/video si spalma su più
     // giorni diversi in Anteprima invece di finire tutto ammucchiato su oggi.
+    // I post "sito" (agents/sito-agent.ts) sono un canale separato e non
+    // contano qui: possono uscire lo stesso giorno di un post evento.
     const dateOccupate = new Set(
       queueFile.queue
-        .filter((p) => p.id !== target!.id && ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status) && p.dataProgrammata)
+        .filter((p) => p.id !== target!.id && p.formato !== "sito" && ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status) && p.dataProgrammata)
         .map((p) => p.dataProgrammata as string)
     );
     const pianificazione = pianificaProssimaPubblicazione(dateOccupate);

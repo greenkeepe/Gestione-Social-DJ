@@ -58,6 +58,9 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      - name: Installa Playwright (Chromium)
+        run: npx playwright install --with-deps chromium
+
       # actions/checkout blocca il codice al commit che esisteva nel momento
       # in cui QUESTO workflow è stato innescato, non a quello reale al
       # momento in cui parte davvero: se un'altra esecuzione (es. il Regista

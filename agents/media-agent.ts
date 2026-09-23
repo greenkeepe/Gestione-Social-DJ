@@ -103,10 +103,11 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
 
   // Stesso primo-giorno-libero usato dall'Agente Contenuti (lib/bestTime.ts):
   // un post da recensione non deve rubare/duplicare il giorno già occupato
-  // da un altro contenuto in coda.
+  // da un altro contenuto "evento" in coda. I post "sito" (agents/sito-agent.ts)
+  // sono un canale separato e non contano qui.
   const dateOccupate = new Set(
     queueFile.queue
-      .filter((p) => ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status as string) && p.dataProgrammata)
+      .filter((p) => p.formato !== "sito" && ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status as string) && p.dataProgrammata)
       .map((p) => p.dataProgrammata as string)
   );
   const pianificazione = pianificaProssimaPubblicazione(dateOccupate);

@@ -121,15 +121,24 @@ Il Regista (`agents/reel-maker-agent.ts`, eseguito da `.github/workflows/reel-ma
 3. **Piano di montaggio** (`lib/reelPlanner.ts`): sceglie l'hook (mai i primissimi istanti del video) e i segmenti migliori in base al punteggio, con stile Clean/Dynamic/Bold dedotto dal profilo (in **Automatico**, dedotto dall'energia audio e dalla frequenza dei cambi scena).
 4. **Montaggio**: ritaglio 9:16 centrato con un leggero zoom continuo alternato dentro/fuori su ogni spezzone (effetto "Ken Burns"), transizioni tra un taglio e l'altro variate a seconda dello stile (nette e brevi per Bold/Dynamic, dissolvenze più lunghe ed eleganti per Clean — mai più un taglio secco senza transizione), una piccola correzione colore uniforme, normalizzazione audio (`loudnorm`), testo di apertura animato (dissolvenza in/out, visibile solo nei primi secondi) ed eventuale testo di chiusura negli ultimi secondi.
 5. **Controllo qualità**: verifica reale (risoluzione 1080×1920, presenza audio, durata coerente) prima di segnare il job come pronto — se qualcosa non torna il job va in **errore** invece di essere spacciato per riuscito.
-6. Il Reel finito viene caricato su Cloudflare R2 e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa" per i video caricati **dalla dashboard**.
-
-I video ricevuti **da Telegram** (vedi sotto) sono un'eccezione voluta: appena il Reel è pronto entra da solo nella libreria media, senza passare dal click "Usa per un post" — è tutto il senso di mandare un video dal telefono e non doverci più pensare.
+6. Il Reel finito viene caricato su Cloudflare R2 ed entra **subito** in `data/media-library.json` come un media normale — qualunque sia la sua origine (dashboard o Telegram), senza bisogno di nessuna conferma manuale: lo gestiscono gli agenti già esistenti, Occhio lo mette in coda, Copy scrive la didascalia (con visione AI sul fotogramma reale, testo di apertura/chiusura più lungo e pertinente al contenuto), Editore lo pubblica nell'orario migliore. Lo vedi comunque comparire nella pagina "Crea Reel AI" con l'anteprima, e puoi sempre **Rigenerare** o **Eliminare** un Reel già fatto.
 
 **Limiti noti (per restare a costo zero)**:
 - Il ritaglio 9:16 è **centrato**, non segue il soggetto: un vero tracking richiederebbe un modello di visione artificiale (GPU, servizio a pagamento).
 - **Niente sottotitoli automatici**: non è integrato nessun servizio di trascrizione (a pagamento). Restano disattivati finché non ne colleghi uno.
 - **Niente musica di sottofondo automatica**: nessuna libreria musicale con diritti verificati è integrata — il Reel usa solo l'audio originale del video, normalizzato.
 - Puoi disattivare la funzione senza toccare il codice impostando `ENABLE_AI_REEL_MAKER=false`.
+
+## Agente Vetrina (post giornaliero dal sito web)
+
+Ogni giorno, oltre al post foto/video, l'Agente Vetrina (`agents/sito-agent.ts`) cattura uno **screenshot reale** di una pagina del tuo sito (`config/brand.json` → `contatti.sitoWeb`) con un browser headless (Playwright/Chromium, installato gratis sul runner GitHub Actions) e lo mette in coda come post extra:
+
+1. Apre la home del sito e ne legge i link di navigazione reali (nessuna pagina hardcoded: segue la struttura vera del sito, qualunque essa sia).
+2. Sceglie la prossima pagina non ancora mostrata, ruotando tra tutte prima di ripartire dal principio (stessa logica delle recensioni in rotazione).
+3. Cattura uno screenshot verticale 4:5 (1080×1350, adatto al feed Instagram) della parte superiore di quella pagina.
+4. Scrive una didascalia con visione AI basata su quello che si vede davvero nello screenshot (stessa logica delle foto/Reel).
+
+Questo post "sito" è un **canale separato** da quello foto/video del giorno: `publishing-agent.ts` pubblica al massimo 1 post evento + 1 post sito al giorno, uno non ruba mai il turno all'altro. Se `contatti.sitoWeb` non è configurato in `config/brand.json`, l'agente non fa nulla.
 
 ## Invio da Telegram (il modo più semplice di usare il sistema)
 

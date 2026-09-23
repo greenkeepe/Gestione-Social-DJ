@@ -77,16 +77,17 @@ export async function eseguiPublishingAgent(): Promise<void> {
       return;
     }
 
-    const pubblicatoOggi = logFile.log.some((p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi));
-    if (pubblicatoOggi && !forzaQueueId) {
-      await logAgentRun({
-        agente: IDENTITA.publishing.nome,
-        identita: IDENTITA.publishing.ruolo,
-        status: "nessuna-azione",
-        riepilogo: "Già pubblicato un contenuto oggi, evito doppie pubblicazioni."
-      });
-      return;
-    }
+    // Due "canali" separati, non un unico limite "1 pubblicazione al
+    // giorno" in totale: al massimo 1 post evento (foto/reel/testimonianza)
+    // + 1 post "sito" (agents/sito-agent.ts) al giorno. Un contenuto sito
+    // non ruba mai il turno a uno evento e viceversa — ognuno ha il suo
+    // conteggio "già pubblicato oggi" indipendente.
+    const categoriaDi = (formato: unknown) => (formato === "sito" ? "sito" : "evento");
+    const categorieGiaPubblicateOggi = new Set(
+      logFile.log
+        .filter((p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi))
+        .map((p) => categoriaDi(p.formato))
+    );
 
     // Solo i contenuti il cui giorno programmato è oggi o già passato sono
     // pubblicabili adesso: un contenuto pianificato per un giorno futuro
@@ -99,14 +100,22 @@ export async function eseguiPublishingAgent(): Promise<void> {
     const target = forzaQueueId
       ? queueFile.queue.find((p) => p.id === forzaQueueId && p.status === "pronto")
       : queueFile.queue
-          .filter((p) => p.status === "pronto" && p.orarioProgrammato && (!p.dataProgrammata || p.dataProgrammata <= oggi))
+          .filter(
+            (p) =>
+              p.status === "pronto" &&
+              p.orarioProgrammato &&
+              (!p.dataProgrammata || p.dataProgrammata <= oggi) &&
+              !categorieGiaPubblicateOggi.has(categoriaDi(p.formato))
+          )
           .sort((a, b) => (a.dataProgrammata ?? "").localeCompare(b.dataProgrammata ?? ""))[0];
     if (!target) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,
         status: "nessuna-azione",
-        riepilogo: forzaQueueId ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.` : "Nessun contenuto pronto in coda per oggi."
+        riepilogo: forzaQueueId
+          ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.`
+          : "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili)."
       });
       return;
     }
