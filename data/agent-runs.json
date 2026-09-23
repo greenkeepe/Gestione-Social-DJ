@@ -5,6 +5,13 @@
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-09-23T15:23:22.828Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
       "riepilogo": "Pubblicazione forzata richiesta per un id (b7237f7f-29d3-4f95-9260-c4234dc6c28b) non trovato o non pronto.",
       "timestamp": "2026-09-23T15:20:52.461Z"
     },
@@ -3562,13 +3569,6 @@
       "status": "ok",
       "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
       "timestamp": "2026-09-16T12:17:26.897Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "ok",
-      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
-      "timestamp": "2026-09-16T12:17:26.895Z"
     }
   ]
 }
