@@ -73,7 +73,7 @@ jobs:
             for i in 1 2 3 4 5; do
               git push && break
               echo "Push rifiutato (probabile scrittura concorrente su data/), riprovo dopo un rebase..."
-              git pull --rebase origin "${GITHUB_REF_NAME}"
+              git pull --rebase origin "${GITHUB_REF_NAME}" || { echo "Rebase in conflitto reale, annullo per ripartire da uno stato pulito"; git rebase --abort 2>/dev/null || true; }
               sleep $((RANDOM % 5 + 1))
             done
           else

@@ -36,10 +36,25 @@ export async function GET(req: NextRequest, { params }: { params: { chiave: stri
   const client = new AwsClient({ accessKeyId, secretAccessKey, service: "s3", region: "auto" });
   const endpoint = `https://${accountId}.r2.cloudflarestorage.com/${bucketName}/${chiave}`;
 
+  // Bug reale, root cause vera del troncamento (non il passaggio dello
+  // stream qui sotto, che era solo un sintomo secondario): aws4fetch
+  // chiama al suo interno il "fetch" globale, che nell'App Router di
+  // Next.js è sostituito da una versione che mette in cache le richieste
+  // per conto proprio (la "Data Cache"), attiva di default anche dentro un
+  // Route Handler. Senza "cache: no-store" qui, la primissima richiesta
+  // fatta a una data chiave R2 restava in cache e veniva riservita
+  // IDENTICA per qualsiasi altra chiave richiesta dopo — verificato dal
+  // vivo: due immagini diverse, da 726 KB e 1,7 MB su R2, arrivavano
+  // entrambe dal proxy come gli stessi identici 5.738 byte troncati. Il
+  // "cache-control" impostato più sotto sulla RISPOSTA di questa funzione
+  // è una cosa diversa (riguarda come Vercel/i client mettono in cache
+  // quello che restituiamo noi): non c'entra con questa cache interna
+  // sulla richiesta che facciamo noi verso R2.
   const range = req.headers.get("range");
   const upstream = await client.fetch(endpoint, {
     method: "GET",
-    headers: range ? { range } : {}
+    headers: range ? { range } : {},
+    cache: "no-store"
   });
 
   if (!upstream.ok && upstream.status !== 206) {

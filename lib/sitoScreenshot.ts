@@ -35,8 +35,8 @@ function paginaDaEscludere(percorso: string, etichetta: string): boolean {
   // dall'italiano: il sito parla italiano, la Vetrina mostra solo quello,
   // mai la versione francese/inglese/tedesca/spagnola.
   const etichettaPulita = etichetta.trim().toLowerCase();
-  if (/^(fr|en|de|es|pt|nl)$/.test(etichettaPulita)) return true;
-  if (/^\/(fr|en|de|es|pt|nl)(\/|$)/.test(percorso)) return true;
+  if (/^(it|fr|en|de|es|pt|nl)$/.test(etichettaPulita)) return true;
+  if (/^\/(it|fr|en|de|es|pt|nl)(\/|$)/.test(percorso)) return true;
 
   return false;
 }
