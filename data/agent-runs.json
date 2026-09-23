@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Reel creato da \"IMG_5427.MOV\" (categoria wedding, stile clean, 12s) e messo in coda per la didascalia e la pubblicazione automatica.",
+      "timestamp": "2026-09-23T12:04:28.801Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "errore",
       "riepilogo": "Errore nella creazione del Reel da \"IMG_4893.MP4\" (fermato allo step \"analisi\"): Video troppo corto (2.9s): serve almeno qualche secondo di materiale per montare un Reel.",
       "dettagli": {
@@ -3589,13 +3596,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto in coda.",
       "timestamp": "2026-09-15T19:30:01.928Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-15T15:00:42.480Z"
     }
   ]
 }
