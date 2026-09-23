@@ -10,7 +10,7 @@ import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
-import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
+import { pianificaProssimaPubblicazione } from "../lib/bestTime.js";
 import { generaCartTestimonianza, type Testimonianza } from "../lib/testimonialCard.js";
 import { caricaBufferSuR2 } from "../lib/r2Upload.js";
 import { costruisciHashtag, testoCtaContatto } from "./content-agent.js";
@@ -100,7 +100,16 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
   const corpo = `${intro}\n\n"${scelta.citazione}"\n— ${scelta.cliente}, ${scelta.tipoEvento}`;
   const cta = testoCtaContatto(brand as Record<string, any>);
   const caption = [corpo, cta].filter((r): r is string => Boolean(r)).join("\n\n");
-  const oggi = new Date();
+
+  // Stesso primo-giorno-libero usato dall'Agente Contenuti (lib/bestTime.ts):
+  // un post da recensione non deve rubare/duplicare il giorno già occupato
+  // da un altro contenuto in coda.
+  const dateOccupate = new Set(
+    queueFile.queue
+      .filter((p) => ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status as string) && p.dataProgrammata)
+      .map((p) => p.dataProgrammata as string)
+  );
+  const pianificazione = pianificaProssimaPubblicazione(dateOccupate);
 
   queueFile.queue.push({
     id: randomUUID(),
@@ -115,8 +124,8 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
     },
     caption,
     hashtags: costruisciHashtag(brand as Record<string, any>),
-    orarioProgrammato: scegliOrarioDelGiorno(oggi.getDay()).ora,
-    dataProgrammata: oggi.toISOString().slice(0, 10),
+    orarioProgrammato: pianificazione.ora,
+    dataProgrammata: pianificazione.data,
     status: "pronto",
     istruzioniUtente: null,
     pillarId: "testimonianze"

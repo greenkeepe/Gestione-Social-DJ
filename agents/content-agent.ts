@@ -24,7 +24,7 @@ import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { commitEPush } from "../lib/gitCommit.js";
 import { generaTestoConLLM, generaTestoConLLMEImmagine, type ImmagineDaAnalizzare } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
-import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
+import { pianificaProssimaPubblicazione } from "../lib/bestTime.js";
 import { campionaPesato, type VoceLogPerformance } from "../lib/performanceLearning.js";
 import {
   verificaFfmpegDisponibile,
@@ -343,19 +343,28 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
     const righe = [corpo.trim(), testoIncoraggiaSalvataggio(), ctaContatto].filter((r): r is string => Boolean(r));
     const caption = righe.join("\n\n");
 
+    // Un solo contenuto pubblicato al giorno (limite reale imposto da
+    // publishing-agent.ts): il primo giorno libero da qui in avanti è
+    // quello che NESSUN altro contenuto "pronto"/pubblicato occupa già,
+    // così un caricamento massivo di più foto/video si spalma su più
+    // giorni diversi in Anteprima invece di finire tutto ammucchiato su oggi.
+    const dateOccupate = new Set(
+      queueFile.queue
+        .filter((p) => p.id !== target!.id && ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status) && p.dataProgrammata)
+        .map((p) => p.dataProgrammata as string)
+    );
+    const pianificazione = pianificaProssimaPubblicazione(dateOccupate);
+
     target.caption = caption;
     target.hashtags = costruisciHashtag(brand, publishedLog.log);
     target.pillarId = pilastro.id;
-    target.orarioProgrammato = scegliOrarioDelGiorno(new Date().getDay()).ora;
-    // Il sistema pubblica sempre in giornata (l'Editore gira più volte al
-    // giorno cercando l'orario giusto, mai il giorno dopo): la data è quindi
-    // sempre oggi, salvata qui solo per mostrarla nelle anteprime.
-    target.dataProgrammata = new Date().toISOString().slice(0, 10);
+    target.orarioProgrammato = pianificazione.ora;
+    target.dataProgrammata = pianificazione.data;
     target.status = "pronto";
 
     await writeData("posts-queue.json", queueFile);
 
-    const riepilogo = `Scritta didascalia per il contenuto "${pilastro.nome}" (${metodo}). Programmato per le ${target.orarioProgrammato}.`;
+    const riepilogo = `Scritta didascalia per il contenuto "${pilastro.nome}" (${metodo}). Programmato per il ${target.dataProgrammata} alle ${target.orarioProgrammato}.`;
     await logAgentRun({
       agente: IDENTITA.content.nome,
       identita: IDENTITA.content.ruolo,

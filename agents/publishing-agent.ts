@@ -88,20 +88,35 @@ export async function eseguiPublishingAgent(): Promise<void> {
       return;
     }
 
+    // Solo i contenuti il cui giorno programmato è oggi o già passato sono
+    // pubblicabili adesso: un contenuto pianificato per un giorno futuro
+    // (vedi lib/bestTime.ts > pianificaProssimaPubblicazione, che spalmA il
+    // caricamento massivo di più foto/video su giorni diversi) deve
+    // aspettare il suo turno, non uscire in anticipo solo perché è il primo
+    // della coda con un orario che combacia con l'ora attuale. Tra i
+    // contenuti eleggibili si prende sempre quello con la data più vecchia
+    // (mai quello con la data più lontana, anche se più avanti nell'array).
     const target = forzaQueueId
       ? queueFile.queue.find((p) => p.id === forzaQueueId && p.status === "pronto")
-      : queueFile.queue.find((p) => p.status === "pronto" && p.orarioProgrammato);
+      : queueFile.queue
+          .filter((p) => p.status === "pronto" && p.orarioProgrammato && (!p.dataProgrammata || p.dataProgrammata <= oggi))
+          .sort((a, b) => (a.dataProgrammata ?? "").localeCompare(b.dataProgrammata ?? ""))[0];
     if (!target) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,
         status: "nessuna-azione",
-        riepilogo: forzaQueueId ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.` : "Nessun contenuto pronto in coda."
+        riepilogo: forzaQueueId ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.` : "Nessun contenuto pronto in coda per oggi."
       });
       return;
     }
 
-    if (!forzaQueueId && !siamoNellaFinestra(target.orarioProgrammato!)) {
+    // Un contenuto rimasto indietro rispetto al giorno programmato (es. un
+    // ciclo saltato) va pubblicato appena possibile, senza aspettare che
+    // l'orologio ripassi esattamente dall'orario originale: quel controllo
+    // ha senso solo per un contenuto programmato per la giornata odierna.
+    const inRitardo = Boolean(target.dataProgrammata && target.dataProgrammata < oggi);
+    if (!forzaQueueId && !inRitardo && !siamoNellaFinestra(target.orarioProgrammato!)) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,

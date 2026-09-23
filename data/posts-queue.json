@@ -315,7 +315,7 @@
         "#weddingpiemonte",
         "#alessandria"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "12:30",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
@@ -351,7 +351,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-24"
     },
     {
       "id": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
@@ -379,11 +379,11 @@
         "#piemonte",
         "#lombardia"
       ],
-      "orarioProgrammato": "12:30",
+      "orarioProgrammato": "21:15",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-25"
     },
     {
       "id": "d6602d2f-da56-433a-a7d7-81b3cc6f8347",
@@ -411,11 +411,11 @@
         "#lombardia",
         "#alessandria"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "21:15",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-26"
     },
     {
       "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
@@ -443,11 +443,11 @@
         "#lombardia",
         "#alessandria"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "21:15",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-27"
     },
     {
       "id": "f07ef283-9561-408b-815f-1b5f03463029",
@@ -475,11 +475,11 @@
         "#weddingpiemonte",
         "#liguria"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "12:30",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-28"
     },
     {
       "id": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
@@ -507,11 +507,11 @@
         "#serravallescrivia",
         "#weddingpiemonte"
       ],
-      "orarioProgrammato": "12:30",
+      "orarioProgrammato": "18:30",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-29"
     },
     {
       "id": "8346f4ac-5ee5-4e33-9147-11654a3f2f0e",
@@ -543,7 +543,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-09-30"
     },
     {
       "id": "4bd7712d-f645-458a-9c79-9e2ec278884b",
@@ -575,7 +575,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-01"
     },
     {
       "id": "23b92d9b-74a1-454f-b6ec-1ddf77c48959",
@@ -603,11 +603,11 @@
         "#piemonte",
         "#matrimonioinpiemonte"
       ],
-      "orarioProgrammato": "12:30",
+      "orarioProgrammato": "21:15",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-02"
     },
     {
       "id": "29158769-3e20-4cb6-b48c-fe32553ba611",
@@ -635,11 +635,11 @@
         "#weddingpiemonte",
         "#serravallescrivia"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "21:15",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-03"
     },
     {
       "id": "34cb7516-fdbf-4d64-b71d-a8440c3399d0",
@@ -667,11 +667,11 @@
         "#alessandria",
         "#piemonte"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "21:15",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-04"
     },
     {
       "id": "55ed805d-e5d9-4553-b5eb-2600139968e7",
@@ -699,11 +699,11 @@
         "#liguria",
         "#piemonte"
       ],
-      "orarioProgrammato": "18:30",
+      "orarioProgrammato": "12:30",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-05"
     },
     {
       "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
@@ -731,11 +731,11 @@
         "#weddingpiemonte",
         "#serravallescrivia"
       ],
-      "orarioProgrammato": "12:30",
+      "orarioProgrammato": "18:30",
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-06"
     },
     {
       "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
@@ -767,7 +767,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-07"
     },
     {
       "id": "e7998f6a-6570-4206-8e7e-5f99a87039fd",
@@ -799,7 +799,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-09-23"
+      "dataProgrammata": "2026-10-08"
     },
     {
       "id": "75f37b98-d447-4ef6-8c7b-c72b832f40dc",
