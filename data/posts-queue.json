@@ -684,11 +684,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e929895d-2c67-4f98-8325-f6255b7d3d2a.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Ultimi controlli prima che entri tutti. Luci ancora basse, si respira quell'attesa prima che parta tutto. Io sempre lì, tra cavi e console, a sistemare gli ultimi dettagli.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingparty",
+        "#weddingday",
+        "#matrimonio2027",
+        "#animazionematrimonio",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#matrimonioinpiemonte",
+        "#liguria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
