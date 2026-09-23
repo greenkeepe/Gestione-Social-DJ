@@ -15,6 +15,23 @@ function isHeic(file: File): boolean {
   return /^image\/hei[cf]$/i.test(file.type) || /\.hei[cf]$/i.test(file.name);
 }
 
+// heic2any (come molte librerie basate su WASM/libheif) a volte rifiuta la
+// Promise con un oggetto semplice {code, message} invece che un vero Error:
+// "err instanceof Error" è falso e String(err) darebbe "[object Object]",
+// un errore illeggibile in dashboard. Qui si prende il messaggio ovunque si
+// trovi.
+function messaggioErrore(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  if (err && typeof err === "object" && "message" in err && typeof (err as { message: unknown }).message === "string") {
+    return (err as { message: string }).message;
+  }
+  try {
+    return JSON.stringify(err);
+  } catch {
+    return String(err);
+  }
+}
+
 // Le foto iPhone sono quasi sempre in formato HEIC: il browser spesso non
 // gli assegna nessun "type" (causa l'errore "Dati mancanti" a valle) e,
 // anche quando lo fa, Instagram/Facebook non accettano comunque HEIC per
@@ -65,7 +82,11 @@ export function UploadForm() {
       try {
         if (isHeic(file)) {
           setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "conversione" } : r)));
-          file = await convertiSeHeic(file);
+          try {
+            file = await convertiSeHeic(file);
+          } catch (err) {
+            throw new Error(`Conversione HEIC→JPEG fallita (${messaggioErrore(err)}). Prova a esportarla come JPEG dall'app Foto prima di caricarla.`);
+          }
         }
 
         setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "caricamento" } : r)));
@@ -87,9 +108,7 @@ export function UploadForm() {
 
         setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "fatto", percentuale: 100 } : r)));
       } catch (err) {
-        setRighe((prev) =>
-          prev.map((r, idx) => (idx === i ? { ...r, stato: "errore", errore: err instanceof Error ? err.message : String(err) } : r))
-        );
+        setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "errore", errore: messaggioErrore(err) } : r)));
       }
     }
 
