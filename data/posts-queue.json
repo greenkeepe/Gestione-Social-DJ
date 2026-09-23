@@ -908,11 +908,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Il taglio della torta con i fuochi freddi che sparano in aria, che spettacolo stasera.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#matrimonio2027",
+        "#sposi2027",
+        "#discjockey",
+        "#djperfeste",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#weddingpiemonte",
+        "#matrimonioinpiemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-12"
     },
     {
       "id": "af059bc4-1202-420d-a035-6da764919d0e",
