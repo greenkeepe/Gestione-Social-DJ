@@ -112,6 +112,14 @@
       "mimeType": "image/jpeg",
       "uploadedAt": "2026-09-23T07:43:46.276Z",
       "usatoIl": null
+    },
+    {
+      "id": "4800ee04-55ed-4987-af28-e25fdccded25",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg",
+      "filename": "IMG_4483.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:56:47.194Z",
+      "usatoIl": null
     }
   ]
 }
