@@ -41,10 +41,27 @@ function messaggioErrore(err: unknown): string {
 async function convertiSeHeic(file: File): Promise<File> {
   if (!isHeic(file)) return file;
   const heic2any = (await import("heic2any")).default;
-  const risultato = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.9 });
-  const blob = Array.isArray(risultato) ? risultato[0] : risultato;
   const nuovoNome = file.name.replace(/\.hei[cf]$/i, "") + ".jpg";
-  return new File([blob], nuovoNome, { type: "image/jpeg" });
+
+  try {
+    const risultato = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.9 });
+    const blob = Array.isArray(risultato) ? risultato[0] : risultato;
+    return new File([blob], nuovoNome, { type: "image/jpeg" });
+  } catch (err) {
+    // Non tutti i file con estensione .heic/.heif contengono davvero dati
+    // HEIC: iOS a volte la mantiene anche dopo aver già ricompresso la foto
+    // in JPEG (es. foto condivise/salvate da alcune app). heic2any se ne
+    // accorge e rifiuta con questo errore specifico invece di "convertire"
+    // qualcosa che è già a posto — non è un vero fallimento, basta
+    // rietichettare il file com'è, senza ricodificarlo.
+    const msg = messaggioErrore(err);
+    if (/already browser readable/i.test(msg)) {
+      const match = msg.match(/already browser readable:\s*([\w/-]+)/i);
+      const tipoReale = match?.[1] ?? "image/jpeg";
+      return new File([file], nuovoNome, { type: tipoReale });
+    }
+    throw err;
+  }
 }
 
 // Il file va direttamente dal browser a Cloudflare R2 (URL "presigned",
