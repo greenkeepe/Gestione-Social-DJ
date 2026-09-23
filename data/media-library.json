@@ -64,6 +64,14 @@
       "mimeType": "video/quicktime",
       "uploadedAt": "2026-09-23T07:21:09.134Z",
       "usatoIl": null
+    },
+    {
+      "id": "ec7aeb9a-3fa0-4648-a330-1e220dc759d2",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/343e7304-bf6d-4028-a848-2a8e05a4b4e5.jpg",
+      "filename": "6cbbb101-1e5a-43cf-b914-b04ac7a162b5.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:46.596Z",
+      "usatoIl": null
     }
   ]
 }
