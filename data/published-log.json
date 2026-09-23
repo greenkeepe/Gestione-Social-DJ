@@ -2,6 +2,30 @@
   "_istruzioni": "Storico di tutto ciò che è stato pubblicato realmente, con id post Meta, orario, e metriche raccolte successivamente dall'Analytics Agent.",
   "log": [
     {
+      "queueId": "5abec4e8-82be-4bf9-b7e2-964ca7f2a4c0",
+      "timestamp": "2026-09-23T20:07:39.809Z",
+      "instagramId": "17903034159569157",
+      "facebookId": "1723514336450602",
+      "instagramStoryId": "18133574017637634",
+      "formato": "post",
+      "pillarId": "testimonianze",
+      "hashtags": [
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#sposi2027",
+        "#matrimonio2027",
+        "#weddingdj",
+        "#djperfeste",
+        "#weddingmusic",
+        "#djeventi",
+        "#djprofessionista",
+        "#liguria",
+        "#piemonte",
+        "#alessandria"
+      ],
+      "punteggio": null
+    },
+    {
       "queueId": "b7237f7f-29d3-4f95-9260-c4234dc6c28b",
       "timestamp": "2026-09-23T15:20:05.631Z",
       "instagramId": "18115271416997005",
