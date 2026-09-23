@@ -5,6 +5,13 @@
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
+      "riepilogo": "Reel creato da \"IMG_4187.MOV\" (categoria wedding, stile clean, 13s) e messo in coda per la didascalia e la pubblicazione automatica.",
+      "timestamp": "2026-09-23T12:05:03.193Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
       "riepilogo": "Reel creato da \"IMG_5427.MOV\" (categoria wedding, stile clean, 12s) e messo in coda per la didascalia e la pubblicazione automatica.",
       "timestamp": "2026-09-23T12:04:28.801Z"
     },
@@ -3589,13 +3596,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto in coda.",
       "timestamp": "2026-09-15T22:41:51.331Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto in coda.",
-      "timestamp": "2026-09-15T19:30:01.928Z"
     }
   ]
 }
