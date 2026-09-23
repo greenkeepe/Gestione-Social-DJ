@@ -396,11 +396,26 @@
         "mimeType": "video/quicktime",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/80331ecd-469f-484e-a2de-6d8f072838e6.MOV"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Serata che scorre tra chiacchiere e sorrisi sotto il gazebo. Fuori il buio, dentro tanta gente e voglia di stare insieme. Momenti così, semplici, sono quelli che mi piace accompagnare con la musica giusta.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingitaly",
+        "#djprofessionista",
+        "#discjockey",
+        "#djperfeste",
+        "#djeventi",
+        "#piemonte",
+        "#lombardia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
