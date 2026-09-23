@@ -460,12 +460,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e929895d-2c67-4f98-8325-f6255b7d3d2a.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Foto venuta un po' scura ma il momento c'era tutto. Ultimi controlli prima di far partire la serata.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#sposi2027",
+        "#weddingday",
+        "#weddingdj",
+        "#matrimonioitaliano",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djeventi",
+        "#djwedding",
+        "#matrimonioinpiemonte",
+        "#piemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-29",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
