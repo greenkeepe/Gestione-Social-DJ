@@ -16,6 +16,7 @@ import { eseguiAnalyticsAgent } from "./analytics-agent.js";
 import { eseguiStrategyAgent } from "./strategy-agent.js";
 import { eseguiNoteAgent } from "./note-agent.js";
 import { eseguiSitoAgent } from "./sito-agent.js";
+import { innescaWorkflow } from "../lib/gitCommit.js";
 
 interface AgentRun {
   agente: string;
@@ -113,6 +114,22 @@ export async function eseguiMasterAgent(): Promise<void> {
     status: "ok",
     riepilogo: "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile."
   });
+
+  // Innesca subito anche il controllo pubblicazione (publish-check.yml)
+  // invece di aspettare solo il suo cron dedicato: i trigger "schedule" di
+  // GitHub Actions arrivano spesso in ritardo di ore su repository con
+  // poca attività continua (limite noto di GitHub, non risolvibile lato
+  // nostro — vedi il commento in publish-check.yml). Questo ciclo gira già
+  // più volte al giorno (cron proprio + ogni upload/caricamento che lo fa
+  // partire prima), quindi ogni sua esecuzione è un'occasione in più
+  // perché un contenuto già scaduto (data odierna o passata) esca subito
+  // invece di aspettare il prossimo cron flaky. Best-effort: se fallisce,
+  // il cron dedicato di publish-check.yml lo controllerà comunque.
+  try {
+    await innescaWorkflow("publish-check.yml");
+  } catch {
+    /* non bloccante */
+  }
 
   // Il resoconto via Telegram parte solo dal vero ciclo automatico delle
   // 06:00 (flag impostato da .github/workflows/daily-agents.yml in base a
