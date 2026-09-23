@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Pubblicazione forzata richiesta per un id (b7237f7f-29d3-4f95-9260-c4234dc6c28b) non trovato o non pronto.",
+      "timestamp": "2026-09-23T15:20:52.461Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18115271416997005) e Facebook (1723281829807186). + Storia IG pubblicata.",
       "timestamp": "2026-09-23T15:20:05.634Z"
@@ -3562,13 +3569,6 @@
       "status": "ok",
       "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
       "timestamp": "2026-09-16T12:17:26.895Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-16T12:17:26.705Z"
     }
   ]
 }
