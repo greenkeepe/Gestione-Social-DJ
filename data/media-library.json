@@ -96,6 +96,14 @@
       "mimeType": "image/jpeg",
       "uploadedAt": "2026-09-23T07:21:54.286Z",
       "usatoIl": null
+    },
+    {
+      "id": "231f1e9a-5038-4e5b-921d-aaf362b28ea4",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/b5e6e8df-a88d-4830-af75-30a2329a84fe.jpg",
+      "filename": "IMG_20210717_225433.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:55.901Z",
+      "usatoIl": null
     }
   ]
 }
