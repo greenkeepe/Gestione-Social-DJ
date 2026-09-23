@@ -364,12 +364,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1dd21ba3-9b08-4d29-9ccc-48120f42c2a9.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Luci rosse e gente che balla stretta, questa è pista vera. Serata che scalda, si sente anche dal telefono.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#sposi2027",
+        "#weddingdj",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#discjockey",
+        "#weddingpiemonte",
+        "#liguria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-09-26",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "29158769-3e20-4cb6-b48c-fe32553ba611",
