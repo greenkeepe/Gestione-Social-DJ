@@ -6,6 +6,69 @@
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-23T09:38:02.171Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "ok",
+      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore pure: si parte.\"",
+      "timestamp": "2026-09-23T09:38:02.168Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
+      "timestamp": "2026-09-23T09:38:00.198Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 387 follower Instagram, 0 lead attivi.",
+      "timestamp": "2026-09-23T09:38:00.194Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-23T09:37:58.170Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-23T09:37:45.566Z"
+    },
+    {
+      "agente": "Vetrina",
+      "identita": "Agente Vetrina Sito Web",
+      "status": "ok",
+      "riepilogo": "Vetrina del sito pronta (\"Eventi\"), programmata per il 2026-09-23 alle 12:30.",
+      "timestamp": "2026-09-23T09:37:39.167Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-23T09:37:32.709Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-09-23T09:37:32.704Z"
+    },
+    {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-23T09:34:37.096Z"
     },
     {
@@ -3536,67 +3599,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-15T12:55:27.091Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere l'album Google Photos. Controlla le credenziali GOOGLE_* nei secrets.",
-      "dettagli": {
-        "errore": "Error: Variabile d'ambiente mancante: GOOGLE_CLIENT_ID. Vedi .env.example."
-      },
-      "timestamp": "2026-09-15T12:55:27.089Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-15T12:48:36.612Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-15T12:48:36.611Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere gli Insights Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Tuesday, 15-Sep-26 05:00:00 PDT. The current time is Tuesday, 15-Sep-26 05:48:36 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AxZqUuZVyY1sEkcp1Gh36FT\"}}"
-      },
-      "timestamp": "2026-09-15T12:48:36.610Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere i media recenti da Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Tuesday, 15-Sep-26 05:00:00 PDT. The current time is Tuesday, 15-Sep-26 05:48:36 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"A9JjqtC-TVoz9yBQfiaa5Ii\"}}"
-      },
-      "timestamp": "2026-09-15T12:48:36.461Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
-      "timestamp": "2026-09-15T12:48:36.043Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere l'album Google Photos. Controlla le credenziali GOOGLE_* nei secrets.",
-      "dettagli": {
-        "errore": "Error: Variabile d'ambiente mancante: GOOGLE_CLIENT_ID. Vedi .env.example."
-      },
-      "timestamp": "2026-09-15T12:48:36.042Z"
     }
   ]
 }
