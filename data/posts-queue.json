@@ -716,12 +716,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
+      "caption": "Console pronta, luci blu accese, sala ancora vuota dietro. Tutto a posto prima che arrivino gli ospiti.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#sposi2027",
+        "#matrimonioitaliano",
+        "#weddingdj",
+        "#djperfeste",
+        "#animazionematrimonio",
+        "#weddingmusic",
+        "#djeventi",
+        "#piemonte",
+        "#alessandria",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
       "istruzioniUtente": null,
-      "dataProgrammata": null
+      "dataProgrammata": "2026-10-04",
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
