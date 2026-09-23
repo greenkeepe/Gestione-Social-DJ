@@ -588,11 +588,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1dd21ba3-9b08-4d29-9ccc-48120f42c2a9.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Luci rosse, gente che balla, foto mossa perché è tutto vero. Momenti così prima o durante l'evento valgono più di mille pose perfette. Si lavora, si suda, ma si vede che la festa gira bene.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingparty",
+        "#weddingitaly",
+        "#djmatrimonio",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djwedding",
+        "#djeventi",
+        "#alessandria",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "29158769-3e20-4cb6-b48c-fe32553ba611",
