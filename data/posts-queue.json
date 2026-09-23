@@ -524,11 +524,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0bae3df4-69ba-46d6-b230-6edf900f6e38.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Luce calda, gente vestita elegante, quel momento prima che parta tutto sul serio. Io dietro, a controllare che ogni cosa sia al posto giusto. Piccoli istanti così valgono più di mille prove.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#djmatrimonio",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingitaly",
+        "#djperfeste",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djeventi",
+        "#lombardia",
+        "#liguria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-09-23"
     },
     {
       "id": "4bd7712d-f645-458a-9c79-9e2ec278884b",
