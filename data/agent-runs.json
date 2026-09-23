@@ -4,6 +4,16 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "errore",
+      "riepilogo": "Errore nella creazione del Reel da \"IMG_4483.MP4\" (fermato allo step \"analisi\"): Video troppo corto (2.8s): serve almeno qualche secondo di materiale per montare un Reel.",
+      "dettagli": {
+        "errore": "Error: Video troppo corto (2.8s): serve almeno qualche secondo di materiale per montare un Reel."
+      },
+      "timestamp": "2026-09-23T08:17:54.619Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Reel creato da \"IMG_4496.MOV\" (categoria wedding, stile clean, 8s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
       "timestamp": "2026-09-23T08:17:51.916Z"
