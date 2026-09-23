@@ -14,6 +14,7 @@ import { pianificaProssimaPubblicazione } from "../lib/bestTime.js";
 import { generaCartTestimonianza, type Testimonianza } from "../lib/testimonialCard.js";
 import { caricaBufferSuR2 } from "../lib/r2Upload.js";
 import { costruisciHashtag, testoCtaContatto } from "./content-agent.js";
+import { innescaWorkflow } from "../lib/gitCommit.js";
 
 interface MediaLibraryItem {
   id: string;
@@ -34,6 +35,11 @@ interface MediaLibraryFile {
 interface PostsQueueFile {
   _istruzioni: string;
   queue: Array<Record<string, unknown>>;
+}
+
+interface ReelJobsFile {
+  _istruzioni: string;
+  jobs: Array<Record<string, unknown>>;
 }
 
 interface BrandFile {
@@ -179,30 +185,60 @@ export async function eseguiMediaAgent(): Promise<void> {
     // quanti contenuti sono "pronto" in coda — sono due limiti separati).
     // Preferisce sempre un video quando disponibile: su Instagram i Reel
     // hanno molta più portata organica dei post statici.
+    //
+    // Un video trovato qui NON va mai in coda pubblicazione direttamente:
+    // qualunque sia la sua origine (un residuo vecchio, un caricamento che
+    // ha saltato il percorso giusto, ecc.) passa SEMPRE prima dal Regista
+    // (data/reel-jobs.json), che lo ritaglia in 9:16, applica transizioni/
+    // zoom e il testo in sovraimpressione — esattamente come un video
+    // caricato dalla pagina "Crea Reel AI" o mandato su Telegram. Un Reel
+    // pubblicato senza essere passato di là sarebbe il video grezzo
+    // tale e quale, senza nessun montaggio: bug reale, visto dal vivo.
     let messiInCoda = 0;
+    let videoAlRegista = 0;
+    const reelJobsFile = await readData<ReelJobsFile>("reel-jobs.json");
     for (;;) {
       const nonUsati = libreria.items.filter((m) => m.usatoIl === null);
       const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
       if (!prossimo) break;
 
       const isVideo = prossimo.mimeType.startsWith("video/");
-      queueFile.queue.push({
-        id: randomUUID(),
-        createdAt: nowIso(),
-        formato: isVideo ? "reel" : "post",
-        media: {
-          source: prossimo.source ?? "dashboard-upload",
-          mediaId: prossimo.id,
+      if (isVideo) {
+        reelJobsFile.jobs.unshift({
+          id: randomUUID(),
+          createdAt: nowIso(),
+          videoUrl: prossimo.url,
           filename: prossimo.filename,
           mimeType: prossimo.mimeType,
-          downloadUrl: prossimo.url
-        },
-        caption: null,
-        hashtags: [],
-        orarioProgrammato: null,
-        status: "in-coda-caption",
-        istruzioniUtente: prossimo.istruzioniUtente ?? null
-      });
+          profilo: "auto",
+          istruzioni: prossimo.istruzioniUtente ?? null,
+          status: "in-coda-analisi",
+          step: "in-coda",
+          aggiornatoIl: nowIso(),
+          erroreMessaggio: null,
+          risultato: null,
+          source: prossimo.source ?? "dashboard-upload"
+        });
+        videoAlRegista++;
+      } else {
+        queueFile.queue.push({
+          id: randomUUID(),
+          createdAt: nowIso(),
+          formato: "post",
+          media: {
+            source: prossimo.source ?? "dashboard-upload",
+            mediaId: prossimo.id,
+            filename: prossimo.filename,
+            mimeType: prossimo.mimeType,
+            downloadUrl: prossimo.url
+          },
+          caption: null,
+          hashtags: [],
+          orarioProgrammato: null,
+          status: "in-coda-caption",
+          istruzioniUtente: prossimo.istruzioniUtente ?? null
+        });
+      }
       prossimo.usatoIl = nowIso();
       messiInCoda++;
     }
@@ -219,10 +255,21 @@ export async function eseguiMediaAgent(): Promise<void> {
 
     await writeData("posts-queue.json", queueFile);
     await writeData("media-library.json", libreria);
+    if (videoAlRegista > 0) {
+      await writeData("reel-jobs.json", reelJobsFile);
+      try {
+        await innescaWorkflow("reel-maker.yml");
+      } catch {
+        /* non bloccante: il ciclo del Regista lo prenderà comunque al prossimo giro */
+      }
+    }
 
-    const riepilogo = messiInCoda === 1
-      ? `Selezionato 1 nuovo media e messo in coda per la didascalia.`
-      : `Selezionati ${messiInCoda} nuovi media e messi in coda per la didascalia.`;
+    const fotoInCoda = messiInCoda - videoAlRegista;
+    const pezzi = [
+      fotoInCoda > 0 ? `${fotoInCoda} foto messe in coda per la didascalia` : null,
+      videoAlRegista > 0 ? `${videoAlRegista} video mandati al Regista per il montaggio` : null
+    ].filter((r): r is string => Boolean(r));
+    const riepilogo = `${pezzi.join(" e ")}.`;
     await logAgentRun({
       agente: IDENTITA.media.nome,
       identita: IDENTITA.media.ruolo,
