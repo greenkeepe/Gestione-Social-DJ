@@ -21,13 +21,19 @@ export default async function AnteprimaPage() {
     : "@il_tuo_handle";
   const nomeArte = brand.nomeArte && !brand.nomeArte.startsWith("MODIFICA") ? brand.nomeArte : "DJ";
 
-  const items = [...queueFile.queue].reverse();
+  // Ordinati per data/ora di pubblicazione programmata (i più vicini prima),
+  // non per ordine di inserimento in coda: così l'Anteprima si legge come un
+  // vero calendario editoriale. I contenuti senza ancora una data (in attesa
+  // di didascalia) restano in fondo, non essendo ancora "in calendario".
+  const chiaveData = (item: (typeof queueFile.queue)[number]) =>
+    item.dataProgrammata ? `${item.dataProgrammata} ${item.orarioProgrammato ?? "00:00"}` : "9999-99-99 99:99";
+  const items = [...queueFile.queue].sort((a, b) => chiaveData(a).localeCompare(chiaveData(b)));
 
   return (
     <div>
       <h2>Anteprima</h2>
       <p className="note">
-        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto per la pubblicazione, o già pubblicato.
+        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. Ordinati per data di pubblicazione programmata. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro), in pubblicazione (è il turno di oggi, l&apos;Editore lo pubblica al prossimo controllo), o già pubblicato.
       </p>
 
       {items.length === 0 && (

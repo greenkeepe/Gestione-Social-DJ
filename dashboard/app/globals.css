@@ -766,6 +766,7 @@ input, textarea, select {
 
 .ig-post__badge.pronto { background: #e6f4ea; color: #1e7e34; }
 .ig-post__badge.in-coda-caption { background: #fff4e0; color: #a15c00; }
+.ig-post__badge.in-pubblicazione { background: #f3e8fd; color: #6c2bd9; }
 .ig-post__badge.pubblicato { background: #e8eefc; color: #1a56db; }
 
 /* --- Badge stato job "Crea Reel AI" (usati fuori dal mockup ig-post,
