@@ -28,8 +28,28 @@ const PAROLE_ESCLUSE = [
 
 function paginaDaEscludere(percorso: string, etichetta: string): boolean {
   const testo = `${percorso} ${etichetta}`.toLowerCase();
-  return PAROLE_ESCLUSE.some((parola) => testo.includes(parola));
+  if (PAROLE_ESCLUSE.some((parola) => testo.includes(parola))) return true;
+
+  // Selettore di lingua nel menu (es. "FR"/"EN"/"DE" per passare alla
+  // versione tradotta del sito) o percorso con prefisso di lingua diversa
+  // dall'italiano: il sito parla italiano, la Vetrina mostra solo quello,
+  // mai la versione francese/inglese/tedesca/spagnola.
+  const etichettaPulita = etichetta.trim().toLowerCase();
+  if (/^(fr|en|de|es|pt|nl)$/.test(etichettaPulita)) return true;
+  if (/^\/(fr|en|de|es|pt|nl)(\/|$)/.test(percorso)) return true;
+
+  return false;
 }
+
+// Contesto browser in italiano: alcuni siti scelgono la lingua da mostrare
+// in base alla lingua del browser (Accept-Language/navigator.language) —
+// senza queste opzioni Chromium può negoziare una lingua diversa
+// dall'italiano (visto dal vivo: homepage mostrata in francese).
+const CONTESTO_ITALIANO = {
+  locale: "it-IT",
+  timezoneId: "Europe/Rome",
+  extraHTTPHeaders: { "Accept-Language": "it-IT,it;q=0.9" }
+};
 
 export async function verificaChromiumDisponibile(): Promise<void> {
   try {
@@ -50,7 +70,7 @@ export async function verificaChromiumDisponibile(): Promise<void> {
 export async function scopriPagineSito(baseUrl: string): Promise<PaginaSito[]> {
   const browser = await chromium.launch();
   try {
-    const page = await browser.newPage();
+    const page = await browser.newPage(CONTESTO_ITALIANO);
     await page.goto(baseUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
 
     const origine = new URL(baseUrl).origin;
@@ -88,7 +108,7 @@ export async function scopriPagineSito(baseUrl: string): Promise<PaginaSito[]> {
 export async function catturaScreenshotPagina(url: string): Promise<Buffer> {
   const browser = await chromium.launch();
   try {
-    const page = await browser.newPage({ viewport: { width: 1080, height: 1350 } });
+    const page = await browser.newPage({ ...CONTESTO_ITALIANO, viewport: { width: 1080, height: 1350 } });
     await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
     const screenshot = await page.screenshot({ type: "png" });
     return Buffer.from(screenshot);
