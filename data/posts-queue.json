@@ -940,11 +940,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Console pronta, sala ancora vuota. Manca poco e si parte.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingdj",
+        "#weddingparty",
+        "#djperfeste",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#djeventi",
+        "#serravallescrivia",
+        "#liguria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-10-13"
     }
   ]
 }
