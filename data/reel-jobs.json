@@ -255,11 +255,60 @@
       "mimeType": "video/quicktime",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-23T09:45:44.737Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-23T12:32:01.637Z",
       "erroreMessaggio": null,
-      "risultato": null,
+      "risultato": {
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/034e1692-406e-436a-a28d-8f7e7176c894.mp4",
+        "durataSecondi": 13.8,
+        "piano": {
+          "categoria": "evento",
+          "stile": "dynamic",
+          "profiloUsato": "event",
+          "durataTarget": 14.94,
+          "hook": {
+            "inizio": 1.84,
+            "fine": 4.84
+          },
+          "segmenti": [
+            {
+              "inizio": 1.84,
+              "fine": 4.84,
+              "motivo": "momento con più energia scelto come apertura del Reel"
+            },
+            {
+              "inizio": 0,
+              "fine": 1.76,
+              "motivo": "spezzone #2 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 4.84,
+              "fine": 7.84,
+              "motivo": "spezzone #3 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 7.84,
+              "fine": 10.84,
+              "motivo": "spezzone #4 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 10.84,
+              "fine": 13.84,
+              "motivo": "spezzone #5 selezionato per energia/interesse audio-video"
+            },
+            {
+              "inizio": 13.84,
+              "fine": 15.02,
+              "motivo": "spezzone #6 selezionato per energia/interesse audio-video"
+            }
+          ],
+          "sottotitoli": false,
+          "musica": false,
+          "testoHook": "Luci rosse, folla in festa Forte DJ accende la notte",
+          "testoChiusura": "Scrivi in DM a Forte DJ per info e disponibilità"
+        }
+      },
       "source": "dashboard-upload"
     },
     {

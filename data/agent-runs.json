@@ -5,6 +5,13 @@
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
+      "riepilogo": "Reel creato da \"IMG_4084.MOV\" (categoria evento, stile dynamic, 14s) e messo in coda per la didascalia e la pubblicazione automatica.",
+      "timestamp": "2026-09-23T12:32:01.639Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
       "riepilogo": "Reel creato da \"IMG_4167.MOV\" (categoria wedding, stile clean, 11s) e messo in coda per la didascalia e la pubblicazione automatica.",
       "timestamp": "2026-09-23T12:31:25.921Z"
     },
@@ -3559,16 +3566,6 @@
       "status": "ok",
       "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
       "timestamp": "2026-09-16T09:03:48.929Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere gli Insights Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Tuesday, 15-Sep-26 07:00:00 PDT. The current time is Wednesday, 16-Sep-26 02:03:48 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"A6KTq54vzPKsiHKSp4klpHa\"}}"
-      },
-      "timestamp": "2026-09-16T09:03:48.928Z"
     }
   ]
 }
