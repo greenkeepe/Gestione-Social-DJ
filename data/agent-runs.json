@@ -2,6 +2,16 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "errore",
+      "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
+      "dettagli": {
+        "errore": "Error: Instagram: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"The image format is not supported.\",\"type\":\"OAuthException\",\"code\":36001,\"error_subcode\":2207083,\"is_transient\":false,\"error_user_title\":\"Formato immagine sconosciuto\",\"error_user_msg\":\"Non è stato possibile elaborare l'immagine perché il formato non è stato riconosciuto. Solitamente questo è dovuto al fatto che il file è danneggiato, non è un'immagine valida o l'URL ha restituito una pagina di errore invece di un'immagine. Verifica che image_url reindirizzi a un file immagine valido in un formato supportato (JPEG, PNG, GIF, WebP, HEIC o AVIF). Per maggiori informazioni sui formati supportati e sulle specifiche dei contenuti multimediali, consulta: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating\",\"fbtrace_id\":\"AAuoQgMTg0pXHNFB9X5LBNx\"}}. Facebook: Graph API error [/266354304012276/photos]: {\"error\":{\"message\":\"Invalid parameter\",\"type\":\"OAuthException\",\"code\":100,\"error_subcode\":1366046,\"is_transient\":false,\"error_user_title\":\"Can't Read Files\",\"error_user_msg\":\"Your photos couldn't be uploaded. Photos should be less than 10 MB and saved as JPG, PNG, GIF, TIFF, HEIF or WebP files.\",\"fbtrace_id\":\"Anc7GBgByI1P-SHzc85Ezem\"}}"
+      },
+      "timestamp": "2026-09-23T14:03:23.330Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3556,13 +3566,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"telegram-1789555729482.jpg\" (foto) e messo in coda per la didascalia.",
       "timestamp": "2026-09-16T12:17:23.291Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789554494543.mp4\" (categoria dj_event, stile bold, 16s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-16T12:16:25.218Z"
     }
   ]
 }
