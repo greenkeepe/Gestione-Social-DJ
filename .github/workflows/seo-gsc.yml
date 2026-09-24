@@ -1,10 +1,13 @@
 name: SEO Engine - sincronizzazione Search Console
 
 # Gira una volta a settimana: scarica i dati di Google Search Console,
-# individua le opportunità SEO e controlla l'internal linking. Aggiorna solo
-# i JSON in site/data/seo/ (costo zero, nessun database): la dashboard
-# privata /admin/seo li legge a build time, quindi il prossimo deploy su
-# Vercel li mostra automaticamente.
+# individua le opportunità SEO, propone (mai applica da solo) titolo/meta
+# description alternativi per le pagine segnalate, e controlla l'internal
+# linking. Aggiorna solo i JSON in site/data/seo/ (costo zero, nessun
+# database): la pagina privata /admin/seo del sito (deploy Netlify) li
+# legge a build time, quindi il prossimo deploy li mostra automaticamente;
+# le proposte vanno invece riviste e approvate dalla pagina "SEO" della
+# dashboard privata (progetto separato, Vercel).
 on:
   schedule:
     - cron: "0 5 * * 1" # ogni lunedì alle 05:00 UTC (06:00/07:00 locali)
@@ -40,10 +43,13 @@ jobs:
       - name: Allinea con l'ultima versione del branch
         run: git pull --ff-only origin "${GITHUB_REF_NAME}"
 
-      - name: Esegui SEO Engine (Search Console + opportunità + internal linking)
+      - name: Esegui SEO Engine (Search Console + opportunità + proposte + internal linking)
         env:
           GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
           GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
         run: npm run seo:all
 
       - name: Commit e push dei dati SEO aggiornati

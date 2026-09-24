@@ -10,6 +10,7 @@
     "seo:sync": "tsx scripts/seo/sync-gsc.ts",
     "seo:indexing": "tsx scripts/seo/check-indexing.ts",
     "seo:opportunities": "tsx scripts/seo/detect-opportunities.ts",
+    "seo:propose": "tsx scripts/seo/propose-fixes.ts",
     "seo:internal-links": "tsx scripts/seo/check-internal-links.ts",
     "seo:all": "tsx scripts/seo/run-all.ts"
   },

@@ -111,6 +111,35 @@ export interface OutreachTemplateFile {
   validatoIl: string | null;
 }
 
+// Specchio di site/lib/seoEngineTypes.ts (progetto separato, stesso
+// repository): la dashboard legge/scrive site/data/seo/seo-proposte.json
+// per la pagina "SEO", vedi dashboard/lib/dataSource.ts > leggiDatiRepo /
+// aggiornaDatiSuPercorso.
+export type SeoProposalStatus = "proposta" | "applicata" | "scartata";
+
+export interface SeoProposal {
+  id: string;
+  page: string;
+  pageLabel: string;
+  query: string;
+  priority: "HIGH" | "MEDIUM" | "LOW";
+  reason: string;
+  metaNamespace: string;
+  metaTitleKey: string;
+  metaDescriptionKey: string | null;
+  titleAttuale: string;
+  titleProposto: string;
+  descriptionAttuale: string | null;
+  descriptionProposta: string | null;
+  status: SeoProposalStatus;
+  creatoIl: string;
+  decisoIl: string | null;
+}
+
+export interface SeoProposalsFile {
+  proposte: SeoProposal[];
+}
+
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
 
 export interface PianoReel {
