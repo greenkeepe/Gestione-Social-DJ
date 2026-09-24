@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-24T19:54:22.310Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-24T15:55:23.483Z"
     },
     {
@@ -3562,13 +3569,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-16T12:58:06.452Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-16T12:58:06.451Z"
     }
   ]
 }
