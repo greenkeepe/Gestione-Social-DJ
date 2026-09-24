@@ -704,6 +704,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "5c6da649-e3e7-4201-9cdd-f2bf01cd04a8",
+      "createdAt": "2026-09-24T11:09:55.289Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Gabriele-V.-08-10-2021.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1e1b462a-e5f0-4318-a75b-cf85fbc23980.png"
+      },
+      "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Ottima musica, simpaticissimo, disponibile, super consigliato.\"\n— Gabriele V., Compleanno\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#djeventi",
+        "#djprofessionista",
+        "#weddingmusic",
+        "#djperfeste",
+        "#lombardia",
+        "#liguria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-10-15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
