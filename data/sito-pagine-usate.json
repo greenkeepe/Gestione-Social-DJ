@@ -2,6 +2,7 @@
   "_istruzioni": "Tiene traccia di quali pagine del sito (config/brand.json > contatti.sitoWeb) sono già state usate per un post-vetrina, per farle ruotare tutte prima di ripartire dal principio. Gestito in automatico dall'Agente Vetrina (vedi agents/sito-agent.ts): non serve modificarlo a mano.",
   "usate": [
     "https://www.fortedj.it/eventi",
-    "https://www.fortedj.it/it"
+    "https://www.fortedj.it/it",
+    "https://www.fortedj.it/contatti"
   ]
 }
