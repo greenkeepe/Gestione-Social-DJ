@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-24T15:55:23.483Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3562,13 +3569,6 @@
       "status": "ok",
       "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
       "timestamp": "2026-09-16T12:58:06.451Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "ok",
-      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
-      "timestamp": "2026-09-16T12:58:06.449Z"
     }
   ]
 }
