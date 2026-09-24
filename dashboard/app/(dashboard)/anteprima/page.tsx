@@ -33,17 +33,24 @@ export default async function AnteprimaPage() {
     item.status === "pronto" && Boolean(item.dataProgrammata) && item.dataProgrammata! <= oggi;
   const chiaveData = (item: (typeof queueFile.queue)[number]) =>
     item.dataProgrammata ? `${item.dataProgrammata} ${item.orarioProgrammato ?? "00:00"}` : "9999-99-99 99:99";
-  const items = [...queueFile.queue].sort((a, b) => {
-    const priorita = Number(inPubblicazioneOggi(b)) - Number(inPubblicazioneOggi(a));
-    if (priorita !== 0) return priorita;
-    return chiaveData(a).localeCompare(chiaveData(b));
-  });
+  // Il già pubblicato non è più un'"anteprima" di niente: ha solo la sua data
+  // reale nel passato, quindi in mezzo all'ordine cronologico finiva in cima
+  // mischiato ai contenuti di oggi invece che sparire. Resta comunque
+  // consultabile per intero nella pagina "Contenuti" e in published-log.json
+  // — qui va solo tolto di mezzo.
+  const items = queueFile.queue
+    .filter((item) => item.status !== "pubblicato" && item.status !== "pubblicato-parziale")
+    .sort((a, b) => {
+      const priorita = Number(inPubblicazioneOggi(b)) - Number(inPubblicazioneOggi(a));
+      if (priorita !== 0) return priorita;
+      return chiaveData(a).localeCompare(chiaveData(b));
+    });
 
   return (
     <div>
       <h2>Anteprima</h2>
       <p className="note">
-        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine di data. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro), in pubblicazione (è il turno di oggi, l&apos;Editore lo pubblica al prossimo controllo), o già pubblicato. Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare.
+        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine cronologico esatto di data e ora. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro) o in pubblicazione (è il turno di oggi, l&apos;Editore lo pubblica al prossimo controllo). Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare. Il già pubblicato non compare più qui: trovi lo storico completo nella pagina &quot;Contenuti&quot;.
       </p>
 
       {items.length === 0 && (

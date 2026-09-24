@@ -22,9 +22,15 @@ export default async function LocaliPage() {
   const template = await leggiDati<OutreachTemplateFile>("outreach-template.json").catch(() => MODELLO_DI_RISERVA);
   const brand = await leggiConfig<BrandFile>("brand.json").catch(() => ({}) as BrandFile);
   const daRivedere = file.contatti.filter((c) => c.status === "bozza-da-rivedere");
-  const storico = file.contatti.filter((c) => c.status !== "bozza-da-rivedere");
+  const storico = [...file.contatti]
+    .filter((c) => c.status !== "bozza-da-rivedere")
+    .sort((a, b) => new Date(b.inviataIl ?? b.creatoIl).getTime() - new Date(a.inviataIl ?? a.creatoIl).getTime());
   const invioAutomatico = config.invioAutomatico ?? { attivo: false, maxAlGiorno: 3 };
   const anteprimaFirma = firmaTesto(brand);
+
+  const inviateAutomatico = storico.filter((c) => c.status === "inviata" && c.inviataAutomaticamente).length;
+  const inviateAMano = storico.filter((c) => c.status === "inviata" && !c.inviataAutomaticamente).length;
+  const scartate = storico.filter((c) => c.status === "scartata").length;
 
   return (
     <div>
@@ -49,9 +55,34 @@ export default async function LocaliPage() {
       {daRivedere.length === 0 && <p className="note">Nessuna nuova bozza al momento.</p>}
       {daRivedere.length > 0 && <TabellaBozzeLocali contatti={daRivedere} anteprimaFirma={anteprimaFirma} />}
 
+      <h3>Destinatari contattati ({storico.length})</h3>
+      <div className="grid">
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Inviate automaticamente</div>
+            <span className="stat-icon" aria-hidden="true">🤖</span>
+          </div>
+          <div className="value">{inviateAutomatico}</div>
+        </div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Inviate a mano</div>
+            <span className="stat-icon" aria-hidden="true">👆</span>
+          </div>
+          <div className="value">{inviateAMano}</div>
+        </div>
+        <div className="card card--stat">
+          <div className="stat-top">
+            <div className="label">Scartate</div>
+            <span className="stat-icon" aria-hidden="true">🗑️</span>
+          </div>
+          <div className="value">{scartate}</div>
+        </div>
+      </div>
+
+      {storico.length === 0 && <p className="note">Nessun invio ancora registrato.</p>}
       {storico.length > 0 && (
-        <>
-          <h3>Storico</h3>
+        <div className="table-scroll">
           <table>
             <thead>
               <tr>
@@ -68,14 +99,14 @@ export default async function LocaliPage() {
                   <td>{c.email}</td>
                   <td>
                     {c.status}
-                    {c.inviataAutomaticamente ? " · 🤖 automatico" : ""}
+                    {c.inviataAutomaticamente ? " · 🤖 automatico" : c.status === "inviata" ? " · 👆 a mano" : ""}
                   </td>
                   <td>{new Date(c.inviataIl ?? c.creatoIl).toLocaleString("it-IT")}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </>
+        </div>
       )}
     </div>
   );

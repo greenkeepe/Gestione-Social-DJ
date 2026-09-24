@@ -41,6 +41,21 @@ interface PublishedLogFile {
 // osservato, restando comunque "lo stesso giorno".
 const FINESTRA_TOLLERANZA_MINUTI = 300;
 
+// Un contenuto "pubblicato" con successo non serve più in posts-queue.json:
+// lo storico vero è published-log.json (letto a parte dalla pagina
+// "Contenuti"), e niente qui dentro torna mai a cercare un elemento già
+// concluso — a differenza di "pubblicato-parziale", MAI toccato qui, che
+// riprovaPubblicazioneParziale() deve poter ritrovare finché non è
+// completato. Tolta solo la roba di ieri e prima (mai la data di oggi): le
+// pianificazioni "un contenuto al giorno" di content-agent/media-agent/
+// sito-agent guardano solo da oggi in avanti, quindi non c'è nessun rischio
+// di doppio slot sullo stesso giorno.
+function pulisciPubblicatiVecchi(queueFile: PostsQueueFile, oggi: string): boolean {
+  const primaDellaPulizia = queueFile.queue.length;
+  queueFile.queue = queueFile.queue.filter((p) => !(p.status === "pubblicato" && (!p.dataProgrammata || p.dataProgrammata < oggi)));
+  return queueFile.queue.length !== primaDellaPulizia;
+}
+
 function siamoNellaFinestra(orarioProgrammato: string): boolean {
   const ora = new Date();
   const [hh, mm] = orarioProgrammato.split(":").map(Number);
@@ -73,7 +88,7 @@ export async function eseguiPublishingAgent(): Promise<void> {
       (p) => p.status === "pubblicato-parziale" && (!forzaQueueId || p.id === forzaQueueId)
     );
     if (parziale) {
-      await riprovaPubblicazioneParziale(parziale, queueFile, logFile);
+      await riprovaPubblicazioneParziale(parziale, queueFile, logFile, oggi);
       return;
     }
 
@@ -216,6 +231,7 @@ export async function eseguiPublishingAgent(): Promise<void> {
       hashtags: target.hashtags ?? [],
       punteggio: null
     });
+    pulisciPubblicatiVecchi(queueFile, oggi);
     await writeData("published-log.json", logFile);
     await writeData("posts-queue.json", queueFile);
 
@@ -266,7 +282,8 @@ export async function eseguiPublishingAgent(): Promise<void> {
 async function riprovaPubblicazioneParziale(
   target: PostsQueueFile["queue"][number],
   queueFile: PostsQueueFile,
-  logFile: PublishedLogFile
+  logFile: PublishedLogFile,
+  oggi: string
 ): Promise<void> {
   const voce = logFile.log.find((v) => v.queueId === target.id) as
     | { instagramId: string | null; facebookId: string | null; instagramStoryId?: string | null }
@@ -324,6 +341,7 @@ async function riprovaPubblicazioneParziale(
   } else {
     // Entrambi gli id erano già presenti: lo stato non era coerente col log, lo sistemiamo senza ripubblicare nulla.
     target.status = "pubblicato";
+    pulisciPubblicatiVecchi(queueFile, oggi);
     await writeData("posts-queue.json", queueFile);
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
@@ -354,6 +372,7 @@ async function riprovaPubblicazioneParziale(
   target.status = oraCompleto ? "pubblicato" : "pubblicato-parziale";
   target.ultimoErrore = null;
   target.tentativiFalliti = 0;
+  if (oraCompleto) pulisciPubblicatiVecchi(queueFile, oggi);
   await writeData("posts-queue.json", queueFile);
 
   await logAgentRun({

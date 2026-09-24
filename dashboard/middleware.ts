@@ -19,7 +19,17 @@ export async function middleware(req: NextRequest) {
     // (root cause reale, trovata dal vivo, di ogni "formato non
     // supportato"/"file corrotto" visto oggi: l'header di risposta
     // "x-matched-path: /login" lo confermava).
-    pathname.startsWith("/api/r2-file")
+    pathname.startsWith("/api/r2-file") ||
+    // Stesso identico bug, stessa correzione: Vercel Cron (vedi
+    // dashboard/vercel.json) chiama questi endpoint con una richiesta
+    // anonima, mai col cookie di sessione — senza questa eccezione veniva
+    // reindirizzata a /login e la route non partiva mai. Trovato dal vivo:
+    // zero esecuzioni registrate per l'Agente Invio Automatico Locali
+    // nonostante fosse attivo, e il cron di daily-agents.yml aveva lo
+    // stesso identico problema. La sicurezza qui non dipende dal
+    // middleware: ogni route sotto /api/cron verifica da sé l'header
+    // "Authorization: Bearer CRON_SECRET" che solo Vercel conosce.
+    pathname.startsWith("/api/cron/")
   ) {
     return NextResponse.next();
   }
