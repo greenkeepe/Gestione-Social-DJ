@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "ok",
+      "riepilogo": "Inviate automaticamente 5 email: Hotel Belforte, Hotel Stella, Hotel Tigullio et de Milan, La Pizza di Egizio, Sorbillo.",
+      "timestamp": "2026-09-24T08:32:45.622Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3562,13 +3569,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"telegram-1789562865848.mp4\" (categoria wedding, stile clean, 7s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
       "timestamp": "2026-09-16T12:50:19.703Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-16T12:44:50.677Z"
     }
   ]
 }
