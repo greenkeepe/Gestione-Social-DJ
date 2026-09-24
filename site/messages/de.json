@@ -29,6 +29,7 @@
     "legal": "Rechtliches",
     "privacyPolicy": "Datenschutzerklärung",
     "cookiePolicy": "Cookie-Richtlinie",
+    "adminButton": "Admin",
     "seoAreaLabel": "SEO-Bereich",
     "socialDashboardLabel": "Social-Media-Verwaltung",
     "rightsReserved": "Alle Rechte vorbehalten."
@@ -112,8 +113,20 @@
   "MusicGenresSection": {
     "eyebrow": "Ein Repertoire ohne Grenzen",
     "srList": "Musikgenres: {genres}.",
-    "rowA": ["70S", "80S", "90S", "POP", "DANCE"],
-    "rowB": ["LATIN", "ROCK", "R&B", "LOUNGE", "CHARTS"]
+    "rowA": [
+      "70S",
+      "80S",
+      "90S",
+      "POP",
+      "DANCE"
+    ],
+    "rowB": [
+      "LATIN",
+      "ROCK",
+      "R&B",
+      "LOUNGE",
+      "CHARTS"
+    ]
   },
   "Process": {
     "eyebrow": "So funktioniert's",
@@ -213,48 +226,111 @@
     "matrimoni": {
       "short": "Hochzeiten und Hochzeitsfeiern",
       "description": "Der Soundtrack des gesamten Tages: von der Zeremonie bis zum späten Abend, mit Musik für jeden Moment.",
-      "includes": ["Hochzeiten", "Kirchliche Hochzeiten", "Zeremonien und Kommunionen"]
+      "includes": [
+        "Hochzeiten",
+        "Kirchliche Hochzeiten",
+        "Zeremonien und Kommunionen"
+      ]
     },
     "eventi-privati": {
       "short": "Geburtstage, 18. Geburtstage und private Feiern",
       "description": "Maßgeschneiderte Feiern für jedes Alter und jeden Anlass, mit Energie, die gemeinsam mit den Gästen auf der Tanzfläche entsteht.",
-      "includes": ["Geburtstage und Jubiläen", "18. Geburtstage", "Junggesellen-/Junggesellinnenabschiede", "Private Feiern"]
+      "includes": [
+        "Geburtstage und Jubiläen",
+        "18. Geburtstage",
+        "Junggesellen-/Junggesellinnenabschiede",
+        "Private Feiern"
+      ]
     },
     "corporate": {
       "short": "Firmenevents und professionelle Anlässe",
       "description": "Musik, abgestimmt auf die Markenidentität, vom Networking-Aperitif bis zum Unterhaltungsprogramm.",
-      "includes": ["Firmenfeiern", "Empfänge und Eröffnungen"]
+      "includes": [
+        "Firmenfeiern",
+        "Empfänge und Eröffnungen"
+      ]
     },
     "party": {
       "short": "Energiegeladene Events",
       "description": "Abende, die darauf ausgelegt sind, die Energie vom ersten bis zum letzten Song zu steigern.",
-      "includes": ["Silvester und saisonale Events", "Locations, Clubs und Bars"]
+      "includes": [
+        "Silvester und saisonale Events",
+        "Locations, Clubs und Bars"
+      ]
     }
   },
   "EventCard": {
     "discoverMore": "Mehr erfahren"
   },
   "WeddingMoments": {
-    "cerimonia": { "title": "Zeremonie", "description": "Atmosphäre und Musik für den Beginn der Feier." },
-    "aperitivo": { "title": "Aperitif", "description": "Ein eleganter musikalischer Hintergrund, um die Gäste willkommen zu heißen." },
-    "cena": { "title": "Abendessen", "description": "Sorgfältig ausgewählte musikalische Momente, die die Tafel begleiten." },
-    "first-dance": { "title": "First Dance", "description": "Der erste Tanz, gestaltet um den Song, der euch repräsentiert." },
-    "party": { "title": "Party", "description": "Die Energie steigt und die Tanzfläche füllt sich." },
-    "final-dance": { "title": "Final Dance", "description": "Der Moment, von dem niemand möchte, dass er endet." }
+    "cerimonia": {
+      "title": "Zeremonie",
+      "description": "Atmosphäre und Musik für den Beginn der Feier."
+    },
+    "aperitivo": {
+      "title": "Aperitif",
+      "description": "Ein eleganter musikalischer Hintergrund, um die Gäste willkommen zu heißen."
+    },
+    "cena": {
+      "title": "Abendessen",
+      "description": "Sorgfältig ausgewählte musikalische Momente, die die Tafel begleiten."
+    },
+    "first-dance": {
+      "title": "First Dance",
+      "description": "Der erste Tanz, gestaltet um den Song, der euch repräsentiert."
+    },
+    "party": {
+      "title": "Party",
+      "description": "Die Energie steigt und die Tanzfläche füllt sich."
+    },
+    "final-dance": {
+      "title": "Final Dance",
+      "description": "Der Moment, von dem niemand möchte, dass er endet."
+    }
   },
   "ProcessSteps": {
-    "step1": { "title": "Erzähl mir von deinem Event", "description": "Datum, Location, Art des Events und gewünschte Atmosphäre." },
-    "step2": { "title": "Wir gestalten das Erlebnis", "description": "Musik, Leistungen und Details werden gemeinsam geplant." },
-    "step3": { "title": "Der große Tag kommt", "description": "Alles ist bereit." },
-    "step4": { "title": "Es wird getanzt.", "description": "Das Erlebnis beginnt." }
+    "step1": {
+      "title": "Erzähl mir von deinem Event",
+      "description": "Datum, Location, Art des Events und gewünschte Atmosphäre."
+    },
+    "step2": {
+      "title": "Wir gestalten das Erlebnis",
+      "description": "Musik, Leistungen und Details werden gemeinsam geplant."
+    },
+    "step3": {
+      "title": "Der große Tag kommt",
+      "description": "Alles ist bereit."
+    },
+    "step4": {
+      "title": "Es wird getanzt.",
+      "description": "Das Erlebnis beginnt."
+    }
   },
   "ServiceItems": {
-    "dj-set": { "title": "DJ-Set", "description": "Das Pult von Anfang bis Ende in der Hand eines einzigen Profis, mit Musikauswahl, die live auf das anwesende Publikum abgestimmt wird." },
-    "impianto-audio": { "title": "Professionelle Tonanlage", "description": "Tonanlage, dimensioniert auf Location und Gästezahl, für sauberen Klang in jedem Raum." },
-    "luci": { "title": "Lichttechnik", "description": "Lichtdesign, das die Momente des Abends begleitet, von der Stimmung beim Empfang bis zur Energie der Party." },
-    "macchina-del-fumo": { "title": "Nebelmaschine", "description": "Ein zusätzlicher szenischer Akzent in den Höhepunkten der Tanzfläche." },
-    "microfoni-cerimonia": { "title": "Mikrofone für Reden und Zeremonie", "description": "Eigener Ton für Reden, Trinksprüche und gesprochene Momente, abgestimmt auf die Musik der Zeremonie." },
-    "coordinamento-musicale": { "title": "Musikalische Koordination des Events", "description": "Maßgeschneiderte Playlist mit einem Planungstreffen vor dem Event, von der Zeremonie bis zum späten Abend." }
+    "dj-set": {
+      "title": "DJ-Set",
+      "description": "Das Pult von Anfang bis Ende in der Hand eines einzigen Profis, mit Musikauswahl, die live auf das anwesende Publikum abgestimmt wird."
+    },
+    "impianto-audio": {
+      "title": "Professionelle Tonanlage",
+      "description": "Tonanlage, dimensioniert auf Location und Gästezahl, für sauberen Klang in jedem Raum."
+    },
+    "luci": {
+      "title": "Lichttechnik",
+      "description": "Lichtdesign, das die Momente des Abends begleitet, von der Stimmung beim Empfang bis zur Energie der Party."
+    },
+    "macchina-del-fumo": {
+      "title": "Nebelmaschine",
+      "description": "Ein zusätzlicher szenischer Akzent in den Höhepunkten der Tanzfläche."
+    },
+    "microfoni-cerimonia": {
+      "title": "Mikrofone für Reden und Zeremonie",
+      "description": "Eigener Ton für Reden, Trinksprüche und gesprochene Momente, abgestimmt auf die Musik der Zeremonie."
+    },
+    "coordinamento-musicale": {
+      "title": "Musikalische Koordination des Events",
+      "description": "Maßgeschneiderte Playlist mit einem Planungstreffen vor dem Event, von der Zeremonie bis zum späten Abend."
+    }
   },
   "Strengths": {
     "items": [
@@ -267,7 +343,16 @@
     ]
   },
   "MusicGenreTags": {
-    "items": ["Charts", "70er/80er/90er", "Latin", "Dance", "Pop", "Rock", "R&B/Soul", "Lounge"]
+    "items": [
+      "Charts",
+      "70er/80er/90er",
+      "Latin",
+      "Dance",
+      "Pop",
+      "Rock",
+      "R&B/Soul",
+      "Lounge"
+    ]
   },
   "Lightbox": {
     "closeGallery": "Galerie schließen",
@@ -352,18 +437,54 @@
   },
   "FaqItems": {
     "items": [
-      { "question": "Wie weit im Voraus sollte man buchen?", "answer": "Der Zeitrahmen hängt von der Saison und dem gewünschten Termin ab. Der schnellste Weg, es herauszufinden, ist die Verfügbarkeit für dein konkretes Datum zu prüfen." },
-      { "question": "Wie kann ich die Verfügbarkeit prüfen?", "answer": "Fülle das untenstehende Formular mit Datum, Location und Art des Events aus oder schreib direkt auf WhatsApp: Du erhältst eine Antwort mit der Verfügbarkeit für dein Datum." },
-      { "question": "Macht ihr Hochzeiten?", "answer": "Ja, Hochzeiten sind ein zentraler Teil der Tätigkeit: von der Zeremonie bis zum späten Abend, einschließlich Feiern in Relais, Restaurants, Clubhäusern und ähnlichen Locations." },
-      { "question": "Kümmert ihr euch auch um die Zeremonie?", "answer": "Ja, die Musik der Zeremonie (auch in der Kirche) sowie gesprochene Beiträge können mit eigenen Mikrofonen begleitet werden." },
-      { "question": "Kann ich die Musik selbst auswählen?", "answer": "Ja. Die Playlist wird gemeinsam mit dem Brautpaar oder der Veranstaltungsorganisation maßgeschneidert erstellt, mit einem Planungstreffen vor dem Termin, und anschließend live an die Stimmung angepasst." },
-      { "question": "Bringt ihr die Tonanlage mit?", "answer": "Ja, die professionelle Tonanlage ist inbegriffen und wird passend zu Location und Gästezahl dimensioniert." },
-      { "question": "Kümmert ihr euch um die Beleuchtung?", "answer": "Ja, die Leistung umfasst eine Lichtanlage, die die verschiedenen Momente des Abends begleitet." },
-      { "question": "Macht ihr Firmenevents?", "answer": "Ja, Firmenfeiern, Empfänge und Eröffnungen gehören zu den regelmäßig betreuten Veranstaltungsarten." },
-      { "question": "Macht ihr private Feiern?", "answer": "Ja: Geburtstage, Jubiläen, 18. Geburtstage, Junggesellen-/Junggesellinnenabschiede und private Feiern im Allgemeinen." },
-      { "question": "Sind Zusatzleistungen verfügbar?", "answer": "Ja: Neben dem DJ-Set sind Tonanlage, Lichttechnik, Nebelmaschine und Mikrofone für Reden und die Zeremonie verfügbar. Schreib uns, um zu klären, was dein Event braucht." },
-      { "question": "Wie wird die Hochzeitsmusik organisiert?", "answer": "Durch ein Planungstreffen, bei dem gemeinsam die Schlüsselmomente (Zeremonie, Aperitif, Abendessen, Party) und die Musikwünsche festgelegt werden, die dann am Tag selbst live angepasst werden." },
-      { "question": "Wie kann ich ein Angebot anfragen?", "answer": "Fülle das Kontaktformular mit den Details deines Events aus oder schreib uns auf WhatsApp oder per E-Mail: Du erhältst ein maßgeschneidertes Angebot." }
+      {
+        "question": "Wie weit im Voraus sollte man buchen?",
+        "answer": "Der Zeitrahmen hängt von der Saison und dem gewünschten Termin ab. Der schnellste Weg, es herauszufinden, ist die Verfügbarkeit für dein konkretes Datum zu prüfen."
+      },
+      {
+        "question": "Wie kann ich die Verfügbarkeit prüfen?",
+        "answer": "Fülle das untenstehende Formular mit Datum, Location und Art des Events aus oder schreib direkt auf WhatsApp: Du erhältst eine Antwort mit der Verfügbarkeit für dein Datum."
+      },
+      {
+        "question": "Macht ihr Hochzeiten?",
+        "answer": "Ja, Hochzeiten sind ein zentraler Teil der Tätigkeit: von der Zeremonie bis zum späten Abend, einschließlich Feiern in Relais, Restaurants, Clubhäusern und ähnlichen Locations."
+      },
+      {
+        "question": "Kümmert ihr euch auch um die Zeremonie?",
+        "answer": "Ja, die Musik der Zeremonie (auch in der Kirche) sowie gesprochene Beiträge können mit eigenen Mikrofonen begleitet werden."
+      },
+      {
+        "question": "Kann ich die Musik selbst auswählen?",
+        "answer": "Ja. Die Playlist wird gemeinsam mit dem Brautpaar oder der Veranstaltungsorganisation maßgeschneidert erstellt, mit einem Planungstreffen vor dem Termin, und anschließend live an die Stimmung angepasst."
+      },
+      {
+        "question": "Bringt ihr die Tonanlage mit?",
+        "answer": "Ja, die professionelle Tonanlage ist inbegriffen und wird passend zu Location und Gästezahl dimensioniert."
+      },
+      {
+        "question": "Kümmert ihr euch um die Beleuchtung?",
+        "answer": "Ja, die Leistung umfasst eine Lichtanlage, die die verschiedenen Momente des Abends begleitet."
+      },
+      {
+        "question": "Macht ihr Firmenevents?",
+        "answer": "Ja, Firmenfeiern, Empfänge und Eröffnungen gehören zu den regelmäßig betreuten Veranstaltungsarten."
+      },
+      {
+        "question": "Macht ihr private Feiern?",
+        "answer": "Ja: Geburtstage, Jubiläen, 18. Geburtstage, Junggesellen-/Junggesellinnenabschiede und private Feiern im Allgemeinen."
+      },
+      {
+        "question": "Sind Zusatzleistungen verfügbar?",
+        "answer": "Ja: Neben dem DJ-Set sind Tonanlage, Lichttechnik, Nebelmaschine und Mikrofone für Reden und die Zeremonie verfügbar. Schreib uns, um zu klären, was dein Event braucht."
+      },
+      {
+        "question": "Wie wird die Hochzeitsmusik organisiert?",
+        "answer": "Durch ein Planungstreffen, bei dem gemeinsam die Schlüsselmomente (Zeremonie, Aperitif, Abendessen, Party) und die Musikwünsche festgelegt werden, die dann am Tag selbst live angepasst werden."
+      },
+      {
+        "question": "Wie kann ich ein Angebot anfragen?",
+        "answer": "Fülle das Kontaktformular mit den Details deines Events aus oder schreib uns auf WhatsApp oder per E-Mail: Du erhältst ein maßgeschneidertes Angebot."
+      }
     ]
   },
   "GalleryFilters": {

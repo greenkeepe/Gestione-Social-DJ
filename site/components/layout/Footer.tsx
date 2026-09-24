@@ -105,27 +105,40 @@ export function Footer() {
       </div>
 
       <div className="border-t border-line py-6 pb-24 lg:pb-6">
-        <p className="container-edit text-center text-xs text-ivory-dim/70">
-          © {new Date().getFullYear()} Forte DJ. {t("rightsReserved")}{" "}
-          {/* Link Next.js "semplice" (non quello i18n): /admin non fa parte
-              delle rotte multilingua, un prefisso di lingua lo romperebbe. */}
-          <NextLink
-            href="/admin/seo"
-            aria-label={t("seoAreaLabel")}
-            className="opacity-30 hover:opacity-100"
-          >
-            ·
-          </NextLink>{" "}
-          <a
-            href={siteConfig.socialDashboardUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("socialDashboardLabel")}
-            className="opacity-30 hover:opacity-100"
-          >
-            ·
-          </a>
-        </p>
+        <div className="container-edit flex flex-col items-center gap-3 text-xs text-ivory-dim/70 sm:flex-row sm:justify-between">
+          <p className="text-center">
+            © {new Date().getFullYear()} Forte DJ. {t("rightsReserved")}
+          </p>
+
+          {/* Pulsante visibile (non un elemento nascosto/illeggibile): un
+              visitatore normale lo vede ma non ha comunque le credenziali
+              per usarlo, protetto sia da /admin/* (Basic Auth, vedi proxy.ts)
+              sia dal login della dashboard. <details> nativo, zero JS. */}
+          <details className="group relative">
+            <summary className="cursor-pointer list-none rounded-full border border-line px-4 py-1.5 font-medium text-ivory-dim transition-colors marker:content-none hover:border-champagne hover:text-champagne [&::-webkit-details-marker]:hidden">
+              {t("adminButton")}
+            </summary>
+            <div className="absolute right-0 bottom-full z-10 mb-2 w-56 rounded-lg border border-line bg-charcoal p-1.5 shadow-lg sm:top-full sm:bottom-auto sm:mt-2 sm:mb-0">
+              {/* Link Next.js "semplice" (non quello i18n): /admin non fa
+                  parte delle rotte multilingua, un prefisso di lingua lo
+                  romperebbe. */}
+              <NextLink
+                href="/admin/seo"
+                className="block rounded-md px-3 py-2 text-left text-ivory-dim transition-colors hover:bg-white/5 hover:text-champagne"
+              >
+                {t("seoAreaLabel")}
+              </NextLink>
+              <a
+                href={siteConfig.socialDashboardUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-md px-3 py-2 text-left text-ivory-dim transition-colors hover:bg-white/5 hover:text-champagne"
+              >
+                {t("socialDashboardLabel")}
+              </a>
+            </div>
+          </details>
+        </div>
       </div>
     </footer>
   );
