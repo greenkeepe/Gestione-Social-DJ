@@ -140,6 +140,75 @@ export interface SeoProposalsFile {
   proposte: SeoProposal[];
 }
 
+// Dati grezzi dell'SEO Engine (site/scripts/seo/), specchio del resto di
+// site/lib/seoEngineTypes.ts: la pagina "SEO" della dashboard li mostra
+// insieme alle proposte, così non serve più aprire fortedj.it/admin/seo
+// separatamente per vedere query/opportunità/internal linking/indicizzazione.
+export interface GscQueryPageRow {
+  keys: [string, string];
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+export interface GscDataFile {
+  generatedAt: string | null;
+  period: { startDate: string; endDate: string } | null;
+  totals: { clicks: number; impressions: number };
+  byQueryPage: GscQueryPageRow[];
+}
+
+export interface SeoOpportunity {
+  query: string;
+  page: string;
+  position: number;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  priority: "HIGH" | "MEDIUM" | "LOW";
+  reason: string;
+  localArea: string | null;
+  pageExists: boolean;
+}
+
+export interface OpportunitiesFile {
+  generatedAt: string | null;
+  sourceGeneratedAt: string | null;
+  opportunities: SeoOpportunity[];
+}
+
+export type InternalLinkStatus = "ORPHAN" | "POCO_COLLEGATA" | "OK";
+
+export interface InternalLinkRoute {
+  path: string;
+  label: string;
+  inboundContextualLinks: number;
+  linkedFrom: string[];
+  status: InternalLinkStatus;
+}
+
+export interface InternalLinksFile {
+  generatedAt: string | null;
+  note: string;
+  routes: InternalLinkRoute[];
+}
+
+export interface IndexingRow {
+  url: string;
+  verdict: string | null;
+  coverageState: string | null;
+  indexingState: string | null;
+  lastCrawlTime: string | null;
+  error: string | null;
+}
+
+export interface IndexingFile {
+  generatedAt: string | null;
+  siteUrl: string | null;
+  rows: IndexingRow[];
+}
+
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
 
 export interface PianoReel {

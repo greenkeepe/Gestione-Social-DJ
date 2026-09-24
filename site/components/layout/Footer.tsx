@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import NextLink from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { siteConfig } from "@/data/site";
@@ -110,34 +109,21 @@ export function Footer() {
             © {new Date().getFullYear()} Forte DJ. {t("rightsReserved")}
           </p>
 
-          {/* Pulsante visibile (non un elemento nascosto/illeggibile): un
-              visitatore normale lo vede ma non ha comunque le credenziali
-              per usarlo, protetto sia da /admin/* (Basic Auth, vedi proxy.ts)
-              sia dal login della dashboard. <details> nativo, zero JS. */}
-          <details className="group relative">
-            <summary className="cursor-pointer list-none rounded-full border border-line px-4 py-1.5 font-medium text-ivory-dim transition-colors marker:content-none hover:border-champagne hover:text-champagne [&::-webkit-details-marker]:hidden">
-              {t("adminButton")}
-            </summary>
-            <div className="absolute right-0 bottom-full z-10 mb-2 w-56 rounded-lg border border-line bg-charcoal p-1.5 shadow-lg sm:top-full sm:bottom-auto sm:mt-2 sm:mb-0">
-              {/* Link Next.js "semplice" (non quello i18n): /admin non fa
-                  parte delle rotte multilingua, un prefisso di lingua lo
-                  romperebbe. */}
-              <NextLink
-                href="/admin/seo"
-                className="block rounded-md px-3 py-2 text-left text-ivory-dim transition-colors hover:bg-white/5 hover:text-champagne"
-              >
-                {t("seoAreaLabel")}
-              </NextLink>
-              <a
-                href={siteConfig.socialDashboardUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-md px-3 py-2 text-left text-ivory-dim transition-colors hover:bg-white/5 hover:text-champagne"
-              >
-                {t("socialDashboardLabel")}
-              </a>
-            </div>
-          </details>
+          {/* Un solo link, non un menu con due voci: la pagina "SEO" della
+              dashboard mostra ormai anche i dati grezzi di Search Console
+              (vedi dashboard/app/(dashboard)/seo/page.tsx), quindi non serve
+              più scegliere tra due destinazioni diverse. Pulsante visibile
+              (non un elemento nascosto/illeggibile): un visitatore normale
+              lo vede ma non ha comunque le credenziali per usarlo, protetto
+              dal login della dashboard. */}
+          <a
+            href={siteConfig.socialDashboardUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-line px-4 py-1.5 font-medium text-ivory-dim transition-colors hover:border-champagne hover:text-champagne"
+          >
+            {t("adminButton")}
+          </a>
         </div>
       </div>
     </footer>
