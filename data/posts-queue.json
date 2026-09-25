@@ -2,40 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "8346f4ac-5ee5-4e33-9147-11654a3f2f0e",
-      "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard",
-        "mediaId": "151ad571-940d-4bd6-b09e-3f8fd5ffe74d",
-        "filename": "reel-IMG_4496.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0bae3df4-69ba-46d6-b230-6edf900f6e38.mp4"
-      },
-      "caption": "Luce calda, gente stretta stretta, si respira quell'aria di festa vera. Qui il bello sta succedendo adesso.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingparty",
-        "#matrimonio2027",
-        "#weddingday",
-        "#weddingdj",
-        "#djmatrimonio",
-        "#discjockey",
-        "#musicapermatrimoni",
-        "#djprofessionista",
-        "#weddingmusic",
-        "#weddingpiemonte",
-        "#matrimonioinpiemonte",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-09-24",
-      "pillarId": "dietro-le-quinte",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "4bd7712d-f645-458a-9c79-9e2ec278884b",
       "createdAt": "2026-09-23T09:02:55.036Z",
       "formato": "reel",
@@ -674,38 +640,6 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-10-13"
-    },
-    {
-      "id": "01576fdb-e39e-4e5d-9772-9e5e1322d3e9",
-      "createdAt": "2026-09-24T07:14:30.569Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "sito-Contatti.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/fbdb259c-d181-4ccd-b75f-316a877def06.png"
-      },
-      "caption": "Bastano 5 informazioni per capire se sono libero per la tua data. Preventivo veloce, zero impegno.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingday",
-        "#matrimonio2027",
-        "#sposi2027",
-        "#weddingitaly",
-        "#weddingdj",
-        "#djwedding",
-        "#djeventi",
-        "#djperfeste",
-        "#djprofessionista",
-        "#piemonte",
-        "#liguria",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "18:30",
-      "dataProgrammata": "2026-09-24",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     },
     {
       "id": "5c6da649-e3e7-4201-9cdd-f2bf01cd04a8",
