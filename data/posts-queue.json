@@ -738,6 +738,70 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "d4d8185f-ba2c-4c61-8968-b24080f1ca2f",
+      "createdAt": "2026-09-25T06:12:51.456Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Benedetta-P.-26-01-2023.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8f267aa0-d1d0-4064-94ff-35847dc96c4b.png"
+      },
+      "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Andrea è stata la festa! Grazie al suo dj set ci siamo divertiti tutti. Spazia nei vari generi musicali e fa ballare tutti. Bellissima festa, bellissima musica.\"\n— Benedetta P., Compleanno\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#weddingparty",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#musicapermatrimoni",
+        "#djperfeste",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#lombardia",
+        "#weddingpiemonte",
+        "#liguria"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-10-16",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
+    },
+    {
+      "id": "0e08a961-c0ba-4c40-9867-16598ed490c4",
+      "createdAt": "2026-09-25T06:12:59.638Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Matrimoni.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/b73a8629-d4b8-4e02-b7b7-f314c093aab1.png"
+      },
+      "caption": "Ogni matrimonio ha la sua colonna sonora, dalla cerimonia in poi. Sul sito trovate come lavoro passo dopo passo.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingdj",
+        "#weddingitaly",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#matrimonioitaliano",
+        "#djperfeste",
+        "#djeventi",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#liguria",
+        "#alessandria",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-09-25",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }

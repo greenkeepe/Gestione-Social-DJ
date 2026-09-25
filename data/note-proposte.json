@@ -2,6 +2,11 @@
   "_istruzioni": "Proposte di 'Note' Instagram (max 60 caratteri) mandate su Telegram dall'Agente Appunti, da rivedere e incollare a mano nell'app — le Note non sono pubblicabili via API, quindi non viene mai pubblicato nulla in automatico.",
   "proposte": [
     {
+      "testo": "Console accesa, cuore già in pista.",
+      "metodo": "LLM",
+      "timestamp": "2026-09-25T06:13:21.204Z"
+    },
+    {
       "testo": "Console accesa, cuore già a mille.",
       "metodo": "LLM",
       "timestamp": "2026-09-23T10:50:03.639Z"

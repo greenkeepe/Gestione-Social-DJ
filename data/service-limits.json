@@ -5,18 +5,18 @@
       "nome": "Cloudflare R2 (storage foto/video/Reel)",
       "limiteBytes": 10737418240,
       "sogliaPercentualePausa": 90,
-      "usoAttualeBytes": 689021897,
-      "oggettiAttuali": 76,
-      "aggiornatoIl": "2026-09-24T11:10:19.893Z",
+      "usoAttualeBytes": 689680608,
+      "oggettiAttuali": 78,
+      "aggiornatoIl": "2026-09-25T06:13:17.392Z",
       "pausatoIl": null
     },
     "anthropic": {
       "nome": "Anthropic (didascalie/hashtag con visione)",
       "limiteChiamateMese": 300,
       "sogliaPercentualePausa": 90,
-      "chiamateEffettuateMese": 130,
+      "chiamateEffettuateMese": 132,
       "meseCorrente": "2026-09",
-      "aggiornatoIl": "2026-09-24T07:14:30.568Z",
+      "aggiornatoIl": "2026-09-25T06:13:21.203Z",
       "pausatoIl": null
     }
   }
