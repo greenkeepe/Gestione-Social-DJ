@@ -5,6 +5,6 @@
   ],
   "invioAutomatico": {
     "attivo": true,
-    "maxAlGiorno": 5
+    "maxAlGiorno": 10
   }
 }
