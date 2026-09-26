@@ -2,40 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "4bd7712d-f645-458a-9c79-9e2ec278884b",
-      "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard",
-        "mediaId": "f507af46-fcf0-4ab9-a8dd-4dfbcde7af04",
-        "filename": "reel-IMG_1792.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/42930d99-bd5f-4779-ad6b-6a69d6decc2a.mp4"
-      },
-      "caption": "Luci basse e chiacchiere in un angolo della serata, si respira già l'atmosfera giusta.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingday",
-        "#djmatrimonio",
-        "#weddingparty",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#djperfeste",
-        "#djeventi",
-        "#djprofessionista",
-        "#djwedding",
-        "#matrimonioinpiemonte",
-        "#liguria",
-        "#serravallescrivia"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-09-25",
-      "pillarId": "dietro-le-quinte",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "23b92d9b-74a1-454f-b6ec-1ddf77c48959",
       "createdAt": "2026-09-23T09:02:55.036Z",
       "formato": "reel",
@@ -706,38 +672,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "0e08a961-c0ba-4c40-9867-16598ed490c4",
-      "createdAt": "2026-09-25T06:12:59.638Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "sito-Matrimoni.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/b73a8629-d4b8-4e02-b7b7-f314c093aab1.png"
-      },
-      "caption": "Ogni matrimonio ha la sua colonna sonora, dalla cerimonia in poi. Sul sito trovate come lavoro passo dopo passo.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingdj",
-        "#weddingitaly",
-        "#djmatrimonio",
-        "#sposi2027",
-        "#matrimonioitaliano",
-        "#djperfeste",
-        "#djeventi",
-        "#weddingmusic",
-        "#animazionematrimonio",
-        "#liguria",
-        "#alessandria",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-09-25",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     },
     {
       "id": "37b6ea65-8770-4a04-b88b-c2a8bfbd1ca3",
