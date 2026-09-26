@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
+      "timestamp": "2026-09-26T08:32:33.810Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3565,13 +3572,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"telegram-1789567920625.jpg\" (foto) e messo in coda per la didascalia.",
       "timestamp": "2026-09-16T14:12:34.263Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-16T13:52:52.947Z"
     }
   ]
 }
