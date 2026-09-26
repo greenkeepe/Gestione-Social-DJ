@@ -770,6 +770,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "b9c12dd2-d803-4490-99f7-f276bf3883c1",
+      "createdAt": "2026-09-26T06:12:59.949Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Home.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/fb14373c-cdb5-4baa-8142-70e1dac9b67c.png"
+      },
+      "caption": "Ci sono momenti che diventano ricordi solo con la musica giusta. Il sito nuovo racconta proprio questo.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#weddingdj",
+        "#weddingday",
+        "#matrimonio2027",
+        "#djprofessionista",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#djperfeste",
+        "#lombardia",
+        "#liguria",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-09-26",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
