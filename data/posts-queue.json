@@ -738,6 +738,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "eef3ed96-ff01-4737-a9f0-76439bc7fae7",
+      "createdAt": "2026-09-27T06:12:21.664Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Gallery.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e6fac58f-c15f-47a9-a64a-ec90c4edd3d0.png"
+      },
+      "caption": "Scintille, sorrisi e balli fino a tardi. Un po' di quello che è successo lo trovate in gallery sul sito.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#weddingday",
+        "#weddingmusic",
+        "#djperfeste",
+        "#djeventi",
+        "#djprofessionista",
+        "#weddingpiemonte",
+        "#matrimonioinpiemonte",
+        "#liguria"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-09-27",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
