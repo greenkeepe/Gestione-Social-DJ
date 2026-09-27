@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-27T19:59:33.298Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-27T16:43:31.734Z"
     },
     {
@@ -3562,16 +3569,6 @@
         "errore": "Error: Graph API error [/17841407374071951]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:33:32 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AgMcrbHfANgcCI2PTvCqjAN\"}}"
       },
       "timestamp": "2026-09-16T17:33:32.642Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere i media recenti da Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:33:32 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AJHE4n3JvNYGOi2CspNEY-e\"}}"
-      },
-      "timestamp": "2026-09-16T17:33:32.300Z"
     }
   ]
 }
