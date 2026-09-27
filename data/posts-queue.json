@@ -28,10 +28,12 @@
         "#matrimonioinpiemonte"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-09-27",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "34cb7516-fdbf-4d64-b71d-a8440c3399d0",

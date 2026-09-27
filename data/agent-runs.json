@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18110598704129238) e Facebook (1791114428570718). + Storia IG pubblicata.",
+      "timestamp": "2026-09-27T20:01:31.265Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3559,16 +3566,6 @@
       "status": "ok",
       "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
       "timestamp": "2026-09-16T17:33:32.653Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere gli Insights Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:33:32 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AgMcrbHfANgcCI2PTvCqjAN\"}}"
-      },
-      "timestamp": "2026-09-16T17:33:32.642Z"
     }
   ]
 }
