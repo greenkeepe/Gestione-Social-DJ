@@ -58,7 +58,9 @@ async function main() {
   console.log(`[Regia] Contenuti con immagini da trasformare in Reel: ${bersagli.length}`);
   if (!bersagli.length) return;
 
-  let ok = 0;
+  // Un solo salvataggio a fine giro (non uno per contenuto): ogni commit sul
+  // repository fa partire un deploy Vercel, e il piano gratuito ne ha 100 al giorno.
+  const pronti: Array<{ id: string; url: string }> = [];
   const errori: string[] = [];
   for (const target of bersagli) {
     const tipo = tipoDi(target);
@@ -75,21 +77,7 @@ async function main() {
       const nuovoUrl = await caricaSuR2(reel.file, r2);
       await rm(path.dirname(reel.file), { recursive: true, force: true }).catch(() => {});
 
-      let saltato = false;
-      await applicaESalva(`chore(regia): "${target.media.filename}" trasformato in Reel (${tipo})`, async () => {
-        const q = await readData<QueueFile>("posts-queue.json");
-        const it = q.queue.find((x) => x.id === target.id);
-        if (!it || PUBBLICATI.has(it.status) || !it.media.mimeType.startsWith("image/")) { saltato = true; return false; }
-        it.media.originale = { downloadUrl: it.media.downloadUrl, mimeType: it.media.mimeType, filename: it.media.filename };
-        it.media.downloadUrl = nuovoUrl;
-        it.media.mimeType = "video/mp4";
-        it.media.filename = `reel-${it.media.filename.replace(/\.[^.]+$/, "")}.mp4`;
-        it.media.fotoReel = REGIA_FOTO_VERSIONE;
-        if (it.formato === "post") it.formato = "reel";
-        await writeData("posts-queue.json", q);
-        return true;
-      });
-      if (!saltato) ok++;
+      pronti.push({ id: target.id, url: nuovoUrl });
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       errori.push(`${target.media.filename}: ${msg.slice(0, 600)}`);
@@ -99,7 +87,22 @@ async function main() {
     }
   }
 
-  await applicaESalva("chore(regia): registro reel da foto", async () => {
+  let ok = 0;
+  await applicaESalva(`chore(regia): ${pronti.length} contenuti con immagini trasformati in Reel`, async () => {
+    const q = await readData<QueueFile>("posts-queue.json");
+    ok = 0;
+    for (const p of pronti) {
+      const it = q.queue.find((x) => x.id === p.id);
+      if (!it || PUBBLICATI.has(it.status) || !it.media.mimeType.startsWith("image/")) continue; // pubblicato nel frattempo
+      it.media.originale = { downloadUrl: it.media.downloadUrl, mimeType: it.media.mimeType, filename: it.media.filename };
+      it.media.downloadUrl = p.url;
+      it.media.mimeType = "video/mp4";
+      it.media.filename = `reel-${it.media.filename.replace(/\.[^.]+$/, "")}.mp4`;
+      it.media.fotoReel = REGIA_FOTO_VERSIONE;
+      if (it.formato === "post") it.formato = "reel";
+      ok++;
+    }
+    if (ok) await writeData("posts-queue.json", q);
     await logAgentRun({
       agente: IDENTITA.reelMaker.nome,
       identita: IDENTITA.reelMaker.ruolo,
