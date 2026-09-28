@@ -2,6 +2,20 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Consigli per gli sposi\" (LLM con visione). Programmato per il 2026-10-18 alle 21:15.",
+      "timestamp": "2026-09-28T13:41:31.089Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "1 contenuti (foto o Reel già montati) messi in coda per la didascalia.",
+      "timestamp": "2026-09-28T13:41:24.486Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
@@ -3564,20 +3578,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-16T18:58:22.523Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-16T18:58:22.521Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "ok",
-      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
-      "timestamp": "2026-09-16T18:58:22.519Z"
     }
   ]
 }

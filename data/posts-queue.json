@@ -738,6 +738,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "31b26277-d6e0-4503-a063-59e75aaedeb5",
+      "createdAt": "2026-09-28T13:41:24.484Z",
+      "formato": "reel",
+      "media": {
+        "source": "dashboard-upload",
+        "mediaId": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
+        "filename": "reel-IMG_4893.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87883679-44f7-4a7c-afb3-0c3631f6a150.mp4"
+      },
+      "caption": "Setup pronto, piscina a vista e panorama pazzesco. Location così bella che il lavoro diventa un piacere.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingparty",
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#discjockey",
+        "#weddingmusic",
+        "#djperfeste",
+        "#animazionematrimonio",
+        "#lombardia",
+        "#piemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "consigli",
+      "dataProgrammata": "2026-10-18"
     }
   ]
 }
