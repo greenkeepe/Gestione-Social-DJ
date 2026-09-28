@@ -140,13 +140,19 @@
     {
       "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
       "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "dashboard-upload",
         "mediaId": "3c679d61-eb68-47cb-832f-14902f22faf8",
-        "filename": "IMG_4195.JPG",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9b76107a-92f1-4e87-9b14-d34dd759d81e.JPG"
+        "filename": "reel-IMG_4195.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/420fffe6-a958-4315-93e2-d86d233dbcf2.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9b76107a-92f1-4e87-9b14-d34dd759d81e.JPG",
+          "mimeType": "image/jpeg",
+          "filename": "IMG_4195.JPG"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "La sposa balla in cerchio con gli invitati, questi sono i momenti che mi fanno amare il mio lavoro.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
