@@ -9,12 +9,31 @@
       "mimeType": "video/mp4",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-09-28T13:29:28.621Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-09-28T13:40:18.727Z",
       "erroreMessaggio": null,
-      "risultato": null,
-      "source": "dashboard-upload"
+      "risultato": {
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87883679-44f7-4a7c-afb3-0c3631f6a150.mp4",
+        "durataSecondi": 7.8,
+        "piano": {
+          "categoria": "festa",
+          "stile": "dynamic",
+          "profiloUsato": "auto",
+          "durataTarget": 30,
+          "hook": {
+            "inizio": 0,
+            "fine": 0
+          },
+          "segmenti": [],
+          "sottotitoli": false,
+          "musica": true,
+          "testoHook": null,
+          "testoChiusura": null
+        }
+      },
+      "source": "dashboard-upload",
+      "motore": "regia-2"
     },
     {
       "id": "f07ef283-9561-408b-815f-1b5f03463029",

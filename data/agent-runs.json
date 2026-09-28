@@ -5,6 +5,13 @@
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
+      "riepilogo": "Reel creato da \"IMG_4893.MP4\" (categoria festa, stile dynamic, 8s) e messo in coda per la didascalia e la pubblicazione automatica.",
+      "timestamp": "2026-09-28T13:40:18.729Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
       "riepilogo": "Rielaborazione con Regia: 3/8 Reel rimontati (didascalie e orari invariati), 1 job in errore rimessi in coda.",
       "dettagli": {
         "errori": [
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
       "timestamp": "2026-09-16T18:58:22.519Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-16T18:58:21.975Z"
     }
   ]
 }
