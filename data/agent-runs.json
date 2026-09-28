@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Rielaborazione con Regia: 0/0 Reel rimontati (didascalie e orari invariati).",
+      "timestamp": "2026-09-28T14:42:00.378Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Reel da immagini con Regia: 10/10 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
       "timestamp": "2026-09-28T14:41:51.446Z"
@@ -3574,13 +3581,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"telegram-1789571410188.mp4\" (categoria evento, stile dynamic, 14s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
       "timestamp": "2026-09-16T23:15:25.222Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
-      "timestamp": "2026-09-16T22:37:32.692Z"
     }
   ]
 }
