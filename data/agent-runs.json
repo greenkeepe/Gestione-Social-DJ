@@ -9,6 +9,16 @@
       "dettagli": {
         "errore": "TypeError: fetch failed"
       },
+      "timestamp": "2026-09-28T08:07:20.352Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "errore",
+      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
+      "dettagli": {
+        "errore": "TypeError: fetch failed"
+      },
       "timestamp": "2026-09-28T08:04:54.091Z"
     },
     {
@@ -3556,13 +3566,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-16T17:39:41.598Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-16T17:39:41.597Z"
     }
   ]
 }
