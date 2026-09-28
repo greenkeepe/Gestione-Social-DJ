@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Trash2 } from "lucide-react";
+import { Button } from "./ui/Button";
+import { useConfirm } from "./ui/ConfirmDialog";
 
 // Bottone generico per eliminare una riga (media, contenuto in coda, job
 // Reel AI) via l'API DELETE corrispondente. Chiede sempre conferma prima:
@@ -11,9 +14,11 @@ export function DeleteButton({ url, conferma = "Eliminare? Non si può annullare
   const [caricamento, setCaricamento] = useState(false);
   const [errore, setErrore] = useState<string | null>(null);
   const router = useRouter();
+  const { confirm, dialog } = useConfirm();
 
   async function elimina() {
-    if (!window.confirm(conferma)) return;
+    const ok = await confirm({ title: "Conferma eliminazione", message: conferma, confirmLabel: "Elimina", danger: true });
+    if (!ok) return;
     setCaricamento(true);
     setErrore(null);
     try {
@@ -29,16 +34,11 @@ export function DeleteButton({ url, conferma = "Eliminare? Non si può annullare
 
   return (
     <>
-      <button
-        type="button"
-        onClick={elimina}
-        disabled={caricamento}
-        className="upload-btn"
-        style={{ background: "transparent", border: "1px solid #c0392b", color: "#c0392b" }}
-      >
-        {caricamento ? "..." : "🗑 Elimina"}
-      </button>
+      <Button variant="danger" size="sm" onClick={elimina} loading={caricamento}>
+        <Trash2 size={14} aria-hidden="true" /> Elimina
+      </Button>
       {errore && <p className="error-msg">{errore}</p>}
+      {dialog}
     </>
   );
 }

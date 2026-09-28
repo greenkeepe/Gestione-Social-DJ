@@ -1,7 +1,11 @@
+import { CalendarClock } from "lucide-react";
 import { leggiDati } from "../../../lib/dataSource";
 import type { PostsQueueFile, PublishedLogFile } from "../../../lib/types";
 import { DeleteButton } from "../../../components/DeleteButton";
 import { EditQueueItemForm } from "../../../components/EditQueueItemForm";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
+import { LoadMore } from "../../../components/ui/LoadMore";
 
 export const dynamic = "force-dynamic";
 
@@ -12,14 +16,14 @@ export default async function ContenutiPage() {
   ]);
 
   const inCoda = queueFile.queue.filter((q) => q.status !== "pubblicato" && q.status !== "pubblicato-parziale");
-  const pubblicati = publishedFile.log.slice(0, 20);
+  const pubblicati = publishedFile.log;
 
   return (
     <div>
-      <h2>Contenuti</h2>
+      <PageHeader icon={<CalendarClock size={22} aria-hidden="true" />} title="Contenuti" />
 
       <h3>In coda</h3>
-      {inCoda.length === 0 && <p className="note">Nessun contenuto in coda al momento.</p>}
+      {inCoda.length === 0 && <EmptyState title="Nessun contenuto in coda al momento" />}
       <div className="grid">
         {inCoda.map((item) => (
           <div className="card" key={item.id}>
@@ -40,7 +44,7 @@ export default async function ContenutiPage() {
                 alle {item.orarioProgrammato}
               </p>
             )}
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
+            <div className="flex flex-wrap gap-sm mt-sm">
               <EditQueueItemForm
                 id={item.id}
                 caption={item.caption}
@@ -63,14 +67,20 @@ export default async function ContenutiPage() {
           {pubblicati.length === 0 && (
             <tr><td colSpan={4} className="note">Nessuna pubblicazione ancora registrata.</td></tr>
           )}
-          {pubblicati.map((p, i) => (
-            <tr key={i}>
-              <td>{p.formato}</td>
-              <td>{new Date(p.timestamp).toLocaleString("it-IT")}</td>
-              <td>{p.instagramId ?? "✗ non riuscito"}</td>
-              <td>{p.facebookId ?? "✗ non riuscito"}</td>
-            </tr>
-          ))}
+          <LoadMore
+            as="table"
+            colSpan={4}
+            initialCount={20}
+            label="pubblicazioni"
+            items={pubblicati.map((p, i) => (
+              <tr key={i}>
+                <td>{p.formato}</td>
+                <td>{new Date(p.timestamp).toLocaleString("it-IT")}</td>
+                <td>{p.instagramId ?? "✗ non riuscito"}</td>
+                <td>{p.facebookId ?? "✗ non riuscito"}</td>
+              </tr>
+            ))}
+          />
         </tbody>
       </table>
     </div>

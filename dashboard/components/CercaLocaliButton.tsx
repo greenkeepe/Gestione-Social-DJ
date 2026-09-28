@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Search } from "lucide-react";
+import { Button } from "./ui/Button";
 
 // Avvia una ricerca on-demand (fino a 10 nuovi locali) invece del vecchio
 // giro automatico giornaliero — vedi outreach-search.yml. La ricerca gira
@@ -28,11 +30,11 @@ export function CercaLocaliButton() {
   }
 
   return (
-    <div style={{ marginBottom: 16 }}>
-      <button type="button" className="upload-btn" disabled={caricamento} onClick={cerca}>
-        {caricamento ? "Avvio..." : "🔍 Cerca nuovi locali"}
-      </button>
-      <p className="note" style={{ marginTop: 6 }}>Propone fino a 10 nuovi ristoranti/hotel della zona ogni volta che tocchi il tasto — non gira più da solo ogni giorno.</p>
+    <div className="mt-md">
+      <Button onClick={cerca} loading={caricamento}>
+        <Search size={14} aria-hidden="true" /> Cerca nuovi locali
+      </Button>
+      <p className="note mt-sm">Propone fino a 10 nuovi ristoranti/hotel della zona ogni volta che tocchi il tasto — non gira più da solo ogni giorno.</p>
       {errore && <p className="error-msg">{errore}</p>}
       {messaggio && <p className="note">{messaggio}</p>}
     </div>

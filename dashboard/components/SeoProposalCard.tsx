@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Check, X } from "lucide-react";
 import type { SeoProposal } from "../lib/types";
-
-const PRIORITY_LABEL: Record<string, string> = { HIGH: "Alta", MEDIUM: "Media", LOW: "Bassa" };
+import { Button } from "./ui/Button";
+import { StatusBadge } from "./ui/StatusBadge";
+import { useConfirm } from "./ui/ConfirmDialog";
+import { statusVocabulary } from "../lib/statusVocabulary";
 
 // Una proposta = titolo/meta attuale vs proposto, modificabili prima di
 // applicare (i campi partono già precompilati col testo proposto: se va
@@ -17,9 +20,15 @@ export function SeoProposalCard({ proposta }: { proposta: SeoProposal }) {
   const [caricamento, setCaricamento] = useState(false);
   const [errore, setErrore] = useState<string | null>(null);
   const router = useRouter();
+  const { confirm, dialog } = useConfirm();
 
   async function applica() {
-    if (!window.confirm(`Applicare questo titolo/meta sulla pagina "${proposta.pageLabel}" del sito? Verrà pubblicato al prossimo deploy.`)) return;
+    const ok = await confirm({
+      title: "Applica sul sito",
+      message: `Applicare questo titolo/meta sulla pagina "${proposta.pageLabel}" del sito? Verrà pubblicato al prossimo deploy.`,
+      confirmLabel: "Applica"
+    });
+    if (!ok) return;
     setCaricamento(true);
     setErrore(null);
     try {
@@ -38,7 +47,8 @@ export function SeoProposalCard({ proposta }: { proposta: SeoProposal }) {
   }
 
   async function scarta() {
-    if (!window.confirm(`Scartare questa proposta per "${proposta.pageLabel}" senza applicarla?`)) return;
+    const ok = await confirm({ title: "Scarta proposta", message: `Scartare questa proposta per "${proposta.pageLabel}" senza applicarla?`, danger: true, confirmLabel: "Scarta" });
+    if (!ok) return;
     setCaricamento(true);
     setErrore(null);
     try {
@@ -58,9 +68,7 @@ export function SeoProposalCard({ proposta }: { proposta: SeoProposal }) {
         <div className="label">
           {proposta.pageLabel} ({proposta.page || "/"})
         </div>
-        <span className={`badge ${proposta.priority === "HIGH" ? "errore" : proposta.priority === "MEDIUM" ? "ok" : "nessuna-azione"}`}>
-          priorità {PRIORITY_LABEL[proposta.priority] ?? proposta.priority}
-        </span>
+        <StatusBadge {...statusVocabulary.priority(proposta.priority)} />
       </div>
       <p className="note" style={{ marginTop: 8 }}>
         Query: <strong>&quot;{proposta.query}&quot;</strong> — {proposta.reason}
@@ -96,21 +104,16 @@ export function SeoProposalCard({ proposta }: { proposta: SeoProposal }) {
         </div>
       )}
 
-      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-        <button type="button" onClick={applica} disabled={caricamento} className="upload-btn">
-          {caricamento ? "..." : "✅ Applica sul sito"}
-        </button>
-        <button
-          type="button"
-          onClick={scarta}
-          disabled={caricamento}
-          className="upload-btn"
-          style={{ background: "transparent", border: "1px solid #c0392b", color: "#c0392b" }}
-        >
-          Scarta
-        </button>
+      <div className="flex gap-sm mt-md">
+        <Button onClick={applica} loading={caricamento}>
+          <Check size={14} aria-hidden="true" /> Applica sul sito
+        </Button>
+        <Button variant="danger" onClick={scarta} disabled={caricamento}>
+          <X size={14} aria-hidden="true" /> Scarta
+        </Button>
       </div>
       {errore && <p className="error-msg">{errore}</p>}
+      {dialog}
     </div>
   );
 }

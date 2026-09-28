@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PROVINCE } from "../lib/province";
+import { Button } from "./ui/Button";
 
 const REGIONI = ["Piemonte", "Liguria", "Lombardia"];
 
@@ -60,9 +61,9 @@ export function ProvinceSelector({ selezionateIniziali }: { selezionateIniziali:
           </div>
         </div>
       ))}
-      <button type="button" onClick={salva} disabled={salvataggio} className="upload-btn" style={{ marginTop: 12 }}>
-        {salvataggio ? "Salvo..." : "Salva province"}
-      </button>
+      <Button className="mt-md" onClick={salva} loading={salvataggio}>
+        Salva province
+      </Button>
       {errore && <p className="error-msg">{errore}</p>}
     </div>
   );

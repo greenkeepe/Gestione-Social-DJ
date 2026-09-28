@@ -376,6 +376,7 @@ a.card:hover {
   line-height: 1;
   flex-shrink: 0;
   filter: saturate(1.1);
+  color: var(--color-primary-light);
 }
 
 .trend {
@@ -412,6 +413,12 @@ a.card:hover {
 .badge.ok { background: var(--color-ok-soft); color: var(--color-ok); }
 .badge.errore { background: var(--color-err-soft); color: var(--color-err); }
 .badge.nessuna-azione { background: var(--bg-elev-2); color: var(--text-dim); }
+
+.badge--ok { background: var(--color-ok-soft); color: var(--color-ok); }
+.badge--warn { background: var(--color-warn-soft); color: var(--color-warn); }
+.badge--err { background: var(--color-err-soft); color: var(--color-err); }
+.badge--neutral { background: var(--bg-elev-2); color: var(--text-dim); }
+.badge--accent { background: var(--color-primary-soft); color: var(--color-primary); }
 
 table {
   width: 100%;
@@ -934,5 +941,369 @@ input, textarea, select {
 
   .login-card {
     padding: 28px 22px;
+  }
+}
+
+/* ===========================================================================
+   Sistema di design condiviso — aggiunto in fase di ristrutturazione UI.
+   Non tocca nulla sopra: estende, non sostituisce (.upload-btn resta valida
+   per eventuale codice non ancora migrato).
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Utility di layout minime — non un framework, solo le combinazioni che
+   prima erano ripetute a mano come style={{}} in ogni pagina.
+   ------------------------------------------------------------------------- */
+
+.flex { display: flex; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-xs { gap: 6px; }
+.gap-sm { gap: 10px; }
+.gap-md { gap: 16px; }
+.stack-sm > * + * { margin-top: 8px; }
+.stack-md > * + * { margin-top: 16px; }
+.mt-sm { margin-top: 8px; }
+.mt-md { margin-top: 16px; }
+.mt-lg { margin-top: 28px; }
+
+/* ---------------------------------------------------------------------------
+   Sidebar — raggruppamento sezioni + icone Lucide al posto delle emoji
+   ------------------------------------------------------------------------- */
+
+.sidebar nav a svg {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  opacity: 0.85;
+}
+
+.sidebar__section {
+  margin-top: 18px;
+}
+
+.sidebar__section:first-child {
+  margin-top: 0;
+}
+
+.sidebar__section-label {
+  padding: 0 12px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(243, 240, 255, 0.45);
+}
+
+/* ---------------------------------------------------------------------------
+   Bottoni — sistema unico con varianti, sostituisce l'uso alla cieca di
+   .upload-btn ovunque (che resta definita sopra per compatibilità).
+   ------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn--sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #241703;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-accent-strong);
+}
+
+.btn--secondary {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-primary-light);
+  color: #fff;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border-color: var(--border);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  border-color: var(--color-primary-light);
+  color: var(--text);
+}
+
+.btn--danger {
+  background: transparent;
+  color: var(--color-err);
+  border-color: var(--color-err);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: var(--color-err-soft);
+}
+
+.btn__spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: btn-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------------------------------------------------------------------------
+   Intestazione pagina condivisa (PageHeader)
+   ------------------------------------------------------------------------- */
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.page-header__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header__title svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.page-header__action {
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Stato vuoto condiviso (EmptyState)
+   ------------------------------------------------------------------------- */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  padding: 40px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev-2);
+  color: var(--text-dim);
+  margin-top: 12px;
+}
+
+.empty-state svg {
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+
+.empty-state__title {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------------------
+   Carica altri (LoadMore) — paginazione leggera per liste lunghe
+   ------------------------------------------------------------------------- */
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* ---------------------------------------------------------------------------
+   Tabs (segmented control) — usato per spezzare le pagine "muro di tabelle"
+   ------------------------------------------------------------------------- */
+
+.tabs__list {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg-elev-2);
+  border-radius: var(--radius-md);
+  width: fit-content;
+  margin: 16px 0;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.tabs__tab {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tabs__tab:hover {
+  color: var(--text);
+}
+
+.tabs__tab--active {
+  background: var(--bg-elev);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------------------------------------------------------------------------
+   Finestra di conferma (ConfirmDialog) — sostituisce window.confirm()
+   ------------------------------------------------------------------------- */
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(19, 16, 32, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.confirm-dialog {
+  background: var(--bg-elev);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  width: 400px;
+  max-width: 100%;
+}
+
+.confirm-dialog__title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.confirm-dialog__message {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ---------------------------------------------------------------------------
+   Zona pericolosa — isola visivamente le azioni distruttive (es. svuota R2)
+   dalle normali card di impostazione, invece di metterle alla pari.
+   ------------------------------------------------------------------------- */
+
+.danger-zone {
+  border: 1px solid var(--color-err);
+  background: var(--color-err-soft);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.danger-zone__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-err);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Skeleton di caricamento (loading.tsx) — placeholder animato coerente coi
+   token esistenti, per evitare lo schermo bianco durante i fetch
+   "force-dynamic".
+   ------------------------------------------------------------------------- */
+
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-elev-2) 25%, var(--border) 37%, var(--bg-elev-2) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.skeleton-card {
+  height: 92px;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-line {
+  height: 14px;
+  margin-top: 10px;
+}
+
+.skeleton-line--wide {
+  width: 60%;
+}
+
+@media (max-width: 900px) {
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-header__action {
+    width: 100%;
+  }
+
+  .page-header__action .btn {
+    width: 100%;
   }
 }

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { caricaSuR2 } from "../lib/r2Upload";
+import { Button } from "./ui/Button";
 
 // Stesso meccanismo di UploadForm.tsx (upload diretto dal browser a
 // Cloudflare R2 con URL presigned — vedi lib/r2Upload.ts): qui il file
@@ -88,9 +89,9 @@ export function ReelUploadForm() {
         style={{ width: "100%", margin: "8px 0 16px", padding: 8, borderRadius: 8, background: "var(--bg)", color: "var(--text)", border: "1px solid var(--border)", fontFamily: "inherit" }}
       />
 
-      <button type="submit" disabled={stato === "caricamento"} className="upload-btn">
-        {stato === "caricamento" ? `Caricamento in corso… ${percentuale}%` : "🎬 Crea Reel AI"}
-      </button>
+      <Button type="submit" loading={stato === "caricamento"}>
+        {stato === "caricamento" ? `Caricamento in corso… ${percentuale}%` : "Crea Reel AI"}
+      </Button>
       {stato === "errore" && <p className="error-msg">{errore}</p>}
     </form>
   );

@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Play, Check, Trash2, AlertTriangle } from "lucide-react";
+import { Button } from "./ui/Button";
+import { useConfirm } from "./ui/ConfirmDialog";
 
 const GB = 1024 * 1024 * 1024;
 
@@ -20,6 +23,7 @@ export function ServiceLimitsForm({ servizio, limite, sogliaPercentualePausa, pa
   const [errore, setErrore] = useState<string | null>(null);
   const [svuotamento, setSvuotamento] = useState<"idle" | "in-corso" | "avviato">("idle");
   const router = useRouter();
+  const { confirm, dialog } = useConfirm();
 
   async function invia(body: Record<string, unknown>) {
     setSalvataggio(true);
@@ -41,10 +45,14 @@ export function ServiceLimitsForm({ servizio, limite, sogliaPercentualePausa, pa
   }
 
   async function svuotaR2() {
-    const confermato = window.confirm(
-      "Cancella DAVVERO tutti i file da Cloudflare R2 (foto, video, Reel) e svuota le code (media, Reel, post in coda). Operazione irreversibile. Lo storico di ciò che è già stato pubblicato sui social non viene toccato.\n\nProcedere?"
-    );
-    if (!confermato) return;
+    const ok = await confirm({
+      title: "Svuota storage R2",
+      message:
+        "Cancella DAVVERO tutti i file da Cloudflare R2 (foto, video, Reel) e svuota le code (media, Reel, post in coda). Operazione irreversibile. Lo storico di ciò che è già stato pubblicato sui social non viene toccato.",
+      confirmLabel: "Svuota tutto",
+      danger: true
+    });
+    if (!ok) return;
     setSvuotamento("in-corso");
     setErrore(null);
     try {
@@ -59,8 +67,8 @@ export function ServiceLimitsForm({ servizio, limite, sogliaPercentualePausa, pa
   }
 
   return (
-    <div style={{ marginTop: 12 }}>
-      <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "flex-end" }}>
+    <div className="mt-md">
+      <div className="flex gap-md flex-wrap" style={{ alignItems: "flex-end" }}>
         <label>
           <div className="note">{isR2 ? "Limite spazio (GB)" : "Limite chiamate al mese"}</div>
           <input type="number" min={isR2 ? "0.1" : "1"} step={isR2 ? "0.1" : "1"} value={valore} onChange={(e) => setValore(e.target.value)} style={{ width: 100 }} />
@@ -69,10 +77,9 @@ export function ServiceLimitsForm({ servizio, limite, sogliaPercentualePausa, pa
           <div className="note">Metti in pausa al (%)</div>
           <input type="number" min="1" max="100" step="1" value={soglia} onChange={(e) => setSoglia(e.target.value)} style={{ width: 100 }} />
         </label>
-        <button
-          type="button"
-          className="upload-btn"
-          disabled={salvataggio}
+        <Button
+          size="sm"
+          loading={salvataggio}
           onClick={() =>
             invia(
               isR2
@@ -82,31 +89,34 @@ export function ServiceLimitsForm({ servizio, limite, sogliaPercentualePausa, pa
           }
         >
           Salva soglie
-        </button>
+        </Button>
         {pausato && (
-          <button type="button" className="upload-btn" disabled={salvataggio} onClick={() => invia({ riprendi: true })}>
-            ▶️ Riprendi ora
-          </button>
-        )}
-        {isR2 && (
-          <button
-            type="button"
-            className="upload-btn"
-            style={{ background: "#c0392b" }}
-            disabled={svuotamento !== "idle"}
-            onClick={svuotaR2}
-          >
-            {svuotamento === "in-corso" ? "Avvio…" : svuotamento === "avviato" ? "✅ Reset avviato" : "🗑️ Svuota storage R2"}
-          </button>
+          <Button variant="secondary" size="sm" disabled={salvataggio} onClick={() => invia({ riprendi: true })}>
+            <Play size={14} aria-hidden="true" /> Riprendi ora
+          </Button>
         )}
       </div>
-      {isR2 && svuotamento === "avviato" && (
-        <p className="note" style={{ marginTop: 6 }}>
-          Reset avviato su GitHub Actions (ci vuole circa un minuto): cancella tutti i file da R2 e svuota le code. Aggiorna la pagina tra
-          poco per vedere lo spazio tornato a zero.
-        </p>
-      )}
       {errore && <p className="error-msg">{errore}</p>}
+
+      {isR2 && (
+        <div className="danger-zone">
+          <div className="danger-zone__title">
+            <AlertTriangle size={16} aria-hidden="true" /> Zona pericolosa
+          </div>
+          <p className="note">Cancella tutti i file da R2 e svuota le code di media/Reel/post. Operazione irreversibile.</p>
+          <Button variant="danger" size="sm" className="mt-sm" disabled={svuotamento !== "idle"} onClick={svuotaR2}>
+            {svuotamento === "avviato" ? <Check size={14} aria-hidden="true" /> : <Trash2 size={14} aria-hidden="true" />}
+            {svuotamento === "in-corso" ? "Avvio…" : svuotamento === "avviato" ? "Reset avviato" : "Svuota storage R2"}
+          </Button>
+          {svuotamento === "avviato" && (
+            <p className="note mt-sm">
+              Reset avviato su GitHub Actions (ci vuole circa un minuto): cancella tutti i file da R2 e svuota le code. Aggiorna la pagina tra
+              poco per vedere lo spazio tornato a zero.
+            </p>
+          )}
+        </div>
+      )}
+      {dialog}
     </div>
   );
 }

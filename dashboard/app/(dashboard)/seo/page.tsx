@@ -1,3 +1,4 @@
+import { Search } from "lucide-react";
 import { leggiDatiRepo } from "../../../lib/dataSource";
 import type {
   SeoProposalsFile,
@@ -7,14 +8,14 @@ import type {
   IndexingFile
 } from "../../../lib/types";
 import { SeoProposalCard } from "../../../components/SeoProposalCard";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
+import { StatusBadge } from "../../../components/ui/StatusBadge";
+import { LoadMore } from "../../../components/ui/LoadMore";
+import { Tabs } from "../../../components/ui/Tabs";
+import { statusVocabulary } from "../../../lib/statusVocabulary";
 
 export const dynamic = "force-dynamic";
-
-const STATUS_LABEL: Record<string, string> = {
-  ORPHAN: "orfana (nessun link)",
-  POCO_COLLEGATA: "poco collegata",
-  OK: "ok"
-};
 
 // Tutto quello che serve per la SEO in un solo posto, così non serve più
 // aprire separatamente fortedj.it/admin/seo: dati grezzi di Search Console,
@@ -47,30 +48,20 @@ export default async function SeoPage() {
   const topQuery = [...gscData.byQueryPage].sort((a, b) => b.impressions - a.impressions).slice(0, 15);
   const problemi = internalLinksFile.routes.filter((r) => r.status !== "OK");
 
-  return (
-    <div>
-      <h2>SEO</h2>
-      <p className="note">
-        Tutto quello che serve per la SEO in un solo posto: dati reali di Google Search Console, opportunità rilevate, stato dell&apos;internal
-        linking e dell&apos;indicizzazione (aggiornati ogni lunedì), e le proposte di titolo/meta description da rivedere e applicare. Nessun dato
-        qui sotto tocca mai il sito da solo, tranne quando premi esplicitamente &quot;Applica&quot; su una proposta.
-      </p>
-
-      <h3>Riepilogo Search Console</h3>
+  const riepilogoTab = (
+    <>
       {gscData.generatedAt ? (
         <>
           <div className="grid">
             <div className="card card--stat">
               <div className="stat-top">
                 <div className="label">Clic (ultimi 28 giorni)</div>
-                <span className="stat-icon" aria-hidden="true">🖱️</span>
               </div>
               <div className="value">{gscData.totals.clicks}</div>
             </div>
             <div className="card card--stat">
               <div className="stat-top">
                 <div className="label">Impression</div>
-                <span className="stat-icon" aria-hidden="true">👁️</span>
               </div>
               <div className="value">{gscData.totals.impressions}</div>
             </div>
@@ -107,27 +98,62 @@ export default async function SeoPage() {
           )}
         </>
       ) : (
-        <p className="note">Nessuna sincronizzazione con Search Console ancora eseguita (o credenziali GSC non configurate).</p>
+        <EmptyState title="Nessuna sincronizzazione con Search Console ancora eseguita" description="Oppure le credenziali GSC non sono configurate." />
       )}
 
+      {decise.length > 0 && (
+        <>
+          <h3 className="mt-lg">Proposte decise di recente</h3>
+          <div className="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pagina</th>
+                  <th>Query</th>
+                  <th>Stato</th>
+                  <th>Quando</th>
+                </tr>
+              </thead>
+              <tbody>
+                {decise.map((p) => (
+                  <tr key={p.id}>
+                    <td>{p.pageLabel}</td>
+                    <td>{p.query}</td>
+                    <td><StatusBadge {...statusVocabulary.seoProposal(p.status)} /></td>
+                    <td>{new Date(p.decisoIl ?? p.creatoIl).toLocaleString("it-IT")}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </>
+  );
+
+  const proposteTab = (
+    <>
       <h3>Da rivedere ({inAttesa.length})</h3>
       {inAttesa.length === 0 && (
-        <p className="note">
-          Nessuna proposta al momento — o non ci sono ancora opportunità con volume sufficiente su Search Console, o non ce n&apos;è
-          una nuova dall&apos;ultimo giro settimanale.
-        </p>
+        <EmptyState
+          title="Nessuna proposta al momento"
+          description="O non ci sono ancora opportunità con volume sufficiente su Search Console, o non ce n'è una nuova dall'ultimo giro settimanale."
+        />
       )}
       {inAttesa.map((p) => (
         <SeoProposalCard key={p.id} proposta={p} />
       ))}
+    </>
+  );
 
-      <h3>Tutte le opportunità rilevate ({opportunitiesFile.opportunities.length})</h3>
+  const opportunitaTab = (
+    <>
       <p className="note">
         Query in posizione 5-20 con CTR basso rispetto a quella fascia (vedi site/docs/seo-engine.md per le soglie esatte). Non tutte hanno
-        ancora una proposta di titolo/meta qui sopra — propose-fixes.ts ne genera una alla volta per pagina.
+        ancora una proposta di titolo/meta — propose-fixes.ts ne genera una alla volta per pagina.
       </p>
       {opportunitiesFile.opportunities.length === 0 ? (
-        <p className="note">Nessuna opportunità rilevata (traffico ancora troppo basso, o dati non ancora sincronizzati).</p>
+        <EmptyState title="Nessuna opportunità rilevata" description="Traffico ancora troppo basso, o dati non ancora sincronizzati." />
       ) : (
         <div className="table-scroll">
           <table>
@@ -142,30 +168,35 @@ export default async function SeoPage() {
               </tr>
             </thead>
             <tbody>
-              {opportunitiesFile.opportunities.map((o, i) => (
-                <tr key={i}>
-                  <td>{o.query}</td>
-                  <td>{o.page}</td>
-                  <td>{o.position.toFixed(1)}</td>
-                  <td>{o.impressions}</td>
-                  <td>{(o.ctr * 100).toFixed(1)}%</td>
-                  <td>
-                    <span className={`badge ${o.priority === "HIGH" ? "errore" : o.priority === "MEDIUM" ? "ok" : "nessuna-azione"}`}>
-                      {o.priority}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              <LoadMore
+                as="table"
+                colSpan={6}
+                initialCount={25}
+                label="opportunità"
+                items={opportunitiesFile.opportunities.map((o, i) => (
+                  <tr key={i}>
+                    <td>{o.query}</td>
+                    <td>{o.page}</td>
+                    <td>{o.position.toFixed(1)}</td>
+                    <td>{o.impressions}</td>
+                    <td>{(o.ctr * 100).toFixed(1)}%</td>
+                    <td><StatusBadge {...statusVocabulary.priority(o.priority)} /></td>
+                  </tr>
+                ))}
+              />
             </tbody>
           </table>
         </div>
       )}
+    </>
+  );
 
-      <h3>Internal linking</h3>
+  const internalLinkingTab = (
+    <>
       {internalLinksFile.routes.length === 0 ? (
-        <p className="note">Nessun controllo ancora eseguito.</p>
+        <EmptyState title="Nessun controllo ancora eseguito" />
       ) : problemi.length === 0 ? (
-        <p className="note">Tutte le {internalLinksFile.routes.length} pagine sono collegate a sufficienza da link interni.</p>
+        <EmptyState title="Tutto collegato" description={`Tutte le ${internalLinksFile.routes.length} pagine sono collegate a sufficienza da link interni.`} />
       ) : (
         <div className="table-scroll">
           <table>
@@ -181,21 +212,20 @@ export default async function SeoPage() {
                 <tr key={r.path}>
                   <td>{r.label}</td>
                   <td>{r.inboundContextualLinks}</td>
-                  <td>
-                    <span className={`badge ${r.status === "ORPHAN" ? "errore" : "nessuna-azione"}`}>
-                      {STATUS_LABEL[r.status] ?? r.status}
-                    </span>
-                  </td>
+                  <td><StatusBadge {...statusVocabulary.internalLink(r.status)} /></td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       )}
+    </>
+  );
 
-      <h3>Indicizzazione</h3>
+  const indicizzazioneTab = (
+    <>
       {indexingFile.rows.length === 0 ? (
-        <p className="note">Nessun controllo ancora eseguito (richiede le credenziali Search Console).</p>
+        <EmptyState title="Nessun controllo ancora eseguito" description="Richiede le credenziali Search Console." />
       ) : (
         <div className="table-scroll">
           <table>
@@ -218,34 +248,26 @@ export default async function SeoPage() {
           </table>
         </div>
       )}
+    </>
+  );
 
-      {decise.length > 0 && (
-        <>
-          <h3>Proposte decise di recente</h3>
-          <div className="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Pagina</th>
-                  <th>Query</th>
-                  <th>Stato</th>
-                  <th>Quando</th>
-                </tr>
-              </thead>
-              <tbody>
-                {decise.map((p) => (
-                  <tr key={p.id}>
-                    <td>{p.pageLabel}</td>
-                    <td>{p.query}</td>
-                    <td>{p.status}</td>
-                    <td>{new Date(p.decisoIl ?? p.creatoIl).toLocaleString("it-IT")}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
+  return (
+    <div>
+      <PageHeader
+        icon={<Search size={22} aria-hidden="true" />}
+        title="SEO"
+        description="Tutto quello che serve per la SEO in un solo posto: dati reali di Google Search Console, opportunità rilevate, stato dell'internal linking e dell'indicizzazione (aggiornati ogni lunedì), e le proposte di titolo/meta description da rivedere e applicare. Nessun dato qui sotto tocca mai il sito da solo, tranne quando premi esplicitamente «Applica» su una proposta."
+      />
+
+      <Tabs
+        items={[
+          { id: "riepilogo", label: "Riepilogo", content: riepilogoTab },
+          { id: "proposte", label: `Da rivedere (${inAttesa.length})`, content: proposteTab },
+          { id: "opportunita", label: `Opportunità (${opportunitiesFile.opportunities.length})`, content: opportunitaTab },
+          { id: "internal-linking", label: `Internal linking${problemi.length > 0 ? ` (${problemi.length})` : ""}`, content: internalLinkingTab },
+          { id: "indicizzazione", label: "Indicizzazione", content: indicizzazioneTab }
+        ]}
+      />
     </div>
   );
 }

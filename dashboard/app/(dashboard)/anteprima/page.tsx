@@ -1,5 +1,8 @@
+import { Image as ImageIcon } from "lucide-react";
 import { leggiDati, leggiConfig } from "../../../lib/dataSource";
 import { PostPreview } from "../../../components/PostPreview";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
 import type { PostsQueueFile } from "../../../lib/types";
 
 export const dynamic = "force-dynamic";
@@ -48,13 +51,17 @@ export default async function AnteprimaPage() {
 
   return (
     <div>
-      <h2>Anteprima</h2>
-      <p className="note">
-        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine cronologico esatto di data e ora. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro) o in pubblicazione (è il turno di oggi, l&apos;Editore lo pubblica al prossimo controllo). Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare. Il già pubblicato non compare più qui: trovi lo storico completo nella pagina &quot;Contenuti&quot;.
-      </p>
+      <PageHeader
+        icon={<ImageIcon size={22} aria-hidden="true" />}
+        title="Anteprima"
+        description="Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine cronologico esatto di data e ora. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro) o in pubblicazione (è il turno di oggi, l'Editore lo pubblica al prossimo controllo). Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare. Il già pubblicato non compare più qui: trovi lo storico completo nella pagina &quot;Contenuti&quot;."
+      />
 
       {items.length === 0 && (
-        <p className="note">Nessun contenuto in coda al momento. Carica un media dalla pagina &quot;Carica media&quot; per vederne qui l&apos;anteprima.</p>
+        <EmptyState
+          title="Nessun contenuto in coda al momento"
+          description={'Carica un media dalla pagina "Carica media" per vederne qui l\'anteprima.'}
+        />
       )}
 
       <div className="preview-grid">

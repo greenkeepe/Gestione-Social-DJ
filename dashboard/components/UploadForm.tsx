@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { caricaSuR2 } from "../lib/r2Upload";
+import { Button } from "./ui/Button";
 
 interface RigaFile {
   nome: string;
@@ -143,9 +144,9 @@ export function UploadForm() {
       </p>
       <input ref={inputRef} type="file" accept="image/*,video/*,.heic,.heif" multiple required style={{ margin: "12px 0" }} />
       <br />
-      <button type="submit" disabled={inCorso} className="upload-btn">
+      <Button type="submit" loading={inCorso}>
         {inCorso ? "Caricamento in corso…" : "Carica"}
-      </button>
+      </Button>
 
       {righe.length > 0 && (
         <ul style={{ listStyle: "none", padding: 0, marginTop: 12 }}>

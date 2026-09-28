@@ -1,6 +1,10 @@
+import { LayoutDashboard, Camera, ThumbsUp, MessageSquare, Heart, Inbox, Clapperboard, LayoutGrid, AlertTriangle } from "lucide-react";
 import { leggiDati } from "../../lib/dataSource";
 import type { KpisFile, AgentRunsFile, StrategyFile, PostsQueueFile, PublishedLogFile, ReelJobsFile } from "../../lib/types";
 import { ProgressRing } from "../../components/ProgressRing";
+import { PageHeader } from "../../components/ui/PageHeader";
+import { StatusBadge } from "../../components/ui/StatusBadge";
+import { statusVocabulary } from "../../lib/statusVocabulary";
 
 export const dynamic = "force-dynamic";
 
@@ -35,16 +39,17 @@ export default async function Panoramica() {
 
   return (
     <div>
-      <h2>Panoramica</h2>
-      <p className="note">
-        Ultimo aggiornamento dati: {kpis.ultimoAggiornamento ? new Date(kpis.ultimoAggiornamento).toLocaleString("it-IT") : "in attesa del primo ciclo agenti"}
-      </p>
+      <PageHeader
+        icon={<LayoutDashboard size={22} aria-hidden="true" />}
+        title="Panoramica"
+        description={`Ultimo aggiornamento dati: ${kpis.ultimoAggiornamento ? new Date(kpis.ultimoAggiornamento).toLocaleString("it-IT") : "in attesa del primo ciclo agenti"}`}
+      />
 
       <div className="grid">
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Follower Instagram</div>
-            <span className="stat-icon" aria-hidden="true">📷</span>
+            <Camera className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{kpis.instagram.followers ?? "—"}</div>
           {kpis.instagram.followersTrend7g !== null && (
@@ -56,21 +61,21 @@ export default async function Panoramica() {
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Follower Facebook</div>
-            <span className="stat-icon" aria-hidden="true">👍</span>
+            <ThumbsUp className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{kpis.facebook.followers ?? "—"}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Lead attivi</div>
-            <span className="stat-icon" aria-hidden="true">💬</span>
+            <MessageSquare className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{kpis.obiettivo2027.leadAttivi}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Matrimoni confermati 2027</div>
-            <span className="stat-icon" aria-hidden="true">💍</span>
+            <Heart className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{kpis.obiettivo2027.matrimoniConfermati} / {kpis.obiettivo2027.matrimoniTarget}</div>
           <div className="progress-bar">
@@ -84,28 +89,28 @@ export default async function Panoramica() {
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Media in attesa (foto/video da caricare)</div>
-            <span className="stat-icon" aria-hidden="true">📥</span>
+            <Inbox className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{mediaInAttesa}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Reel in montaggio AI</div>
-            <span className="stat-icon" aria-hidden="true">🎬</span>
+            <Clapperboard className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{reelInElaborazione}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Contenuti in coda (tutti gli stati)</div>
-            <span className="stat-icon" aria-hidden="true">🗂️</span>
+            <LayoutGrid className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{inCoda}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">In pausa / in errore (richiedono attenzione)</div>
-            <span className="stat-icon" aria-hidden="true">⚠️</span>
+            <AlertTriangle className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{inPausaOErrore}</div>
         </div>
@@ -144,7 +149,7 @@ export default async function Panoramica() {
           {ultimeAzioni.map((r, i) => (
             <tr key={i}>
               <td>{r.agente}</td>
-              <td><span className={`badge ${r.status}`}>{r.status}</span></td>
+              <td><StatusBadge {...statusVocabulary.agentRun(r.status)} /></td>
               <td>{r.riepilogo}</td>
               <td>{new Date(r.timestamp).toLocaleString("it-IT")}</td>
             </tr>

@@ -1,7 +1,10 @@
+import { Clapperboard } from "lucide-react";
 import { leggiDati } from "../../../lib/dataSource";
 import { ReelUploadForm } from "../../../components/ReelUploadForm";
 import { ReelJobActions } from "../../../components/ReelJobActions";
 import { DeleteButton } from "../../../components/DeleteButton";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
 import type { ReelJobsFile } from "../../../lib/types";
 
 export const dynamic = "force-dynamic";
@@ -29,22 +32,21 @@ export default async function ReelAiPage() {
 
   return (
     <div>
-      <h2>🎬 Crea Reel AI</h2>
-      <p className="note">
-        Carica un video grezzo: il Regista parte subito, lo analizza, sceglie i momenti migliori e monta un Reel verticale (9:16). Appena pronto entra
-        da solo nella pipeline di pubblicazione (didascalia scritta dall&apos;AI, pubblicato nell&apos;orario migliore) — non serve nessuna conferma manuale.
-        Questa pagina non richiede di restare aperta durante l&apos;elaborazione.
-      </p>
+      <PageHeader
+        icon={<Clapperboard size={22} aria-hidden="true" />}
+        title="Crea Reel AI"
+        description="Carica un video grezzo: il Regista parte subito, lo analizza, sceglie i momenti migliori e monta un Reel verticale (9:16). Appena pronto entra da solo nella pipeline di pubblicazione (didascalia scritta dall'AI, pubblicato nell'orario migliore) — non serve nessuna conferma manuale. Questa pagina non richiede di restare aperta durante l'elaborazione."
+      />
 
       <ReelUploadForm />
 
-      <h3>Video in coda / elaborati ({jobs.length})</h3>
-      {jobs.length === 0 && <p className="note">Nessun video ancora caricato.</p>}
+      <h3 className="mt-lg">Video in coda / elaborati ({jobs.length})</h3>
+      {jobs.length === 0 && <EmptyState title="Nessun video ancora caricato" />}
 
       <div className="grid reel-jobs-grid">
         {jobs.map((job) => (
           <div className="card" key={job.id}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div className="flex-between">
               <div className="label">{job.filename}</div>
               <span className={`ig-post__badge ${job.status}`}>{STATUS_LABEL[job.status] ?? job.status}</span>
             </div>
@@ -70,7 +72,7 @@ export default async function ReelAiPage() {
               </>
             )}
 
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
+            <div className="flex flex-wrap gap-sm mt-sm">
               {job.status !== "usato" && <ReelJobActions jobId={job.id} pronto={job.status === "pronto"} />}
               <DeleteButton url={`/api/reel-jobs/${job.id}`} conferma={`Eliminare "${job.filename}"? Vengono rimossi anche i file video da R2.`} />
             </div>

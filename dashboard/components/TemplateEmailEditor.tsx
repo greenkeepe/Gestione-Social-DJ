@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/Button";
 
 // Modello unico usato sia per le bozze dell'Esploratore sia per l'invio
 // automatico del Postino: {{LOCALE}} è l'unica parte che cambia da
@@ -76,9 +77,9 @@ export function TemplateEmailEditor({
         />
       </label>
 
-      <button type="button" onClick={salva} disabled={salvataggio} className="upload-btn" style={{ marginTop: 12 }}>
-        {salvataggio ? "Salvo..." : "Salva e valida modello"}
-      </button>
+      <Button className="mt-md" onClick={salva} loading={salvataggio}>
+        Salva e valida modello
+      </Button>
       {errore && <p className="error-msg">{errore}</p>}
     </div>
   );

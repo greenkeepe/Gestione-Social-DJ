@@ -1,6 +1,8 @@
+import { Target } from "lucide-react";
 import { leggiDati } from "../../../lib/dataSource";
 import type { StrategyFile, KpisFile } from "../../../lib/types";
 import { ProgressRing } from "../../../components/ProgressRing";
+import { PageHeader } from "../../../components/ui/PageHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -16,11 +18,11 @@ export default async function StrategiaPage() {
 
   return (
     <div>
-      <h2>Strategia 2027</h2>
+      <PageHeader icon={<Target size={22} aria-hidden="true" />} title="Strategia 2027" />
       <p><strong>Obiettivo:</strong> {strategy.obiettivo}</p>
       <p className="note">{strategy.logicaTemporale}</p>
 
-      <div className="card" style={{ marginTop: 16 }}>
+      <div className="card mt-md">
         <div className="stat-with-ring">
           <ProgressRing percentage={percentuale} color="var(--color-accent)" sublabel={`${confermati} / ${target}`} />
           <div className="stat-with-ring__details">

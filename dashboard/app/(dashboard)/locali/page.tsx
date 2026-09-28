@@ -1,3 +1,4 @@
+import { MapPin, Bot, Hand, Trash2 } from "lucide-react";
 import { leggiDati, leggiConfig } from "../../../lib/dataSource";
 import type { OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../lib/types";
 import { firmaTesto, type BrandFile } from "../../../lib/firma";
@@ -6,6 +7,11 @@ import { TabellaBozzeLocali } from "../../../components/TabellaBozzeLocali";
 import { CercaLocaliButton } from "../../../components/CercaLocaliButton";
 import { TemplateEmailEditor } from "../../../components/TemplateEmailEditor";
 import { InvioAutomaticoSettings } from "../../../components/InvioAutomaticoSettings";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
+import { StatusBadge } from "../../../components/ui/StatusBadge";
+import { LoadMore } from "../../../components/ui/LoadMore";
+import { statusVocabulary } from "../../../lib/statusVocabulary";
 
 export const dynamic = "force-dynamic";
 
@@ -34,12 +40,11 @@ export default async function LocaliPage() {
 
   return (
     <div>
-      <h2>Locali</h2>
-      <p className="note">
-        Tocca &ldquo;Cerca nuovi locali&rdquo; quando vuoi: trova fino a 10 ristoranti/hotel della zona con un&apos;email pubblica e prepara una
-        bozza di collaborazione, sempre con il modello qui sotto. Puoi rivedere ogni bozza e inviarla a mano con un tap, oppure attivare
-        l&apos;invio automatico entro il limite giornaliero che scegli tu — parte comunque dalla tua casella Gmail vera.
-      </p>
+      <PageHeader
+        icon={<MapPin size={22} aria-hidden="true" />}
+        title="Locali"
+        description="Tocca «Cerca nuovi locali» quando vuoi: trova fino a 10 ristoranti/hotel della zona con un'email pubblica e prepara una bozza di collaborazione, sempre con il modello qui sotto. Puoi rivedere ogni bozza e inviarla a mano con un tap, oppure attivare l'invio automatico entro il limite giornaliero che scegli tu — parte comunque dalla tua casella Gmail vera."
+      />
 
       <TemplateEmailEditor oggettoIniziale={template.oggetto} corpoIniziale={template.corpo} validatoIl={template.validatoIl} />
       <InvioAutomaticoSettings
@@ -52,7 +57,7 @@ export default async function LocaliPage() {
       <CercaLocaliButton />
 
       <h3>Da rivedere ({daRivedere.length})</h3>
-      {daRivedere.length === 0 && <p className="note">Nessuna nuova bozza al momento.</p>}
+      {daRivedere.length === 0 && <EmptyState title="Nessuna nuova bozza al momento" />}
       {daRivedere.length > 0 && <TabellaBozzeLocali contatti={daRivedere} anteprimaFirma={anteprimaFirma} />}
 
       <h3>Destinatari contattati ({storico.length})</h3>
@@ -60,27 +65,27 @@ export default async function LocaliPage() {
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Inviate automaticamente</div>
-            <span className="stat-icon" aria-hidden="true">🤖</span>
+            <Bot className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{inviateAutomatico}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Inviate a mano</div>
-            <span className="stat-icon" aria-hidden="true">👆</span>
+            <Hand className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{inviateAMano}</div>
         </div>
         <div className="card card--stat">
           <div className="stat-top">
             <div className="label">Scartate</div>
-            <span className="stat-icon" aria-hidden="true">🗑️</span>
+            <Trash2 className="stat-icon" size={18} aria-hidden="true" />
           </div>
           <div className="value">{scartate}</div>
         </div>
       </div>
 
-      {storico.length === 0 && <p className="note">Nessun invio ancora registrato.</p>}
+      {storico.length === 0 && <EmptyState title="Nessun invio ancora registrato" />}
       {storico.length > 0 && (
         <div className="table-scroll">
           <table>
@@ -93,17 +98,23 @@ export default async function LocaliPage() {
               </tr>
             </thead>
             <tbody>
-              {storico.map((c) => (
-                <tr key={c.id}>
-                  <td>{c.nomeLocale}</td>
-                  <td>{c.email}</td>
-                  <td>
-                    {c.status}
-                    {c.inviataAutomaticamente ? " · 🤖 automatico" : c.status === "inviata" ? " · 👆 a mano" : ""}
-                  </td>
-                  <td>{new Date(c.inviataIl ?? c.creatoIl).toLocaleString("it-IT")}</td>
-                </tr>
-              ))}
+              <LoadMore
+                as="table"
+                colSpan={4}
+                initialCount={20}
+                label="contatti"
+                items={storico.map((c) => (
+                  <tr key={c.id}>
+                    <td>{c.nomeLocale}</td>
+                    <td>{c.email}</td>
+                    <td>
+                      <StatusBadge {...statusVocabulary.outreach(c.status)} />
+                      {c.inviataAutomaticamente ? " · automatico" : c.status === "inviata" ? " · a mano" : ""}
+                    </td>
+                    <td>{new Date(c.inviataIl ?? c.creatoIl).toLocaleString("it-IT")}</td>
+                  </tr>
+                ))}
+              />
             </tbody>
           </table>
         </div>

@@ -1,4 +1,6 @@
+import { Link2 } from "lucide-react";
 import { leggiConfig } from "../../../lib/dataSource";
+import { PageHeader } from "../../../components/ui/PageHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -14,15 +16,14 @@ export default async function LinkUtiliPage() {
 
   return (
     <div>
-      <h2>Link utili</h2>
-      <p className="note">
-        Accesso diretto a tutti i pannelli dei servizi usati dal sistema. Se sei già loggato nel browser, un click ti porta subito dentro
-        senza dover cercare. Per aggiungere o modificare una voce, basta modificare{" "}
-        <code>config/link-utili.json</code> nel repository, nessun codice da toccare.
-      </p>
+      <PageHeader
+        icon={<Link2 size={22} aria-hidden="true" />}
+        title="Link utili"
+        description="Accesso diretto a tutti i pannelli dei servizi usati dal sistema. Se sei già loggato nel browser, un click ti porta subito dentro senza dover cercare. Per aggiungere o modificare una voce, basta modificare config/link-utili.json nel repository, nessun codice da toccare."
+      />
 
       {dati.categorie.map((categoria) => (
-        <div key={categoria.nome} style={{ marginTop: 24 }}>
+        <div key={categoria.nome} className="mt-lg">
           <h3>{categoria.nome}</h3>
           <div className="grid">
             {categoria.link.map((voce) => (

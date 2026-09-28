@@ -1,5 +1,8 @@
+import { MessageCircle } from "lucide-react";
 import { leggiDati } from "../../../lib/dataSource";
 import type { RispostiFile } from "../../../lib/types";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
 
 export const dynamic = "force-dynamic";
 
@@ -9,15 +12,14 @@ export default async function RispostePage() {
 
   return (
     <div>
-      <h2>Risposte ai commenti</h2>
-      <p className="note">
-        Risposte pubbliche scritte in automatico dall&apos;Agente Portavoce sotto i commenti dei tuoi ultimi post — sempre in pubblico, mai un
-        messaggio privato, mai prezzi o disponibilità specifiche. Qui trovi solo quelle pubblicate da quando questa pagina esiste: le risposte
-        precedenti non avevano il testo salvato.
-      </p>
+      <PageHeader
+        icon={<MessageCircle size={22} aria-hidden="true" />}
+        title="Risposte ai commenti"
+        description="Risposte pubbliche scritte in automatico dall'Agente Portavoce sotto i commenti dei tuoi ultimi post — sempre in pubblico, mai un messaggio privato, mai prezzi o disponibilità specifiche. Qui trovi solo quelle pubblicate da quando questa pagina esiste: le risposte precedenti non avevano il testo salvato."
+      />
 
       <h3>{risposte.length} risposte pubblicate</h3>
-      {risposte.length === 0 && <p className="note">Nessuna risposta pubblicata ancora.</p>}
+      {risposte.length === 0 && <EmptyState title="Nessuna risposta pubblicata ancora" />}
       <div className="grid">
         {risposte.map((r) => (
           <div className="card" key={r.commentId}>
