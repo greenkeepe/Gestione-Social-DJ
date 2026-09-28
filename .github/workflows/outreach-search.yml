@@ -1,10 +1,12 @@
 name: Cerca nuovi locali (Esploratore, su richiesta)
 
-# Non gira più in automatico nel ciclo giornaliero: si avvia solo dal tasto
-# "Cerca nuovi locali" nella pagina "Locali" della dashboard (o a mano da
-# qui). Ogni esecuzione propone fino a 10 nuovi contatti (MASSIMO_AL_GIORNO
-# in agents/outreach-agent.ts), sempre come bozze da rivedere — nessun
-# invio automatico in nessun caso.
+# L'Esploratore gira già in automatico ogni giorno dentro il ciclo del
+# Direttore (.github/workflows/daily-agents.yml), tenendo la coda "da
+# rivedere" sempre piena fino al numero impostato nella casella "invio
+# automatico" della pagina "Locali" (vedi agents/outreach-agent.ts). Questo
+# workflow serve solo per un giro extra a comando dal tasto "Cerca nuovi
+# locali" della dashboard (o a mano da qui) — sempre come bozze da
+# rivedere, nessun invio automatico in nessun caso.
 on:
   workflow_dispatch: {}
 

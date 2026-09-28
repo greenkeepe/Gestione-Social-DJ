@@ -48,7 +48,7 @@ export default async function LocaliPage() {
       <PageHeader
         icon={<MapPin size={22} aria-hidden="true" />}
         title="Locali"
-        description="Tocca «Cerca nuovi locali» quando vuoi: trova fino a 10 ristoranti/hotel della zona con un'email pubblica e prepara una bozza di collaborazione, sempre con il modello qui sotto. Puoi rivedere ogni bozza e inviarla a mano con un tap, oppure attivare l'invio automatico entro il limite giornaliero che scegli tu — parte comunque dalla tua casella Gmail vera."
+        description="Il sistema cerca da solo ogni giorno nuovi ristoranti/hotel della zona con un'email pubblica e prepara bozze di collaborazione con il modello qui sotto, tenendo la coda sempre piena fino al numero che scegli tu con «invio automatico» — quello stesso numero, entro lo stesso limite giornaliero, viene poi inviato da solo (parte dalla tua casella Gmail vera). A te resta solo rivedere le bozze e, se vuoi, scartarne una prima che parta."
       />
 
       <TemplateEmailEditor oggettoIniziale={template.oggetto} corpoIniziale={template.corpo} validatoIl={template.validatoIl} />

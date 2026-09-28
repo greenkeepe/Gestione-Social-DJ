@@ -16,6 +16,7 @@ import { eseguiAnalyticsAgent } from "./analytics-agent.js";
 import { eseguiStrategyAgent } from "./strategy-agent.js";
 import { eseguiNoteAgent } from "./note-agent.js";
 import { eseguiSitoAgent } from "./sito-agent.js";
+import { eseguiOutreachAgent } from "./outreach-agent.js";
 import { innescaWorkflow } from "../lib/gitCommit.js";
 
 interface AgentRun {
@@ -104,9 +105,12 @@ export async function eseguiMasterAgent(): Promise<void> {
   await eseguiPasso("Agente Analytics (Analista)", eseguiAnalyticsAgent);
   await eseguiPasso("Agente Strategia (Stratega)", eseguiStrategyAgent);
   await eseguiPasso("Agente Note (Appunti)", eseguiNoteAgent);
-  // L'Esploratore non gira più in automatico nel ciclo giornaliero: si
-  // avvia solo a comando, con il tasto "Cerca nuovi locali" nella pagina
-  // "Locali" della dashboard (vedi .github/workflows/outreach-search.yml).
+  // L'Esploratore tiene la coda "da rivedere" sempre piena fino al numero
+  // impostato nella casella "invio automatico" della pagina "Locali" — se
+  // è già piena non cerca nulla di nuovo (vedi outreach-agent.ts). Il tasto
+  // "Cerca nuovi locali" nella dashboard resta comunque disponibile per un
+  // giro extra a comando (vedi .github/workflows/outreach-search.yml).
+  await eseguiPasso("Agente Locali (Esploratore)", eseguiOutreachAgent);
 
   await logAgentRun({
     agente: IDENTITA.master.nome,

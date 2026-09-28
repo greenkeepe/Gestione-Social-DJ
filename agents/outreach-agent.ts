@@ -1,9 +1,13 @@
-// Agente "Esploratore" — ogni giorno trova fino a 10 locali (ristoranti/
-// hotel) nell'area servita (o nelle province scelte dalla dashboard) con
-// un'email pubblica sul sito, e prepara una bozza di email di
-// collaborazione usando SEMPRE lo stesso modello che Andrea ha validato
-// nella pagina "Locali" (data/outreach-template.json) — l'unica parte che
-// cambia da un locale all'altro è il nome del locale stesso.
+// Agente "Esploratore" — gira ogni giorno dentro il ciclo del Direttore e
+// tiene la coda "bozza-da-rivedere" sempre piena fino al numero impostato
+// nella casella "invio automatico" della pagina "Locali"
+// (data/outreach-config.json > invioAutomatico.maxAlGiorno): cerca solo
+// tanti nuovi locali (ristoranti/hotel, nell'area servita o nelle province
+// scelte dalla dashboard) quanti ne mancano per arrivare a quel numero, mai
+// di più — se la coda è già piena non cerca nulla. Ogni bozza usa SEMPRE lo
+// stesso modello che Andrea ha validato nella pagina "Locali"
+// (data/outreach-template.json) — l'unica parte che cambia da un locale
+// all'altro è il nome del locale stesso.
 //
 // Questo agente non invia MAI nulla in autonomia: ogni bozza resta
 // "bozza-da-rivedere". L'invio (manuale con un tap, o automatico entro un
@@ -52,13 +56,16 @@ interface OutreachFile {
 interface OutreachConfigFile {
   _istruzioni: string;
   province: string[]; // sigle, vedi lib/province.ts
+  invioAutomatico?: { attivo: boolean; maxAlGiorno: number };
 }
 
 // Serravalle Scrivia (AL): posizione approssimativa nota, usata solo se la
 // geocodifica in tempo reale (Nominatim) non dovesse rispondere.
 const FALLBACK_COORDINATE = { lat: 44.7166, lon: 8.8555 };
 
-const MASSIMO_AL_GIORNO = 10;
+// Usato solo se outreach-config.json non fosse leggibile o non avesse
+// ancora un "invioAutomatico.maxAlGiorno" impostato.
+const TARGET_CODA_DI_RISERVA = 10;
 
 interface OutreachTemplateFile {
   oggetto: string;
@@ -143,7 +150,26 @@ export async function eseguiOutreachAgent(): Promise<void> {
   try {
     const brand = await readBrand<Record<string, any>>();
     const outreachFile = await readData<OutreachFile>("outreach-locali.json");
-    const config = await readData<OutreachConfigFile>("outreach-config.json").catch(() => ({ _istruzioni: "", province: [] }));
+    const config = await readData<OutreachConfigFile>("outreach-config.json").catch(
+      (): OutreachConfigFile => ({ _istruzioni: "", province: [] })
+    );
+
+    // Tiene la coda "bozza-da-rivedere" sempre piena fino al numero deciso
+    // nella casella "invio automatico" (pagina "Locali") — se è già piena
+    // (o oltre), non cerca nulla: niente query Overpass/OSM inutili.
+    const targetCoda = config.invioAutomatico?.maxAlGiorno ?? TARGET_CODA_DI_RISERVA;
+    const bozzeAttuali = outreachFile.contatti.filter((c) => c.status === "bozza-da-rivedere").length;
+    const daTrovare = Math.max(0, targetCoda - bozzeAttuali);
+
+    if (daTrovare === 0) {
+      await logAgentRun({
+        agente: IDENTITA.outreach.nome,
+        identita: IDENTITA.outreach.ruolo,
+        status: "nessuna-azione",
+        riepilogo: `Coda già piena: ${bozzeAttuali} bozze da rivedere su un target di ${targetCoda}.`
+      });
+      return;
+    }
 
     // Doppio controllo: mai due volte lo stesso locale (osmId) E mai due
     // volte la stessa casella email (es. una catena con più sedi che
@@ -169,7 +195,7 @@ export async function eseguiOutreachAgent(): Promise<void> {
 
     let nuoviContatti = 0;
     for (const locale of candidati) {
-      if (nuoviContatti >= MASSIMO_AL_GIORNO) break;
+      if (nuoviContatti >= daTrovare) break;
 
       const email = await trovaEmailSulSito(locale.sitoWeb).catch(() => null);
       if (!email) continue; // nessuna email trovata: si salta, mai inventata
@@ -209,8 +235,8 @@ export async function eseguiOutreachAgent(): Promise<void> {
       status: nuoviContatti > 0 ? "ok" : "nessuna-azione",
       riepilogo:
         nuoviContatti > 0
-          ? `Preparate ${nuoviContatti} bozze di email per locali della zona con email pubblica trovata.`
-          : `Nessun nuovo locale con email trovabile tra i ${candidati.length} candidati esaminati (o nessun candidato nuovo).`
+          ? `Preparate ${nuoviContatti} bozze di email per locali della zona con email pubblica trovata (coda portata a ${bozzeAttuali + nuoviContatti}/${targetCoda}).`
+          : `Nessun nuovo locale con email trovabile tra i ${candidati.length} candidati esaminati (o nessun candidato nuovo) — coda ferma a ${bozzeAttuali}/${targetCoda}.`
     });
   } catch (err) {
     await logAgentRun({
