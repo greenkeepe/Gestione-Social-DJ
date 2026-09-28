@@ -8,7 +8,16 @@ name: AI Reel Maker (video grezzo -> Reel)
 on:
   schedule:
     - cron: "*/20 6-22 * * *" # ogni 20 minuti, 06:00-22:59 UTC (copre l'intera giornata italiana)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      rielabora:
+        description: "Rielabora con Regia i Reel già in coda non ancora pubblicati (si/no)"
+        required: false
+        default: "no"
+      job_id:
+        description: "Facoltativo: rielabora solo questo job (id)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -21,6 +30,7 @@ concurrency:
 jobs:
   crea-reel:
     runs-on: ubuntu-latest
+    timeout-minutes: 300
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,6 +49,17 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      # Motore di montaggio Regia (cartella regia/): ffmpeg completo incluso
+      # nel pacchetto, modello di trascrizione in cache tra un giro e l'altro.
+      - name: Installa motore Regia
+        run: npm install --prefix regia --no-audit --no-fund
+
+      - name: Cache modello trascrizione (Regia)
+        uses: actions/cache@v4
+        with:
+          path: regia/models
+          key: regia-whisper-small-v1
+
       # Vedi lo stesso commento in daily-agents.yml: questo workflow gira
       # ogni 20 minuti e a volte innesca lui stesso daily-agents.yml (vedi
       # "Fast-track" sotto) — ci si allinea sempre all'ultimissima versione
@@ -56,6 +77,7 @@ jobs:
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
           DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
           ENABLE_AI_REEL_MAKER: ${{ vars.ENABLE_AI_REEL_MAKER }}
+          REEL_ENGINE: ${{ vars.REEL_ENGINE }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
           # Serve a "gh" (letto in automatico da GITHUB_TOKEN/GH_TOKEN)
@@ -65,6 +87,18 @@ jobs:
           # aspettare la fine di tutta la coda in elaborazione.
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run agent:reelmaker
+
+      - name: Rielabora con Regia i Reel già in coda
+        if: github.event_name == 'workflow_dispatch' && inputs.rielabora == 'si'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
+          RIELABORA_ID: ${{ inputs.job_id }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx tsx scripts/regia-rielabora.ts
 
       - name: Commit e push di eventuali dati non ancora salvati
         run: |
