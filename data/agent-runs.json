@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Rielaborazione con Regia: 0/0 Reel rimontati (didascalie e orari invariati).",
+      "timestamp": "2026-09-28T18:43:06.218Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Reel da immagini con Regia: 4/4 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
       "timestamp": "2026-09-28T18:43:03.540Z"
@@ -3574,13 +3581,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-16T23:16:06.151Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per le 12:30.",
-      "timestamp": "2026-09-16T23:16:00.075Z"
     }
   ]
 }
