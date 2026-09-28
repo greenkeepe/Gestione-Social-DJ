@@ -32,6 +32,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: gestione-social-dj-agents
@@ -110,3 +111,12 @@ jobs:
           else
             echo "Nessuna modifica ai dati da salvare."
           fi
+
+      # Avvia subito l'Agente Regista (Regia): le foto/testimonianze appena
+      # entrate in coda con la didascalia diventano Reel senza aspettare il suo
+      # giro programmato, che GitHub a volte ritarda o salta.
+      - name: Avvia Agente Regista (Reel da foto con Regia)
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run reel-maker.yml --ref "${GITHUB_REF_NAME}" || echo "Avvio non riuscito: ci penserà il giro programmato"
