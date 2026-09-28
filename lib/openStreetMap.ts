@@ -6,7 +6,16 @@
 // pubblico" — la selezione fine (è un posto adatto?) resta a chi rivede le
 // bozze prima di inviarle.
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
-const OVERPASS_URL = "https://overpass-api.de/api/interpreter";
+// L'istanza principale (overpass-api.de) va spesso in timeout o risponde
+// 504 "server troppo occupato" nelle ore di punta — visto dal vivo più
+// volte lo stesso giorno. Questi mirror pubblici servono gli stessi dati:
+// se il primo è sovraccarico si prova il successivo, invece di far
+// fallire l'intera ricerca giornaliera per un server momentaneamente giù.
+const OVERPASS_URLS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.openstreetmap.ru/api/interpreter"
+];
 const USER_AGENT = "GestioneSocialDJ/1.0 (+https://github.com/greenkeepe/Gestione-Social-DJ)";
 
 export interface Coordinate {
@@ -93,22 +102,30 @@ export async function cercaLocaliVicini(centro: Coordinate, raggioMetri: number,
 );
 out center ${limite};`;
 
-  const res = await fetch(OVERPASS_URL, {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded", "User-Agent": USER_AGENT },
-    body: `data=${encodeURIComponent(query)}`,
-    signal: AbortSignal.timeout(60000)
-  });
-  if (!res.ok) {
-    throw new Error(`Overpass API ha risposto ${res.status}: ${await res.text()}`);
+  interface RispostaOverpass {
+    elements: Array<{ type: string; id: number; tags?: Record<string, string> }>;
   }
-  const json = (await res.json()) as {
-    elements: Array<{
-      type: string;
-      id: number;
-      tags?: Record<string, string>;
-    }>;
-  };
+
+  let ultimoErrore: unknown;
+  let json: RispostaOverpass | null = null;
+  for (const url of OVERPASS_URLS) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded", "User-Agent": USER_AGENT },
+        body: `data=${encodeURIComponent(query)}`,
+        signal: AbortSignal.timeout(60000)
+      });
+      if (!res.ok) throw new Error(`Overpass API (${url}) ha risposto ${res.status}: ${await res.text()}`);
+      json = (await res.json()) as RispostaOverpass;
+      break;
+    } catch (err) {
+      ultimoErrore = err;
+    }
+  }
+  if (!json) {
+    throw ultimoErrore instanceof Error ? ultimoErrore : new Error(String(ultimoErrore));
+  }
 
   const risultati: LocaleTrovato[] = [];
   for (const el of json.elements) {
