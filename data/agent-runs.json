@@ -5,6 +5,13 @@
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-28T20:14:45.974Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
       "riepilogo": "Rielaborazione con Regia: 0/0 Reel rimontati (didascalie e orari invariati).",
       "timestamp": "2026-09-28T18:43:06.218Z"
     },
@@ -3574,13 +3581,6 @@
       "status": "ok",
       "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
       "timestamp": "2026-09-16T23:16:06.486Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-16T23:16:06.151Z"
     }
   ]
 }
