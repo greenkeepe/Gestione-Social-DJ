@@ -681,11 +681,11 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-23T09:01:26.697Z",
+      "aggiornatoIl": "2026-09-28T13:56:39.605Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e929895d-2c67-4f98-8325-f6255b7d3d2a.mp4",
-        "durataSecondi": 13.2,
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4ab84614-52ba-49a8-9d1f-463ee11c544b.mp4",
+        "durataSecondi": 14.2,
         "piano": {
           "categoria": "wedding",
           "stile": "clean",
@@ -728,7 +728,8 @@
           "testoChiusura": "Scrivimi in DM"
         }
       },
-      "source": "dashboard"
+      "source": "dashboard",
+      "motore": "regia-2"
     },
     {
       "id": "07b2862c-c02a-4115-a6e1-16a2ef489c26",
