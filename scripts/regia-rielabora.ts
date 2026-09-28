@@ -12,7 +12,8 @@ import path from "node:path";
 import { rm } from "node:fs/promises";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
-import { commitEPush } from "../lib/gitCommit.js";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import { IDENTITA } from "../agents/identities.js";
 import { creaCartellaTemporanea, rimuoviCartella, scaricaDaR2, caricaSuR2 } from "../lib/videoTools.js";
 import { montaConRegia, REGIA_VERSIONE } from "../lib/regiaEngine.js";
@@ -27,6 +28,34 @@ interface QueueItem { id: string; formato: string; status: string; media: { medi
 interface LibItem { id: string; url: string; usatoIl: string | null; mimeType: string }
 
 const PUBBLICATI = new Set(["pubblicato", "pubblicato-parziale"]);
+
+const git = promisify(execFile);
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+// Salvataggio a prova di concorrenza: gli altri agenti (Copy, Editore, ciclo
+// giornaliero) scrivono sugli stessi file data/*.json mentre qui si monta.
+// Invece di un rebase che può andare in conflitto, a ogni tentativo si
+// riparte dall'ultima versione remota, si riapplica SOLO la nostra modifica
+// (rileggendo i file) e si invia subito. In locale (fuori da GitHub Actions)
+// scrive solo i file, senza git.
+async function applicaESalva(messaggio: string, modifica: () => Promise<boolean>): Promise<void> {
+  const branch = process.env.GITHUB_REF_NAME;
+  if (!branch) { await modifica(); return; }
+  await git("git", ["config", "user.name", "gestione-social-dj-bot"]).catch(() => {});
+  await git("git", ["config", "user.email", "actions@users.noreply.github.com"]).catch(() => {});
+  for (let tentativo = 0; tentativo < 8; tentativo++) {
+    await git("git", ["fetch", "-q", "origin", branch]);
+    await git("git", ["reset", "-q", "--hard", `origin/${branch}`]);
+    if (!(await modifica())) return; // niente da cambiare (es. già pubblicato nel frattempo)
+    await git("git", ["add", "data/"]);
+    const cambiato = await git("git", ["diff", "--cached", "--quiet"]).then(() => false).catch(() => true);
+    if (!cambiato) return;
+    await git("git", ["commit", "-q", "-m", messaggio]);
+    try { await git("git", ["push", "-q", "origin", `HEAD:${branch}`]); return; }
+    catch { await sleep(2000 + Math.random() * 6000); }
+  }
+  throw new Error(`Salvataggio non riuscito dopo 8 tentativi: ${messaggio}`);
+}
 
 function estensione(mime: string, nome: string): string {
   const ext = path.extname(nome);
@@ -47,17 +76,22 @@ async function main() {
   const soloId = (process.env.RIELABORA_ID ?? "").trim(); // facoltativo: un solo job
 
   // job in errore -> di nuovo in coda per il Regista (ora con motore Regia)
-  const jobsIniziali = await readData<{ _istruzioni: string; jobs: Job[] }>("reel-jobs.json");
   let rimessi = 0;
-  for (const j of jobsIniziali.jobs) {
-    if (j.status === "errore" && (!soloId || j.id === soloId)) {
-      j.status = "in-coda-analisi"; j.step = "in-coda"; j.erroreMessaggio = null; j.risultato = null; j.aggiornatoIl = nowIso();
-      rimessi++;
+  await applicaESalva("chore(regia): job in errore rimessi in coda", async () => {
+    const jobs = await readData<{ _istruzioni: string; jobs: Job[] }>("reel-jobs.json");
+    rimessi = 0;
+    for (const j of jobs.jobs) {
+      if (j.status === "errore" && (!soloId || j.id === soloId)) {
+        j.status = "in-coda-analisi"; j.step = "in-coda"; j.erroreMessaggio = null; j.risultato = null; j.aggiornatoIl = nowIso();
+        rimessi++;
+      }
     }
-  }
-  if (rimessi) { await writeData("reel-jobs.json", jobsIniziali); await commitEPush(`chore(regia): ${rimessi} job in errore rimessi in coda`).catch(() => {}); }
+    if (rimessi) await writeData("reel-jobs.json", jobs);
+    return rimessi > 0;
+  });
 
   // bersagli: Reel non ancora pubblicati, montati col motore vecchio
+  const jobsIniziali = await readData<{ _istruzioni: string; jobs: Job[] }>("reel-jobs.json");
   const queue = await readData<{ _istruzioni: string; queue: QueueItem[] }>("posts-queue.json");
   const lib = await readData<{ _istruzioni: string; items: LibItem[] }>("media-library.json");
   const bersagli = jobsIniziali.jobs.filter((j) => {
@@ -82,39 +116,45 @@ async function main() {
       const nuovoUrl = await caricaSuR2(reg.file, r2);
       await rm(path.dirname(reg.file), { recursive: true, force: true }).catch(() => {});
 
-      // rilegge i file adesso (possono essere cambiati durante il montaggio) e aggiorna solo gli URL
-      const jobs = await readData<{ _istruzioni: string; jobs: Job[] }>("reel-jobs.json");
-      const q = await readData<{ _istruzioni: string; queue: QueueItem[] }>("posts-queue.json");
-      const l = await readData<{ _istruzioni: string; items: LibItem[] }>("media-library.json");
-      const job = jobs.jobs.find((j) => j.id === target.id);
-      const qi = q.queue.find((x) => x.media?.mediaId === target.id);
-      if (qi && PUBBLICATI.has(qi.status)) { console.log("[Regia]   già pubblicato nel frattempo: salto"); continue; }
-      if (job?.risultato) { job.risultato = { ...job.risultato, reelUrl: nuovoUrl, durataSecondi: reg.durataSecondi }; job.motore = REGIA_VERSIONE; job.aggiornatoIl = nowIso(); }
-      if (qi) qi.media.downloadUrl = nuovoUrl;
-      const li = l.items.find((x) => x.id === target.id);
-      if (li) li.url = nuovoUrl;
-      await writeData("reel-jobs.json", jobs);
-      await writeData("posts-queue.json", q);
-      await writeData("media-library.json", l);
-      await commitEPush(`chore(regia): Reel "${target.filename}" rielaborato con Regia`);
-      ok++;
+      // sostituisce solo gli URL del video, rileggendo i file più recenti ad ogni tentativo
+      let saltato = false;
+      await applicaESalva(`chore(regia): Reel "${target.filename}" rielaborato con Regia`, async () => {
+        const jobs = await readData<{ _istruzioni: string; jobs: Job[] }>("reel-jobs.json");
+        const q = await readData<{ _istruzioni: string; queue: QueueItem[] }>("posts-queue.json");
+        const l = await readData<{ _istruzioni: string; items: LibItem[] }>("media-library.json");
+        const qi = q.queue.find((x) => x.media?.mediaId === target.id);
+        if (qi && PUBBLICATI.has(qi.status)) { saltato = true; return false; }
+        const job = jobs.jobs.find((j) => j.id === target.id);
+        if (job?.risultato) { job.risultato = { ...job.risultato, reelUrl: nuovoUrl, durataSecondi: reg.durataSecondi }; job.motore = REGIA_VERSIONE; job.aggiornatoIl = nowIso(); }
+        if (qi) qi.media.downloadUrl = nuovoUrl;
+        const li = l.items.find((x) => x.id === target.id);
+        if (li) li.url = nuovoUrl;
+        await writeData("reel-jobs.json", jobs);
+        await writeData("posts-queue.json", q);
+        await writeData("media-library.json", l);
+        return true;
+      });
+      if (saltato) console.log("[Regia]   già pubblicato nel frattempo: lasciato com'era");
+      else ok++;
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      errori.push(`${target.filename}: ${msg}`);
+      errori.push(`${target.filename}: ${msg.slice(0, 600)}`);
       console.error(`[Regia]   ERRORE ${msg}`);
     } finally {
       await rimuoviCartella(cartella);
     }
   }
 
-  await logAgentRun({
-    agente: IDENTITA.reelMaker.nome,
-    identita: IDENTITA.reelMaker.ruolo,
-    status: errori.length && !ok ? "errore" : bersagli.length || rimessi ? "ok" : "nessuna-azione",
-    riepilogo: `Rielaborazione con Regia: ${ok}/${bersagli.length} Reel rimontati (didascalie e orari invariati)${rimessi ? `, ${rimessi} job in errore rimessi in coda` : ""}.`,
-    ...(errori.length ? { dettagli: { errori } } : {})
+  await applicaESalva("chore(regia): registro rielaborazione", async () => {
+    await logAgentRun({
+      agente: IDENTITA.reelMaker.nome,
+      identita: IDENTITA.reelMaker.ruolo,
+      status: errori.length && !ok ? "errore" : bersagli.length || rimessi ? "ok" : "nessuna-azione",
+      riepilogo: `Rielaborazione con Regia: ${ok}/${bersagli.length} Reel rimontati (didascalie e orari invariati)${rimessi ? `, ${rimessi} job in errore rimessi in coda` : ""}.`,
+      ...(errori.length ? { dettagli: { errori } } : {})
+    });
+    return true;
   });
-  await commitEPush("chore(regia): registro rielaborazione").catch(() => {});
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });
