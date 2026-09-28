@@ -165,11 +165,11 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-23T12:30:52.427Z",
+      "aggiornatoIl": "2026-09-28T13:51:19.741Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/08127164-9e87-48dd-bf09-4932e8283a0c.mp4",
-        "durataSecondi": 11.8,
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/89299b8b-6b4b-4eae-a8a7-382ad129fcde.mp4",
+        "durataSecondi": 22.8,
         "piano": {
           "categoria": "wedding",
           "stile": "clean",
@@ -212,7 +212,8 @@
           "testoChiusura": "Scrivi in DM a Forte DJ per info e disponibilità"
         }
       },
-      "source": "dashboard-upload"
+      "source": "dashboard-upload",
+      "motore": "regia-2"
     },
     {
       "id": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
