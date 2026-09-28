@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-28T13:24:34.758Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3562,13 +3569,6 @@
       "status": "ok",
       "riepilogo": "Generato un post dalla recensione di Elia R. (Diciottesimo), a rotazione con le foto/video.",
       "timestamp": "2026-09-16T18:58:11.600Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Pubblicazione forzata richiesta per un id (b685d7b8-7718-4db9-824b-1b2e4ca9bbfb) non trovato o non pronto.",
-      "timestamp": "2026-09-16T18:57:25.339Z"
     }
   ]
 }
