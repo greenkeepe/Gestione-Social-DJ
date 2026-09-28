@@ -350,13 +350,19 @@
     {
       "id": "af059bc4-1202-420d-a035-6da764919d0e",
       "createdAt": "2026-09-23T09:02:55.037Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "dashboard-upload",
         "mediaId": "4800ee04-55ed-4987-af28-e25fdccded25",
-        "filename": "IMG_4483.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg"
+        "filename": "reel-IMG_4483.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a9d2aab4-4103-44ad-8980-a87595960054.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "IMG_4483.jpg"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Console pronta, luci blu accese, sala ancora vuota dietro. Tutto a posto prima che arrivino gli ospiti.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
