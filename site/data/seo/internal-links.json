@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T12:59:51.751Z",
+  "generatedAt": "2026-09-28T11:31:47.491Z",
   "note": "Conteggio dei link interni editoriali (pagine app/ e sezioni di contenuto), esclusi Navbar/Footer/CTA globali presenti su ogni pagina. Link con URL dinamici (es. template string con variabili) non vengono rilevati.",
   "routes": [
     {
@@ -77,16 +77,9 @@
     {
       "path": "/contatti",
       "label": "Contatti",
-      "inboundContextualLinks": 6,
-      "linkedFrom": [
-        "app/[locale]/eventi/page.tsx",
-        "components/sections/FinalCTA.tsx",
-        "components/sections/Hero.tsx",
-        "components/sections/Reviews.tsx",
-        "components/sections/Showreel.tsx",
-        "components/sections/Wedding.tsx"
-      ],
-      "status": "OK"
+      "inboundContextualLinks": 0,
+      "linkedFrom": [],
+      "status": "ORPHAN"
     },
     {
       "path": "/privacy",

@@ -1,23 +1,93 @@
 {
-  "generatedAt": "2026-09-21T12:55:08.795Z",
+  "generatedAt": "2026-09-28T11:26:52.380Z",
   "period": {
-    "startDate": "2026-08-21",
-    "endDate": "2026-09-18"
+    "startDate": "2026-08-28",
+    "endDate": "2026-09-25"
   },
   "totals": {
-    "clicks": 0,
-    "impressions": 5
+    "clicks": 8,
+    "impressions": 170
   },
   "byQueryPage": [
+    {
+      "keys": [
+        "forte dj",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 6,
+      "impressions": 12,
+      "ctr": 0.5,
+      "position": 3.0833333333333335
+    },
+    {
+      "keys": [
+        "disc jockey",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
     {
       "keys": [
         "dj",
         "https://www.fortedj.it/"
       ],
       "clicks": 0,
+      "impressions": 34,
+      "ctr": 0,
+      "position": 4.588235294117647
+    },
+    {
+      "keys": [
+        "dj genova",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 5
+      "position": 9
+    },
+    {
+      "keys": [
+        "dj in italia",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "dj nova genova",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "dj per matrimoni a rapallo",
+        "https://www.fortedj.it/matrimoni"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "keys": [
+        "dj set",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 12
     },
     {
       "keys": [
@@ -25,9 +95,89 @@
         "https://www.fortedj.it/"
       ],
       "clicks": 0,
+      "impressions": 39,
+      "ctr": 0,
+      "position": 7.769230769230769
+    },
+    {
+      "keys": [
+        "dj vicino a me",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "dj)",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "djs",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "forte",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
       "impressions": 2,
       "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "forte dj",
+        "https://www.fortedj.it/faq"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 16.5
+    },
+    {
+      "keys": [
+        "forte dj",
+        "https://www.fortedj.it/servizi"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "keys": [
+        "forte forte",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
       "position": 5
+    },
+    {
+      "keys": [
+        "genova dj",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
     }
   ],
   "byDate": [
@@ -48,6 +198,69 @@
       "impressions": 5,
       "ctr": 0,
       "position": 5.8
+    },
+    {
+      "keys": [
+        "2026-09-19"
+      ],
+      "clicks": 4,
+      "impressions": 48,
+      "ctr": 0.08333333333333333,
+      "position": 5.9375
+    },
+    {
+      "keys": [
+        "2026-09-20"
+      ],
+      "clicks": 1,
+      "impressions": 20,
+      "ctr": 0.05,
+      "position": 4.7
+    },
+    {
+      "keys": [
+        "2026-09-21"
+      ],
+      "clicks": 2,
+      "impressions": 28,
+      "ctr": 0.07142857142857142,
+      "position": 5.892857142857143
+    },
+    {
+      "keys": [
+        "2026-09-22"
+      ],
+      "clicks": 1,
+      "impressions": 24,
+      "ctr": 0.041666666666666664,
+      "position": 5.291666666666667
+    },
+    {
+      "keys": [
+        "2026-09-23"
+      ],
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-09-24"
+      ],
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 16
+    },
+    {
+      "keys": [
+        "2026-09-25"
+      ],
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 6.933333333333334
     }
   ]
 }
