@@ -5,9 +5,9 @@
       "nome": "Cloudflare R2 (storage foto/video/Reel)",
       "limiteBytes": 10737418240,
       "sogliaPercentualePausa": 90,
-      "usoAttualeBytes": 692885251,
-      "oggettiAttuali": 82,
-      "aggiornatoIl": "2026-09-28T12:58:57.680Z",
+      "usoAttualeBytes": 737008340,
+      "oggettiAttuali": 87,
+      "aggiornatoIl": "2026-09-28T13:41:54.188Z",
       "pausatoIl": null
     },
     "anthropic": {
