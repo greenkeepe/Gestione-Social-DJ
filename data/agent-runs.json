@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18082114760343471) e Facebook (4450259268555769). + Storia IG pubblicata.",
+      "timestamp": "2026-09-28T18:34:54.750Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3574,13 +3581,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"reel-telegram-1789580293515.mp4\" (video/reel) e messo in coda per la didascalia.",
       "timestamp": "2026-09-16T23:15:55.885Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789571410188.mp4\" (categoria evento, stile dynamic, 14s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-16T23:15:25.222Z"
     }
   ]
 }
