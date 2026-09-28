@@ -312,13 +312,19 @@
     {
       "id": "ff042241-6a24-49cd-82ef-37dbe6cc1243",
       "createdAt": "2026-09-23T09:02:55.037Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "dashboard-upload",
         "mediaId": "f5f771a0-1bcc-41cd-bd15-7b229a047b67",
-        "filename": "IMG_5603.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg"
+        "filename": "reel-IMG_5603.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9b120421-a577-428c-954d-b09d3101f90f.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "IMG_5603.jpg"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Il taglio della torta con i fuochi freddi accesi, questo sì che è un finale.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
