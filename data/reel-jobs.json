@@ -280,11 +280,11 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-23T12:32:01.637Z",
+      "aggiornatoIl": "2026-09-28T13:52:21.919Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/034e1692-406e-436a-a28d-8f7e7176c894.mp4",
-        "durataSecondi": 13.8,
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/b8218eb5-7078-4142-93f6-1291b6d41027.mp4",
+        "durataSecondi": 12.6,
         "piano": {
           "categoria": "evento",
           "stile": "dynamic",
@@ -332,7 +332,8 @@
           "testoChiusura": "Scrivi in DM a Forte DJ per info e disponibilità"
         }
       },
-      "source": "dashboard-upload"
+      "source": "dashboard-upload",
+      "motore": "regia-2"
     },
     {
       "id": "e3ee4116-1f44-49e3-baf0-533b267b138f",
