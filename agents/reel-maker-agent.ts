@@ -15,7 +15,7 @@
 // nessuna duplicazione e senza passaggi di conferma manuale da aspettare.
 import "dotenv/config";
 import path from "node:path";
-import { readFile } from "node:fs/promises";
+import { readFile, rm } from "node:fs/promises";
 import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { IDENTITA } from "./identities.js";
@@ -38,6 +38,7 @@ import {
   controllaQualita,
   caricaSuR2
 } from "../lib/videoTools.js";
+import { REGIA_ATTIVA, REGIA_VERSIONE, montaConRegia } from "../lib/regiaEngine.js";
 import { generaSegmentiCandidati, costruisciPiano, testoHookDefault, testoChiusuraDefault, rimuoviEmoji, parametriStile, type ProfiloReel, type PianoReel } from "../lib/reelPlanner.js";
 
 interface ReelJob {
@@ -54,6 +55,7 @@ interface ReelJob {
   erroreMessaggio: string | null;
   risultato: { reelUrl: string; durataSecondi: number; piano: PianoReel } | null;
   source?: "dashboard" | "telegram";
+  motore?: string;
 }
 
 interface ReelJobsFile {
@@ -111,6 +113,28 @@ async function elaboraJob(job: ReelJob): Promise<void> {
       secretAccessKey: r2.secretAccessKey,
       bucketName: r2.bucketName
     });
+
+    // Motore "Regia" (predefinito): montaggio completo a tempo di musica con
+    // brand Forte DJ. REEL_ENGINE=base riporta al montaggio precedente qui sotto.
+    if (REGIA_ATTIVA) {
+      job.step = "montaggio-regia";
+      const reg = await montaConRegia(inputPath, job.profilo);
+      job.step = "caricamento";
+      const reelUrl = await caricaSuR2(reg.file, {
+        accountId: r2.accountId,
+        accessKeyId: r2.accessKeyId,
+        secretAccessKey: r2.secretAccessKey,
+        bucketName: r2.bucketName,
+        dashboardPublicUrl: r2.dashboardPublicUrl
+      });
+      await rm(path.dirname(reg.file), { recursive: true, force: true }).catch(() => {});
+      job.status = "pronto";
+      job.step = "completato";
+      job.erroreMessaggio = null;
+      job.risultato = { reelUrl, durataSecondi: reg.durataSecondi, piano: reg.piano };
+      job.motore = REGIA_VERSIONE;
+      return;
+    }
 
     const info = await analizzaVideo(inputPath);
     if (info.durataSecondi < 3) {
