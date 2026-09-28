@@ -174,17 +174,17 @@ function settingsFrom(job, cfg) {
   };
 }
 
-const copyFonts = (dir) => {
+export const copyFonts = (dir) => {
   fs.mkdirSync(path.join(dir, 'fonts'), { recursive: true });
   for (const f of ['C:\\Windows\\Fonts\\seguibl.ttf', 'C:\\Windows\\Fonts\\segoeui.ttf']) if (fs.existsSync(f)) fs.copyFileSync(f, path.join(dir, 'fonts', path.basename(f)));
   const fontDir = path.join(ROOT, 'ASSETS', 'font');
   if (fs.existsSync(fontDir)) for (const f of fs.readdirSync(fontDir)) if (/\.(ttf|otf)$/i.test(f)) fs.copyFileSync(path.join(fontDir, f), path.join(dir, 'fonts', f));
 };
-const brandLogo = (cfg) => {
+export const brandLogo = (cfg) => {
   const p = cfg.brand.logo ? path.resolve(ROOT, cfg.brand.logo) : null;
   return p && fs.existsSync(p) ? p : null;
 };
-function endTexts(cfg, s, start, dur) {
+export function endTexts(cfg, s, start, dur) {
   const b = cfg.brand;
   const contactText = { instagram: b.instagram && `Instagram  ${b.instagram}`, telefono: b.telefono && `WhatsApp  ${b.telefono}`, sito: b.sito, email: b.email };
   return {
@@ -193,7 +193,7 @@ function endTexts(cfg, s, start, dur) {
     contatti: (b.contatti || ['instagram', 'telefono', 'sito']).map((k) => contactText[k]),
   };
 }
-const assFor = (cfg, s, extra) => buildAss({
+export const assFor = (cfg, s, extra) => buildAss({
   fonts: { display: cfg.brand.font, testi: cfg.brand.fontTesti || cfg.brand.font },
   colors: { accento: cfg.brand.colore, testo: cfg.brand.coloreTesto || '#FFFFFF' },
   title: s.titolo, ...extra,

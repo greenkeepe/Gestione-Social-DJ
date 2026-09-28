@@ -12,8 +12,7 @@ import path from "node:path";
 import { rm } from "node:fs/promises";
 import { readData, writeData, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
+import { applicaESalva } from "../lib/regiaSalva.js";
 import { IDENTITA } from "../agents/identities.js";
 import { creaCartellaTemporanea, rimuoviCartella, scaricaDaR2, caricaSuR2 } from "../lib/videoTools.js";
 import { montaConRegia, REGIA_VERSIONE } from "../lib/regiaEngine.js";
@@ -28,34 +27,6 @@ interface QueueItem { id: string; formato: string; status: string; media: { medi
 interface LibItem { id: string; url: string; usatoIl: string | null; mimeType: string }
 
 const PUBBLICATI = new Set(["pubblicato", "pubblicato-parziale"]);
-
-const git = promisify(execFile);
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-// Salvataggio a prova di concorrenza: gli altri agenti (Copy, Editore, ciclo
-// giornaliero) scrivono sugli stessi file data/*.json mentre qui si monta.
-// Invece di un rebase che può andare in conflitto, a ogni tentativo si
-// riparte dall'ultima versione remota, si riapplica SOLO la nostra modifica
-// (rileggendo i file) e si invia subito. In locale (fuori da GitHub Actions)
-// scrive solo i file, senza git.
-async function applicaESalva(messaggio: string, modifica: () => Promise<boolean>): Promise<void> {
-  const branch = process.env.GITHUB_REF_NAME;
-  if (!branch) { await modifica(); return; }
-  await git("git", ["config", "user.name", "gestione-social-dj-bot"]).catch(() => {});
-  await git("git", ["config", "user.email", "actions@users.noreply.github.com"]).catch(() => {});
-  for (let tentativo = 0; tentativo < 8; tentativo++) {
-    await git("git", ["fetch", "-q", "origin", branch]);
-    await git("git", ["reset", "-q", "--hard", `origin/${branch}`]);
-    if (!(await modifica())) return; // niente da cambiare (es. già pubblicato nel frattempo)
-    await git("git", ["add", "data/"]);
-    const cambiato = await git("git", ["diff", "--cached", "--quiet"]).then(() => false).catch(() => true);
-    if (!cambiato) return;
-    await git("git", ["commit", "-q", "-m", messaggio]);
-    try { await git("git", ["push", "-q", "origin", `HEAD:${branch}`]); return; }
-    catch { await sleep(2000 + Math.random() * 6000); }
-  }
-  throw new Error(`Salvataggio non riuscito dopo 8 tentativi: ${messaggio}`);
-}
 
 function estensione(mime: string, nome: string): string {
   const ext = path.extname(nome);

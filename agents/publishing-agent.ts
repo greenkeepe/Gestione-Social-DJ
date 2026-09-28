@@ -164,7 +164,8 @@ export async function eseguiPublishingAgent(): Promise<void> {
       risultatoIg = await pubblicaSuInstagram({
         imageUrl: isVideo ? undefined : target.media.downloadUrl,
         videoUrl: isVideo ? target.media.downloadUrl : undefined,
-        isReel: target.formato === "reel",
+        // Ogni video esce come Reel (Instagram non accetta più il tipo "VIDEO"): vale anche per i contenuti "sito" trasformati in reel da Regia
+        isReel: target.formato === "reel" || isVideo,
         caption
       });
     } catch (err) {
@@ -310,7 +311,8 @@ async function riprovaPubblicazioneParziale(
       const risultato = await pubblicaSuInstagram({
         imageUrl: isVideo ? undefined : target.media.downloadUrl,
         videoUrl: isVideo ? target.media.downloadUrl : undefined,
-        isReel: target.formato === "reel",
+        // Ogni video esce come Reel (Instagram non accetta più il tipo "VIDEO"): vale anche per i contenuti "sito" trasformati in reel da Regia
+        isReel: target.formato === "reel" || isVideo,
         caption
       });
       voce.instagramId = risultato.id;
