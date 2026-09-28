@@ -682,9 +682,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Gallery.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e6fac58f-c15f-47a9-a64a-ec90c4edd3d0.png"
+        "filename": "reel-sito-Gallery.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/84094650-bb49-4a5f-8635-5790d86e2196.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e6fac58f-c15f-47a9-a64a-ec90c4edd3d0.png",
+          "mimeType": "image/png",
+          "filename": "sito-Gallery.png"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Scintille, sorrisi e balli fino a tardi. Un po' di quello che è successo lo trovate in gallery sul sito.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
