@@ -706,6 +706,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "93e39a8b-62d0-40b4-ab76-5ee0621d029a",
+      "createdAt": "2026-09-28T06:12:22.850Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Servizi.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8c33a9fc-3f67-41df-8881-771511bc16e5.png"
+      },
+      "caption": "DJ set, audio, luci, macchina del fumo. Tutto studiato per incastrarsi senza intoppi durante la serata.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#animazionematrimonio",
+        "#djprofessionista",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#serravallescrivia",
+        "#alessandria",
+        "#liguria"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-09-28",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }

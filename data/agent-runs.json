@@ -2,6 +2,69 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-09-28T06:12:54.735Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "ok",
+      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore in pista: si comincia.\"",
+      "timestamp": "2026-09-28T06:12:54.732Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
+      "timestamp": "2026-09-28T06:12:51.974Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 388 follower Instagram, 1 lead attivi.",
+      "timestamp": "2026-09-28T06:12:51.969Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-28T06:12:47.611Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-09-28T06:12:33.015Z"
+    },
+    {
+      "agente": "Vetrina",
+      "identita": "Agente Vetrina Sito Web",
+      "status": "ok",
+      "riepilogo": "Vetrina del sito pronta (\"Servizi\"), programmata per il 2026-09-28 alle 12:30.",
+      "timestamp": "2026-09-28T06:12:22.852Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-09-28T06:12:15.648Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-09-28T06:12:15.644Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3494,78 +3557,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"reel-telegram-1789571592073.mp4\" (video/reel) e messo in coda per la didascalia.",
       "timestamp": "2026-09-16T17:39:35.707Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789580293515.mp4\" (categoria wedding, stile clean, 14s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-16T17:39:06.834Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "errore",
-      "riepilogo": "Errore imprevisto nell'Agente Pubblicazione. Il contenuto resta in coda per il prossimo tentativo.",
-      "dettagli": {
-        "errore": "Error: Instagram: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:37:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AaMZair24V1iMe-4pf7QoDF\"}}. Facebook: Graph API error [/266354304012276/photos]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:37:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AHsAZsDLc2gr0KUaBQUGbhk\"}}"
-      },
-      "timestamp": "2026-09-16T17:37:12.329Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-16T17:35:44.884Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-16T17:35:44.883Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere gli Insights Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:35:44 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AmYhVDD_pThJb0mwb_ieUgA\"}}"
-      },
-      "timestamp": "2026-09-16T17:35:44.880Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "errore",
-      "riepilogo": "Impossibile leggere i media recenti da Instagram. Controlla i token Meta.",
-      "dettagli": {
-        "errore": "Error: Graph API error [/17841407374071951/media]: {\"error\":{\"message\":\"Error validating access token: Session has expired on Wednesday, 16-Sep-26 09:00:00 PDT. The current time is Wednesday, 16-Sep-26 10:35:44 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":463,\"fbtrace_id\":\"AyXAAjvpVDPHc7KXWFVRwQn\"}}"
-      },
-      "timestamp": "2026-09-16T17:35:44.488Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per le 12:30.",
-      "timestamp": "2026-09-16T17:35:44.075Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"telegram-1789579979600.jpg\" (foto) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-16T17:35:40.435Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789571592073.mp4\" (categoria dj_event, stile bold, 18s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-16T17:34:27.909Z"
     }
   ]
 }
