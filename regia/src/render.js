@@ -93,7 +93,7 @@ export async function assembleBody({ shots, files, fps, withAudio, out, workDir,
   const args = [];
   files.forEach((f) => args.push('-i', f));
   const fc = [];
-  shots.forEach((_, i) => fc.push(`[${i}:v]settb=AVTB,setpts=PTS-STARTPTS[s${i}]`));
+  shots.forEach((_, i) => fc.push(`[${i}:v]settb=AVTB,setpts=PTS-STARTPTS,fps=${fps}[s${i}]`));
   let cur = 's0';
   let acc = shots[0].frames;
   for (let i = 1; i < shots.length; i++) {
@@ -101,10 +101,11 @@ export async function assembleBody({ shots, files, fps, withAudio, out, workDir,
     const lbl = `m${i}`;
     if (t && t.frames > 0) {
       const off = (acc - t.frames) / fps;
-      fc.push(`[${cur}][s${i}]xfade=transition=${XFADE[t.type] || 'fade'}:duration=${n3(t.frames / fps)}:offset=${n3(off)}[${lbl}]`);
+      fc.push(`[${cur}][s${i}]xfade=transition=${XFADE[t.type] || 'fade'}:duration=${n3(t.frames / fps)}:offset=${n3(off)},fps=${fps}[${lbl}]`);
       acc += shots[i].frames - t.frames;
     } else {
-      fc.push(`[${cur}][s${i}]concat=n=2:v=1:a=0[${lbl}]`);
+      // fps esplicito: con ffmpeg 7 dopo concat il frame rate risulta "variabile" e xfade rifiuta l'ingresso
+      fc.push(`[${cur}][s${i}]concat=n=2:v=1:a=0,fps=${fps}[${lbl}]`);
       acc += shots[i].frames;
     }
     cur = lbl;
