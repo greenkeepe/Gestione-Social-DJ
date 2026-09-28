@@ -1,4 +1,4 @@
-import { MapPin, Bot, Hand, Trash2 } from "lucide-react";
+import { MapPin, Bot, Hand, Trash2, Clock } from "lucide-react";
 import { leggiDati, leggiConfig } from "../../../lib/dataSource";
 import type { OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../lib/types";
 import { firmaTesto, type BrandFile } from "../../../lib/firma";
@@ -12,6 +12,7 @@ import { EmptyState } from "../../../components/ui/EmptyState";
 import { StatusBadge } from "../../../components/ui/StatusBadge";
 import { LoadMore } from "../../../components/ui/LoadMore";
 import { statusVocabulary } from "../../../lib/statusVocabulary";
+import { calcolaProssimiInvii } from "../../../lib/prossimoInvioOutreach";
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +39,10 @@ export default async function LocaliPage() {
   const inviateAMano = storico.filter((c) => c.status === "inviata" && !c.inviataAutomaticamente).length;
   const scartate = storico.filter((c) => c.status === "scartata").length;
 
+  const prossimiInvii = invioAutomatico.attivo
+    ? calcolaProssimiInvii(file.contatti, invioAutomatico.maxAlGiorno, new Date())
+    : [];
+
   return (
     <div>
       <PageHeader
@@ -56,7 +61,55 @@ export default async function LocaliPage() {
       <ProvinceSelector selezionateIniziali={config.province ?? []} />
       <CercaLocaliButton />
 
-      <h3>Da rivedere ({daRivedere.length})</h3>
+      <h3 className="mt-lg">Prossimi invii automatici</h3>
+      {!invioAutomatico.attivo && (
+        <EmptyState
+          title="Invio automatico disattivato"
+          description="Attivalo qui sopra per vedere qui la data e l'ora previste dei prossimi invii."
+        />
+      )}
+      {invioAutomatico.attivo && prossimiInvii.length === 0 && (
+        <EmptyState title="Nessun invio in programma" description="Non ci sono bozze in attesa: tocca «Cerca nuovi locali» per trovarne di nuove." />
+      )}
+      {invioAutomatico.attivo && prossimiInvii.length > 0 && (
+        <div className="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Locale</th>
+                <th>Email</th>
+                <th>Invio previsto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <LoadMore
+                as="table"
+                colSpan={3}
+                initialCount={20}
+                label="invii"
+                items={prossimiInvii.map(({ contatto, previstoIl }) => (
+                  <tr key={contatto.id}>
+                    <td>{contatto.nomeLocale}</td>
+                    <td>{contatto.email}</td>
+                    <td>
+                      <span className="flex gap-xs">
+                        <Clock size={14} aria-hidden="true" style={{ opacity: 0.6, flexShrink: 0 }} />
+                        {previstoIl.toLocaleString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              />
+            </tbody>
+          </table>
+        </div>
+      )}
+      <p className="note">
+        Orario indicativo (circa le 10:00, ora italiana): Vercel esegue il controllo automatico entro un&apos;ora da quell&apos;orario, non nel
+        minuto esatto.
+      </p>
+
+      <h3 className="mt-lg">Da rivedere ({daRivedere.length})</h3>
       {daRivedere.length === 0 && <EmptyState title="Nessuna nuova bozza al momento" />}
       {daRivedere.length > 0 && <TabellaBozzeLocali contatti={daRivedere} anteprimaFirma={anteprimaFirma} />}
 
