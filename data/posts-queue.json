@@ -372,13 +372,19 @@
     {
       "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
       "createdAt": "2026-09-23T09:34:08.633Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Cristina-R.-11-09-2023.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/de8ef902-33d9-43a6-9ed2-abbeca02af74.png"
+        "filename": "reel-testimonianza-Cristina-R.-11-09-2023.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e786047e-968f-404d-8916-61e3f9e20e23.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/de8ef902-33d9-43a6-9ed2-abbeca02af74.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Cristina-R.-11-09-2023.png"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Con grande maestria è riuscito ad animare la nostra festa con musica adeguata in ogni momento: musiche d'atmosfera per la conversazione, brani coinvolgenti per lo svago, hit che spaccano per ballare tutta la notte.\"\n— Cristina R., Matrimonio\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -596,13 +602,19 @@
     {
       "id": "5c6da649-e3e7-4201-9cdd-f2bf01cd04a8",
       "createdAt": "2026-09-24T11:09:55.289Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Gabriele-V.-08-10-2021.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1e1b462a-e5f0-4318-a75b-cf85fbc23980.png"
+        "filename": "reel-testimonianza-Gabriele-V.-08-10-2021.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/117d127e-9ce6-4c0e-9ae0-20bb2acb4942.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1e1b462a-e5f0-4318-a75b-cf85fbc23980.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Gabriele-V.-08-10-2021.png"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Ottima musica, simpaticissimo, disponibile, super consigliato.\"\n— Gabriele V., Compleanno\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -628,13 +640,19 @@
     {
       "id": "d4d8185f-ba2c-4c61-8968-b24080f1ca2f",
       "createdAt": "2026-09-25T06:12:51.456Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Benedetta-P.-26-01-2023.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8f267aa0-d1d0-4064-94ff-35847dc96c4b.png"
+        "filename": "reel-testimonianza-Benedetta-P.-26-01-2023.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/dcea5db2-ff0b-447d-bc14-3fe5f9f28706.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8f267aa0-d1d0-4064-94ff-35847dc96c4b.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Benedetta-P.-26-01-2023.png"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Andrea è stata la festa! Grazie al suo dj set ci siamo divertiti tutti. Spazia nei vari generi musicali e fa ballare tutti. Bellissima festa, bellissima musica.\"\n— Benedetta P., Compleanno\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -660,13 +678,19 @@
     {
       "id": "37b6ea65-8770-4a04-b88b-c2a8bfbd1ca3",
       "createdAt": "2026-09-25T11:13:08.592Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Daniela-C.-08-10-2021.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e9d969ac-9687-4d1a-96df-460819d3c443.png"
+        "filename": "reel-testimonianza-Daniela-C.-08-10-2021.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/17be10ea-0e45-449b-9483-eae6984ec18b.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e9d969ac-9687-4d1a-96df-460819d3c443.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Daniela-C.-08-10-2021.png"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Niente vale più le parole di chi ha vissuto la serata con noi.\n\n\"Ottima musica assolutamente coinvolgente, Andrea oltre ad essere un bravo DJ preparato per qualsiasi richiesta musicale, sa anche come coinvolgere le persone affinché ogni festa abbia un'ottima riuscita.\"\n— Daniela C., Festa privata\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
