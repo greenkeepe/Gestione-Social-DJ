@@ -198,13 +198,19 @@
     {
       "id": "75f37b98-d447-4ef6-8c7b-c72b832f40dc",
       "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "dashboard-upload",
         "mediaId": "32095a67-1f8a-4648-a06e-c8cd16552bff",
-        "filename": "FB_IMG_1620810286217.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg"
+        "filename": "reel-FB_IMG_1620810286217.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a33dc452-ffea-48b7-8da1-104226885437.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "FB_IMG_1620810286217.jpg"
+        },
+        "fotoReel": "regia-foto-1"
       },
       "caption": "Console pronta, luci viola accese, gente ancora al buffet a chiacchierare. Si parte tra poco.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
