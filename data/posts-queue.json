@@ -156,13 +156,13 @@
         "mediaId": "32095a67-1f8a-4648-a06e-c8cd16552bff",
         "filename": "reel-FB_IMG_1620810286217.mp4",
         "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3e3b2416-e284-474c-990b-fac68b6686be.mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c083d883-f923-4679-aa9e-f8f15c66b730.mp4",
         "originale": {
           "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg",
           "mimeType": "image/jpeg",
           "filename": "FB_IMG_1620810286217.jpg"
         },
-        "fotoReel": "regia-foto-1"
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Console pronta, luci viola accese, gente ancora al buffet a chiacchierare. Si parte tra poco.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -183,8 +183,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-09-30",
-      "pillarId": "dietro-le-quinte",
-      "regiaRichiesta": "2026-09-29T09:42:43.915Z"
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "b4847c0d-f14e-49a1-95f1-5c15ecb390b0",
