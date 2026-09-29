@@ -856,6 +856,43 @@ input, textarea, select {
   color: #00376b;
 }
 
+/* --- Locali: zone di ricerca --- */
+.zone-citta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.zone-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px 4px 10px;
+  border-radius: 999px;
+  background: #f3e8fd;
+  color: #6c2bd9;
+  font-size: 13px;
+  font-weight: 600;
+}
+.zone-chip button {
+  display: inline-flex;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+}
+.zone-aggiungi { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.zone-aggiungi input { flex: 1 1 200px; min-width: 0; }
+.zone-raggio { display: block; margin-top: 10px; font-size: 13px; }
+.zone-link {
+  display: inline-block;
+  margin-top: 10px;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: #6c2bd9;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .regia-casella {
   padding: 0 14px 12px;
   font-size: 13px;

@@ -1,8 +1,8 @@
 import { MapPin, Bot, Hand, Trash2, Clock } from "lucide-react";
 import { leggiDati, leggiConfig } from "../../../lib/dataSource";
-import type { OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../lib/types";
+import type { AgentRunsFile, OutreachConfigFile, OutreachFile, OutreachTemplateFile } from "../../../lib/types";
 import { firmaTesto, type BrandFile } from "../../../lib/firma";
-import { ProvinceSelector } from "../../../components/ProvinceSelector";
+import { ZoneRicercaLocali } from "../../../components/ZoneRicercaLocali";
 import { TabellaBozzeLocali } from "../../../components/TabellaBozzeLocali";
 import { CercaLocaliButton } from "../../../components/CercaLocaliButton";
 import { TemplateEmailEditor } from "../../../components/TemplateEmailEditor";
@@ -28,6 +28,12 @@ export default async function LocaliPage() {
   const config = await leggiDati<OutreachConfigFile>("outreach-config.json").catch((): OutreachConfigFile => ({ province: [] }));
   const template = await leggiDati<OutreachTemplateFile>("outreach-template.json").catch(() => MODELLO_DI_RISERVA);
   const brand = await leggiConfig<BrandFile>("brand.json").catch(() => ({}) as BrandFile);
+  // esito dell'ultima ricerca e dell'ultimo invio automatico, per vedere subito se qualcosa non va
+  const runs = await leggiDati<AgentRunsFile>("agent-runs.json").catch((): AgentRunsFile => ({ runs: [] }));
+  const ultimo = (agente: string) =>
+    runs.runs.filter((r) => r.agente === agente).sort((a, b) => b.timestamp.localeCompare(a.timestamp))[0];
+  const ultimaRicerca = ultimo("Esploratore");
+  const ultimoInvio = ultimo("Postino");
   const daRivedere = file.contatti.filter((c) => c.status === "bozza-da-rivedere");
   const storico = [...file.contatti]
     .filter((c) => c.status !== "bozza-da-rivedere")
@@ -48,8 +54,26 @@ export default async function LocaliPage() {
       <PageHeader
         icon={<MapPin size={22} aria-hidden="true" />}
         title="Locali"
-        description="Il sistema cerca da solo ogni giorno nuovi ristoranti/hotel della zona con un'email pubblica e prepara bozze di collaborazione con il modello qui sotto, tenendo la coda sempre piena fino al numero che scegli tu con «invio automatico» — quello stesso numero, entro lo stesso limite giornaliero, viene poi inviato da solo (parte dalla tua casella Gmail vera). A te resta solo rivedere le bozze e, se vuoi, scartarne una prima che parta."
+        description="Ogni giorno il sistema cerca da solo, nelle città che scegli qui sotto, locali che fanno eventi (location, ville, castelli, agriturismi, discoteche, stabilimenti, e ristoranti/bar/hotel solo se sul loro sito parlano di eventi, feste, matrimoni o serate) con un'email pubblica, e prepara le bozze con il tuo modello. Il numero scelto in «invio automatico» parte da solo ogni giorno dalla tua casella Gmail. A te resta solo, se vuoi, scartare una bozza prima che parta."
       />
+
+      {(ultimaRicerca || ultimoInvio) && (
+        <div className="card" style={{ marginBottom: 16 }}>
+          <div className="label">Ultimi giri automatici</div>
+          {ultimaRicerca && (
+            <p className="note">
+              <StatusBadge {...statusVocabulary.agentRun(ultimaRicerca.status)} /> Ricerca locali ·{" "}
+              {new Date(ultimaRicerca.timestamp).toLocaleString("it-IT", { timeZone: "Europe/Rome", dateStyle: "short", timeStyle: "short" })} · {ultimaRicerca.riepilogo}
+            </p>
+          )}
+          {ultimoInvio && (
+            <p className="note">
+              <StatusBadge {...statusVocabulary.agentRun(ultimoInvio.status)} /> Invio automatico ·{" "}
+              {new Date(ultimoInvio.timestamp).toLocaleString("it-IT", { timeZone: "Europe/Rome", dateStyle: "short", timeStyle: "short" })} · {ultimoInvio.riepilogo}
+            </p>
+          )}
+        </div>
+      )}
 
       <TemplateEmailEditor oggettoIniziale={template.oggetto} corpoIniziale={template.corpo} validatoIl={template.validatoIl} />
       <InvioAutomaticoSettings
@@ -58,7 +82,7 @@ export default async function LocaliPage() {
         modelloValidato={Boolean(template.validatoIl)}
       />
 
-      <ProvinceSelector selezionateIniziali={config.province ?? []} />
+      <ZoneRicercaLocali cittaIniziali={config.citta ?? []} raggioIniziale={config.raggioKm ?? 15} provinceIniziali={config.province ?? []} />
       <CercaLocaliButton />
 
       <h3 className="mt-lg">Prossimi invii automatici</h3>

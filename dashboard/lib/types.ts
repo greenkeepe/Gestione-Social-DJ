@@ -108,6 +108,8 @@ export interface OutreachFile {
 
 export interface OutreachConfigFile {
   province: string[];
+  citta?: string[]; // città/paesi in cui cercare (con raggioKm intorno a ognuna)
+  raggioKm?: number;
   invioAutomatico?: { attivo: boolean; maxAlGiorno: number };
 }
 

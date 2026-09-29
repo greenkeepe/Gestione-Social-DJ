@@ -40,9 +40,13 @@ export function TabellaBozzeLocali({ contatti, anteprimaFirma }: { contatti: Con
                         {
                           "location-eventi": "Location per eventi",
                           castello: "Castello",
-                          agriturismo: "Agriturismo/villa",
-                          hotel: "Hotel/location",
-                          restaurant: "Ristorante"
+                          villa: "Villa/dimora storica",
+                          discoteca: "Discoteca/club",
+                          stabilimento: "Stabilimento balneare",
+                          agriturismo: "Agriturismo/tenuta",
+                          hotel: "Hotel con eventi",
+                          restaurant: "Ristorante con eventi",
+                          bar: "Bar/pub con eventi"
                         }[c.categoria] ?? "Test"
                       }
                       {c.indirizzo ? ` · ${c.indirizzo}` : ""}
