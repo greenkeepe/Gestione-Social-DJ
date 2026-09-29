@@ -2,38 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "34cb7516-fdbf-4d64-b71d-a8440c3399d0",
-      "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard",
-        "mediaId": "99224835-b22c-44b0-92c3-6484fc0b4496",
-        "filename": "reel-111762.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0d4ee8d7-4c17-400d-a6ce-3c18b9527e31.mp4"
-      },
-      "caption": "Luci blu ovunque, si respira già l'atmosfera giusta prima di iniziare. Console pronta, si parte.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#djmatrimonio",
-        "#weddingparty",
-        "#weddingday",
-        "#weddingdj",
-        "#djeventi",
-        "#djperfeste",
-        "#animazionematrimonio",
-        "#djprofessionista",
-        "#serravallescrivia",
-        "#liguria",
-        "#weddingpiemonte"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-09-28",
-      "pillarId": "dietro-le-quinte"
-    },
-    {
       "id": "55ed805d-e5d9-4553-b5eb-2600139968e7",
       "createdAt": "2026-09-23T09:02:55.036Z",
       "formato": "reel",
