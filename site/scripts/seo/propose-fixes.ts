@@ -31,24 +31,45 @@ async function leggiJson<T>(file: string, valoreDiDefault: T): Promise<T> {
   }
 }
 
-async function chiediAdAnthropic(prompt: string): Promise<string | null> {
+// Problemi incontrati in questo giro, salvati in data/seo/seo-stato.json:
+// prima finivano solo nel log di GitHub Actions e nessuno se ne accorgeva
+// (nessuna proposta generata per settimane senza sapere perché). Il passo
+// "Esito SEO" del workflow li porta nel registro agenti -> avviso Telegram e
+// riquadro "Da controllare" in Panoramica.
+const problemi: string[] = [];
+const STATO_FILE_NOME = "seo-stato.json";
+
+// Fino a 3 tentativi (errori temporanei 429/5xx/rete), con pausa crescente.
+async function chiediAdAnthropic(prompt: string, pagina: string): Promise<string | null> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "content-type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01" },
-    body: JSON.stringify({
-      model: "claude-sonnet-5",
-      max_tokens: 400,
-      messages: [{ role: "user", content: prompt }]
-    })
-  });
-  if (!res.ok) {
-    console.error("[seo-propose] chiamata Anthropic fallita:", res.status, await res.text());
-    return null;
+  let ultimo = "";
+  for (let tentativo = 1; tentativo <= 3; tentativo++) {
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01" },
+        body: JSON.stringify({
+          model: "claude-sonnet-5",
+          max_tokens: 1000,
+          messages: [{ role: "user", content: prompt }]
+        }),
+        signal: AbortSignal.timeout(60000)
+      });
+      if (res.ok) {
+        const json = (await res.json()) as { content: Array<{ type: string; text?: string }> };
+        return json.content.find((c) => c.type === "text")?.text?.trim() ?? null;
+      }
+      ultimo = `HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`;
+      if (res.status < 500 && res.status !== 429) break; // errore definitivo (chiave, modello, richiesta): inutile riprovare
+    } catch (err) {
+      ultimo = err instanceof Error ? err.message : String(err);
+    }
+    await new Promise((r) => setTimeout(r, tentativo * 5000));
   }
-  const json = (await res.json()) as { content: Array<{ type: string; text?: string }> };
-  return json.content.find((c) => c.type === "text")?.text?.trim() ?? null;
+  console.error(`[seo-propose] chiamata Anthropic fallita per ${pagina}:`, ultimo);
+  problemi.push(`${pagina}: chiamata all'AI fallita (${ultimo})`);
+  return null;
 }
 
 async function inviaMessaggioTelegram(testo: string): Promise<void> {
@@ -88,19 +109,34 @@ Rispondi SOLO con un JSON valido, senza testo prima o dopo, in questo formato es
 Titolo entro 60 caratteri${descriptionAttuale ? ", description entro 155 caratteri" : ""}. Testo in italiano.`;
 }
 
+// Accetta anche risposte con testo o blocchi ```json attorno al JSON.
 function estraiJson(testo: string): { title?: string; description?: string } | null {
-  const match = testo.match(/\{[\s\S]*\}/);
-  if (!match) return null;
-  try {
-    return JSON.parse(match[0]);
-  } catch {
-    return null;
+  const pulito = testo.replace(/```(?:json)?/gi, "");
+  const candidati = [pulito.match(/\{[\s\S]*\}/)?.[0], ...(pulito.match(/\{[^{}]*\}/g) ?? [])].filter((x): x is string => Boolean(x));
+  for (const c of candidati) {
+    try {
+      const obj = JSON.parse(c) as { title?: unknown; description?: unknown };
+      if (typeof obj.title === "string") {
+        return { title: obj.title, description: typeof obj.description === "string" ? obj.description : undefined };
+      }
+    } catch {
+      /* prova il candidato successivo */
+    }
   }
+  return null;
+}
+
+async function salvaStato(proposteNuove: number, opportunita: number): Promise<void> {
+  const stato = { aggiornatoIl: new Date().toISOString(), opportunita, proposteNuove, problemi };
+  await mkdir(DATA_DIR, { recursive: true });
+  await writeFile(path.join(DATA_DIR, STATO_FILE_NOME), JSON.stringify(stato, null, 2) + "\n", "utf-8");
 }
 
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) {
     console.log("[seo-propose] ANTHROPIC_API_KEY non impostata: nessuna proposta generata (il resto dell'SEO Engine funziona comunque).");
+    problemi.push("ANTHROPIC_API_KEY non disponibile: nessuna proposta generata");
+    await salvaStato(0, 0);
     return;
   }
 
@@ -132,20 +168,27 @@ async function main() {
     if (giaPresente) continue;
 
     const route = siteRoutes.find((r) => (r.path || "/") === pagePath);
-    if (!route) continue;
+    if (!route) {
+      problemi.push(`${pagePath}: pagina non trovata in data/routes.ts`);
+      continue;
+    }
 
     const namespace = messagesIt[route.metaNamespace] ?? {};
     const titleAttuale = namespace[route.metaTitleKey];
     const descriptionAttuale = route.metaDescriptionKey ? (namespace[route.metaDescriptionKey] ?? null) : null;
-    if (!titleAttuale) continue;
+    if (!titleAttuale) {
+      problemi.push(`${pagePath}: titolo attuale non trovato (${route.metaNamespace}.${route.metaTitleKey} in messages/it.json)`);
+      continue;
+    }
 
     const prompt = costruisciPrompt(route, opp, titleAttuale, descriptionAttuale);
-    const rispostaGrezza = await chiediAdAnthropic(prompt);
-    if (!rispostaGrezza) continue;
+    const rispostaGrezza = await chiediAdAnthropic(prompt, pagePath);
+    if (!rispostaGrezza) continue; // problema già registrato
 
     const parsed = estraiJson(rispostaGrezza);
     if (!parsed?.title) {
       console.error(`[seo-propose] risposta non valida per ${pagePath}, salto:`, rispostaGrezza);
+      problemi.push(`${pagePath}: risposta dell'AI non valida (${rispostaGrezza.slice(0, 150)})`);
       continue;
     }
 
@@ -180,10 +223,13 @@ async function main() {
     );
   }
 
+  await salvaStato(nuoveProposte.length, opportunitiesFile.opportunities.length);
   console.log(`[seo-propose] ${nuoveProposte.length} nuove proposte generate, salvate in ${PROPOSALS_FILE}`);
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
   console.error("[seo-propose] Errore:", err instanceof Error ? err.message : err);
+  problemi.push(`errore imprevisto: ${err instanceof Error ? err.message : String(err)}`);
+  await salvaStato(0, 0).catch(() => {});
   process.exitCode = 1;
 });

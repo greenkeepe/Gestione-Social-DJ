@@ -72,5 +72,10 @@ export const IDENTITA = {
     nome: "Vetrina",
     ruolo: "Agente Vetrina Sito Web",
     descrizione: "Ogni giorno cattura uno screenshot reale di una pagina del sito (ruotando tra tutte, mai la stessa due giorni di fila) e lo mette in coda come post extra, separato dal contenuto foto/video del giorno."
+  },
+  seo: {
+    nome: "Segugio",
+    ruolo: "Agente SEO (Search Console)",
+    descrizione: "Ogni lunedì scarica i dati di Google Search Console, trova le ricerche in cui il sito compare ma riceve pochi clic e prepara proposte di titolo/descrizione da approvare nella pagina SEO. Non modifica mai il sito da solo."
   }
 } as const satisfies Record<string, Identita>;

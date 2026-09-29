@@ -52,11 +52,22 @@ jobs:
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
         run: npm run seo:all
 
+      # Esito nel registro agenti ("Segugio"): problemi visibili in dashboard
+      # e avviso Telegram dopo 2 errori di fila (vedi scripts/seo-esito.ts).
+      - name: Esito SEO nel registro agenti
+        if: always()
+        working-directory: .
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+        run: site/node_modules/.bin/tsx scripts/seo-esito.ts
+
       - name: Commit e push dei dati SEO aggiornati
+        if: always()
         run: |
           git config user.name "gestione-social-dj-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/seo/
+          git add data/seo/ ../data/agent-runs.json
           if ! git diff --cached --quiet; then
             git commit -m "chore(seo): aggiornamento settimanale dati Search Console e opportunità"
             for i in 1 2 3 4 5; do
