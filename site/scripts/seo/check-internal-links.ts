@@ -55,7 +55,8 @@ async function main() {
 
   const routes: InternalLinkRoute[] = siteRoutes.map((route) => {
     const normalizedPath = route.path === "" ? "/" : route.path;
-    const linkedFrom = Array.from(inboundBySource[normalizedPath] ?? []).sort();
+    // + i file che la linkano con un indirizzo costruito dal codice (vedi SiteRoute.linkedVia)
+    const linkedFrom = Array.from(new Set([...(inboundBySource[normalizedPath] ?? []), ...(route.linkedVia ?? [])])).sort();
     return {
       path: normalizedPath,
       label: route.label,

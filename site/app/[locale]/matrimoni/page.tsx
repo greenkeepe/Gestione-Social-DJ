@@ -9,6 +9,7 @@ import { Gallery } from "@/components/sections/Gallery";
 import { Reviews } from "@/components/sections/Reviews";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ZoneServite } from "@/components/sections/ZoneServite";
 
 export async function generateMetadata({
   params,
@@ -56,6 +57,7 @@ export default async function MatrimoniPage({
       <Numbers />
       <Gallery />
       <Reviews />
+      <ZoneServite />
       <FAQ />
       <div className="bg-charcoal pb-4">
         <div className="container-edit text-center">

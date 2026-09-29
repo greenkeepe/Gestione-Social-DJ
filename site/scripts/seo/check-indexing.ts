@@ -69,7 +69,7 @@ async function main() {
   const siteUrl = requireEnv("GSC_SITE_URL");
 
   const urls = siteRoutes.flatMap((route) =>
-    routing.locales.map((locale) => buildUrl(siteUrl, route.path, locale)),
+    (route.soloLocale ? [route.soloLocale] : routing.locales).map((locale) => buildUrl(siteUrl, route.path, locale)),
   );
 
   console.log(`[seo-indexing] Controllo ${urls.length} URL (${siteRoutes.length} pagine × ${routing.locales.length} lingue)...`);

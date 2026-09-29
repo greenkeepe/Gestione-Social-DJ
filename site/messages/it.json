@@ -521,5 +521,25 @@
     "party-tent-nightdance": "Festa sotto il tendone in notturna",
     "party-terrace-seaview": "Festa in terrazza con vista sul mare",
     "events-gala-tent": "Aperitivo di gala sotto il gazebo con lampadari"
+  },
+  "CittaPages": {
+    "eyebrow": "DJ in zona",
+    "locationTitle": "Location in cui lavoro",
+    "zoneTitle": "Anche nei dintorni",
+    "faqTitle": "Domande frequenti",
+    "otherCities": "DJ anche a",
+    "servizi": "Scopri tutti i servizi →",
+    "genovaMetaTitle": "DJ a Genova per matrimoni ed eventi",
+    "genovaMetaDescription": "DJ per matrimoni, feste ed eventi a Genova e in Riviera: dj set su misura, impianto audio e luci. Oltre 75 recensioni a 5 stelle. Preventivo in poche ore.",
+    "alessandriaMetaTitle": "DJ ad Alessandria per matrimoni ed eventi",
+    "alessandriaMetaDescription": "DJ per matrimoni, feste ed eventi ad Alessandria e provincia: musica su misura, impianto audio e luci. Base a Serravalle Scrivia, preventivo in poche ore.",
+    "noviLigureMetaTitle": "DJ a Novi Ligure per matrimoni e feste",
+    "noviLigureMetaDescription": "DJ per matrimoni, feste ed eventi a Novi Ligure e nel Gaviese, a 10 minuti da casa: dj set su misura, impianto audio e luci. Preventivo senza impegno.",
+    "tortonaMetaTitle": "DJ a Tortona per matrimoni ed eventi",
+    "tortonaMetaDescription": "DJ per matrimoni, feste ed eventi a Tortona e sui Colli Tortonesi: musica su misura, impianto audio e luci, anche all'aperto. Preventivo in poche ore.",
+    "serravalleScriviaMetaTitle": "DJ a Serravalle Scrivia, matrimoni e feste",
+    "serravalleScriviaMetaDescription": "DJ con base a Serravalle Scrivia per matrimoni, feste private ed eventi in Val Scrivia e Val Borbera: dj set su misura, impianto audio e luci.",
+    "acquiTermeMetaTitle": "DJ ad Acqui Terme per matrimoni ed eventi",
+    "acquiTermeMetaDescription": "DJ per matrimoni, feste ed eventi ad Acqui Terme e nell'Alto Monferrato: dj set su misura, impianto audio e luci per ville e agriturismi."
   }
 }

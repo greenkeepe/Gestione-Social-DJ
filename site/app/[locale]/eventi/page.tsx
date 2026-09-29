@@ -9,6 +9,7 @@ import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ZoneServite } from "@/components/sections/ZoneServite";
 import { eventCategories } from "@/data/events";
 
 export async function generateMetadata({
@@ -134,6 +135,7 @@ export default async function EventiPage({
         </div>
       </section>
 
+      <ZoneServite className="bg-charcoal" />
       <FinalCTA />
     </>
   );

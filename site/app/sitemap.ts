@@ -8,20 +8,26 @@ function localizedPath(path: string, locale: string) {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return siteRoutes.flatMap(({ path }) =>
-    routing.locales.map((locale) => ({
+  return siteRoutes.flatMap(({ path, soloLocale }) => {
+    // pagine in una sola lingua (es. "DJ a <città>"): nessuna versione tradotta
+    const locales = soloLocale ? [soloLocale] : routing.locales;
+    return locales.map((locale) => ({
       url: `${technicalBaseUrl}${localizedPath(path, locale)}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.7,
-      alternates: {
-        languages: Object.fromEntries(
-          routing.locales.map((l) => [
-            l,
-            `${technicalBaseUrl}${localizedPath(path, l)}`,
-          ]),
-        ),
-      },
-    })),
-  );
+      ...(soloLocale
+        ? {}
+        : {
+            alternates: {
+              languages: Object.fromEntries(
+                routing.locales.map((l) => [
+                  l,
+                  `${technicalBaseUrl}${localizedPath(path, l)}`,
+                ]),
+              ),
+            },
+          }),
+    }));
+  });
 }

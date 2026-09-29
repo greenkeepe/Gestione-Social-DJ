@@ -1,8 +1,9 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Mail, Phone } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { siteConfig } from "@/data/site";
+import { cities } from "@/data/cities";
 
 const socialLinks = [
   { href: siteConfig.instagramUrl, label: "Instagram", Icon: InstagramIcon },
@@ -13,6 +14,7 @@ const socialLinks = [
 export function Footer() {
   const t = useTranslations("Footer");
   const tNav = useTranslations("Nav");
+  const locale = useLocale();
   const navLinks = [
     { href: "/", label: tNav("home") },
     { href: "/matrimoni", label: tNav("matrimoni") },
@@ -87,6 +89,18 @@ export function Footer() {
               areas: siteConfig.serviceAreas.join(", "),
             })}
           </p>
+          {/* pagine locali "DJ a <città>", solo in italiano */}
+          {locale === "it" ? (
+            <ul className="mt-3 flex flex-col gap-1 text-sm text-ivory-dim">
+              {cities.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/dj/${c.slug}`} className="hover:text-champagne">
+                    DJ a {c.nome}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <p className="mt-6 eyebrow mb-4">{t("legal")}</p>
           <ul className="flex flex-col gap-2 text-sm text-ivory-dim">
             <li>
