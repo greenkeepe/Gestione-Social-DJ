@@ -69,7 +69,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-06",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
@@ -107,7 +108,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-07",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "e7998f6a-6570-4206-8e7e-5f99a87039fd",
@@ -145,7 +147,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-08",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "75f37b98-d447-4ef6-8c7b-c72b832f40dc",
@@ -259,7 +262,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-02",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "ff042241-6a24-49cd-82ef-37dbe6cc1243",
@@ -297,7 +301,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-03",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "af059bc4-1202-420d-a035-6da764919d0e",
@@ -335,7 +340,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-04",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
@@ -373,7 +379,8 @@
       "dataProgrammata": "2026-10-14",
       "status": "pronto",
       "istruzioniUtente": null,
-      "pillarId": "testimonianze"
+      "pillarId": "testimonianze",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "f07ef283-9561-408b-815f-1b5f03463029",
@@ -405,7 +412,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-05"
+      "dataProgrammata": "2026-10-05",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
@@ -437,7 +445,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-09"
+      "dataProgrammata": "2026-10-09",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "3e1905ad-acf1-46aa-80db-3373f2d304ba",
@@ -469,7 +478,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-10"
+      "dataProgrammata": "2026-10-10",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "0de65c4d-f404-426b-9540-fb6c1e7a53d0",
@@ -501,7 +511,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-11"
+      "dataProgrammata": "2026-10-11",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "434bcd41-e757-42a1-a06b-1517d9f38f9a",
@@ -533,7 +544,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-12"
+      "dataProgrammata": "2026-10-12",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "9ec420fa-a69d-4b13-ad88-c95eaff066f7",
@@ -565,7 +577,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-13"
+      "dataProgrammata": "2026-10-13",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "5c6da649-e3e7-4201-9cdd-f2bf01cd04a8",
@@ -603,7 +616,8 @@
       "dataProgrammata": "2026-10-15",
       "status": "pronto",
       "istruzioniUtente": null,
-      "pillarId": "testimonianze"
+      "pillarId": "testimonianze",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "d4d8185f-ba2c-4c61-8968-b24080f1ca2f",
@@ -641,7 +655,8 @@
       "dataProgrammata": "2026-10-16",
       "status": "pronto",
       "istruzioniUtente": null,
-      "pillarId": "testimonianze"
+      "pillarId": "testimonianze",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "37b6ea65-8770-4a04-b88b-c2a8bfbd1ca3",
@@ -679,7 +694,8 @@
       "dataProgrammata": "2026-10-17",
       "status": "pronto",
       "istruzioniUtente": null,
-      "pillarId": "testimonianze"
+      "pillarId": "testimonianze",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     },
     {
       "id": "31b26277-d6e0-4503-a063-59e75aaedeb5",
@@ -711,7 +727,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "consigli",
-      "dataProgrammata": "2026-10-18"
+      "dataProgrammata": "2026-10-18",
+      "regiaRichiesta": "2026-09-29T09:54:58.902Z"
     }
   ]
 }
