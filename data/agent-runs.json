@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-29T10:25:35.164Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Rielaborazione scelta dalla dashboard: 8/8 contenuti rimontati con Regia (didascalie e orari invariati).",
       "timestamp": "2026-09-29T10:25:32.579Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"reel-telegram-1789624934269.mp4\" (video/reel) e messo in coda per la didascalia.",
       "timestamp": "2026-09-17T08:57:31.961Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789635371455.mp4\" (categoria wedding, stile clean, 14s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-17T08:57:03.876Z"
     }
   ]
 }
