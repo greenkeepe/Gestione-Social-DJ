@@ -28,9 +28,15 @@ export interface QueueItem {
   dataProgrammata?: string | null;
   pillarId?: string;
   istruzioniUtente?: string | null;
-  media: { filename: string; mimeType: string; downloadUrl: string; source?: string };
+  media: {
+    filename: string; mimeType: string; downloadUrl: string; source?: string;
+    mediaId?: string | null; fotoReel?: string; originale?: { downloadUrl: string; mimeType: string; filename: string };
+  };
   ultimoErrore?: string | null;
   tentativiFalliti?: number;
+  // scelto in Anteprima per essere rielaborato con Regia (vedi scripts/regia-selezione.ts)
+  regiaRichiesta?: string;
+  regiaErrore?: string;
 }
 
 export interface PostsQueueFile {

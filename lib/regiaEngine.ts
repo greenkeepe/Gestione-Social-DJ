@@ -74,12 +74,13 @@ export type TipoImmagine = "foto" | "testimonianza" | "sito";
 export async function creaReelDaImmagine(
   inputPath: string,
   tipo: TipoImmagine,
-  log: (m: string) => void = console.log
+  log: (m: string) => void = console.log,
+  seed?: string // sceglie il brano: stesso seed = stesso brano
 ): Promise<{ file: string; durataSecondi: number; musica: string }> {
   const modulo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "regia", "src", "fotoreel.js");
   const regia = await import(modulo.startsWith("/") ? modulo : `file:///${modulo.replace(/\\/g, "/")}`);
   const cartella = path.join(path.dirname(inputPath), `lavoro-${tipo}`);
   const out = path.join(path.dirname(inputPath), `reel-${tipo}.mp4`);
-  const r = await regia.fotoReel({ file: inputPath, tipo, out, workDir: cartella, log: (m: string) => log(`[Regia] ${m}`) });
+  const r = await regia.fotoReel({ file: inputPath, tipo, out, workDir: cartella, seed, log: (m: string) => log(`[Regia] ${m}`) });
   return { file: r.file, durataSecondi: r.durata, musica: r.musica };
 }

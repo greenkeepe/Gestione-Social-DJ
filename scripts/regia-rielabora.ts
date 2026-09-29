@@ -5,8 +5,9 @@
 // I Reel già pubblicati non vengono toccati. I job finiti in errore tornano
 // in coda (li riprende il Regista al prossimo giro).
 //
-// Si avvia dalla dashboard (pagina Anteprima -> "Rielabora con Regia") o da
-// GitHub Actions: workflow "AI Reel Maker" con l'opzione "rielabora".
+// Si avvia da GitHub Actions: workflow "AI Reel Maker" con l'opzione
+// "rielabora". Per rifare solo alcuni contenuti dalla dashboard (Anteprima ->
+// "Rielabora selezionati") vedi scripts/regia-selezione.ts.
 import "dotenv/config";
 import path from "node:path";
 import { rm } from "node:fs/promises";

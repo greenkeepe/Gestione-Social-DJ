@@ -1,7 +1,7 @@
 import { Image as ImageIcon } from "lucide-react";
 import { leggiDati, leggiConfig } from "../../../lib/dataSource";
 import { PostPreview } from "../../../components/PostPreview";
-import { RielaboraRegiaButton } from "../../../components/RielaboraRegiaButton";
+import { RegiaSelezioneProvider, RielaboraSelezionatiButton } from "../../../components/RegiaSelezione";
 import { PageHeader } from "../../../components/ui/PageHeader";
 import { EmptyState } from "../../../components/ui/EmptyState";
 import type { PostsQueueFile } from "../../../lib/types";
@@ -51,12 +51,12 @@ export default async function AnteprimaPage() {
     });
 
   return (
-    <div>
+    <RegiaSelezioneProvider>
       <PageHeader
         icon={<ImageIcon size={22} aria-hidden="true" />}
         title="Anteprima"
-        action={<RielaboraRegiaButton />}
-        description="Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine cronologico esatto di data e ora. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro) o in pubblicazione (è il turno di oggi, l'Editore lo pubblica al prossimo controllo). Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare. Il già pubblicato non compare più qui: trovi lo storico completo nella pagina &quot;Contenuti&quot;."
+        action={<RielaboraSelezionatiButton />}
+        description="Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine cronologico esatto di data e ora. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro) o in pubblicazione (è il turno di oggi, l'Editore lo pubblica al prossimo controllo). Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare. Per rifare solo alcuni video con Regia spunta &quot;Rielabora con Regia&quot; sui contenuti che vuoi e premi &quot;Rielabora selezionati&quot;. Il già pubblicato non compare più qui: trovi lo storico completo nella pagina &quot;Contenuti&quot;."
       />
 
       {items.length === 0 && (
@@ -71,6 +71,6 @@ export default async function AnteprimaPage() {
           <PostPreview key={item.id} item={item} handle={handle} nomeArte={nomeArte} />
         ))}
       </div>
-    </div>
+    </RegiaSelezioneProvider>
   );
 }

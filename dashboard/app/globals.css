@@ -856,6 +856,30 @@ input, textarea, select {
   color: #00376b;
 }
 
+.regia-casella {
+  padding: 0 14px 12px;
+  font-size: 13px;
+}
+.regia-casella label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.regia-casella input { width: 16px; height: 16px; accent-color: #6c2bd9; }
+.regia-casella__stato {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3e8fd;
+  color: #6c2bd9;
+  font-weight: 600;
+}
+.regia-casella .error-msg { margin: 6px 0 0; }
+
 .ig-post__meta {
   padding: 0 14px 14px;
   font-size: 11px;

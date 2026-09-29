@@ -19,6 +19,7 @@ interface QueueItem {
   dataProgrammata?: string | null;
   orarioProgrammato?: string | null;
   media?: { mimeType?: string; fotoReel?: string };
+  regiaRichiesta?: string;
 }
 
 // Stesse regole dell'Editore (agents/publishing-agent.ts, TZ Europe/Rome):
@@ -88,12 +89,15 @@ export async function GET(req: Request) {
 
     // 2. c'è lavoro per Regia?
     const videoInCoda = reelJobs.jobs.some((j) => j.status === "in-coda-analisi");
-    const fotoDaTrasformare = coda.queue.some(
-      (p) => !["pubblicato", "pubblicato-parziale"].includes(p.status) && p.media?.mimeType?.startsWith("image/") && !p.media?.fotoReel
-    );
-    if (!videoInCoda && !fotoDaTrasformare) esito.regia = "niente da montare";
+    const nonPubblicato = (p: QueueItem) => !["pubblicato", "pubblicato-parziale"].includes(p.status);
+    const fotoDaTrasformare = coda.queue.some((p) => nonPubblicato(p) && p.media?.mimeType?.startsWith("image/") && !p.media?.fotoReel);
+    const sceltiInDashboard = coda.queue.some((p) => nonPubblicato(p) && p.regiaRichiesta);
+    if (!videoInCoda && !fotoDaTrasformare && !sceltiInDashboard) esito.regia = "niente da montare";
     else if (await workflowGiaAttivo("reel-maker.yml")) esito.regia = "Regia già al lavoro";
-    else { await lanciaWorkflow("reel-maker.yml"); esito.regia = `avviato (${[videoInCoda && "video", fotoDaTrasformare && "foto"].filter(Boolean).join(" + ")})`; }
+    else {
+      await lanciaWorkflow("reel-maker.yml");
+      esito.regia = `avviato (${[videoInCoda && "video", fotoDaTrasformare && "foto", sceltiInDashboard && "scelti"].filter(Boolean).join(" + ")})`;
+    }
 
     return NextResponse.json({ ok: true, ...esito });
   } catch (err) {

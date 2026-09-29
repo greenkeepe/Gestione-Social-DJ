@@ -153,7 +153,8 @@ function planShots(tipo, info, regions) {
 }
 
 // tipo: 'foto' | 'testimonianza' | 'sito'
-export async function fotoReel({ file, tipo = 'foto', out, workDir, log = () => {} }) {
+// seed: sceglie il brano (stesso seed = stesso brano; cambiandolo si ottiene una variante)
+export async function fotoReel({ file, tipo = 'foto', out, workDir, seed, log = () => {} }) {
   const cfg = loadConfig();
   const info = await probe(file);
   if (!info.width || !info.height) throw new Error('Immagine non leggibile');
@@ -165,7 +166,7 @@ export async function fotoReel({ file, tipo = 'foto', out, workDir, log = () => 
   const nInfo = await probe(img);
   const regions = tipo === 'foto' ? await detailRegions(img, nInfo) : [];
   const specs = planShots(tipo, nInfo, regions);
-  const track = pickTrack(tipo, path.basename(file));
+  const track = pickTrack(tipo, seed ?? path.basename(file));
   const endDur = cfg.finale.attivo !== false ? Number(cfg.finale.durata) || 3.5 : 0;
   const totBeats = specs.reduce((s, x) => s + x.beats, 0);
   const mp = await musicPlan(track, totBeats * 0.6 + endDur + 2);

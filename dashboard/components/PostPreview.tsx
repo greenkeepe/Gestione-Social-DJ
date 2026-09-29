@@ -1,5 +1,6 @@
 import type { QueueItem } from "../lib/types";
 import { PubblicaOraButton } from "./PubblicaOraButton";
+import { RegiaCasella } from "./RegiaSelezione";
 
 const STATUS_LABEL: Record<string, string> = {
   "in-coda-caption": "in attesa di didascalia",
@@ -92,6 +93,8 @@ export function PostPreview({ item, handle, nomeArte }: { item: QueueItem; handl
           ? ` · programmato per ${item.dataProgrammata ? `il ${new Date(`${item.dataProgrammata}T00:00:00`).toLocaleDateString("it-IT")} ` : ""}alle ${item.orarioProgrammato}`
           : ""}
       </div>
+
+      <RegiaCasella id={item.id} inLavorazione={Boolean(item.regiaRichiesta)} errore={item.regiaErrore} />
 
       {item.status === "pronto" && <PubblicaOraButton id={item.id} />}
     </div>

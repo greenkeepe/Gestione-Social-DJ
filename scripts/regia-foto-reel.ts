@@ -73,7 +73,7 @@ async function main() {
       const input = path.join(cartella, `immagine${ext}`);
       await writeFile(input, Buffer.from(await res.arrayBuffer()));
 
-      const reel = await creaReelDaImmagine(input, tipo);
+      const reel = await creaReelDaImmagine(input, tipo, console.log, target.id); // brano diverso per ogni contenuto
       const nuovoUrl = await caricaSuR2(reel.file, r2);
       await rm(path.dirname(reel.file), { recursive: true, force: true }).catch(() => {});
 
