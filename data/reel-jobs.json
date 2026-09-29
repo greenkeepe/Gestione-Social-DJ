@@ -105,10 +105,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:41:03.957Z",
+      "aggiornatoIl": "2026-09-29T10:25:32.577Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/aea065ea-1e12-4089-b19a-581bf1751289.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e3a3b54a-9f11-46e5-b336-8ec46d232793.mp4",
         "durataSecondi": 12.4,
         "piano": {
           "categoria": "wedding",
@@ -153,7 +153,7 @@
         }
       },
       "source": "dashboard-upload",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "d6602d2f-da56-433a-a7d7-81b3cc6f8347",
@@ -165,10 +165,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:51:19.741Z",
+      "aggiornatoIl": "2026-09-29T10:25:32.577Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/89299b8b-6b4b-4eae-a8a7-382ad129fcde.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/08788b06-9c37-4eeb-b291-fedcd17b060e.mp4",
         "durataSecondi": 22.8,
         "piano": {
           "categoria": "wedding",
@@ -213,7 +213,7 @@
         }
       },
       "source": "dashboard-upload",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
@@ -225,10 +225,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:31:23.987Z",
+      "aggiornatoIl": "2026-09-29T10:25:32.577Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/bdf6476c-03fc-4054-a80e-b7d6e091e173.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ac0438fe-c43e-4136-8d40-004b15361752.mp4",
         "durataSecondi": 10.5,
         "piano": {
           "categoria": "wedding",
@@ -268,7 +268,7 @@
         }
       },
       "source": "dashboard-upload",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "171bc915-5b9d-4c24-8800-cc7c2e42e738",
@@ -280,10 +280,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:52:21.919Z",
+      "aggiornatoIl": "2026-09-29T10:25:32.577Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/b8218eb5-7078-4142-93f6-1291b6d41027.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f59d19f6-bbdc-460e-9477-3433083fd024.mp4",
         "durataSecondi": 12.6,
         "piano": {
           "categoria": "evento",
@@ -333,7 +333,7 @@
         }
       },
       "source": "dashboard-upload",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "e3ee4116-1f44-49e3-baf0-533b267b138f",
@@ -345,10 +345,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:53:24.568Z",
+      "aggiornatoIl": "2026-09-29T10:25:32.577Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5203e4de-f53d-4eb9-bec5-50590f6ba86f.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2ded59bc-9e90-4697-b8e8-1065d53f3dc0.mp4",
         "durataSecondi": 12.4,
         "piano": {
           "categoria": "wedding",
@@ -393,7 +393,7 @@
         }
       },
       "source": "dashboard-upload",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "151ad571-940d-4bd6-b09e-3f8fd5ffe74d",
