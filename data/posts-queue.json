@@ -31,7 +31,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-09-29",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:46:23.078Z"
     },
     {
       "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
@@ -221,7 +222,8 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-01",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "regiaRichiesta": "2026-09-29T09:46:23.078Z"
     },
     {
       "id": "96799fb1-4a59-4243-9a20-cacaf377cb6c",
