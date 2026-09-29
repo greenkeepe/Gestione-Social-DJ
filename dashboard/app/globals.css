@@ -931,6 +931,15 @@ input, textarea, select {
   cursor: pointer;
 }
 
+.ig-post__azioni {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0 14px 14px;
+}
+.ig-post__azioni > div { margin: 0; }
+
 .regia-casella {
   padding: 0 14px 12px;
   font-size: 13px;

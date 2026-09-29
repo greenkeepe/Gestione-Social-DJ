@@ -171,6 +171,9 @@ function settingsFrom(job, cfg) {
     titolo: job.titolo || '', nome: job.nome || '', slogan: job.slogan, cta: job.cta,
     look: LOOKS[job.look] ? job.look : DEFAULT_LOOK[preset] || 'naturale',
     inizioMusica: job.inizioMusica, musicaSottoParlato: !!job.musicaSottoParlato,
+    // testi in sovrimpressione { hook, frasi: [], finale } (scritti dall'AI nel cloud, vedi lib/regiaEngine.ts)
+    testi: job.testi && typeof job.testi === 'object' ? job.testi : null,
+    intro: job.intro !== false && cfg.brand.introLogo !== false,
   };
 }
 
@@ -196,8 +199,13 @@ export function endTexts(cfg, s, start, dur) {
 export const assFor = (cfg, s, extra) => buildAss({
   fonts: { display: cfg.brand.font, testi: cfg.brand.fontTesti || cfg.brand.font },
   colors: { accento: cfg.brand.colore, testo: cfg.brand.coloreTesto || '#FFFFFF' },
-  title: s.titolo, ...extra,
+  title: s.titolo, overlay: s.testi || null, ...extra,
 });
+// logo identificativo sui primi secondi di ogni reel (disattivabile con brand.introLogo = false)
+export const introFor = (cfg, s, W, H) => {
+  const logo = brandLogo(cfg);
+  return s.intro !== false && cfg.brand.introLogo !== false && logo ? { logo, W, H } : null;
+};
 
 async function loadClips(project, cacheDir) {
   const clips = [];
@@ -534,6 +542,7 @@ async function renderProjectInner(id, { emit, scale, anteprima }) {
     const audio = mode === 'highlight' ? { type: 'music', file: project.music.file, start: shots[0].slotStart } : bodyAudio;
     const T = await renderFinal({
       body, bodyFrames, end, endFrames, ass: `${fk}/testi.ass`, fps: FPS, audio, out: outFile, workDir,
+      intro: introFor(cfg, S, W, H),
       onProgress: (p) => progress(base + share * (0.85 + 0.15 * p), `Render finale (${fk})`),
     });
     const cover = path.join(outDir, `${slug(S.nome || S.titolo || 'video')}_${fk}_copertina.jpg`);

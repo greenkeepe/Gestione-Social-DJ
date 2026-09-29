@@ -6,7 +6,7 @@ import { ffmpeg, probe, pcm } from './ffmpeg.js';
 import { onsetEnvelope, detectBeats, percentile } from './dsp.js';
 import { assembleBody, renderEndscreen, renderFinal } from './render.js';
 import { LOOKS } from './presets.js';
-import { ROOT, loadConfig, copyFonts, brandLogo, assFor, endTexts } from './pipeline.js';
+import { ROOT, loadConfig, copyFonts, brandLogo, assFor, endTexts, introFor } from './pipeline.js';
 
 const FPS = 30, W = 1080, H = 1920;
 const n3 = (x) => (+x).toFixed(4);
@@ -154,7 +154,8 @@ function planShots(tipo, info, regions) {
 
 // tipo: 'foto' | 'testimonianza' | 'sito'
 // seed: sceglie il brano (stesso seed = stesso brano; cambiandolo si ottiene una variante)
-export async function fotoReel({ file, tipo = 'foto', out, workDir, seed, log = () => {} }) {
+// testi: { hook, frasi: [], finale } in sovrimpressione (scritti dall'AI, vedi lib/regiaEngine.ts)
+export async function fotoReel({ file, tipo = 'foto', out, workDir, seed, testi = null, log = () => {} }) {
   const cfg = loadConfig();
   const info = await probe(file);
   if (!info.width || !info.height) throw new Error('Immagine non leggibile');
@@ -209,10 +210,13 @@ export async function fotoReel({ file, tipo = 'foto', out, workDir, seed, log = 
     endFrames = await renderEndscreen({ bgFrame: img, logo, W, H, dur: endDur, fps: FPS, out: end, workDir });
   }
   const XF = end ? Math.round(0.5 * FPS) : 0;
-  const S = { titolo: '', preset: MUSICA[tipo] || 'festa' };
+  const S = { titolo: '', preset: MUSICA[tipo] || 'festa', testi: testi || null, intro: true };
   const ass = assFor(cfg, S, { W, H, bodyT: bodyFrames / FPS, hasLogo: !!logo, words: null, end: end ? endTexts(cfg, S, (bodyFrames - XF) / FPS, endDur) : null });
   fs.writeFileSync(path.join(workDir, 'testi.ass'), ass, 'utf8');
-  const T = await renderFinal({ body, bodyFrames, end, endFrames, ass: 'testi.ass', fps: FPS, audio: { type: 'music', file: track, start: mp.start }, out, workDir });
+  const T = await renderFinal({
+    body, bodyFrames, end, endFrames, ass: 'testi.ass', fps: FPS, audio: { type: 'music', file: track, start: mp.start }, out, workDir,
+    intro: introFor(cfg, S, W, H),
+  });
   log(`✔ Reel da ${tipo} pronto (${T.toFixed(1)}s)`);
   return { file: out, durata: +T.toFixed(1), musica: path.basename(track) };
 }

@@ -1,6 +1,7 @@
 import type { QueueItem } from "../lib/types";
 import { PubblicaOraButton } from "./PubblicaOraButton";
 import { RegiaCasella } from "./RegiaSelezione";
+import { DeleteButton } from "./DeleteButton";
 
 const STATUS_LABEL: Record<string, string> = {
   "in-coda-caption": "in attesa di didascalia",
@@ -96,7 +97,15 @@ export function PostPreview({ item, handle, nomeArte }: { item: QueueItem; handl
 
       <RegiaCasella id={item.id} inLavorazione={Boolean(item.regiaRichiesta)} errore={item.regiaErrore} />
 
-      {item.status === "pronto" && <PubblicaOraButton id={item.id} />}
+      <div className="ig-post__azioni">
+        {item.status === "pronto" && <PubblicaOraButton id={item.id} />}
+        {item.status !== "pubblicato" && item.status !== "pubblicato-parziale" && (
+          <DeleteButton
+            url={`/api/queue/${item.id}?file=1`}
+            conferma={`Eliminare questo ${isVideo ? "Reel" : "post"}? Non verrà pubblicato e il file viene cancellato (anche il video originale, se c'è). Non si può annullare.`}
+          />
+        )}
+      </div>
     </div>
   );
 }

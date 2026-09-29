@@ -161,8 +161,27 @@ export async function grabFrame(video, out, { fromEnd = false, at = 0, workDir }
   await ffmpeg([...pos, '-i', video, '-frames:v', '1', '-q:v', '2', out], { cwd: workDir });
 }
 
-// Passata finale: dissolvenza verso la schermata finale, testi/sottotitoli (ASS), audio normalizzato per i social.
-export async function renderFinal({ body, bodyFrames, end, endFrames, ass, fps, audio, out, workDir, onProgress }) {
+// Logo identificativo sopra i primi ~2 secondi di ogni reel ("spot" iniziale): il video parte subito
+// (nessuno spettatore perso), il logo entra in dissolvenza scendendo appena, con un'ombra morbida
+// che lo rende leggibile anche su riprese chiare, poi sparisce.
+const INTRO_DUR = 2.3;
+async function introGraph({ logo, idx, W, H, fps }) {
+  const li = await probe(logo);
+  const LW = even(Math.min(W * 0.66, (H * 0.13 * li.width) / li.height));
+  const LH = even((li.height * LW) / li.width);
+  const m = even(LW * 0.08); // margine per l'ombra sfocata
+  const y0 = Math.round(H * (H > W ? 0.085 : 0.07)) - m;
+  const d = n3(INTRO_DUR);
+  return [
+    `[${idx}:v]format=rgba,scale=${LW}:${LH}:flags=lanczos,pad=${LW + 2 * m}:${LH + 2 * m}:${m}:${m}:color=0x00000000,split[lgA][lgB]`,
+    `[lgB]colorchannelmixer=rr=0:gg=0:bb=0:aa=0.85,boxblur=${Math.max(4, Math.round(m / 2))}:2[lgS]`,
+    `[lgS][lgA]overlay=0:0:format=auto,fade=t=in:st=0.12:d=0.4:alpha=1,fade=t=out:st=${n3(INTRO_DUR - 0.45)}:d=0.4:alpha=1[lgF]`,
+    `[vi][lgF]overlay=x=(W-w)/2:y='${y0}-${Math.round(H * 0.012)}*pow(1-clip((t-0.12)/0.55,0,1),3)':eval=frame:eof_action=pass:enable='lt(t,${d})':format=auto[vx]`,
+  ];
+}
+
+// Passata finale: dissolvenza verso la schermata finale, logo iniziale, testi/sottotitoli (ASS), audio normalizzato per i social.
+export async function renderFinal({ body, bodyFrames, end, endFrames, ass, fps, audio, out, workDir, onProgress, intro = null }) {
   const XF = end ? Math.round(0.5 * fps) : 0;
   const total = end ? bodyFrames + endFrames - XF : bodyFrames;
   const T = total / fps;
@@ -170,11 +189,19 @@ export async function renderFinal({ body, bodyFrames, end, endFrames, ass, fps, 
   const args = ['-i', body];
   if (end) args.push('-i', end);
   const fc = [];
-  if (end) fc.push(`[0:v][1:v]xfade=transition=fade:duration=${n3(XF / fps)}:offset=${n3((bodyFrames - XF) / fps)}[vx]`);
-  else fc.push('[0:v]null[vx]');
+  const bodyLabel = intro ? 'vi' : 'vx';
+  if (end) fc.push(`[0:v][1:v]xfade=transition=fade:duration=${n3(XF / fps)}:offset=${n3((bodyFrames - XF) / fps)}[${bodyLabel}]`);
+  else fc.push(`[0:v]null[${bodyLabel}]`);
+  // indici degli ingressi: 0 corpo, (1 finale), poi l'audio (musica o base sotto il parlato), poi il logo
+  const musicIdx = end ? 2 : 1;
+  const hasAudioInput = audio.type === 'music' || !!audio.bed;
+  if (intro?.logo) {
+    fc.push(...(await introGraph({ logo: intro.logo, idx: musicIdx + (hasAudioInput ? 1 : 0), W: intro.W, H: intro.H, fps })));
+  } else if (intro) {
+    fc.push('[vi]null[vx]');
+  }
   fc.push(ass ? `[vx]ass=filename=${ass}:fontsdir=fonts,format=yuv420p[v]` : '[vx]format=yuv420p[v]');
 
-  const musicIdx = end ? 2 : 1;
   const fadeOut = Math.min(2.5, T * 0.2);
   if (audio.type === 'music') {
     args.push('-ss', n3(audio.start), '-t', n3(T + 0.5), '-i', audio.file);
@@ -193,6 +220,7 @@ export async function renderFinal({ body, bodyFrames, end, endFrames, ass, fps, 
       fc.push(`${speech},afade=t=out:st=${n3(T - 0.4)}:d=0.4[a]`);
     }
   }
+  if (intro?.logo) args.push('-loop', '1', '-framerate', String(fps), '-t', n3(INTRO_DUR), '-i', intro.logo);
   args.push('-filter_complex', fc.join(';'), '-map', '[v]', '-map', '[a]',
     '-frames:v', String(total), ...BT709, '-c:v', 'libx264', ...encFinal(), '-profile:v', 'high', '-level', '4.1',
     '-pix_fmt', 'yuv420p', '-r', String(fps), '-g', String(fps * 2),
