@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18085407020693142) e Facebook (1079827261443841). + Storia IG pubblicata.",
+      "timestamp": "2026-09-29T06:32:57.335Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3574,13 +3581,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"telegram-1789624934269.mp4\" (categoria wedding, stile clean, 14s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
       "timestamp": "2026-09-17T06:03:16.168Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-16T23:16:06.490Z"
     }
   ]
 }
