@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-29T09:45:21.211Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Rielaborazione scelta dalla dashboard: 1/1 contenuti rimontati con Regia (didascalie e orari invariati).",
       "timestamp": "2026-09-29T09:45:19.218Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Consigli per gli sposi\" (LLM con visione). Programmato per le 18:30.",
       "timestamp": "2026-09-17T06:06:00.823Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"reel-telegram-1789571410188.mp4\" (video/reel) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-17T06:05:55.809Z"
     }
   ]
 }
