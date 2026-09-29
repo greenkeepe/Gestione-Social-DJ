@@ -11,10 +11,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:40:18.727Z",
+      "aggiornatoIl": "2026-09-29T10:32:38.228Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87883679-44f7-4a7c-afb3-0c3631f6a150.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7b90f191-d1bc-4d9b-ae36-d29bf61ab92a.mp4",
         "durataSecondi": 7.8,
         "piano": {
           "categoria": "festa",
@@ -33,7 +33,7 @@
         }
       },
       "source": "dashboard-upload",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "f07ef283-9561-408b-815f-1b5f03463029",

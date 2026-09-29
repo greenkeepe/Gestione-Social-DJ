@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Rielaborazione scelta dalla dashboard: 1/1 contenuti rimontati con Regia (didascalie e orari invariati).",
+      "timestamp": "2026-09-29T10:32:38.230Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-29T10:25:35.164Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Disponibilità date\" (LLM con visione). Programmato per le 18:30.",
       "timestamp": "2026-09-17T08:57:36.923Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"reel-telegram-1789624934269.mp4\" (video/reel) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-17T08:57:31.961Z"
     }
   ]
 }
