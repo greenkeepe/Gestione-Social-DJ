@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T11:31:47.491Z",
+  "generatedAt": "2026-09-29T08:16:38.398Z",
   "note": "Conteggio dei link interni editoriali (pagine app/ e sezioni di contenuto), esclusi Navbar/Footer/CTA globali presenti su ogni pagina. Link con URL dinamici (es. template string con variabili) non vengono rilevati.",
   "routes": [
     {

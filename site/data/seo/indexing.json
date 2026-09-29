@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T11:31:39.529Z",
+  "generatedAt": "2026-09-29T08:16:27.125Z",
   "siteUrl": "https://www.fortedj.it/",
   "rows": [
     {
@@ -55,7 +55,9 @@
       "lastCrawlTime": "2026-09-21T22:14:13Z",
       "googleCanonical": "https://www.fortedj.it/de",
       "userCanonical": null,
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -366,9 +368,7 @@
       "lastCrawlTime": "2026-09-18T16:33:25Z",
       "googleCanonical": "https://www.fortedj.it/chi-sono",
       "userCanonical": "https://www.fortedj.it/chi-sono",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -426,9 +426,7 @@
       "lastCrawlTime": "2026-09-18T15:03:46Z",
       "googleCanonical": "https://www.fortedj.it/faq",
       "userCanonical": "https://www.fortedj.it/faq",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -471,7 +469,9 @@
       "lastCrawlTime": "2026-09-22T05:50:42Z",
       "googleCanonical": "https://www.fortedj.it/de/faq",
       "userCanonical": "https://www.fortedj.it/de/faq",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
