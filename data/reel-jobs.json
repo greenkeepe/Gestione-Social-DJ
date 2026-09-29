@@ -681,10 +681,10 @@
       "istruzioni": null,
       "status": "usato",
       "step": "completato",
-      "aggiornatoIl": "2026-09-28T13:56:39.605Z",
+      "aggiornatoIl": "2026-09-29T09:52:01.691Z",
       "erroreMessaggio": null,
       "risultato": {
-        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4ab84614-52ba-49a8-9d1f-463ee11c544b.mp4",
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f39a074b-d4ea-491d-a9b1-8a787065c076.mp4",
         "durataSecondi": 14.2,
         "piano": {
           "categoria": "wedding",
@@ -729,7 +729,7 @@
         }
       },
       "source": "dashboard",
-      "motore": "regia-2"
+      "motore": "regia-3"
     },
     {
       "id": "07b2862c-c02a-4115-a6e1-16a2ef489c26",

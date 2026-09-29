@@ -10,7 +10,7 @@
         "mediaId": "c20e68d9-8a9d-440f-9588-907ce56ae7f0",
         "filename": "reel-video1.mp4",
         "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4ab84614-52ba-49a8-9d1f-463ee11c544b.mp4"
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f39a074b-d4ea-491d-a9b1-8a787065c076.mp4"
       },
       "caption": "Foto venuta un po' scura ma il momento c'era tutto. Ultimi controlli prima di far partire la serata.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -31,8 +31,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-09-29",
-      "pillarId": "dietro-le-quinte",
-      "regiaRichiesta": "2026-09-29T09:46:23.078Z"
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
@@ -195,13 +194,13 @@
         "mediaId": "ae924d53-b59f-4837-be1b-84fa85ae83bb",
         "filename": "reel-IMG_20190721_220227.mp4",
         "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c38b8f1b-e9ce-4859-a8aa-ef0618777cc3.mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5e54c947-ec98-47bc-9525-a1a331aa2bbf.mp4",
         "originale": {
           "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2afeac63-a680-439b-ae18-274f44975791.jpg",
           "mimeType": "image/jpeg",
           "filename": "IMG_20190721_220227.jpg"
         },
-        "fotoReel": "regia-foto-1"
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Console pronta, serata già calda dietro di me. Da qui la vista è questa, tavoli pieni e giardino che si anima.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -222,8 +221,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-01",
-      "pillarId": "dietro-le-quinte",
-      "regiaRichiesta": "2026-09-29T09:46:23.078Z"
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "96799fb1-4a59-4243-9a20-cacaf377cb6c",
