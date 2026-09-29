@@ -856,6 +856,14 @@ input, textarea, select {
   color: #00376b;
 }
 
+/* --- Panoramica: agenti in errore --- */
+.card--allarme {
+  border: 1px solid var(--color-err);
+  background: color-mix(in srgb, var(--color-err) 7%, transparent);
+  margin-bottom: 16px;
+}
+.card--allarme .label { display: flex; align-items: center; gap: 6px; color: var(--color-err); }
+
 /* --- Locali: zone di ricerca --- */
 .zone-citta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
 .zone-chip {

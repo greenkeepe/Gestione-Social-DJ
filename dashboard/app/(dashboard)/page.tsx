@@ -37,6 +37,22 @@ export default async function Panoramica() {
   const inCoda = queueFile.queue.filter((q) => q.status !== "pubblicato" && q.status !== "pubblicato-parziale").length;
   const ultimoPubblicato = publishedFile.log[0] ?? null;
 
+  // Agenti il cui ultimo giro è finito in errore (con quanti errori di fila):
+  // in cima alla pagina, così un problema non resta nascosto per giorni.
+  const problemi: Array<{ agente: string; identita: string; errori: number; riepilogo: string; timestamp: string }> = [];
+  for (const agente of new Set(agentRuns.runs.map((r) => r.agente))) {
+    const suoi = agentRuns.runs.filter((r) => r.agente === agente);
+    if (suoi[0]?.status !== "errore") continue;
+    const primoNonErrore = suoi.findIndex((r) => r.status !== "errore");
+    problemi.push({
+      agente,
+      identita: suoi[0].identita,
+      errori: primoNonErrore === -1 ? suoi.length : primoNonErrore,
+      riepilogo: suoi[0].riepilogo,
+      timestamp: suoi[0].timestamp
+    });
+  }
+
   return (
     <div>
       <PageHeader
@@ -44,6 +60,24 @@ export default async function Panoramica() {
         title="Panoramica"
         description={`Ultimo aggiornamento dati: ${kpis.ultimoAggiornamento ? new Date(kpis.ultimoAggiornamento).toLocaleString("it-IT") : "in attesa del primo ciclo agenti"}`}
       />
+
+      {problemi.length > 0 && (
+        <div className="card card--allarme">
+          <div className="label">
+            <AlertTriangle size={16} aria-hidden="true" /> Da controllare
+          </div>
+          {problemi.map((p) => (
+            <p key={p.agente} className="note">
+              <strong>
+                {p.agente} ({p.identita})
+              </strong>
+              {p.errori > 1 ? ` · ${p.errori} errori di fila` : " · ultimo giro in errore"} ·{" "}
+              {new Date(p.timestamp).toLocaleString("it-IT", { timeZone: "Europe/Rome", dateStyle: "short", timeStyle: "short" })} — {p.riepilogo}
+            </p>
+          ))}
+          <p className="note">Si toglie da solo quando l&apos;agente torna a funzionare. Dopo 2 errori di fila arriva anche un avviso su Telegram.</p>
+        </div>
+      )}
 
       <div className="grid">
         <div className="card card--stat">

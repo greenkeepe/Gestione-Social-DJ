@@ -4,8 +4,30 @@
 // In sviluppo locale, se GITHUB_REPO non è impostato, legge dal filesystem.
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { unstable_cache, revalidateTag } from "next/cache";
 
-async function leggiDaGitHub<T>(percorsoRelativo: string): Promise<T> {
+// Memoria breve delle letture da GitHub: prima ogni pagina rileggeva ogni
+// file a ogni apertura (anche 5 letture in fila per "Locali"). Ora un file
+// letto da meno di 30 secondi arriva dalla memoria di Vercel. Ogni scrittura
+// fatta dalla dashboard svuota subito la memoria (vedi
+// aggiornaDatiSuPercorso), così dopo un salvataggio si vede il dato nuovo;
+// quello che scrivono gli agenti compare entro 30 secondi.
+const TAG_DATI = "dati-github";
+const leggiDaGitHub = unstable_cache(
+  async (percorsoRelativo: string) => leggiDaGitHubDiretto<unknown>(percorsoRelativo),
+  ["github-file-v1"],
+  { revalidate: 30, tags: [TAG_DATI] }
+) as <T>(percorsoRelativo: string) => Promise<T>;
+
+function svuotaMemoriaDati() {
+  try {
+    revalidateTag(TAG_DATI);
+  } catch {
+    /* fuori da una richiesta (es. script): niente da svuotare */
+  }
+}
+
+async function leggiDaGitHubDiretto<T>(percorsoRelativo: string): Promise<T> {
   const repo = process.env.GITHUB_REPO;
   const branch = process.env.GITHUB_BRANCH ?? "main";
   const token = process.env.GITHUB_TOKEN;
@@ -120,6 +142,7 @@ export async function aggiornaDatiSuPercorso<T>(
   if (!putRes.ok) {
     throw new Error(`Impossibile scrivere ${percorsoRelativo} su GitHub (${putRes.status}): ${await putRes.text()}`);
   }
+  svuotaMemoriaDati();
 }
 
 // Lancia manualmente un workflow GitHub Actions (workflow_dispatch) — usato

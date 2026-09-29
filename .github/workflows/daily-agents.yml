@@ -8,10 +8,9 @@ on:
   # di Vercel, visto dal vivo). Se il cron di Vercel salta un giorno, questo
   # schedule fa comunque partire il ciclo, anche se con qualche ora di
   # ritardo (limite noto di GitHub Actions sui repository con poca attività
-  # continua). Se per caso scattano entrambi lo stesso giorno, il ciclo gira
-  # due volte (innocuo: la pubblicazione ha già il suo limite di 1/giorno,
-  # l'Esploratore dedupe da solo) — solo il resoconto Telegram viene evitato
-  # la seconda volta, vedi il controllo in master-agent.ts.
+  # continua). Se scattano entrambi lo stesso giorno, il secondo avvio fa solo
+  # il "giro rapido" (didascalie + pubblicazione), non di nuovo tutto il
+  # ciclo: vedi eseguiMasterAgent in agents/master-agent.ts.
   schedule:
     - cron: "0 6 * 4,5,6,7,8,9 *" # CEST (UTC+2, aprile-settembre) -> 08:00 locali
     - cron: "0 7 * 1,2,3,10,11,12 *" # CET (UTC+1, ottobre-marzo) -> 08:00 locali
@@ -27,6 +26,10 @@ on:
         default: false
       forza_nota:
         description: "Manda subito una proposta di Nota Instagram su Telegram, ignorando la probabilità casuale (solo per test manuali)"
+        type: boolean
+        default: false
+      ciclo_completo:
+        description: "Rifai il ciclo completo anche se è già stato fatto oggi (di norma dal secondo avvio del giorno si fanno solo didascalie e pubblicazione)"
         type: boolean
         default: false
 
@@ -93,6 +96,7 @@ jobs:
           MORNING_REPORT: ${{ github.event_name == 'schedule' || inputs.forza_resoconto == true }}
           FORCE_TESTIMONIANZA: ${{ inputs.forza_testimonianza }}
           FORCE_NOTA: ${{ inputs.forza_nota }}
+          CICLO_COMPLETO: ${{ inputs.ciclo_completo }}
         run: npm run master
 
       - name: Commit e push dei dati aggiornati

@@ -24,12 +24,15 @@ const MODELLO_DI_RISERVA: OutreachTemplateFile = {
 };
 
 export default async function LocaliPage() {
-  const file = await leggiDati<OutreachFile>("outreach-locali.json");
-  const config = await leggiDati<OutreachConfigFile>("outreach-config.json").catch((): OutreachConfigFile => ({ province: [] }));
-  const template = await leggiDati<OutreachTemplateFile>("outreach-template.json").catch(() => MODELLO_DI_RISERVA);
-  const brand = await leggiConfig<BrandFile>("brand.json").catch(() => ({}) as BrandFile);
-  // esito dell'ultima ricerca e dell'ultimo invio automatico, per vedere subito se qualcosa non va
-  const runs = await leggiDati<AgentRunsFile>("agent-runs.json").catch((): AgentRunsFile => ({ runs: [] }));
+  // tutte le letture in parallelo (prima erano una dopo l'altra)
+  const [file, config, template, brand, runs] = await Promise.all([
+    leggiDati<OutreachFile>("outreach-locali.json"),
+    leggiDati<OutreachConfigFile>("outreach-config.json").catch((): OutreachConfigFile => ({ province: [] })),
+    leggiDati<OutreachTemplateFile>("outreach-template.json").catch(() => MODELLO_DI_RISERVA),
+    leggiConfig<BrandFile>("brand.json").catch(() => ({}) as BrandFile),
+    // esito dell'ultima ricerca e dell'ultimo invio automatico, per vedere subito se qualcosa non va
+    leggiDati<AgentRunsFile>("agent-runs.json").catch((): AgentRunsFile => ({ runs: [] }))
+  ]);
   const ultimo = (agente: string) =>
     runs.runs.filter((r) => r.agente === agente).sort((a, b) => b.timestamp.localeCompare(a.timestamp))[0];
   const ultimaRicerca = ultimo("Esploratore");

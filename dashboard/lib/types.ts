@@ -12,6 +12,7 @@ export interface AgentRun {
   status: "ok" | "errore" | "nessuna-azione";
   riepilogo: string;
   dettagli?: Record<string, unknown>;
+  avvisoInviato?: boolean; // avviso Telegram già mandato per errori di fila
 }
 
 export interface AgentRunsFile {
