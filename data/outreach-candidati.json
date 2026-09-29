@@ -1,0 +1,1369 @@
+{
+  "_istruzioni": "Scorta dei locali trovati su OpenStreetMap dall'Agente Esploratore (agents/outreach-agent.ts), per zona di ricerca. Gestita dall'agente: non serve modificarla a mano.",
+  "zone": {
+    "citta:novi ligure:20": {
+      "cercataIl": "2026-09-29T07:12:50.665Z",
+      "trovati": 61
+    },
+    "citta:alessandria:20": {
+      "cercataIl": "2026-09-29T07:13:24.360Z",
+      "trovati": 54
+    },
+    "provincia:AL": {
+      "cercataIl": "2026-09-29T07:13:35.336Z",
+      "trovati": 103
+    }
+  },
+  "candidati": [
+    {
+      "osmId": "node/1316538374",
+      "nome": "Valli Unite",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.valliunite.com/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/1351138881",
+      "nome": "S.A.O.M.S. Costa di Ovada",
+      "categoria": "bar",
+      "sitoWeb": "https://www.saomscostadiovada.it/",
+      "emailOsm": "info@saomscostadiovada.com",
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/1585536822",
+      "nome": "L'Antica Farinata",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.facebook.com/lanticaFarinata/?locale=it_IT",
+      "emailOsm": null,
+      "indirizzo": "Via Francesco Gilardini 72 Ovada",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/1711184841",
+      "nome": "Il Moro",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.ristoranteilmoro.it/",
+      "emailOsm": null,
+      "indirizzo": "Piazza Garibaldi 7 Capriata d'Orba",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/1810286167",
+      "nome": "L'ultima Spiaggia",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.facebook.com/lultima?sk=info",
+      "emailOsm": null,
+      "indirizzo": "Via Fratelli Rosselli 2 Novi Ligure",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/2024856338",
+      "nome": "Il diavolo sulle colline",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.ildiavolosullecolline.it/",
+      "emailOsm": null,
+      "indirizzo": "Piazza Vittorio Veneto 15 Rocca Grimalda",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/2419881095",
+      "nome": "Nonna Du Bed & Breakfast",
+      "categoria": "hotel",
+      "sitoWeb": "",
+      "emailOsm": "nonnadu@alice.it",
+      "indirizzo": "Valemme Zamblea 14 Gavi",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/2559735744",
+      "nome": "Distilleria Gualco B&B and Guesthouse",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.distilleriagualco.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Venti Settembre 9-a;5 Silvano d'Orba",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/2616962501",
+      "nome": "Al Flint",
+      "categoria": "bar",
+      "sitoWeb": "http://flintpub.vpsite.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Roma 51",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/2617437920",
+      "nome": "La Pignatta",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.facebook.com/lapignatta.ovada/",
+      "emailOsm": null,
+      "indirizzo": "Vico della Madonnetta 18",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/2804698785",
+      "nome": "Hotel Motel Flower",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.hotelmotelflower.it/novi-ita/home.html",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/3019106140",
+      "nome": "Hotel Cascata",
+      "categoria": "hotel",
+      "sitoWeb": "www.hotelcascata.com",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/3464724805",
+      "nome": "Il Banco",
+      "categoria": "restaurant",
+      "sitoWeb": "http://ilbanco.it/",
+      "emailOsm": "info@ilbanco.it",
+      "indirizzo": "Via Paolo Da Novi 18",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/3604599296",
+      "nome": "Rossopomodoro",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.rossopomodoro.it/ristoranti/Alessandria",
+      "emailOsm": null,
+      "indirizzo": "Via della Valletta Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4222449117",
+      "nome": "La Casa del Mugnaio",
+      "categoria": "hotel",
+      "sitoWeb": "http://www.lacasadelmugnaio.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Provinciale 27",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4251331993",
+      "nome": "Gasthaus",
+      "categoria": "bar",
+      "sitoWeb": "https://www.facebook.com/Gasthaus-Novi-142517429427311/",
+      "emailOsm": null,
+      "indirizzo": "Corso Romualdo Marenco 33",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4264135889",
+      "nome": "I Monelli",
+      "categoria": "bar",
+      "sitoWeb": "https://www.facebook.com/pages/Bar-I-Monelli/180785835347672",
+      "emailOsm": null,
+      "indirizzo": "Via Papa Giovanni XXIII 15",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4417778892",
+      "nome": "Hotel Belforte",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.hotelbelforte.com/eng/hotel.asp",
+      "emailOsm": "info@hotelbelforte.com",
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4420611693",
+      "nome": "Bar Centro",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.barpizzerialachiave.it",
+      "emailOsm": "info@anticatrattoriadelcanto.it",
+      "indirizzo": "Via Gavi 3 Bosio",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4423907590",
+      "nome": "Antica Trattoria Del Canto",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.anticatrattoriadelcanto.it/",
+      "emailOsm": "info@anticatrattoriadelcanto.it",
+      "indirizzo": "Via alla Serra 16 Bosio",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4478098569",
+      "nome": "Bocu",
+      "categoria": "restaurant",
+      "sitoWeb": "",
+      "emailOsm": "bocugarbagna@gmail.com",
+      "indirizzo": "Piazza Principe Doria 31 Garbagna",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/4492619755",
+      "nome": "Castello di Orsara Bormida",
+      "categoria": "castello",
+      "sitoWeb": "http://www.orsara.com/sito/",
+      "emailOsm": "info@orsara.com",
+      "indirizzo": "Via Al Castello 11 Orsara Bormida",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/5369200579",
+      "nome": "La cascina degli ulivi",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.cascinadegliulivi.it/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/5424444228",
+      "nome": "Locanda dell'Olmo",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.bondivini.it/",
+      "emailOsm": null,
+      "indirizzo": "piazza Mercato 6 Bosco Marengo",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/5696376321",
+      "nome": "Da Giuseppe",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.ristorantedagiuseppe.it/",
+      "emailOsm": "info@ristorantedagiuseppe.it",
+      "indirizzo": "Via Quattro Novembre 7",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/6046606003",
+      "nome": "Al Castello",
+      "categoria": "hotel",
+      "sitoWeb": "http://hotelalcastello.net/",
+      "emailOsm": null,
+      "indirizzo": "Piazza Dante Alighieri 11 Gavi",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/6688210344",
+      "nome": "La Gallina",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.villasparinaresort.it/it/ristorante",
+      "emailOsm": "info@la-gallina.it",
+      "indirizzo": "Frazione Monterotondo 56 Gavi",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/7476546326",
+      "nome": "La Rava e la Fava",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.laravaelafava.net/",
+      "emailOsm": "info@laravaelafava.net",
+      "indirizzo": "Piazza Guglielmo Marconi 1 Sarezzano",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/7730272519",
+      "nome": "Borgo di Castellania",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.innformazione.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Fausto Coppi 1",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/8507612635",
+      "nome": "Agriturismo Vigna Santa",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.vignasanta.com/",
+      "emailOsm": null,
+      "indirizzo": "Via Piacenza in San Giorgio San Giuliano Vecchio",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/9429601428",
+      "nome": "Pizzeria le Aie",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.pizzerialeaie.it/",
+      "emailOsm": null,
+      "indirizzo": "Corso Martiri della Libertà 58",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/9796348763",
+      "nome": "IL Quadrifogli",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.facebook.com/IL-Quadrifoglio-661598530899716/",
+      "emailOsm": null,
+      "indirizzo": "Via Circonvallazione 28 Cassano Spinola",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/10069373944",
+      "nome": "Grimalda",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.grimalda.it/",
+      "emailOsm": null,
+      "indirizzo": "302 Rocca Grimalda",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/10567721518",
+      "nome": "Tenuta San Giorgio",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://www.cascinasangiorgioserravalle.com/",
+      "emailOsm": "bbcascinasangiorgio@gmail.com",
+      "indirizzo": "SP35 ter Serravalle Scrivia",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/11132862246",
+      "nome": "La locanda dei Narcisi",
+      "categoria": "restaurant",
+      "sitoWeb": "https://locandadeinarcisi.com",
+      "emailOsm": "lalocandadeinarcisi@yahoo.it",
+      "indirizzo": "Via Bettole Pozzolo Formigaro",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/11179110904",
+      "nome": "Il Fiorile",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.ilfiorile.com/",
+      "emailOsm": "info@ilfiorile.com",
+      "indirizzo": "Borghetto Borbera",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/12130395201",
+      "nome": "Cascina Ometto",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://www.cascina-ometto.it/",
+      "emailOsm": null,
+      "indirizzo": "Strada Consorziale Montebello 9",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/12768873670",
+      "nome": "Cerchi",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.albergoristorantecerchi.com/ristorante",
+      "emailOsm": null,
+      "indirizzo": "Strada statale 35 dei Giovi 13 Tortona",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/12772897431",
+      "nome": "Cascina delle Signore",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://www.cascinadellesignore.it/",
+      "emailOsm": "cascinadellesignore@gmail.com",
+      "indirizzo": "Via Dante Alighieri 13 Vignole Borbera (Alessandreia)",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/12862438315",
+      "nome": "Casa Guatelli Guest House",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.casaguatelli.com/",
+      "emailOsm": "info@casaguatelli.com",
+      "indirizzo": "Via Castello 11 Spineto Scrivia",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13086572082",
+      "nome": "Sushiko",
+      "categoria": "restaurant",
+      "sitoWeb": "https://sushiko.it/locali/sushiko-serravalle-retail-park/",
+      "emailOsm": null,
+      "indirizzo": "Strada Serravalle 181",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13669513346",
+      "nome": "Trattoria Da Beppe",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.trattoriadabeppe.it",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13768740101",
+      "nome": "Hotel Ristorante Il Carrettino",
+      "categoria": "restaurant",
+      "sitoWeb": "https://ilcarrettino.com",
+      "emailOsm": null,
+      "indirizzo": "Strada Provinciale per Pozzolo Formigaro 15",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13960038038",
+      "nome": "Pizzeria Labo",
+      "categoria": "restaurant",
+      "sitoWeb": "https://pizzerialabo.com/",
+      "emailOsm": null,
+      "indirizzo": "via montemerlo 6 Tortona",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13969976059",
+      "nome": "Pesca e Mangia",
+      "categoria": "restaurant",
+      "sitoWeb": "https://osteriapescaemangia.it",
+      "emailOsm": null,
+      "indirizzo": "Via Martiri della Benedicta 137 Serravalle Scrivia",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13970012212",
+      "nome": "Saoms San Cristoforo",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.lalocandadisancristoforo.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Irmo Ferrari 115 San Cristoforo",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/13991837417",
+      "nome": "Club Carpeneto",
+      "categoria": "hotel",
+      "sitoWeb": "https://clubcarpeneto.com/",
+      "emailOsm": null,
+      "indirizzo": "Via Terragni 26 Carpeneto",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/63804461",
+      "nome": "Forte di Gavi",
+      "categoria": "castello",
+      "sitoWeb": "http://www.associazionefortedigavi.it/",
+      "emailOsm": null,
+      "indirizzo": "Via al Forte 14",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/191925463",
+      "nome": "Castello Malaspina-Grimaldi",
+      "categoria": "castello",
+      "sitoWeb": "https://www.castelloroccagrimalda.it/",
+      "emailOsm": "info@castelloroccagrimalda.it",
+      "indirizzo": "Piazza Borgatta 2 Rocca Grimalda",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/209094577",
+      "nome": "Luna Rossa",
+      "categoria": "discoteca",
+      "sitoWeb": "https://www.discotecalunarossa.com",
+      "emailOsm": null,
+      "indirizzo": "Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/285175250",
+      "nome": "Cerchi",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.albergoristorantecerchi.com/albergo",
+      "emailOsm": "info@albergoristorantecerchi.com",
+      "indirizzo": "Strada statale 35 dei Giovi 13 Tortona",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/347708736",
+      "nome": "Relais Villa Pomela",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.pomela.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Serravalle 69 Novi Ligure",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/522431962",
+      "nome": "Il Poggio di Gavi",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://www.ilpoggiodigavi.com/",
+      "emailOsm": "info@ilpoggiodigavi.com",
+      "indirizzo": "Frazione Rovereto 171 Gavi",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/711364510",
+      "nome": "L'Ostelliere",
+      "categoria": "hotel",
+      "sitoWeb": "http://www.villasparinaresort.it/it/albergo",
+      "emailOsm": "info@ostelliere.it",
+      "indirizzo": "Frazione Monterotondo 56 Gavi",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/810031268",
+      "nome": "Castello di Pozzolo Formigaro",
+      "categoria": "castello",
+      "sitoWeb": "http://www.pozzoloformigaro.gov.it/index.php?option=com_content&view=article&id=24&Itemid=43",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/819563220",
+      "nome": "I Quattri Mori",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.iquattromori.com/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/840081675",
+      "nome": "Cascina La Maddalena",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://cascina-maddalena.com",
+      "emailOsm": "cascinalamaddalena@gmail.com",
+      "indirizzo": "Località Piani del Padrone 257 Rocca Grimalda",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/840081676",
+      "nome": "Cascina La Maddalena",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://cascina-maddalena.com",
+      "emailOsm": "cascinalamaddalena@gmail.com",
+      "indirizzo": "Località Piani del Padrone 257 Rocca Grimalda",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "way/1038222921",
+      "nome": "Coffee Break",
+      "categoria": "bar",
+      "sitoWeb": "",
+      "emailOsm": "coffee.breaksas@libero.it",
+      "indirizzo": "Via Del Legno 23 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "relation/8196450",
+      "nome": "Forte di Gavi",
+      "categoria": "castello",
+      "sitoWeb": "http://www.associazionefortedigavi.it/",
+      "emailOsm": null,
+      "indirizzo": "Via al Forte 14",
+      "nomeDaEventi": false,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "relation/17479039",
+      "nome": "Castello Sforzini di Castellar Ponzano",
+      "categoria": "castello",
+      "sitoWeb": "https://www.castellosforzini.it/",
+      "emailOsm": null,
+      "indirizzo": "Via dell'Acquedotto Romano 6a Castellar Ponzano",
+      "nomeDaEventi": true,
+      "zona": "citta:novi ligure:20"
+    },
+    {
+      "osmId": "node/1420865065",
+      "nome": "Ristorante Orazio dal 1870",
+      "categoria": "restaurant",
+      "sitoWeb": "https://ristoranteorazio1870.it/",
+      "emailOsm": "ristoranteoraziodal1870@gmail.com",
+      "indirizzo": "Piazza Generale Gherzi 5 Lu e Cuccaro Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1769453174",
+      "nome": "Hotel Londra",
+      "categoria": "hotel",
+      "sitoWeb": "http://www.londrahotel.info",
+      "emailOsm": "info@londrahotel.info",
+      "indirizzo": "Corso Felice Cavallotti 51 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1863919173",
+      "nome": "Ristorante Giapponese Zen Hashi Di Xu Dong Ping C. Snc",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.zenristorante.com",
+      "emailOsm": null,
+      "indirizzo": "Via Pavia 1 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1874463231",
+      "nome": "Ristorante pizzeria Acquadimare",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.quarantuno.org/default.aspx?ssostatus=ANONYMOUS",
+      "emailOsm": null,
+      "indirizzo": "Corso Felice Cavallotti 41",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1891208586",
+      "nome": "Tom & Ann",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.tomeannristorante.com/",
+      "emailOsm": "info@tomeann.com",
+      "indirizzo": "Via Marengo 2 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1891290559",
+      "nome": "La Pampelonne",
+      "categoria": "restaurant",
+      "sitoWeb": "https://lapampelonne.it/",
+      "emailOsm": "info@lapampelonne.it",
+      "indirizzo": "Corso Acqui 2 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1923335332",
+      "nome": "Piazza Maino",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.piazzamaino.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Galileo Galilei 93",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1995922218",
+      "nome": "Ristorazione Sociale",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.facebook.com/groups/275993975787212/",
+      "emailOsm": null,
+      "indirizzo": "Viale Milite Ignoto 1/a",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/2159603610",
+      "nome": "Tenuta Montegrande",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://www.tenutamontegrande.it/",
+      "emailOsm": null,
+      "indirizzo": "Regione Frescondino 124 San Salvatore Monferrato",
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/2215109539",
+      "nome": "Fatto Bene Una Volta",
+      "categoria": "bar",
+      "sitoWeb": "http://www.facebook.com/fattobene.unavolta/info",
+      "emailOsm": null,
+      "indirizzo": "Via Luigi Canina 1",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/2710252087",
+      "nome": "Mag Mell",
+      "categoria": "bar",
+      "sitoWeb": "https://magmell.it/",
+      "emailOsm": null,
+      "indirizzo": "Corso Carlo Marx 116",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/3090698615",
+      "nome": "Locanda dei Paoli",
+      "categoria": "restaurant",
+      "sitoWeb": "https://cuocopazzo2.wixsite.com/locanda-dei-paoli",
+      "emailOsm": "cuocopazzo2@yahoo.it",
+      "indirizzo": "Piazza Italia 13 Pecetto di Valenza",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/3401523056",
+      "nome": "Osteria del Vinacciolo",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.osteriadelvinacciolo.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Piacenza 44 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/3401765423",
+      "nome": "Bar Moka",
+      "categoria": "bar",
+      "sitoWeb": "",
+      "emailOsm": "barmokaalessandria@gmail.com",
+      "indirizzo": "Via Milano 78 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/3456136012",
+      "nome": "Ristorante Pizzeria Barbarossa",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.barbarossabistrot.it",
+      "emailOsm": null,
+      "indirizzo": "Via Giuseppe Borsalino 7 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/3657814612",
+      "nome": "Caffè degli Artisti",
+      "categoria": "bar",
+      "sitoWeb": "www.civediamoalcaffe.com",
+      "emailOsm": null,
+      "indirizzo": "Via Andrea Vochieri 7 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/4198382720",
+      "nome": "Agriturismo Villa Gropella",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://www.gropella.it/",
+      "emailOsm": null,
+      "indirizzo": "Strada per Solero 8 Valenza",
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/4854181012",
+      "nome": "Locanda dell'Arzente",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.locanda-arzente.it/",
+      "emailOsm": null,
+      "indirizzo": "Regione Guatrasone 100 San Salvatore Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/4932924121",
+      "nome": "Il Sogno - Vino - Appartamenti - Podotti Tipici",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.il-sogno.at/",
+      "emailOsm": "rrl@gmx.net",
+      "indirizzo": "Via Cervino 37",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/5031535936",
+      "nome": "Donatella Bistrot",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.donatellabistrot.it/",
+      "emailOsm": "info@donatellabistrot.it",
+      "indirizzo": "Piazza Umberto Primo 1 Oviglio",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/5318509114",
+      "nome": "Barbisa 1852",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.monferrato-barbisa1852.com/",
+      "emailOsm": null,
+      "indirizzo": "Strada per Pavia 1a Valenza",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/6016235577",
+      "nome": "L'Adele B&B",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.ladele.it",
+      "emailOsm": "info@ladele.it",
+      "indirizzo": "Via Circonvallazione 202 Occimiano",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/6525125129",
+      "nome": "Castello di Lajone",
+      "categoria": "castello",
+      "sitoWeb": "http://www.castellodilajone.it",
+      "emailOsm": "castellodilajone@gmail.com",
+      "indirizzo": "Quattordio",
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/7959572405",
+      "nome": "Il Pizz'ino",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.gioilpizzino.it/mainpage.html",
+      "emailOsm": null,
+      "indirizzo": "Via Ferrara 16 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/9395586407",
+      "nome": "Modugno",
+      "categoria": "restaurant",
+      "sitoWeb": "https://modugnopizzaristo.com/",
+      "emailOsm": null,
+      "indirizzo": "Via Prelio 1 San Salvatore Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/9654612357",
+      "nome": "La Rocca di Camagna",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.laroccadicamagna.com/",
+      "emailOsm": null,
+      "indirizzo": "Via Giacomo Matteotti 27 Camagna Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/10074689667",
+      "nome": "Il Biancospino",
+      "categoria": "restaurant",
+      "sitoWeb": "http://ristoranteilbiancospino.mysupersite.it/i-nostri-men%C3%B9",
+      "emailOsm": null,
+      "indirizzo": "Regione fugazza 8 Fubine Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/12388978835",
+      "nome": "Fuga di Sapori Bistrò",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.fugadisapori.it/",
+      "emailOsm": null,
+      "indirizzo": "Piazza Don Soria Alesandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/13123042380",
+      "nome": "Residence Corso Monferrato",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.residencecorsomonferrato.it",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/13141684226",
+      "nome": "Il Cantone",
+      "categoria": "bar",
+      "sitoWeb": "https://ilcantonepub.wixsite.com/pub85",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/13969965843",
+      "nome": "Il Mannarino",
+      "categoria": "restaurant",
+      "sitoWeb": "https://ilmannarino.it",
+      "emailOsm": null,
+      "indirizzo": "Via dei Martiri 14 Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/14076429611",
+      "nome": "Duma C'anduma",
+      "categoria": "restaurant",
+      "sitoWeb": "https://dumacanduma.com/",
+      "emailOsm": null,
+      "indirizzo": "Via Venti Settembre Solero",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/14142161701",
+      "nome": "Sulfok",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.sulfok.it/",
+      "emailOsm": "info@sulfok.it",
+      "indirizzo": "Cascina Olimpia 68 San Salvatore Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/14142161742",
+      "nome": "Ristorante Olimpia",
+      "categoria": "restaurant",
+      "sitoWeb": "https://ristoranteolimpia.it/",
+      "emailOsm": "olimpia@ristoranteolimpia.it",
+      "indirizzo": "Cascina Olimpia 69 San Salvatore Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/94721437",
+      "nome": "Castello di Oviglio",
+      "categoria": "castello",
+      "sitoWeb": "https://www.castellodioviglio.it/it",
+      "emailOsm": "info@castellodioviglio.it",
+      "indirizzo": null,
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/371636961",
+      "nome": "Gran Canyon Country Pub",
+      "categoria": "bar",
+      "sitoWeb": "https://www.grancanyoncountrypub.it/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/679128142",
+      "nome": "Castello di Redabue",
+      "categoria": "castello",
+      "sitoWeb": "https://www.redabue.it/",
+      "emailOsm": "info@redabue.it",
+      "indirizzo": "Strada Redabue 5 Masio",
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/688509536",
+      "nome": "Roadhouse",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.roadhouse.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Marengo Alessandria",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/749375749",
+      "nome": "Castello di Piovera",
+      "categoria": "castello",
+      "sitoWeb": "https://castellodipiovera.it",
+      "emailOsm": "info@castellodipiovera.it",
+      "indirizzo": null,
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/954591374",
+      "nome": "Antico Monastero",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.anticomonastero.it/menu/",
+      "emailOsm": null,
+      "indirizzo": "Via Giovanni Colli 39 Lu e Cuccaro Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "way/954591376",
+      "nome": "Ristorante Pizzeria La Trinità",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.facebook.com/ristorantepizzerialatrinita/",
+      "emailOsm": null,
+      "indirizzo": "Via Giovanni Colli 27 Lu e Cuccaro Monferrato",
+      "nomeDaEventi": false,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "relation/21291438",
+      "nome": "Castello Sannazzaro",
+      "categoria": "castello",
+      "sitoWeb": "",
+      "emailOsm": "info@castellosannazzaro.it",
+      "indirizzo": "Via Roma 5 Giarole",
+      "nomeDaEventi": true,
+      "zona": "citta:alessandria:20"
+    },
+    {
+      "osmId": "node/1593550726",
+      "nome": "Vecchia Rocka",
+      "categoria": "bar",
+      "sitoWeb": "https://www.facebook.com/VECCHIA-ROCKA-PUB-275504965795057/",
+      "emailOsm": null,
+      "indirizzo": "Via Roma 5 Frassinello Monferrato",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/2073299413",
+      "nome": "Trattoria Panoramica Sarroc",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.trattoriasarroc.net/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/2458257264",
+      "nome": "Il Mongetto",
+      "categoria": "hotel",
+      "sitoWeb": "http://mongetto.it",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/3952513298",
+      "nome": "La Tana dei Sapori",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.latanadeisapori.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Cascine Giarole 3 Olivola",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4387850589",
+      "nome": "La Culla di Bacco",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.laculladibacco.it",
+      "emailOsm": null,
+      "indirizzo": "Via Garibaldi 6",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4439669720",
+      "nome": "Agriturismo Cascina Madonna",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.agriturismocascinamadonna.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Alessandria 55 Refrancore",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4439704317",
+      "nome": "I Tre Fratelli",
+      "categoria": "restaurant",
+      "sitoWeb": "https://trefratellipizzeria.it",
+      "emailOsm": null,
+      "indirizzo": "Via Asti 45 Refrancore",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4460705653",
+      "nome": "Il Crivello d'Oro",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.ilcrivellodoro.com",
+      "emailOsm": null,
+      "indirizzo": "Via al Castello 42",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4461519049",
+      "nome": "Il gatto e la volpe",
+      "categoria": "restaurant",
+      "sitoWeb": "https://ilgattoelavolpesrl.it",
+      "emailOsm": null,
+      "indirizzo": "Via Roma 4 Vignale Monferrato",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4701614079",
+      "nome": "Mister Barbera",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.ristorantemisterbarbera.it/",
+      "emailOsm": null,
+      "indirizzo": "Via Cavour 4 Altavilla Monferrato",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4770497767",
+      "nome": "B&B Carletto",
+      "categoria": "hotel",
+      "sitoWeb": "",
+      "emailOsm": "carlettolavagno@gmail.com",
+      "indirizzo": "Via Coppi 35 Cella Monte",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/4854944921",
+      "nome": "La Locanda dei Musici",
+      "categoria": "hotel",
+      "sitoWeb": "http://www.locandadeimusici.com",
+      "emailOsm": "locandamusici@hotmail.com",
+      "indirizzo": "Via al Castello 40",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/7801307385",
+      "nome": "Agriturismo Surì",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.suri.it",
+      "emailOsm": "info@suri.it",
+      "indirizzo": "Via della Chiesa 3 Cassine",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/8397798065",
+      "nome": "Ristorante Roma",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.romaristorante.com/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/9208251680",
+      "nome": "I Bologna",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.trattoriaibologna.it/index.html",
+      "emailOsm": "info@trattoriaibologna.it",
+      "indirizzo": "Via Nicola Sardi 4 Rocchetta Tanaro",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/9917128217",
+      "nome": "La Mondianese - Azienda Agricola",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.lamondianese.com/",
+      "emailOsm": "marketing.lamondianese@gmail.com",
+      "indirizzo": "Via Cascina Mondianese 12",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/11361346932",
+      "nome": "Agriturismo La fontanella",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.agriturismolafontanella.it/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/13594762950",
+      "nome": "Materia Prima",
+      "categoria": "restaurant",
+      "sitoWeb": "https://mazzetti.it/it/ristorante-materia-prima/",
+      "emailOsm": "materiaprima@mazzetti.it",
+      "indirizzo": "Viale Unità d'Italia 2 Altavilla Monferrato",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/256668793",
+      "nome": "Agriturismo Cascina Trapella",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.cascinatrapella.com/",
+      "emailOsm": null,
+      "indirizzo": "Strada San Martino 40 Casale Monferrato",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/364505683",
+      "nome": "Castello di Uviglie",
+      "categoria": "castello",
+      "sitoWeb": "https://www.castellodiuviglie.com/index.php",
+      "emailOsm": "reception@castellodiuviglie.com",
+      "indirizzo": "Castello di Uviglie 73b Rosignano Monferrato",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/398814955",
+      "nome": "Osteria del Rooster",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.osteriadelrooster.it/",
+      "emailOsm": null,
+      "indirizzo": "Via San Giovanni Bosco 19 Montemagno",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/452747346",
+      "nome": "Hotel Ariotto Village",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.ariotto.it/",
+      "emailOsm": "info@ariotto.it",
+      "indirizzo": "Via Enrico Prato 39 Terruggia",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/452747500",
+      "nome": "Hotel Ariotto Village",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.ariotto.it/",
+      "emailOsm": "info@ariotto.it",
+      "indirizzo": "Strada Cappelletta 3 Terruggia",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/473069353",
+      "nome": "Elilu",
+      "categoria": "restaurant",
+      "sitoWeb": "",
+      "emailOsm": "info@elilu.it",
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/525134708",
+      "nome": "La Braja",
+      "categoria": "restaurant",
+      "sitoWeb": "http://www.labraja.it",
+      "emailOsm": "info@labraja.it",
+      "indirizzo": "Via San Giovanni Bosco 11 Montemagno",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/755694739",
+      "nome": "Agriturismo Il Buonvicino",
+      "categoria": "agriturismo",
+      "sitoWeb": "",
+      "emailOsm": "achillecava@gmail.com",
+      "indirizzo": "Strada Ricaldone di Sotto 64 Cassine",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/916806046",
+      "nome": "Casa Isabella",
+      "categoria": "hotel",
+      "sitoWeb": "http://www.casa-isabella.com",
+      "emailOsm": "info@casa-isabella.com",
+      "indirizzo": "Via La Pietra 5 Vaglio Serra",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/1004973991",
+      "nome": "Tenuta Antico Monastero",
+      "categoria": "agriturismo",
+      "sitoWeb": "https://tenutaanticomonastero.it/",
+      "emailOsm": null,
+      "indirizzo": "87 Asti",
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/1307185949",
+      "nome": "Barzotto",
+      "categoria": "bar",
+      "sitoWeb": "https://www.instagram.com/barzottodelabelecauda/",
+      "emailOsm": "labelecauda@gmail.com",
+      "indirizzo": "Piazza Trento Trieste Fontanile",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/1432243276",
+      "nome": "Belvedere",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.belvederealice.it/",
+      "emailOsm": "info@belvederealice.it",
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "relation/7731693",
+      "nome": "Castello di Sartirana",
+      "categoria": "castello",
+      "sitoWeb": "http://www.sartiranaarte.it/",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": true,
+      "zona": "provincia:AL"
+    }
+  ],
+  "esaminati": {
+    "way/209094577": {
+      "il": "2026-09-29T07:13:44.440Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/810031268": {
+      "il": "2026-09-29T07:13:48.571Z",
+      "motivo": "nessuna email pubblica"
+    }
+  }
+}
