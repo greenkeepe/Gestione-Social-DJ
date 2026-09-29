@@ -92,7 +92,7 @@ export default async function UtilizzoPage() {
         <p className="error-msg">
           Caricamento di nuovi media (Telegram e dashboard) in pausa da{" "}
           {r2.pausatoIl ? new Date(r2.pausatoIl).toLocaleString("it-IT") : ""}. Elimina media che non ti servono più dalla pagina{" "}
-          <a href="/carica">Carica media</a> per liberare spazio, oppure alza la soglia qui sotto.
+          <a href="/carica">Carica</a> per liberare spazio, oppure alza la soglia qui sotto.
         </p>
       )}
       <ServiceLimitsForm servizio="r2" limite={r2.limiteBytes} sogliaPercentualePausa={r2.sogliaPercentualePausa} pausato={pausatoR2} />

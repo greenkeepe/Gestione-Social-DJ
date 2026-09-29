@@ -79,10 +79,22 @@ async function convertiSeHeic(file: File): Promise<File> {
 // saturare la connessione con file video grandi caricati insieme. Un file
 // che fallisce non blocca gli altri: resta segnato "errore" nella lista,
 // il resto continua.
+// Stile del montaggio per i VIDEO (Regia): "auto" = Festa/DJ.
+const PROFILI = [
+  { valore: "auto", etichetta: "Automatico (festa / DJ set)" },
+  { valore: "wedding", etichetta: "Matrimonio" },
+  { valore: "event", etichetta: "Evento" },
+  { valore: "business", etichetta: "Aziendale" },
+  { valore: "talking_head", etichetta: "Persona che parla (con sottotitoli)" },
+  { valore: "promotional", etichetta: "Promozionale" }
+];
+
 export function UploadForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [righe, setRighe] = useState<RigaFile[]>([]);
   const [inCorso, setInCorso] = useState(false);
+  const [profilo, setProfilo] = useState("auto");
+  const [istruzioni, setIstruzioni] = useState("");
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
@@ -118,7 +130,7 @@ export function UploadForm() {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(
-            isVideo ? { url, filename: file.name, mimeType, profilo: "auto" } : { url, filename: file.name, mimeType }
+            isVideo ? { url, filename: file.name, mimeType, profilo, istruzioni } : { url, filename: file.name, mimeType }
           )
         });
         const metaJson = await metaRes.json();
@@ -131,6 +143,7 @@ export function UploadForm() {
     }
 
     setInCorso(false);
+    setIstruzioni("");
     if (inputRef.current) inputRef.current.value = "";
     router.refresh();
   }
@@ -139,10 +152,29 @@ export function UploadForm() {
     <form onSubmit={handleSubmit} className="card" style={{ marginBottom: 24 }}>
       <div className="label">Carica una o più foto/video</div>
       <p className="note">
-        Puoi selezionarne più di uno insieme. Le foto vengono messe in coda e usate dagli agenti uno al giorno, nell&apos;ordine in cui le carichi. I
-        video passano automaticamente dall&apos;AI Reel Maker (pagina &ldquo;Crea Reel AI&rdquo;) per il montaggio, prima di essere pronti per un post.
+        Puoi selezionarne più di uno insieme. Regia trasforma tutto in Reel con musica, transizioni e contatti finali: i video vengono montati
+        (tagli, momenti migliori, audio), le foto animate. Poi l&apos;AI scrive la didascalia e il contenuto va in Anteprima, programmato
+        all&apos;orario migliore.
       </p>
       <input ref={inputRef} type="file" accept="image/*,video/*,.heic,.heif" multiple required style={{ margin: "12px 0" }} />
+
+      <details className="upload-opzioni">
+        <summary>Opzioni per i video (facoltative)</summary>
+        <label className="label" htmlFor="profilo-video">Stile del montaggio</label>
+        <select id="profilo-video" value={profilo} onChange={(e) => setProfilo(e.target.value)}>
+          {PROFILI.map((p) => (
+            <option key={p.valore} value={p.valore}>{p.etichetta}</option>
+          ))}
+        </select>
+        <label className="label" htmlFor="istruzioni-video">Note per il montaggio</label>
+        <textarea
+          id="istruzioni-video"
+          value={istruzioni}
+          onChange={(e) => setIstruzioni(e.target.value)}
+          placeholder="Es. è il momento del primo ballo, oppure: metti in evidenza il pubblico che balla"
+          rows={2}
+        />
+      </details>
       <br />
       <Button type="submit" loading={inCorso}>
         {inCorso ? "Caricamento in corso…" : "Carica"}

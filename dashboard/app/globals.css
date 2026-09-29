@@ -856,6 +856,36 @@ input, textarea, select {
   color: #00376b;
 }
 
+/* --- Carica: opzioni video --- */
+.upload-opzioni { margin: 4px 0 8px; font-size: 13px; }
+.upload-opzioni summary { cursor: pointer; color: var(--text-dim); }
+.upload-opzioni .label { display: block; margin-top: 10px; }
+.upload-opzioni select,
+.upload-opzioni textarea {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: inherit;
+}
+
+/* --- Panoramica: riquadro "Oggi" --- */
+.oggi { margin-bottom: 16px; }
+.oggi .label { display: flex; align-items: center; gap: 6px; }
+.oggi__colonne {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 24px;
+  margin-top: 8px;
+}
+.oggi__colonne strong { font-size: 14px; }
+.oggi__colonne .note { margin: 4px 0; }
+
 /* --- Panoramica: agenti in errore --- */
 .card--allarme {
   border: 1px solid var(--color-err);

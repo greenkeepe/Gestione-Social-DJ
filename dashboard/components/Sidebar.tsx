@@ -7,7 +7,6 @@ import {
   LayoutDashboard,
   Bot,
   Upload,
-  Clapperboard,
   Image as ImageIcon,
   CalendarClock,
   Users,
@@ -28,8 +27,7 @@ const NAV_SECTIONS = [
   {
     label: "Contenuti",
     items: [
-      { href: "/carica", label: "Carica media", icon: Upload },
-      { href: "/reel-ai", label: "Crea Reel AI", icon: Clapperboard },
+      { href: "/carica", label: "Carica", icon: Upload },
       { href: "/anteprima", label: "Anteprima", icon: ImageIcon },
       { href: "/contenuti", label: "Contenuti", icon: CalendarClock }
     ]
