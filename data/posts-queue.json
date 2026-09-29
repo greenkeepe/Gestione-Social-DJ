@@ -156,7 +156,7 @@
         "mediaId": "32095a67-1f8a-4648-a06e-c8cd16552bff",
         "filename": "reel-FB_IMG_1620810286217.mp4",
         "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a33dc452-ffea-48b7-8da1-104226885437.mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3e3b2416-e284-474c-990b-fac68b6686be.mp4",
         "originale": {
           "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg",
           "mimeType": "image/jpeg",
@@ -183,8 +183,7 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-09-30",
-      "pillarId": "dietro-le-quinte",
-      "regiaRichiesta": "2026-09-29T06:51:34.066Z"
+      "pillarId": "dietro-le-quinte"
     },
     {
       "id": "b4847c0d-f14e-49a1-95f1-5c15ecb390b0",
