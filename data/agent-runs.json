@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-09-29T10:08:58.059Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Rielaborazione scelta dalla dashboard: 8/8 contenuti rimontati con Regia (didascalie e orari invariati).",
       "timestamp": "2026-09-29T10:08:56.059Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18116644576802865) e Facebook (1716750980460271). + Storia IG pubblicata.",
       "timestamp": "2026-09-17T08:02:20.894Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-17T06:06:10.342Z"
     }
   ]
 }
