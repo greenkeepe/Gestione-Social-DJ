@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
+      "timestamp": "2026-09-30T08:32:32.706Z"
+    },
+    {
       "agente": "Segugio",
       "identita": "Agente SEO (Search Console)",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Generato un post dalla recensione di Stefano e Marta M. (Matrimonio), a rotazione con le foto/video.",
       "timestamp": "2026-09-17T09:04:06.040Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789635750371.mp4\" (categoria evento, stile dynamic, 17s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-17T09:03:21.648Z"
     }
   ]
 }
