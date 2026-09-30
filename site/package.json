@@ -12,6 +12,7 @@
     "seo:opportunities": "tsx scripts/seo/detect-opportunities.ts",
     "seo:propose": "tsx scripts/seo/propose-fixes.ts",
     "seo:internal-links": "tsx scripts/seo/check-internal-links.ts",
+    "seo:indexnow": "tsx scripts/seo/submit-indexnow.ts",
     "seo:all": "tsx scripts/seo/run-all.ts"
   },
   "dependencies": {
