@@ -148,10 +148,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-09-30",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "b4847c0d-f14e-49a1-95f1-5c15ecb390b0",
