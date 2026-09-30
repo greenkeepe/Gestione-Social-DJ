@@ -6,6 +6,13 @@
       "identita": "Agente Partnership Locali",
       "status": "nessuna-azione",
       "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
+      "timestamp": "2026-09-30T09:54:29.402Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
       "timestamp": "2026-09-30T09:54:13.514Z"
     },
     {
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
       "timestamp": "2026-09-17T09:04:17.399Z"
-    },
-    {
-      "agente": "Portavoce",
-      "identita": "Agente Risposte Pubbliche",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-17T09:04:16.713Z"
     }
   ]
 }
