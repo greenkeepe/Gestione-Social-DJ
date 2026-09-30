@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T08:16:38.398Z",
+  "generatedAt": "2026-09-30T06:27:57.375Z",
   "note": "Conteggio dei link interni editoriali (pagine app/ e sezioni di contenuto), esclusi Navbar/Footer/CTA globali presenti su ogni pagina. Link con URL dinamici (es. template string con variabili) non vengono rilevati.",
   "routes": [
     {
@@ -32,11 +32,12 @@
     {
       "path": "/servizi",
       "label": "Servizi",
-      "inboundContextualLinks": 1,
+      "inboundContextualLinks": 2,
       "linkedFrom": [
-        "app/[locale]/chi-sono/page.tsx"
+        "app/[locale]/chi-sono/page.tsx",
+        "app/[locale]/dj/[citta]/page.tsx"
       ],
-      "status": "POCO_COLLEGATA"
+      "status": "OK"
     },
     {
       "path": "/gallery",
@@ -94,6 +95,66 @@
       "inboundContextualLinks": 0,
       "linkedFrom": [],
       "status": "ORPHAN"
+    },
+    {
+      "path": "/dj/genova",
+      "label": "DJ a Genova",
+      "inboundContextualLinks": 2,
+      "linkedFrom": [
+        "app/[locale]/dj/[citta]/page.tsx",
+        "components/sections/ZoneServite.tsx"
+      ],
+      "status": "OK"
+    },
+    {
+      "path": "/dj/alessandria",
+      "label": "DJ a Alessandria",
+      "inboundContextualLinks": 2,
+      "linkedFrom": [
+        "app/[locale]/dj/[citta]/page.tsx",
+        "components/sections/ZoneServite.tsx"
+      ],
+      "status": "OK"
+    },
+    {
+      "path": "/dj/novi-ligure",
+      "label": "DJ a Novi Ligure",
+      "inboundContextualLinks": 2,
+      "linkedFrom": [
+        "app/[locale]/dj/[citta]/page.tsx",
+        "components/sections/ZoneServite.tsx"
+      ],
+      "status": "OK"
+    },
+    {
+      "path": "/dj/tortona",
+      "label": "DJ a Tortona",
+      "inboundContextualLinks": 2,
+      "linkedFrom": [
+        "app/[locale]/dj/[citta]/page.tsx",
+        "components/sections/ZoneServite.tsx"
+      ],
+      "status": "OK"
+    },
+    {
+      "path": "/dj/serravalle-scrivia",
+      "label": "DJ a Serravalle Scrivia",
+      "inboundContextualLinks": 2,
+      "linkedFrom": [
+        "app/[locale]/dj/[citta]/page.tsx",
+        "components/sections/ZoneServite.tsx"
+      ],
+      "status": "OK"
+    },
+    {
+      "path": "/dj/acqui-terme",
+      "label": "DJ a Acqui Terme",
+      "inboundContextualLinks": 2,
+      "linkedFrom": [
+        "app/[locale]/dj/[citta]/page.tsx",
+        "components/sections/ZoneServite.tsx"
+      ],
+      "status": "OK"
     }
   ]
 }

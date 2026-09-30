@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Segugio",
+      "identita": "Agente SEO (Search Console)",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna nuova proposta (1 opportunità trovate).",
+      "timestamp": "2026-09-30T06:27:58.863Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"telegram-1789635750371.mp4\" (categoria evento, stile dynamic, 17s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
       "timestamp": "2026-09-17T09:03:21.648Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-17T08:59:07.027Z"
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-29T08:11:41.844Z",
+  "generatedAt": "2026-09-30T06:22:27.557Z",
   "period": {
-    "startDate": "2026-08-29",
-    "endDate": "2026-09-26"
+    "startDate": "2026-08-30",
+    "endDate": "2026-09-27"
   },
   "totals": {
     "clicks": 8,
-    "impressions": 185
+    "impressions": 186
   },
   "byQueryPage": [
     {
@@ -172,12 +172,22 @@
     {
       "keys": [
         "forte dj",
+        "https://www.fortedj.it/recensioni"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "forte dj",
         "https://www.fortedj.it/servizi"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 13
+      "position": 12
     },
     {
       "keys": [
@@ -290,6 +300,15 @@
       "impressions": 15,
       "ctr": 0,
       "position": 5.133333333333334
+    },
+    {
+      "keys": [
+        "2026-09-27"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
     }
   ]
 }
