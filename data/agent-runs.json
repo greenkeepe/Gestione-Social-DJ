@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "ok",
+      "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 293.",
+      "timestamp": "2026-09-30T09:48:45.545Z"
+    },
+    {
       "agente": "Postino",
       "identita": "Agente Invio Automatico Locali",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-17T09:04:06.042Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Generato un post dalla recensione di Stefano e Marta M. (Matrimonio), a rotazione con le foto/video.",
-      "timestamp": "2026-09-17T09:04:06.040Z"
     }
   ]
 }
