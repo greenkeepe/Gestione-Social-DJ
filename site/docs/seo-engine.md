@@ -18,7 +18,7 @@ Google Search Console
     → scripts/seo/propose-fixes.ts   → data/seo/seo-proposte.json (con Claude, se ANTHROPIC_API_KEY è impostata)
     → scripts/seo/check-internal-links.ts → data/seo/internal-links.json
   → commit automatico dei JSON aggiornati, notifica Telegram se ci sono nuove proposte
-    → Netlify rileva il nuovo commit e rifà il build del sito
+    → Vercel rileva il nuovo commit e rifà il build del sito
       → /admin/seo (protetta da Basic Auth) legge quei JSON e li mostra, in sola lettura
       → dashboard privata (Vercel, progetto separato) → pagina "SEO": qui le
         proposte si rivedono, si correggono se serve, e si applicano o si
@@ -85,7 +85,7 @@ quando **una persona** preme "Applica" nella dashboard, mai da sola.
 
 ## Configurazione necessaria
 
-### 1. Variabili sull'host del sito (Environment Variables del progetto `site`, attualmente Netlify)
+### 1. Variabili sull'host del sito (Environment Variables del progetto `site`, attualmente Vercel)
 
 | Nome | Valore | Note |
 | --- | --- | --- |
@@ -171,7 +171,7 @@ Il workflow GitHub Actions si può anche lanciare a mano da GitHub → Actions
      emerge un'opportunità diversa.
 4. "Applica" scrive davvero in `messages/it.json` (commit + push su questo
    stesso repository) e segna la proposta come "applicata". Il sito
-   pubblico riflette il cambiamento al prossimo deploy (Netlify, automatico
+   pubblico riflette il cambiamento al prossimo deploy (Vercel, automatico
    sul push, di solito pochi minuti).
 5. Nessuno step del ciclo settimanale applica mai nulla da solo: la scrittura
    reale avviene solo dentro questo procedimento, con un click esplicito.

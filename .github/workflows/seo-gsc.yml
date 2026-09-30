@@ -4,7 +4,7 @@ name: SEO Engine - sincronizzazione Search Console
 # individua le opportunità SEO, propone (mai applica da solo) titolo/meta
 # description alternativi per le pagine segnalate, e controlla l'internal
 # linking. Aggiorna solo i JSON in site/data/seo/ (costo zero, nessun
-# database): la pagina privata /admin/seo del sito (deploy Netlify) li
+# database): la pagina privata /admin/seo del sito (deploy Vercel) li
 # legge a build time, quindi il prossimo deploy li mostra automaticamente;
 # le proposte vanno invece riviste e approvate dalla pagina "SEO" della
 # dashboard privata (progetto separato, Vercel).
