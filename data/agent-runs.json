@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (17960464017240402) e Facebook (2120616868826374). + Storia IG pubblicata.",
+      "timestamp": "2026-09-30T00:03:39.523Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
       "timestamp": "2026-09-17T08:59:07.022Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-17T08:59:06.730Z"
     }
   ]
 }
