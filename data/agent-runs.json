@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-01T16:45:57.878Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (17905833120574527) e Facebook (1105382695264800). + Storia IG pubblicata.",
       "timestamp": "2026-10-01T16:33:15.199Z"
@@ -3577,13 +3584,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-17T09:14:47.394Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Consigli per gli sposi\" (LLM con visione). Programmato per le 18:30.",
-      "timestamp": "2026-09-17T09:14:39.555Z"
     }
   ]
 }
