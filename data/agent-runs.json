@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (17905833120574527) e Facebook (1105382695264800). + Storia IG pubblicata.",
+      "timestamp": "2026-10-01T16:33:15.199Z"
+    },
+    {
       "agente": "Esploratore",
       "identita": "Agente Partnership Locali",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Consigli per gli sposi\" (LLM con visione). Programmato per le 18:30.",
       "timestamp": "2026-09-17T09:14:39.555Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"reel-telegram-1789635750371.mp4\" (video/reel) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-17T09:14:35.668Z"
     }
   ]
 }
