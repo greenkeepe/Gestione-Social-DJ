@@ -4,6 +4,13 @@
     {
       "agente": "Esploratore",
       "identita": "Agente Partnership Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
+      "timestamp": "2026-10-01T13:01:38.611Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
       "status": "ok",
       "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 280.",
       "timestamp": "2026-10-01T13:01:22.933Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"reel-telegram-1789635750371.mp4\" (video/reel) e messo in coda per la didascalia.",
       "timestamp": "2026-09-17T09:14:35.668Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1789636382877.mp4\" (categoria wedding, stile clean, 11s) e messo in coda per la pubblicazione automatica (ricevuto via Telegram).",
-      "timestamp": "2026-09-17T09:13:57.519Z"
     }
   ]
 }
