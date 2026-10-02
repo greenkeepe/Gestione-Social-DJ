@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-02T19:31:11.796Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (17949776343331107) e Facebook (1464419805570775). + Storia IG pubblicata.",
       "timestamp": "2026-10-02T19:18:25.020Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
       "timestamp": "2026-09-17T09:16:50.280Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "ok",
-      "riepilogo": "KPI aggiornati: 386 follower Instagram, 0 lead attivi.",
-      "timestamp": "2026-09-17T09:16:50.277Z"
     }
   ]
 }
