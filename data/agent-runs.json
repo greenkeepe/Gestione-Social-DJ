@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-02T21:52:49.492Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-10-02T19:31:11.796Z"
     },
     {
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-17T09:16:50.282Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-17T09:16:50.280Z"
     }
   ]
 }
