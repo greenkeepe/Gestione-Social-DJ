@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "ok",
+      "riepilogo": "Inviate automaticamente 10 email: Agriturismo La Martinella Bio, Castello di Pralormo, Cascina Castagna, Castello di Moncalvo, Cascina La Maddalena, Residenza Cà d´Masseu, Tenuta Montegrande, Castello di Cisterna, B&B Cascina Sortina Country House, Cascina Ometto.",
+      "timestamp": "2026-10-02T09:17:51.355Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"reel-telegram-1789636382877.mp4\" (video/reel) e messo in coda per la didascalia.",
       "timestamp": "2026-09-17T09:16:15.323Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-17T09:14:52.763Z"
     }
   ]
 }
