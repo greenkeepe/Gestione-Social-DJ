@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-03T19:31:16.749Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18115160989970676) e Facebook (997934029836770). + Storia IG pubblicata.",
       "timestamp": "2026-10-03T19:17:32.989Z"
@@ -3577,13 +3584,6 @@
       "status": "ok",
       "riepilogo": "Selezionato nuovo media \"telegram-1789625102922.jpg\" (foto) e messo in coda per la didascalia.",
       "timestamp": "2026-09-17T10:19:14.441Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-17T09:50:38.229Z"
     }
   ]
 }
