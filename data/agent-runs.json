@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-03T01:06:26.132Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-02T22:00:47.254Z"
     },
     {
@@ -3577,13 +3584,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-17T09:50:18.098Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Generato un post dalla recensione di Michela D. (Festa privata), a rotazione con le foto/video.",
-      "timestamp": "2026-09-17T09:50:18.096Z"
     }
   ]
 }
