@@ -1,8 +1,8 @@
 {
   "_istruzioni": "Statistiche aggregate aggiornate dall'Analytics Agent leggendo la Graph API (Insights). Popolato progressivamente una volta collegati i token reali.",
-  "ultimoAggiornamento": "2026-09-22T11:01:16.338Z",
+  "ultimoAggiornamento": "2026-09-28T13:41:57.109Z",
   "instagram": {
-    "followers": 387,
+    "followers": 388,
     "followersTrend7g": 0,
     "reachMedio30g": null,
     "engagementRateMedio30g": null
@@ -15,6 +15,6 @@
     "matrimoniTarget": 30,
     "matrimoniConfermati": 0,
     "matrimoniInTrattativa": 0,
-    "leadAttivi": 0
+    "leadAttivi": 1
   }
 }

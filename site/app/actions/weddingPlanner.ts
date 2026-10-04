@@ -145,7 +145,7 @@ export async function submitWeddingPlannerForm(
   const data = parsed.data;
 
   // La dashboard (best-effort: se GITHUB_REPO/GITHUB_TOKEN non sono
-  // configurati su Netlify, non blocca l'invio — l'email resta comunque il
+  // configurati su Vercel, non blocca l'invio — l'email resta comunque il
   // canale principale).
   try {
     const voce: QuestionarioSposi = {

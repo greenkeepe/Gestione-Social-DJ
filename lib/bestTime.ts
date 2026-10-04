@@ -26,3 +26,33 @@ export function scegliOrarioDelGiorno(giornoSettimana: number, storicoEngagement
   const isWeekend = giornoSettimana === 5 || giornoSettimana === 6 || giornoSettimana === 0;
   return isWeekend ? FASCE_DI_DEFAULT[2] : FASCE_DI_DEFAULT[Math.floor(Math.random() * 2)];
 }
+
+export interface PianificazionePubblicazione {
+  data: string; // "YYYY-MM-DD"
+  ora: string; // "HH:mm"
+  motivo: string;
+}
+
+// Sceglie GIORNO e ora per un nuovo contenuto, invece del solo orario:
+// prende il primo giorno libero a partire da oggi (nessun altro contenuto
+// "pronto"/pubblicato già programmato per quel giorno, passato in
+// `dateOccupate`) e su quel giorno applica scegliOrarioDelGiorno(). Così un
+// caricamento massivo di più foto/video finisce spalmato su più giorni
+// diversi in Anteprima — uno al giorno, come pubblica davvero
+// publishing-agent.ts — invece che ammucchiato tutto su oggi.
+export function pianificaProssimaPubblicazione(
+  dateOccupate: Set<string>,
+  storicoEngagement?: Array<{ ora: string; engagement: number }>,
+  partenza: Date = new Date()
+): PianificazionePubblicazione {
+  const cursore = new Date(partenza);
+  cursore.setHours(0, 0, 0, 0);
+  for (;;) {
+    const iso = cursore.toISOString().slice(0, 10);
+    if (!dateOccupate.has(iso)) {
+      const orario = scegliOrarioDelGiorno(cursore.getDay(), storicoEngagement);
+      return { data: iso, ora: orario.ora, motivo: orario.motivo };
+    }
+    cursore.setDate(cursore.getDate() + 1);
+  }
+}

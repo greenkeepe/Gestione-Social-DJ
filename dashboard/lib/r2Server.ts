@@ -21,11 +21,11 @@ export async function caricaBufferSuR2(buffer: Buffer, contentType: string, este
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucketName = process.env.R2_BUCKET_NAME;
-  const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
+  const dashboardPublicUrl = process.env.DASHBOARD_PUBLIC_URL;
 
-  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !publicBaseUrl) {
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !dashboardPublicUrl) {
     throw new Error(
-      "Configurazione R2 mancante sul server (R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_BUCKET_NAME/R2_PUBLIC_BASE_URL)."
+      "Configurazione R2 mancante sul server (R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_BUCKET_NAME/DASHBOARD_PUBLIC_URL)."
     );
   }
 
@@ -60,24 +60,32 @@ export async function caricaBufferSuR2(buffer: Buffer, contentType: string, este
     req.end(buffer);
   });
 
-  return `${publicBaseUrl.replace(/\/$/, "")}/${chiaveOggetto}`;
+  return `${dashboardPublicUrl.replace(/\/$/, "")}/api/r2-file/${chiaveOggetto}`;
 }
 
-// Elimina l'oggetto corrispondente a un URL pubblico R2 (es. quando cancelli
-// un media dalla dashboard, per non lasciare file "orfani" a occupare spazio
-// nel piano gratuito). Best-effort: non blocca mai la cancellazione del
+// Elimina l'oggetto corrispondente a un URL R2 (es. quando cancelli un media
+// dalla dashboard, per non lasciare file "orfani" a occupare spazio nel
+// piano gratuito). Best-effort: non blocca mai la cancellazione del
 // riferimento nei dati se il file non esiste più o R2 non è raggiungibile.
+// Riconosce sia il nuovo formato (proxy dashboard, /api/r2-file/<chiave>)
+// sia il vecchio URL diretto R2_PUBLIC_BASE_URL dei media caricati prima di
+// questo cambio, ancora presenti in media-library.json.
 export async function eliminaOggettoR2(url: string): Promise<void> {
   const accountId = process.env.R2_ACCOUNT_ID;
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucketName = process.env.R2_BUCKET_NAME;
-  const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
-  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !publicBaseUrl) return;
-  if (!url.startsWith(publicBaseUrl.replace(/\/$/, ""))) return; // non è un file nostro su R2 (es. un vecchio URL Cloudinary)
+  const dashboardPublicUrl = process.env.DASHBOARD_PUBLIC_URL;
+  const vecchioPublicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName) return;
 
-  const chiaveOggetto = url.slice(publicBaseUrl.replace(/\/$/, "").length + 1);
-  if (!chiaveOggetto) return;
+  const prefissoNuovo = dashboardPublicUrl ? `${dashboardPublicUrl.replace(/\/$/, "")}/api/r2-file/` : null;
+  const prefissoVecchio = vecchioPublicBaseUrl ? `${vecchioPublicBaseUrl.replace(/\/$/, "")}/` : null;
+
+  let chiaveOggetto: string | null = null;
+  if (prefissoNuovo && url.startsWith(prefissoNuovo)) chiaveOggetto = url.slice(prefissoNuovo.length);
+  else if (prefissoVecchio && url.startsWith(prefissoVecchio)) chiaveOggetto = url.slice(prefissoVecchio.length);
+  if (!chiaveOggetto) return; // non è un file nostro su R2 (es. un vecchio URL Cloudinary)
 
   const client = new AwsClient({ accessKeyId, secretAccessKey, service: "s3", region: "auto" });
   const endpoint = `https://${accountId}.r2.cloudflarestorage.com/${bucketName}/${chiaveOggetto}`;

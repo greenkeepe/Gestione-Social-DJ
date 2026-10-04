@@ -27,6 +27,7 @@ export interface PianoReel {
   sottotitoli: boolean;
   musica: boolean;
   testoHook: string | null;
+  testoChiusura: string | null;
 }
 
 interface CandidatoConPunteggio extends SegmentoCandidato {
@@ -145,10 +146,43 @@ const CATEGORIA_PER_PROFILO: Record<ProfiloReel, string> = {
 // Durata target del Reel (secondi) e numero massimo di spezzoni per stile:
 // i montaggi "bold/dynamic" (festa) preferiscono tagli brevi e frequenti,
 // quelli "clean" (matrimonio/elegante) pochi spezzoni più lunghi.
-const PARAMETRI_STILE: Record<StileMontaggio, { durataTarget: number; maxSegmenti: number; transizione: "hard-cut" | "crossfade" }> = {
-  bold: { durataTarget: 18, maxSegmenti: 8, transizione: "hard-cut" },
-  dynamic: { durataTarget: 22, maxSegmenti: 6, transizione: "hard-cut" },
-  clean: { durataTarget: 28, maxSegmenti: 5, transizione: "crossfade" }
+//
+// Tutti e tre gli stili usano "crossfade" (mai più un vero hard-cut senza
+// transizione): bold/dynamic con transizioni brevissime e nette (0.15-0.25s,
+// palette energica) restano comunque "di scatto" nel ritmo — solo con un
+// tocco in più invece di un taglio a vista — mentre clean usa dissolvenze
+// più lunghe e discrete, adatte a un montaggio elegante (matrimonio/
+// aziendale). intensitaZoom governa quanto si stringe/allarga il leggero
+// zoom continuo (effetto Ken Burns) applicato a ogni spezzone in
+// lib/videoTools.ts > esportaClip.
+const PARAMETRI_STILE: Record<
+  StileMontaggio,
+  { durataTarget: number; maxSegmenti: number; transizione: "hard-cut" | "crossfade"; crossfadeSec: number; paletteTransizioni: string[]; intensitaZoom: number }
+> = {
+  bold: {
+    durataTarget: 18,
+    maxSegmenti: 8,
+    transizione: "crossfade",
+    crossfadeSec: 0.15,
+    paletteTransizioni: ["wipeleft", "wiperight", "circleopen", "slideup"],
+    intensitaZoom: 0.05
+  },
+  dynamic: {
+    durataTarget: 22,
+    maxSegmenti: 6,
+    transizione: "crossfade",
+    crossfadeSec: 0.25,
+    paletteTransizioni: ["fade", "wipeleft", "slideup", "smoothright"],
+    intensitaZoom: 0.06
+  },
+  clean: {
+    durataTarget: 28,
+    maxSegmenti: 5,
+    transizione: "crossfade",
+    crossfadeSec: 0.45,
+    paletteTransizioni: ["fade", "fadeblack", "smoothleft", "smoothright"],
+    intensitaZoom: 0.08
+  }
 };
 
 export function parametriStile(stile: StileMontaggio) {
@@ -163,6 +197,7 @@ export interface OpzioniPiano {
   volumiMediaDb: number[]; // stesso ordine di `candidati`
   profiloRichiesto: ProfiloReel;
   testoHook: string | null;
+  testoChiusura: string | null;
 }
 
 // Costruisce il piano di montaggio finale: sceglie l'hook (mai i primissimi
@@ -226,7 +261,8 @@ export function costruisciPiano(opts: OpzioniPiano): PianoReel {
     // usa solo l'audio originale del video (normalizzato), mai una traccia
     // di terzi aggiunta automaticamente.
     musica: false,
-    testoHook: opts.testoHook
+    testoHook: opts.testoHook,
+    testoChiusura: opts.testoChiusura
   };
 }
 
@@ -237,6 +273,16 @@ export function testoHookDefault(nomeArte: string | undefined, _categoria: strin
   const nome = nomeArte?.trim();
   if (!nome || nome.startsWith("MODIFICA")) return null;
   return nome;
+}
+
+// Testo di chiusura di default, sovraimpresso solo negli ultimi secondi del
+// Reel: un breve richiamo generico ("scrivi in DM"), sempre valido a
+// prescindere dai contatti configurati — non promette un bottone cliccabile
+// specifico (quello resta nella didascalia, gestito da content-agent.ts con
+// le sue regole su whatsappBottoneAttivo/sitoWebBottoneAttivo), solo
+// un'istruzione che su Instagram/Facebook funziona sempre.
+export function testoChiusuraDefault(): string {
+  return "Scrivimi in DM";
 }
 
 // Il filtro drawtext di ffmpeg usa un font senza glifi emoji: un'emoji nel

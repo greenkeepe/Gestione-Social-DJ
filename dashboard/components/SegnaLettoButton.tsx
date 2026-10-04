@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Check, Undo2 } from "lucide-react";
+import { Button } from "./ui/Button";
 
 // Segna/togli il segna-come-letto su un questionario sposi: solo per tenere
 // traccia di quali hai già controllato, nessuna modifica ai dati compilati.
@@ -22,8 +24,9 @@ export function SegnaLettoButton({ id, letto }: { id: string; letto: boolean }) 
   }
 
   return (
-    <button type="button" onClick={toggle} disabled={caricamento} className="upload-btn">
-      {caricamento ? "..." : letto ? "Segna da rivedere" : "Segna come letto"}
-    </button>
+    <Button variant="secondary" size="sm" onClick={toggle} loading={caricamento}>
+      {letto ? <Undo2 size={14} aria-hidden="true" /> : <Check size={14} aria-hidden="true" />}
+      {letto ? "Segna da rivedere" : "Segna come letto"}
+    </Button>
   );
 }

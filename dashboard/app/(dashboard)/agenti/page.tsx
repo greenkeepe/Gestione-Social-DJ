@@ -1,6 +1,11 @@
+import { Bot } from "lucide-react";
 import { leggiDati } from "../../../lib/dataSource";
 import type { AgentRunsFile } from "../../../lib/types";
 import { StatusBreakdown } from "../../../components/StatusBreakdown";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { StatusBadge } from "../../../components/ui/StatusBadge";
+import { LoadMore } from "../../../components/ui/LoadMore";
+import { statusVocabulary } from "../../../lib/statusVocabulary";
 
 export const dynamic = "force-dynamic";
 
@@ -30,10 +35,13 @@ export default async function AgentiPage() {
 
   return (
     <div>
-      <h2>Agenti</h2>
-      <p className="note">Ogni agente ha un ruolo specifico ed è coordinato quotidianamente dal Direttore (Agente Master).</p>
+      <PageHeader
+        icon={<Bot size={22} aria-hidden="true" />}
+        title="Agenti"
+        description="Ogni agente ha un ruolo specifico ed è coordinato quotidianamente dal Direttore (Agente Master)."
+      />
 
-      <h3 style={{ marginTop: 12 }}>Esiti complessivi</h3>
+      <h3 className="mt-md">Esiti complessivi</h3>
       <StatusBreakdown runs={agentRuns.runs} />
 
       <h3>Ogni agente</h3>
@@ -47,7 +55,7 @@ export default async function AgentiPage() {
               <p className="note" style={{ minHeight: 48 }}>{descrizione}</p>
               {ultimo ? (
                 <>
-                  <span className={`badge ${ultimo.status}`}>{ultimo.status}</span>
+                  <StatusBadge {...statusVocabulary.agentRun(ultimo.status)} />
                   <p className="note">{ultimo.riepilogo}</p>
                   <p className="note">{new Date(ultimo.timestamp).toLocaleString("it-IT")}</p>
                 </>
@@ -65,14 +73,20 @@ export default async function AgentiPage() {
           <tr><th>Agente</th><th>Esito</th><th>Riepilogo</th><th>Quando</th></tr>
         </thead>
         <tbody>
-          {agentRuns.runs.map((r, i) => (
-            <tr key={i}>
-              <td>{r.agente}</td>
-              <td><span className={`badge ${r.status}`}>{r.status}</span></td>
-              <td>{r.riepilogo}</td>
-              <td>{new Date(r.timestamp).toLocaleString("it-IT")}</td>
-            </tr>
-          ))}
+          <LoadMore
+            as="table"
+            colSpan={4}
+            initialCount={25}
+            label="record"
+            items={agentRuns.runs.map((r, i) => (
+              <tr key={i}>
+                <td>{r.agente}</td>
+                <td><StatusBadge {...statusVocabulary.agentRun(r.status)} /></td>
+                <td>{r.riepilogo}</td>
+                <td>{new Date(r.timestamp).toLocaleString("it-IT")}</td>
+              </tr>
+            ))}
+          />
         </tbody>
       </table>
     </div>

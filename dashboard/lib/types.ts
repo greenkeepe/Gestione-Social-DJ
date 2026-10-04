@@ -12,6 +12,7 @@ export interface AgentRun {
   status: "ok" | "errore" | "nessuna-azione";
   riepilogo: string;
   dettagli?: Record<string, unknown>;
+  avvisoInviato?: boolean; // avviso Telegram già mandato per errori di fila
 }
 
 export interface AgentRunsFile {
@@ -28,7 +29,15 @@ export interface QueueItem {
   dataProgrammata?: string | null;
   pillarId?: string;
   istruzioniUtente?: string | null;
-  media: { filename: string; mimeType: string; downloadUrl: string; source?: string };
+  media: {
+    filename: string; mimeType: string; downloadUrl: string; source?: string;
+    mediaId?: string | null; fotoReel?: string; originale?: { downloadUrl: string; mimeType: string; filename: string };
+  };
+  ultimoErrore?: string | null;
+  tentativiFalliti?: number;
+  // scelto in Anteprima per essere rielaborato con Regia (vedi scripts/regia-selezione.ts)
+  regiaRichiesta?: string;
+  regiaErrore?: string;
 }
 
 export interface PostsQueueFile {
@@ -100,6 +109,8 @@ export interface OutreachFile {
 
 export interface OutreachConfigFile {
   province: string[];
+  citta?: string[]; // città/paesi in cui cercare (con raggioKm intorno a ognuna)
+  raggioKm?: number;
   invioAutomatico?: { attivo: boolean; maxAlGiorno: number };
 }
 
@@ -107,6 +118,104 @@ export interface OutreachTemplateFile {
   oggetto: string;
   corpo: string;
   validatoIl: string | null;
+}
+
+// Specchio di site/lib/seoEngineTypes.ts (progetto separato, stesso
+// repository): la dashboard legge/scrive site/data/seo/seo-proposte.json
+// per la pagina "SEO", vedi dashboard/lib/dataSource.ts > leggiDatiRepo /
+// aggiornaDatiSuPercorso.
+export type SeoProposalStatus = "proposta" | "applicata" | "scartata";
+
+export interface SeoProposal {
+  id: string;
+  page: string;
+  pageLabel: string;
+  query: string;
+  priority: "HIGH" | "MEDIUM" | "LOW";
+  reason: string;
+  metaNamespace: string;
+  metaTitleKey: string;
+  metaDescriptionKey: string | null;
+  titleAttuale: string;
+  titleProposto: string;
+  descriptionAttuale: string | null;
+  descriptionProposta: string | null;
+  status: SeoProposalStatus;
+  creatoIl: string;
+  decisoIl: string | null;
+}
+
+export interface SeoProposalsFile {
+  proposte: SeoProposal[];
+}
+
+// Dati grezzi dell'SEO Engine (site/scripts/seo/), specchio del resto di
+// site/lib/seoEngineTypes.ts: la pagina "SEO" della dashboard li mostra
+// insieme alle proposte, così non serve più aprire fortedj.it/admin/seo
+// separatamente per vedere query/opportunità/internal linking/indicizzazione.
+export interface GscQueryPageRow {
+  keys: [string, string];
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+export interface GscDataFile {
+  generatedAt: string | null;
+  period: { startDate: string; endDate: string } | null;
+  totals: { clicks: number; impressions: number };
+  byQueryPage: GscQueryPageRow[];
+}
+
+export interface SeoOpportunity {
+  query: string;
+  page: string;
+  position: number;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  priority: "HIGH" | "MEDIUM" | "LOW";
+  reason: string;
+  localArea: string | null;
+  pageExists: boolean;
+}
+
+export interface OpportunitiesFile {
+  generatedAt: string | null;
+  sourceGeneratedAt: string | null;
+  opportunities: SeoOpportunity[];
+}
+
+export type InternalLinkStatus = "ORPHAN" | "POCO_COLLEGATA" | "OK";
+
+export interface InternalLinkRoute {
+  path: string;
+  label: string;
+  inboundContextualLinks: number;
+  linkedFrom: string[];
+  status: InternalLinkStatus;
+}
+
+export interface InternalLinksFile {
+  generatedAt: string | null;
+  note: string;
+  routes: InternalLinkRoute[];
+}
+
+export interface IndexingRow {
+  url: string;
+  verdict: string | null;
+  coverageState: string | null;
+  indexingState: string | null;
+  lastCrawlTime: string | null;
+  error: string | null;
+}
+
+export interface IndexingFile {
+  generatedAt: string | null;
+  siteUrl: string | null;
+  rows: IndexingRow[];
 }
 
 export type ProfiloReel = "auto" | "dj_party" | "wedding" | "event" | "business" | "talking_head" | "promotional";
@@ -121,6 +230,7 @@ export interface PianoReel {
   sottotitoli: boolean;
   musica: boolean;
   testoHook: string | null;
+  testoChiusura: string | null;
 }
 
 export interface ReelJob {

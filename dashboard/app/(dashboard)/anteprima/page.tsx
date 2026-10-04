@@ -1,5 +1,9 @@
+import { Image as ImageIcon } from "lucide-react";
 import { leggiDati, leggiConfig } from "../../../lib/dataSource";
 import { PostPreview } from "../../../components/PostPreview";
+import { RegiaSelezioneProvider, RielaboraSelezionatiButton } from "../../../components/RegiaSelezione";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
 import type { PostsQueueFile } from "../../../lib/types";
 
 export const dynamic = "force-dynamic";
@@ -21,17 +25,45 @@ export default async function AnteprimaPage() {
     : "@il_tuo_handle";
   const nomeArte = brand.nomeArte && !brand.nomeArte.startsWith("MODIFICA") ? brand.nomeArte : "DJ";
 
-  const items = [...queueFile.queue].reverse();
+  // In cima quelli in pubblicazione OGGI (o rimasti indietro da un giorno
+  // passato): sono il turno di adesso, quello che a chi guarda la pagina
+  // interessa vedere per primo — con la possibilità di premere "Pubblica
+  // ora" senza dover cercare la riga giusta in mezzo a tutte le altre. Poi
+  // il resto in ordine di data/ora di pubblicazione programmata (i più
+  // vicini prima). I contenuti senza ancora una data (in attesa di
+  // didascalia) restano in fondo a tutto, non essendo ancora "in calendario".
+  const oggi = new Date().toISOString().slice(0, 10);
+  const inPubblicazioneOggi = (item: (typeof queueFile.queue)[number]) =>
+    item.status === "pronto" && Boolean(item.dataProgrammata) && item.dataProgrammata! <= oggi;
+  const chiaveData = (item: (typeof queueFile.queue)[number]) =>
+    item.dataProgrammata ? `${item.dataProgrammata} ${item.orarioProgrammato ?? "00:00"}` : "9999-99-99 99:99";
+  // Il già pubblicato non è più un'"anteprima" di niente: ha solo la sua data
+  // reale nel passato, quindi in mezzo all'ordine cronologico finiva in cima
+  // mischiato ai contenuti di oggi invece che sparire. Resta comunque
+  // consultabile per intero nella pagina "Contenuti" e in published-log.json
+  // — qui va solo tolto di mezzo.
+  const items = queueFile.queue
+    .filter((item) => item.status !== "pubblicato" && item.status !== "pubblicato-parziale")
+    .sort((a, b) => {
+      const priorita = Number(inPubblicazioneOggi(b)) - Number(inPubblicazioneOggi(a));
+      if (priorita !== 0) return priorita;
+      return chiaveData(a).localeCompare(chiaveData(b));
+    });
 
   return (
-    <div>
-      <h2>Anteprima</h2>
-      <p className="note">
-        Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto per la pubblicazione, o già pubblicato.
-      </p>
+    <RegiaSelezioneProvider>
+      <PageHeader
+        icon={<ImageIcon size={22} aria-hidden="true" />}
+        title="Anteprima"
+        action={<RielaboraSelezionatiButton />}
+        description="Così appariranno i post/reel una volta pubblicati — stesso media, stessa didascalia, stessi hashtag. In cima quelli in pubblicazione oggi, poi gli altri in ordine cronologico esatto di data e ora. Il riquadro colorato in alto a destra indica lo stato: in attesa di didascalia, pronto (in calendario per un giorno futuro) o in pubblicazione (è il turno di oggi, l'Editore lo pubblica al prossimo controllo). Su ogni contenuto pronto trovi anche &quot;Pubblica ora&quot;, per farlo uscire subito a mano invece di aspettare. Per rifare solo alcuni video con Regia spunta &quot;Rielabora con Regia&quot; sui contenuti che vuoi e premi &quot;Rielabora selezionati&quot;. Il già pubblicato non compare più qui: trovi lo storico completo nella pagina &quot;Contenuti&quot;."
+      />
 
       {items.length === 0 && (
-        <p className="note">Nessun contenuto in coda al momento. Carica un media dalla pagina &quot;Carica media&quot; per vederne qui l&apos;anteprima.</p>
+        <EmptyState
+          title="Nessun contenuto in coda al momento"
+          description={'Carica un media dalla pagina "Carica media" per vederne qui l\'anteprima.'}
+        />
       )}
 
       <div className="preview-grid">
@@ -39,6 +71,6 @@ export default async function AnteprimaPage() {
           <PostPreview key={item.id} item={item} handle={handle} nomeArte={nomeArte} />
         ))}
       </div>
-    </div>
+    </RegiaSelezioneProvider>
   );
 }

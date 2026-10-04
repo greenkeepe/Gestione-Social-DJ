@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { Search } from "lucide-react";
+import { Button } from "./ui/Button";
 
-// Avvia una ricerca on-demand (fino a 10 nuovi locali) invece del vecchio
-// giro automatico giornaliero — vedi outreach-search.yml. La ricerca gira
+// La ricerca gira già da sola ogni giorno (dentro il ciclo del Direttore),
+// tenendo la coda "da rivedere" sempre piena fino al numero impostato qui
+// sotto in "invio automatico" — questo tasto serve solo per un giro extra
+// a comando, subito, senza aspettare il ciclo di domani. La ricerca gira
 // su GitHub Actions (qualche minuto): qui avviamo solo il workflow, i
 // nuovi contatti compaiono in "Da rivedere" quando finisce.
 export function CercaLocaliButton() {
@@ -28,11 +32,11 @@ export function CercaLocaliButton() {
   }
 
   return (
-    <div style={{ marginBottom: 16 }}>
-      <button type="button" className="upload-btn" disabled={caricamento} onClick={cerca}>
-        {caricamento ? "Avvio..." : "🔍 Cerca nuovi locali"}
-      </button>
-      <p className="note" style={{ marginTop: 6 }}>Propone fino a 10 nuovi ristoranti/hotel della zona ogni volta che tocchi il tasto — non gira più da solo ogni giorno.</p>
+    <div className="mt-md">
+      <Button onClick={cerca} loading={caricamento}>
+        <Search size={14} aria-hidden="true" /> Cerca nuovi locali
+      </Button>
+      <p className="note mt-sm">Gira già da solo ogni giorno per tenere la coda piena: tocca qui solo per un giro extra subito.</p>
       {errore && <p className="error-msg">{errore}</p>}
       {messaggio && <p className="note">{messaggio}</p>}
     </div>

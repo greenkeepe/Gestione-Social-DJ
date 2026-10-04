@@ -10,10 +10,11 @@ import { readData, writeData, readBrand, nowIso } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
 import { IDENTITA } from "./identities.js";
-import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
+import { pianificaProssimaPubblicazione } from "../lib/bestTime.js";
 import { generaCartTestimonianza, type Testimonianza } from "../lib/testimonialCard.js";
 import { caricaBufferSuR2 } from "../lib/r2Upload.js";
 import { costruisciHashtag, testoCtaContatto } from "./content-agent.js";
+import { innescaWorkflow } from "../lib/gitCommit.js";
 
 interface MediaLibraryItem {
   id: string;
@@ -34,6 +35,11 @@ interface MediaLibraryFile {
 interface PostsQueueFile {
   _istruzioni: string;
   queue: Array<Record<string, unknown>>;
+}
+
+interface ReelJobsFile {
+  _istruzioni: string;
+  jobs: Array<Record<string, unknown>>;
 }
 
 interface BrandFile {
@@ -69,8 +75,8 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucketName = process.env.R2_BUCKET_NAME;
-  const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
-  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !publicBaseUrl) return null;
+  const dashboardPublicUrl = process.env.DASHBOARD_PUBLIC_URL;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !dashboardPublicUrl) return null;
 
   const brand = await readBrand<BrandFile>();
   const testimonianze = brand.testimonianze ?? [];
@@ -91,7 +97,7 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
     accessKeyId,
     secretAccessKey,
     bucketName,
-    publicBaseUrl,
+    dashboardPublicUrl,
     contentType: "image/png",
     estensione: ".png"
   });
@@ -100,7 +106,17 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
   const corpo = `${intro}\n\n"${scelta.citazione}"\n— ${scelta.cliente}, ${scelta.tipoEvento}`;
   const cta = testoCtaContatto(brand as Record<string, any>);
   const caption = [corpo, cta].filter((r): r is string => Boolean(r)).join("\n\n");
-  const oggi = new Date();
+
+  // Stesso primo-giorno-libero usato dall'Agente Contenuti (lib/bestTime.ts):
+  // un post da recensione non deve rubare/duplicare il giorno già occupato
+  // da un altro contenuto "evento" in coda. I post "sito" (agents/sito-agent.ts)
+  // sono un canale separato e non contano qui.
+  const dateOccupate = new Set(
+    queueFile.queue
+      .filter((p) => p.formato !== "sito" && ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status as string) && p.dataProgrammata)
+      .map((p) => p.dataProgrammata as string)
+  );
+  const pianificazione = pianificaProssimaPubblicazione(dateOccupate);
 
   queueFile.queue.push({
     id: randomUUID(),
@@ -115,8 +131,8 @@ async function generaPostTestimonianza(queueFile: PostsQueueFile): Promise<Testi
     },
     caption,
     hashtags: costruisciHashtag(brand as Record<string, any>),
-    orarioProgrammato: scegliOrarioDelGiorno(oggi.getDay()).ora,
-    dataProgrammata: oggi.toISOString().slice(0, 10),
+    orarioProgrammato: pianificazione.ora,
+    dataProgrammata: pianificazione.data,
     status: "pronto",
     istruzioniUtente: null,
     pillarId: "testimonianze"
@@ -161,25 +177,86 @@ export async function eseguiMediaAgent(): Promise<void> {
       }
     }
 
-    const cePostaInAttesaDiMedia = queueFile.queue.some((p) => p.status === "in-coda-caption");
-    if (cePostaInAttesaDiMedia) {
-      await logAgentRun({
-        agente: IDENTITA.media.nome,
-        identita: IDENTITA.media.ruolo,
-        status: "nessuna-azione",
-        riepilogo: "C'è già un contenuto in coda in attesa di didascalia, non serve selezionare altro media oggi."
-      });
-      return;
+    // Mette in coda TUTTI i media non ancora usati in questo stesso giro
+    // (non solo il primo): chi carica più foto/video insieme dalla
+    // dashboard li vede così avanzare tutti subito verso "Anteprima",
+    // invece che uno al giorno (il ritmo di 1 pubblicazione/giorno resta
+    // comunque garantito da publishing-agent.ts, che non dipende da
+    // quanti contenuti sono "pronto" in coda — sono due limiti separati).
+    // Preferisce sempre un video quando disponibile: su Instagram i Reel
+    // hanno molta più portata organica dei post statici.
+    //
+    // Un video GREZZO trovato qui non va mai in coda pubblicazione
+    // direttamente: qualunque sia la sua origine (un residuo vecchio, un
+    // caricamento che ha saltato il percorso giusto, ecc.) passa SEMPRE
+    // prima dal Regista (data/reel-jobs.json), che lo ritaglia in 9:16,
+    // applica transizioni/zoom e il testo in sovraimpressione — esattamente
+    // come un video caricato dalla pagina "Crea Reel AI" o mandato su
+    // Telegram. Un Reel pubblicato senza essere passato di là sarebbe il
+    // video grezzo tale e quale, senza nessun montaggio: bug reale, visto
+    // dal vivo.
+    //
+    // Un video il cui nome inizia per "reel-" invece è GIÀ un Reel finito:
+    // è esattamente il prefisso che reel-maker-agent.ts aggiunge sempre
+    // quando promuove il proprio output in questa stessa libreria media
+    // (vedi la sezione "promozione" lì). Rimandarlo al Regista lo
+    // farebbe rimontare da capo un video già montato (doppio ritaglio,
+    // doppie transizioni, effetto pessimo) invece di metterlo in coda per
+    // la didascalia: bug reale, visto dal vivo appena dopo aver introdotto
+    // il controllo qui sopra.
+    let messiInCoda = 0;
+    let videoAlRegista = 0;
+    const reelJobsFile = await readData<ReelJobsFile>("reel-jobs.json");
+    for (;;) {
+      const nonUsati = libreria.items.filter((m) => m.usatoIl === null);
+      const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
+      if (!prossimo) break;
+
+      const isVideoGrezzo = prossimo.mimeType.startsWith("video/") && !prossimo.filename.startsWith("reel-");
+      if (isVideoGrezzo) {
+        reelJobsFile.jobs.unshift({
+          id: randomUUID(),
+          createdAt: nowIso(),
+          videoUrl: prossimo.url,
+          filename: prossimo.filename,
+          mimeType: prossimo.mimeType,
+          profilo: "auto",
+          istruzioni: prossimo.istruzioniUtente ?? null,
+          status: "in-coda-analisi",
+          step: "in-coda",
+          aggiornatoIl: nowIso(),
+          erroreMessaggio: null,
+          risultato: null,
+          source: prossimo.source ?? "dashboard-upload"
+        });
+        videoAlRegista++;
+      } else {
+        // Qui arrivano le foto (sempre "post") e i Reel già montati dal
+        // Regista, riconosciuti sopra dal prefisso "reel-" (sempre "reel",
+        // mai fatti passare per un generico "post").
+        queueFile.queue.push({
+          id: randomUUID(),
+          createdAt: nowIso(),
+          formato: prossimo.mimeType.startsWith("video/") ? "reel" : "post",
+          media: {
+            source: prossimo.source ?? "dashboard-upload",
+            mediaId: prossimo.id,
+            filename: prossimo.filename,
+            mimeType: prossimo.mimeType,
+            downloadUrl: prossimo.url
+          },
+          caption: null,
+          hashtags: [],
+          orarioProgrammato: null,
+          status: "in-coda-caption",
+          istruzioniUtente: prossimo.istruzioniUtente ?? null
+        });
+      }
+      prossimo.usatoIl = nowIso();
+      messiInCoda++;
     }
 
-    // Preferisce un video non ancora usato quando disponibile: su Instagram
-    // i Reel hanno molta più portata organica dei post statici. Se non ci
-    // sono video in attesa, prende comunque la foto più vecchia — nessun
-    // media aspetta mai per sempre solo perché non è un video.
-    const nonUsati = libreria.items.filter((m) => m.usatoIl === null);
-    const prossimo = nonUsati.find((m) => m.mimeType.startsWith("video/")) ?? nonUsati[0];
-
-    if (!prossimo) {
+    if (messiInCoda === 0) {
       await logAgentRun({
         agente: IDENTITA.media.nome,
         identita: IDENTITA.media.ruolo,
@@ -189,30 +266,23 @@ export async function eseguiMediaAgent(): Promise<void> {
       return;
     }
 
-    const isVideo = prossimo.mimeType.startsWith("video/");
-    queueFile.queue.push({
-      id: randomUUID(),
-      createdAt: nowIso(),
-      formato: isVideo ? "reel" : "post",
-      media: {
-        source: prossimo.source ?? "dashboard-upload",
-        mediaId: prossimo.id,
-        filename: prossimo.filename,
-        mimeType: prossimo.mimeType,
-        downloadUrl: prossimo.url
-      },
-      caption: null,
-      hashtags: [],
-      orarioProgrammato: null,
-      status: "in-coda-caption",
-      istruzioniUtente: prossimo.istruzioniUtente ?? null
-    });
     await writeData("posts-queue.json", queueFile);
-
-    prossimo.usatoIl = nowIso();
     await writeData("media-library.json", libreria);
+    if (videoAlRegista > 0) {
+      await writeData("reel-jobs.json", reelJobsFile);
+      try {
+        await innescaWorkflow("reel-maker.yml");
+      } catch {
+        /* non bloccante: il ciclo del Regista lo prenderà comunque al prossimo giro */
+      }
+    }
 
-    const riepilogo = `Selezionato nuovo media "${prossimo.filename}" (${isVideo ? "video/reel" : "foto"}) e messo in coda per la didascalia.`;
+    const inCodaDidascalia = messiInCoda - videoAlRegista;
+    const pezzi = [
+      inCodaDidascalia > 0 ? `${inCodaDidascalia} contenuti (foto o Reel già montati) messi in coda per la didascalia` : null,
+      videoAlRegista > 0 ? `${videoAlRegista} video grezzi mandati al Regista per il montaggio` : null
+    ].filter((r): r is string => Boolean(r));
+    const riepilogo = `${pezzi.join(" e ")}.`;
     await logAgentRun({
       agente: IDENTITA.media.nome,
       identita: IDENTITA.media.ruolo,

@@ -92,3 +92,34 @@ export interface IndexingFile {
   siteUrl: string | null;
   rows: IndexingRow[];
 }
+
+// Proposte di titolo/meta description alternativi generate da
+// scripts/seo/propose-fixes.ts a partire dalle opportunità rilevate — MAI
+// applicate in automatico: restano "proposta" finché qualcuno non le
+// approva (o modifica e approva, o scarta) dalla pagina "SEO" della
+// dashboard privata (dashboard/app/(dashboard)/seo/), che scrive
+// direttamente nei file di questo progetto via GitHub Contents API.
+export type SeoProposalStatus = "proposta" | "applicata" | "scartata";
+
+export interface SeoProposal {
+  id: string;
+  page: string; // path del sito, es. "/servizi" (vedi data/routes.ts)
+  pageLabel: string;
+  query: string; // la query di Search Console che ha fatto emergere l'opportunità
+  priority: OpportunityPriority;
+  reason: string;
+  metaNamespace: string; // namespace i18n in messages/it.json, es. "ServiziPage"
+  metaTitleKey: string;
+  metaDescriptionKey: string | null; // null se la pagina non ha una chiave di description dedicata (vedi ChiSonoPage)
+  titleAttuale: string;
+  titleProposto: string;
+  descriptionAttuale: string | null;
+  descriptionProposta: string | null;
+  status: SeoProposalStatus;
+  creatoIl: string;
+  decisoIl: string | null;
+}
+
+export interface SeoProposalsFile {
+  proposte: SeoProposal[];
+}

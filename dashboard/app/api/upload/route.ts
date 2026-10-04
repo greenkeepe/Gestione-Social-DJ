@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
-import { aggiornaDatiSuGitHub } from "../../../lib/dataSource";
+import { aggiornaDatiSuGitHub, lanciaWorkflow } from "../../../lib/dataSource";
 
 export const runtime = "nodejs";
 
@@ -44,6 +44,18 @@ export async function POST(req: Request) {
     );
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
+  }
+
+  // Avvia subito il ciclo giornaliero (stessa cosa già fatta per le foto
+  // ricevute da Telegram) invece di aspettare il cron delle 08:00: così la
+  // foto ha già la didascalia ed è visibile in "Anteprima" entro pochi
+  // minuti, non entro il giorno dopo. Best-effort: se fallisce (es. token
+  // senza permesso "Actions: write"), il ciclo automatico la prenderà
+  // comunque al prossimo giro programmato.
+  try {
+    await lanciaWorkflow("daily-agents.yml");
+  } catch {
+    /* non bloccante */
   }
 
   return NextResponse.json({ ok: true });

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/Button";
+import { useConfirm } from "./ui/ConfirmDialog";
 
 const MAX_CONSENTITO_AL_GIORNO = 20;
 
@@ -24,6 +26,7 @@ export function InvioAutomaticoSettings({
   const [salvataggio, setSalvataggio] = useState(false);
   const [errore, setErrore] = useState<string | null>(null);
   const router = useRouter();
+  const { confirm, dialog } = useConfirm();
 
   async function salva(nuovoAttivo: boolean, nuovoMax: number) {
     setSalvataggio(true);
@@ -46,20 +49,19 @@ export function InvioAutomaticoSettings({
     }
   }
 
-  function toggleAttivo() {
+  async function toggleAttivo() {
     const nuovoValore = !attivo;
     if (nuovoValore) {
       if (!modelloValidato) {
         setErrore("Salva e valida prima un modello email qui sopra: senza, l'invio automatico non può partire.");
         return;
       }
-      if (
-        !window.confirm(
-          `Attivare l'invio automatico? Ogni giorno partiranno da sole fino a ${maxAlGiorno} email (quelle più vecchie tra le bozze "da rivedere"), senza che tu le legga prima. Puoi disattivarlo in ogni momento.`
-        )
-      ) {
-        return;
-      }
+      const ok = await confirm({
+        title: "Attiva invio automatico",
+        message: `Attivare l'invio automatico? Ogni giorno partiranno da sole fino a ${maxAlGiorno} email (quelle più vecchie tra le bozze "da rivedere"), senza che tu le legga prima. Puoi disattivarlo in ogni momento.`,
+        confirmLabel: "Attiva"
+      });
+      if (!ok) return;
     }
     salva(nuovoValore, maxAlGiorno);
   }
@@ -90,16 +92,11 @@ export function InvioAutomaticoSettings({
         />
       </label>
 
-      <button
-        type="button"
-        onClick={() => salva(attivo, maxAlGiorno)}
-        disabled={salvataggio}
-        className="upload-btn"
-        style={{ marginTop: 12 }}
-      >
-        {salvataggio ? "Salvo..." : "Salva limite giornaliero"}
-      </button>
+      <Button className="mt-md" onClick={() => salva(attivo, maxAlGiorno)} loading={salvataggio}>
+        Salva limite giornaliero
+      </Button>
       {errore && <p className="error-msg">{errore}</p>}
+      {dialog}
     </div>
   );
 }

@@ -16,12 +16,14 @@
     "agent:analytics": "tsx agents/analytics-agent.ts",
     "agent:strategy": "tsx agents/strategy-agent.ts",
     "agent:reelmaker": "tsx agents/reel-maker-agent.ts",
+    "agent:sito": "tsx agents/sito-agent.ts",
     "svuota-media": "tsx scripts/svuota-media.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "aws4fetch": "^1.0.20",
     "dotenv": "^16.4.5",
+    "playwright": "^1.63.0",
     "sharp": "^0.35.4"
   },
   "devDependencies": {

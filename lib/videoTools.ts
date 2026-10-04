@@ -87,6 +87,35 @@ export async function scaricaFile(url: string, destinazione: string): Promise<vo
   await writeFile(destinazione, buf);
 }
 
+// Scarica un media dallo STESSO bucket R2 con una richiesta firmata diretta
+// (accountId.r2.cloudflarestorage.com), invece che dall'URL salvato che
+// passa dal proxy della dashboard (dashboard/app/api/r2-file/[chiave]).
+// Quel proxy serve a Meta per scaricare i media da pubblicare (vedi
+// lib/r2Upload.ts), ma qui il download lo fa direttamente questo agente,
+// che gira su GitHub Actions e ha già le credenziali R2 — non ha senso far
+// rimbalzare un file video, magari grande, su una funzione serverless
+// Vercel in mezzo. Bug reale visto dal vivo: per i video più grandi il
+// proxy troncava il download (limite di tempo/dimensione della funzione),
+// producendo un file corrotto ("moov atom not found" da ffprobe).
+// L'URL salvato può essere sia il nuovo formato proxy (.../api/r2-file/
+// <chiave>) sia il vecchio URL diretto R2_PUBLIC_BASE_URL: in entrambi la
+// chiave dell'oggetto è sempre l'ultimo segmento del percorso.
+export async function scaricaDaR2(
+  urlSalvato: string,
+  destinazione: string,
+  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string }
+): Promise<void> {
+  const chiave = urlSalvato.split("/").pop();
+  if (!chiave) throw new Error(`Impossibile ricavare la chiave dell'oggetto R2 dall'URL: ${urlSalvato}`);
+
+  const client = new AwsClient({ accessKeyId: opts.accessKeyId, secretAccessKey: opts.secretAccessKey, service: "s3", region: "auto" });
+  const endpoint = `https://${opts.accountId}.r2.cloudflarestorage.com/${opts.bucketName}/${chiave}`;
+  const res = await client.fetch(endpoint);
+  if (!res.ok) throw new Error(`Download diretto da R2 fallito (${res.status}): ${chiave}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  await writeFile(destinazione, buf);
+}
+
 export async function analizzaVideo(filePath: string): Promise<VideoInfo> {
   const videoOutput = await eseguiFfprobe([
     "-v", "error",
@@ -218,17 +247,49 @@ export interface OpzioniClip {
   durata: number;
   cropW: number;
   cropH: number;
+  // Leggero "effetto Ken Burns" (zoom lento continuo): "in" parte fermo e si
+  // stringe, "out" parte già stretto e si allarga verso l'inquadratura
+  // piena. intensita 0.06 = arriva/parte da uno zoom del 6%. Facoltativo:
+  // senza, il fotogramma resta fisso come prima.
+  zoom?: { direzione: "in" | "out"; intensita: number };
 }
 
 // Ritaglia ed esporta un singolo spezzone già in 1080x1920, pronto per essere
 // concatenato. Normalizzare ogni clip (stesso fps/formato pixel) prima del
 // montaggio evita errori di concatenazione con ffmpeg.
+//
+// Lo zoom usa la variabile 'on' di zoompan (indice assoluto del fotogramma
+// in uscita) invece della forma più comune "zoom+step" basata sul valore
+// del fotogramma precedente: quella seconda forma parte sempre da zoom=1 al
+// primo fotogramma, quindi per un "zoom out" farebbe uno scatto istantaneo
+// al valore massimo sul primo fotogramma prima di scendere gradualmente.
+// Con 'on' il valore è calcolato in modo assoluto e deterministico, niente
+// scatti. Rampa completata in 75 fotogrammi (~2.5s a 30fps): sugli spezzoni
+// più lunghi resta ferma al valore raggiunto, mai un secondo scatto.
 export async function esportaClip(opts: OpzioniClip): Promise<void> {
+  const filtri = [`crop=${opts.cropW}:${opts.cropH}`, "scale=1080:1920", "setsar=1", "fps=30"];
+
+  if (opts.zoom) {
+    const rampaFrame = 75;
+    // Le virgole dentro l'espressione min()/max() vanno escapate (\,):
+    // ffmpeg altrimenti le legge come separatore tra filtri della catena,
+    // non come argomento della funzione.
+    const z = opts.zoom.direzione === "in"
+      ? `1+${opts.zoom.intensita}*min(on/${rampaFrame}\\,1)`
+      : `1+${opts.zoom.intensita}*max(1-on/${rampaFrame}\\,0)`;
+    filtri.push(`zoompan=z='${z}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30`);
+  }
+
+  // Piccola correzione colore uniforme (più contrasto/saturazione): niente
+  // di specifico per scena, solo un tocco che rende il risultato meno
+  // "piatto" del video grezzo originale.
+  filtri.push("eq=contrast=1.05:saturation=1.08");
+
   await eseguiFfmpeg([
     "-ss", String(opts.inizio),
     "-t", String(opts.durata),
     "-i", opts.inputPath,
-    "-vf", `crop=${opts.cropW}:${opts.cropH},scale=1080:1920,setsar=1,fps=30`,
+    "-vf", filtri.join(","),
     "-c:v", "libx264",
     "-preset", "veryfast",
     "-pix_fmt", "yuv420p",
@@ -245,12 +306,78 @@ export interface OpzioniMontaggio {
   durateClip: number[]; // durata reale (secondi) di ciascun clip, nello stesso ordine di clipPaths
   transizione: "hard-cut" | "crossfade";
   crossfadeSec?: number;
+  // Tipi di transizione xfade da alternare tra un taglio e l'altro (usato
+  // solo con transizione="crossfade"): senza, resta sempre "fade" come
+  // prima. Vedi la documentazione del filtro xfade di ffmpeg per l'elenco
+  // dei nomi validi (wipeleft, circleopen, smoothright, ...).
+  paletteTransizioni?: string[];
   testoHook?: string;
+  testoChiusura?: string;
 }
 
-// Concatena i clip già normalizzati, applica (se richiesto) una dissolvenza
-// incrociata video+audio tra uno spezzone e l'altro, normalizza il volume
-// finale (loudnorm) e disegna un eventuale testo hook in sovraimpressione.
+function testoEscape(testo: string): string {
+  return testo.replace(/\\/g, "\\\\").replace(/:/g, "\\:").replace(/'/g, "\\'");
+}
+
+// Va a capo un testo su più righe restando entro una larghezza indicativa
+// (in "caratteri", non pixel: drawtext non misura il testo per noi prima di
+// disegnarlo, ma per un font bold a fontsize~50-58 su un frame di 1080px
+// ~24-26 caratteri a riga è una stima ragionevole). Mai più di `maxRighe`
+// righe: oltre, il testo overlay diventa illeggibile su un Reel verticale.
+function vaACapo(testo: string, larghezzaCaratteri: number, maxRighe: number): string {
+  const parole = testo.split(/\s+/).filter(Boolean);
+  const righe: string[] = [];
+  let corrente = "";
+  for (const parola of parole) {
+    const candidata = corrente ? `${corrente} ${parola}` : parola;
+    if (candidata.length > larghezzaCaratteri && corrente) {
+      righe.push(corrente);
+      corrente = parola;
+    } else {
+      corrente = candidata;
+    }
+  }
+  if (corrente) righe.push(corrente);
+  if (righe.length > maxRighe) {
+    return righe.slice(0, maxRighe).join("\n");
+  }
+  return righe.join("\n");
+}
+
+// Disegna un testo (anche su più righe) con un'animazione in entrata/uscita
+// nella finestra di tempo [inizio, fine] indicata, invece che per tutta la
+// durata del video (un testo fisso a bruciare per l'intero Reel sembra un
+// watermark incollato allo schermo, non un gancio o una call to action
+// mirata). Oltre alla dissolvenza (alpha) il testo entra anche con un
+// leggero scorrimento verticale (slide-up, ~24px) che si assesta nella
+// prima parte della finestra "fade": più dinamico di un semplice fade fisso.
+// Le virgole dentro le espressioni "enable"/"alpha"/"y" vanno escapate (\,):
+// ffmpeg le leggerebbe come separatore tra filtri della catena invece che
+// come argomento della funzione if()/between().
+function filtroTestoAnimato(testo: string, inizio: number, fine: number, yBase: string, fontsize: number, larghezzaCaratteri = 24, maxRighe = 3): string {
+  const testoACapo = vaACapo(testo, larghezzaCaratteri, maxRighe);
+  const testoEscaped = testoEscape(testoACapo);
+  const fade = Math.min(0.4, Math.max(0.15, (fine - inizio) / 4));
+  const finoIn = (inizio + fade).toFixed(2);
+  const finoHold = (fine - fade).toFixed(2);
+  const i = inizio.toFixed(2);
+  const f = fine.toFixed(2);
+  const alpha = `if(lt(t\\,${finoIn})\\,(t-${i})/${fade.toFixed(2)}\\,if(lt(t\\,${finoHold})\\,1\\,if(lt(t\\,${f})\\,(${f}-t)/${fade.toFixed(2)}\\,0)))`;
+  // Scorrimento: 20px sotto la posizione finale al primo istante della
+  // finestra, che si annulla esattamente quando l'ingresso in dissolvenza è
+  // completato (finoIn) — dopodiché il testo resta fermo in yBase.
+  const yAnimata = `(${yBase})+if(lt(t\\,${finoIn})\\,20*(1-(t-${i})/${fade.toFixed(2)})\\,0)`;
+  return (
+    `drawtext=text='${testoEscaped}':fontcolor=white:fontsize=${fontsize}:line_spacing=10:x=(w-text_w)/2:y='${yAnimata}':` +
+    `box=1:boxcolor=black@0.45:boxborderw=22:enable='between(t\\,${i}\\,${f})':alpha='${alpha}'`
+  );
+}
+
+// Concatena i clip già normalizzati, applica (se richiesto) transizioni
+// incrociate video+audio tra uno spezzone e l'altro (alternando i tipi
+// dalla paletteTransizioni per varietà, invece di un'unica dissolvenza
+// sempre uguale), normalizza il volume finale (loudnorm) e disegna
+// l'eventuale testo di apertura e/o chiusura in sovraimpressione animata.
 export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
   const n = opts.clipPaths.length;
   if (n === 0) throw new Error("Nessuno spezzone da montare.");
@@ -260,6 +387,7 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
   let filtri: string[];
   let videoLabel: string;
   let audioLabel: string;
+  let durataFinale: number;
 
   if (n === 1 || opts.transizione === "hard-cut") {
     const videoInputs = opts.clipPaths.map((_, i) => `[${i}:v]`).join("");
@@ -267,8 +395,10 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
     filtri = [`${videoInputs}concat=n=${n}:v=1:a=0[vraw]`, `${audioInputs}concat=n=${n}:v=0:a=1[araw]`];
     videoLabel = "vraw";
     audioLabel = "araw";
+    durataFinale = opts.durateClip.reduce((a, b) => a + b, 0);
   } else {
     const cf = opts.crossfadeSec ?? 0.4;
+    const palette = opts.paletteTransizioni?.length ? opts.paletteTransizioni : ["fade"];
     filtri = [];
     let videoCorrente = "0:v";
     let audioCorrente = "0:a";
@@ -276,9 +406,10 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
     for (let i = 1; i < n; i++) {
       const cfEffettiva = Math.min(cf, opts.durateClip[i - 1] * 0.4, opts.durateClip[i] * 0.4);
       const offset = Math.max(durataCumulata - cfEffettiva, 0.1);
+      const tipoTransizione = palette[(i - 1) % palette.length];
       const vOut = `v${i}`;
       const aOut = `a${i}`;
-      filtri.push(`[${videoCorrente}][${i}:v]xfade=transition=fade:duration=${cfEffettiva.toFixed(2)}:offset=${offset.toFixed(2)}[${vOut}]`);
+      filtri.push(`[${videoCorrente}][${i}:v]xfade=transition=${tipoTransizione}:duration=${cfEffettiva.toFixed(2)}:offset=${offset.toFixed(2)}[${vOut}]`);
       filtri.push(`[${audioCorrente}][${i}:a]acrossfade=d=${cfEffettiva.toFixed(2)}[${aOut}]`);
       videoCorrente = vOut;
       audioCorrente = aOut;
@@ -286,19 +417,30 @@ export async function montaReel(opts: OpzioniMontaggio): Promise<void> {
     }
     videoLabel = videoCorrente;
     audioLabel = audioCorrente;
+    durataFinale = durataCumulata;
   }
 
   // normalizzazione audio finale (sempre reale, mai "finta": loudnorm legge
   // davvero il segnale e lo riporta a un livello coerente per Instagram)
   filtri.push(`[${audioLabel}]loudnorm[afinal]`);
 
+  // Tempo di lettura stimato (~2.3 parole/secondo, un ritmo comodo per un
+  // testo che compare e sparisce sullo schermo, con un minimo di "tenuta"
+  // anche per i testi cortissimi): un testo più lungo resta a schermo di
+  // più invece di sfarfallare via prima di poter essere letto.
+  const durataLettura = (testo: string) => Math.max(1.4, Math.min(4.5, (testo.split(/\s+/).filter(Boolean).length / 2.3) + 0.9));
+
   let videoFinaleLabel = videoLabel;
   if (opts.testoHook) {
-    const testoEscaped = opts.testoHook.replace(/\\/g, "\\\\").replace(/:/g, "\\:").replace(/'/g, "\\'");
-    filtri.push(
-      `[${videoLabel}]drawtext=text='${testoEscaped}':fontcolor=white:fontsize=58:x=(w-text_w)/2:y=140:box=1:boxcolor=black@0.45:boxborderw=24[vfinal]`
-    );
-    videoFinaleLabel = "vfinal";
+    const fineHook = Math.min(durataLettura(opts.testoHook), Math.max(1.2, opts.durateClip[0]));
+    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoHook, 0, fineHook, "150", 52, 22, 3)}[vhook]`);
+    videoFinaleLabel = "vhook";
+  }
+  if (opts.testoChiusura) {
+    const durataChiusura = Math.min(durataLettura(opts.testoChiusura), Math.max(1.2, durataFinale * 0.35));
+    const inizioChiusura = Math.max(0, durataFinale - durataChiusura);
+    filtri.push(`[${videoFinaleLabel}]${filtroTestoAnimato(opts.testoChiusura, inizioChiusura, durataFinale, "h-280", 46, 22, 3)}[vchiusura]`);
+    videoFinaleLabel = "vchiusura";
   }
 
   await eseguiFfmpeg([
@@ -351,7 +493,7 @@ export async function controllaQualita(filePath: string, durataAttesaSecondi: nu
 // egress gratuito quando Meta scarica il video per pubblicarlo.
 export async function caricaSuR2(
   filePath: string,
-  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string; publicBaseUrl: string }
+  opts: { accountId: string; accessKeyId: string; secretAccessKey: string; bucketName: string; dashboardPublicUrl: string }
 ): Promise<string> {
   const buffer = await readFile(filePath);
   const chiaveOggetto = `${randomUUID()}${path.extname(filePath) || ".mp4"}`;
@@ -367,5 +509,7 @@ export async function caricaSuR2(
   if (!res.ok) {
     throw new Error(`Upload del Reel su Cloudflare R2 fallito (${res.status}): ${await res.text().catch(() => "")}`);
   }
-  return `${opts.publicBaseUrl.replace(/\/$/, "")}/${chiaveOggetto}`;
+  // Passa dal proxy della dashboard, non dall'URL diretto di R2 — vedi
+  // lib/r2Upload.ts per il motivo (limite di frequenza sul dominio r2.dev).
+  return `${opts.dashboardPublicUrl.replace(/\/$/, "")}/api/r2-file/${chiaveOggetto}`;
 }

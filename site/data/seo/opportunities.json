@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-21T12:59:51.255Z",
-  "sourceGeneratedAt": "2026-09-21T12:55:08.795Z",
+  "generatedAt": "2026-09-30T06:27:56.329Z",
+  "sourceGeneratedAt": "2026-09-30T06:22:27.557Z",
   "period": {
-    "startDate": "2026-08-21",
-    "endDate": "2026-09-18"
+    "startDate": "2026-08-30",
+    "endDate": "2026-09-27"
   },
   "rules": {
     "positionRange": [
@@ -15,5 +15,18 @@
     "highImpressionsThreshold": 300,
     "mediumImpressionsThreshold": 100
   },
-  "opportunities": []
+  "opportunities": [
+    {
+      "query": "dj set genova",
+      "page": "/",
+      "position": 7.769230769230769,
+      "impressions": 39,
+      "clicks": 0,
+      "ctr": 0,
+      "priority": "LOW",
+      "reason": "La query genera 39 impression con una posizione media di 7.8 (fascia 5-20, non ancora prima pagina), ma un CTR del 0.0%, relativamente basso per questa posizione. Valutare se title, meta description e contenuto della pagina rispondono pienamente all'intento di ricerca. Contiene un riferimento geografico locale (\"Genova\"): possibile opportunità locale, da verificare manualmente — NON creare automaticamente una pagina dedicata.",
+      "localArea": "Genova",
+      "pageExists": true
+    }
+  ]
 }

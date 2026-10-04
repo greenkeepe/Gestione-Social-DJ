@@ -1,6 +1,16 @@
 {
   "_istruzioni": "Risposte pubbliche già date dall'Agente Portavoce ai commenti, per non rispondere due volte allo stesso commento e per mostrarle nella pagina 'Risposte' della dashboard.",
-  "risposte": [],
+  "risposte": [
+    {
+      "commentId": "17902697790604281",
+      "mediaId": "18030194303901745",
+      "permalink": "https://www.instagram.com/p/Ddg0WrfGDog/",
+      "username": "chiarames87",
+      "commentoOriginale": "Un'emozione che non scorderemo mai..una giornata piena di gioie..una giornata che anche grazie a te che con la tua energia e bravura è diventata una vera festa..grazie a te per la persona speciale che sei ❤️ grazie a te che rendi il tuo lavoro un momento indimenticabile per chi ti sceglie ❤️ la nostra scelta migliore ❤️grazie",
+      "risposta": "Grazie di cuore a voi, è stata una gioia immensa condividere questo giorno con voi! ❤️",
+      "timestamp": "2026-09-27T11:27:30.855Z"
+    }
+  ],
   "idCommentiRispostiLegacy": [
     "17943279785966029",
     "17956629257901083",

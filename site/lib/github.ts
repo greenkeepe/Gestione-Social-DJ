@@ -1,8 +1,8 @@
 // Scrittura best-effort su data/*.json del repository (GitHub Contents
-// API), equivalente di dashboard/lib/dataSource.ts ma per il sito (Netlify,
+// API), equivalente di dashboard/lib/dataSource.ts ma per il sito (Vercel,
 // nessun filesystem scrivibile condiviso con dashboard/agenti). Usata solo
 // per far comparire i questionari sposi anche nella dashboard: se
-// GITHUB_REPO/GITHUB_TOKEN non sono configurati su Netlify, la funzione
+// GITHUB_REPO/GITHUB_TOKEN non sono configurati su Vercel, la funzione
 // solleva un errore che il chiamante ignora (l'email resta il canale
 // principale, questo è solo un di più).
 export async function aggiungiVoceSuGitHub<T extends { _istruzioni: string }>(
@@ -14,7 +14,7 @@ export async function aggiungiVoceSuGitHub<T extends { _istruzioni: string }>(
   const branch = process.env.GITHUB_BRANCH ?? "main";
   const token = process.env.GITHUB_TOKEN;
   if (!repo || !token) {
-    throw new Error("GITHUB_REPO e GITHUB_TOKEN non configurati su Netlify.");
+    throw new Error("GITHUB_REPO e GITHUB_TOKEN non configurati su Vercel.");
   }
 
   const url = `https://api.github.com/repos/${repo}/contents/data/${fileName}`;

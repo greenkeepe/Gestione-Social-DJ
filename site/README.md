@@ -76,7 +76,7 @@ invio arriva, in parallelo e senza bloccarsi a vicenda:
 
 1. **Email** (via Resend, stessa configurazione del modulo di contatto).
 2. **Dashboard** — best-effort: se `GITHUB_REPO`/`GITHUB_TOKEN` non sono
-   configurati su Netlify, questo passaggio viene saltato in silenzio e
+   configurati su Vercel, questo passaggio viene saltato in silenzio e
    l'email resta comunque il canale principale.
 3. **Telegram** — best-effort: se `TELEGRAM_BOT_TOKEN`/
    `TELEGRAM_ALLOWED_CHAT_ID` non sono configurati, viene saltato in

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Button } from "./ui/Button";
 
 export function ReelJobActions({ jobId, pronto }: { jobId: string; pronto: boolean }) {
   const [caricamento, setCaricamento] = useState<"usa" | "rigenera" | null>(null);
@@ -35,20 +36,15 @@ export function ReelJobActions({ jobId, pronto }: { jobId: string; pronto: boole
   }
 
   return (
-    <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
+    <div className="flex flex-wrap gap-sm mt-sm">
       {pronto && (
-        <button className="upload-btn" disabled={caricamento !== null} onClick={() => esegui("usa")}>
-          {caricamento === "usa" ? "..." : "Usa per un post"}
-        </button>
+        <Button size="sm" disabled={caricamento !== null} loading={caricamento === "usa"} onClick={() => esegui("usa")}>
+          Usa per un post
+        </Button>
       )}
-      <button
-        className="upload-btn"
-        style={{ background: "transparent", border: "1px solid var(--border)", color: "var(--text-dim)" }}
-        disabled={caricamento !== null}
-        onClick={() => esegui("rigenera")}
-      >
-        {caricamento === "rigenera" ? "..." : "Rigenera"}
-      </button>
+      <Button variant="ghost" size="sm" disabled={caricamento !== null} loading={caricamento === "rigenera"} onClick={() => esegui("rigenera")}>
+        Rigenera
+      </Button>
       {errore && <p className="error-msg" style={{ width: "100%" }}>{errore}</p>}
       {messaggio && (
         <p className="note" style={{ width: "100%" }}>

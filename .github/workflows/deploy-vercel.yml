@@ -1,0 +1,73 @@
+name: Deploy Vercel (solo quando cambia il codice)
+
+# I deploy automatici di Vercel a ogni commit sono spenti (git.deploymentEnabled
+# = false in dashboard/vercel.json e site/vercel.json): gli agenti salvano dati
+# in data/ decine di volte al giorno e ogni commit faceva partire 2 deploy,
+# esaurendo il limite del piano gratuito (100 al giorno). La dashboard legge i
+# dati in diretta da GitHub, quindi per quelli un deploy non serve.
+# Qui si fa partire il deploy (tramite Deploy Hook) SOLO quando cambia il codice
+# della dashboard o del sito, oppure dopo il SEO Engine (che aggiorna site/).
+on:
+  push:
+    branches: [claude/compassionate-planck-xexzrb]
+    paths: ["dashboard/**", "site/**"]
+  workflow_run:
+    workflows: ["SEO Engine - sincronizzazione Search Console"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      cosa:
+        description: "Cosa ripubblicare: dashboard, sito oppure entrambi"
+        required: false
+        default: "entrambi"
+
+concurrency:
+  group: deploy-vercel
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cosa è cambiato
+        id: diff
+        run: |
+          dash=false; sito=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ inputs.cosa }}" in
+              dashboard) dash=true ;;
+              sito) sito=true ;;
+              *) dash=true; sito=true ;;
+            esac
+          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
+            # dopo il SEO Engine: ripubblica il sito solo se site/ è cambiato nelle ultime 3 ore
+            if git log --since="3 hours ago" --format=%H -- site/ | grep -q .; then sito=true; fi
+          else
+            files=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" 2>/dev/null || git diff --name-only HEAD^ HEAD)
+            echo "$files" | grep -q '^dashboard/' && dash=true
+            echo "$files" | grep -q '^site/' && sito=true
+          fi
+          echo "dashboard=$dash" >> "$GITHUB_OUTPUT"
+          echo "sito=$sito" >> "$GITHUB_OUTPUT"
+          echo "Dashboard: $dash — Sito: $sito"
+
+      - name: Deploy dashboard (gestione-social-dj)
+        if: steps.diff.outputs.dashboard == 'true'
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_DASHBOARD }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "::error::Secret VERCEL_DEPLOY_HOOK_DASHBOARD mancante"; exit 1; fi
+          curl -fsS -X POST "$HOOK" > /dev/null && echo "Deploy della dashboard avviato"
+
+      - name: Deploy sito (forte-dj)
+        if: steps.diff.outputs.sito == 'true'
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_SITE }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "::error::Secret VERCEL_DEPLOY_HOOK_SITE mancante"; exit 1; fi
+          curl -fsS -X POST "$HOOK" > /dev/null && echo "Deploy del sito avviato"

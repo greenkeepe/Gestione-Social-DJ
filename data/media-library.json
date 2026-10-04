@@ -1,4 +1,255 @@
 {
   "_istruzioni": "Libreria dei media caricati dalla dashboard (pagina 'Carica media'). Il Media Agent pesca da qui il prossimo file non ancora usato e lo mette in coda per la didascalia.",
-  "items": []
+  "items": [
+    {
+      "id": "de710c6d-99c5-419f-a284-10a8d7549124",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/49c65875-2d05-42b4-ad86-9dfeb90a8665.MOV",
+      "filename": "IMG_4067.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:20:50.719Z",
+      "usatoIl": "2026-09-23T07:57:21.926Z"
+    },
+    {
+      "id": "33ec2a84-d158-4442-b6e5-2efb78603168",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/016a044f-8367-4661-b87a-cf40d35c9ab3.MOV",
+      "filename": "IMG_4084.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:20:53.189Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "49ed9f89-2870-4f17-afca-3b48959d8782",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/635f2309-2908-4e75-bee5-ef9c41f0361c.MOV",
+      "filename": "IMG_4167.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:20:56.391Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "c17343a4-45b8-4b9c-bba0-98b45af1a32b",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/80331ecd-469f-484e-a2de-6d8f072838e6.MOV",
+      "filename": "IMG_4181.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:20:58.293Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "2c023b1b-ea54-44bf-adc8-076f89e8b7e0",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/a0bae141-f51c-466f-8aa6-7ece84153a15.JPG",
+      "filename": "IMG_4184.JPG",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:20:59.859Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "00c06ce6-82cb-4a63-9485-ea02e2db040e",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/dc373b7e-b5c2-413b-860f-647a1e7d93f5.MOV",
+      "filename": "IMG_4187.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:21:01.517Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "3c679d61-eb68-47cb-832f-14902f22faf8",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/9b76107a-92f1-4e87-9b14-d34dd759d81e.JPG",
+      "filename": "IMG_4195.JPG",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:03.107Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "d99bf4f0-5af3-45d9-9671-ec487b0a71a2",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/4a57e234-45a2-48ed-a00a-2554e5e21419.MOV",
+      "filename": "IMG_5427.MOV",
+      "mimeType": "video/quicktime",
+      "uploadedAt": "2026-09-23T07:21:09.134Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "ec7aeb9a-3fa0-4648-a330-1e220dc759d2",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/343e7304-bf6d-4028-a848-2a8e05a4b4e5.jpg",
+      "filename": "6cbbb101-1e5a-43cf-b914-b04ac7a162b5.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:46.596Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "32095a67-1f8a-4648-a06e-c8cd16552bff",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/0599ed3f-520e-4f2b-bf50-29f7205077f0.jpg",
+      "filename": "FB_IMG_1620810286217.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:48.035Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "f5e46b55-8773-4d50-8a2b-aacf06a7ba9f",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/489cdd4c-6015-481c-8e24-d980aec762dc.MP4",
+      "filename": "IMG_4893.MP4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T07:21:51.243Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "ae924d53-b59f-4837-be1b-84fa85ae83bb",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/2afeac63-a680-439b-ae18-274f44975791.jpg",
+      "filename": "IMG_20190721_220227.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:54.286Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "231f1e9a-5038-4e5b-921d-aaf362b28ea4",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/b5e6e8df-a88d-4830-af75-30a2329a84fe.jpg",
+      "filename": "IMG_20210717_225433.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:21:55.901Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z"
+    },
+    {
+      "id": "f5f771a0-1bcc-41cd-bd15-7b229a047b67",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg",
+      "filename": "IMG_5603.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:43:46.276Z",
+      "usatoIl": "2026-09-23T09:02:55.037Z"
+    },
+    {
+      "id": "4800ee04-55ed-4987-af28-e25fdccded25",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/498a13e3-184e-4c46-b15e-fc0036f6c492.jpg",
+      "filename": "IMG_4483.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-09-23T07:56:47.194Z",
+      "usatoIl": "2026-09-23T09:02:55.037Z"
+    },
+    {
+      "id": "151ad571-940d-4bd6-b09e-3f8fd5ffe74d",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/0bae3df4-69ba-46d6-b230-6edf900f6e38.mp4",
+      "filename": "reel-IMG_4496.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T09:01:26.697Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z",
+      "source": "dashboard",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "f507af46-fcf0-4ab9-a8dd-4dfbcde7af04",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/42930d99-bd5f-4779-ad6b-6a69d6decc2a.mp4",
+      "filename": "reel-IMG_1792.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T09:01:26.697Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z",
+      "source": "dashboard",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "182d216d-2ea0-495b-898b-55aa06857b89",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/1dd21ba3-9b08-4d29-9ccc-48120f42c2a9.mp4",
+      "filename": "reel-20260913_020356.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T09:01:26.697Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z",
+      "source": "dashboard",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "adbb14ef-2f57-4ef0-ac4c-3cf72bf511b8",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/ebd2bbb9-ce9e-48cd-a262-736f868af74c.mp4",
+      "filename": "reel-20260912_235706.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T09:01:26.697Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z",
+      "source": "dashboard",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "99224835-b22c-44b0-92c3-6484fc0b4496",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/0d4ee8d7-4c17-400d-a6ce-3c18b9527e31.mp4",
+      "filename": "reel-111762.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T09:01:26.697Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z",
+      "source": "dashboard",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "c20e68d9-8a9d-440f-9588-907ce56ae7f0",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/f39a074b-d4ea-491d-a9b1-8a787065c076.mp4",
+      "filename": "reel-video1.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T09:01:26.697Z",
+      "usatoIl": "2026-09-23T09:02:55.036Z",
+      "source": "dashboard",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "f07ef283-9561-408b-815f-1b5f03463029",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/729e63a2-4eec-42b0-8dec-3fb9c2291184.mp4",
+      "filename": "reel-IMG_5427.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T12:04:28.799Z",
+      "usatoIl": "2026-09-23T12:07:51.449Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/e3a3b54a-9f11-46e5-b336-8ec46d232793.mp4",
+      "filename": "reel-IMG_4187.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T12:05:03.191Z",
+      "usatoIl": "2026-09-23T12:07:51.449Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "d6602d2f-da56-433a-a7d7-81b3cc6f8347",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/08788b06-9c37-4eeb-b291-fedcd17b060e.mp4",
+      "filename": "reel-IMG_4181.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T12:30:52.427Z",
+      "usatoIl": "2026-09-23T13:02:11.958Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/ac0438fe-c43e-4136-8d40-004b15361752.mp4",
+      "filename": "reel-IMG_4167.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T12:31:25.919Z",
+      "usatoIl": "2026-09-23T13:02:11.958Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "171bc915-5b9d-4c24-8800-cc7c2e42e738",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/f59d19f6-bbdc-460e-9477-3433083fd024.mp4",
+      "filename": "reel-IMG_4084.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T12:32:01.637Z",
+      "usatoIl": "2026-09-23T13:02:11.958Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "e3ee4116-1f44-49e3-baf0-533b267b138f",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/2ded59bc-9e90-4697-b8e8-1065d53f3dc0.mp4",
+      "filename": "reel-IMG_4067.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-23T12:32:34.657Z",
+      "usatoIl": "2026-09-23T13:02:11.958Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/7b90f191-d1bc-4d9b-ae36-d29bf61ab92a.mp4",
+      "filename": "reel-IMG_4893.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-09-28T13:40:18.728Z",
+      "usatoIl": "2026-09-28T13:41:24.484Z",
+      "source": "dashboard-upload",
+      "istruzioniUtente": null
+    }
+  ]
 }

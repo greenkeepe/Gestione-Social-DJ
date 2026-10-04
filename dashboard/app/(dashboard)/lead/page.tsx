@@ -1,5 +1,11 @@
+import { Users } from "lucide-react";
 import { leggiDati } from "../../../lib/dataSource";
 import type { LeadsFile } from "../../../lib/types";
+import { PageHeader } from "../../../components/ui/PageHeader";
+import { EmptyState } from "../../../components/ui/EmptyState";
+import { StatusBadge } from "../../../components/ui/StatusBadge";
+import { LeadActions } from "../../../components/LeadActions";
+import { statusVocabulary } from "../../../lib/statusVocabulary";
 
 export const dynamic = "force-dynamic";
 
@@ -10,15 +16,14 @@ export default async function LeadPage() {
 
   return (
     <div>
-      <h2>Lead</h2>
-      <p className="note">
-        Queste sono bozze di messaggi preparate dall&apos;Agente Cacciatore per persone che hanno già interagito con i tuoi contenuti.
-        <strong> Nessun messaggio viene inviato automaticamente</strong>: copia il testo (o modificalo) e invialo tu da Instagram/Facebook.
-        Dopo averlo inviato, aggiorna manualmente lo stato in data/leads.json (o chiedimelo per aggiungere un pulsante dedicato).
-      </p>
+      <PageHeader
+        icon={<Users size={22} aria-hidden="true" />}
+        title="Lead"
+        description="Bozze di messaggi preparate dall'Agente Cacciatore per persone che hanno già interagito con i tuoi contenuti. Nessun messaggio viene inviato automaticamente: copia il testo (o modificalo) e invialo tu da Instagram/Facebook, poi segna qui l'esito."
+      />
 
       <h3>Da rivedere ({daRivedere.length})</h3>
-      {daRivedere.length === 0 && <p className="note">Nessuna nuova bozza al momento.</p>}
+      {daRivedere.length === 0 && <EmptyState title="Nessuna nuova bozza al momento" />}
       <div className="grid">
         {daRivedere.map((l) => (
           <div className="card" key={l.id}>
@@ -27,6 +32,7 @@ export default async function LeadPage() {
             <p className="note">Commento: &ldquo;{l.commentoOriginale}&rdquo;</p>
             <p><strong>Messaggio proposto:</strong><br />{l.messaggioProposto}</p>
             <p className="note">{new Date(l.creatoIl).toLocaleString("it-IT")}</p>
+            <LeadActions id={l.id} messaggio={l.messaggioProposto} />
           </div>
         ))}
       </div>
@@ -40,7 +46,7 @@ export default async function LeadPage() {
               {altri.map((l) => (
                 <tr key={l.id}>
                   <td>@{l.username}</td>
-                  <td>{l.status}</td>
+                  <td><StatusBadge {...statusVocabulary.lead(l.status)} /></td>
                   <td>{new Date(l.creatoIl).toLocaleString("it-IT")}</td>
                 </tr>
               ))}

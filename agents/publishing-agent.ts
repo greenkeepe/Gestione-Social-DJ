@@ -22,6 +22,8 @@ interface PostsQueueFile {
     dataProgrammata?: string | null;
     media: { downloadUrl: string; mimeType: string };
     pillarId?: string;
+    ultimoErrore?: string | null;
+    tentativiFalliti?: number;
   }>;
 }
 
@@ -38,6 +40,21 @@ interface PublishedLogFile {
 // sempre la pubblicazione. Allargata per assorbire il ritardo tipico
 // osservato, restando comunque "lo stesso giorno".
 const FINESTRA_TOLLERANZA_MINUTI = 300;
+
+// Un contenuto "pubblicato" con successo non serve più in posts-queue.json:
+// lo storico vero è published-log.json (letto a parte dalla pagina
+// "Contenuti"), e niente qui dentro torna mai a cercare un elemento già
+// concluso — a differenza di "pubblicato-parziale", MAI toccato qui, che
+// riprovaPubblicazioneParziale() deve poter ritrovare finché non è
+// completato. Tolta solo la roba di ieri e prima (mai la data di oggi): le
+// pianificazioni "un contenuto al giorno" di content-agent/media-agent/
+// sito-agent guardano solo da oggi in avanti, quindi non c'è nessun rischio
+// di doppio slot sullo stesso giorno.
+function pulisciPubblicatiVecchi(queueFile: PostsQueueFile, oggi: string): boolean {
+  const primaDellaPulizia = queueFile.queue.length;
+  queueFile.queue = queueFile.queue.filter((p) => !(p.status === "pubblicato" && (!p.dataProgrammata || p.dataProgrammata < oggi)));
+  return queueFile.queue.length !== primaDellaPulizia;
+}
 
 function siamoNellaFinestra(orarioProgrammato: string): boolean {
   const ora = new Date();
@@ -71,35 +88,59 @@ export async function eseguiPublishingAgent(): Promise<void> {
       (p) => p.status === "pubblicato-parziale" && (!forzaQueueId || p.id === forzaQueueId)
     );
     if (parziale) {
-      await riprovaPubblicazioneParziale(parziale, queueFile, logFile);
+      await riprovaPubblicazioneParziale(parziale, queueFile, logFile, oggi);
       return;
     }
 
-    const pubblicatoOggi = logFile.log.some((p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi));
-    if (pubblicatoOggi && !forzaQueueId) {
-      await logAgentRun({
-        agente: IDENTITA.publishing.nome,
-        identita: IDENTITA.publishing.ruolo,
-        status: "nessuna-azione",
-        riepilogo: "Già pubblicato un contenuto oggi, evito doppie pubblicazioni."
-      });
-      return;
-    }
+    // Due "canali" separati, non un unico limite "1 pubblicazione al
+    // giorno" in totale: al massimo 1 post evento (foto/reel/testimonianza)
+    // + 1 post "sito" (agents/sito-agent.ts) al giorno. Un contenuto sito
+    // non ruba mai il turno a uno evento e viceversa — ognuno ha il suo
+    // conteggio "già pubblicato oggi" indipendente.
+    const categoriaDi = (formato: unknown) => (formato === "sito" ? "sito" : "evento");
+    const categorieGiaPubblicateOggi = new Set(
+      logFile.log
+        .filter((p) => typeof p.timestamp === "string" && p.timestamp.startsWith(oggi))
+        .map((p) => categoriaDi(p.formato))
+    );
 
+    // Solo i contenuti il cui giorno programmato è oggi o già passato sono
+    // pubblicabili adesso: un contenuto pianificato per un giorno futuro
+    // (vedi lib/bestTime.ts > pianificaProssimaPubblicazione, che spalmA il
+    // caricamento massivo di più foto/video su giorni diversi) deve
+    // aspettare il suo turno, non uscire in anticipo solo perché è il primo
+    // della coda con un orario che combacia con l'ora attuale. Tra i
+    // contenuti eleggibili si prende sempre quello con la data più vecchia
+    // (mai quello con la data più lontana, anche se più avanti nell'array).
     const target = forzaQueueId
       ? queueFile.queue.find((p) => p.id === forzaQueueId && p.status === "pronto")
-      : queueFile.queue.find((p) => p.status === "pronto" && p.orarioProgrammato);
+      : queueFile.queue
+          .filter(
+            (p) =>
+              p.status === "pronto" &&
+              p.orarioProgrammato &&
+              (!p.dataProgrammata || p.dataProgrammata <= oggi) &&
+              !categorieGiaPubblicateOggi.has(categoriaDi(p.formato))
+          )
+          .sort((a, b) => (a.dataProgrammata ?? "").localeCompare(b.dataProgrammata ?? ""))[0];
     if (!target) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,
         status: "nessuna-azione",
-        riepilogo: forzaQueueId ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.` : "Nessun contenuto pronto in coda."
+        riepilogo: forzaQueueId
+          ? `Pubblicazione forzata richiesta per un id (${forzaQueueId}) non trovato o non pronto.`
+          : "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili)."
       });
       return;
     }
 
-    if (!forzaQueueId && !siamoNellaFinestra(target.orarioProgrammato!)) {
+    // Un contenuto rimasto indietro rispetto al giorno programmato (es. un
+    // ciclo saltato) va pubblicato appena possibile, senza aspettare che
+    // l'orologio ripassi esattamente dall'orario originale: quel controllo
+    // ha senso solo per un contenuto programmato per la giornata odierna.
+    const inRitardo = Boolean(target.dataProgrammata && target.dataProgrammata < oggi);
+    if (!forzaQueueId && !inRitardo && !siamoNellaFinestra(target.orarioProgrammato!)) {
       await logAgentRun({
         agente: IDENTITA.publishing.nome,
         identita: IDENTITA.publishing.ruolo,
@@ -123,7 +164,8 @@ export async function eseguiPublishingAgent(): Promise<void> {
       risultatoIg = await pubblicaSuInstagram({
         imageUrl: isVideo ? undefined : target.media.downloadUrl,
         videoUrl: isVideo ? target.media.downloadUrl : undefined,
-        isReel: target.formato === "reel",
+        // Ogni video esce come Reel (Instagram non accetta più il tipo "VIDEO"): vale anche per i contenuti "sito" trasformati in reel da Regia
+        isReel: target.formato === "reel" || isVideo,
         caption
       });
     } catch (err) {
@@ -160,14 +202,24 @@ export async function eseguiPublishingAgent(): Promise<void> {
 
     if (!risultatoIg && !risultatoFb) {
       // Nessuna pubblicazione è uscita davvero: il contenuto resta "pronto"
-      // e si può ritentare tranquillamente al prossimo ciclo.
-      throw new Error(`Instagram: ${erroreIg}. Facebook: ${erroreFb}`);
+      // e si può ritentare tranquillamente al prossimo ciclo. Salviamo
+      // comunque l'errore sul contenuto stesso (non solo nel log agenti):
+      // così la pagina "Contenuti" può segnalarlo ed è facile da eliminare
+      // se è un errore permanente (es. media cancellato da R2) invece di
+      // continuare a ritentarlo in eterno bloccando la coda.
+      const messaggioErrore = `Instagram: ${erroreIg}. Facebook: ${erroreFb}`;
+      target.tentativiFalliti = (target.tentativiFalliti ?? 0) + 1;
+      target.ultimoErrore = messaggioErrore;
+      await writeData("posts-queue.json", queueFile);
+      throw new Error(messaggioErrore);
     }
 
     // Almeno una pubblicazione è uscita: il contenuto NON deve più tornare
     // "pronto", altrimenti verrebbe ripubblicato in doppione sulla
     // piattaforma che ha già funzionato.
     target.status = risultatoIg && risultatoFb ? "pubblicato" : "pubblicato-parziale";
+    target.ultimoErrore = null;
+    target.tentativiFalliti = 0;
 
     logFile.log.unshift({
       queueId: target.id,
@@ -180,6 +232,7 @@ export async function eseguiPublishingAgent(): Promise<void> {
       hashtags: target.hashtags ?? [],
       punteggio: null
     });
+    pulisciPubblicatiVecchi(queueFile, oggi);
     await writeData("published-log.json", logFile);
     await writeData("posts-queue.json", queueFile);
 
@@ -230,7 +283,8 @@ export async function eseguiPublishingAgent(): Promise<void> {
 async function riprovaPubblicazioneParziale(
   target: PostsQueueFile["queue"][number],
   queueFile: PostsQueueFile,
-  logFile: PublishedLogFile
+  logFile: PublishedLogFile,
+  oggi: string
 ): Promise<void> {
   const voce = logFile.log.find((v) => v.queueId === target.id) as
     | { instagramId: string | null; facebookId: string | null; instagramStoryId?: string | null }
@@ -257,7 +311,8 @@ async function riprovaPubblicazioneParziale(
       const risultato = await pubblicaSuInstagram({
         imageUrl: isVideo ? undefined : target.media.downloadUrl,
         videoUrl: isVideo ? target.media.downloadUrl : undefined,
-        isReel: target.formato === "reel",
+        // Ogni video esce come Reel (Instagram non accetta più il tipo "VIDEO"): vale anche per i contenuti "sito" trasformati in reel da Regia
+        isReel: target.formato === "reel" || isVideo,
         caption
       });
       voce.instagramId = risultato.id;
@@ -288,6 +343,7 @@ async function riprovaPubblicazioneParziale(
   } else {
     // Entrambi gli id erano già presenti: lo stato non era coerente col log, lo sistemiamo senza ripubblicare nulla.
     target.status = "pubblicato";
+    pulisciPubblicatiVecchi(queueFile, oggi);
     await writeData("posts-queue.json", queueFile);
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
@@ -301,6 +357,9 @@ async function riprovaPubblicazioneParziale(
   await writeData("published-log.json", logFile);
 
   if (nuovoErrore) {
+    target.tentativiFalliti = (target.tentativiFalliti ?? 0) + 1;
+    target.ultimoErrore = `${piattaforma}: ${nuovoErrore}`;
+    await writeData("posts-queue.json", queueFile);
     await logAgentRun({
       agente: IDENTITA.publishing.nome,
       identita: IDENTITA.publishing.ruolo,
@@ -313,6 +372,9 @@ async function riprovaPubblicazioneParziale(
 
   const oraCompleto = Boolean(voce.instagramId && voce.facebookId);
   target.status = oraCompleto ? "pubblicato" : "pubblicato-parziale";
+  target.ultimoErrore = null;
+  target.tentativiFalliti = 0;
+  if (oraCompleto) pulisciPubblicatiVecchi(queueFile, oggi);
   await writeData("posts-queue.json", queueFile);
 
   await logAgentRun({

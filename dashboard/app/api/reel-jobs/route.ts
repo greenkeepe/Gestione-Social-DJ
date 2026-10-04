@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
-import { aggiornaDatiSuGitHub } from "../../../lib/dataSource";
+import { aggiornaDatiSuGitHub, lanciaWorkflow } from "../../../lib/dataSource";
 import type { ReelJobsFile, ProfiloReel } from "../../../lib/types";
 
 export const runtime = "nodejs";
@@ -53,6 +53,16 @@ export async function POST(req: Request) {
     );
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
+  }
+
+  // Avvia subito il Regista invece di aspettare il prossimo giro
+  // programmato (ogni ~20 minuti): così il montaggio parte appena carichi
+  // il video. Best-effort: se fallisce, il ciclo automatico lo prende
+  // comunque al prossimo giro.
+  try {
+    await lanciaWorkflow("reel-maker.yml");
+  } catch {
+    /* non bloccante */
   }
 
   return NextResponse.json({ ok: true });

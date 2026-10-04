@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Pencil } from "lucide-react";
+import { Button } from "./ui/Button";
 
 interface Props {
   id: string;
@@ -51,9 +53,9 @@ export function EditQueueItemForm({ id, caption, hashtags, orarioProgrammato, da
 
   if (!aperto) {
     return (
-      <button type="button" className="upload-btn" style={{ background: "transparent", border: "1px solid var(--border)", color: "var(--text-dim)" }} onClick={() => setAperto(true)}>
-        ✏️ Modifica
-      </button>
+      <Button variant="ghost" size="sm" onClick={() => setAperto(true)}>
+        <Pencil size={14} aria-hidden="true" /> Modifica
+      </Button>
     );
   }
 
@@ -84,18 +86,13 @@ export function EditQueueItemForm({ id, caption, hashtags, orarioProgrammato, da
         onChange={(e) => setOrario(e.target.value)}
         style={{ marginBottom: 6 }}
       />
-      <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-        <button type="button" className="upload-btn" disabled={salvataggio} onClick={salva}>
-          {salvataggio ? "..." : "Salva"}
-        </button>
-        <button
-          type="button"
-          className="upload-btn"
-          style={{ background: "transparent", border: "1px solid var(--border)", color: "var(--text-dim)" }}
-          onClick={() => setAperto(false)}
-        >
+      <div className="flex gap-sm mt-sm">
+        <Button size="sm" loading={salvataggio} onClick={salva}>
+          Salva
+        </Button>
+        <Button variant="ghost" size="sm" onClick={() => setAperto(false)}>
           Annulla
-        </button>
+        </Button>
       </div>
       {errore && <p className="error-msg">{errore}</p>}
     </div>

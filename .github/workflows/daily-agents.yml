@@ -8,10 +8,9 @@ on:
   # di Vercel, visto dal vivo). Se il cron di Vercel salta un giorno, questo
   # schedule fa comunque partire il ciclo, anche se con qualche ora di
   # ritardo (limite noto di GitHub Actions sui repository con poca attività
-  # continua). Se per caso scattano entrambi lo stesso giorno, il ciclo gira
-  # due volte (innocuo: la pubblicazione ha già il suo limite di 1/giorno,
-  # l'Esploratore dedupe da solo) — solo il resoconto Telegram viene evitato
-  # la seconda volta, vedi il controllo in master-agent.ts.
+  # continua). Se scattano entrambi lo stesso giorno, il secondo avvio fa solo
+  # il "giro rapido" (didascalie + pubblicazione), non di nuovo tutto il
+  # ciclo: vedi eseguiMasterAgent in agents/master-agent.ts.
   schedule:
     - cron: "0 6 * 4,5,6,7,8,9 *" # CEST (UTC+2, aprile-settembre) -> 08:00 locali
     - cron: "0 7 * 1,2,3,10,11,12 *" # CET (UTC+1, ottobre-marzo) -> 08:00 locali
@@ -29,9 +28,14 @@ on:
         description: "Manda subito una proposta di Nota Instagram su Telegram, ignorando la probabilità casuale (solo per test manuali)"
         type: boolean
         default: false
+      ciclo_completo:
+        description: "Rifai il ciclo completo anche se è già stato fatto oggi (di norma dal secondo avvio del giorno si fanno solo didascalie e pubblicazione)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: gestione-social-dj-agents
@@ -58,6 +62,9 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      - name: Installa Playwright (Chromium)
+        run: npx playwright install --with-deps chromium
+
       # actions/checkout blocca il codice al commit che esisteva nel momento
       # in cui QUESTO workflow è stato innescato, non a quello reale al
       # momento in cui parte davvero: se un'altra esecuzione (es. il Regista
@@ -81,7 +88,7 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-          R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
           # Il resoconto mattutino su Telegram parte SOLO dal vero ciclo
@@ -89,6 +96,7 @@ jobs:
           MORNING_REPORT: ${{ github.event_name == 'schedule' || inputs.forza_resoconto == true }}
           FORCE_TESTIMONIANZA: ${{ inputs.forza_testimonianza }}
           FORCE_NOTA: ${{ inputs.forza_nota }}
+          CICLO_COMPLETO: ${{ inputs.ciclo_completo }}
         run: npm run master
 
       - name: Commit e push dei dati aggiornati
@@ -101,9 +109,18 @@ jobs:
             for i in 1 2 3 4 5; do
               git push && break
               echo "Push rifiutato (probabile scrittura concorrente su data/), riprovo dopo un rebase..."
-              git pull --rebase origin "${GITHUB_REF_NAME}"
+              git pull --rebase origin "${GITHUB_REF_NAME}" || { echo "Rebase in conflitto reale, annullo per ripartire da uno stato pulito"; git rebase --abort 2>/dev/null || true; }
               sleep $((RANDOM % 5 + 1))
             done
           else
             echo "Nessuna modifica ai dati da salvare."
           fi
+
+      # Avvia subito l'Agente Regista (Regia): le foto/testimonianze appena
+      # entrate in coda con la didascalia diventano Reel senza aspettare il suo
+      # giro programmato, che GitHub a volte ritarda o salta.
+      - name: Avvia Agente Regista (Reel da foto con Regia)
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run reel-maker.yml --ref "${GITHUB_REF_NAME}" || echo "Avvio non riuscito: ci penserà il giro programmato"

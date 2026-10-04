@@ -1,9 +1,9 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import NextLink from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { siteConfig } from "@/data/site";
+import { cities } from "@/data/cities";
 
 const socialLinks = [
   { href: siteConfig.instagramUrl, label: "Instagram", Icon: InstagramIcon },
@@ -14,6 +14,7 @@ const socialLinks = [
 export function Footer() {
   const t = useTranslations("Footer");
   const tNav = useTranslations("Nav");
+  const locale = useLocale();
   const navLinks = [
     { href: "/", label: tNav("home") },
     { href: "/matrimoni", label: tNav("matrimoni") },
@@ -88,6 +89,18 @@ export function Footer() {
               areas: siteConfig.serviceAreas.join(", "),
             })}
           </p>
+          {/* pagine locali "DJ a <città>", solo in italiano */}
+          {locale === "it" ? (
+            <ul className="mt-3 flex flex-col gap-1 text-sm text-ivory-dim">
+              {cities.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/dj/${c.slug}`} className="hover:text-champagne">
+                    DJ a {c.nome}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <p className="mt-6 eyebrow mb-4">{t("legal")}</p>
           <ul className="flex flex-col gap-2 text-sm text-ivory-dim">
             <li>
@@ -105,27 +118,27 @@ export function Footer() {
       </div>
 
       <div className="border-t border-line py-6 pb-24 lg:pb-6">
-        <p className="container-edit text-center text-xs text-ivory-dim/70">
-          © {new Date().getFullYear()} Forte DJ. {t("rightsReserved")}{" "}
-          {/* Link Next.js "semplice" (non quello i18n): /admin non fa parte
-              delle rotte multilingua, un prefisso di lingua lo romperebbe. */}
-          <NextLink
-            href="/admin/seo"
-            aria-label={t("seoAreaLabel")}
-            className="opacity-30 hover:opacity-100"
-          >
-            ·
-          </NextLink>{" "}
+        <div className="container-edit flex flex-col items-center gap-3 text-xs text-ivory-dim/70 sm:flex-row sm:justify-between">
+          <p className="text-center">
+            © {new Date().getFullYear()} Forte DJ. {t("rightsReserved")}
+          </p>
+
+          {/* Un solo link, non un menu con due voci: la pagina "SEO" della
+              dashboard mostra ormai anche i dati grezzi di Search Console
+              (vedi dashboard/app/(dashboard)/seo/page.tsx), quindi non serve
+              più scegliere tra due destinazioni diverse. Pulsante visibile
+              (non un elemento nascosto/illeggibile): un visitatore normale
+              lo vede ma non ha comunque le credenziali per usarlo, protetto
+              dal login della dashboard. */}
           <a
             href={siteConfig.socialDashboardUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t("socialDashboardLabel")}
-            className="opacity-30 hover:opacity-100"
+            className="rounded-full border border-line px-4 py-1.5 font-medium text-ivory-dim transition-colors hover:border-champagne hover:text-champagne"
           >
-            ·
+            {t("adminButton")}
           </a>
-        </p>
+        </div>
       </div>
     </footer>
   );

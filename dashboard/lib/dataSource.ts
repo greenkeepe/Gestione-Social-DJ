@@ -2,10 +2,32 @@
 // così la dashboard mostra sempre i dati più recenti aggiornati dagli agenti
 // via GitHub Actions, senza bisogno di ridistribuire il sito ogni volta.
 // In sviluppo locale, se GITHUB_REPO non è impostato, legge dal filesystem.
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { unstable_cache, revalidateTag } from "next/cache";
 
-async function leggiDaGitHub<T>(percorsoRelativo: string): Promise<T> {
+// Memoria breve delle letture da GitHub: prima ogni pagina rileggeva ogni
+// file a ogni apertura (anche 5 letture in fila per "Locali"). Ora un file
+// letto da meno di 30 secondi arriva dalla memoria di Vercel. Ogni scrittura
+// fatta dalla dashboard svuota subito la memoria (vedi
+// aggiornaDatiSuPercorso), così dopo un salvataggio si vede il dato nuovo;
+// quello che scrivono gli agenti compare entro 30 secondi.
+const TAG_DATI = "dati-github";
+const leggiDaGitHub = unstable_cache(
+  async (percorsoRelativo: string) => leggiDaGitHubDiretto<unknown>(percorsoRelativo),
+  ["github-file-v1"],
+  { revalidate: 30, tags: [TAG_DATI] }
+) as <T>(percorsoRelativo: string) => Promise<T>;
+
+function svuotaMemoriaDati() {
+  try {
+    revalidateTag(TAG_DATI);
+  } catch {
+    /* fuori da una richiesta (es. script): niente da svuotare */
+  }
+}
+
+async function leggiDaGitHubDiretto<T>(percorsoRelativo: string): Promise<T> {
   const repo = process.env.GITHUB_REPO;
   const branch = process.env.GITHUB_BRANCH ?? "main";
   const token = process.env.GITHUB_TOKEN;
@@ -38,6 +60,20 @@ export async function leggiDati<T>(fileName: string): Promise<T> {
   return leggiDaFilesystem<T>("data", fileName);
 }
 
+// Variante generica di leggiDati/aggiornaDatiSuGitHub: percorsoRelativo è il
+// percorso COMPLETO nel repository (es. "site/data/seo/seo-proposte.json"
+// o "site/messages/it.json"), non solo il nome file dentro data/. Serve
+// alla pagina "SEO" della dashboard, che legge e scrive file del progetto
+// site/ (un'altra cartella dello stesso repository), non di data/.
+export async function leggiDatiRepo<T>(percorsoRelativo: string): Promise<T> {
+  if (process.env.GITHUB_REPO) {
+    return leggiDaGitHub<T>(percorsoRelativo);
+  }
+  const filePath = path.resolve(process.cwd(), "..", percorsoRelativo);
+  const raw = await readFile(filePath, "utf-8");
+  return JSON.parse(raw) as T;
+}
+
 // Legge config/brand.json — usato dalla pagina "Anteprima" per mostrare
 // i post come appariranno davvero (nome account, handle, ecc.)
 export async function leggiConfig<T>(fileName: string): Promise<T> {
@@ -55,20 +91,42 @@ export async function aggiornaDatiSuGitHub<T>(
   mutate: (attuale: T) => T,
   messaggioCommit: string
 ): Promise<void> {
+  return aggiornaDatiSuPercorso(`data/${fileName}`, mutate, messaggioCommit);
+}
+
+// Variante generica: percorsoRelativo è il percorso COMPLETO nel repository
+// (es. "site/messages/it.json"), non solo il nome file dentro data/. Usata
+// dalla pagina "SEO" per applicare una proposta di titolo/meta description
+// direttamente nei file del progetto site/. In locale (senza GITHUB_REPO)
+// legge/scrive sul filesystem, così resta testabile senza credenziali.
+export async function aggiornaDatiSuPercorso<T>(
+  percorsoRelativo: string,
+  mutate: (attuale: T) => T,
+  messaggioCommit: string
+): Promise<void> {
   const repo = process.env.GITHUB_REPO;
   const branch = process.env.GITHUB_BRANCH ?? "main";
   const token = process.env.GITHUB_TOKEN;
+
   if (!repo || !token) {
-    throw new Error("GITHUB_REPO e GITHUB_TOKEN (con permesso di scrittura) sono necessari per caricare media dalla dashboard.");
+    if (repo || token) {
+      throw new Error("GITHUB_REPO e GITHUB_TOKEN (con permesso di scrittura) devono essere impostati entrambi.");
+    }
+    const filePath = path.resolve(process.cwd(), "..", percorsoRelativo);
+    const raw = await readFile(filePath, "utf-8");
+    const attuale = JSON.parse(raw) as T;
+    const nuovo = mutate(attuale);
+    await writeFile(filePath, JSON.stringify(nuovo, null, 2) + "\n", "utf-8");
+    return;
   }
 
-  const url = `https://api.github.com/repos/${repo}/contents/data/${fileName}`;
+  const url = `https://api.github.com/repos/${repo}/contents/${percorsoRelativo}`;
   const getRes = await fetch(`${url}?ref=${branch}`, {
     headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}` },
     cache: "no-store"
   });
   if (!getRes.ok) {
-    throw new Error(`Impossibile leggere data/${fileName} da GitHub prima di scrivere (${getRes.status}): ${await getRes.text()}`);
+    throw new Error(`Impossibile leggere ${percorsoRelativo} da GitHub prima di scrivere (${getRes.status}): ${await getRes.text()}`);
   }
   const getJson = (await getRes.json()) as { sha: string; content: string };
   const attuale = JSON.parse(Buffer.from(getJson.content, "base64").toString("utf-8")) as T;
@@ -82,8 +140,9 @@ export async function aggiornaDatiSuGitHub<T>(
     body: JSON.stringify({ message: messaggioCommit, content: nuovoContenuto, sha: getJson.sha, branch })
   });
   if (!putRes.ok) {
-    throw new Error(`Impossibile scrivere data/${fileName} su GitHub (${putRes.status}): ${await putRes.text()}`);
+    throw new Error(`Impossibile scrivere ${percorsoRelativo} su GitHub (${putRes.status}): ${await putRes.text()}`);
   }
+  svuotaMemoriaDati();
 }
 
 // Lancia manualmente un workflow GitHub Actions (workflow_dispatch) — usato

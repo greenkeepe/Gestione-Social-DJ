@@ -3,6 +3,8 @@
 import { Fragment, useState } from "react";
 import type { QuestionarioSposi } from "../lib/types";
 import { SegnaLettoButton } from "./SegnaLettoButton";
+import { StatusBadge } from "./ui/StatusBadge";
+import { statusVocabulary } from "../lib/statusVocabulary";
 
 function Riga({ label, valore }: { label: string; valore?: string | null }) {
   if (!valore) return null;
@@ -17,6 +19,7 @@ export function TabellaQuestionariSposi({ questionari }: { questionari: Question
   const [apertoId, setApertoId] = useState<string | null>(null);
 
   return (
+    <div className="table-scroll">
     <table>
       <thead>
         <tr>
@@ -41,7 +44,9 @@ export function TabellaQuestionariSposi({ questionari }: { questionari: Question
                   {q.oraEvento ? ` · ${q.oraEvento}` : ""}
                 </td>
                 <td>{q.location.nome}</td>
-                <td>{q.letto ? "Letto" : "🆕 Nuovo"}</td>
+                <td>
+                  <StatusBadge {...statusVocabulary.questionario(q.letto ? "letto" : "nuovo")} />
+                </td>
                 <td onClick={(e) => e.stopPropagation()}>
                   <SegnaLettoButton id={q.id} letto={q.letto} />
                 </td>
@@ -107,5 +112,6 @@ export function TabellaQuestionariSposi({ questionari }: { questionari: Question
         })}
       </tbody>
     </table>
+    </div>
   );
 }

@@ -9,6 +9,10 @@ import type { ContattoLocale, OutreachConfigFile, OutreachFile, OutreachTemplate
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+// CRON_SECRET impostato tra le Environment Variables di Vercel il
+// 2026-09-24: nessuna modifica funzionale qui, solo per far ripartire un
+// deploy fresco che la legga.
+//
 // Cron giornaliero (vedi dashboard/vercel.json): invia in automatico fino a
 // "maxAlGiorno" bozze già pronte dell'Esploratore, sempre e solo col
 // modello che Andrea ha validato nella pagina "Locali" — nessuna variante,

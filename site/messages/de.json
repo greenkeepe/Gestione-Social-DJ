@@ -29,8 +29,7 @@
     "legal": "Rechtliches",
     "privacyPolicy": "Datenschutzerklärung",
     "cookiePolicy": "Cookie-Richtlinie",
-    "seoAreaLabel": "SEO-Bereich",
-    "socialDashboardLabel": "Social-Media-Verwaltung",
+    "adminButton": "Admin",
     "rightsReserved": "Alle Rechte vorbehalten."
   },
   "Hero": {

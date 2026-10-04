@@ -21,15 +21,16 @@ import { readFile } from "node:fs/promises";
 import { readData, writeData, readBrand } from "../lib/storage.js";
 import { logAgentRun } from "../lib/agentLog.js";
 import { inviaMessaggioTelegram } from "../lib/telegram.js";
+import { commitEPush } from "../lib/gitCommit.js";
 import { generaTestoConLLM, generaTestoConLLMEImmagine, type ImmagineDaAnalizzare } from "../lib/llm.js";
 import { IDENTITA } from "./identities.js";
-import { scegliOrarioDelGiorno } from "../lib/bestTime.js";
+import { pianificaProssimaPubblicazione } from "../lib/bestTime.js";
 import { campionaPesato, type VoceLogPerformance } from "../lib/performanceLearning.js";
 import {
   verificaFfmpegDisponibile,
   creaCartellaTemporanea,
   rimuoviCartella,
-  scaricaFile,
+  scaricaDaR2,
   analizzaVideo,
   estraiFotogramma
 } from "../lib/videoTools.js";
@@ -161,47 +162,87 @@ function testoIncoraggiaSalvataggio(): string {
 // Facebook) un URL nella didascalia NON è mai cliccabile — solo bio,
 // Stories con sticker link o pulsante di contatto del profilo lo sono.
 // Il DM è sempre nativo su entrambe le piattaforme, senza setup; il
-// pulsante WhatsApp sul profilo è citabile solo dopo averlo attivato
-// davvero (config/brand.json > contatti.whatsappBottoneAttivo).
+// pulsante WhatsApp sul profilo e il link al sito in bio sono citabili solo
+// dopo averli attivati davvero (config/brand.json > contatti.
+// whatsappBottoneAttivo / sitoWebBottoneAttivo).
+//
+// TUTTI e tre i modi di contatto disponibili vengono nominati insieme,
+// sempre (non uno a caso tra i tre): il DM è sempre presente, WhatsApp e
+// sito si aggiungono quando davvero attivi — mai lasciarne fuori uno per
+// caso solo perché la scelta casuale ha pescato un'altra variante.
 export function testoCtaContatto(brand: Record<string, any>): string | null {
   if (!brand.contatti?.whatsapp && !brand.nomeArte) return null;
-  const varianti = [
+
+  const variantiDM = [
     "Scrivimi in DM per info e disponibilità.",
     "Mandami un messaggio privato se vuoi sapere di più.",
     "Scrivimi qui in DM, ti rispondo con tutti i dettagli."
   ];
+  const pezzi = [variantiDM[Math.floor(Math.random() * variantiDM.length)]];
+
   if (brand.contatti?.whatsappBottoneAttivo) {
-    varianti.push(
-      "Scrivimi in DM o tocca il bottone WhatsApp sul profilo per info e disponibilità.",
-      "Trovi il bottone WhatsApp sul mio profilo: scrivimi per i dettagli."
-    );
+    pezzi.push("Trovi anche il bottone WhatsApp sul mio profilo, se preferisci.");
   }
   if (brand.contatti?.sitoWebBottoneAttivo) {
-    varianti.push(
-      "Trovi foto, recensioni e tutti i dettagli sul sito, link in bio.",
-      "Il sito con portfolio e recensioni è in bio: dai un'occhiata!"
-    );
+    pezzi.push("Sul sito in bio trovi foto, recensioni e tutti i dettagli.");
   }
-  return varianti[Math.floor(Math.random() * varianti.length)];
+  return pezzi.join(" ");
 }
 
-// Prepara "qualcosa da vedere" per l'LLM: per una foto è direttamente il suo
-// URL pubblico; per un video/reel è un fotogramma estratto con ffmpeg
-// (scaricato temporaneamente, mai salvato altrove). Ritorna null se non è
+// Prepara "qualcosa da vedere" per l'LLM: per una foto scarica i byte reali
+// e li manda in base64 (mai il solo URL — vedi nota sotto); per un
+// video/reel è un fotogramma estratto con ffmpeg. Ritorna null se non è
 // possibile (niente ffmpeg, download fallito, ecc.): chi chiama ricade sul
 // livello successivo, non blocca mai l'agente.
+//
+// Prima si passava direttamente l'URL pubblico della foto (media.downloadUrl)
+// all'API Anthropic, lasciando che fosse lei a scaricarla: se quel fetch
+// falliva silenziosamente (rete, redirect, timeout) la funzione tornava
+// null e chi chiama scriveva una didascalia "alla cieca" basata solo sul
+// tema del giorno — visto dal vivo più volte con foto di pista da ballo
+// piena di gente pubblicate con una didascalia su "un'ora prima che
+// arrivino gli ospiti, cavi, prove audio": un testo totalmente scollegato
+// dalla foto vera, perché quella foto Claude non l'aveva mai vista.
+// Scaricare noi stessi i byte (stessa identica via usata per i video, R2
+// diretto) toglie questa dipendenza dalla raggiungibilità dell'URL.
 async function preparaImmagineDelMedia(media: { downloadUrl: string; mimeType: string }): Promise<ImmagineDaAnalizzare | null> {
+  if (!media.mimeType.startsWith("image/") && !media.mimeType.startsWith("video/")) return null;
+
+  const accountId = process.env.R2_ACCOUNT_ID;
+  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+  const bucketName = process.env.R2_BUCKET_NAME;
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName) return null;
+
+  const r2Opts = { accountId, accessKeyId, secretAccessKey, bucketName };
+
   if (media.mimeType.startsWith("image/")) {
-    return { url: media.downloadUrl };
+    let cartella: string | null = null;
+    try {
+      cartella = await creaCartellaTemporanea("content-agent-img-");
+      const imgPath = path.join(cartella, "input");
+      await scaricaDaR2(media.downloadUrl, imgPath, r2Opts);
+      const buffer = await readFile(imgPath);
+      return { base64: { mediaType: media.mimeType, data: buffer.toString("base64") } };
+    } catch (err) {
+      console.error("[Copy] impossibile scaricare la foto per la visione:", err);
+      return null;
+    } finally {
+      if (cartella) await rimuoviCartella(cartella);
+    }
   }
-  if (!media.mimeType.startsWith("video/")) return null;
 
   let cartella: string | null = null;
   try {
     await verificaFfmpegDisponibile();
     cartella = await creaCartellaTemporanea("content-agent-");
     const videoPath = path.join(cartella, "input.mp4");
-    await scaricaFile(media.downloadUrl, videoPath);
+    // Scarica direttamente da R2 (richiesta firmata), non dall'URL salvato
+    // che passa dal proxy della dashboard: per i video più grandi quel
+    // passaggio può troncare il download (limite della funzione serverless
+    // Vercel), producendo un file corrotto — vedi lib/videoTools.ts >
+    // scaricaDaR2 per i dettagli.
+    await scaricaDaR2(media.downloadUrl, videoPath, r2Opts);
     const info = await analizzaVideo(videoPath);
     const framePath = path.join(cartella, "frame.jpg");
     await estraiFotogramma(videoPath, info.durataSecondi * 0.4, framePath);
@@ -215,20 +256,56 @@ async function preparaImmagineDelMedia(media: { downloadUrl: string; mimeType: s
   }
 }
 
+// Limite di sicurezza per una singola esecuzione (stesso motivo del limite
+// gemello in reel-maker-agent.ts): se sono in coda tantissimi contenuti,
+// il resto lo prende comunque il prossimo giro, invece di far girare
+// un'unica esecuzione all'infinito o generare troppe chiamate LLM in un colpo.
+const MASSIMO_DIDASCALIE_PER_ESECUZIONE = 15;
+
 export async function eseguiContentAgent(): Promise<void> {
+  let scritte = 0;
+  // Un contenuto fallito resta "in-coda-caption" (per poterlo rivedere/
+  // ritentare al prossimo giro), quindi senza questo elenco il prossimo
+  // .find() di scriviProssimaDidascalia() ripescherebbe SEMPRE lo stesso
+  // contenuto già fallito, in un ciclo che non avanza mai.
+  const giaFalliti = new Set<string>();
+  for (let i = 0; i < MASSIMO_DIDASCALIE_PER_ESECUZIONE; i++) {
+    const esito = await scriviProssimaDidascalia(giaFalliti);
+    if (esito.stato === "nessuno") break;
+    if (esito.stato === "fatto") scritte++;
+    else if (esito.stato === "errore" && esito.id) giaFalliti.add(esito.id);
+    // "errore": già segnalato dentro scriviProssimaDidascalia, ma non è
+    // detto che riguardi anche gli altri contenuti in coda — si continua
+    // con il prossimo invece di fermare tutto il giro per un solo errore.
+  }
+
+  if (scritte === 0) {
+    await logAgentRun({
+      agente: IDENTITA.content.nome,
+      identita: IDENTITA.content.ruolo,
+      status: "nessuna-azione",
+      riepilogo: "Nessun contenuto in attesa di didascalia oggi."
+    });
+  }
+}
+
+interface EsitoDidascalia {
+  stato: "nessuno" | "fatto" | "errore";
+  id?: string;
+}
+
+// Scrive la didascalia per UN contenuto in coda (il prossimo trovato con
+// status "in-coda-caption", escludendo quelli già falliti in questo stesso
+// giro) e salva subito il progresso con un commit+push dedicato (vedi
+// lib/gitCommit.ts), così chi carica più foto insieme le vede comparire in
+// "Anteprima" una alla volta man mano che sono pronte, non tutte insieme
+// solo alla fine del giro.
+async function scriviProssimaDidascalia(giaFalliti: Set<string>): Promise<EsitoDidascalia> {
+  let target: PostsQueueFile["queue"][number] | undefined;
   try {
     const queueFile = await readData<PostsQueueFile>("posts-queue.json");
-    const target = queueFile.queue.find((p) => p.status === "in-coda-caption");
-
-    if (!target) {
-      await logAgentRun({
-        agente: IDENTITA.content.nome,
-        identita: IDENTITA.content.ruolo,
-        status: "nessuna-azione",
-        riepilogo: "Nessun contenuto in attesa di didascalia oggi."
-      });
-      return;
-    }
+    target = queueFile.queue.find((p) => p.status === "in-coda-caption" && !giaFalliti.has(p.id));
+    if (!target) return { stato: "nessuno" };
 
     const brand = await readBrand<Record<string, any>>();
     const calendar = await readData<CalendarFile>("content-calendar.json");
@@ -246,11 +323,11 @@ export async function eseguiContentAgent(): Promise<void> {
       const immagine = await preparaImmagineDelMedia(target.media);
       if (immagine) {
         const promptVisione = `Guarda l'immagine allegata: è una foto o un fotogramma reale ripreso durante un evento/matrimonio con DJ.
-Scrivi una didascalia Instagram in italiano che descriva in modo pertinente quello che vedi davvero (persone, atmosfera, luci, momento della serata), come se la scrivesse di getto Andrea stesso (il DJ), non un copywriter. Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
-Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (spunto, non è obbligatorio nominarlo): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
+Scrivi una didascalia Instagram in italiano BASATA SOLO SU QUELLO CHE VEDI DAVVERO in questa immagine specifica (persone, atmosfera, luci, che momento della serata sembra essere — pista piena, cerimonia, preparativi, ecc: guardalo, non darlo per scontato), come se la scrivesse di getto Andrea stesso (il DJ) col telefono in mano, non un copywriter. Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}
+Nome d'arte: ${brand.nomeArte ?? ""}. Tema del giorno (solo uno spunto secondario, MAI in contraddizione con quello che vedi davvero nell'immagine — se non c'entra nulla, ignoralo del tutto): ${pilastro.nome} - ${pilastro.descrizione}.${notaUtente}
 
-Scrivi in modo naturale e diretto, come un vero messaggio scritto al volo dal telefono: frasi brevi, linguaggio colloquiale. EVITA lo stile tipico da AI: niente trattini lunghi (—), niente frasi a effetto costruite ("in quell'istante...", "un momento che racconta..."), niente elenchi di aggettivi in fila, niente metafore forzate, niente domande retoriche finali. Massimo 1 emoji, anche zero va benissimo, solo se aggiunge davvero qualcosa.
-Massimo 40 parole. NON inventare dettagli che non puoi vedere davvero nell'immagine (nomi degli sposi, date, location specifiche). Non scrivere hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
+Massimo 2 frasi brevi, dirette, colloquiali — un commento al volo, non un racconto. EVITA lo stile da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi, niente metafore forzate, niente domande retoriche. Al massimo 1 emoji, meglio zero.
+Massimo 22 parole in tutto. NON inventare dettagli che non vedi davvero (nomi degli sposi, date, location). Non scrivere hashtag, non chiedere di salvare/taggare/condividere, non scrivere una call to action: li aggiungo io dopo.`;
         const testoVisione = await generaTestoConLLMEImmagine(promptVisione, immagine);
         if (testoVisione) {
           corpo = testoVisione;
@@ -275,8 +352,9 @@ Brand: ${JSON.stringify(brandSintetico)}
 Tema del giorno: ${pilastro.nome} - ${pilastro.descrizione}
 Tono: ${brand.toneOfVoice?.descrizione ?? "professionale e caloroso"}.${notaUtente}
 
-Scrivi in modo naturale e diretto, come un vero messaggio scritto al volo dal telefono: frasi brevi, linguaggio colloquiale. EVITA lo stile tipico da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi in fila, niente metafore forzate, niente domande retoriche finali. Massimo 1 emoji, anche zero va benissimo.
-Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
+IMPORTANTE: non hai nessuna foto/video reale sotto mano in questo caso, quindi NON descrivere una scena visiva specifica come se la stessi guardando (niente "in questo momento vedi...", niente dettagli concreti inventati tipo cavi/luci/persone che fanno una certa azione, niente "questo scatto"): scrivi invece un pensiero breve legato al tema, che valga in generale e stia bene accanto a una foto qualsiasi di un evento vero.
+Massimo 2 frasi brevi, dirette, colloquiali. EVITA lo stile da AI: niente trattini lunghi (—), niente frasi a effetto costruite, niente elenchi di aggettivi, niente metafore forzate, niente domande retoriche.
+Massimo 22 parole in tutto, NON inventare dettagli falsi (numeri, nomi di sposi) che non sono nel brand. Non usare hashtag, non chiedere di salvare/taggare/condividere e non scrivere una call to action: li aggiungo io dopo.`;
         const testoLLM = await generaTestoConLLM(promptTesto);
         if (testoLLM) {
           corpo = testoLLM;
@@ -292,26 +370,39 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
     const righe = [corpo.trim(), testoIncoraggiaSalvataggio(), ctaContatto].filter((r): r is string => Boolean(r));
     const caption = righe.join("\n\n");
 
+    // Un solo contenuto "evento" pubblicato al giorno (limite reale imposto
+    // da publishing-agent.ts): il primo giorno libero da qui in avanti è
+    // quello che NESSUN altro contenuto evento "pronto"/pubblicato occupa
+    // già, così un caricamento massivo di più foto/video si spalma su più
+    // giorni diversi in Anteprima invece di finire tutto ammucchiato su oggi.
+    // I post "sito" (agents/sito-agent.ts) sono un canale separato e non
+    // contano qui: possono uscire lo stesso giorno di un post evento.
+    const dateOccupate = new Set(
+      queueFile.queue
+        .filter((p) => p.id !== target!.id && p.formato !== "sito" && ["pronto", "pubblicato", "pubblicato-parziale"].includes(p.status) && p.dataProgrammata)
+        .map((p) => p.dataProgrammata as string)
+    );
+    const pianificazione = pianificaProssimaPubblicazione(dateOccupate);
+
     target.caption = caption;
     target.hashtags = costruisciHashtag(brand, publishedLog.log);
     target.pillarId = pilastro.id;
-    target.orarioProgrammato = scegliOrarioDelGiorno(new Date().getDay()).ora;
-    // Il sistema pubblica sempre in giornata (l'Editore gira più volte al
-    // giorno cercando l'orario giusto, mai il giorno dopo): la data è quindi
-    // sempre oggi, salvata qui solo per mostrarla nelle anteprime.
-    target.dataProgrammata = new Date().toISOString().slice(0, 10);
+    target.orarioProgrammato = pianificazione.ora;
+    target.dataProgrammata = pianificazione.data;
     target.status = "pronto";
 
     await writeData("posts-queue.json", queueFile);
 
-    const riepilogo = `Scritta didascalia per il contenuto "${pilastro.nome}" (${metodo}). Programmato per le ${target.orarioProgrammato}.`;
+    const riepilogo = `Scritta didascalia per il contenuto "${pilastro.nome}" (${metodo}). Programmato per il ${target.dataProgrammata} alle ${target.orarioProgrammato}.`;
     await logAgentRun({
       agente: IDENTITA.content.nome,
       identita: IDENTITA.content.ruolo,
       status: "ok",
       riepilogo
     });
+    await commitEPush(`chore(copy): ${riepilogo}`);
     await inviaMessaggioTelegram(`✅ ${IDENTITA.content.nome}: ${riepilogo}\n\n"${caption}"`);
+    return { stato: "fatto" };
   } catch (err) {
     await logAgentRun({
       agente: IDENTITA.content.nome,
@@ -320,7 +411,9 @@ Massimo 40 parole, NON inventare dettagli falsi (numeri, nomi di sposi) che non 
       riepilogo: "Errore imprevisto nell'Agente Contenuti.",
       dettagli: { errore: String(err) }
     });
+    await commitEPush("chore(copy): errore nella scrittura di una didascalia").catch(() => {});
     await inviaMessaggioTelegram(`⚠️ ${IDENTITA.content.nome}: Errore imprevisto nell'Agente Contenuti.\n${String(err)}`);
+    return { stato: "errore", id: target?.id };
   }
 }
 

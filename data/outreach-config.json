@@ -1,10 +1,16 @@
 {
   "_istruzioni": "Province in cui l'Agente Esploratore cerca i locali (sigle, vedi lib/province.ts). Modificabile dalla pagina 'Locali' della dashboard. Vuoto = usa il raggio intorno alla sede (config/brand.json > areaServita.base). 'invioAutomatico' controlla il cron di invio automatico (dashboard/app/api/cron/outreach-auto-send): attivo=true e maxAlGiorno>0 servono entrambi, e serve comunque un modello validato in data/outreach-template.json.",
   "province": [
-    "AL"
+    "AL",
+    "AT"
   ],
   "invioAutomatico": {
     "attivo": true,
-    "maxAlGiorno": 5
-  }
+    "maxAlGiorno": 10
+  },
+  "citta": [
+    "novi ligure",
+    "alessandria"
+  ],
+  "raggioKm": 20
 }

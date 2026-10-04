@@ -1,10 +1,26 @@
 import type { QueueItem } from "../lib/types";
+import { PubblicaOraButton } from "./PubblicaOraButton";
+import { RegiaCasella } from "./RegiaSelezione";
+import { DeleteButton } from "./DeleteButton";
 
 const STATUS_LABEL: Record<string, string> = {
   "in-coda-caption": "in attesa di didascalia",
   pronto: "pronto",
+  "in-pubblicazione": "in pubblicazione",
   pubblicato: "pubblicato"
 };
+
+// Un contenuto "pronto" la cui data programmata è oggi (o un giorno
+// passato, es. un ciclo saltato) non è più solo "in calendario per dopo":
+// è il turno di adesso, publishing-agent.ts lo pubblica al prossimo
+// controllo utile. La dashboard lo segnala con un badge diverso, invece di
+// mostrare lo stesso "pronto" sia per un contenuto fra tre settimane sia
+// per uno che sta per uscire.
+function statoVisualizzato(item: { status: string; dataProgrammata?: string | null }): string {
+  if (item.status !== "pronto" || !item.dataProgrammata) return item.status;
+  const oggi = new Date().toISOString().slice(0, 10);
+  return item.dataProgrammata <= oggi ? "in-pubblicazione" : "pronto";
+}
 
 function IconCuore() {
   return (
@@ -31,13 +47,14 @@ export function PostPreview({ item, handle, nomeArte }: { item: QueueItem; handl
   const isVideo = item.media.mimeType.startsWith("video/");
   const isReel = item.formato === "reel";
   const iniziale = (nomeArte || "DJ").charAt(0).toUpperCase();
+  const stato = statoVisualizzato(item);
 
   return (
     <div className="ig-post">
       <div className="ig-post__header">
         <div className="ig-post__avatar">{iniziale}</div>
         <div className="ig-post__handle">{handle}</div>
-        <span className={`ig-post__badge ${item.status}`}>{STATUS_LABEL[item.status] ?? item.status}</span>
+        <span className={`ig-post__badge ${stato}`}>{STATUS_LABEL[stato] ?? stato}</span>
       </div>
 
       {isVideo ? (
@@ -76,6 +93,18 @@ export function PostPreview({ item, handle, nomeArte }: { item: QueueItem; handl
         {item.orarioProgrammato
           ? ` · programmato per ${item.dataProgrammata ? `il ${new Date(`${item.dataProgrammata}T00:00:00`).toLocaleDateString("it-IT")} ` : ""}alle ${item.orarioProgrammato}`
           : ""}
+      </div>
+
+      <RegiaCasella id={item.id} inLavorazione={Boolean(item.regiaRichiesta)} errore={item.regiaErrore} />
+
+      <div className="ig-post__azioni">
+        {item.status === "pronto" && <PubblicaOraButton id={item.id} />}
+        {item.status !== "pubblicato" && item.status !== "pubblicato-parziale" && (
+          <DeleteButton
+            url={`/api/queue/${item.id}?file=1`}
+            conferma={`Eliminare questo ${isVideo ? "Reel" : "post"}? Non verrà pubblicato e il file viene cancellato (anche il video originale, se c'è). Non si può annullare.`}
+          />
+        )}
       </div>
     </div>
   );

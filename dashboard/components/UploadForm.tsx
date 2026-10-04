@@ -3,57 +3,198 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { caricaSuR2 } from "../lib/r2Upload";
+import { Button } from "./ui/Button";
+
+interface RigaFile {
+  nome: string;
+  stato: "in-coda" | "conversione" | "caricamento" | "fatto" | "errore";
+  percentuale: number;
+  errore?: string;
+}
+
+function isHeic(file: File): boolean {
+  return /^image\/hei[cf]$/i.test(file.type) || /\.hei[cf]$/i.test(file.name);
+}
+
+// heic2any (come molte librerie basate su WASM/libheif) a volte rifiuta la
+// Promise con un oggetto semplice {code, message} invece che un vero Error:
+// "err instanceof Error" è falso e String(err) darebbe "[object Object]",
+// un errore illeggibile in dashboard. Qui si prende il messaggio ovunque si
+// trovi.
+function messaggioErrore(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  if (err && typeof err === "object" && "message" in err && typeof (err as { message: unknown }).message === "string") {
+    return (err as { message: string }).message;
+  }
+  try {
+    return JSON.stringify(err);
+  } catch {
+    return String(err);
+  }
+}
+
+// Le foto iPhone sono quasi sempre in formato HEIC: il browser spesso non
+// gli assegna nessun "type" (causa l'errore "Dati mancanti" a valle) e,
+// anche quando lo fa, Instagram/Facebook non accettano comunque HEIC per
+// pubblicare — serve JPEG. Convertiamo qui, nel browser, PRIMA di caricare
+// su R2: heic2any include il suo decoder (nessun browser sa leggere HEIC
+// nativamente tranne Safari), quindi funziona ovunque allo stesso modo.
+async function convertiSeHeic(file: File): Promise<File> {
+  if (!isHeic(file)) return file;
+  const heic2any = (await import("heic2any")).default;
+  const nuovoNome = file.name.replace(/\.hei[cf]$/i, "") + ".jpg";
+
+  try {
+    const risultato = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.9 });
+    const blob = Array.isArray(risultato) ? risultato[0] : risultato;
+    return new File([blob], nuovoNome, { type: "image/jpeg" });
+  } catch (err) {
+    // Non tutti i file con estensione .heic/.heif contengono davvero dati
+    // HEIC: iOS a volte la mantiene anche dopo aver già ricompresso la foto
+    // in JPEG (es. foto condivise/salvate da alcune app). heic2any se ne
+    // accorge e rifiuta con questo errore specifico invece di "convertire"
+    // qualcosa che è già a posto — non è un vero fallimento, basta
+    // rietichettare il file com'è, senza ricodificarlo.
+    const msg = messaggioErrore(err);
+    if (/already browser readable/i.test(msg)) {
+      const match = msg.match(/already browser readable:\s*([\w/-]+)/i);
+      const tipoReale = match?.[1] ?? "image/jpeg";
+      return new File([file], nuovoNome, { type: tipoReale });
+    }
+    throw err;
+  }
+}
 
 // Il file va direttamente dal browser a Cloudflare R2 (URL "presigned",
 // nessun limite di dimensione pratico, nessuna credenziale esposta al
 // browser — vedi lib/r2Upload.ts). Solo dopo, un piccolo messaggio JSON
-// (senza il file) salva il riferimento in data/media-library.json.
+// (senza il file) salva il riferimento — le FOTO in data/media-library.json
+// (usate così come sono), i VIDEO in data/reel-jobs.json (li monta prima
+// l'AI Reel Maker, come già succede per i video mandati su Telegram: un
+// video grezzo caricato qui non va mai in coda per essere pubblicato tale
+// e quale, passa sempre dal montaggio automatico).
+//
+// Upload multiplo: i file caricano UNO ALLA VOLTA (non in parallelo) per
+// tenere una barra di avanzamento leggibile per ciascuno ed evitare di
+// saturare la connessione con file video grandi caricati insieme. Un file
+// che fallisce non blocca gli altri: resta segnato "errore" nella lista,
+// il resto continua.
+// Stile del montaggio per i VIDEO (Regia): "auto" = Festa/DJ.
+const PROFILI = [
+  { valore: "auto", etichetta: "Automatico (festa / DJ set)" },
+  { valore: "wedding", etichetta: "Matrimonio" },
+  { valore: "event", etichetta: "Evento" },
+  { valore: "business", etichetta: "Aziendale" },
+  { valore: "talking_head", etichetta: "Persona che parla (con sottotitoli)" },
+  { valore: "promotional", etichetta: "Promozionale" }
+];
+
 export function UploadForm() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [stato, setStato] = useState<"inattivo" | "caricamento" | "errore">("inattivo");
-  const [percentuale, setPercentuale] = useState(0);
-  const [errore, setErrore] = useState<string | null>(null);
+  const [righe, setRighe] = useState<RigaFile[]>([]);
+  const [inCorso, setInCorso] = useState(false);
+  const [profilo, setProfilo] = useState("auto");
+  const [istruzioni, setIstruzioni] = useState("");
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const file = inputRef.current?.files?.[0];
-    if (!file) return;
+    const files = inputRef.current?.files;
+    if (!files || files.length === 0) return;
 
-    setStato("caricamento");
-    setPercentuale(0);
-    setErrore(null);
+    const lista = Array.from(files);
+    setInCorso(true);
+    setRighe(lista.map((f) => ({ nome: f.name, stato: "in-coda", percentuale: 0 })));
 
-    try {
-      const url = await caricaSuR2(file, setPercentuale);
+    for (let i = 0; i < lista.length; i++) {
+      let file = lista[i];
 
-      const metaRes = await fetch("/api/upload", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ url, filename: file.name, mimeType: file.type })
-      });
-      const metaJson = await metaRes.json();
-      if (!metaRes.ok) throw new Error(metaJson.error ?? "Impossibile salvare il riferimento del media.");
+      try {
+        if (isHeic(file)) {
+          setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "conversione" } : r)));
+          try {
+            file = await convertiSeHeic(file);
+          } catch (err) {
+            throw new Error(`Conversione HEIC→JPEG fallita (${messaggioErrore(err)}). Prova a esportarla come JPEG dall'app Foto prima di caricarla.`);
+          }
+        }
 
-      setStato("inattivo");
-      if (inputRef.current) inputRef.current.value = "";
-      router.refresh();
-    } catch (err) {
-      setStato("errore");
-      setErrore(err instanceof Error ? err.message : String(err));
+        setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "caricamento" } : r)));
+        const url = await caricaSuR2(file, (percentuale) => {
+          setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, percentuale } : r)));
+        });
+
+        const isVideo = file.type.startsWith("video/");
+        const mimeType = file.type || "application/octet-stream";
+        const metaRes = await fetch(isVideo ? "/api/reel-jobs" : "/api/upload", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(
+            isVideo ? { url, filename: file.name, mimeType, profilo, istruzioni } : { url, filename: file.name, mimeType }
+          )
+        });
+        const metaJson = await metaRes.json();
+        if (!metaRes.ok) throw new Error(metaJson.error ?? "Impossibile salvare il riferimento del media.");
+
+        setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "fatto", percentuale: 100 } : r)));
+      } catch (err) {
+        setRighe((prev) => prev.map((r, idx) => (idx === i ? { ...r, stato: "errore", errore: messaggioErrore(err) } : r)));
+      }
     }
+
+    setInCorso(false);
+    setIstruzioni("");
+    if (inputRef.current) inputRef.current.value = "";
+    router.refresh();
   }
 
   return (
     <form onSubmit={handleSubmit} className="card" style={{ marginBottom: 24 }}>
-      <div className="label">Carica una nuova foto o video</div>
-      <p className="note">Verrà messa in coda e usata dagli agenti in uno dei prossimi giorni, nell'ordine in cui la carichi.</p>
-      <input ref={inputRef} type="file" accept="image/*,video/*" required style={{ margin: "12px 0" }} />
+      <div className="label">Carica una o più foto/video</div>
+      <p className="note">
+        Puoi selezionarne più di uno insieme. Regia trasforma tutto in Reel con musica, transizioni e contatti finali: i video vengono montati
+        (tagli, momenti migliori, audio), le foto animate. Poi l&apos;AI scrive la didascalia e il contenuto va in Anteprima, programmato
+        all&apos;orario migliore.
+      </p>
+      <input ref={inputRef} type="file" accept="image/*,video/*,.heic,.heif" multiple required style={{ margin: "12px 0" }} />
+
+      <details className="upload-opzioni">
+        <summary>Opzioni per i video (facoltative)</summary>
+        <label className="label" htmlFor="profilo-video">Stile del montaggio</label>
+        <select id="profilo-video" value={profilo} onChange={(e) => setProfilo(e.target.value)}>
+          {PROFILI.map((p) => (
+            <option key={p.valore} value={p.valore}>{p.etichetta}</option>
+          ))}
+        </select>
+        <label className="label" htmlFor="istruzioni-video">Note per il montaggio</label>
+        <textarea
+          id="istruzioni-video"
+          value={istruzioni}
+          onChange={(e) => setIstruzioni(e.target.value)}
+          placeholder="Es. è il momento del primo ballo, oppure: metti in evidenza il pubblico che balla"
+          rows={2}
+        />
+      </details>
       <br />
-      <button type="submit" disabled={stato === "caricamento"} className="upload-btn">
-        {stato === "caricamento" ? `Caricamento in corso… ${percentuale}%` : "Carica"}
-      </button>
-      {stato === "errore" && <p className="error-msg">{errore}</p>}
+      <Button type="submit" loading={inCorso}>
+        {inCorso ? "Caricamento in corso…" : "Carica"}
+      </Button>
+
+      {righe.length > 0 && (
+        <ul style={{ listStyle: "none", padding: 0, marginTop: 12 }}>
+          {righe.map((r, i) => (
+            <li key={i} className="note" style={{ marginTop: 4 }}>
+              {r.stato === "fatto" && "✅ "}
+              {r.stato === "errore" && "❌ "}
+              {r.stato === "conversione" && "🔄 Conversione HEIC→JPEG… "}
+              {r.stato === "caricamento" && `⏳ ${r.percentuale}% — `}
+              {r.stato === "in-coda" && "⏳ "}
+              {r.nome}
+              {r.stato === "errore" && <span className="error-msg" style={{ display: "block" }}>{r.errore}</span>}
+            </li>
+          ))}
+        </ul>
+      )}
     </form>
   );
 }

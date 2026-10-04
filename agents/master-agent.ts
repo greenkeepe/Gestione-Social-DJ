@@ -15,6 +15,9 @@ import { eseguiReplyAgent } from "./reply-agent.js";
 import { eseguiAnalyticsAgent } from "./analytics-agent.js";
 import { eseguiStrategyAgent } from "./strategy-agent.js";
 import { eseguiNoteAgent } from "./note-agent.js";
+import { eseguiSitoAgent } from "./sito-agent.js";
+import { eseguiOutreachAgent } from "./outreach-agent.js";
+import { innescaWorkflow } from "../lib/gitCommit.js";
 
 interface AgentRun {
   agente: string;
@@ -79,46 +82,87 @@ async function eseguiPasso(nome: string, fn: () => Promise<void>): Promise<void>
   }
 }
 
-export async function eseguiMasterAgent(): Promise<void> {
-  console.log("=== Direttore: avvio del ciclo giornaliero degli agenti ===");
-  const inizioCiclo = nowIso();
-  const oggi = inizioCiclo.slice(0, 10);
+const RIEPILOGO_CICLO_COMPLETO = "Ciclo giornaliero completato";
+const dataRoma = (d: Date) => new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Rome" }).format(d); // AAAA-MM-GG
 
-  // Se il cron di Vercel e lo schedule di GitHub Actions scattano entrambi
-  // lo stesso giorno (rete di sicurezza voluta, vedi daily-agents.yml), il
-  // ciclo gira innocuamente due volte — ma il resoconto mattutino su
-  // Telegram no, altrimenti Andrea lo riceve doppio. Controllato PRIMA che
-  // questo ciclo registri il proprio "Direttore ok" qui sotto.
-  const runsGiaOggi = await readData<AgentRunsFile>("agent-runs.json").catch(() => ({ runs: [] }));
-  const resocontoGiaInviatoOggi = runsGiaOggi.runs.some(
-    (r) => r.agente === IDENTITA.master.nome && r.timestamp.startsWith(oggi)
+export async function eseguiMasterAgent(): Promise<void> {
+  const inizioCiclo = nowIso();
+  const oggi = dataRoma(new Date());
+
+  // Questo workflow parte più volte al giorno: il cron del mattino (Vercel,
+  // più lo schedule di GitHub come riserva) e ogni caricamento/Reel/messaggio
+  // Telegram, per scrivere subito la didascalia. Il ciclo COMPLETO (sito,
+  // lead, risposte, analytics, strategia, note, locali) serve una volta al
+  // giorno: prima girava a ogni avvio, raddoppiando le chiamate all'AI. Dal
+  // secondo avvio della giornata si fa solo il "giro rapido": Occhio + Copy
+  // (didascalie dei nuovi contenuti) e il controllo pubblicazione.
+  // CICLO_COMPLETO=true (avvio manuale da GitHub) forza il ciclo completo.
+  const runsGiaOggi = await readData<AgentRunsFile>("agent-runs.json").catch(() => ({ runs: [] as AgentRun[] }));
+  const completoGiaFattoOggi = runsGiaOggi.runs.some(
+    (r) => r.agente === IDENTITA.master.nome && r.riepilogo.startsWith(RIEPILOGO_CICLO_COMPLETO) && dataRoma(new Date(r.timestamp)) === oggi
   );
+  const completo = !completoGiaFattoOggi || process.env.CICLO_COMPLETO === "true";
+  console.log(`=== Direttore: avvio del ${completo ? "ciclo giornaliero completo" : "giro rapido (didascalie e pubblicazione)"} ===`);
 
   await eseguiPasso("Agente Media (Occhio)", eseguiMediaAgent);
   await eseguiPasso("Agente Contenuti (Copy)", eseguiContentAgent);
+
+  if (!completo) {
+    await logAgentRun({
+      agente: IDENTITA.master.nome,
+      identita: IDENTITA.master.ruolo,
+      status: "ok",
+      riepilogo: "Giro rapido: didascalie dei nuovi contenuti controllate (il ciclo completo è già stato fatto oggi)."
+    });
+    try {
+      await innescaWorkflow("publish-check.yml");
+    } catch {
+      /* non bloccante */
+    }
+    console.log("\n=== Direttore: giro rapido completato ===");
+    return;
+  }
+
+  await eseguiPasso("Agente Vetrina (Sito)", eseguiSitoAgent);
   await eseguiPasso("Agente Lead (Cacciatore)", eseguiLeadsAgent);
   await eseguiPasso("Agente Risposte (Portavoce)", eseguiReplyAgent);
   await eseguiPasso("Agente Analytics (Analista)", eseguiAnalyticsAgent);
   await eseguiPasso("Agente Strategia (Stratega)", eseguiStrategyAgent);
   await eseguiPasso("Agente Note (Appunti)", eseguiNoteAgent);
-  // L'Esploratore non gira più in automatico nel ciclo giornaliero: si
-  // avvia solo a comando, con il tasto "Cerca nuovi locali" nella pagina
-  // "Locali" della dashboard (vedi .github/workflows/outreach-search.yml).
+  // L'Esploratore tiene la coda "da rivedere" sempre piena fino al numero
+  // impostato nella casella "invio automatico" della pagina "Locali" — se
+  // è già piena non cerca nulla di nuovo (vedi outreach-agent.ts). Il tasto
+  // "Cerca nuovi locali" nella dashboard resta comunque disponibile per un
+  // giro extra a comando (vedi .github/workflows/outreach-search.yml).
+  await eseguiPasso("Agente Locali (Esploratore)", eseguiOutreachAgent);
 
   await logAgentRun({
     agente: IDENTITA.master.nome,
     identita: IDENTITA.master.ruolo,
     status: "ok",
-    riepilogo: "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile."
+    riepilogo: `${RIEPILOGO_CICLO_COMPLETO}: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.`
   });
 
+  // Innesca subito anche il controllo pubblicazione (publish-check.yml)
+  // invece di aspettare solo il suo cron dedicato: i trigger "schedule" di
+  // GitHub Actions arrivano spesso in ritardo di ore su repository con
+  // poca attività continua (limite noto di GitHub, non risolvibile lato
+  // nostro — vedi il commento in publish-check.yml). Questo ciclo gira già
+  // più volte al giorno (cron proprio + ogni upload/caricamento che lo fa
+  // partire prima), quindi ogni sua esecuzione è un'occasione in più
+  // perché un contenuto già scaduto (data odierna o passata) esca subito
+  // invece di aspettare il prossimo cron flaky. Best-effort: se fallisce,
+  // il cron dedicato di publish-check.yml lo controllerà comunque.
+  try {
+    await innescaWorkflow("publish-check.yml");
+  } catch {
+    /* non bloccante */
+  }
+
   // Il resoconto via Telegram parte solo dal vero ciclo automatico delle
-  // 06:00 (flag impostato da .github/workflows/daily-agents.yml in base a
-  // github.event_name), mai dai lanci manuali/di test: altrimenti ogni
-  // trigger manuale spammerebbe un resoconto in chat. E solo la prima volta
-  // al giorno, anche se sia il cron di Vercel che lo schedule di GitHub
-  // scattano lo stesso giorno (vedi controllo in cima alla funzione).
-  if (process.env.MORNING_REPORT === "true" && !resocontoGiaInviatoOggi) {
+  // mattutino (flag impostato da .github/workflows/daily-agents.yml), mai dai
+  // lanci manuali/di test, e solo dal primo ciclo completo della giornata.
+  if (process.env.MORNING_REPORT === "true" && !completoGiaFattoOggi) {
     await inviaResocontoMattutino(inizioCiclo).catch((err) => {
       console.error("[Direttore] Invio resoconto mattutino Telegram fallito:", err);
     });

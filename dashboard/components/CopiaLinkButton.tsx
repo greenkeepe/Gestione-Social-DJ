@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Copy, Check } from "lucide-react";
+import { Button } from "./ui/Button";
 
 // Copia il link del Wedding Music Planner negli appunti, pronto da
 // incollare in una chat WhatsApp — niente da riscrivere a mano.
@@ -14,8 +16,9 @@ export function CopiaLinkButton({ link }: { link: string }) {
   }
 
   return (
-    <button type="button" onClick={copia} className="upload-btn">
-      {copiato ? "✅ Copiato!" : "📋 Copia link"}
-    </button>
+    <Button variant="secondary" size="sm" onClick={copia}>
+      {copiato ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+      {copiato ? "Copiato!" : "Copia link"}
+    </Button>
   );
 }

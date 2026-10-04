@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { aggiornaDatiSuGitHub } from "../../../../../lib/dataSource";
+import { aggiornaDatiSuGitHub, lanciaWorkflow } from "../../../../../lib/dataSource";
 import type { ReelJobsFile } from "../../../../../lib/types";
 
 export const runtime = "nodejs";
@@ -24,6 +24,15 @@ export async function POST(_req: Request, { params }: { params: { id: string } }
     );
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
+  }
+
+  // Avvia subito il Regista invece di aspettare il prossimo giro
+  // programmato (ogni ~20 minuti): stesso motivo del trigger già aggiunto
+  // al primo caricamento in dashboard/app/api/reel-jobs/route.ts.
+  try {
+    await lanciaWorkflow("reel-maker.yml");
+  } catch {
+    /* non bloccante */
   }
 
   return NextResponse.json({ ok: true });

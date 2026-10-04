@@ -1,7 +1,7 @@
-// Notifica Telegram in uscita per il sito (Netlify), equivalente di
+// Notifica Telegram in uscita per il sito (Vercel), equivalente di
 // lib/telegram.ts (agenti) e dashboard/lib/telegram.ts (dashboard). Del
 // tutto opzionale: se TELEGRAM_BOT_TOKEN o TELEGRAM_ALLOWED_CHAT_ID non sono
-// configurati su Netlify, non fa nulla (nessun errore, nessun blocco per chi
+// configurati su Vercel, non fa nulla (nessun errore, nessun blocco per chi
 // sta compilando il modulo).
 export async function inviaMessaggioTelegram(testo: string): Promise<void> {
   const token = process.env.TELEGRAM_BOT_TOKEN;

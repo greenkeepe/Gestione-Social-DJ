@@ -8,7 +8,16 @@ name: AI Reel Maker (video grezzo -> Reel)
 on:
   schedule:
     - cron: "*/20 6-22 * * *" # ogni 20 minuti, 06:00-22:59 UTC (copre l'intera giornata italiana)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      rielabora:
+        description: "Rielabora con Regia i Reel già in coda non ancora pubblicati (si/no)"
+        required: false
+        default: "no"
+      job_id:
+        description: "Facoltativo: rielabora solo questo job (id)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -21,6 +30,7 @@ concurrency:
 jobs:
   crea-reel:
     runs-on: ubuntu-latest
+    timeout-minutes: 300
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,6 +49,17 @@ jobs:
       - name: Installa dipendenze
         run: npm install
 
+      # Motore di montaggio Regia (cartella regia/): ffmpeg completo incluso
+      # nel pacchetto, modello di trascrizione in cache tra un giro e l'altro.
+      - name: Installa motore Regia
+        run: npm install --prefix regia --no-audit --no-fund
+
+      - name: Cache modello trascrizione (Regia)
+        uses: actions/cache@v4
+        with:
+          path: regia/models
+          key: regia-whisper-small-v1
+
       # Vedi lo stesso commento in daily-agents.yml: questo workflow gira
       # ogni 20 minuti e a volte innesca lui stesso daily-agents.yml (vedi
       # "Fast-track" sotto) — ci si allinea sempre all'ultimissima versione
@@ -47,6 +68,24 @@ jobs:
       - name: Allinea con l'ultima versione del branch
         run: git pull --ff-only origin "${GITHUB_REF_NAME}"
 
+      # Contenuti scelti in dashboard (Anteprima -> "Rielabora selezionati"):
+      # prima di tutto il resto, così chi li ha chiesti li vede pronti subito.
+      # Un errore qui non blocca il resto del giro.
+      - name: Rielabora con Regia i contenuti scelti in dashboard
+        continue-on-error: true
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REGIA_TESTI: ${{ vars.REGIA_TESTI }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx tsx scripts/regia-selezione.ts
+
       - name: Esegui Agente Reel Maker (Regista)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -54,40 +93,67 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-          R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
           ENABLE_AI_REEL_MAKER: ${{ vars.ENABLE_AI_REEL_MAKER }}
+          REEL_ENGINE: ${{ vars.REEL_ENGINE }}
+          REGIA_TESTI: ${{ vars.REGIA_TESTI }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          # Serve a "gh" (letto in automatico da GITHUB_TOKEN/GH_TOKEN)
+          # perché l'agente stesso possa commit+push il progresso video per
+          # video (vedi lib/gitCommit.ts) e, per un Reel da Telegram, far
+          # partire subito daily-agents.yml per la didascalia — invece di
+          # aspettare la fine di tutta la coda in elaborazione.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run agent:reelmaker
 
-      - name: Commit e push dei dati aggiornati
-        id: commit
+      # Foto, card testimonianza e screenshot del sito in coda -> Reel con musica,
+      # transizioni e finale con i contatti (Regia). Gira a ogni esecuzione, così
+      # anche i contenuti futuri con immagini diventano Reel da soli.
+      - name: Reel da immagini (Regia)
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
+          REEL_DA_FOTO: ${{ vars.REEL_DA_FOTO }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REGIA_TESTI: ${{ vars.REGIA_TESTI }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx tsx scripts/regia-foto-reel.ts
+
+      - name: Rielabora con Regia i Reel già in coda
+        if: github.event_name == 'workflow_dispatch' && inputs.rielabora == 'si'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
+          RIELABORA_ID: ${{ inputs.job_id }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REGIA_TESTI: ${{ vars.REGIA_TESTI }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx tsx scripts/regia-rielabora.ts
+
+      - name: Commit e push di eventuali dati non ancora salvati
         run: |
           git config user.name "gestione-social-dj-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/
           if ! git diff --cached --quiet; then
-            # Un Reel ricevuto da Telegram viene promosso automaticamente a
-            # media-library.json (vedi reel-maker-agent.ts): se questo file
-            # cambia, c'è un nuovo contenuto pronto per la didascalia.
-            if git diff --cached --name-only | grep -q "^data/media-library.json$"; then
-              echo "promosso=true" >> "$GITHUB_OUTPUT"
-            fi
             git commit -m "chore(regista): elaborazione AI Reel Maker [skip ci]"
             for i in 1 2 3 4 5; do
               git push && break
               echo "Push rifiutato (probabile scrittura concorrente su data/), riprovo dopo un rebase..."
-              git pull --rebase origin "${GITHUB_REF_NAME}"
+              git pull --rebase origin "${GITHUB_REF_NAME}" || { echo "Rebase in conflitto reale, annullo per ripartire da uno stato pulito"; git rebase --abort 2>/dev/null || true; }
               sleep $((RANDOM % 5 + 1))
             done
           else
-            echo "Nessuna modifica ai dati da salvare."
+            echo "Nessuna modifica da salvare: l'agente ha già commit+push il progresso di ogni video man mano."
           fi
-
-      - name: Fast-track del ciclo agenti (Reel da Telegram pronto per la didascalia)
-        if: steps.commit.outputs.promosso == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh workflow run daily-agents.yml --ref "${GITHUB_REF_NAME}" \
-            || echo "Fast-track non avviato (non bloccante): il ciclo giornaliero lo farà comunque più tardi."

@@ -4,7 +4,7 @@ Sistema di agenti autonomi che gestiscono la presenza social del tuo profilo DJ 
 
 ## Sito pubblico (`site/`)
 
-Oltre agli agenti (root) e alla dashboard privata (`dashboard/`), il repository contiene anche il sito vetrina pubblico di Forte DJ in `site/`: un progetto Next.js separato, online su **[www.fortedj.it](https://www.fortedj.it)** (deploy indipendente, attualmente su Netlify). Vedi `site/README.md` per contenuti, variabili d'ambiente e come popolare gallery/showreel con foto e video reali.
+Oltre agli agenti (root) e alla dashboard privata (`dashboard/`), il repository contiene anche il sito vetrina pubblico di Forte DJ in `site/`: un progetto Next.js separato, online su **[www.fortedj.it](https://www.fortedj.it)** (deploy indipendente, attualmente su Vercel). Vedi `site/README.md` per contenuti, variabili d'ambiente e come popolare gallery/showreel con foto e video reali.
 
 Il link è registrato in `config/brand.json > contatti.sitoWeb`: da lì lo leggono sia l'Agente Esploratore (firma delle email di collaborazione) sia l'Agente Contenuti, che può chiudere un post con un CTA "link in bio" (solo perché `sitoWebBottoneAttivo` è `true` — vero solo se il link è davvero impostato nel bio Instagram/Facebook, altrimenti sarebbe un invito a vuoto).
 
@@ -20,7 +20,7 @@ Un **Agente Master ("Direttore")** coordina ogni giorno 8 agenti specializzati, 
 | Lead | **Cacciatore** | Individua chi ha commentato/interagito con interesse e prepara bozze di messaggi privati — **non invia mai nulla da solo** |
 | Risposte | **Portavoce** | Risponde pubblicamente e in fretta ai nuovi commenti sugli ultimi post (mai in privato, mai prezzi/disponibilità): la conversazione attiva sotto un post ne aumenta la visibilità algoritmica |
 | Note Instagram | **Appunti** | Propone ogni tanto su Telegram il testo di una Nota Instagram (max 60 caratteri) da incollare a mano — le Note non sono pubblicabili via API, nessuna eccezione possibile |
-| Partnership locali | **Esploratore** | Su richiesta (tasto "Cerca nuovi locali" nella pagina "Locali", non più in automatico ogni giorno) trova fino a 10 ristoranti/hotel della zona con un'email pubblica e prepara una bozza di collaborazione — **non invia mai nulla da solo**, invii tu con un tap (vedi sezione dedicata sotto) |
+| Partnership locali | **Esploratore** | Ogni giorno tiene la coda "da rivedere" sempre piena fino al numero impostato in "invio automatico" nella pagina "Locali" (o a comando extra col tasto "Cerca nuovi locali"), trovando ristoranti/hotel della zona con un'email pubblica e preparando una bozza di collaborazione — **non invia mai nulla da solo** (vedi sezione dedicata sotto) |
 | Analytics | **Analista** | Legge le statistiche da Meta, aggiorna i KPI e misura il punteggio reale (like/commenti/salvataggi/condivisioni pesati) dei post pubblicati da almeno 2 giorni, per alimentare l'apprendimento del Copy |
 | Strategia | **Stratega** | Tiene aggiornato l'avanzamento verso l'obiettivo dei 30 matrimoni 2027 |
 | AI Reel Maker | **Regista** | Trasforma un video grezzo caricato dalla pagina "Crea Reel AI" in un Reel verticale montato e verificato (vedi sezione dedicata sotto) |
@@ -65,10 +65,11 @@ Vedi la sezione **"Storage media (Cloudflare R2)"** qui sotto per creare bucket 
 Tutti i media (foto, video grezzi, Reel generati) vivono in un bucket **Cloudflare R2**: piano gratuito con 10GB di storage e — soprattutto per i video — **traffico in uscita sempre gratuito**, nessun limite pratico di dimensione file (a differenza di altri storage gratuiti che bloccano intorno ai 100MB).
 
 1. Crea un account gratuito su **[dash.cloudflare.com](https://dash.cloudflare.com)** (nessuna carta richiesta per il piano free di R2).
-2. Nel menu laterale vai su **R2 Object Storage** → **Create bucket**. Dai un nome (es. `gestione-social-dj-media`), location automatica, e crealo.
-3. Apri il bucket appena creato → **Settings** → sezione **Public access** → attiva **"Allow Access"** sul dominio `r2.dev` (o collega un tuo dominio, se ne hai uno su Cloudflare). Copia l'URL pubblico che ti mostra (tipo `https://pub-xxxxxxxxxxxx.r2.dev`): è il tuo `R2_PUBLIC_BASE_URL`.
-4. Torna alla pagina principale di **R2** → **Manage R2 API Tokens** → **Create API Token**. Permessi: **Object Read & Write**, limitato al bucket appena creato. Alla fine ti mostra tre valori: **Access Key ID**, **Secret Access Key** e l'**Account ID** (visibile anche nell'URL del cruscotto Cloudflare, o nella pagina principale di R2 sulla destra).
-5. Questi 5 valori (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`) sono **tutti segreti** tranne l'URL pubblico: vanno inseriti sia nei **GitHub Secrets** (per l'Agente Regista) sia nelle **variabili d'ambiente di Vercel** (per la dashboard) — mai incollati in chat.
+2. Nel menu laterale vai su **R2 Object Storage** → **Create bucket**. Dai un nome (es. `gestione-social-dj-media`), location automatica, e crealo. Non serve attivare "Public access": la dashboard fa da tramite (vedi sotto), il bucket resta privato.
+3. Torna alla pagina principale di **R2** → **Manage R2 API Tokens** → **Create API Token**. Permessi: **Object Read & Write**, limitato al bucket appena creato. Alla fine ti mostra tre valori: **Access Key ID**, **Secret Access Key** e l'**Account ID** (visibile anche nell'URL del cruscotto Cloudflare, o nella pagina principale di R2 sulla destra).
+4. Questi 4 valori (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`) sono **tutti segreti**: vanno inseriti sia nei **GitHub Secrets** (per l'Agente Regista) sia nelle **variabili d'ambiente di Vercel** (per la dashboard) — mai incollati in chat.
+
+**Perché niente accesso pubblico al bucket.** Instagram/Facebook scaricano i media dei post da un endpoint della dashboard (`/api/r2-file/[chiave]`, vedi `dashboard/app/api/r2-file`), che li recupera da R2 con le credenziali sopra e li ridà a Meta — invece che dal dominio pubblico `pub-xxxx.r2.dev` di Cloudflare, dichiarato esplicitamente "solo per test" e con un limite di frequenza che causava pubblicazioni fallite ("Unable to fetch video file from URL", capitato dal vivo più volte). Serve quindi anche `DASHBOARD_PUBLIC_URL` (l'URL della dashboard su Vercel, es. `https://tuo-progetto.vercel.app`, senza slash finale) tra i GitHub Secrets e le variabili Vercel: è quello che Instagram/Facebook useranno per scaricare i media.
 
 ### 3ter. Rinnovo del token Meta dalla dashboard
 
@@ -91,15 +92,16 @@ Con queste impostate, "Rinnova token ora" salva il nuovo token sia su GitHub sia
 
 ### 4. Configura i secrets su GitHub
 
-Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`).
+Nel repository, vai su **Settings → Secrets and variables → Actions** e aggiungi tutti i valori elencati in `.env.example` (META_*, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME` — stessi valori del punto 3bis — e opzionalmente `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`). `DASHBOARD_PUBLIC_URL` lo aggiungi dopo, quando hai il link della dashboard dal passo 5 qui sotto.
 
 ### 5. Metti online la dashboard (gratis, su Vercel)
 
 1. Vai su **[vercel.com](https://vercel.com)**, collega il tuo account GitHub.
 2. Importa questo repository, impostando come **Root Directory**: `dashboard`, e come **Framework Preset**: `Next.js`.
 3. Crea un **GitHub Personal Access Token** (Settings del tuo account GitHub → Developer settings → Personal access tokens → Fine-grained) con permessi **Contents: Read and write** e **Actions: Read and write**, limitato a questo repository — il primo serve alla dashboard per leggere i dati e salvare i nuovi media caricati, il secondo per far scrivere subito la didascalia quando premi "Usa per un post" nella pagina "Crea Reel AI" (altrimenti aspetta comunque il ciclo automatico del giorno dopo).
-4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), e i 5 valori R2 dal passo 3bis (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_BASE_URL`). Se vuoi anche l'invio da Telegram, aggiungi `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (vedi sezione **"Invio da Telegram"** più sotto).
+4. Aggiungi le variabili d'ambiente (da `dashboard/.env.example`): `DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GITHUB_REPO` (es. `greenkeepe/Gestione-Social-DJ`), `GITHUB_BRANCH` (es. `main`), `GITHUB_TOKEN` (il token appena creato), e i 4 valori R2 dal passo 3bis (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`). Se vuoi anche l'invio da Telegram, aggiungi `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (vedi sezione **"Invio da Telegram"** più sotto).
 5. Deploy. La dashboard sarà raggiungibile da un link tipo `https://tuo-progetto.vercel.app`, protetto da password, da qualsiasi dispositivo.
+6. Aggiungi ora `DASHBOARD_PUBLIC_URL` (quel link, senza slash finale) sia tra le variabili d'ambiente di Vercel sia tra i GitHub Secrets del passo 4 qui sopra, poi fai un redeploy — serve perché Instagram/Facebook scarichino da lì i media dei post (vedi il riquadro **"Perché niente accesso pubblico al bucket"** al passo 3bis).
 **Importante — evita di esaurire il limite giornaliero di build gratuite:** gli agenti scrivono spesso su `data/*.json` (ogni 20 minuti, per il Regista), ma la dashboard legge quei dati dal vivo tramite l'API di GitHub, senza bisogno di una build ad ogni commit. Su Vercel vai su **Settings → Build and Deployment → Ignored Build Step**, imposta "Behavior" su **Custom** e incolla: `git diff --quiet HEAD^ HEAD -- dashboard`. Così Vercel costruisce una build vera solo quando cambia il codice della dashboard, non ad ogni commit automatico di dati — senza questo, il piano gratuito può bloccarsi per 24 ore con l'errore "Deployment rate limited".
 
 ### 6. Attiva le automazioni
@@ -117,17 +119,26 @@ Il Regista (`agents/reel-maker-agent.ts`, eseguito da `.github/workflows/reel-ma
 1. **Analisi**: durata, risoluzione, fps, audio (`ffprobe`).
 2. **Rilevazione scene** reale (filtro `scene` di ffmpeg) e, se c'è audio, **rilevazione silenzi** e **misura del volume** di ogni spezzone candidato (`lib/videoTools.ts`) — punteggi calcolati sui dati veri del video, mai inventati.
 3. **Piano di montaggio** (`lib/reelPlanner.ts`): sceglie l'hook (mai i primissimi istanti del video) e i segmenti migliori in base al punteggio, con stile Clean/Dynamic/Bold dedotto dal profilo (in **Automatico**, dedotto dall'energia audio e dalla frequenza dei cambi scena).
-4. **Montaggio**: ritaglio 9:16 centrato, concatenazione (hard-cut o dissolvenza a seconda dello stile), normalizzazione audio (`loudnorm`), testo di apertura opzionale.
+4. **Montaggio**: ritaglio 9:16 centrato con un leggero zoom continuo alternato dentro/fuori su ogni spezzone (effetto "Ken Burns"), transizioni tra un taglio e l'altro variate a seconda dello stile (nette e brevi per Bold/Dynamic, dissolvenze più lunghe ed eleganti per Clean — mai più un taglio secco senza transizione), una piccola correzione colore uniforme, normalizzazione audio (`loudnorm`), testo di apertura animato (dissolvenza in/out, visibile solo nei primi secondi) ed eventuale testo di chiusura negli ultimi secondi.
 5. **Controllo qualità**: verifica reale (risoluzione 1080×1920, presenza audio, durata coerente) prima di segnare il job come pronto — se qualcosa non torna il job va in **errore** invece di essere spacciato per riuscito.
-6. Il Reel finito viene caricato su Cloudflare R2 e appare nella pagina "Crea Reel AI" con l'anteprima. Da lì puoi **Rigenerare** o **Usare per un post**: in quel momento (e solo allora, per tua scelta) entra in `data/media-library.json` come un media normale, e lo gestiscono gli agenti già esistenti — Occhio lo mette in coda, Copy scrive la didascalia, Editore lo pubblica nell'orario migliore. Nessuna pubblicazione automatica "a sorpresa" per i video caricati **dalla dashboard**.
-
-I video ricevuti **da Telegram** (vedi sotto) sono un'eccezione voluta: appena il Reel è pronto entra da solo nella libreria media, senza passare dal click "Usa per un post" — è tutto il senso di mandare un video dal telefono e non doverci più pensare.
+6. Il Reel finito viene caricato su Cloudflare R2 ed entra **subito** in `data/media-library.json` come un media normale — qualunque sia la sua origine (dashboard o Telegram), senza bisogno di nessuna conferma manuale: lo gestiscono gli agenti già esistenti, Occhio lo mette in coda, Copy scrive la didascalia (con visione AI sul fotogramma reale, testo di apertura/chiusura più lungo e pertinente al contenuto), Editore lo pubblica nell'orario migliore. Lo vedi comunque comparire nella pagina "Crea Reel AI" con l'anteprima, e puoi sempre **Rigenerare** o **Eliminare** un Reel già fatto.
 
 **Limiti noti (per restare a costo zero)**:
 - Il ritaglio 9:16 è **centrato**, non segue il soggetto: un vero tracking richiederebbe un modello di visione artificiale (GPU, servizio a pagamento).
 - **Niente sottotitoli automatici**: non è integrato nessun servizio di trascrizione (a pagamento). Restano disattivati finché non ne colleghi uno.
 - **Niente musica di sottofondo automatica**: nessuna libreria musicale con diritti verificati è integrata — il Reel usa solo l'audio originale del video, normalizzato.
 - Puoi disattivare la funzione senza toccare il codice impostando `ENABLE_AI_REEL_MAKER=false`.
+
+## Agente Vetrina (post giornaliero dal sito web)
+
+Ogni giorno, oltre al post foto/video, l'Agente Vetrina (`agents/sito-agent.ts`) cattura uno **screenshot reale** di una pagina del tuo sito (`config/brand.json` → `contatti.sitoWeb`) con un browser headless (Playwright/Chromium, installato gratis sul runner GitHub Actions) e lo mette in coda come post extra:
+
+1. Apre la home del sito e ne legge i link di navigazione reali (nessuna pagina hardcoded: segue la struttura vera del sito, qualunque essa sia).
+2. Sceglie la prossima pagina non ancora mostrata, ruotando tra tutte prima di ripartire dal principio (stessa logica delle recensioni in rotazione).
+3. Cattura uno screenshot verticale 4:5 (1080×1350, adatto al feed Instagram) della parte superiore di quella pagina.
+4. Scrive una didascalia con visione AI basata su quello che si vede davvero nello screenshot (stessa logica delle foto/Reel).
+
+Questo post "sito" è un **canale separato** da quello foto/video del giorno: `publishing-agent.ts` pubblica al massimo 1 post evento + 1 post sito al giorno, uno non ruba mai il turno all'altro. Se `contatti.sitoWeb` non è configurato in `config/brand.json`, l'agente non fa nulla.
 
 ## Invio da Telegram (il modo più semplice di usare il sistema)
 
@@ -151,7 +162,7 @@ Invece di aprire la dashboard per caricare foto/video, puoi mandarli direttament
 
 ## Contatti locali (email) — pagina "Locali"
 
-L'Agente Esploratore, avviato **a comando** dal tasto "🔍 Cerca nuovi locali" nella pagina "Locali" (non gira più da solo ogni giorno — vedi `.github/workflows/outreach-search.yml`), trova fino a 10 ristoranti/hotel con un'email pubblica sul sito e prepara una bozza di email di collaborazione, sempre con lo **stesso modello** che validi tu dalla pagina "Locali" (l'unica parte che cambia da un'email all'altra è il nome del locale, `{{LOCALE}}` nel modello), firmata con i tuoi contatti veri (telefono, email, Instagram, Facebook, sito — da `config/brand.json > contatti`, mai inventati). Usa **OpenStreetMap** (gratuito, nessuna chiave API). La ricerca gira su GitHub Actions e richiede qualche minuto: i nuovi contatti compaiono in "Da rivedere" quando finisce. Puoi inviare le bozze a mano con "Invia" (un contatto alla volta), oppure attivare l'**invio automatico** entro un limite giornaliero che scegli e cambi quando vuoi (`data/outreach-config.json > invioAutomatico`, girato dal cron `dashboard/app/api/cron/outreach-auto-send`): resta comunque disattivato finché non salvi almeno una volta un modello, e non manda mai due volte alla stessa email (deduplica sia per locale sia per indirizzo, sia in fase di bozza sia in fase di invio).
+L'Agente Esploratore gira **ogni giorno da solo**, dentro il ciclo del Direttore (`.github/workflows/daily-agents.yml`), e tiene la coda "da rivedere" sempre piena fino al numero impostato nella casella "invio automatico" della pagina "Locali" (`data/outreach-config.json > invioAutomatico.maxAlGiorno`): se la coda è già a quel numero non cerca nulla, altrimenti trova solo i ristoranti/hotel con un'email pubblica sul sito che mancano per arrivarci, e prepara una bozza di email di collaborazione, sempre con lo **stesso modello** che validi tu dalla pagina "Locali" (l'unica parte che cambia da un'email all'altra è il nome del locale, `{{LOCALE}}` nel modello), firmata con i tuoi contatti veri (telefono, email, Instagram, Facebook, sito — da `config/brand.json > contatti`, mai inventati). Usa **OpenStreetMap** (gratuito, nessuna chiave API). Puoi anche lanciare un giro extra a comando col tasto "🔍 Cerca nuovi locali" (gira su GitHub Actions, vedi `.github/workflows/outreach-search.yml`, richiede qualche minuto). Puoi inviare le bozze a mano con "Invia" (un contatto alla volta) o scartarle, oppure lasciare che partano da sole con l'**invio automatico** entro lo stesso limite giornaliero (girato dal cron `dashboard/app/api/cron/outreach-auto-send`): resta disattivato finché non salvi almeno una volta un modello, e non manda mai due volte alla stessa email (deduplica sia per locale sia per indirizzo, sia in fase di bozza sia in fase di invio).
 
 **Dove cerca**: dalla pagina "Locali" puoi scegliere in una tendina una o più province (Piemonte/Liguria/Lombardia) — se non ne scegli nessuna, l'Esploratore cerca nel raggio intorno alla tua sede (`config/brand.json > areaServita`, limitato a 60km per non appesantire troppo la ricerca su OpenStreetMap).
 
@@ -171,7 +182,7 @@ non è più un Google Form condiviso via Drive: è una pagina del sito (`site/ap
 con lo stesso stile grafico del resto di fortedj.it, raggiungibile solo con il link diretto — niente menu, niente
 sitemap, non indicizzata. Lo mandi tu via WhatsApp quando confermi una prenotazione (link pronto da copiare nella
 pagina "Questionari sposi" della dashboard). Ogni invio arriva via email (sempre) e, se configurato, anche in
-dashboard e su Telegram — vedi `site/README.md` per le variabili d'ambiente da impostare su Netlify.
+dashboard e su Telegram — vedi `site/README.md` per le variabili d'ambiente da impostare su Vercel.
 
 ## Provare il sistema in locale (facoltativo, per sviluppatori)
 
