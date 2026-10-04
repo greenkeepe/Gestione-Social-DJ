@@ -3328,6 +3328,26 @@
     "relation/8196450": {
       "il": "2026-10-01T13:01:17.959Z",
       "motivo": "nessuna email pubblica"
+    },
+    "node/13721472197": {
+      "il": "2026-10-04T09:15:44.895Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/840081675": {
+      "il": "2026-10-04T09:16:05.468Z",
+      "motivo": "email già contattata"
+    },
+    "node/4397097145": {
+      "il": "2026-10-04T09:16:14.493Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/11824226916": {
+      "il": "2026-10-04T09:16:28.450Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/5612528881": {
+      "il": "2026-10-04T09:16:28.993Z",
+      "motivo": "nessuna email pubblica"
     }
   }
 }
