@@ -44,9 +44,17 @@ const LEAD_STATUS: Record<string, StatusMeta> = {
   scartato: { label: "Scartato", tone: "neutral" }
 };
 
-const QUESTIONARIO_STATUS: Record<string, StatusMeta> = {
-  nuovo: { label: "Nuovo", tone: "warn" },
-  letto: { label: "Letto", tone: "neutral" }
+const PIANIFICATORE_STATUS: Record<string, StatusMeta> = {
+  "in-attesa": { label: "In attesa", tone: "warn" },
+  compilato: { label: "Compilato", tone: "ok" }
+};
+
+const TIPO_EVENTO: Record<string, StatusMeta> = {
+  matrimonio: { label: "Matrimonio", tone: "accent" },
+  compleanno: { label: "Compleanno", tone: "neutral" },
+  aziendale: { label: "Aziendale", tone: "neutral" },
+  party: { label: "Party", tone: "neutral" },
+  altro: { label: "Altro", tone: "neutral" }
 };
 
 const PRIORITY: Record<string, StatusMeta> = {
@@ -72,7 +80,8 @@ export const statusVocabulary = {
   reelJob: (status: string) => resolve(REEL_STATUS, status),
   seoProposal: (status: string) => resolve(SEO_PROPOSAL_STATUS, status),
   lead: (status: string) => resolve(LEAD_STATUS, status),
-  questionario: (status: string) => resolve(QUESTIONARIO_STATUS, status),
+  pianificatore: (status: string) => resolve(PIANIFICATORE_STATUS, status),
+  tipoEvento: (tipo: string) => resolve(TIPO_EVENTO, tipo),
   priority: (priority: string) => resolve(PRIORITY, priority),
   internalLink: (status: string) => resolve(INTERNAL_LINK_STATUS, status)
 };

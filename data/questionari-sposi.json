@@ -1,4 +1,0 @@
-{
-  "_istruzioni": "Questionari matrimonio compilati dagli sposi tramite la pagina privata /questionario-sposi del sito (link che mandi tu via WhatsApp solo a chi ha già prenotato, non pubblica/indicizzata). Il server action del sito AGGIUNGE qui ogni invio tramite GitHub Contents API. La dashboard legge questo file nella sezione 'Questionari sposi' e aggiorna 'letto' quando lo apri.",
-  "questionari": []
-}

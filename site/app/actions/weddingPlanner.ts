@@ -1,8 +1,7 @@
 "use server";
 
-import { randomUUID } from "node:crypto";
 import { weddingPlannerSchema, type WeddingPlannerValues } from "@/lib/validation";
-import { aggiungiVoceSuGitHub } from "@/lib/github";
+import { aggiornaEvento, type Evento } from "@/lib/eventi";
 import { inviaMessaggioTelegram } from "@/lib/telegram";
 import { siteConfig } from "@/data/site";
 
@@ -12,31 +11,9 @@ export type WeddingPlannerState = {
   fieldErrors?: Record<string, string[]>;
 };
 
-interface QuestionarioSposi {
-  id: string;
-  creatoIl: string;
-  email: string;
-  dataMatrimonio: string;
-  oraEvento: string;
-  sposa: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
-  sposo: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
-  location: { nome: string; indirizzo: string };
-  cerimonia: { oraInizio: string; branoIngresso: string; branoScambioAnelli: string; branoUscita: string };
-  festa: { oraInizioEvento: string; branoIngressoSala: string; branoTaglioTorta: string; balloLento: string };
-  generi: string[];
-  altriGeneri: string;
-  daEvitare: string;
-  noteVarie: string;
-  letto: boolean;
-}
-
-interface QuestionariFile {
-  _istruzioni: string;
-  questionari: QuestionarioSposi[];
-}
-
-function buildPlainTextEmail(data: WeddingPlannerValues): string {
+function buildPlainTextEmail(cliente: string, data: WeddingPlannerValues): string {
   return [
+    `Sposi: ${cliente}`,
     `Email: ${data.email}`,
     `Data matrimonio: ${data.weddingDate}`,
     `Ora evento: ${data.eventTime}`,
@@ -81,7 +58,12 @@ function buildPlainTextEmail(data: WeddingPlannerValues): string {
     .join("\n");
 }
 
+// eventId è vincolato con .bind() dal componente client (vedi
+// WeddingPlannerForm.tsx): arriva firmato da Next.js, non è un campo del
+// form che un visitatore potrebbe alterare per scrivere nell'evento
+// sbagliato.
 export async function submitWeddingPlannerForm(
+  eventId: string,
   _prevState: WeddingPlannerState,
   formData: FormData,
 ): Promise<WeddingPlannerState> {
@@ -143,78 +125,75 @@ export async function submitWeddingPlannerForm(
   }
 
   const data = parsed.data;
+  let eventoAggiornato: Evento | null = null;
 
-  // La dashboard (best-effort: se GITHUB_REPO/GITHUB_TOKEN non sono
-  // configurati su Vercel, non blocca l'invio — l'email resta comunque il
-  // canale principale).
+  // Scrittura su GitHub/dashboard: canale PRINCIPALE in questa architettura
+  // (non più best-effort) — senza, il risultato non comparirebbe da nessuna
+  // parte di utile per Andrea se anche l'email dovesse fallire in silenzio.
   try {
-    const voce: QuestionarioSposi = {
-      id: randomUUID(),
-      creatoIl: new Date().toISOString(),
-      email: data.email,
-      dataMatrimonio: data.weddingDate,
-      oraEvento: data.eventTime,
-      sposa: {
-        nome: data.brideName,
-        cognome: data.brideSurname,
-        telefono: data.bridePhone ?? "",
-        email: data.brideEmail,
-        facebook: data.brideFacebook ?? "",
-        instagram: data.brideInstagram ?? "",
-      },
-      sposo: {
-        nome: data.groomName,
-        cognome: data.groomSurname,
-        telefono: data.groomPhone ?? "",
-        email: data.groomEmail,
-        facebook: data.groomFacebook ?? "",
-        instagram: data.groomInstagram ?? "",
-      },
-      location: { nome: data.venueName, indirizzo: data.venueAddress },
-      cerimonia: {
-        oraInizio: data.ceremonyStartTime ?? "",
-        branoIngresso: data.ceremonyEntranceSong ?? "",
-        branoScambioAnelli: data.ceremonyRingSong ?? "",
-        branoUscita: data.ceremonyExitSong ?? "",
-      },
-      festa: {
-        oraInizioEvento: data.partyStartTime ?? "",
-        branoIngressoSala: data.receptionEntranceSong ?? "",
-        branoTaglioTorta: data.cakeCuttingSong ?? "",
-        balloLento: data.slowDanceSong ?? "",
-      },
-      generi: data.genres,
-      altriGeneri: data.otherGenres ?? "",
-      daEvitare: data.avoid ?? "",
-      noteVarie: data.notes ?? "",
-      letto: false,
-    };
-
-    await aggiungiVoceSuGitHub<QuestionariFile>(
-      "questionari-sposi.json",
-      (attuale) => {
-        attuale.questionari.unshift(voce);
-        return attuale;
-      },
-      `chore(questionari): nuovo questionario da ${data.brideName} & ${data.groomName}`,
-    );
+    await aggiornaEvento(eventId, (evento) => {
+      evento.pianificatoreCompilato = true;
+      evento.pianificatore = {
+        email: data.email,
+        oraEvento: data.eventTime,
+        sposa: {
+          nome: data.brideName,
+          cognome: data.brideSurname,
+          telefono: data.bridePhone ?? "",
+          email: data.brideEmail,
+          facebook: data.brideFacebook ?? "",
+          instagram: data.brideInstagram ?? "",
+        },
+        sposo: {
+          nome: data.groomName,
+          cognome: data.groomSurname,
+          telefono: data.groomPhone ?? "",
+          email: data.groomEmail,
+          facebook: data.groomFacebook ?? "",
+          instagram: data.groomInstagram ?? "",
+        },
+        location: { nome: data.venueName, indirizzo: data.venueAddress },
+        cerimonia: {
+          oraInizio: data.ceremonyStartTime ?? "",
+          branoIngresso: data.ceremonyEntranceSong ?? "",
+          branoScambioAnelli: data.ceremonyRingSong ?? "",
+          branoUscita: data.ceremonyExitSong ?? "",
+        },
+        festa: {
+          oraInizioEvento: data.partyStartTime ?? "",
+          branoIngressoSala: data.receptionEntranceSong ?? "",
+          branoTaglioTorta: data.cakeCuttingSong ?? "",
+          balloLento: data.slowDanceSong ?? "",
+        },
+        generi: data.genres,
+        altriGeneri: data.otherGenres ?? "",
+        daEvitare: data.avoid ?? "",
+        noteVarie: data.notes ?? "",
+        compilatoIl: new Date().toISOString(),
+      };
+      eventoAggiornato = evento;
+      return evento;
+    });
   } catch (err) {
-    console.warn("[questionario-sposi] scrittura su GitHub (dashboard) fallita o non configurata:", err);
+    console.error("[questionario-sposi] salvataggio su GitHub/dashboard fallito", err);
+    return {
+      status: "error",
+      message: "Non siamo riusciti a salvare le risposte. Riprova tra poco, oppure scrivi su WhatsApp ad Andrea.",
+    };
   }
 
-  // Notifica Telegram (best-effort, come la dashboard).
+  const cliente = (eventoAggiornato as Evento | null)?.cliente ?? `${data.brideName} & ${data.groomName}`;
+
+  // Notifica Telegram (best-effort): un canale in più, non blocca nulla se non configurato.
   await inviaMessaggioTelegram(
-    `📋 Nuovo Wedding Music Planner compilato da ${data.brideName} & ${data.groomName}!\nMatrimonio il ${data.weddingDate} a ${data.venueName}.\nTutti i dettagli nella dashboard, sezione "Questionari sposi".`,
+    `📋 Wedding Music Planner compilato da ${cliente}!\nMatrimonio il ${data.weddingDate} a ${data.venueName}.\nTutti i dettagli nella dashboard, sezione "Eventi".`,
   );
 
   const resendApiKey = process.env.RESEND_API_KEY;
   const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL || siteConfig.email;
 
   if (!resendApiKey) {
-    console.warn(
-      "[questionario-sposi] RESEND_API_KEY non configurata: questionario validato ma non inoltrato via email.",
-      data,
-    );
+    console.warn("[questionario-sposi] RESEND_API_KEY non configurata: questionario salvato ma non inoltrato via email.");
     return { status: "success" };
   }
 
@@ -229,8 +208,8 @@ export async function submitWeddingPlannerForm(
         from: process.env.CONTACT_FROM_EMAIL || "Forte DJ <onboarding@resend.dev>",
         to: notifyEmail,
         reply_to: data.email,
-        subject: `Wedding Music Planner — ${data.brideName} & ${data.groomName} (${data.weddingDate})`,
-        text: buildPlainTextEmail(data),
+        subject: `Wedding Music Planner — ${cliente} (${data.weddingDate})`,
+        text: buildPlainTextEmail(cliente, data),
       }),
     });
 
@@ -240,13 +219,8 @@ export async function submitWeddingPlannerForm(
     }
   } catch (error) {
     console.error("[questionario-sposi] invio email fallito", error);
-    // La voce è comunque salvata su GitHub/Telegram quando configurati:
-    // segnaliamo solo che l'email non è partita, non un fallimento totale.
-    return {
-      status: "error",
-      message:
-        "Il questionario non è stato inoltrato via email. Scrivi anche su WhatsApp per sicurezza, Andrea lo recupera comunque dalla dashboard.",
-    };
+    // Già salvato su GitHub/dashboard: non è un fallimento totale, solo
+    // l'email di cortesia non è partita.
   }
 
   return { status: "success" };

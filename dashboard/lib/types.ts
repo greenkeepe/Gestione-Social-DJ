@@ -253,11 +253,10 @@ export interface ReelJobsFile {
   jobs: ReelJob[];
 }
 
-export interface QuestionarioSposi {
-  id: string;
-  creatoIl: string;
+export type TipoEvento = "matrimonio" | "compleanno" | "aziendale" | "party" | "altro";
+
+export interface PianificatoreMatrimonio {
   email: string;
-  dataMatrimonio: string;
   oraEvento: string;
   sposa: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
   sposo: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
@@ -268,11 +267,25 @@ export interface QuestionarioSposi {
   altriGeneri: string;
   daEvitare: string;
   noteVarie: string;
-  letto: boolean;
+  compilatoIl: string;
 }
 
-export interface QuestionariFile {
-  questionari: QuestionarioSposi[];
+export interface Evento {
+  id: string;
+  tipo: TipoEvento;
+  cliente: string;
+  telefono: string;
+  email: string;
+  data: string;
+  location: string;
+  note: string;
+  creatoIl: string;
+  pianificatoreCompilato: boolean;
+  pianificatore: PianificatoreMatrimonio | null;
+}
+
+export interface EventiFile {
+  eventi: Evento[];
 }
 
 export interface StrategyFile {

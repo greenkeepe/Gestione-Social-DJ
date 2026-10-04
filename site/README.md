@@ -62,27 +62,32 @@ Come `dashboard/`, è pensato per Vercel: importa il repository impostando
 **Root Directory**: `site` e **Framework Preset**: `Next.js`, poi aggiungi le
 variabili d'ambiente sopra elencate.
 
-## Wedding Music Planner (`/questionario-sposi`)
+## Wedding Music Planner (`/questionario-sposi/<id>`)
 
 Pagina privata (fuori da `app/[locale]/`, non tradotta, nessun link in nav o
 sitemap, `noindex`) che sostituisce il vecchio Google Form inviato via
-Google Drive: stesso identico contenuto (domande 1:1 dal modulo storico,
-bilingue IT/EN), ma con lo stile grafico del sito e invio reale al posto
-della scheda risposte di Google.
+Google Drive: stesse domande (bilingue IT/EN), ma presentate come un
+percorso a step (con qualche foto reale in tema), gestibile comodamente da
+smartphone, con lo stile grafico del sito.
 
-Manda tu il link via WhatsApp solo a chi ha già prenotato (lo trovi anche
-pronto da copiare nella dashboard, sezione "Questionari sposi"). Ogni
-invio arriva, in parallelo e senza bloccarsi a vicenda:
+A differenza del vecchio modulo generico, **ogni matrimonio ha il suo link**:
+nasce quando crei l'evento dalla pagina "Eventi" della dashboard (data,
+sposi, telefono), che genera `https://www.fortedj.it/questionario-sposi/<id>`
+e un pulsante per mandarlo su WhatsApp con un tap. Per questo
+`GITHUB_REPO`/`GITHUB_BRANCH`/`GITHUB_TOKEN` sono **obbligatorie** qui (non
+più facoltative come nella prima versione): la pagina legge/scrive
+`data/eventi.json`, lo stesso file della dashboard, per sapere a quale
+evento appartiene il link e per salvarci le risposte quando arrivano — senza
+quelle variabili la pagina non si apre proprio.
 
-1. **Email** (via Resend, stessa configurazione del modulo di contatto).
-2. **Dashboard** — best-effort: se `GITHUB_REPO`/`GITHUB_TOKEN` non sono
-   configurati su Vercel, questo passaggio viene saltato in silenzio e
-   l'email resta comunque il canale principale.
-3. **Telegram** — best-effort: se `TELEGRAM_BOT_TOKEN`/
-   `TELEGRAM_ALLOWED_CHAT_ID` non sono configurati, viene saltato in
-   silenzio.
+Quando gli sposi inviano il questionario, le risposte:
+1. Vengono salvate sull'evento in `data/eventi.json` (compaiono subito nella
+   dashboard, pagina "Eventi" → l'evento in questione).
+2. Arrivano anche via **email** (Resend, stessa configurazione del modulo di
+   contatto) e **Telegram** (facoltativo) — entrambi best-effort, non
+   bloccano il salvataggio principale se non configurati.
 
-Vedi `.env.example` per le variabili dei punti 2 e 3.
+Vedi `.env.example` per le variabili.
 
 ## SEO Engine (dashboard interna, opzionale)
 

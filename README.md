@@ -175,14 +175,19 @@ L'Agente Esploratore gira **ogni giorno da solo**, dentro il ciclo del Direttore
 
 Senza questa configurazione, l'Esploratore continua comunque a preparare le bozze (le vedi lo stesso nella dashboard), semplicemente il tasto "Invia" darà errore finché non è impostata.
 
-## Wedding Music Planner — pagina "Questionari sposi"
+## Calendario eventi e Wedding Music Planner — pagina "Eventi"
 
-Il modulo che fanno compilare gli sposi dopo aver prenotato (location, cerimonia, brani, generi, cosa evitare)
-non è più un Google Form condiviso via Drive: è una pagina del sito (`site/app/(sposi)/questionario-sposi`),
-con lo stesso stile grafico del resto di fortedj.it, raggiungibile solo con il link diretto — niente menu, niente
-sitemap, non indicizzata. Lo mandi tu via WhatsApp quando confermi una prenotazione (link pronto da copiare nella
-pagina "Questionari sposi" della dashboard). Ogni invio arriva via email (sempre) e, se configurato, anche in
-dashboard e su Telegram — vedi `site/README.md` per le variabili d'ambiente da impostare su Vercel.
+La pagina "Eventi" della dashboard è il calendario di tutte le tue prenotazioni (matrimoni, compleanni, aziendali,
+party): la crei tu quando confermi una data (tipo evento, cliente, telefono, data, location). Per i matrimoni,
+creare l'evento genera subito un link personale — `fortedj.it/questionario-sposi/<id>` — e un pulsante che apre
+WhatsApp con il messaggio già scritto, pronto da mandare con un tap.
+
+Il link porta al Wedding Music Planner (il modulo che una volta era un Google Form condiviso via Drive): location,
+cerimonia, brani, generi, cosa evitare, presentati come un percorso a step con qualche foto reale in tema, pensato
+per essere compilato comodamente da smartphone. Non è pubblico, non è nel menu del sito e non è indicizzato da
+Google. Appena gli sposi lo inviano, le risposte compaiono subito sulla pagina dell'evento nella dashboard (oltre
+a un'email e, se configurato, una notifica Telegram) — vedi `site/README.md` per le variabili d'ambiente da
+impostare su Vercel (qui sono obbligatorie, non facoltative: senza, la pagina del questionario non si apre).
 
 ## Provare il sistema in locale (facoltativo, per sviluppatori)
 

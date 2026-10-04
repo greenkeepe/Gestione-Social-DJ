@@ -9,6 +9,7 @@ import {
   Upload,
   Image as ImageIcon,
   CalendarClock,
+  Calendar,
   Users,
   MessageCircle,
   MapPin,
@@ -16,14 +17,16 @@ import {
   Target,
   Gauge,
   Link2,
-  LogOut,
-  Heart
+  LogOut
 } from "lucide-react";
 
 const NAV_SECTIONS = [
   {
     label: "Panoramica",
-    items: [{ href: "/", label: "Panoramica", icon: LayoutDashboard }]
+    items: [
+      { href: "/", label: "Panoramica", icon: LayoutDashboard },
+      { href: "/eventi", label: "Eventi", icon: Calendar }
+    ]
   },
   {
     label: "Contenuti",
@@ -39,7 +42,6 @@ const NAV_SECTIONS = [
       { href: "/lead", label: "Lead", icon: Users },
       { href: "/risposte", label: "Risposte", icon: MessageCircle },
       { href: "/locali", label: "Locali", icon: MapPin },
-      { href: "/questionari", label: "Questionari sposi", icon: Heart },
       { href: "/seo", label: "SEO", icon: Search }
     ]
   },
