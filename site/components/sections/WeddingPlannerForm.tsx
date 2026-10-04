@@ -55,7 +55,7 @@ function TextField({
 // che si sta compilando (niente foto a caso): niente per i passi
 // "Sposa"/"Sposo", dove una foto genererebbe solo rumore.
 const STEP_IMAGES: Record<string, { src: string; alt: string }> = {
-  evento: { src: "/images/gallery/wedding-couple-goldenhour.jpg", alt: "Sposi in terrazza al tramonto" },
+  evento: { src: "/images/hero-ceremony.jpg", alt: "Allestimento di una cerimonia di matrimonio con vista sulle colline" },
   location: { src: "/images/gallery/wedding-terrace-booth-hills.jpg", alt: "Consolle allestita in terrazza con vista sulle colline" },
   cerimonia: { src: "/images/gallery/wedding-ceremony-arch-hills.jpg", alt: "Cerimonia con arco floreale e vista sulle colline" },
   festa: { src: "/images/gallery/wedding-reception-dance.jpg", alt: "Balli al ricevimento con luci scenografiche" },
@@ -207,7 +207,6 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
   }
 
   const step = STEPS[stepIndex];
-  const immagine = STEP_IMAGES[step.key];
   const isLastStep = stepIndex === STEPS.length - 1;
 
   return (
