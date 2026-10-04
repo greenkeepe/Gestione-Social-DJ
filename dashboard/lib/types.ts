@@ -143,6 +143,28 @@ export interface ReelJobsFile {
   jobs: ReelJob[];
 }
 
+export interface QuestionarioSposi {
+  id: string;
+  creatoIl: string;
+  email: string;
+  dataMatrimonio: string;
+  oraEvento: string;
+  sposa: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
+  sposo: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
+  location: { nome: string; indirizzo: string };
+  cerimonia: { oraInizio: string; branoIngresso: string; branoScambioAnelli: string; branoUscita: string };
+  festa: { oraInizioEvento: string; branoIngressoSala: string; branoTaglioTorta: string; balloLento: string };
+  generi: string[];
+  altriGeneri: string;
+  daEvitare: string;
+  noteVarie: string;
+  letto: boolean;
+}
+
+export interface QuestionariFile {
+  questionari: QuestionarioSposi[];
+}
+
 export interface StrategyFile {
   obiettivo: string;
   logicaTemporale: string;

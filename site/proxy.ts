@@ -1,7 +1,12 @@
-// Due responsabilità distinte in un solo proxy (Next.js permette un solo
+// Tre responsabilità distinte in un solo proxy (Next.js permette un solo
 // file proxy.ts):
 // 1. /admin/*: Basic Auth per la dashboard privata (vedi site/docs/seo-engine.md).
-// 2. Tutto il resto: instradamento multilingua (next-intl) — rileva la
+// 2. /questionario-sposi: pagina privata non tradotta (fuori da
+//    app/[locale]/), esclusa dall'instradamento multilingua perché altrimenti
+//    un visitatore con browser in inglese verrebbe rediretto su
+//    /en/questionario-sposi, che non esiste (404) — stesso problema che non
+//    si pone per /admin, già escluso qui sotto.
+// 3. Tutto il resto: instradamento multilingua (next-intl) — rileva la
 //    lingua del visitatore (cookie salvato, poi header Accept-Language) e
 //    serve /en, /fr, /de con prefisso; l'italiano resta senza prefisso per
 //    non toccare gli URL già indicizzati da Google.
@@ -48,6 +53,9 @@ function checkAdminAuth(request: NextRequest): Response {
 export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/admin")) {
     return checkAdminAuth(request);
+  }
+  if (request.nextUrl.pathname.startsWith("/questionario-sposi")) {
+    return NextResponse.next();
   }
   return intlMiddleware(request);
 }

@@ -164,6 +164,15 @@ L'Agente Esploratore, avviato **a comando** dal tasto "🔍 Cerca nuovi locali" 
 
 Senza questa configurazione, l'Esploratore continua comunque a preparare le bozze (le vedi lo stesso nella dashboard), semplicemente il tasto "Invia" darà errore finché non è impostata.
 
+## Wedding Music Planner — pagina "Questionari sposi"
+
+Il modulo che fanno compilare gli sposi dopo aver prenotato (location, cerimonia, brani, generi, cosa evitare)
+non è più un Google Form condiviso via Drive: è una pagina del sito (`site/app/(sposi)/questionario-sposi`),
+con lo stesso stile grafico del resto di fortedj.it, raggiungibile solo con il link diretto — niente menu, niente
+sitemap, non indicizzata. Lo mandi tu via WhatsApp quando confermi una prenotazione (link pronto da copiare nella
+pagina "Questionari sposi" della dashboard). Ogni invio arriva via email (sempre) e, se configurato, anche in
+dashboard e su Telegram — vedi `site/README.md` per le variabili d'ambiente da impostare su Netlify.
+
 ## Provare il sistema in locale (facoltativo, per sviluppatori)
 
 ```bash

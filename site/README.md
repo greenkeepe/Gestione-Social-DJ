@@ -62,6 +62,28 @@ Come `dashboard/`, è pensato per Vercel: importa il repository impostando
 **Root Directory**: `site` e **Framework Preset**: `Next.js`, poi aggiungi le
 variabili d'ambiente sopra elencate.
 
+## Wedding Music Planner (`/questionario-sposi`)
+
+Pagina privata (fuori da `app/[locale]/`, non tradotta, nessun link in nav o
+sitemap, `noindex`) che sostituisce il vecchio Google Form inviato via
+Google Drive: stesso identico contenuto (domande 1:1 dal modulo storico,
+bilingue IT/EN), ma con lo stile grafico del sito e invio reale al posto
+della scheda risposte di Google.
+
+Manda tu il link via WhatsApp solo a chi ha già prenotato (lo trovi anche
+pronto da copiare nella dashboard, sezione "Questionari sposi"). Ogni
+invio arriva, in parallelo e senza bloccarsi a vicenda:
+
+1. **Email** (via Resend, stessa configurazione del modulo di contatto).
+2. **Dashboard** — best-effort: se `GITHUB_REPO`/`GITHUB_TOKEN` non sono
+   configurati su Netlify, questo passaggio viene saltato in silenzio e
+   l'email resta comunque il canale principale.
+3. **Telegram** — best-effort: se `TELEGRAM_BOT_TOKEN`/
+   `TELEGRAM_ALLOWED_CHAT_ID` non sono configurati, viene saltato in
+   silenzio.
+
+Vedi `.env.example` per le variabili dei punti 2 e 3.
+
 ## SEO Engine (dashboard interna, opzionale)
 
 `/admin/seo` (protetta da Basic Auth) mostra dati reali da Google Search
