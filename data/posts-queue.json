@@ -116,46 +116,6 @@
       "pillarId": "dietro-le-quinte"
     },
     {
-      "id": "ff042241-6a24-49cd-82ef-37dbe6cc1243",
-      "createdAt": "2026-09-23T09:02:55.037Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "f5f771a0-1bcc-41cd-bd15-7b229a047b67",
-        "filename": "reel-IMG_5603.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e721c274-73d6-4c56-accb-3208a88676d7.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/58e443db-71ed-4b15-86e5-0931c61482d9.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "IMG_5603.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Il taglio della torta con i fuochi freddi accesi, questo sì che è un finale.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingdj",
-        "#matrimonioitaliano",
-        "#djmatrimonio",
-        "#matrimonio2027",
-        "#weddingday",
-        "#djperfeste",
-        "#djeventi",
-        "#weddingmusic",
-        "#djwedding",
-        "#liguria",
-        "#lombardia",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-10-03",
-      "pillarId": "dietro-le-quinte",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "af059bc4-1202-420d-a035-6da764919d0e",
       "createdAt": "2026-09-23T09:02:55.037Z",
       "formato": "reel",
@@ -188,10 +148,12 @@
         "#lombardia"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-04",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
