@@ -10,6 +10,7 @@ import { WhatsAppSendButton } from "../../../../components/WhatsAppSendButton";
 import { EmailSendButton } from "../../../../components/EmailSendButton";
 import { CopiaLinkButton } from "../../../../components/CopiaLinkButton";
 import { EliminaEventoButton } from "../../../../components/EliminaEventoButton";
+import { ModificaEventoButton } from "../../../../components/ModificaEventoButton";
 import { DettagliPianificatore } from "../../../../components/DettagliPianificatore";
 import { statusVocabulary } from "../../../../lib/statusVocabulary";
 
@@ -47,7 +48,10 @@ export default async function EventoPage({ params }: { params: { id: string } })
       />
 
       <div className="card">
-        <div className="label">Dati di contatto</div>
+        <div className="flex gap-xs" style={{ alignItems: "center", justifyContent: "space-between" }}>
+          <div className="label">Dati di contatto</div>
+          <ModificaEventoButton evento={evento} />
+        </div>
         <p className="note">Telefono: {evento.telefono || "—"}</p>
         <p className="note">Email: {evento.email || "—"}</p>
         {evento.note && <p className="note">Note: {evento.note}</p>}
