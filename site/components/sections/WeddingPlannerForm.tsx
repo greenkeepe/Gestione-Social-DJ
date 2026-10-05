@@ -168,6 +168,16 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
     }
   }, [state]);
 
+  // Dopo l'invio (successo o errore) riporta sempre in cima: su smartphone,
+  // dopo aver scrollato fino in fondo per premere "Invia", altrimenti il
+  // risultato potrebbe restare fuori dallo schermo e sembrare che "non sia
+  // successo niente".
+  useEffect(() => {
+    if (state.status === "success" || state.status === "error") {
+      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [state]);
+
   function scrollToTop() {
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -195,8 +205,9 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
 
   if (state.status === "success") {
     return (
-      <div role="status" className="flex flex-col items-center gap-4 rounded-2xl border border-line bg-charcoal-soft p-10 text-center">
-        <CheckCircle2 className="h-10 w-10 text-champagne" aria-hidden />
+      <div ref={topRef} role="status" className="flex flex-col items-center gap-4 rounded-2xl border border-champagne/40 bg-charcoal-soft p-10 text-center shadow-[0_0_40px_-10px_rgba(201,168,118,0.35)]">
+        <CheckCircle2 className="h-12 w-12 text-champagne" aria-hidden />
+        <p className="eyebrow">✅ Inviato con successo</p>
         <h2 className="font-display text-2xl text-ivory">Questionario ricevuto, grazie!</h2>
         <p className="max-w-md text-sm text-ivory-dim">
           Andrea ha ricevuto tutti i dettagli e li userà per costruire la colonna sonora del vostro giorno. Per

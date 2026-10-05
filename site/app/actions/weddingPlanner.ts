@@ -67,6 +67,23 @@ export async function submitWeddingPlannerForm(
   _prevState: WeddingPlannerState,
   formData: FormData,
 ): Promise<WeddingPlannerState> {
+  // Rete di sicurezza: qualunque eccezione imprevista (non solo quelle già
+  // previste più sotto) deve comunque tornare come stato leggibile, mai
+  // come un errore non gestito — altrimenti chi compila il modulo non vede
+  // nessun messaggio, né di successo né di errore, e non sa se è stato
+  // inviato o no.
+  try {
+    return await elaboraInvio(eventId, formData);
+  } catch (err) {
+    console.error("[questionario-sposi] errore imprevisto non gestito", err);
+    return {
+      status: "error",
+      message: "Qualcosa è andato storto in modo imprevisto. Riprova tra poco, oppure scrivi su WhatsApp ad Andrea per sicurezza.",
+    };
+  }
+}
+
+async function elaboraInvio(eventId: string, formData: FormData): Promise<WeddingPlannerState> {
   const raw = {
     email: formData.get("email") ?? "",
     weddingDate: formData.get("weddingDate") ?? "",
