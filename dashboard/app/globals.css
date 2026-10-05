@@ -1415,3 +1415,181 @@ input, textarea, select {
     width: 100%;
   }
 }
+
+/* Calendario eventi
+   ------------------------------------------------------------------------- */
+.calendar {
+  margin-top: 16px;
+}
+
+.calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.calendar__month-label {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.calendar__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.calendar__nav-btn:hover {
+  border-color: var(--color-primary-light);
+  background: var(--color-primary-soft);
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.calendar__weekday {
+  background: var(--bg-elev-2);
+  padding: 8px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.calendar__day {
+  background: var(--bg-elev);
+  min-height: 92px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendar__day--outside {
+  background: var(--bg);
+  opacity: 0.45;
+}
+
+.calendar__day--today .calendar__day-number {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.calendar__day-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.calendar__events {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.calendar__event {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.calendar__event--matrimonio {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.calendar__event--compleanno,
+.calendar__event--aziendale,
+.calendar__event--party,
+.calendar__event--altro {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+}
+
+.calendar__more {
+  font-size: 10px;
+  color: var(--text-dim);
+  padding-left: 6px;
+}
+
+@media (max-width: 900px) {
+  .calendar__day {
+    min-height: 72px;
+    padding: 4px;
+  }
+
+  .calendar__event {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar__month-label {
+    font-size: 18px;
+  }
+
+  .calendar__weekday {
+    font-size: 9px;
+    padding: 6px 2px;
+  }
+
+  .calendar__day {
+    min-height: 58px;
+    gap: 2px;
+  }
+
+  .calendar__day-number {
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .calendar__event {
+    font-size: 0;
+    line-height: 0;
+    padding: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+  }
+
+  .calendar__more {
+    font-size: 9px;
+  }
+}
