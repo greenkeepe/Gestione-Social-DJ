@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-30T06:27:56.329Z",
-  "sourceGeneratedAt": "2026-09-30T06:22:27.557Z",
+  "generatedAt": "2026-10-05T12:08:24.303Z",
+  "sourceGeneratedAt": "2026-10-05T12:02:45.564Z",
   "period": {
-    "startDate": "2026-08-30",
-    "endDate": "2026-09-27"
+    "startDate": "2026-09-04",
+    "endDate": "2026-10-02"
   },
   "rules": {
     "positionRange": [

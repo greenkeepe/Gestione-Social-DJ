@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Segugio",
+      "identita": "Agente SEO (Search Console)",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna nuova proposta (1 opportunità trovate).",
+      "timestamp": "2026-10-05T12:08:26.748Z"
+    },
+    {
       "agente": "Postino",
       "identita": "Agente Invio Automatico Locali",
       "status": "nessuna-azione",
@@ -3577,13 +3584,6 @@
         "errore": "Error: Overpass API ha risposto 504: <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" lang=\"en\"/>\n  <title>OSM3S Response</title>\n</head>\n<body>\n\n<p>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</p>\n<p><strong style=\"color:#FF0000\">Error</strong>: runtime error: open64: 0 Success /osm3s_osm_base Dispatcher_Client::request_read_and_idx::timeout. The server is probably too busy to handle your request. </p>\n\n</body>\n</html>\n"
       },
       "timestamp": "2026-09-17T10:23:50.672Z"
-    },
-    {
-      "agente": "Appunti",
-      "identita": "Agente Note Instagram",
-      "status": "ok",
-      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore già a mille.\"",
-      "timestamp": "2026-09-17T10:23:40.594Z"
     }
   ]
 }
