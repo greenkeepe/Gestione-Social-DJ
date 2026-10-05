@@ -238,7 +238,15 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
         </div>
       </div>
 
-      <form action={formAction} className="flex flex-col gap-8">
+      {/* noValidate: i campi email/data sui passi non visibili (display:none)
+          sono comunque soggetti alla validazione nativa del browser, che però
+          non può mostrare l'errore su un campo non a schermo — il browser
+          blocca l'invio in silenzio, senza nessun messaggio ("An invalid
+          form control ... is not focusable" solo in console). La
+          validazione la facciamo già noi (vaiAvanti lato client, zod lato
+          server), quindi disattiviamo quella nativa che qui fa più danni che
+          altro. */}
+      <form action={formAction} noValidate className="flex flex-col gap-8">
         {/* Honeypot anti-spam: display:none (non solo fuori schermo), è
             l'unico modo per cui autofill e gestori di password lo ignorano
             davvero invece di riempirlo comunque. */}
