@@ -4,6 +4,13 @@
     {
       "agente": "Esploratore",
       "identita": "Agente Partnership Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
+      "timestamp": "2026-10-05T14:26:04.695Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
       "status": "ok",
       "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 250.",
       "timestamp": "2026-10-05T14:25:48.144Z"
@@ -3574,13 +3581,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Location e ambientazione\" (LLM con visione). Programmato per le 12:30.",
       "timestamp": "2026-09-17T10:26:33.202Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"telegram-1789635458694.jpg\" (foto) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-17T10:26:29.458Z"
     }
   ]
 }
