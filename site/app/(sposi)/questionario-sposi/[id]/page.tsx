@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { leggiEvento } from "@/lib/eventi";
 import { WeddingPlannerForm } from "@/components/sections/WeddingPlannerForm";
-import { technicalBaseUrl } from "@/data/site";
 
-// Senza questo, WhatsApp/iMessage mostravano un'anteprima generica (solo
-// dominio e titolo della home) quando Andrea manda il link — con il nome
-// della coppia e una foto vera, l'anteprima sembra fatta apposta per loro,
-// non un link qualsiasi.
+// Titolo/descrizione personalizzati per la coppia: senza, WhatsApp/iMessage
+// mostravano un'anteprima generica (solo dominio e titolo della home).
+// L'immagine non va qui: la genera opengraph-image.tsx (convenzione di
+// file di Next.js), risolta sul dominio reale invece che con un URL
+// assoluto costruito a mano, che su questo progetto punterebbe al dominio
+// interno di Vercel e non sarebbe raggiungibile dai crawler social.
 export async function generateMetadata({
   params,
 }: {
@@ -27,7 +28,6 @@ export async function generateMetadata({
     openGraph: {
       title: titolo,
       description: descrizione,
-      images: [{ url: `${technicalBaseUrl}/images/hero-ceremony.jpg`, width: 1200, height: 630 }],
       type: "website",
     },
   };
