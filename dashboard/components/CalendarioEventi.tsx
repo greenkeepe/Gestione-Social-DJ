@@ -59,7 +59,13 @@ function costruisciCelle(anno: number, mese: number): Cella[] {
   return celle;
 }
 
-export function CalendarioEventi({ eventi }: { eventi: Evento[] }) {
+export function CalendarioEventi({
+  eventi,
+  onGiornoClick
+}: {
+  eventi: Evento[];
+  onGiornoClick?: (data: string) => void;
+}) {
   const oggi = new Date();
   const [anno, setAnno] = useState(oggi.getFullYear());
   const [mese, setMese] = useState(oggi.getMonth());
@@ -107,13 +113,20 @@ export function CalendarioEventi({ eventi }: { eventi: Evento[] }) {
           const classi = [
             "calendar__day",
             cella.fuoriMese ? "calendar__day--outside" : "",
-            dataStr === oggiStr ? "calendar__day--today" : ""
+            dataStr === oggiStr ? "calendar__day--today" : "",
+            onGiornoClick ? "calendar__day--clickable" : ""
           ]
             .filter(Boolean)
             .join(" ");
 
           return (
-            <div key={`${dataStr}-${i}`} className={classi}>
+            <div
+              key={`${dataStr}-${i}`}
+              className={classi}
+              onClick={onGiornoClick ? () => onGiornoClick(dataStr) : undefined}
+              role={onGiornoClick ? "button" : undefined}
+              tabIndex={onGiornoClick ? 0 : undefined}
+            >
               <span className="calendar__day-number">{cella.giorno}</span>
               {eventiGiorno.length > 0 && (
                 <div className="calendar__events">
@@ -123,6 +136,7 @@ export function CalendarioEventi({ eventi }: { eventi: Evento[] }) {
                       href={`/eventi/${e.id}`}
                       className={`calendar__event calendar__event--${e.tipo}`}
                       title={e.cliente}
+                      onClick={(event) => event.stopPropagation()}
                     >
                       {e.cliente}
                     </Link>

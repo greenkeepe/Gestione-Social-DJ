@@ -5,9 +5,7 @@ import type { EventiFile } from "../../../lib/types";
 import { PageHeader } from "../../../components/ui/PageHeader";
 import { EmptyState } from "../../../components/ui/EmptyState";
 import { StatusBadge } from "../../../components/ui/StatusBadge";
-import { Tabs } from "../../../components/ui/Tabs";
-import { NuovoEventoForm } from "../../../components/NuovoEventoForm";
-import { CalendarioEventi } from "../../../components/CalendarioEventi";
+import { GestoreEventi } from "../../../components/GestoreEventi";
 import { statusVocabulary } from "../../../lib/statusVocabulary";
 
 export const dynamic = "force-dynamic";
@@ -104,20 +102,9 @@ export default async function EventiPage() {
       <PageHeader
         icon={<Calendar size={22} aria-hidden="true" />}
         title="Eventi"
-        description="Il calendario delle tue prenotazioni. Crea un evento appena confermi una data: per i matrimoni ottieni subito il link personale del Wedding Music Planner da mandare su WhatsApp."
-        action={<NuovoEventoForm />}
+        description="Il calendario delle tue prenotazioni. Crea un evento appena confermi una data (dal tasto qui sotto, o toccando direttamente il giorno sul calendario): per i matrimoni ottieni subito il link personale del Wedding Music Planner da mandare su WhatsApp o via email."
       />
-
-      {file.eventi.length === 0 ? (
-        <EmptyState title="Nessun evento in programma" description="Crea il primo evento con il pulsante qui sopra." />
-      ) : (
-        <Tabs
-          items={[
-            { id: "calendario", label: "Calendario", content: <CalendarioEventi eventi={file.eventi} /> },
-            { id: "lista", label: "Lista", content: vistaLista }
-          ]}
-        />
-      )}
+      <GestoreEventi eventi={file.eventi} vistaLista={vistaLista} />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { PageHeader } from "../../../../components/ui/PageHeader";
 import { StatusBadge } from "../../../../components/ui/StatusBadge";
 import { EmptyState } from "../../../../components/ui/EmptyState";
 import { WhatsAppSendButton } from "../../../../components/WhatsAppSendButton";
+import { EmailSendButton } from "../../../../components/EmailSendButton";
 import { CopiaLinkButton } from "../../../../components/CopiaLinkButton";
 import { EliminaEventoButton } from "../../../../components/EliminaEventoButton";
 import { DettagliPianificatore } from "../../../../components/DettagliPianificatore";
@@ -50,9 +51,11 @@ export default async function EventoPage({ params }: { params: { id: string } })
         <p className="note">Telefono: {evento.telefono || "—"}</p>
         <p className="note">Email: {evento.email || "—"}</p>
         {evento.note && <p className="note">Note: {evento.note}</p>}
-        <div className="flex gap-sm mt-sm">
-          <WhatsAppSendButton telefono={evento.telefono} messaggio={messaggioWhatsApp} />
-        </div>
+        {evento.tipo !== "matrimonio" && (
+          <div className="flex gap-sm mt-sm">
+            <WhatsAppSendButton telefono={evento.telefono} messaggio={messaggioWhatsApp} />
+          </div>
+        )}
       </div>
 
       {evento.tipo === "matrimonio" && (
@@ -64,6 +67,10 @@ export default async function EventoPage({ params }: { params: { id: string } })
               <CopiaLinkButton link={link} />
             </div>
             <p className="note" style={{ wordBreak: "break-all" }}>{link}</p>
+            <div className="flex gap-sm mt-sm">
+              <WhatsAppSendButton telefono={evento.telefono} messaggio={messaggioWhatsApp} />
+              <EmailSendButton id={evento.id} email={evento.email} />
+            </div>
           </div>
 
           {evento.pianificatoreCompilato && evento.pianificatore ? (
