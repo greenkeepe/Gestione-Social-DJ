@@ -104,19 +104,6 @@
       }
     },
     {
-      "id": "03ef4657-115c-4a9f-9310-90efd283d1c1",
-      "tipo": "matrimonio",
-      "cliente": "test3",
-      "telefono": "3667447280",
-      "email": "",
-      "data": "2026-10-01",
-      "location": "",
-      "note": "",
-      "creatoIl": "2026-10-05T13:18:43.161Z",
-      "pianificatoreCompilato": false,
-      "pianificatore": null
-    },
-    {
       "id": "e6bbf64c-57b2-4d6d-b140-8c9fe178d19c",
       "tipo": "matrimonio",
       "cliente": "test2",
