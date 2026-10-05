@@ -2,6 +2,19 @@
   "_istruzioni": "Eventi/prenotazioni di Andrea (matrimoni, compleanni, aziendali, party). Crea un nuovo evento dalla pagina 'Eventi' della dashboard quando confermi una prenotazione: ottieni subito un link personale da mandare su WhatsApp a quella coppia/cliente. Per i matrimoni, il link porta al Wedding Music Planner (sito pubblico, non indicizzato): quando lo compilano, 'pianificatoreCompilato' passa a true e 'pianificatore' si riempie con le risposte. La dashboard legge/scrive questo file tramite GitHub Contents API, il server action del sito scrive solo il campo 'pianificatore' dell'evento corrispondente al suo id.",
   "eventi": [
     {
+      "id": "09190410-583d-44ea-8139-00232a7a5460",
+      "tipo": "matrimonio",
+      "cliente": "test4",
+      "telefono": "",
+      "email": "",
+      "data": "2026-10-09",
+      "location": "",
+      "note": "",
+      "creatoIl": "2026-10-05T13:36:21.270Z",
+      "pianificatoreCompilato": false,
+      "pianificatore": null
+    },
+    {
       "id": "03ef4657-115c-4a9f-9310-90efd283d1c1",
       "tipo": "matrimonio",
       "cliente": "test3",
