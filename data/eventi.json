@@ -104,61 +104,6 @@
         "noteVarie": "",
         "compilatoIl": "2026-10-05T12:42:50.782Z"
       }
-    },
-    {
-      "id": "4504117e-56b9-403d-b379-3d32b2dfcea7",
-      "tipo": "matrimonio",
-      "cliente": "TEST",
-      "telefono": "+393667447280",
-      "email": "",
-      "data": "2026-10-10",
-      "location": "",
-      "note": "",
-      "creatoIl": "2026-10-04T10:24:57.887Z",
-      "pianificatoreCompilato": true,
-      "pianificatore": {
-        "email": "test@example.com",
-        "oraEvento": "16:00",
-        "sposa": {
-          "nome": "Test",
-          "cognome": "Sposa",
-          "telefono": "",
-          "email": "test@example.com",
-          "facebook": "",
-          "instagram": ""
-        },
-        "sposo": {
-          "nome": "Test",
-          "cognome": "Sposo",
-          "telefono": "",
-          "email": "",
-          "facebook": "",
-          "instagram": ""
-        },
-        "location": {
-          "nome": "Location di prova (test da Claude)",
-          "indirizzo": ""
-        },
-        "cerimonia": {
-          "oraInizio": "",
-          "branoIngresso": "",
-          "branoScambioAnelli": "",
-          "branoUscita": ""
-        },
-        "festa": {
-          "oraInizioEvento": "",
-          "branoIngressoSala": "",
-          "branoTaglioTorta": "",
-          "balloLento": ""
-        },
-        "generi": [
-          "Commerciale"
-        ],
-        "altriGeneri": "",
-        "daEvitare": "",
-        "noteVarie": "Scrittura di TEST eseguita da Claude per verificare il meccanismo GitHub Contents API (stessa logica di site/lib/eventi.ts). Puoi eliminare questo evento quando vuoi.",
-        "compilatoIl": "2026-10-04T10:39:55.617Z"
-      }
     }
   ]
 }
