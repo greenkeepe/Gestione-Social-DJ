@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-05T14:07:59.395Z"
+    },
+    {
       "agente": "Segugio",
       "identita": "Agente SEO (Search Console)",
       "status": "nessuna-azione",
@@ -3574,16 +3581,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-17T10:23:50.673Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "errore",
-      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
-      "dettagli": {
-        "errore": "Error: Overpass API ha risposto 504: <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" lang=\"en\"/>\n  <title>OSM3S Response</title>\n</head>\n<body>\n\n<p>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</p>\n<p><strong style=\"color:#FF0000\">Error</strong>: runtime error: open64: 0 Success /osm3s_osm_base Dispatcher_Client::request_read_and_idx::timeout. The server is probably too busy to handle your request. </p>\n\n</body>\n</html>\n"
-      },
-      "timestamp": "2026-09-17T10:23:50.672Z"
     }
   ]
 }
