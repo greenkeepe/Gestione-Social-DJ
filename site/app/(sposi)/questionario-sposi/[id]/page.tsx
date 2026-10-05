@@ -1,6 +1,37 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { leggiEvento } from "@/lib/eventi";
 import { WeddingPlannerForm } from "@/components/sections/WeddingPlannerForm";
+import { technicalBaseUrl } from "@/data/site";
+
+// Senza questo, WhatsApp/iMessage mostravano un'anteprima generica (solo
+// dominio e titolo della home) quando Andrea manda il link — con il nome
+// della coppia e una foto vera, l'anteprima sembra fatta apposta per loro,
+// non un link qualsiasi.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const evento = await leggiEvento(id).catch(() => null);
+  const titolo = evento ? `Wedding Music Planner — ${evento.cliente}` : "Wedding Music Planner — Forte DJ";
+  const descrizione = evento
+    ? `Ciao ${evento.cliente}! Raccontaci la musica del vostro matrimonio: bastano 10 minuti.`
+    : "Il questionario musicale di Forte DJ per il vostro matrimonio.";
+
+  return {
+    title: titolo,
+    description: descrizione,
+    robots: { index: false, follow: false },
+    openGraph: {
+      title: titolo,
+      description: descrizione,
+      images: [{ url: `${technicalBaseUrl}/images/hero-ceremony.jpg`, width: 1200, height: 630 }],
+      type: "website",
+    },
+  };
+}
 
 export default async function QuestionarioSposiPage({
   params,

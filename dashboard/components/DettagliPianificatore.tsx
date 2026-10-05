@@ -14,25 +14,14 @@ export function DettagliPianificatore({ p }: { p: PianificatoreMatrimonio }) {
     <div className="card">
       <p className="note">Compilato il {new Date(p.compilatoIl).toLocaleString("it-IT")}</p>
       <Riga label="Email di contatto" valore={p.email} />
+      <Riga label="Telefono di contatto" valore={p.telefono} />
       <Riga label="Ora evento" valore={p.oraEvento} />
 
       <p style={{ marginTop: 12 }}>
-        <strong>Sposa</strong>
+        <strong>Sposi</strong>
       </p>
-      <Riga label="Nome" valore={`${p.sposa.nome} ${p.sposa.cognome}`} />
-      <Riga label="Telefono" valore={p.sposa.telefono} />
-      <Riga label="Email" valore={p.sposa.email} />
-      <Riga label="Facebook" valore={p.sposa.facebook} />
-      <Riga label="Instagram" valore={p.sposa.instagram} />
-
-      <p style={{ marginTop: 12 }}>
-        <strong>Sposo</strong>
-      </p>
-      <Riga label="Nome" valore={`${p.sposo.nome} ${p.sposo.cognome}`} />
-      <Riga label="Telefono" valore={p.sposo.telefono} />
-      <Riga label="Email" valore={p.sposo.email} />
-      <Riga label="Facebook" valore={p.sposo.facebook} />
-      <Riga label="Instagram" valore={p.sposo.instagram} />
+      <Riga label="Sposa" valore={`${p.sposa.nome} ${p.sposa.cognome}`} />
+      <Riga label="Sposo" valore={`${p.sposo.nome} ${p.sposo.cognome}`} />
 
       <p style={{ marginTop: 12 }}>
         <strong>Location</strong>
@@ -43,10 +32,16 @@ export function DettagliPianificatore({ p }: { p: PianificatoreMatrimonio }) {
       <p style={{ marginTop: 12 }}>
         <strong>Cerimonia</strong>
       </p>
-      <Riga label="Orario inizio" valore={p.cerimonia.oraInizio} />
-      <Riga label="Brano ingresso sposa" valore={p.cerimonia.branoIngresso} />
-      <Riga label="Brano scambio anelli" valore={p.cerimonia.branoScambioAnelli} />
-      <Riga label="Brano fine cerimonia" valore={p.cerimonia.branoUscita} />
+      {p.cerimoniaInLoco ? (
+        <>
+          <Riga label="Orario inizio" valore={p.cerimonia.oraInizio} />
+          <Riga label="Brano ingresso sposa" valore={p.cerimonia.branoIngresso} />
+          <Riga label="Brano scambio anelli" valore={p.cerimonia.branoScambioAnelli} />
+          <Riga label="Brano fine cerimonia" valore={p.cerimonia.branoUscita} />
+        </>
+      ) : (
+        <p className="note">Nessuna cerimonia in loco con il DJ.</p>
+      )}
 
       <p style={{ marginTop: 12 }}>
         <strong>La festa</strong>
@@ -54,7 +49,7 @@ export function DettagliPianificatore({ p }: { p: PianificatoreMatrimonio }) {
       <Riga label="Ora inizio evento" valore={p.festa.oraInizioEvento} />
       <Riga label="Brano ingresso sposi in sala" valore={p.festa.branoIngressoSala} />
       <Riga label="Brano taglio torta" valore={p.festa.branoTaglioTorta} />
-      <Riga label="Brano ballo lento" valore={p.festa.balloLento} />
+      <Riga label="Brano ballo lento (primo ballo)" valore={p.festa.balloLento} />
 
       <p style={{ marginTop: 12 }}>
         <strong>Generi e mood</strong>

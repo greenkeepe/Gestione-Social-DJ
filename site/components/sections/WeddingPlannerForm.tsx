@@ -16,6 +16,8 @@ const inputClasses =
 
 const textareaClasses = cn(inputClasses, "resize-none");
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function FieldError({ messages }: { messages?: string[] }) {
   if (!messages?.length) return null;
   return (
@@ -32,12 +34,14 @@ function TextField({
   type = "text",
   required,
   errors,
+  onFieldBlur,
 }: {
   id: string;
   label: string;
   type?: string;
   required?: boolean;
   errors?: string[];
+  onFieldBlur?: (id: string, value: string) => void;
 }) {
   return (
     <div>
@@ -45,15 +49,21 @@ function TextField({
         {label}
         {required ? " *" : ""}
       </label>
-      <input id={id} name={id} type={type} className={inputClasses} />
+      <input
+        id={id}
+        name={id}
+        type={type}
+        className={inputClasses}
+        onBlur={onFieldBlur ? (e) => onFieldBlur(id, e.target.value) : undefined}
+      />
       <FieldError messages={errors} />
     </div>
   );
 }
 
 // Un'immagine reale per step, scelta per restare coerente con il momento
-// che si sta compilando (niente foto a caso): niente per i passi
-// "Sposa"/"Sposo", dove una foto genererebbe solo rumore.
+// che si sta compilando (niente foto a caso): niente per il passo "Gli
+// sposi", dove una foto genererebbe solo rumore.
 const STEP_IMAGES: Record<string, { src: string; alt: string }> = {
   evento: { src: "/images/hero-ceremony.jpg", alt: "Allestimento di una cerimonia di matrimonio con vista sulle colline" },
   location: { src: "/images/gallery/wedding-terrace-booth-hills.jpg", alt: "Consolle allestita in terrazza con vista sulle colline" },
@@ -64,13 +74,41 @@ const STEP_IMAGES: Record<string, { src: string; alt: string }> = {
 
 const STEPS = [
   { key: "evento", title: "L'evento" },
-  { key: "sposa", title: "Sposa" },
-  { key: "sposo", title: "Sposo" },
+  { key: "sposi", title: "Gli sposi" },
   { key: "location", title: "Location" },
   { key: "cerimonia", title: "Cerimonia" },
   { key: "festa", title: "La festa" },
   { key: "generi", title: "Generi e mood" },
 ] as const;
+
+// Mappa ogni campo al suo step: usata sia per il controllo "campi
+// obbligatori" prima di avanzare, sia per riportare l'utente sul passo
+// giusto se il server rifiuta la validazione.
+const FIELD_STEP: Record<string, number> = {
+  email: 0,
+  telefono: 0,
+  weddingDate: 0,
+  eventTime: 0,
+  brideName: 1,
+  brideSurname: 1,
+  groomName: 1,
+  groomSurname: 1,
+  venueName: 2,
+  venueAddress: 2,
+  cerimoniaInLoco: 3,
+  ceremonyStartTime: 3,
+  ceremonyEntranceSong: 3,
+  ceremonyRingSong: 3,
+  ceremonyExitSong: 3,
+  partyStartTime: 4,
+  receptionEntranceSong: 4,
+  cakeCuttingSong: 4,
+  slowDanceSong: 4,
+  genres: 5,
+  otherGenres: 5,
+  avoid: 5,
+  notes: 5,
+};
 
 const REQUIRED_BY_STEP: Record<number, { id: string; label: string }[]> = {
   0: [
@@ -81,52 +119,13 @@ const REQUIRED_BY_STEP: Record<number, { id: string; label: string }[]> = {
   1: [
     { id: "brideName", label: "Nome sposa" },
     { id: "brideSurname", label: "Cognome sposa" },
-    { id: "brideEmail", label: "Email sposa" },
-  ],
-  2: [
     { id: "groomName", label: "Nome sposo" },
     { id: "groomSurname", label: "Cognome sposo" },
-    { id: "groomEmail", label: "Email sposo" },
   ],
-  3: [
+  2: [
     { id: "venueName", label: "Nome location" },
     { id: "venueAddress", label: "Indirizzo location" },
   ],
-};
-
-// Mappa ogni campo al suo step: se il server rifiuta la validazione (zod),
-// serve a riportare l'utente esattamente sul passo con il primo errore,
-// invece di lasciarlo fermo sull'ultimo passo senza capire cosa sistemare.
-const FIELD_STEP: Record<string, number> = {
-  email: 0,
-  weddingDate: 0,
-  eventTime: 0,
-  brideName: 1,
-  brideSurname: 1,
-  bridePhone: 1,
-  brideEmail: 1,
-  brideFacebook: 1,
-  brideInstagram: 1,
-  groomName: 2,
-  groomSurname: 2,
-  groomPhone: 2,
-  groomEmail: 2,
-  groomFacebook: 2,
-  groomInstagram: 2,
-  venueName: 3,
-  venueAddress: 3,
-  ceremonyStartTime: 4,
-  ceremonyEntranceSong: 4,
-  ceremonyRingSong: 4,
-  ceremonyExitSong: 4,
-  partyStartTime: 5,
-  receptionEntranceSong: 5,
-  cakeCuttingSong: 5,
-  slowDanceSong: 5,
-  genres: 6,
-  otherGenres: 6,
-  avoid: 6,
-  notes: 6,
 };
 
 function SubmitButton() {
@@ -156,7 +155,23 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
   const [state, formAction] = useActionState(boundAction, initialState);
   const [stepIndex, setStepIndex] = useState(0);
   const [stepErrors, setStepErrors] = useState<string[]>([]);
+  const [cerimoniaInLoco, setCerimoniaInLoco] = useState<"true" | "false">("true");
+  const [erroriLive, setErroriLive] = useState<Record<string, string>>({});
   const topRef = useRef<HTMLDivElement>(null);
+
+  // Validazione immediata di alcuni campi appena l'utente esce dal campo,
+  // invece di scoprire il problema solo a invio fatto (o peggio, in fondo
+  // ai passi del wizard).
+  function validaCampo(id: string, value: string) {
+    if (id === "email") {
+      setErroriLive((prev) => {
+        const next = { ...prev };
+        if (value.trim() && !EMAIL_REGEX.test(value.trim())) next.email = "Questa email non sembra valida.";
+        else delete next.email;
+        return next;
+      });
+    }
+  }
 
   // Se il server rifiuta la validazione, salta sul passo del primo campo
   // sbagliato, così l'utente vede subito cosa correggere.
@@ -183,13 +198,20 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
   }
 
   function vaiAvanti() {
-    const richiesti = REQUIRED_BY_STEP[stepIndex] ?? [];
+    const richiesti = [...(REQUIRED_BY_STEP[stepIndex] ?? [])];
+    if (stepIndex === 3 && cerimoniaInLoco === "true") {
+      richiesti.push({ id: "ceremonyStartTime", label: "Orario inizio cerimonia" });
+    }
     const mancanti = richiesti.filter(({ id }) => {
       const el = document.getElementById(id) as HTMLInputElement | null;
       return !el?.value.trim();
     });
     if (mancanti.length > 0) {
       setStepErrors(mancanti.map((m) => `${m.label} è obbligatorio.`));
+      return;
+    }
+    if (erroriLive.email && stepIndex === 0) {
+      setStepErrors(["Controlla l'email inserita."]);
       return;
     }
     setStepErrors([]);
@@ -210,8 +232,8 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
         <p className="eyebrow">✅ Inviato con successo</p>
         <h2 className="font-display text-2xl text-ivory">Questionario ricevuto, grazie!</h2>
         <p className="max-w-md text-sm text-ivory-dim">
-          Andrea ha ricevuto tutti i dettagli e li userà per costruire la colonna sonora del vostro giorno. Per
-          qualsiasi aggiunta o modifica, scrivi pure su WhatsApp.
+          Andrea ha ricevuto tutti i dettagli e li userà per costruire la colonna sonora del vostro giorno. Vi
+          abbiamo mandato anche un riepilogo via email. Per qualsiasi aggiunta o modifica, scrivi pure su WhatsApp.
         </p>
       </div>
     );
@@ -238,18 +260,11 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
         </div>
       </div>
 
-      {/* noValidate: i campi email/data sui passi non visibili (display:none)
-          sono comunque soggetti alla validazione nativa del browser, che però
-          non può mostrare l'errore su un campo non a schermo — il browser
-          blocca l'invio in silenzio, senza nessun messaggio ("An invalid
-          form control ... is not focusable" solo in console). La
-          validazione la facciamo già noi (vaiAvanti lato client, zod lato
-          server), quindi disattiviamo quella nativa che qui fa più danni che
-          altro. */}
+      {/* noValidate: la validazione la facciamo noi (vaiAvanti lato client,
+          zod lato server) — quella nativa del browser, su campi che vivono
+          in passi non visibili (display:none), blocca l'invio in silenzio
+          (vedi commento più sotto sul form). */}
       <form action={formAction} noValidate className="flex flex-col gap-8">
-        {/* Honeypot anti-spam: display:none (non solo fuori schermo), è
-            l'unico modo per cui autofill e gestori di password lo ignorano
-            davvero invece di riempirlo comunque. */}
         <input type="text" name="hp_field" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
         {state.status === "error" && state.message ? (
@@ -279,46 +294,20 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
 
             {s.key === "evento" && (
               <div className="grid gap-6 sm:grid-cols-2">
-                <TextField id="email" label="Email" type="email" required errors={state.fieldErrors?.email} />
+                <TextField id="email" label="Email" type="email" required errors={erroriLive.email ? [erroriLive.email] : state.fieldErrors?.email} onFieldBlur={validaCampo} />
+                <TextField id="telefono" label="Telefono (facoltativo)" type="tel" />
                 <TextField id="weddingDate" label="Data matrimonio / Wedding date" type="date" required errors={state.fieldErrors?.weddingDate} />
                 <TextField id="eventTime" label="Ora / Event time" type="time" required errors={state.fieldErrors?.eventTime} />
               </div>
             )}
 
-            {s.key === "sposa" && (
-              <>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <TextField id="brideName" label="Nome / Name" required errors={state.fieldErrors?.brideName} />
-                  <TextField id="brideSurname" label="Cognome / Surname" required errors={state.fieldErrors?.brideSurname} />
-                  <TextField id="bridePhone" label="Telefono / Telephone number" type="tel" />
-                  <TextField id="brideEmail" label="Email" type="email" required errors={state.fieldErrors?.brideEmail} />
-                </div>
-                <p className="mb-2 mt-6 text-xs uppercase tracking-[0.2em] text-ivory-dim/60">
-                  Contatti social (facoltativo) / Social contacts (optional)
-                </p>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <TextField id="brideFacebook" label="Facebook" />
-                  <TextField id="brideInstagram" label="Instagram" />
-                </div>
-              </>
-            )}
-
-            {s.key === "sposo" && (
-              <>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <TextField id="groomName" label="Nome / Name" required errors={state.fieldErrors?.groomName} />
-                  <TextField id="groomSurname" label="Cognome / Surname" required errors={state.fieldErrors?.groomSurname} />
-                  <TextField id="groomPhone" label="Telefono / Telephone number" type="tel" />
-                  <TextField id="groomEmail" label="Email" type="email" required errors={state.fieldErrors?.groomEmail} />
-                </div>
-                <p className="mb-2 mt-6 text-xs uppercase tracking-[0.2em] text-ivory-dim/60">
-                  Contatti social (facoltativo) / Social contacts (optional)
-                </p>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <TextField id="groomFacebook" label="Facebook" />
-                  <TextField id="groomInstagram" label="Instagram" />
-                </div>
-              </>
+            {s.key === "sposi" && (
+              <div className="grid gap-6 sm:grid-cols-2">
+                <TextField id="brideName" label="Nome sposa / Bride name" required errors={state.fieldErrors?.brideName} />
+                <TextField id="brideSurname" label="Cognome sposa / Bride surname" required errors={state.fieldErrors?.brideSurname} />
+                <TextField id="groomName" label="Nome sposo / Groom name" required errors={state.fieldErrors?.groomName} />
+                <TextField id="groomSurname" label="Cognome sposo / Groom surname" required errors={state.fieldErrors?.groomSurname} />
+              </div>
             )}
 
             {s.key === "location" && (
@@ -333,28 +322,59 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
 
             {s.key === "cerimonia" && (
               <>
-                <p className="mb-4 text-sm text-ivory-dim">
-                  Compila questa sezione se la cerimonia si svolge in loco con l&apos;ausilio del DJ.
-                </p>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <TextField id="ceremonyStartTime" label="Orario inizio cerimonia / Ceremony start time" type="time" />
-                  <TextField id="ceremonyEntranceSong" label="Brano ingresso sposa / Song entrance bride" />
-                  <TextField id="ceremonyRingSong" label="Brano scambio anelli / Ring exchange track" />
-                  <TextField id="ceremonyExitSong" label="Brano fine cerimonia (uscita sposi) / End of ceremony song" />
-                </div>
+                <fieldset className="mb-6">
+                  <legend className="mb-2 block text-sm text-ivory-dim">
+                    C&apos;è una cerimonia in loco con il DJ? / Is there an on-site ceremony with the DJ?
+                  </legend>
+                  <div className="flex gap-3">
+                    <label className="flex cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ivory-dim transition-colors has-[:checked]:border-champagne has-[:checked]:text-champagne">
+                      <input
+                        type="radio"
+                        name="cerimoniaInLoco"
+                        value="true"
+                        checked={cerimoniaInLoco === "true"}
+                        onChange={() => setCerimoniaInLoco("true")}
+                        className="h-3.5 w-3.5 accent-[color:var(--color-champagne)]"
+                      />
+                      Sì
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ivory-dim transition-colors has-[:checked]:border-champagne has-[:checked]:text-champagne">
+                      <input
+                        type="radio"
+                        name="cerimoniaInLoco"
+                        value="false"
+                        checked={cerimoniaInLoco === "false"}
+                        onChange={() => setCerimoniaInLoco("false")}
+                        className="h-3.5 w-3.5 accent-[color:var(--color-champagne)]"
+                      />
+                      No
+                    </label>
+                  </div>
+                </fieldset>
+
+                {cerimoniaInLoco === "true" && (
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <TextField id="ceremonyStartTime" label="Orario inizio cerimonia / Ceremony start time" type="time" required errors={state.fieldErrors?.ceremonyStartTime} />
+                    <TextField id="ceremonyEntranceSong" label="Brano ingresso sposa / Song entrance bride" />
+                    <TextField id="ceremonyRingSong" label="Brano scambio anelli / Ring exchange track" />
+                    <TextField id="ceremonyExitSong" label="Brano fine cerimonia (uscita sposi) / End of ceremony song" />
+                  </div>
+                )}
               </>
             )}
 
             {s.key === "festa" && (
               <>
                 <p className="mb-4 text-sm text-ivory-dim">
-                  Indica i brani che vorreste fossero riprodotti nei seguenti momenti.
+                  I brani essenziali per la festa — li usiamo nei momenti clou della serata.
                 </p>
                 <div className="grid gap-6 sm:grid-cols-2">
-                  <TextField id="partyStartTime" label="Ora inizio evento (se la cerimonia non è in loco)" type="time" />
+                  {cerimoniaInLoco === "false" && (
+                    <TextField id="partyStartTime" label="Ora inizio evento / Event start time" type="time" />
+                  )}
                   <TextField id="receptionEntranceSong" label="Brano ingresso sposi in sala" />
                   <TextField id="cakeCuttingSong" label="Brano taglio della torta" />
-                  <TextField id="slowDanceSong" label="Brano ballo lento" />
+                  <TextField id="slowDanceSong" label="Brano primo ballo / First dance song" />
                 </div>
               </>
             )}

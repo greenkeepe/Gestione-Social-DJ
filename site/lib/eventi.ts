@@ -11,10 +11,12 @@
 // non silenzioso.
 export interface PianificatoreMatrimonio {
   email: string;
+  telefono: string;
   oraEvento: string;
-  sposa: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
-  sposo: { nome: string; cognome: string; telefono: string; email: string; facebook: string; instagram: string };
+  sposa: { nome: string; cognome: string };
+  sposo: { nome: string; cognome: string };
   location: { nome: string; indirizzo: string };
+  cerimoniaInLoco: boolean;
   cerimonia: { oraInizio: string; branoIngresso: string; branoScambioAnelli: string; branoUscita: string };
   festa: { oraInizioEvento: string; branoIngressoSala: string; branoTaglioTorta: string; balloLento: string };
   generi: string[];

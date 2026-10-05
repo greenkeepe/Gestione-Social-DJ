@@ -84,10 +84,11 @@ export const quickQuoteSchema = z.object({
 export type QuickQuoteValues = z.infer<typeof quickQuoteSchema>;
 
 // --- Wedding Music Planner (/questionario-sposi) ----------------------------
-// Stessi campi del modulo Google Form storico ("Wedding Music Planner -
-// FORTEDJ"), riportati 1:1: nessuna domanda nuova inventata, solo un modulo
-// più curato con validazione reale e invio automatico (email + Telegram +
-// dashboard) al posto della scheda risposte di Google Forms.
+// Basato sul modulo Google Form storico ("Wedding Music Planner - FORTEDJ"),
+// semplificato su richiesta di Andrea: un solo contatto (email+telefono di
+// chi compila, non uno a testa), niente social, e i campi della cerimonia
+// compaiono solo se rispondono di averla in loco — altrimenti sono solo
+// rumore per chi la cerimonia non ce l'ha.
 export const weddingPlannerGenreOptions = [
   "Revival",
   "Commerciale",
@@ -98,49 +99,50 @@ export const weddingPlannerGenreOptions = [
   "Mi fido del DJ!!!",
 ] as const;
 
-export const weddingPlannerSchema = z.object({
-  email: z.string().trim().email("Inserisci un'email valida."),
-  weddingDate: z
-    .string()
-    .trim()
-    .min(1, "Inserisci la data del matrimonio.")
-    .refine((value) => !Number.isNaN(Date.parse(value)), "Inserisci una data valida."),
-  eventTime: z.string().trim().min(1, "Inserisci l'ora dell'evento."),
+export const weddingPlannerSchema = z
+  .object({
+    email: z.string().trim().email("Inserisci un'email valida."),
+    telefono: z.string().trim().max(30).optional(),
+    weddingDate: z
+      .string()
+      .trim()
+      .min(1, "Inserisci la data del matrimonio.")
+      .refine((value) => !Number.isNaN(Date.parse(value)), "Inserisci una data valida."),
+    eventTime: z.string().trim().min(1, "Inserisci l'ora dell'evento."),
 
-  brideName: z.string().trim().min(1, "Inserisci il nome della sposa."),
-  brideSurname: z.string().trim().min(1, "Inserisci il cognome della sposa."),
-  bridePhone: z.string().trim().max(30).optional(),
-  brideEmail: z.string().trim().email("Inserisci un'email valida per la sposa."),
-  brideFacebook: z.string().trim().max(160).optional(),
-  brideInstagram: z.string().trim().max(160).optional(),
+    brideName: z.string().trim().min(1, "Inserisci il nome della sposa."),
+    brideSurname: z.string().trim().min(1, "Inserisci il cognome della sposa."),
+    groomName: z.string().trim().min(1, "Inserisci il nome dello sposo."),
+    groomSurname: z.string().trim().min(1, "Inserisci il cognome dello sposo."),
 
-  groomName: z.string().trim().min(1, "Inserisci il nome dello sposo."),
-  groomSurname: z.string().trim().min(1, "Inserisci il cognome dello sposo."),
-  groomPhone: z.string().trim().max(30).optional(),
-  groomEmail: z.string().trim().email("Inserisci un'email valida per lo sposo."),
-  groomFacebook: z.string().trim().max(160).optional(),
-  groomInstagram: z.string().trim().max(160).optional(),
+    venueName: z.string().trim().min(1, "Inserisci il nome della location."),
+    venueAddress: z.string().trim().min(1, "Inserisci l'indirizzo della location."),
 
-  venueName: z.string().trim().min(1, "Inserisci il nome della location."),
-  venueAddress: z.string().trim().min(1, "Inserisci l'indirizzo della location."),
+    // "true"/"false" come stringa: arriva da un radio button del form, non
+    // da una checkbox — coppia di stringhe più semplice da gestire lato
+    // client di un booleano vero in FormData.
+    cerimoniaInLoco: z.enum(["true", "false"]),
+    ceremonyStartTime: z.string().trim().max(10).optional(),
+    ceremonyEntranceSong: z.string().trim().max(200).optional(),
+    ceremonyRingSong: z.string().trim().max(200).optional(),
+    ceremonyExitSong: z.string().trim().max(200).optional(),
 
-  ceremonyStartTime: z.string().trim().max(10).optional(),
-  ceremonyEntranceSong: z.string().trim().max(200).optional(),
-  ceremonyRingSong: z.string().trim().max(200).optional(),
-  ceremonyExitSong: z.string().trim().max(200).optional(),
+    partyStartTime: z.string().trim().max(10).optional(),
+    receptionEntranceSong: z.string().trim().max(200).optional(),
+    cakeCuttingSong: z.string().trim().max(200).optional(),
+    slowDanceSong: z.string().trim().max(200).optional(),
 
-  partyStartTime: z.string().trim().max(10).optional(),
-  receptionEntranceSong: z.string().trim().max(200).optional(),
-  cakeCuttingSong: z.string().trim().max(200).optional(),
-  slowDanceSong: z.string().trim().max(200).optional(),
+    genres: z.array(z.enum(weddingPlannerGenreOptions)).optional().default([]),
+    otherGenres: z.string().trim().max(300).optional(),
+    avoid: z.string().trim().max(1000).optional(),
+    notes: z.string().trim().max(2000).optional(),
 
-  genres: z.array(z.enum(weddingPlannerGenreOptions)).optional().default([]),
-  otherGenres: z.string().trim().max(300).optional(),
-  avoid: z.string().trim().max(1000).optional(),
-  notes: z.string().trim().max(2000).optional(),
-
-  // Honeypot anti-spam: vedi commento su contactFormSchema.hp_field.
-  hp_field: z.string().max(0).optional().or(z.literal("")),
-});
+    // Honeypot anti-spam: vedi commento su contactFormSchema.hp_field.
+    hp_field: z.string().max(0).optional().or(z.literal("")),
+  })
+  .refine((data) => data.cerimoniaInLoco === "false" || data.ceremonyStartTime, {
+    message: "Inserisci l'orario di inizio della cerimonia.",
+    path: ["ceremonyStartTime"],
+  });
 
 export type WeddingPlannerValues = z.infer<typeof weddingPlannerSchema>;
