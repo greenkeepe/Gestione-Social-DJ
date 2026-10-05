@@ -3348,6 +3348,26 @@
     "node/5612528881": {
       "il": "2026-10-04T09:16:28.993Z",
       "motivo": "nessuna email pubblica"
+    },
+    "way/570548093": {
+      "il": "2026-10-05T14:25:29.741Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/847192501": {
+      "il": "2026-10-05T14:25:34.772Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/10042920713": {
+      "il": "2026-10-05T14:25:36.934Z",
+      "motivo": "email già contattata"
+    },
+    "node/13749427208": {
+      "il": "2026-10-05T14:25:39.714Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/317106183": {
+      "il": "2026-10-05T14:25:47.714Z",
+      "motivo": "nessuna email pubblica"
     }
   }
 }
