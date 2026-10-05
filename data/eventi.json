@@ -53,57 +53,6 @@
       }
     },
     {
-      "id": "09190410-583d-44ea-8139-00232a7a5460",
-      "tipo": "matrimonio",
-      "cliente": "test4",
-      "telefono": "",
-      "email": "",
-      "data": "2026-10-09",
-      "location": "",
-      "note": "",
-      "creatoIl": "2026-10-05T13:36:21.270Z",
-      "pianificatoreCompilato": true,
-      "pianificatore": {
-        "email": "hdhdb@jeie.com",
-        "telefono": "",
-        "oraEvento": "15:37",
-        "sposa": {
-          "nome": "Hchxx",
-          "cognome": "Hdhxh"
-        },
-        "sposo": {
-          "nome": "Xhhd",
-          "cognome": "Udud"
-        },
-        "location": {
-          "nome": "Jxjx",
-          "indirizzo": "Hdud"
-        },
-        "cerimoniaInLoco": false,
-        "cerimonia": {
-          "oraInizio": "",
-          "branoIngresso": "",
-          "branoScambioAnelli": "",
-          "branoUscita": ""
-        },
-        "festa": {
-          "oraInizioEvento": "15:37",
-          "branoIngressoSala": "Jshsus",
-          "branoTaglioTorta": "Hdhsh",
-          "balloLento": "Hsjussu"
-        },
-        "generi": [
-          "Commerciale",
-          "Musica latina",
-          "Mi fido del DJ!!!"
-        ],
-        "altriGeneri": "",
-        "daEvitare": "",
-        "noteVarie": "",
-        "compilatoIl": "2026-10-05T13:37:53.829Z"
-      }
-    },
-    {
       "id": "e6bbf64c-57b2-4d6d-b140-8c9fe178d19c",
       "tipo": "matrimonio",
       "cliente": "test2",
