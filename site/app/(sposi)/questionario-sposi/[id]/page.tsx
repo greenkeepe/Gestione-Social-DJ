@@ -77,7 +77,7 @@ export default async function QuestionarioSposiPage({
         </p>
 
         <div className="mt-14">
-          <WeddingPlannerForm eventId={evento.id} />
+          <WeddingPlannerForm eventId={evento.id} weddingDate={evento.data} />
         </div>
       </div>
     </main>

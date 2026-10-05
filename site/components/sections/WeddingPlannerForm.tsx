@@ -35,6 +35,9 @@ function TextField({
   required,
   errors,
   onFieldBlur,
+  defaultValue,
+  readOnly,
+  helperText,
 }: {
   id: string;
   label: string;
@@ -42,6 +45,9 @@ function TextField({
   required?: boolean;
   errors?: string[];
   onFieldBlur?: (id: string, value: string) => void;
+  defaultValue?: string;
+  readOnly?: boolean;
+  helperText?: string;
 }) {
   return (
     <div>
@@ -53,9 +59,12 @@ function TextField({
         id={id}
         name={id}
         type={type}
-        className={inputClasses}
+        className={cn(inputClasses, readOnly && "cursor-not-allowed opacity-70")}
+        defaultValue={defaultValue}
+        readOnly={readOnly}
         onBlur={onFieldBlur ? (e) => onFieldBlur(id, e.target.value) : undefined}
       />
+      {helperText ? <p className="mt-1.5 text-xs text-ivory-dim/70">{helperText}</p> : null}
       <FieldError messages={errors} />
     </div>
   );
@@ -150,7 +159,7 @@ function SubmitButton() {
 
 const initialState: WeddingPlannerState = { status: "idle" };
 
-export function WeddingPlannerForm({ eventId }: { eventId: string }) {
+export function WeddingPlannerForm({ eventId, weddingDate }: { eventId: string; weddingDate?: string }) {
   const boundAction = submitWeddingPlannerForm.bind(null, eventId);
   const [state, formAction] = useActionState(boundAction, initialState);
   const [stepIndex, setStepIndex] = useState(0);
@@ -296,7 +305,16 @@ export function WeddingPlannerForm({ eventId }: { eventId: string }) {
               <div className="grid gap-6 sm:grid-cols-2">
                 <TextField id="email" label="Email" type="email" required errors={erroriLive.email ? [erroriLive.email] : state.fieldErrors?.email} onFieldBlur={validaCampo} />
                 <TextField id="telefono" label="Telefono (facoltativo)" type="tel" />
-                <TextField id="weddingDate" label="Data matrimonio / Wedding date" type="date" required errors={state.fieldErrors?.weddingDate} />
+                <TextField
+                  id="weddingDate"
+                  label="Data matrimonio / Wedding date"
+                  type="date"
+                  required
+                  errors={state.fieldErrors?.weddingDate}
+                  defaultValue={weddingDate}
+                  readOnly={Boolean(weddingDate)}
+                  helperText={weddingDate ? "Impostata da Andrea alla prenotazione." : undefined}
+                />
                 <TextField id="eventTime" label="Ora / Event time" type="time" required errors={state.fieldErrors?.eventTime} />
               </div>
             )}
