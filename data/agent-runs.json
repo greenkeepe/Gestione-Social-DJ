@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (17965674795226811) e Facebook (1976124519720491). + Storia IG pubblicata.",
+      "timestamp": "2026-10-06T16:32:40.283Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Anteprima playlist / mash-up\" (LLM con visione). Programmato per le 18:30.",
       "timestamp": "2026-09-17T10:29:59.987Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Selezionato nuovo media \"telegram-1789635509938.jpg\" (foto) e messo in coda per la didascalia.",
-      "timestamp": "2026-09-17T10:29:56.671Z"
     }
   ]
 }

@@ -34,10 +34,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "18:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-06",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
@@ -152,40 +154,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "f07ef283-9561-408b-815f-1b5f03463029",
-      "createdAt": "2026-09-23T12:29:22.155Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "f07ef283-9561-408b-815f-1b5f03463029",
-        "filename": "reel-IMG_5427.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/729e63a2-4eec-42b0-8dec-3fb9c2291184.mp4"
-      },
-      "caption": "Terrazza, verde tutto intorno e la gente che balla in piedi tra i tavoli. Momenti così valgono più di mille casse.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonio2027",
-        "#matrimonioitaliano",
-        "#djmatrimonio",
-        "#weddingday",
-        "#weddingdj",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#djwedding",
-        "#djprofessionista",
-        "#lombardia",
-        "#liguria",
-        "#piemonte"
-      ],
-      "orarioProgrammato": "12:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-05",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     },
     {
       "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
