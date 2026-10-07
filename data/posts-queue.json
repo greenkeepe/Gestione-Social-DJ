@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "66fc7437-ac32-44a1-a3a0-ebb1fed0f91d",
-      "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "2c023b1b-ea54-44bf-adc8-076f89e8b7e0",
-        "filename": "reel-IMG_4184.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/50c9c5a6-999b-4f01-9223-f0141a699b2f.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a0bae141-f51c-466f-8aa6-7ece84153a15.JPG",
-          "mimeType": "image/jpeg",
-          "filename": "IMG_4184.JPG"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Braccia intrecciate, tutti fuori sotto il gazebo a fine serata. Momenti così valgono più di ogni playlist.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonio2027",
-        "#weddingday",
-        "#weddingitaly",
-        "#weddingparty",
-        "#weddingdj",
-        "#djprofessionista",
-        "#djperfeste",
-        "#discjockey",
-        "#weddingmusic",
-        "#serravallescrivia",
-        "#lombardia",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-10-06",
-      "pillarId": "dietro-le-quinte",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
       "createdAt": "2026-09-23T09:02:55.036Z",
       "formato": "reel",
@@ -74,10 +34,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "18:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-07",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "e7998f6a-6570-4206-8e7e-5f99a87039fd",
