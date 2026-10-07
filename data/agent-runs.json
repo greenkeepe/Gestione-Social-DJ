@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-07T18:30:11.658Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-10-07T16:45:57.585Z"
     },
     {
@@ -3571,13 +3578,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-17T10:57:49.961Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
-      "timestamp": "2026-09-17T10:57:43.779Z"
     }
   ]
 }
