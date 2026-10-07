@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-07T16:45:57.585Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18052556591805180) e Facebook (1443649661167195). + Storia IG pubblicata.",
       "timestamp": "2026-10-07T16:32:50.256Z"
@@ -3571,13 +3578,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-17T10:57:43.779Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
-      "timestamp": "2026-09-17T10:57:43.776Z"
     }
   ]
 }
