@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-07T13:00:04.939Z"
+    },
+    {
       "agente": "Postino",
       "identita": "Agente Invio Automatico Locali",
       "status": "nessuna-azione",
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-17T10:32:46.226Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "ok",
-      "riepilogo": "Preparate 10 bozze di email per locali della zona con email pubblica trovata.",
-      "timestamp": "2026-09-17T10:32:46.224Z"
     }
   ]
 }
