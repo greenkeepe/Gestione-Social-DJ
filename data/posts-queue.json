@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "95694283-40c6-41ec-b8d9-971d5ac22cf9",
-      "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "3c679d61-eb68-47cb-832f-14902f22faf8",
-        "filename": "reel-IMG_4195.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1b3afa02-683f-4e53-8771-b28315fac54a.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9b76107a-92f1-4e87-9b14-d34dd759d81e.JPG",
-          "mimeType": "image/jpeg",
-          "filename": "IMG_4195.JPG"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "La sposa balla in cerchio con gli invitati, questi sono i momenti che mi fanno amare il mio lavoro.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#matrimonioitaliano",
-        "#weddingdj",
-        "#sposi2027",
-        "#matrimonio2027",
-        "#weddingmusic",
-        "#animazionematrimonio",
-        "#musicapermatrimoni",
-        "#djperfeste",
-        "#serravallescrivia",
-        "#matrimonioinpiemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-10-07",
-      "pillarId": "dietro-le-quinte",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "e7998f6a-6570-4206-8e7e-5f99a87039fd",
       "createdAt": "2026-09-23T09:02:55.036Z",
       "formato": "reel",
@@ -74,10 +34,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "dataProgrammata": "2026-10-08",
-      "pillarId": "dietro-le-quinte"
+      "pillarId": "dietro-le-quinte",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
