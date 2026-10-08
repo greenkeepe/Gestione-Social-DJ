@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-08T10:45:42.848Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18088487501282081) e Facebook (1924649008497328). + Storia IG pubblicata.",
       "timestamp": "2026-10-08T10:32:28.221Z"
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-17T10:59:39.615Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "ok",
-      "riepilogo": "Preparate 10 bozze di email per locali della zona con email pubblica trovata.",
-      "timestamp": "2026-09-17T10:59:39.613Z"
     }
   ]
 }
