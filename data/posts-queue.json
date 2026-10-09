@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "e7998f6a-6570-4206-8e7e-5f99a87039fd",
-      "createdAt": "2026-09-23T09:02:55.036Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "ec7aeb9a-3fa0-4648-a330-1e220dc759d2",
-        "filename": "reel-6cbbb101-1e5a-43cf-b914-b04ac7a162b5.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d34b3550-b8ea-4619-937a-f23ff6ea0d14.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/343e7304-bf6d-4028-a848-2a8e05a4b4e5.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "6cbbb101-1e5a-43cf-b914-b04ac7a162b5.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Fumo, luci blu e la console accesa. Si balla, si suda, si sta bene così.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#sposi2027",
-        "#weddingparty",
-        "#weddingitaly",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#weddingmusic",
-        "#djperfeste",
-        "#weddingpiemonte",
-        "#liguria",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "12:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "dataProgrammata": "2026-10-08",
-      "pillarId": "dietro-le-quinte",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
       "createdAt": "2026-09-23T09:34:08.633Z",
       "formato": "reel",
@@ -106,10 +66,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-09"
+      "dataProgrammata": "2026-10-09",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "3e1905ad-acf1-46aa-80db-3373f2d304ba",
