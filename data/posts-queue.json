@@ -40,40 +40,6 @@
       "pillarId": "testimonianze"
     },
     {
-      "id": "11c97058-70e7-451f-b6a3-570aaf06c371",
-      "createdAt": "2026-09-23T12:29:22.155Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "11c97058-70e7-451f-b6a3-570aaf06c371",
-        "filename": "reel-IMG_4187.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e3a3b54a-9f11-46e5-b336-8ec46d232793.mp4"
-      },
-      "caption": "Sotto il gazebo, tra un saluto e l'altro, la serata scorre così. Momenti come questi valgono più di mille foto in posa.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonio2027",
-        "#weddingitaly",
-        "#matrimonioitaliano",
-        "#weddingparty",
-        "#weddingday",
-        "#animazionematrimonio",
-        "#djeventi",
-        "#discjockey",
-        "#djperfeste",
-        "#weddingpiemonte",
-        "#serravallescrivia",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-09",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "3e1905ad-acf1-46aa-80db-3373f2d304ba",
       "createdAt": "2026-09-23T13:02:11.958Z",
       "formato": "reel",
@@ -100,10 +66,12 @@
         "#serravallescrivia"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-10"
+      "dataProgrammata": "2026-10-10",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "0de65c4d-f404-426b-9540-fb6c1e7a53d0",

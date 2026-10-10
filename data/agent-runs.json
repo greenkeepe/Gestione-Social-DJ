@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18094360727656695) e Facebook (1122579280230202). + Storia IG pubblicata.",
+      "timestamp": "2026-10-10T19:18:18.834Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-18T12:34:43.192Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "ok",
-      "riepilogo": "Preparate 10 bozze di email per locali della zona con email pubblica trovata.",
-      "timestamp": "2026-09-18T12:34:43.190Z"
     }
   ]
 }
