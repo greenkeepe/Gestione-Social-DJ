@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-10T17:23:44.429Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "Preparate 10 bozze di email per locali della zona con email pubblica trovata.",
       "timestamp": "2026-09-18T12:34:43.190Z"
-    },
-    {
-      "agente": "Appunti",
-      "identita": "Agente Note Instagram",
-      "status": "ok",
-      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Consolle accesa, cuore già in pista.\"",
-      "timestamp": "2026-09-18T12:32:53.943Z"
     }
   ]
 }
