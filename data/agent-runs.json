@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-11T12:26:18.328Z"
+    },
+    {
       "agente": "Postino",
       "identita": "Agente Invio Automatico Locali",
       "status": "nessuna-azione",
@@ -3571,13 +3578,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-18T23:14:12.547Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
-      "timestamp": "2026-09-18T22:26:35.160Z"
     }
   ]
 }
