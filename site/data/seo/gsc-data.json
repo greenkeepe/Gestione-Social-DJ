@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-05T12:02:45.564Z",
+  "generatedAt": "2026-10-12T12:45:23.360Z",
   "period": {
-    "startDate": "2026-09-04",
-    "endDate": "2026-10-02"
+    "startDate": "2026-09-11",
+    "endDate": "2026-10-09"
   },
   "totals": {
-    "clicks": 11,
-    "impressions": 225
+    "clicks": 12,
+    "impressions": 315
   },
   "byQueryPage": [
     {
@@ -14,10 +14,10 @@
         "forte dj",
         "https://www.fortedj.it/"
       ],
-      "clicks": 6,
-      "impressions": 15,
-      "ctr": 0.4,
-      "position": 5.066666666666666
+      "clicks": 7,
+      "impressions": 22,
+      "ctr": 0.3181818181818182,
+      "position": 4.227272727272727
     },
     {
       "keys": [
@@ -38,6 +38,16 @@
       "impressions": 7,
       "ctr": 0.14285714285714285,
       "position": 8.571428571428571
+    },
+    {
+      "keys": [
+        "corsi dj",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
     },
     {
       "keys": [
@@ -71,6 +81,46 @@
     },
     {
       "keys": [
+        "dj a genova",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "dj cagliari",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "dj forte",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "dj forte",
+        "https://www.fortedj.it/de"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "keys": [
         "dj genova",
         "https://www.fortedj.it/"
       ],
@@ -91,13 +141,83 @@
     },
     {
       "keys": [
+        "dj in italy",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
+    },
+    {
+      "keys": [
+        "dj lecce",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "dj lecce e provincia",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 20.666666666666668
+    },
+    {
+      "keys": [
+        "dj lecce e provincia",
+        "https://www.fortedj.it/#preventivo"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20
+    },
+    {
+      "keys": [
+        "dj matrimonio firenze",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 18
+    },
+    {
+      "keys": [
+        "dj matrimonio genova",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
         "dj matrimonio genova",
         "https://www.fortedj.it/dj/genova"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 14,
       "ctr": 0,
-      "position": 51
+      "position": 52.5
+    },
+    {
+      "keys": [
+        "dj milano",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
     },
     {
       "keys": [
@@ -125,9 +245,29 @@
         "https://www.fortedj.it/dj/genova"
       ],
       "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 44.5
+    },
+    {
+      "keys": [
+        "dj per feste private roma",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 45
+      "position": 16
+    },
+    {
+      "keys": [
+        "dj per matrimoni a rapallo",
+        "https://www.fortedj.it/dj/genova"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 35
     },
     {
       "keys": [
@@ -201,6 +341,16 @@
     },
     {
       "keys": [
+        "dj zu mieten",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 19
+    },
+    {
+      "keys": [
         "dj)",
         "https://www.fortedj.it/"
       ],
@@ -228,6 +378,16 @@
       "impressions": 2,
       "ctr": 0,
       "position": 4
+    },
+    {
+      "keys": [
+        "forte dj",
+        "https://www.fortedj.it/#preventivo"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 20
     },
     {
       "keys": [
@@ -295,7 +455,7 @@
         "https://www.fortedj.it/servizi"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 10,
       "ctr": 0,
       "position": 12
     },
@@ -464,6 +624,69 @@
       "impressions": 12,
       "ctr": 0,
       "position": 15.666666666666666
+    },
+    {
+      "keys": [
+        "2026-10-03"
+      ],
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 14.916666666666666
+    },
+    {
+      "keys": [
+        "2026-10-04"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 25.142857142857142
+    },
+    {
+      "keys": [
+        "2026-10-05"
+      ],
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 11.772727272727273
+    },
+    {
+      "keys": [
+        "2026-10-06"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 17.8
+    },
+    {
+      "keys": [
+        "2026-10-07"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 18.285714285714285
+    },
+    {
+      "keys": [
+        "2026-10-08"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 14.846153846153847
+    },
+    {
+      "keys": [
+        "2026-10-09"
+      ],
+      "clicks": 1,
+      "impressions": 17,
+      "ctr": 0.058823529411764705,
+      "position": 12.705882352941176
     }
   ]
 }
