@@ -40,40 +40,6 @@
       "pillarId": "testimonianze"
     },
     {
-      "id": "0de65c4d-f404-426b-9540-fb6c1e7a53d0",
-      "createdAt": "2026-09-23T13:02:11.958Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "2dbe08e4-ee07-4d96-9a37-fe25424c2376",
-        "filename": "reel-IMG_4167.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ac0438fe-c43e-4136-8d40-004b15361752.mp4"
-      },
-      "caption": "Serata che si scioglie fuori, tra vestiti eleganti e quattro chiacchiere sotto le luci. Si respira festa vera.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#matrimonioitaliano",
-        "#matrimonio2027",
-        "#weddingdj",
-        "#weddingparty",
-        "#djwedding",
-        "#djperfeste",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#liguria",
-        "#serravallescrivia",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-11",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "434bcd41-e757-42a1-a06b-1517d9f38f9a",
       "createdAt": "2026-09-23T13:02:11.958Z",
       "formato": "reel",
@@ -100,10 +66,12 @@
         "#weddingpiemonte"
       ],
       "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-12"
+      "dataProgrammata": "2026-10-12",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "9ec420fa-a69d-4b13-ad88-c95eaff066f7",
