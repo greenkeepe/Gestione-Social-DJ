@@ -35,41 +35,9 @@
       ],
       "orarioProgrammato": "12:30",
       "dataProgrammata": "2026-10-14",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "testimonianze"
-    },
-    {
-      "id": "9ec420fa-a69d-4b13-ad88-c95eaff066f7",
-      "createdAt": "2026-09-23T13:02:11.958Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "e3ee4116-1f44-49e3-baf0-533b267b138f",
-        "filename": "reel-IMG_4067.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2ded59bc-9e90-4697-b8e8-1065d53f3dc0.mp4"
-      },
-      "caption": "Serata buia ma l'atmosfera si sente tutta, gente ancora lì a godersi il momento.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingdj",
-        "#weddingparty",
-        "#matrimonioitaliano",
-        "#matrimonio2027",
-        "#weddingday",
-        "#djwedding",
-        "#discjockey",
-        "#musicapermatrimoni",
-        "#animazionematrimonio",
-        "#liguria",
-        "#piemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
       "status": "pubblicato",
       "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-10-13",
+      "pillarId": "testimonianze",
       "ultimoErrore": null,
       "tentativiFalliti": 0
     },
