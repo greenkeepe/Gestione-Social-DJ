@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-14T10:45:46.478Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18079573334382802) e Facebook (1296059025939341). + Storia IG pubblicata.",
       "timestamp": "2026-10-14T10:32:20.803Z"
@@ -3571,13 +3578,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-20T10:40:50.326Z"
-    },
-    {
-      "agente": "Appunti",
-      "identita": "Agente Note Instagram",
-      "status": "ok",
-      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore già a mille per stasera.\"",
-      "timestamp": "2026-09-20T10:40:50.324Z"
     }
   ]
 }
