@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "fa165fed-5baa-4098-aa0e-d5e4af898bf0",
-      "createdAt": "2026-09-23T09:34:08.633Z",
-      "formato": "reel",
-      "media": {
-        "source": "testimonianza",
-        "mediaId": null,
-        "filename": "reel-testimonianza-Cristina-R.-11-09-2023.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/43363b13-0261-4bcb-ae04-2d6c0ecc9295.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/de8ef902-33d9-43a6-9ed2-abbeca02af74.png",
-          "mimeType": "image/png",
-          "filename": "testimonianza-Cristina-R.-11-09-2023.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Con grande maestria è riuscito ad animare la nostra festa con musica adeguata in ogni momento: musiche d'atmosfera per la conversazione, brani coinvolgenti per lo svago, hit che spaccano per ballare tutta la notte.\"\n— Cristina R., Matrimonio\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#matrimonioitaliano",
-        "#weddingparty",
-        "#weddingitaly",
-        "#sposi2027",
-        "#discjockey",
-        "#djperfeste",
-        "#djprofessionista",
-        "#weddingmusic",
-        "#serravallescrivia",
-        "#liguria",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "12:30",
-      "dataProgrammata": "2026-10-14",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "testimonianze",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "5c6da649-e3e7-4201-9cdd-f2bf01cd04a8",
       "createdAt": "2026-09-24T11:09:55.289Z",
       "formato": "reel",
@@ -75,9 +35,11 @@
       ],
       "orarioProgrammato": "18:30",
       "dataProgrammata": "2026-10-15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
-      "pillarId": "testimonianze"
+      "pillarId": "testimonianze",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "d4d8185f-ba2c-4c61-8968-b24080f1ca2f",
