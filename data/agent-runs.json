@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-16T23:16:16.540Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3568,13 +3575,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-22T11:01:14.011Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-22T11:00:59.167Z"
     }
   ]
 }
