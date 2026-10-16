@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-16T15:25:00.255Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-16T11:04:05.220Z"
     },
     {
@@ -3571,13 +3578,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Già pubblicato un contenuto oggi, evito doppie pubblicazioni.",
       "timestamp": "2026-09-21T20:57:39.884Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-21T18:19:07.640Z"
     }
   ]
 }
