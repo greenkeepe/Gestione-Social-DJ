@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-17T13:56:14.597Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-17T10:24:17.630Z"
     },
     {
@@ -3568,13 +3575,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-22T11:01:16.397Z"
-    },
-    {
-      "agente": "Appunti",
-      "identita": "Agente Note Instagram",
-      "status": "nessuna-azione",
-      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
-      "timestamp": "2026-09-22T11:01:16.395Z"
     }
   ]
 }
