@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "d4d8185f-ba2c-4c61-8968-b24080f1ca2f",
-      "createdAt": "2026-09-25T06:12:51.456Z",
-      "formato": "reel",
-      "media": {
-        "source": "testimonianza",
-        "mediaId": null,
-        "filename": "reel-testimonianza-Benedetta-P.-26-01-2023.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/173a8cd1-25d6-43fc-a532-c337e2677b89.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8f267aa0-d1d0-4064-94ff-35847dc96c4b.png",
-          "mimeType": "image/png",
-          "filename": "testimonianza-Benedetta-P.-26-01-2023.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Andrea è stata la festa! Grazie al suo dj set ci siamo divertiti tutti. Spazia nei vari generi musicali e fa ballare tutti. Bellissima festa, bellissima musica.\"\n— Benedetta P., Compleanno\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingday",
-        "#matrimonioitaliano",
-        "#weddingparty",
-        "#weddingdj",
-        "#djmatrimonio",
-        "#musicapermatrimoni",
-        "#djperfeste",
-        "#weddingmusic",
-        "#djprofessionista",
-        "#lombardia",
-        "#weddingpiemonte",
-        "#liguria"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-10-16",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "testimonianze",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "37b6ea65-8770-4a04-b88b-c2a8bfbd1ca3",
       "createdAt": "2026-09-25T11:13:08.592Z",
       "formato": "reel",
@@ -75,9 +35,11 @@
       ],
       "orarioProgrammato": "21:15",
       "dataProgrammata": "2026-10-17",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
-      "pillarId": "testimonianze"
+      "pillarId": "testimonianze",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "31b26277-d6e0-4503-a063-59e75aaedeb5",
