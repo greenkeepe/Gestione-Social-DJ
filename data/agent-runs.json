@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-17T19:30:59.674Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18143167585611406) e Facebook (2430793044117589). + Storia IG pubblicata.",
       "timestamp": "2026-10-17T19:17:01.732Z"
@@ -3568,13 +3575,6 @@
         "errore": "Error: Instagram: Elaborazione media Instagram fallita (container 18367256683245803). Facebook: Graph API error [/266354304012276/videos]: {\"error\":{\"message\":\"Unable to fetch video file from URL.\",\"type\":\"OAuthException\",\"code\":389,\"error_subcode\":1363057,\"is_transient\":false,\"error_user_title\":\"Impossibile recuperare il file video dall'URL\",\"error_user_msg\":\"Impossibile recuperare il file video dall'URL.\",\"fbtrace_id\":\"AOyq-Jc6jbOnbzBiA2UlGQq\"}}"
       },
       "timestamp": "2026-09-22T20:05:08.279Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-22T19:09:31.287Z"
     }
   ]
 }
