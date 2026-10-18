@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "37b6ea65-8770-4a04-b88b-c2a8bfbd1ca3",
-      "createdAt": "2026-09-25T11:13:08.592Z",
-      "formato": "reel",
-      "media": {
-        "source": "testimonianza",
-        "mediaId": null,
-        "filename": "reel-testimonianza-Daniela-C.-08-10-2021.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8e1c0fba-fa30-4ca2-a591-5f2aef603c35.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e9d969ac-9687-4d1a-96df-460819d3c443.png",
-          "mimeType": "image/png",
-          "filename": "testimonianza-Daniela-C.-08-10-2021.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Niente vale più le parole di chi ha vissuto la serata con noi.\n\n\"Ottima musica assolutamente coinvolgente, Andrea oltre ad essere un bravo DJ preparato per qualsiasi richiesta musicale, sa anche come coinvolgere le persone affinché ogni festa abbia un'ottima riuscita.\"\n— Daniela C., Festa privata\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#matrimonioitaliano",
-        "#weddingday",
-        "#animazionematrimonio",
-        "#djwedding",
-        "#djeventi",
-        "#musicapermatrimoni",
-        "#serravallescrivia",
-        "#alessandria",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-10-17",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "testimonianze",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "31b26277-d6e0-4503-a063-59e75aaedeb5",
       "createdAt": "2026-09-28T13:41:24.484Z",
       "formato": "reel",
@@ -68,10 +28,12 @@
         "#matrimonioinpiemonte"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "consigli",
-      "dataProgrammata": "2026-10-18"
+      "dataProgrammata": "2026-10-18",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     }
   ]
 }
