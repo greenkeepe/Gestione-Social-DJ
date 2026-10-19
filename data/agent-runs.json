@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-19T22:56:12.785Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-19T19:10:25.137Z"
     },
     {
@@ -3547,13 +3554,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"111762.mp4\" (categoria wedding, stile clean, 13s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
       "timestamp": "2026-09-23T08:22:45.537Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"20260912_235706.mp4\" (categoria wedding, stile clean, 12s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
-      "timestamp": "2026-09-23T08:22:21.447Z"
     }
   ]
 }
