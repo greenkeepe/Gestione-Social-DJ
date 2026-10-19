@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-10-19T18:24:16.389Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3547,13 +3554,6 @@
       "status": "ok",
       "riepilogo": "Reel creato da \"20260913_020356.mp4\" (categoria wedding, stile clean, 7s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
       "timestamp": "2026-09-23T08:19:51.269Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"IMG_1792.MOV\" (categoria wedding, stile clean, 13s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
-      "timestamp": "2026-09-23T08:18:24.568Z"
     }
   ]
 }
