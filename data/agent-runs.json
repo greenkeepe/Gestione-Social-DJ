@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
+      "timestamp": "2026-10-20T09:17:31.353Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3547,13 +3554,6 @@
         "errore": "Error: Video troppo corto (2.9s): serve almeno qualche secondo di materiale per montare un Reel."
       },
       "timestamp": "2026-09-23T08:25:42.112Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"video1.mp4\" (categoria wedding, stile clean, 13s). Pronto in \"Crea Reel AI\" per essere usato in un post.",
-      "timestamp": "2026-09-23T08:25:40.311Z"
     }
   ]
 }
