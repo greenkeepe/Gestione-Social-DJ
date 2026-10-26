@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-26T23:04:55.702Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-26T18:52:22.445Z"
     },
     {
@@ -3544,13 +3551,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-23T09:37:45.566Z"
-    },
-    {
-      "agente": "Vetrina",
-      "identita": "Agente Vetrina Sito Web",
-      "status": "ok",
-      "riepilogo": "Vetrina del sito pronta (\"Eventi\"), programmata per il 2026-09-23 alle 12:30.",
-      "timestamp": "2026-09-23T09:37:39.167Z"
     }
   ]
 }
