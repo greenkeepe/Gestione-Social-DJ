@@ -6,6 +6,13 @@
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-31T20:30:19.990Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-31T17:11:15.766Z"
     },
     {
@@ -3541,13 +3548,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Già generata una vetrina del sito oggi.",
       "timestamp": "2026-09-23T12:06:36.749Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-04 alle 21:15.",
-      "timestamp": "2026-09-23T12:06:32.848Z"
     }
   ]
 }
