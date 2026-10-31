@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-10-31T17:11:15.766Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3541,13 +3548,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-04 alle 21:15.",
       "timestamp": "2026-09-23T12:06:32.848Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-03 alle 21:15.",
-      "timestamp": "2026-09-23T12:06:24.174Z"
     }
   ]
 }
