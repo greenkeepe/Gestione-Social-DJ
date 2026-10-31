@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
+      "timestamp": "2026-10-31T09:17:31.266Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3541,13 +3548,6 @@
       "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-10-01 alle 18:30.",
       "timestamp": "2026-09-23T12:06:14.015Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-09-30 alle 12:30.",
-      "timestamp": "2026-09-23T12:06:07.974Z"
     }
   ]
 }
