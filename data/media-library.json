@@ -320,6 +320,16 @@
       "usatoIl": null,
       "source": "telegram",
       "istruzioniUtente": null
+    },
+    {
+      "id": "f8025f66-0024-4b9e-9f38-57fba90f64c7",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/74e4e399-ae96-47f3-8779-c74cbfd42f37.jpg",
+      "filename": "telegram-1794053519136.jpg",
+      "mimeType": "image/jpeg",
+      "uploadedAt": "2026-11-07T12:11:59.241Z",
+      "usatoIl": null,
+      "source": "telegram",
+      "istruzioniUtente": null
     }
   ]
 }
