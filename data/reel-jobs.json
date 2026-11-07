@@ -43,12 +43,31 @@
       "mimeType": "video/mp4",
       "profilo": "auto",
       "istruzioni": null,
-      "status": "in-coda-analisi",
-      "step": "in-coda",
-      "aggiornatoIl": "2026-11-07T12:11:34.689Z",
+      "status": "usato",
+      "step": "completato",
+      "aggiornatoIl": "2026-11-07T12:15:55.367Z",
       "erroreMessaggio": null,
-      "risultato": null,
-      "source": "telegram"
+      "risultato": {
+        "reelUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4d8af1c-2a78-4d13-a7d3-79ba54a39199.mp4",
+        "durataSecondi": 14.6,
+        "piano": {
+          "categoria": "festa",
+          "stile": "dynamic",
+          "profiloUsato": "auto",
+          "durataTarget": 30,
+          "hook": {
+            "inizio": 0,
+            "fine": 0
+          },
+          "segmenti": [],
+          "sottotitoli": false,
+          "musica": true,
+          "testoHook": null,
+          "testoChiusura": null
+        }
+      },
+      "source": "telegram",
+      "motore": "regia-3"
     },
     {
       "id": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
