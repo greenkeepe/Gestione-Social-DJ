@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-11-07T12:43:55.552Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Reel creato da \"telegram-1794053493757.mp4\" (categoria festa, stile dynamic, 15s) e messo in coda per la didascalia e la pubblicazione automatica.",
       "timestamp": "2026-11-07T12:15:55.369Z"
@@ -3529,13 +3536,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-23T19:14:15.286Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-23T15:28:49.275Z"
     }
   ]
 }
