@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-02T13:07:01.040Z",
+  "generatedAt": "2026-11-09T13:38:09.253Z",
   "period": {
-    "startDate": "2026-10-02",
-    "endDate": "2026-10-30"
+    "startDate": "2026-10-09",
+    "endDate": "2026-11-06"
   },
   "totals": {
     "clicks": 4,
-    "impressions": 331
+    "impressions": 294
   },
   "byQueryPage": [
     {
@@ -25,9 +25,9 @@
         "https://www.fortedj.it/"
       ],
       "clicks": 1,
-      "impressions": 8,
-      "ctr": 0.125,
-      "position": 2.5
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 2
     },
     {
       "keys": [
@@ -38,26 +38,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 8.5
-    },
-    {
-      "keys": [
-        "corsi dj",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 8
-    },
-    {
-      "keys": [
-        "corso dj",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 7
     },
     {
       "keys": [
@@ -101,26 +81,6 @@
     },
     {
       "keys": [
-        "dj a genova",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 2
-    },
-    {
-      "keys": [
-        "dj cagliari",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 2
-    },
-    {
-      "keys": [
         "dj eventi",
         "https://www.fortedj.it/"
       ],
@@ -135,9 +95,9 @@
         "https://www.fortedj.it/eventi"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 89.5
+      "position": 92
     },
     {
       "keys": [
@@ -145,9 +105,9 @@
         "https://www.fortedj.it/"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 5
+      "position": 6.666666666666667
     },
     {
       "keys": [
@@ -155,9 +115,9 @@
         "https://www.fortedj.it/de"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 64
+      "position": 72
     },
     {
       "keys": [
@@ -165,49 +125,9 @@
         "https://www.fortedj.it/servizi"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
       "position": 11
-    },
-    {
-      "keys": [
-        "dj in italy",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 14
-    },
-    {
-      "keys": [
-        "dj lecce",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 37
-    },
-    {
-      "keys": [
-        "dj lecce e provincia",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 20.666666666666668
-    },
-    {
-      "keys": [
-        "dj lecce e provincia",
-        "https://www.fortedj.it/#preventivo"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 20
     },
     {
       "keys": [
@@ -221,23 +141,13 @@
     },
     {
       "keys": [
-        "dj matrimonio firenze",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 18
-    },
-    {
-      "keys": [
         "dj matrimonio genova",
         "https://www.fortedj.it/"
       ],
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 20,
       "ctr": 0,
-      "position": 36.55555555555556
+      "position": 49.6
     },
     {
       "keys": [
@@ -245,19 +155,9 @@
         "https://www.fortedj.it/dj/genova"
       ],
       "clicks": 0,
-      "impressions": 47,
+      "impressions": 45,
       "ctr": 0,
-      "position": 49.1063829787234
-    },
-    {
-      "keys": [
-        "dj milano",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 14
+      "position": 51.44444444444444
     },
     {
       "keys": [
@@ -275,9 +175,9 @@
         "https://www.fortedj.it/"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 8.2
+      "position": 7
     },
     {
       "keys": [
@@ -288,26 +188,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 27
-    },
-    {
-      "keys": [
-        "dj per feste private a chiavari",
-        "https://www.fortedj.it/dj/genova"
-      ],
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 44.5
-    },
-    {
-      "keys": [
-        "dj per feste private roma",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 16
     },
     {
       "keys": [
@@ -322,36 +202,26 @@
     {
       "keys": [
         "dj per matrimoni a rapallo",
+        "https://www.fortedj.it/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 24.666666666666668
+    },
+    {
+      "keys": [
+        "dj per matrimoni a rapallo",
         "https://www.fortedj.it/dj/genova"
       ],
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 34.666666666666664
+      "position": 32.83333333333333
     },
     {
       "keys": [
         "dj perugia",
-        "https://www.fortedj.it/#preventivo"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 1
-    },
-    {
-      "keys": [
-        "dj più famosi al mondo",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 1
-    },
-    {
-      "keys": [
-        "dj più famosi al mondo",
         "https://www.fortedj.it/#preventivo"
       ],
       "clicks": 0,
@@ -391,33 +261,13 @@
     },
     {
       "keys": [
-        "dj zu mieten",
-        "https://www.fortedj.it/"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 19
-    },
-    {
-      "keys": [
-        "forte dj",
-        "https://www.fortedj.it/#preventivo"
-      ],
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 20
-    },
-    {
-      "keys": [
         "forte dj",
         "https://www.fortedj.it/servizi"
       ],
       "clicks": 0,
-      "impressions": 6,
+      "impressions": 2,
       "ctr": 0,
-      "position": 11.666666666666666
+      "position": 11
     },
     {
       "keys": [
@@ -425,9 +275,9 @@
         "https://www.fortedj.it/dj/alessandria"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 5,
       "ctr": 0,
-      "position": 47
+      "position": 45.6
     },
     {
       "keys": [
@@ -461,69 +311,6 @@
     }
   ],
   "byDate": [
-    {
-      "keys": [
-        "2026-10-02"
-      ],
-      "clicks": 0,
-      "impressions": 12,
-      "ctr": 0,
-      "position": 15.666666666666666
-    },
-    {
-      "keys": [
-        "2026-10-03"
-      ],
-      "clicks": 0,
-      "impressions": 12,
-      "ctr": 0,
-      "position": 14.916666666666666
-    },
-    {
-      "keys": [
-        "2026-10-04"
-      ],
-      "clicks": 0,
-      "impressions": 7,
-      "ctr": 0,
-      "position": 25.142857142857142
-    },
-    {
-      "keys": [
-        "2026-10-05"
-      ],
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 11.772727272727273
-    },
-    {
-      "keys": [
-        "2026-10-06"
-      ],
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 17.8
-    },
-    {
-      "keys": [
-        "2026-10-07"
-      ],
-      "clicks": 0,
-      "impressions": 14,
-      "ctr": 0,
-      "position": 18.285714285714285
-    },
-    {
-      "keys": [
-        "2026-10-08"
-      ],
-      "clicks": 0,
-      "impressions": 13,
-      "ctr": 0,
-      "position": 14.846153846153847
-    },
     {
       "keys": [
         "2026-10-09"
@@ -721,6 +508,69 @@
       "impressions": 8,
       "ctr": 0,
       "position": 11.375
+    },
+    {
+      "keys": [
+        "2026-10-31"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "keys": [
+        "2026-11-01"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 31.22222222222222
+    },
+    {
+      "keys": [
+        "2026-11-02"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 27.75
+    },
+    {
+      "keys": [
+        "2026-11-03"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 29.6
+    },
+    {
+      "keys": [
+        "2026-11-04"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 37.2
+    },
+    {
+      "keys": [
+        "2026-11-05"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 14
+    },
+    {
+      "keys": [
+        "2026-11-06"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 12.875
     }
   ]
 }
