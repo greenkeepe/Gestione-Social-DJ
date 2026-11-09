@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-11-09T15:43:48.421Z"
+    },
+    {
       "agente": "Segugio",
       "identita": "Agente SEO (Search Console)",
       "status": "nessuna-azione",
@@ -3529,13 +3536,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-24T11:09:55.845Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Generato un post dalla recensione di Gabriele V. (Compleanno), a rotazione con le foto/video.",
-      "timestamp": "2026-09-24T11:09:55.291Z"
     }
   ]
 }
