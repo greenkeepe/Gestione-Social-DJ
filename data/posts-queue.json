@@ -34,6 +34,361 @@
       "dataProgrammata": "2026-10-18",
       "ultimoErrore": null,
       "tentativiFalliti": 0
+    },
+    {
+      "id": "2af93e5d-603f-461c-a311-ddc4dc0acd0d",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "5acbd1a4-612f-4213-824c-7efdbf6a8d0e",
+        "filename": "reel-telegram-1794053499322.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2d81352d-ead5-4dbf-be4f-b813e296536e.mp4"
+      },
+      "caption": "Cerchio di braccia alzate in pista, consolle che lavora piano piano. Questo ballo non finisce mai, giuro.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonio2027",
+        "#sposi2027",
+        "#weddingitaly",
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#animazionematrimonio",
+        "#djeventi",
+        "#djwedding",
+        "#musicapermatrimoni",
+        "#serravallescrivia",
+        "#alessandria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "playlist",
+      "dataProgrammata": "2026-11-10"
+    },
+    {
+      "id": "a81d9252-a643-453e-b971-824c4d691202",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "0a0eac20-69aa-4a38-83e4-b5aed1e8aa77",
+        "filename": "reel-telegram-1794053493757.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4d8af1c-2a78-4d13-a7d3-79ba54a39199.mp4"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "1893daf8-37c1-45fa-b9cc-e0b25627b62f",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "3c80e164-e09f-4cc3-9c4f-f638f5383314",
+        "filename": "telegram-1794053348500.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4bf985a9-9163-4004-ad28-043477afe739.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "e5ecd72c-9f43-47c9-af1b-9c7b49134dd5",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "ce413bc5-a13e-43f7-a0cf-760378ebf5a3",
+        "filename": "telegram-1794053490406.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7e12de7f-a10e-45c5-b584-b72819800f97.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "b610b927-b71a-4c9f-b40f-714b5d53efb1",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "bae06c06-8d12-4882-87c2-acd7e6129525",
+        "filename": "telegram-1794053504853.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4a8a336-aace-416f-bc43-e69dc8b6429c.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "8c77dd7d-c097-465c-991a-a82ca76ecfa7",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "b3cbb1f3-cb21-4128-b0f6-5ac4a92f6de0",
+        "filename": "telegram-1794053507794.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5a8b5e42-ce14-4905-b2de-77c904b4bee8.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "c8ba86f1-6062-4bbf-ab4e-4526b7653aca",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "72fbdbd1-396a-45f4-877f-266f00eaf6f4",
+        "filename": "telegram-1794053510750.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d2529221-d60f-423f-b2b0-9c137c4fe96b.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "13bd3e0b-5488-4910-ba12-1e9b389f9de9",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "b35a6559-7fed-4a1d-aa79-621f760a796c",
+        "filename": "telegram-1794053513724.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f37019e8-ce67-4bfe-90f0-008aa9066558.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "865843e5-bde5-4680-9e85-565c2af9cfb1",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "bc01d4e3-93e5-456c-afdc-92baaf26f94f",
+        "filename": "telegram-1794053516514.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2d44308b-c33b-4945-aaac-497a0ec166e8.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "a0f99d4f-e62e-47b5-814e-9f0ceaaf9d95",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "f8025f66-0024-4b9e-9f38-57fba90f64c7",
+        "filename": "telegram-1794053519136.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/74e4e399-ae96-47f3-8779-c74cbfd42f37.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "2c21e551-e8aa-4aa2-831e-8992953be002",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "695ccc6c-c974-4833-9474-ea3629049c6a",
+        "filename": "telegram-1794053522189.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a629477c-925d-400e-9a99-3a5512877eb9.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "f35ab123-0220-442f-93da-1b605dc42a78",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "b22b290e-3648-46b1-b1b4-75c7393eb574",
+        "filename": "telegram-1794053524991.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/971bb450-d214-45a4-94aa-df1caec99e37.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "4de61ec2-0b99-470d-8153-1e0685a230c0",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "0e834465-b2f6-4f3f-9d48-824dffa64a60",
+        "filename": "telegram-1794053527918.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/564f5db0-2bc4-4baf-8d97-bcea8661f0a8.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "2334c840-d401-4548-bd6c-1879bbe8721e",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "3dcfb0ba-99b5-4f1e-9e74-deb20d5c9a62",
+        "filename": "telegram-1794053530590.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d5a14a24-851d-498d-8a0f-c8a7e71bea9c.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "c0cc3bfa-ad7e-4dc9-bf36-ec38ab15bde2",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "14b879b6-34a8-4fd0-b95a-1ec86762b8c6",
+        "filename": "telegram-1794053533442.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4a014cdf-727b-4ed0-bf58-bf125a7d9290.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "6f0b7009-ab48-4919-93cb-2471dcb7e17c",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "3e3266d1-3709-4ad1-91f3-baf3f939cb80",
+        "filename": "telegram-1794053536108.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d3dffcb7-922d-4c9d-b74a-5f5340b6882b.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "778d5246-cca3-4eb1-b7b3-71972ba27417",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "23cebbfc-1fa3-4537-8e0a-51176582dafd",
+        "filename": "telegram-1794053539048.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ca6e0b2e-0b92-424e-b62d-bbd7a8f15fd1.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "976a5a43-c38f-45a8-aeb0-76c7641064cf",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "550af8dc-c3fc-444d-8676-fce342249872",
+        "filename": "telegram-1794053541739.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ac4e3058-d58f-4569-97b9-fb975246a9b5.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "825ac837-40e1-446c-99f3-4a399181bbff",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "63cdf00c-3d33-4251-a1e1-4e251e12d415",
+        "filename": "telegram-1794053544782.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/639b2c58-ad9a-4262-9452-89bf04cccd18.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
+    },
+    {
+      "id": "45cffd2e-e9c9-434f-94ce-d8282183ef2f",
+      "createdAt": "2026-11-10T16:04:08.631Z",
+      "formato": "post",
+      "media": {
+        "source": "telegram",
+        "mediaId": "dbe38e05-49da-48ff-b12d-723f2176bf51",
+        "filename": "telegram-1794053547503.jpg",
+        "mimeType": "image/jpeg",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5851857d-64a2-406d-bec8-8ec8aba7c039.jpg"
+      },
+      "caption": null,
+      "hashtags": [],
+      "orarioProgrammato": null,
+      "status": "in-coda-caption",
+      "istruzioniUtente": null
     }
   ]
 }
