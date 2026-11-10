@@ -68,13 +68,19 @@
     {
       "id": "1893daf8-37c1-45fa-b9cc-e0b25627b62f",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "3c80e164-e09f-4cc3-9c4f-f638f5383314",
-        "filename": "telegram-1794053348500.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4bf985a9-9163-4004-ad28-043477afe739.jpg"
+        "filename": "reel-telegram-1794053348500.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c5f38caf-74ea-452b-b094-71faadba1f0a.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4bf985a9-9163-4004-ad28-043477afe739.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053348500.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Vestiti lunghi, luci rosse e pista piena di gente che balla. Questo sì che è un diciottesimo come si deve.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -100,13 +106,19 @@
     {
       "id": "e5ecd72c-9f43-47c9-af1b-9c7b49134dd5",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "ce413bc5-a13e-43f7-a0cf-760378ebf5a3",
-        "filename": "telegram-1794053490406.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7e12de7f-a10e-45c5-b584-b72819800f97.jpg"
+        "filename": "reel-telegram-1794053490406.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a93f96fe-7a41-4681-ad31-340ff3bb9e91.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7e12de7f-a10e-45c5-b584-b72819800f97.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053490406.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Laser verde, braccia alzate e sorrisi ovunque: la pista si sta scaldando sul serio.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -132,13 +144,19 @@
     {
       "id": "b610b927-b71a-4c9f-b40f-714b5d53efb1",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "bae06c06-8d12-4882-87c2-acd7e6129525",
-        "filename": "telegram-1794053504853.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4a8a336-aace-416f-bc43-e69dc8b6429c.jpg"
+        "filename": "reel-telegram-1794053504853.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e1dd44f8-15d5-4fce-b3b4-7ecdb6bbb5eb.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4a8a336-aace-416f-bc43-e69dc8b6429c.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053504853.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Tavolo apparecchiato, service pronto, manca solo il tramonto giusto per iniziare. Set up fatto bene, come piace a me.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -164,13 +182,19 @@
     {
       "id": "8c77dd7d-c097-465c-991a-a82ca76ecfa7",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "b3cbb1f3-cb21-4128-b0f6-5ac4a92f6de0",
-        "filename": "telegram-1794053507794.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5a8b5e42-ce14-4905-b2de-77c904b4bee8.jpg"
+        "filename": "reel-telegram-1794053507794.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3f8d8c3f-bb9e-490f-bee7-f9639c3bb6b2.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5a8b5e42-ce14-4905-b2de-77c904b4bee8.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053507794.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Piazza, chiesa illuminata e consolle accesa, serata di quelle belle in centro.\n\nForte DJ ha ancora poche date libere quest'anno, se ci siete capito l'antifona.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -196,13 +220,19 @@
     {
       "id": "c8ba86f1-6062-4bbf-ab4e-4526b7653aca",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "72fbdbd1-396a-45f4-877f-266f00eaf6f4",
-        "filename": "telegram-1794053510750.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d2529221-d60f-423f-b2b0-9c137c4fe96b.jpg"
+        "filename": "reel-telegram-1794053510750.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/54892f05-417c-42ac-8c08-05c10e965fbe.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d2529221-d60f-423f-b2b0-9c137c4fe96b.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053510750.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Pista piena e braccia alzate, questa è la parte che preferisco della serata.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -262,13 +292,19 @@
     {
       "id": "865843e5-bde5-4680-9e85-565c2af9cfb1",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "bc01d4e3-93e5-456c-afdc-92baaf26f94f",
-        "filename": "telegram-1794053516514.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2d44308b-c33b-4945-aaac-497a0ec166e8.jpg"
+        "filename": "reel-telegram-1794053516514.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/eb3655cd-53f8-4758-bc12-35c80ea8d344.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2d44308b-c33b-4945-aaac-497a0ec166e8.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053516514.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Pista piena e tutti in piedi, questo sì che è un buon segno. Qui si balla sul serio.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -294,13 +330,19 @@
     {
       "id": "a0f99d4f-e62e-47b5-814e-9f0ceaaf9d95",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "f8025f66-0024-4b9e-9f38-57fba90f64c7",
-        "filename": "telegram-1794053519136.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/74e4e399-ae96-47f3-8779-c74cbfd42f37.jpg"
+        "filename": "reel-telegram-1794053519136.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/03ab3fa8-466d-4b2a-b778-a01a954d0538.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/74e4e399-ae96-47f3-8779-c74cbfd42f37.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053519136.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Setup pronto, sala ancora vuota ma già vestita a festa. Tra poco si parte sul serio.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -326,13 +368,19 @@
     {
       "id": "2c21e551-e8aa-4aa2-831e-8992953be002",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "695ccc6c-c974-4833-9474-ea3629049c6a",
-        "filename": "telegram-1794053522189.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a629477c-925d-400e-9a99-3a5512877eb9.jpg"
+        "filename": "reel-telegram-1794053522189.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/831c22dd-4213-4ae0-85f2-9e331316703c.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a629477c-925d-400e-9a99-3a5512877eb9.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053522189.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Pista piena e tutti in cerchio, questa è l'energia che mi piace vedere.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -358,13 +406,19 @@
     {
       "id": "f35ab123-0220-442f-93da-1b605dc42a78",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "b22b290e-3648-46b1-b1b4-75c7393eb574",
-        "filename": "telegram-1794053524991.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/971bb450-d214-45a4-94aa-df1caec99e37.jpg"
+        "filename": "reel-telegram-1794053524991.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7d81c2f5-8bf6-480d-88c9-2637c00fca1a.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/971bb450-d214-45a4-94aa-df1caec99e37.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053524991.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Console pronta, luci blu accese, fuori ancora si sistemano i tavoli. Tra poco si parte.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
