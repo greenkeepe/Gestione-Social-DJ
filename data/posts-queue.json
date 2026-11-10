@@ -2,40 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "31b26277-d6e0-4503-a063-59e75aaedeb5",
-      "createdAt": "2026-09-28T13:41:24.484Z",
-      "formato": "reel",
-      "media": {
-        "source": "dashboard-upload",
-        "mediaId": "354dcb33-46c5-4f1d-bf0c-d4d433795345",
-        "filename": "reel-IMG_4893.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7b90f191-d1bc-4d9b-ae36-d29bf61ab92a.mp4"
-      },
-      "caption": "Setup pronto, piscina a vista e panorama pazzesco. Location così bella che il lavoro diventa un piacere.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingparty",
-        "#djmatrimonio",
-        "#weddingdj",
-        "#weddingitaly",
-        "#matrimonioitaliano",
-        "#discjockey",
-        "#weddingmusic",
-        "#djperfeste",
-        "#animazionematrimonio",
-        "#lombardia",
-        "#piemonte",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "consigli",
-      "dataProgrammata": "2026-10-18",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "2af93e5d-603f-461c-a311-ddc4dc0acd0d",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -287,10 +253,12 @@
         "#weddingpiemonte"
       ],
       "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "playlist",
-      "dataProgrammata": "2026-11-17"
+      "dataProgrammata": "2026-11-17",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "865843e5-bde5-4680-9e85-565c2af9cfb1",
