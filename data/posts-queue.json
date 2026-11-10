@@ -110,11 +110,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4bf985a9-9163-4004-ad28-043477afe739.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Vestiti lunghi, luci rosse e pista piena di gente che balla. Questo sì che è un diciottesimo come si deve.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#weddingday",
+        "#sposi2027",
+        "#weddingparty",
+        "#djprofessionista",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djwedding",
+        "#liguria",
+        "#piemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "playlist",
+      "dataProgrammata": "2026-11-12"
     },
     {
       "id": "e5ecd72c-9f43-47c9-af1b-9c7b49134dd5",
