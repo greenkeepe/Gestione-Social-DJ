@@ -596,9 +596,11 @@
       ],
       "orarioProgrammato": "12:30",
       "dataProgrammata": "2026-11-10",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
-      "pillarId": "sito-web"
+      "pillarId": "sito-web",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     }
   ]
 }
