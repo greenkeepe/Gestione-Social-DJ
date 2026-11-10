@@ -444,13 +444,19 @@
     {
       "id": "4de61ec2-0b99-470d-8153-1e0685a230c0",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "0e834465-b2f6-4f3f-9d48-824dffa64a60",
-        "filename": "telegram-1794053527918.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/564f5db0-2bc4-4baf-8d97-bcea8661f0a8.jpg"
+        "filename": "reel-telegram-1794053527918.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7fe99f61-0bc9-4fbd-8efc-2aedbd90a7ce.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/564f5db0-2bc4-4baf-8d97-bcea8661f0a8.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053527918.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Console accesa, luci blu, tavoli pieni dietro di me. Serata che scorre, io qui a dare il ritmo giusto.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -476,13 +482,19 @@
     {
       "id": "2334c840-d401-4548-bd6c-1879bbe8721e",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "3dcfb0ba-99b5-4f1e-9e74-deb20d5c9a62",
-        "filename": "telegram-1794053530590.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d5a14a24-851d-498d-8a0f-c8a7e71bea9c.jpg"
+        "filename": "reel-telegram-1794053530590.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/be5f1217-65d4-47fe-a7cd-da1f4da18463.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d5a14a24-851d-498d-8a0f-c8a7e71bea9c.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053530590.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Mascherine, costumi e pista piena di gente che balla senza pensarci due volte. Festa vera, questa.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -508,13 +520,19 @@
     {
       "id": "c0cc3bfa-ad7e-4dc9-bf36-ec38ab15bde2",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "14b879b6-34a8-4fd0-b95a-1ec86762b8c6",
-        "filename": "telegram-1794053533442.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4a014cdf-727b-4ed0-bf58-bf125a7d9290.jpg"
+        "filename": "reel-telegram-1794053533442.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a87d3360-ebb8-4248-a3c5-3a3fb5ad5bb1.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4a014cdf-727b-4ed0-bf58-bf125a7d9290.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053533442.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Pista piena e maschere ovunque, questa festa a tema ha preso fuoco sul serio.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
@@ -540,13 +558,19 @@
     {
       "id": "6f0b7009-ab48-4919-93cb-2471dcb7e17c",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "3e3266d1-3709-4ad1-91f3-baf3f939cb80",
-        "filename": "telegram-1794053536108.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d3dffcb7-922d-4c9d-b74a-5f5340b6882b.jpg"
+        "filename": "reel-telegram-1794053536108.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7dc3b1fc-0ec5-4545-9b4b-8d261d5050a0.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d3dffcb7-922d-4c9d-b74a-5f5340b6882b.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053536108.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": null,
       "hashtags": [],
@@ -557,13 +581,19 @@
     {
       "id": "778d5246-cca3-4eb1-b7b3-71972ba27417",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "23cebbfc-1fa3-4537-8e0a-51176582dafd",
-        "filename": "telegram-1794053539048.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ca6e0b2e-0b92-424e-b62d-bbd7a8f15fd1.jpg"
+        "filename": "reel-telegram-1794053539048.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/38d69c2f-3ffc-46bd-988a-cf433a750e9f.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ca6e0b2e-0b92-424e-b62d-bbd7a8f15fd1.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053539048.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": null,
       "hashtags": [],
@@ -574,13 +604,19 @@
     {
       "id": "976a5a43-c38f-45a8-aeb0-76c7641064cf",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "550af8dc-c3fc-444d-8676-fce342249872",
-        "filename": "telegram-1794053541739.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ac4e3058-d58f-4569-97b9-fb975246a9b5.jpg"
+        "filename": "reel-telegram-1794053541739.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/404b5532-a1ff-4462-a785-a33a05f906b1.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ac4e3058-d58f-4569-97b9-fb975246a9b5.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053541739.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": null,
       "hashtags": [],
@@ -591,13 +627,19 @@
     {
       "id": "825ac837-40e1-446c-99f3-4a399181bbff",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "63cdf00c-3d33-4251-a1e1-4e251e12d415",
-        "filename": "telegram-1794053544782.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/639b2c58-ad9a-4262-9452-89bf04cccd18.jpg"
+        "filename": "reel-telegram-1794053544782.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/333945fe-76d7-40dd-8625-0aadd1eecbbc.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/639b2c58-ad9a-4262-9452-89bf04cccd18.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053544782.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": null,
       "hashtags": [],
@@ -608,13 +650,19 @@
     {
       "id": "45cffd2e-e9c9-434f-94ce-d8282183ef2f",
       "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "telegram",
         "mediaId": "dbe38e05-49da-48ff-b12d-723f2176bf51",
-        "filename": "telegram-1794053547503.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5851857d-64a2-406d-bec8-8ec8aba7c039.jpg"
+        "filename": "reel-telegram-1794053547503.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/518a52d5-a311-485b-9a7e-44183a7a90b6.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5851857d-64a2-406d-bec8-8ec8aba7c039.jpg",
+          "mimeType": "image/jpeg",
+          "filename": "telegram-1794053547503.jpg"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": null,
       "hashtags": [],
