@@ -206,11 +206,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5a8b5e42-ce14-4905-b2de-77c904b4bee8.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Piazza, chiesa illuminata e consolle accesa, serata di quelle belle in centro.\n\nForte DJ ha ancora poche date libere quest'anno, se ci siete capito l'antifona.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#djperfeste",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#matrimonioinpiemonte",
+        "#alessandria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "call-to-action",
+      "dataProgrammata": "2026-11-15"
     },
     {
       "id": "c8ba86f1-6062-4bbf-ab4e-4526b7653aca",
