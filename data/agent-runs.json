@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Testimonianze sposi\" (LLM con visione). Programmato per il 2026-11-19 alle 18:30.",
+      "timestamp": "2026-11-10T16:04:56.623Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Anteprima playlist / mash-up\" (LLM con visione). Programmato per il 2026-11-18 alle 18:30.",
       "timestamp": "2026-11-10T16:04:52.876Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-25T06:12:52.156Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "Generato un post dalla recensione di Benedetta P. (Compleanno), a rotazione con le foto/video.",
-      "timestamp": "2026-09-25T06:12:51.459Z"
     }
   ]
 }

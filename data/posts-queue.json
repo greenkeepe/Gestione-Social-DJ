@@ -334,11 +334,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/74e4e399-ae96-47f3-8779-c74cbfd42f37.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Setup pronto, sala ancora vuota ma già vestita a festa. Tra poco si parte sul serio.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#weddingdj",
+        "#weddingparty",
+        "#weddingmusic",
+        "#animazionematrimonio",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#piemonte",
+        "#serravallescrivia",
+        "#weddingpiemonte"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze",
+      "dataProgrammata": "2026-11-19"
     },
     {
       "id": "2c21e551-e8aa-4aa2-831e-8992953be002",
