@@ -174,11 +174,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4a8a336-aace-416f-bc43-e69dc8b6429c.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Tavolo apparecchiato, service pronto, manca solo il tramonto giusto per iniziare. Set up fatto bene, come piace a me.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#weddingitaly",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#liguria",
+        "#piemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "location",
+      "dataProgrammata": "2026-11-14"
     },
     {
       "id": "8c77dd7d-c097-465c-991a-a82ca76ecfa7",

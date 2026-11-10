@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Location e ambientazione\" (LLM con visione). Programmato per il 2026-11-14 alle 21:15.",
+      "timestamp": "2026-11-10T16:04:36.816Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Momenti forti della serata\" (LLM con visione). Programmato per il 2026-11-13 alle 21:15.",
       "timestamp": "2026-11-10T16:04:31.975Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-24T15:55:23.483Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
-      "timestamp": "2026-09-24T15:46:33.803Z"
     }
   ]
 }
