@@ -462,11 +462,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d5a14a24-851d-498d-8a0f-c8a7e71bea9c.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Mascherine, costumi e pista piena di gente che balla senza pensarci due volte. Festa vera, questa.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#djwedding",
+        "#djeventi",
+        "#musicapermatrimoni",
+        "#djperfeste",
+        "#piemonte",
+        "#lombardia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze",
+      "dataProgrammata": "2026-11-23"
     },
     {
       "id": "c0cc3bfa-ad7e-4dc9-bf36-ec38ab15bde2",
