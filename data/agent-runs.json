@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Anteprima playlist / mash-up\" (LLM con visione). Programmato per il 2026-11-18 alle 18:30.",
+      "timestamp": "2026-11-10T16:04:52.876Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Anteprima playlist / mash-up\" (LLM con visione). Programmato per il 2026-11-17 alle 12:30.",
       "timestamp": "2026-11-10T16:04:49.086Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "ok",
       "riepilogo": "Generato un post dalla recensione di Benedetta P. (Compleanno), a rotazione con le foto/video.",
       "timestamp": "2026-09-25T06:12:51.459Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-24T23:07:05.335Z"
     }
   ]
 }

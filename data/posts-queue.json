@@ -302,11 +302,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2d44308b-c33b-4945-aaac-497a0ec166e8.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Pista piena e tutti in piedi, questo sì che è un buon segno. Qui si balla sul serio.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#weddingdj",
+        "#weddingday",
+        "#sposi2027",
+        "#animazionematrimonio",
+        "#djperfeste",
+        "#djeventi",
+        "#musicapermatrimoni",
+        "#serravallescrivia",
+        "#weddingpiemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "playlist",
+      "dataProgrammata": "2026-11-18"
     },
     {
       "id": "a0f99d4f-e62e-47b5-814e-9f0ceaaf9d95",
