@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-11-22 alle 21:15.",
+      "timestamp": "2026-11-10T16:05:08.420Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-11-21 alle 21:15.",
       "timestamp": "2026-11-10T16:05:04.535Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-25T06:13:17.062Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-25T06:13:05.889Z"
     }
   ]
 }
