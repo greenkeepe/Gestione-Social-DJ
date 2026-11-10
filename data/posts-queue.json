@@ -238,11 +238,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d2529221-d60f-423f-b2b0-9c137c4fe96b.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Pista piena e braccia alzate, questa è la parte che preferisco della serata.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingdj",
+        "#sposi2027",
+        "#weddingitaly",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#serravallescrivia",
+        "#weddingpiemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "momenti-forti",
+      "dataProgrammata": "2026-11-16"
     },
     {
       "id": "13bd3e0b-5488-4910-ba12-1e9b389f9de9",
