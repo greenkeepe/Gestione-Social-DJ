@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Momenti forti della serata\" (LLM con visione). Programmato per il 2026-11-20 alle 21:15.",
+      "timestamp": "2026-11-10T16:05:00.464Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Testimonianze sposi\" (LLM con visione). Programmato per il 2026-11-19 alle 18:30.",
       "timestamp": "2026-11-10T16:04:56.623Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "ok",
       "riepilogo": "Vetrina del sito pronta (\"Matrimoni\"), programmata per il 2026-09-25 alle 21:15.",
       "timestamp": "2026-09-25T06:12:59.640Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
-      "timestamp": "2026-09-25T06:12:52.156Z"
     }
   ]
 }
