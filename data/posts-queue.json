@@ -78,11 +78,26 @@
         "mimeType": "video/mp4",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4d8af1c-2a78-4d13-a7d3-79ba54a39199.mp4"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Pista piena e luci che pigliano, questo sì che è bello da vedere.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingparty",
+        "#matrimonio2027",
+        "#weddingday",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingmusic",
+        "#djwedding",
+        "#discjockey",
+        "#djprofessionista",
+        "#lombardia",
+        "#liguria",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-11-11"
     },
     {
       "id": "1893daf8-37c1-45fa-b9cc-e0b25627b62f",
