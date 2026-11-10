@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-11-10T16:46:14.433Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Reel da immagini con Regia: 8/8 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
       "timestamp": "2026-11-10T16:41:27.751Z"
@@ -3526,13 +3533,6 @@
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18465770164191169) e Facebook (1725594839575885). + Storia IG pubblicata.",
       "timestamp": "2026-09-25T15:47:22.281Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-25T11:31:38.843Z"
     }
   ]
 }
