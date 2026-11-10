@@ -2,20 +2,20 @@
   "_istruzioni": "Scorta dei locali trovati su OpenStreetMap dall'Agente Esploratore (agents/outreach-agent.ts), per zona di ricerca. Gestita dall'agente: non serve modificarla a mano.",
   "zone": {
     "citta:novi ligure:20": {
-      "cercataIl": "2026-09-29T07:12:50.665Z",
+      "cercataIl": "2026-11-10T16:06:43.126Z",
       "trovati": 61
     },
     "citta:alessandria:20": {
-      "cercataIl": "2026-09-29T07:13:24.360Z",
+      "cercataIl": "2026-11-10T16:07:25.511Z",
       "trovati": 54
     },
     "provincia:AL": {
-      "cercataIl": "2026-09-29T07:13:35.336Z",
-      "trovati": 103
+      "cercataIl": "2026-11-10T16:08:18.513Z",
+      "trovati": 105
     },
     "provincia:AT": {
-      "cercataIl": "2026-09-30T09:48:10.281Z",
-      "trovati": 227
+      "cercataIl": "2026-11-10T16:09:06.620Z",
+      "trovati": 230
     }
   },
   "candidati": [
@@ -3298,6 +3298,56 @@
       "indirizzo": "Via Castelborgo 1 Neive",
       "nomeDaEventi": true,
       "zona": "provincia:AT"
+    },
+    {
+      "osmId": "node/14298540442",
+      "nome": "Pizza Home Food",
+      "categoria": "restaurant",
+      "sitoWeb": "https://www.pizzahomefood.it",
+      "emailOsm": "info@pizzahomefood.it",
+      "indirizzo": "Via dottor Magnani 97 Breme",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "way/555484988",
+      "nome": "B&B Cà D'la Tonilla",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.tonilla.com/",
+      "emailOsm": null,
+      "indirizzo": "Via Mezzaluna 12 Breme",
+      "nomeDaEventi": false,
+      "zona": "provincia:AL"
+    },
+    {
+      "osmId": "node/14244529601",
+      "nome": "Locanda San Michele",
+      "categoria": "restaurant",
+      "sitoWeb": "http://locandasanmichele.it",
+      "emailOsm": null,
+      "indirizzo": "Via Vincenzo Silato 1",
+      "nomeDaEventi": false,
+      "zona": "provincia:AT"
+    },
+    {
+      "osmId": "node/14284315679",
+      "nome": "La Valle Bed and breakfast Asti",
+      "categoria": "hotel",
+      "sitoWeb": "http://www.bedandbreakfastlavalle.asti.it/",
+      "emailOsm": null,
+      "indirizzo": "Strada Lascaris 62 Valleandona",
+      "nomeDaEventi": false,
+      "zona": "provincia:AT"
+    },
+    {
+      "osmId": "node/14323669584",
+      "nome": "B&B La casa sui tetti",
+      "categoria": "hotel",
+      "sitoWeb": "https://www.lacasasuitetti.com",
+      "emailOsm": null,
+      "indirizzo": null,
+      "nomeDaEventi": false,
+      "zona": "provincia:AT"
     }
   ],
   "esaminati": {
@@ -3367,6 +3417,42 @@
     },
     "way/317106183": {
       "il": "2026-10-05T14:25:47.714Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/1023719679": {
+      "il": "2026-11-10T16:09:07.721Z",
+      "motivo": "email già contattata"
+    },
+    "node/5723690049": {
+      "il": "2026-11-10T16:09:12.287Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/9075569505": {
+      "il": "2026-11-10T16:09:20.289Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/4496685947": {
+      "il": "2026-11-10T16:09:27.879Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/365484428": {
+      "il": "2026-11-10T16:09:37.253Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/347708736": {
+      "il": "2026-11-10T16:09:49.352Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/1023719678": {
+      "il": "2026-11-10T16:09:49.352Z",
+      "motivo": "email già contattata"
+    },
+    "node/11361346932": {
+      "il": "2026-11-10T16:10:00.545Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/227399316": {
+      "il": "2026-11-10T16:10:00.594Z",
       "motivo": "nessuna email pubblica"
     }
   }

@@ -600,6 +600,38 @@
       "orarioProgrammato": null,
       "status": "in-coda-caption",
       "istruzioniUtente": null
+    },
+    {
+      "id": "150dec0f-3484-402a-9bbe-95f74d3953bf",
+      "createdAt": "2026-11-10T16:05:26.622Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-DJ-a-Acqui-Terme.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3d6871ee-84f3-4ba1-bbbf-daf70dc40949.png"
+      },
+      "caption": "Acqui Terme e l'Alto Monferrato, colline e vigneti da sogno per un matrimonio. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingitaly",
+        "#weddingparty",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#weddingmusic",
+        "#discjockey",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#liguria",
+        "#weddingpiemonte",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-11-10",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
