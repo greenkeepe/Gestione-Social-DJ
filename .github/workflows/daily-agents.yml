@@ -123,4 +123,5 @@ jobs:
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run reel-maker.yml --ref "${GITHUB_REF_NAME}" || echo "Avvio non riuscito: ci penserà il giro programmato"
+        run: |
+          gh workflow run reel-maker.yml --ref "${GITHUB_REF_NAME}" || echo "Avvio non riuscito: ci penserà il giro programmato"
