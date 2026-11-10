@@ -398,11 +398,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/971bb450-d214-45a4-94aa-df1caec99e37.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Console pronta, luci blu accese, fuori ancora si sistemano i tavoli. Tra poco si parte.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#weddingday",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#discjockey",
+        "#weddingpiemonte",
+        "#matrimonioinpiemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-11-21"
     },
     {
       "id": "4de61ec2-0b99-470d-8153-1e0685a230c0",

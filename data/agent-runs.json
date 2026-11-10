@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Dietro le quinte\" (LLM con visione). Programmato per il 2026-11-21 alle 21:15.",
+      "timestamp": "2026-11-10T16:05:04.535Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Momenti forti della serata\" (LLM con visione). Programmato per il 2026-11-20 alle 21:15.",
       "timestamp": "2026-11-10T16:05:00.464Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
       "timestamp": "2026-09-25T06:13:05.889Z"
-    },
-    {
-      "agente": "Vetrina",
-      "identita": "Agente Vetrina Sito Web",
-      "status": "ok",
-      "riepilogo": "Vetrina del sito pronta (\"Matrimoni\"), programmata per il 2026-09-25 alle 21:15.",
-      "timestamp": "2026-09-25T06:12:59.640Z"
     }
   ]
 }
