@@ -494,11 +494,26 @@
         "mimeType": "image/jpeg",
         "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4a014cdf-727b-4ed0-bf58-bf125a7d9290.jpg"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Pista piena e maschere ovunque, questa festa a tema ha preso fuoco sul serio.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingparty",
+        "#weddingdj",
+        "#weddingday",
+        "#sposi2027",
+        "#djperfeste",
+        "#weddingmusic",
+        "#discjockey",
+        "#djprofessionista",
+        "#lombardia",
+        "#liguria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "momenti-forti",
+      "dataProgrammata": "2026-11-24"
     },
     {
       "id": "6f0b7009-ab48-4919-93cb-2471dcb7e17c",

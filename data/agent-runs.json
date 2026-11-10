@@ -5,6 +5,13 @@
       "agente": "Copy",
       "identita": "Agente Contenuti",
       "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Momenti forti della serata\" (LLM con visione). Programmato per il 2026-11-24 alle 12:30.",
+      "timestamp": "2026-11-10T16:05:16.388Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
       "riepilogo": "Scritta didascalia per il contenuto \"Testimonianze sposi\" (LLM con visione). Programmato per il 2026-11-23 alle 12:30.",
       "timestamp": "2026-11-10T16:05:12.466Z"
     },
@@ -3529,13 +3536,6 @@
       "status": "ok",
       "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
       "timestamp": "2026-09-25T06:13:19.097Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "ok",
-      "riepilogo": "KPI aggiornati: 387 follower Instagram, 0 lead attivi.",
-      "timestamp": "2026-09-25T06:13:19.093Z"
     }
   ]
 }
