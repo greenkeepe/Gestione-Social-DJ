@@ -720,9 +720,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Tortona.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a8380065-44ad-4a8d-9bc6-c8b7cc82ee4a.png"
+        "filename": "reel-sito-DJ-a-Tortona.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0bb29130-1c73-4e21-bc46-d7fb6314cbf9.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a8380065-44ad-4a8d-9bc6-c8b7cc82ee4a.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Tortona.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "DJ per matrimoni ed eventi a Tortona e sui Colli Tortonesi, a 25 minuti da Serravalle. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
