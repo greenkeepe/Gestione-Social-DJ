@@ -578,11 +578,26 @@
         },
         "fotoReel": "regia-foto-2"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Pista piena e luci basse, questo sì che è un bel vedere. Qui si balla e basta.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingparty",
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#sposi2027",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djperfeste",
+        "#djprofessionista",
+        "#weddingpiemonte",
+        "#lombardia",
+        "#liguria"
+      ],
+      "orarioProgrammato": "18:30",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-11-26"
     },
     {
       "id": "976a5a43-c38f-45a8-aeb0-76c7641064cf",
