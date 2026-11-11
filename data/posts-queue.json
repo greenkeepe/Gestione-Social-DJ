@@ -692,11 +692,26 @@
         },
         "fotoReel": "regia-foto-2"
       },
-      "caption": null,
-      "hashtags": [],
-      "orarioProgrammato": null,
-      "status": "in-coda-caption",
-      "istruzioniUtente": null
+      "caption": "Luci accese, tavolo pronto, gente già seduta a cena. Da qui si vede tutta la serata.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingparty",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djwedding",
+        "#djprofessionista",
+        "#liguria",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "dietro-le-quinte",
+      "dataProgrammata": "2026-11-29"
     }
   ]
 }
