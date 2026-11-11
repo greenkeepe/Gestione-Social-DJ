@@ -2,38 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "2af93e5d-603f-461c-a311-ddc4dc0acd0d",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "5acbd1a4-612f-4213-824c-7efdbf6a8d0e",
-        "filename": "reel-telegram-1794053499322.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/2d81352d-ead5-4dbf-be4f-b813e296536e.mp4"
-      },
-      "caption": "Cerchio di braccia alzate in pista, consolle che lavora piano piano. Questo ballo non finisce mai, giuro.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonio2027",
-        "#sposi2027",
-        "#weddingitaly",
-        "#weddingparty",
-        "#matrimonioitaliano",
-        "#animazionematrimonio",
-        "#djeventi",
-        "#djwedding",
-        "#musicapermatrimoni",
-        "#serravallescrivia",
-        "#alessandria",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "playlist",
-      "dataProgrammata": "2026-11-10"
-    },
-    {
       "id": "a81d9252-a643-453e-b971-824c4d691202",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -669,40 +637,6 @@
       "orarioProgrammato": null,
       "status": "in-coda-caption",
       "istruzioniUtente": null
-    },
-    {
-      "id": "150dec0f-3484-402a-9bbe-95f74d3953bf",
-      "createdAt": "2026-11-10T16:05:26.622Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "sito-DJ-a-Acqui-Terme.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3d6871ee-84f3-4ba1-bbbf-daf70dc40949.png"
-      },
-      "caption": "Acqui Terme e l'Alto Monferrato, colline e vigneti da sogno per un matrimonio. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#sposi2027",
-        "#weddingitaly",
-        "#weddingparty",
-        "#weddingday",
-        "#matrimonioitaliano",
-        "#weddingmusic",
-        "#discjockey",
-        "#djwedding",
-        "#animazionematrimonio",
-        "#liguria",
-        "#weddingpiemonte",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "12:30",
-      "dataProgrammata": "2026-11-10",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     }
   ]
 }
