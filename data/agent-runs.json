@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-11-12T14:54:43.542Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3526,13 +3533,6 @@
       "status": "ok",
       "riepilogo": "Trovati 1 nuovi lead da chi ha commentato con interesse. Bozze pronte da rivedere nella dashboard.",
       "timestamp": "2026-09-27T11:27:21.788Z"
-    },
-    {
-      "agente": "Vetrina",
-      "identita": "Agente Vetrina Sito Web",
-      "status": "nessuna-azione",
-      "riepilogo": "Già generata una vetrina del sito oggi.",
-      "timestamp": "2026-09-27T11:27:11.794Z"
     }
   ]
 }
