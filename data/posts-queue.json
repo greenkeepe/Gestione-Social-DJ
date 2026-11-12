@@ -2,38 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "a81d9252-a643-453e-b971-824c4d691202",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "0a0eac20-69aa-4a38-83e4-b5aed1e8aa77",
-        "filename": "reel-telegram-1794053493757.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/bbb1f8aa-d32d-44fe-87ca-e489e92782c8.mp4"
-      },
-      "caption": "Pista piena e luci che pigliano, questo sì che è bello da vedere.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingparty",
-        "#matrimonio2027",
-        "#weddingday",
-        "#weddingdj",
-        "#djmatrimonio",
-        "#weddingmusic",
-        "#djwedding",
-        "#discjockey",
-        "#djprofessionista",
-        "#lombardia",
-        "#liguria",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-11"
-    },
-    {
       "id": "1893daf8-37c1-45fa-b9cc-e0b25627b62f",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -712,46 +680,6 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-11-29"
-    },
-    {
-      "id": "8e9e92a5-4401-4c20-82e7-1cc16a3f715b",
-      "createdAt": "2026-11-11T07:05:21.182Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Tortona.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/0bb29130-1c73-4e21-bc46-d7fb6314cbf9.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a8380065-44ad-4a8d-9bc6-c8b7cc82ee4a.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Tortona.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "DJ per matrimoni ed eventi a Tortona e sui Colli Tortonesi, a 25 minuti da Serravalle. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#sposi2027",
-        "#weddingitaly",
-        "#weddingdj",
-        "#weddingparty",
-        "#animazionematrimonio",
-        "#weddingmusic",
-        "#djprofessionista",
-        "#djperfeste",
-        "#matrimonioinpiemonte",
-        "#lombardia",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
-      "dataProgrammata": "2026-11-11",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     }
   ]
 }
