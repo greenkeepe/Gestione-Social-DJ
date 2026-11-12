@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Reel da immagini con Regia: 1/1 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
+      "timestamp": "2026-11-12T07:07:51.673Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3526,13 +3533,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
       "timestamp": "2026-09-27T08:32:34.370Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-27T06:12:38.494Z"
     }
   ]
 }
