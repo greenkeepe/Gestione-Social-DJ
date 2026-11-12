@@ -3454,6 +3454,58 @@
     "way/227399316": {
       "il": "2026-11-10T16:10:00.594Z",
       "motivo": "nessuna email pubblica"
+    },
+    "node/6046606003": {
+      "il": "2026-11-12T07:05:20.440Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/383702364": {
+      "il": "2026-11-12T07:05:21.684Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/1023719677": {
+      "il": "2026-11-12T07:05:21.684Z",
+      "motivo": "email già contattata"
+    },
+    "node/11328834099": {
+      "il": "2026-11-12T07:05:21.992Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/11775218800": {
+      "il": "2026-11-12T07:05:23.906Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/5450535874": {
+      "il": "2026-11-12T07:05:28.939Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/12028817571": {
+      "il": "2026-11-12T07:05:32.849Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/452747346": {
+      "il": "2026-11-12T07:05:32.849Z",
+      "motivo": "email già contattata"
+    },
+    "node/5745624643": {
+      "il": "2026-11-12T07:05:36.780Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/437923932": {
+      "il": "2026-11-12T07:05:47.916Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/4439669720": {
+      "il": "2026-11-12T07:05:52.597Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/4771427542": {
+      "il": "2026-11-12T07:05:52.732Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/14181572786": {
+      "il": "2026-11-12T07:05:58.782Z",
+      "motivo": "nessuna email pubblica"
     }
   }
 }

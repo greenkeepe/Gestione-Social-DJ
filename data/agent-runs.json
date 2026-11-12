@@ -2,6 +2,76 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-11-12T07:05:59.155Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "ok",
+      "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 213.",
+      "timestamp": "2026-11-12T07:05:59.153Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "nessuna-azione",
+      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
+      "timestamp": "2026-11-12T07:05:17.802Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
+      "timestamp": "2026-11-12T07:05:17.507Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 386 follower Instagram, 1 lead attivi.",
+      "timestamp": "2026-11-12T07:05:17.504Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-11-12T07:05:08.199Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-11-12T07:05:01.751Z"
+    },
+    {
+      "agente": "Vetrina",
+      "identita": "Agente Vetrina Sito Web",
+      "status": "ok",
+      "riepilogo": "Vetrina del sito pronta (\"FAQ\"), programmata per il 2026-11-12 alle 12:30.",
+      "timestamp": "2026-11-12T07:04:57.389Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-11-12T07:04:52.029Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-11-12T07:04:52.024Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3463,76 +3533,6 @@
       "status": "ok",
       "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
       "timestamp": "2026-09-27T06:12:38.494Z"
-    },
-    {
-      "agente": "Appunti",
-      "identita": "Agente Note Instagram",
-      "status": "nessuna-azione",
-      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
-      "timestamp": "2026-09-27T06:12:38.491Z"
-    },
-    {
-      "agente": "Stratega",
-      "identita": "Agente Strategia",
-      "status": "ok",
-      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 0 lead in pipeline.",
-      "timestamp": "2026-09-27T06:12:38.187Z"
-    },
-    {
-      "agente": "Analista",
-      "identita": "Agente Analytics",
-      "status": "ok",
-      "riepilogo": "KPI aggiornati: 388 follower Instagram, 0 lead attivi.",
-      "timestamp": "2026-09-27T06:12:38.184Z"
-    },
-    {
-      "agente": "Portavoce",
-      "identita": "Agente Risposte Pubbliche",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-27T06:12:36.167Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-27T06:12:26.841Z"
-    },
-    {
-      "agente": "Vetrina",
-      "identita": "Agente Vetrina Sito Web",
-      "status": "ok",
-      "riepilogo": "Vetrina del sito pronta (\"Gallery\"), programmata per il 2026-09-27 alle 21:15.",
-      "timestamp": "2026-09-27T06:12:21.668Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
-      "timestamp": "2026-09-27T06:12:14.219Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
-      "timestamp": "2026-09-27T06:12:14.215Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-26T23:53:52.633Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
-      "timestamp": "2026-09-26T22:37:02.750Z"
     }
   ]
 }

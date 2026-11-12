@@ -680,6 +680,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-11-29"
+    },
+    {
+      "id": "7085c2ea-2d37-49f5-97de-54dd2a053603",
+      "createdAt": "2026-11-12T07:04:57.386Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-FAQ.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e1adf06f-6692-41c1-9a1f-905f0ba397fb.png"
+      },
+      "caption": "Le domande che mi fate più spesso, raccolte in un posto solo. Dai un'occhiata alle FAQ sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#matrimonioitaliano",
+        "#weddingparty",
+        "#djperfeste",
+        "#musicapermatrimoni",
+        "#djwedding",
+        "#discjockey",
+        "#piemonte",
+        "#lombardia",
+        "#liguria"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-11-12",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
