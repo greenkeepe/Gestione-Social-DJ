@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "ok",
+      "riepilogo": "Inviate automaticamente 10 email: Villa Conte Riccardi, Agriturismo Cascina Vrona, Agriturismo Vigna Santa, Cascina Desderi, Tenuta Il Capitolo, Villa Fontana Relais Suites & Spa, Fattoria San Giuliano, Agriturismo Cascina Trapella, Palazzo Campia, Agriturismo La Regibussa.",
+      "timestamp": "2026-11-12T09:17:54.542Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
@@ -3526,13 +3533,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
       "timestamp": "2026-09-27T11:27:11.784Z"
-    },
-    {
-      "agente": "Postino",
-      "identita": "Agente Invio Automatico Locali",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
-      "timestamp": "2026-09-27T08:32:34.370Z"
     }
   ]
 }
