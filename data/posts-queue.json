@@ -684,13 +684,19 @@
     {
       "id": "380ea2dc-babb-4abb-8f91-e0e85f3b76e7",
       "createdAt": "2026-11-13T14:59:18.291Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Giuseppe-T.-19-06-2025.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d991533b-6ef8-4de1-94e9-6bb7d095e3be.png"
+        "filename": "reel-testimonianza-Giuseppe-T.-19-06-2025.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/8f175d97-d50c-46f7-97ee-c7f97acae8da.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d991533b-6ef8-4de1-94e9-6bb7d095e3be.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Giuseppe-T.-19-06-2025.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Ha fatto un lavoro assurdo, ha fatto ballare tutti dal primo pezzo all'ultimo! Musica perfetta, zero pause noiose, solo energia e divertimento. Ha capito al volo che vibe volevamo.\"\n— Giuseppe T., Diciottesimo\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
