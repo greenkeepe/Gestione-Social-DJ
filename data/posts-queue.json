@@ -650,9 +650,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Serravalle-Scrivia.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5df7d234-dd8b-4b9f-8a36-06a1083d15f0.png"
+        "filename": "reel-sito-DJ-a-Serravalle-Scrivia.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9256a3b4-6b78-4a95-9328-39349f0b2f9e.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5df7d234-dd8b-4b9f-8a36-06a1083d15f0.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Serravalle-Scrivia.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Serravalle Scrivia è la mia base per matrimoni e feste in Val Borbera. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
