@@ -3506,6 +3506,26 @@
     "node/14181572786": {
       "il": "2026-11-12T07:05:58.782Z",
       "motivo": "nessuna email pubblica"
+    },
+    "way/497951265": {
+      "il": "2026-11-13T07:05:21.785Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/9395586407": {
+      "il": "2026-11-13T07:05:48.848Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/7838677756": {
+      "il": "2026-11-13T07:05:49.225Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/3432037677": {
+      "il": "2026-11-13T07:05:52.187Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/6034511216": {
+      "il": "2026-11-13T07:05:53.213Z",
+      "motivo": "il sito non parla di eventi"
     }
   }
 }

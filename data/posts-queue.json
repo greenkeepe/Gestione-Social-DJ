@@ -642,6 +642,38 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-11-29"
+    },
+    {
+      "id": "a41c3cae-73bd-4f7b-b1d1-2d0186c08385",
+      "createdAt": "2026-11-13T07:05:02.214Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-DJ-a-Serravalle-Scrivia.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5df7d234-dd8b-4b9f-8a36-06a1083d15f0.png"
+      },
+      "caption": "Serravalle Scrivia è la mia base per matrimoni e feste in Val Borbera. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#djperfeste",
+        "#musicapermatrimoni",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-11-13",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
