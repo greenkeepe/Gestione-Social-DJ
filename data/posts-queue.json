@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "1893daf8-37c1-45fa-b9cc-e0b25627b62f",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "3c80e164-e09f-4cc3-9c4f-f638f5383314",
-        "filename": "reel-telegram-1794053348500.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c5f38caf-74ea-452b-b094-71faadba1f0a.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4bf985a9-9163-4004-ad28-043477afe739.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053348500.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Vestiti lunghi, luci rosse e pista piena di gente che balla. Questo sì che è un diciottesimo come si deve.\n\nSeguimi per altri momenti così: ne pubblico spesso.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#weddingitaly",
-        "#weddingday",
-        "#sposi2027",
-        "#weddingparty",
-        "#djprofessionista",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#djwedding",
-        "#liguria",
-        "#piemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pubblicato-parziale",
-      "istruzioniUtente": null,
-      "pillarId": "playlist",
-      "dataProgrammata": "2026-11-12",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "e5ecd72c-9f43-47c9-af1b-9c7b49134dd5",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
