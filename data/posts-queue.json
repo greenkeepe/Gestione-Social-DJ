@@ -34,10 +34,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "18:30",
-      "status": "pronto",
+      "status": "pubblicato-parziale",
       "istruzioniUtente": null,
       "pillarId": "playlist",
-      "dataProgrammata": "2026-11-12"
+      "dataProgrammata": "2026-11-12",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "e5ecd72c-9f43-47c9-af1b-9c7b49134dd5",
@@ -680,46 +682,6 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-11-29"
-    },
-    {
-      "id": "7085c2ea-2d37-49f5-97de-54dd2a053603",
-      "createdAt": "2026-11-12T07:04:57.386Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-FAQ.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5858bb04-e1f0-4abd-9083-ffe85d99b443.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e1adf06f-6692-41c1-9a1f-905f0ba397fb.png",
-          "mimeType": "image/png",
-          "filename": "sito-FAQ.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Le domande che mi fate più spesso, raccolte in un posto solo. Dai un'occhiata alle FAQ sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#matrimonioitaliano",
-        "#weddingparty",
-        "#djperfeste",
-        "#musicapermatrimoni",
-        "#djwedding",
-        "#discjockey",
-        "#piemonte",
-        "#lombardia",
-        "#liguria"
-      ],
-      "orarioProgrammato": "12:30",
-      "dataProgrammata": "2026-11-12",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     }
   ]
 }
