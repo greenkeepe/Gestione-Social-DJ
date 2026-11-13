@@ -4,6 +4,13 @@
     {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
+      "timestamp": "2026-11-13T15:16:26.300Z"
+    },
+    {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
       "status": "ok",
       "riepilogo": "Reel da immagini con Regia: 1/1 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
       "timestamp": "2026-11-13T15:01:20.695Z"
@@ -3511,13 +3518,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
       "timestamp": "2026-09-28T12:58:38.354Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
-      "timestamp": "2026-09-28T12:58:38.351Z"
     }
   ]
 }
