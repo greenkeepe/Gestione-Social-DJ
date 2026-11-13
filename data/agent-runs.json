@@ -2,6 +2,27 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Giro rapido: didascalie dei nuovi contenuti controllate (il ciclo completo è già stato fatto oggi).",
+      "timestamp": "2026-11-13T14:59:18.569Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-11-13T14:59:18.568Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "Generato un post dalla recensione di Giuseppe T. (Diciottesimo), a rotazione con le foto/video.",
+      "timestamp": "2026-11-13T14:59:18.293Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3497,36 +3518,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
       "timestamp": "2026-09-28T08:32:34.094Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "errore",
-      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
-      "dettagli": {
-        "errore": "TypeError: fetch failed"
-      },
-      "timestamp": "2026-09-28T08:07:20.352Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "errore",
-      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
-      "dettagli": {
-        "errore": "TypeError: fetch failed"
-      },
-      "timestamp": "2026-09-28T08:04:54.091Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "errore",
-      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
-      "dettagli": {
-        "errore": "TimeoutError: The operation was aborted due to timeout"
-      },
-      "timestamp": "2026-09-28T07:58:23.238Z"
     }
   ]
 }
