@@ -2,44 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "e5ecd72c-9f43-47c9-af1b-9c7b49134dd5",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "ce413bc5-a13e-43f7-a0cf-760378ebf5a3",
-        "filename": "reel-telegram-1794053490406.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a93f96fe-7a41-4681-ad31-340ff3bb9e91.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7e12de7f-a10e-45c5-b584-b72819800f97.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053490406.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Laser verde, braccia alzate e sorrisi ovunque: la pista si sta scaldando sul serio.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#matrimonio2027",
-        "#weddingday",
-        "#weddingdj",
-        "#sposi2027",
-        "#weddingmusic",
-        "#djeventi",
-        "#djperfeste",
-        "#djprofessionista",
-        "#weddingpiemonte",
-        "#matrimonioinpiemonte",
-        "#piemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "momenti-forti",
-      "dataProgrammata": "2026-11-13"
-    },
-    {
       "id": "b610b927-b71a-4c9f-b40f-714b5d53efb1",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -642,46 +604,6 @@
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
       "dataProgrammata": "2026-11-29"
-    },
-    {
-      "id": "a41c3cae-73bd-4f7b-b1d1-2d0186c08385",
-      "createdAt": "2026-11-13T07:05:02.214Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Serravalle-Scrivia.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9256a3b4-6b78-4a95-9328-39349f0b2f9e.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5df7d234-dd8b-4b9f-8a36-06a1083d15f0.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Serravalle-Scrivia.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Serravalle Scrivia è la mia base per matrimoni e feste in Val Borbera. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#djmatrimonio",
-        "#weddingitaly",
-        "#djwedding",
-        "#animazionematrimonio",
-        "#djperfeste",
-        "#musicapermatrimoni",
-        "#serravallescrivia",
-        "#matrimonioinpiemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-13",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     },
     {
       "id": "380ea2dc-babb-4abb-8f91-e0e85f3b76e7",
