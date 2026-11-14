@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-11-14T01:18:10.486Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-11-14T00:15:49.478Z"
     },
     {
@@ -3511,13 +3518,6 @@
         "errore": "TypeError: fetch failed"
       },
       "timestamp": "2026-09-28T13:01:13.446Z"
-    },
-    {
-      "agente": "Appunti",
-      "identita": "Agente Note Instagram",
-      "status": "ok",
-      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore già in pista.\"",
-      "timestamp": "2026-09-28T12:59:02.378Z"
     }
   ]
 }
