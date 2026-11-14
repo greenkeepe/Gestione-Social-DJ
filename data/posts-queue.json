@@ -650,9 +650,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Genova.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87b898fa-58c7-4348-b244-56a25e69d8d0.png"
+        "filename": "reel-sito-DJ-a-Genova.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a6c295ee-865f-42c8-b835-4a2b0794c4d0.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87b898fa-58c7-4348-b244-56a25e69d8d0.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Genova.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Genova e la Liguria, dal centro alle due Riviere: ville, mare, location da sogno. Tutte le info sul sito.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
