@@ -2,6 +2,76 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-11-14T07:07:26.120Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "ok",
+      "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 167.",
+      "timestamp": "2026-11-14T07:07:26.117Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "ok",
+      "riepilogo": "Proposta una Nota su Telegram (LLM): \"Console accesa, cuore già a mille.\"",
+      "timestamp": "2026-11-14T07:05:23.783Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
+      "timestamp": "2026-11-14T07:05:22.031Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 386 follower Instagram, 1 lead attivi.",
+      "timestamp": "2026-11-14T07:05:22.027Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-11-14T07:05:14.158Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-11-14T07:05:08.857Z"
+    },
+    {
+      "agente": "Vetrina",
+      "identita": "Agente Vetrina Sito Web",
+      "status": "ok",
+      "riepilogo": "Vetrina del sito pronta (\"DJ a Genova\"), programmata per il 2026-11-14 alle 21:15.",
+      "timestamp": "2026-11-14T07:05:04.874Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-11-14T07:04:57.394Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-11-14T07:04:57.387Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3436,85 +3506,6 @@
       "status": "ok",
       "riepilogo": "KPI aggiornati: 388 follower Instagram, 1 lead attivi.",
       "timestamp": "2026-09-28T13:41:57.110Z"
-    },
-    {
-      "agente": "Portavoce",
-      "identita": "Agente Risposte Pubbliche",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-28T13:41:53.651Z"
-    },
-    {
-      "agente": "Cacciatore",
-      "identita": "Agente Lead & Outreach",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
-      "timestamp": "2026-09-28T13:41:40.667Z"
-    },
-    {
-      "agente": "Vetrina",
-      "identita": "Agente Vetrina Sito Web",
-      "status": "nessuna-azione",
-      "riepilogo": "Già generata una vetrina del sito oggi.",
-      "timestamp": "2026-09-28T13:41:33.019Z"
-    },
-    {
-      "agente": "Copy",
-      "identita": "Agente Contenuti",
-      "status": "ok",
-      "riepilogo": "Scritta didascalia per il contenuto \"Consigli per gli sposi\" (LLM con visione). Programmato per il 2026-10-18 alle 21:15.",
-      "timestamp": "2026-09-28T13:41:31.089Z"
-    },
-    {
-      "agente": "Occhio",
-      "identita": "Agente Media",
-      "status": "ok",
-      "riepilogo": "1 contenuti (foto o Reel già montati) messi in coda per la didascalia.",
-      "timestamp": "2026-09-28T13:41:24.486Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"IMG_4893.MP4\" (categoria festa, stile dynamic, 8s) e messo in coda per la didascalia e la pubblicazione automatica.",
-      "timestamp": "2026-09-28T13:40:18.729Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Rielaborazione con Regia: 3/8 Reel rimontati (didascalie e orari invariati), 1 job in errore rimessi in coda.",
-      "dettagli": {
-        "errori": [
-          "IMG_4187.MOV: ffmpeg ha restituito errore 234:\n44.8162+8.1824+182.230/\n    ENCODER         : Lavf61.1.100\n  Duration: 00:00:00.93, start: 0.000000, bitrate: 14235 kb/s\n  Stream #5:0: Video: h264 (High), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1:1 DAR 9:16], 30 fps, 30 tbr, 1k tbn\n      Metadata:\n        ENCODER         : Lavc61.3.100 libx264\n        DURATION        : 00:00:00.933000000\nStream mapping:\n  Stream #0:0 (h264) -> settb:default\n  Stream #1:0 (h264) -> settb:default\n  Stream #2:0 (h264) -> settb:default\n  Stream #3:0 (h264) -> settb:default\n  Stream #4:0 (h264) -> settb:default\n  Stream #5:0 (h264) -> settb:default\n  null:default -> Stream #0:0 (libx264)\n[Parsed_xfade_15 @ 0x7f1cf8016080] The inputs needs to be a constant frame rate; current rate of 1/0 is invalid\n[Parsed_xfade_15 @ 0x7f1cf8016080] Failed to configure output pad on Parsed_xfade_15\n[fc#0 @ 0x3c097100] Error reinitializing filters!\n[fc#0 @ 0x3c097100] Task finished with error code: -22 (Invalid argument)\n[fc#0 @ 0x3c097100] Terminating thread with return code -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x3c299c80] Could not open encoder before EOF\n[vost#0:0/libx264 @ 0x3c299c80] Task finished with error code: -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x3c299c80] Terminating thread with return code -22 (Invalid argument)\n[out#0/matroska @ 0x3cae00c0] Nothing was written into output file, because at least one of its streams received no packets.\nframe=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    \nConversion failed!\n",
-          "IMG_4181.MOV: ffmpeg ha restituito errore 234:\n00\nStream mapping:\n  Stream #0:0 (h264) -> settb:default\n  Stream #1:0 (h264) -> settb:default\n  Stream #2:0 (h264) -> settb:default\n  Stream #3:0 (h264) -> settb:default\n  Stream #4:0 (h264) -> settb:default\n  Stream #5:0 (h264) -> settb:default\n  Stream #6:0 (h264) -> settb:default\n  Stream #7:0 (h264) -> settb:default\n  Stream #8:0 (h264) -> settb:default\n  Stream #9:0 (h264) -> settb:default\n  Stream #10:0 (h264) -> settb:default\n  Stream #11:0 (h264) -> settb:default\n  Stream #12:0 (h264) -> settb:default\n  Stream #13:0 (h264) -> settb:default\n  Stream #14:0 (h264) -> settb:default\n  null:default -> Stream #0:0 (libx264)\n[Parsed_xfade_33 @ 0x7f23c16a3a80] The inputs needs to be a constant frame rate; current rate of 1/0 is invalid\n[Parsed_xfade_33 @ 0x7f23c16a3a80] Failed to configure output pad on Parsed_xfade_33\n[fc#0 @ 0x20390600] Error reinitializing filters!\n[fc#0 @ 0x20390600] Task finished with error code: -22 (Invalid argument)\n[fc#0 @ 0x20390600] Terminating thread with return code -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x20ad1f40] Could not open encoder before EOF\n[vost#0:0/libx264 @ 0x20ad1f40] Task finished with error code: -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x20ad1f40] Terminating thread with return code -22 (Invalid argument)\n[out#0/matroska @ 0x20c85c00] Nothing was written into output file, because at least one of its streams received no packets.\nframe=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    \nConversion failed!\n",
-          "IMG_4084.MOV: ffmpeg ha restituito errore 234:\n44.6861+8.8199+275.630/\n    ENCODER         : Lavf61.1.100\n  Duration: 00:00:01.77, start: 0.000000, bitrate: 13739 kb/s\n  Stream #5:0: Video: h264 (High), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1:1 DAR 9:16], 30 fps, 30 tbr, 1k tbn\n      Metadata:\n        ENCODER         : Lavc61.3.100 libx264\n        DURATION        : 00:00:01.766000000\nStream mapping:\n  Stream #0:0 (h264) -> settb:default\n  Stream #1:0 (h264) -> settb:default\n  Stream #2:0 (h264) -> settb:default\n  Stream #3:0 (h264) -> settb:default\n  Stream #4:0 (h264) -> settb:default\n  Stream #5:0 (h264) -> settb:default\n  null:default -> Stream #0:0 (libx264)\n[Parsed_xfade_16 @ 0x7fab34016780] The inputs needs to be a constant frame rate; current rate of 1/0 is invalid\n[Parsed_xfade_16 @ 0x7fab34016780] Failed to configure output pad on Parsed_xfade_16\n[fc#0 @ 0x215be100] Error reinitializing filters!\n[fc#0 @ 0x215be100] Task finished with error code: -22 (Invalid argument)\n[fc#0 @ 0x215be100] Terminating thread with return code -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x2166a7c0] Could not open encoder before EOF\n[vost#0:0/libx264 @ 0x2166a7c0] Task finished with error code: -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x2166a7c0] Terminating thread with return code -22 (Invalid argument)\n[out#0/matroska @ 0x216a5800] Nothing was written into output file, because at least one of its streams received no packets.\nframe=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    \nConversion failed!\n",
-          "IMG_4067.MOV: ffmpeg ha restituito errore 234:\n44.8722+8.4529+115.800/\n    ENCODER         : Lavf61.1.100\n  Duration: 00:00:02.03, start: 0.000000, bitrate: 15574 kb/s\n  Stream #5:0: Video: h264 (High), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1:1 DAR 9:16], 30 fps, 30 tbr, 1k tbn\n      Metadata:\n        ENCODER         : Lavc61.3.100 libx264\n        DURATION        : 00:00:02.033000000\nStream mapping:\n  Stream #0:0 (h264) -> settb:default\n  Stream #1:0 (h264) -> settb:default\n  Stream #2:0 (h264) -> settb:default\n  Stream #3:0 (h264) -> settb:default\n  Stream #4:0 (h264) -> settb:default\n  Stream #5:0 (h264) -> settb:default\n  null:default -> Stream #0:0 (libx264)\n[Parsed_xfade_16 @ 0x7f44b0017440] The inputs needs to be a constant frame rate; current rate of 1/0 is invalid\n[Parsed_xfade_16 @ 0x7f44b0017440] Failed to configure output pad on Parsed_xfade_16\n[fc#0 @ 0x16547100] Error reinitializing filters!\n[fc#0 @ 0x16547100] Task finished with error code: -22 (Invalid argument)\n[fc#0 @ 0x16547100] Terminating thread with return code -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x16631740] Could not open encoder before EOF\n[vost#0:0/libx264 @ 0x16631740] Task finished with error code: -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x16631740] Terminating thread with return code -22 (Invalid argument)\n[out#0/matroska @ 0x16564c00] Nothing was written into output file, because at least one of its streams received no packets.\nframe=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    \nConversion failed!\n",
-          "video1.mp4: ffmpeg ha restituito errore 234:\nCOM.ANDROID.VERSION: 16\n    ENCODER         : Lavf61.1.100\n  Duration: 00:00:01.87, start: 0.000000, bitrate: 16262 kb/s\n  Stream #5:0: Video: h264 (High), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1:1 DAR 9:16], 30 fps, 30 tbr, 1k tbn\n      Metadata:\n        ENCODER         : Lavc61.3.100 libx264\n        DURATION        : 00:00:01.866000000\nStream mapping:\n  Stream #0:0 (h264) -> settb:default\n  Stream #1:0 (h264) -> settb:default\n  Stream #2:0 (h264) -> settb:default\n  Stream #3:0 (h264) -> settb:default\n  Stream #4:0 (h264) -> settb:default\n  Stream #5:0 (h264) -> settb:default\n  null:default -> Stream #0:0 (libx264)\n[Parsed_xfade_15 @ 0x7fef84016d40] The inputs needs to be a constant frame rate; current rate of 1/0 is invalid\n[Parsed_xfade_15 @ 0x7fef84016d40] Failed to configure output pad on Parsed_xfade_15\n[fc#0 @ 0x19f01100] Error reinitializing filters!\n[fc#0 @ 0x19f01100] Task finished with error code: -22 (Invalid argument)\n[fc#0 @ 0x19f01100] Terminating thread with return code -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x1a9c8ac0] Could not open encoder before EOF\n[vost#0:0/libx264 @ 0x1a9c8ac0] Task finished with error code: -22 (Invalid argument)\n[vost#0:0/libx264 @ 0x1a9c8ac0] Terminating thread with return code -22 (Invalid argument)\n[out#0/matroska @ 0x1a699200] Nothing was written into output file, because at least one of its streams received no packets.\nframe=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    \nConversion failed!\n"
-        ]
-      },
-      "timestamp": "2026-09-28T13:34:01.636Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-28T13:29:28.310Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-28T13:24:34.758Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-28T13:01:13.448Z"
     }
   ]
 }

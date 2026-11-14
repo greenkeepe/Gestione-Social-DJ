@@ -642,6 +642,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "51bc7cdf-0113-494a-a2b4-28019bb95a3f",
+      "createdAt": "2026-11-14T07:05:04.870Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-DJ-a-Genova.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87b898fa-58c7-4348-b244-56a25e69d8d0.png"
+      },
+      "caption": "Genova e la Liguria, dal centro alle due Riviere: ville, mare, location da sogno. Tutte le info sul sito.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingitaly",
+        "#weddingdj",
+        "#djprofessionista",
+        "#djwedding",
+        "#djeventi",
+        "#weddingmusic",
+        "#serravallescrivia",
+        "#liguria",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-11-14",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
