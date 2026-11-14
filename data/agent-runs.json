@@ -2,6 +2,27 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Giro rapido: didascalie dei nuovi contenuti controllate (il ciclo completo è già stato fatto oggi).",
+      "timestamp": "2026-11-14T13:51:59.234Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-11-14T13:51:59.232Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "Generato un post dalla recensione di Carolina M. (Matrimonio), a rotazione con le foto/video.",
+      "timestamp": "2026-11-14T13:51:58.602Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3482,30 +3503,6 @@
       "status": "ok",
       "riepilogo": "Reel da immagini con Regia: 10/10 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
       "timestamp": "2026-09-28T14:41:51.446Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Rielaborazione con Regia: 4/4 Reel rimontati (didascalie e orari invariati).",
-      "timestamp": "2026-09-28T13:56:41.808Z"
-    },
-    {
-      "agente": "Direttore",
-      "identita": "Agente Master / Orchestratore",
-      "status": "ok",
-      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
-      "timestamp": "2026-09-28T13:44:08.624Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "errore",
-      "riepilogo": "Impossibile interrogare OpenStreetMap per cercare i locali nella zona.",
-      "dettagli": {
-        "errore": "TypeError: fetch failed"
-      },
-      "timestamp": "2026-09-28T13:44:08.622Z"
     }
   ]
 }

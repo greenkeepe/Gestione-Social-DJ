@@ -680,6 +680,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "0335e1ee-91ca-439c-ab46-11b9d8ca8f15",
+      "createdAt": "2026-11-14T13:51:58.600Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Carolina-M.-05-09-2022.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4f1046dc-574c-4305-8efe-d7c9fbac66ad.png"
+      },
+      "caption": "Non lo dico io, lo dicono gli sposi.\n\n\"Andrea è stato di una professionalità e simpatia unica. Puntuale e discreto, ha esaudito le mie molte richieste per tutta la giornata, per poi durante la festa metterci del suo con canzoni perfette per il mood della serata.\"\n— Carolina M., Matrimonio\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#matrimonioitaliano",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingmusic",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#weddingpiemonte",
+        "#liguria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-12-01",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
