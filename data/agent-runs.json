@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "ok",
+      "riepilogo": "Inviate automaticamente 10 email: Club Carpeneto, Grancollina, Materia Prima, Madama vigna, Black Sheep, La Casa del Mugnaio, Mach Cha Dira, Domus Langhe, Hotel Motel Flower, Osteria La Milonga.",
+      "timestamp": "2026-11-15T09:18:03.568Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-09-29T10:08:58.059Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Rielaborazione scelta dalla dashboard: 8/8 contenuti rimontati con Regia (didascalie e orari invariati).",
-      "timestamp": "2026-09-29T10:08:56.059Z"
     }
   ]
 }
