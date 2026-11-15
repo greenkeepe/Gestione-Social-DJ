@@ -677,9 +677,11 @@
       ],
       "orarioProgrammato": "21:15",
       "dataProgrammata": "2026-11-15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
-      "pillarId": "sito-web"
+      "pillarId": "sito-web",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     }
   ]
 }
