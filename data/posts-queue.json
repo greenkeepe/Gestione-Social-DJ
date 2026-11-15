@@ -642,6 +642,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "2f3a3dc5-aff2-49a8-ad10-8619f29a1744",
+      "createdAt": "2026-11-15T07:04:55.608Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-DJ-a-Alessandria.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/72307836-7792-4d4c-ad65-c7d2869a05ad.png"
+      },
+      "caption": "Alessandria è una delle mie zone, da Serravalle ci metto 30 minuti. Sul sito trovi come lavoro per matrimoni ed eventi qui in zona.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#djmatrimonio",
+        "#weddingday",
+        "#weddingdj",
+        "#animazionematrimonio",
+        "#djperfeste",
+        "#weddingmusic",
+        "#musicapermatrimoni",
+        "#alessandria",
+        "#piemonte",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-11-15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
