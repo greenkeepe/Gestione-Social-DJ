@@ -2,44 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "b610b927-b71a-4c9f-b40f-714b5d53efb1",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "bae06c06-8d12-4882-87c2-acd7e6129525",
-        "filename": "reel-telegram-1794053504853.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/e1dd44f8-15d5-4fce-b3b4-7ecdb6bbb5eb.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f4a8a336-aace-416f-bc43-e69dc8b6429c.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053504853.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Tavolo apparecchiato, service pronto, manca solo il tramonto giusto per iniziare. Set up fatto bene, come piace a me.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingdj",
-        "#djmatrimonio",
-        "#weddingparty",
-        "#matrimonio2027",
-        "#weddingitaly",
-        "#djperfeste",
-        "#djeventi",
-        "#djwedding",
-        "#animazionematrimonio",
-        "#liguria",
-        "#piemonte",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "location",
-      "dataProgrammata": "2026-11-14"
-    },
-    {
       "id": "8c77dd7d-c097-465c-991a-a82ca76ecfa7",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -642,46 +604,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "51bc7cdf-0113-494a-a2b4-28019bb95a3f",
-      "createdAt": "2026-11-14T07:05:04.870Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Genova.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a6c295ee-865f-42c8-b835-4a2b0794c4d0.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/87b898fa-58c7-4348-b244-56a25e69d8d0.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Genova.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Genova e la Liguria, dal centro alle due Riviere: ville, mare, location da sogno. Tutte le info sul sito.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#djmatrimonio",
-        "#sposi2027",
-        "#weddingitaly",
-        "#weddingdj",
-        "#djprofessionista",
-        "#djwedding",
-        "#djeventi",
-        "#weddingmusic",
-        "#serravallescrivia",
-        "#liguria",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-14",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     },
     {
       "id": "0335e1ee-91ca-439c-ab46-11b9d8ca8f15",

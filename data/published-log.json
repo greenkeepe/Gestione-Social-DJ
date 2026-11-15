@@ -2,6 +2,30 @@
   "_istruzioni": "Storico di tutto ciò che è stato pubblicato realmente, con id post Meta, orario, e metriche raccolte successivamente dall'Analytics Agent.",
   "log": [
     {
+      "queueId": "b610b927-b71a-4c9f-b40f-714b5d53efb1",
+      "timestamp": "2026-11-15T00:17:57.585Z",
+      "instagramId": "18154835269527773",
+      "facebookId": "1029965990134437",
+      "instagramStoryId": "18069664964523812",
+      "formato": "reel",
+      "pillarId": "location",
+      "hashtags": [
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#weddingitaly",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#liguria",
+        "#piemonte",
+        "#lombardia"
+      ],
+      "punteggio": null
+    },
+    {
       "queueId": "51bc7cdf-0113-494a-a2b4-28019bb95a3f",
       "timestamp": "2026-11-14T20:17:03.986Z",
       "instagramId": "18169919671471076",
