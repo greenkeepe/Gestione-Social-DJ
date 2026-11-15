@@ -650,9 +650,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Alessandria.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/72307836-7792-4d4c-ad65-c7d2869a05ad.png"
+        "filename": "reel-sito-DJ-a-Alessandria.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/6f3d924c-ba75-4239-bcda-934ebf856c97.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/72307836-7792-4d4c-ad65-c7d2869a05ad.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Alessandria.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Alessandria è una delle mie zone, da Serravalle ci metto 30 minuti. Sul sito trovi come lavoro per matrimoni ed eventi qui in zona.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
