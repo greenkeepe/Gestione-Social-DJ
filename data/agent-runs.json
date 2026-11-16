@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Reel da immagini con Regia: 1/1 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
+      "timestamp": "2026-11-16T16:38:32.553Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3493,13 +3500,6 @@
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (17905833120574527) e Facebook (1105382695264800). + Storia IG pubblicata.",
       "timestamp": "2026-10-01T16:33:15.199Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "nessuna-azione",
-      "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
-      "timestamp": "2026-10-01T13:01:38.611Z"
     }
   ]
 }

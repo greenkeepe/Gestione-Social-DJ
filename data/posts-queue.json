@@ -646,13 +646,19 @@
     {
       "id": "ad61c918-bc89-45a2-b86f-172546f5fe46",
       "createdAt": "2026-11-16T16:36:17.425Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Marta-F.-20-09-2023.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9895d1fb-4b90-42e6-8f21-7c436d48b1f3.png"
+        "filename": "reel-testimonianza-Marta-F.-20-09-2023.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c842dc67-0689-4213-b6e7-f9a5b78006e6.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/9895d1fb-4b90-42e6-8f21-7c436d48b1f3.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Marta-F.-20-09-2023.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Niente vale più le parole di chi ha vissuto la serata con noi.\n\n\"La festa che ho organizzato è diventata un evento straordinario grazie al talento unico di ForteDJ. Ha tenuto tutti in pista tutta la notte con la sua musica eclettica e le sue abilità straordinarie.\"\n— Marta F., Festa privata\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
