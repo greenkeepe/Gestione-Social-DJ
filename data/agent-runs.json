@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18470924836139267) e Facebook (1161480336317051). + Storia IG pubblicata.",
+      "timestamp": "2026-11-16T00:02:49.834Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3493,13 +3500,6 @@
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (17960464017240402) e Facebook (2120616868826374). + Storia IG pubblicata.",
       "timestamp": "2026-09-30T00:03:39.523Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-09-29T22:24:26.672Z"
     }
   ]
 }

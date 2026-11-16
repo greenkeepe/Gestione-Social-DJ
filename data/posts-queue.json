@@ -2,44 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "8c77dd7d-c097-465c-991a-a82ca76ecfa7",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "b3cbb1f3-cb21-4128-b0f6-5ac4a92f6de0",
-        "filename": "reel-telegram-1794053507794.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3f8d8c3f-bb9e-490f-bee7-f9639c3bb6b2.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5a8b5e42-ce14-4905-b2de-77c904b4bee8.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053507794.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Piazza, chiesa illuminata e consolle accesa, serata di quelle belle in centro.\n\nForte DJ ha ancora poche date libere quest'anno, se ci siete capito l'antifona.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#weddingparty",
-        "#matrimonio2027",
-        "#matrimonioitaliano",
-        "#djperfeste",
-        "#discjockey",
-        "#musicapermatrimoni",
-        "#djprofessionista",
-        "#matrimonioinpiemonte",
-        "#alessandria",
-        "#piemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "call-to-action",
-      "dataProgrammata": "2026-11-15"
-    },
-    {
       "id": "c8ba86f1-6062-4bbf-ab4e-4526b7653aca",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -642,46 +604,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "2f3a3dc5-aff2-49a8-ad10-8619f29a1744",
-      "createdAt": "2026-11-15T07:04:55.608Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Alessandria.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/6f3d924c-ba75-4239-bcda-934ebf856c97.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/72307836-7792-4d4c-ad65-c7d2869a05ad.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Alessandria.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Alessandria è una delle mie zone, da Serravalle ci metto 30 minuti. Sul sito trovi come lavoro per matrimoni ed eventi qui in zona.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#weddingitaly",
-        "#djmatrimonio",
-        "#weddingday",
-        "#weddingdj",
-        "#animazionematrimonio",
-        "#djperfeste",
-        "#weddingmusic",
-        "#musicapermatrimoni",
-        "#alessandria",
-        "#piemonte",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     }
   ]
 }
