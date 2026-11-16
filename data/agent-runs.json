@@ -2,6 +2,27 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Giro rapido: didascalie dei nuovi contenuti controllate (il ciclo completo è già stato fatto oggi).",
+      "timestamp": "2026-11-16T16:36:17.858Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-11-16T16:36:17.855Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "Generato un post dalla recensione di Marta F. (Festa privata), a rotazione con le foto/video.",
+      "timestamp": "2026-11-16T16:36:17.428Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3479,27 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
       "timestamp": "2026-10-01T13:01:38.611Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "ok",
-      "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 280.",
-      "timestamp": "2026-10-01T13:01:22.933Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-10-01T12:49:01.960Z"
-    },
-    {
-      "agente": "Postino",
-      "identita": "Agente Invio Automatico Locali",
-      "status": "ok",
-      "riepilogo": "Inviate automaticamente 10 email: Bispeder, Castello Alfieri, B&B Cascina Caldera, Castello Malaspina-Grimaldi, Castello di Razzano, Madonna del Castello, Tenuta La Violina, Adelaide Relais, Agriturismo Crealto, Agriturismo La Mussia.",
-      "timestamp": "2026-10-01T09:17:51.876Z"
     }
   ]
 }
