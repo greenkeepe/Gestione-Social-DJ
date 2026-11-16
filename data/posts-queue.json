@@ -604,6 +604,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "17476fdd-cb5b-45c2-ab05-8976e3c2dfe3",
+      "createdAt": "2026-11-16T07:04:50.386Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-DJ-a-Novi-Ligure.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/62c062f8-4ae2-4703-a6cc-0c68cd7a9ea7.png"
+      },
+      "caption": "Novi Ligure è praticamente sotto casa: conosco location e colline del Gavi come le mie tasche. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingdj",
+        "#weddingday",
+        "#discjockey",
+        "#djperfeste",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#serravallescrivia",
+        "#piemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-11-16",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }

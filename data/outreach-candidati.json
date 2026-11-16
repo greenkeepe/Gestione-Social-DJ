@@ -3646,6 +3646,50 @@
     "node/3090698615": {
       "il": "2026-11-15T07:06:38.343Z",
       "motivo": "il sito non parla di eventi"
+    },
+    "node/2117761617": {
+      "il": "2026-11-16T07:05:08.614Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/5923740008": {
+      "il": "2026-11-16T07:05:14.188Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/1995922218": {
+      "il": "2026-11-16T07:05:16.525Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "way/219466648": {
+      "il": "2026-11-16T07:05:26.665Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/12634542618": {
+      "il": "2026-11-16T07:05:26.665Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/13479706741": {
+      "il": "2026-11-16T07:05:30.767Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/1863919173": {
+      "il": "2026-11-16T07:05:31.262Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/4874645799": {
+      "il": "2026-11-16T07:05:33.346Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/7959572405": {
+      "il": "2026-11-16T07:05:44.481Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "way/711364510": {
+      "il": "2026-11-16T07:05:45.844Z",
+      "motivo": "email già contattata"
+    },
+    "node/2710252087": {
+      "il": "2026-11-16T07:05:54.670Z",
+      "motivo": "nessuna email pubblica"
     }
   }
 }
