@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T13:43:34.775Z",
+  "generatedAt": "2026-11-16T13:27:06.452Z",
   "siteUrl": "https://www.fortedj.it/",
   "rows": [
     {
@@ -9,7 +9,7 @@
       "robotsTxtState": "ALLOWED",
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-28T04:15:38Z",
+      "lastCrawlTime": "2026-11-16T12:27:28Z",
       "googleCanonical": "https://www.fortedj.it/",
       "userCanonical": null,
       "sitemaps": [],
@@ -40,9 +40,7 @@
       "lastCrawlTime": "2026-10-31T21:41:05Z",
       "googleCanonical": "https://www.fortedj.it/fr",
       "userCanonical": null,
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -81,7 +79,9 @@
       "lastCrawlTime": "2026-09-22T06:55:04Z",
       "googleCanonical": "https://www.fortedj.it/en/matrimoni",
       "userCanonical": "https://www.fortedj.it/en/matrimoni",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -137,9 +137,7 @@
       "lastCrawlTime": "2026-09-22T02:33:24Z",
       "googleCanonical": "https://www.fortedj.it/en/eventi",
       "userCanonical": "https://www.fortedj.it/en/eventi",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -182,7 +180,9 @@
       "lastCrawlTime": "2026-10-20T18:45:30Z",
       "googleCanonical": "https://www.fortedj.it/servizi",
       "userCanonical": "https://www.fortedj.it/servizi",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -195,26 +195,11 @@
       "lastCrawlTime": "2026-09-22T10:29:50Z",
       "googleCanonical": "https://www.fortedj.it/en/servizi",
       "userCanonical": "https://www.fortedj.it/en/servizi",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
-      "error": null
-    },
-    {
-      "url": "https://www.fortedj.it/fr/servizi",
-      "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
-      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-      "indexingState": "INDEXING_STATE_UNSPECIFIED",
-      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-      "lastCrawlTime": null,
-      "googleCanonical": null,
-      "userCanonical": null,
       "sitemaps": [],
       "error": null
     },
     {
-      "url": "https://www.fortedj.it/de/servizi",
+      "url": "https://www.fortedj.it/fr/servizi",
       "verdict": "NEUTRAL",
       "coverageState": "Discovered - currently not indexed",
       "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
@@ -226,6 +211,19 @@
       "sitemaps": [
         "https://www.fortedj.it/sitemap.xml"
       ],
+      "error": null
+    },
+    {
+      "url": "https://www.fortedj.it/de/servizi",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "userCanonical": null,
+      "sitemaps": [],
       "error": null
     },
     {
@@ -266,7 +264,9 @@
       "lastCrawlTime": "2026-09-22T23:38:44Z",
       "googleCanonical": "https://www.fortedj.it/fr/gallery",
       "userCanonical": "https://www.fortedj.it/fr/gallery",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -294,24 +294,20 @@
       "lastCrawlTime": "2026-10-20T14:15:16Z",
       "googleCanonical": "https://www.fortedj.it/recensioni",
       "userCanonical": "https://www.fortedj.it/recensioni",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
       "url": "https://www.fortedj.it/en/recensioni",
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
       "indexingState": "INDEXING_STATE_UNSPECIFIED",
       "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
       "lastCrawlTime": null,
       "googleCanonical": null,
       "userCanonical": null,
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -324,7 +320,9 @@
       "lastCrawlTime": "2026-09-22T06:46:55Z",
       "googleCanonical": "https://www.fortedj.it/fr/recensioni",
       "userCanonical": "https://www.fortedj.it/fr/recensioni",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -352,7 +350,9 @@
       "lastCrawlTime": "2026-09-18T16:33:25Z",
       "googleCanonical": "https://www.fortedj.it/chi-sono",
       "userCanonical": "https://www.fortedj.it/chi-sono",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -365,9 +365,7 @@
       "lastCrawlTime": "2026-09-22T09:17:12Z",
       "googleCanonical": "https://www.fortedj.it/en/chi-sono",
       "userCanonical": "https://www.fortedj.it/en/chi-sono",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -408,9 +406,7 @@
       "lastCrawlTime": "2026-10-25T05:43:42Z",
       "googleCanonical": "https://www.fortedj.it/faq",
       "userCanonical": "https://www.fortedj.it/faq",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -423,9 +419,7 @@
       "lastCrawlTime": "2026-09-22T07:25:59Z",
       "googleCanonical": "https://www.fortedj.it/en/faq",
       "userCanonical": "https://www.fortedj.it/en/faq",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -453,9 +447,7 @@
       "lastCrawlTime": "2026-09-22T05:50:42Z",
       "googleCanonical": "https://www.fortedj.it/de/faq",
       "userCanonical": "https://www.fortedj.it/de/faq",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -487,16 +479,14 @@
     {
       "url": "https://www.fortedj.it/fr/contatti",
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
       "indexingState": "INDEXING_STATE_UNSPECIFIED",
       "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
       "lastCrawlTime": null,
       "googleCanonical": null,
       "userCanonical": null,
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -554,7 +544,9 @@
       "lastCrawlTime": "2026-09-22T07:26:35Z",
       "googleCanonical": "https://www.fortedj.it/fr/privacy",
       "userCanonical": "https://www.fortedj.it/fr/privacy",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -567,9 +559,7 @@
       "lastCrawlTime": "2026-09-22T06:53:19Z",
       "googleCanonical": "https://www.fortedj.it/de/privacy",
       "userCanonical": "https://www.fortedj.it/de/privacy",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -579,12 +569,10 @@
       "robotsTxtState": "ALLOWED",
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-20T05:19:02Z",
+      "lastCrawlTime": "2026-11-14T10:18:59Z",
       "googleCanonical": "https://www.fortedj.it/cookie",
       "userCanonical": "https://www.fortedj.it/cookie",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -610,9 +598,7 @@
       "lastCrawlTime": "2026-09-22T06:46:57Z",
       "googleCanonical": "https://www.fortedj.it/fr/cookie",
       "userCanonical": "https://www.fortedj.it/fr/cookie",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
@@ -625,7 +611,9 @@
       "lastCrawlTime": "2026-09-22T02:41:31Z",
       "googleCanonical": "https://www.fortedj.it/de/cookie",
       "userCanonical": "https://www.fortedj.it/de/cookie",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -650,7 +638,7 @@
       "robotsTxtState": "ALLOWED",
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-09-29T08:45:25Z",
+      "lastCrawlTime": "2026-11-13T08:14:26Z",
       "googleCanonical": "https://www.fortedj.it/dj/alessandria",
       "userCanonical": "https://www.fortedj.it/dj/alessandria",
       "sitemaps": [],
@@ -663,10 +651,12 @@
       "robotsTxtState": "ALLOWED",
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-09-29T08:45:25Z",
+      "lastCrawlTime": "2026-11-12T20:46:26Z",
       "googleCanonical": "https://www.fortedj.it/dj/novi-ligure",
       "userCanonical": "https://www.fortedj.it/dj/novi-ligure",
-      "sitemaps": [],
+      "sitemaps": [
+        "https://www.fortedj.it/sitemap.xml"
+      ],
       "error": null
     },
     {
@@ -679,24 +669,20 @@
       "lastCrawlTime": "2026-09-29T09:01:42Z",
       "googleCanonical": "https://www.fortedj.it/dj/tortona",
       "userCanonical": "https://www.fortedj.it/dj/tortona",
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
       "url": "https://www.fortedj.it/dj/serravalle-scrivia",
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
       "indexingState": "INDEXING_STATE_UNSPECIFIED",
       "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
       "lastCrawlTime": null,
       "googleCanonical": null,
       "userCanonical": null,
-      "sitemaps": [
-        "https://www.fortedj.it/sitemap.xml"
-      ],
+      "sitemaps": [],
       "error": null
     },
     {
