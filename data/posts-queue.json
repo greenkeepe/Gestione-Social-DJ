@@ -648,13 +648,19 @@
     {
       "id": "ec5d2a07-8586-4948-a847-131a1f0f862f",
       "createdAt": "2026-11-17T16:34:13.886Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Marta-G.-13-07-2026.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c4d63e31-b820-4fba-81d1-0a3038c3caaa.png"
+        "filename": "reel-testimonianza-Marta-G.-13-07-2026.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1e8552fc-da14-40f3-9fb4-3caab583fbbf.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c4d63e31-b820-4fba-81d1-0a3038c3caaa.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Marta-G.-13-07-2026.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Niente vale più le parole di chi ha vissuto la serata con noi.\n\n\"Eccezionale, professionalità al top e grandissima flessibilità. Ha fatto divertire tutti gli invitati e la festa finale è stata pazzesca. Rapporto qualità-prezzo imbattibile per un professionista di questo livello. Non avremmo potuto fare scelta migliore per il nostro giorno speciale!\"\n— Marta G., Matrimonio\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
