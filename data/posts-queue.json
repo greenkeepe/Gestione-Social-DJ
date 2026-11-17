@@ -612,9 +612,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Recensioni.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c52bf9c9-d556-48a0-b9ae-f2464f4ec1a1.png"
+        "filename": "reel-sito-Recensioni.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7739de1a-8bbe-4b96-923d-e5cd84e58d9d.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c52bf9c9-d556-48a0-b9ae-f2464f4ec1a1.png",
+          "mimeType": "image/png",
+          "filename": "sito-Recensioni.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "5.0 su 5, parole vere di sposi veri. Sul sito trovate tutte le recensioni raccolte su Musiqua.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
