@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
+      "timestamp": "2026-11-17T00:16:01.656Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (17914395909592211) e Facebook (1490327729875422). + Storia IG pubblicata.",
       "timestamp": "2026-11-17T00:02:43.874Z"
@@ -3493,13 +3500,6 @@
       "status": "ok",
       "riepilogo": "Inviate automaticamente 10 email: Agriturismo La Martinella Bio, Castello di Pralormo, Cascina Castagna, Castello di Moncalvo, Cascina La Maddalena, Residenza Cà d´Masseu, Tenuta Montegrande, Castello di Cisterna, B&B Cascina Sortina Country House, Cascina Ometto.",
       "timestamp": "2026-10-02T09:17:51.355Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "In attesa dell'orario migliore (21:15) per pubblicare.",
-      "timestamp": "2026-10-02T00:33:21.996Z"
     }
   ]
 }
