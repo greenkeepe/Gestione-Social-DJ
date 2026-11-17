@@ -604,6 +604,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "edb997de-c303-42bc-b556-fb9cc54ac296",
+      "createdAt": "2026-11-17T07:05:13.586Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Recensioni.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c52bf9c9-d556-48a0-b9ae-f2464f4ec1a1.png"
+      },
+      "caption": "5.0 su 5, parole vere di sposi veri. Sul sito trovate tutte le recensioni raccolte su Musiqua.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingitaly",
+        "#sposi2027",
+        "#weddingparty",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#djwedding",
+        "#animazionematrimonio",
+        "#serravallescrivia",
+        "#alessandria",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-11-17",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
