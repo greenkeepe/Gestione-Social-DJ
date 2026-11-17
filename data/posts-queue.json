@@ -2,44 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "c8ba86f1-6062-4bbf-ab4e-4526b7653aca",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "72fbdbd1-396a-45f4-877f-266f00eaf6f4",
-        "filename": "reel-telegram-1794053510750.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/54892f05-417c-42ac-8c08-05c10e965fbe.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d2529221-d60f-423f-b2b0-9c137c4fe96b.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053510750.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Pista piena e braccia alzate, questa è la parte che preferisco della serata.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingday",
-        "#weddingdj",
-        "#sposi2027",
-        "#weddingitaly",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#djwedding",
-        "#animazionematrimonio",
-        "#serravallescrivia",
-        "#weddingpiemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "12:30",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "momenti-forti",
-      "dataProgrammata": "2026-11-16"
-    },
-    {
       "id": "13bd3e0b-5488-4910-ba12-1e9b389f9de9",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "post",
@@ -604,46 +566,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "17476fdd-cb5b-45c2-ab05-8976e3c2dfe3",
-      "createdAt": "2026-11-16T07:04:50.386Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Novi-Ligure.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/bfc8bdfd-d341-4561-8aec-81d5c7b8d38e.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/62c062f8-4ae2-4703-a6cc-0c68cd7a9ea7.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Novi-Ligure.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Novi Ligure è praticamente sotto casa: conosco location e colline del Gavi come le mie tasche. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingitaly",
-        "#djmatrimonio",
-        "#sposi2027",
-        "#weddingdj",
-        "#weddingday",
-        "#discjockey",
-        "#djperfeste",
-        "#musicapermatrimoni",
-        "#djprofessionista",
-        "#serravallescrivia",
-        "#piemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "18:30",
-      "dataProgrammata": "2026-11-16",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     },
     {
       "id": "ad61c918-bc89-45a2-b86f-172546f5fe46",
