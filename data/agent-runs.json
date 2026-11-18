@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-11-18T12:01:07.827Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
       "timestamp": "2026-11-18T11:45:43.524Z"
     },
     {
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-10-05T20:21:53.461Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
-      "timestamp": "2026-10-05T14:45:53.792Z"
     }
   ]
 }
