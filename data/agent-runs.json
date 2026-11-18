@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-11-18T14:30:57.127Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
       "timestamp": "2026-11-18T14:15:43.978Z"
     },
     {
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-10-06T22:36:03.516Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-10-06T18:57:08.909Z"
     }
   ]
 }
