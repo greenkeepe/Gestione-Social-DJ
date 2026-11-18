@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Reel da immagini con Regia: 1/1 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
+      "timestamp": "2026-11-18T07:10:02.002Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3493,13 +3500,6 @@
       "status": "ok",
       "riepilogo": "Preparate 10 bozze per locali che fanno eventi in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti (coda 10/10). Locali ancora da esaminare in scorta: 250.",
       "timestamp": "2026-10-05T14:25:48.144Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-10-05T14:07:59.395Z"
     }
   ]
 }
