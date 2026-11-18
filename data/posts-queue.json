@@ -682,6 +682,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "e871a8f5-3d23-47f4-89ec-5bbda7153d84",
+      "createdAt": "2026-11-18T07:04:52.150Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Matrimoni.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/d66c29ef-87fa-41df-868f-feab9c645be0.png"
+      },
+      "caption": "Ogni matrimonio ha la sua colonna sonora, dalla cerimonia in poi. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#matrimonioitaliano",
+        "#weddingitaly",
+        "#weddingdj",
+        "#djmatrimonio",
+        "#weddingday",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#musicapermatrimoni",
+        "#lombardia",
+        "#piemonte",
+        "#liguria"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-11-18",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
