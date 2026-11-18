@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-11-18T02:44:23.339Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "nessuna-azione",
@@ -3493,13 +3500,6 @@
       "status": "ok",
       "riepilogo": "Inviate automaticamente 10 email: SèStante Eventi, Tenuta Antico Monastero, Castello di Colcavagno, Castello di Neive, Cascina Cortine B&B, Castello di Murisengo, Babo, Castello di Govone, Castello di Sartirana, Agriturismo Il Buon seme - Progetto Agriable.",
       "timestamp": "2026-10-04T09:17:51.637Z"
-    },
-    {
-      "agente": "Esploratore",
-      "identita": "Agente Partnership Locali",
-      "status": "nessuna-azione",
-      "riepilogo": "Coda già piena: 10 bozze da rivedere su un target di 10.",
-      "timestamp": "2026-10-04T09:16:43.742Z"
     }
   ]
 }
