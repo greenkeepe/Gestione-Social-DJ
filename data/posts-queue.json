@@ -2,40 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "13bd3e0b-5488-4910-ba12-1e9b389f9de9",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "post",
-      "media": {
-        "source": "telegram",
-        "mediaId": "b35a6559-7fed-4a1d-aa79-621f760a796c",
-        "filename": "telegram-1794053513724.jpg",
-        "mimeType": "image/jpeg",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f37019e8-ce67-4bfe-90f0-008aa9066558.jpg"
-      },
-      "caption": "Quando il mix parte giusto il pollice si alza da solo.\n\nSe ti è piaciuto taggami chi si sta per sposare o organizza una festa.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#sposi2027",
-        "#weddingitaly",
-        "#matrimonioitaliano",
-        "#djmatrimonio",
-        "#weddingday",
-        "#djeventi",
-        "#weddingmusic",
-        "#djwedding",
-        "#djperfeste",
-        "#serravallescrivia",
-        "#liguria",
-        "#weddingpiemonte"
-      ],
-      "orarioProgrammato": "12:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "playlist",
-      "dataProgrammata": "2026-11-17",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "865843e5-bde5-4680-9e85-565c2af9cfb1",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -68,10 +34,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "18:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "playlist",
-      "dataProgrammata": "2026-11-18"
+      "dataProgrammata": "2026-11-18",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "a0f99d4f-e62e-47b5-814e-9f0ceaaf9d95",
@@ -604,46 +572,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "edb997de-c303-42bc-b556-fb9cc54ac296",
-      "createdAt": "2026-11-17T07:05:13.586Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-Recensioni.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7739de1a-8bbe-4b96-923d-e5cd84e58d9d.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/c52bf9c9-d556-48a0-b9ae-f2464f4ec1a1.png",
-          "mimeType": "image/png",
-          "filename": "sito-Recensioni.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "5.0 su 5, parole vere di sposi veri. Sul sito trovate tutte le recensioni raccolte su Musiqua.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#weddingitaly",
-        "#sposi2027",
-        "#weddingparty",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#djwedding",
-        "#animazionematrimonio",
-        "#serravallescrivia",
-        "#alessandria",
-        "#piemonte"
-      ],
-      "orarioProgrammato": "12:30",
-      "dataProgrammata": "2026-11-17",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
     },
     {
       "id": "ec5d2a07-8586-4948-a847-131a1f0f862f",
