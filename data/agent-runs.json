@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-11-18T13:15:44.145Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
       "timestamp": "2026-11-18T13:01:09.557Z"
     },
     {
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-06T13:05:49.944Z"
-    },
-    {
-      "agente": "Postino",
-      "identita": "Agente Invio Automatico Locali",
-      "status": "ok",
-      "riepilogo": "Inviate automaticamente 10 email: Castello di Mango, Castello di Redabue, Agriturismo Villa Gropella, Agriturismo La Cinciallegra, Cascina delle Signore, Agriturismo Surì, Relais San Maurizio, Castello di Guarene, Relais Sant'Ufficio, Hotel Ariotto Village.",
-      "timestamp": "2026-10-06T09:17:53.640Z"
     }
   ]
 }
