@@ -3890,6 +3890,34 @@
     "node/4264135889": {
       "il": "2026-11-18T07:08:10.495Z",
       "motivo": "nessuna email pubblica"
+    },
+    "node/8659092055": {
+      "il": "2026-11-19T07:06:13.443Z",
+      "motivo": "email già contattata"
+    },
+    "node/5318509114": {
+      "il": "2026-11-19T07:06:17.302Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/14076429611": {
+      "il": "2026-11-19T07:06:24.531Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/11132862246": {
+      "il": "2026-11-19T07:06:24.637Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "node/13669513346": {
+      "il": "2026-11-19T07:06:28.756Z",
+      "motivo": "nessuna email pubblica"
+    },
+    "node/12862438315": {
+      "il": "2026-11-19T07:06:32.040Z",
+      "motivo": "il sito non parla di eventi"
+    },
+    "way/1038222921": {
+      "il": "2026-11-19T07:06:40.031Z",
+      "motivo": "il sito non parla di eventi"
     }
   }
 }
