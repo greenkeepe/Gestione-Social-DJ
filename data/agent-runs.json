@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (18:30) per pubblicare.",
+      "timestamp": "2026-11-19T00:15:50.349Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18434227351150367) e Facebook (1800828174485292). + Storia IG pubblicata.",
       "timestamp": "2026-11-19T00:02:15.550Z"
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-10-09T19:31:04.983Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "ok",
-      "riepilogo": "Pubblicato su Instagram (18128499226870003) e Facebook (1097537369913243). + Storia IG pubblicata.",
-      "timestamp": "2026-10-09T19:17:25.943Z"
     }
   ]
 }
