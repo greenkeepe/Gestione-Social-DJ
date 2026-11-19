@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Postino",
+      "identita": "Agente Invio Automatico Locali",
+      "status": "ok",
+      "riepilogo": "Inviate automaticamente 10 email: Cà d'Langa b&b, Il Vulcano, Mister Barbera, Alta Gastronomia Astigiana, LocalHost127, Pepe Nero - Pizzeria, Ciabot del Grignolin, Citabiunda, Volli, Osteria del Rooster.",
+      "timestamp": "2026-11-19T09:17:59.681Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-11T12:26:18.328Z"
-    },
-    {
-      "agente": "Postino",
-      "identita": "Agente Invio Automatico Locali",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
-      "timestamp": "2026-10-11T09:17:31.256Z"
     }
   ]
 }
