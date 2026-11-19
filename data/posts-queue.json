@@ -578,9 +578,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Genova.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3a8f519f-05b2-4a11-9893-7703278d88b5.png"
+        "filename": "reel-sito-DJ-a-Genova.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a38aaf0f-e335-4354-912d-e5e43ca62d15.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3a8f519f-05b2-4a11-9893-7703278d88b5.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Genova.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Da Serravalle a Genova ci metto 45 minuti, e la musica la costruisco insieme a voi. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
