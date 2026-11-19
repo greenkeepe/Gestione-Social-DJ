@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "ok",
+      "riepilogo": "Pubblicato su Instagram (18434227351150367) e Facebook (1800828174485292). + Storia IG pubblicata.",
+      "timestamp": "2026-11-19T00:02:15.550Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "In attesa dell'orario migliore (12:30) per pubblicare.",
       "timestamp": "2026-11-18T23:45:40.643Z"
@@ -3493,13 +3500,6 @@
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18128499226870003) e Facebook (1097537369913243). + Storia IG pubblicata.",
       "timestamp": "2026-10-09T19:17:25.943Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-10-09T18:43:18.634Z"
     }
   ]
 }
