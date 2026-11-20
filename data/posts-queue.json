@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "a0f99d4f-e62e-47b5-814e-9f0ceaaf9d95",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "f8025f66-0024-4b9e-9f38-57fba90f64c7",
-        "filename": "reel-telegram-1794053519136.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/03ab3fa8-466d-4b2a-b778-a01a954d0538.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/74e4e399-ae96-47f3-8779-c74cbfd42f37.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053519136.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Setup pronto, sala ancora vuota ma già vestita a festa. Tra poco si parte sul serio.\n\nSalva questo post, ti torna utile quando organizzi la musica del tuo evento.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#sposi2027",
-        "#djmatrimonio",
-        "#weddingitaly",
-        "#weddingdj",
-        "#weddingparty",
-        "#weddingmusic",
-        "#animazionematrimonio",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#piemonte",
-        "#serravallescrivia",
-        "#weddingpiemonte"
-      ],
-      "orarioProgrammato": "18:30",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "testimonianze",
-      "dataProgrammata": "2026-11-19",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "2c21e551-e8aa-4aa2-831e-8992953be002",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -572,44 +532,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "81580e36-8273-474f-a87e-f5ccf218a84c",
-      "createdAt": "2026-11-19T07:05:47.249Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Genova.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a38aaf0f-e335-4354-912d-e5e43ca62d15.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/3a8f519f-05b2-4a11-9893-7703278d88b5.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Genova.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Da Serravalle a Genova ci metto 45 minuti, e la musica la costruisco insieme a voi. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonio2027",
-        "#weddingday",
-        "#weddingdj",
-        "#djmatrimonio",
-        "#matrimonioitaliano",
-        "#animazionematrimonio",
-        "#musicapermatrimoni",
-        "#discjockey",
-        "#djwedding",
-        "#piemonte",
-        "#liguria",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "12:30",
-      "dataProgrammata": "2026-11-19",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     }
   ]
 }
