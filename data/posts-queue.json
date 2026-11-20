@@ -540,9 +540,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Servizi.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/582fa980-c19d-4bdb-b033-e308f6430603.png"
+        "filename": "reel-sito-Servizi.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/fd2691fd-2737-42bf-86b7-e4df1c9ed54d.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/582fa980-c19d-4bdb-b033-e308f6430603.png",
+          "mimeType": "image/png",
+          "filename": "sito-Servizi.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Dj set, audio, luci e macchina del fumo: tutto curato nei minimi dettagli per la vostra serata. Trovate tutto sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
