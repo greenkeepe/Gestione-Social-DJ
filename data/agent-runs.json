@@ -6,6 +6,13 @@
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
       "riepilogo": "In attesa dell'orario migliore (21:15) per pubblicare.",
+      "timestamp": "2026-11-20T02:01:44.136Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (21:15) per pubblicare.",
       "timestamp": "2026-11-20T00:15:52.027Z"
     },
     {
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-10-12T14:56:29.501Z"
-    },
-    {
-      "agente": "Segugio",
-      "identita": "Agente SEO (Search Console)",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessuna nuova proposta (1 opportunità trovate).",
-      "timestamp": "2026-10-12T12:50:54.225Z"
     }
   ]
 }
