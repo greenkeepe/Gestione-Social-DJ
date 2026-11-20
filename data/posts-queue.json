@@ -34,10 +34,12 @@
         "#matrimonioinpiemonte"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "momenti-forti",
-      "dataProgrammata": "2026-11-20"
+      "dataProgrammata": "2026-11-20",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "f35ab123-0220-442f-93da-1b605dc42a78",
