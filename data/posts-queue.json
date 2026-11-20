@@ -532,6 +532,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "f2d71590-f9e1-4810-b7b2-ba165cd5d381",
+      "createdAt": "2026-11-20T07:09:20.577Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Servizi.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/582fa980-c19d-4bdb-b033-e308f6430603.png"
+      },
+      "caption": "Dj set, audio, luci e macchina del fumo: tutto curato nei minimi dettagli per la vostra serata. Trovate tutto sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#sposi2027",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#liguria",
+        "#matrimonioinpiemonte",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-11-20",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
