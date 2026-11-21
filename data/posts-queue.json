@@ -34,10 +34,12 @@
         "#lombardia"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-21"
+      "dataProgrammata": "2026-11-21",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "4de61ec2-0b99-470d-8153-1e0685a230c0",
