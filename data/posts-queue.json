@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "2c21e551-e8aa-4aa2-831e-8992953be002",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "695ccc6c-c974-4833-9474-ea3629049c6a",
-        "filename": "reel-telegram-1794053522189.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/831c22dd-4213-4ae0-85f2-9e331316703c.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a629477c-925d-400e-9a99-3a5512877eb9.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053522189.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Pista piena e tutti in cerchio, questa è l'energia che mi piace vedere.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingday",
-        "#matrimonioitaliano",
-        "#matrimonio2027",
-        "#weddingitaly",
-        "#weddingdj",
-        "#discjockey",
-        "#djprofessionista",
-        "#weddingmusic",
-        "#animazionematrimonio",
-        "#serravallescrivia",
-        "#liguria",
-        "#matrimonioinpiemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "momenti-forti",
-      "dataProgrammata": "2026-11-20",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "f35ab123-0220-442f-93da-1b605dc42a78",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -534,44 +494,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "f2d71590-f9e1-4810-b7b2-ba165cd5d381",
-      "createdAt": "2026-11-20T07:09:20.577Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-Servizi.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/fd2691fd-2737-42bf-86b7-e4df1c9ed54d.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/582fa980-c19d-4bdb-b033-e308f6430603.png",
-          "mimeType": "image/png",
-          "filename": "sito-Servizi.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Dj set, audio, luci e macchina del fumo: tutto curato nei minimi dettagli per la vostra serata. Trovate tutto sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingitaly",
-        "#sposi2027",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#discjockey",
-        "#musicapermatrimoni",
-        "#weddingmusic",
-        "#djprofessionista",
-        "#liguria",
-        "#matrimonioinpiemonte",
-        "#serravallescrivia"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-20",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     }
   ]
 }

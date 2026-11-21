@@ -2,6 +2,30 @@
   "_istruzioni": "Storico di tutto ciò che è stato pubblicato realmente, con id post Meta, orario, e metriche raccolte successivamente dall'Analytics Agent.",
   "log": [
     {
+      "queueId": "f2d71590-f9e1-4810-b7b2-ba165cd5d381",
+      "timestamp": "2026-11-21T00:17:05.642Z",
+      "instagramId": "17999635332103335",
+      "facebookId": "2613300552488301",
+      "instagramStoryId": "17990458478881060",
+      "formato": "sito",
+      "pillarId": "sito-web",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#sposi2027",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#discjockey",
+        "#musicapermatrimoni",
+        "#weddingmusic",
+        "#djprofessionista",
+        "#liguria",
+        "#matrimonioinpiemonte",
+        "#serravallescrivia"
+      ],
+      "punteggio": null
+    },
+    {
       "queueId": "2c21e551-e8aa-4aa2-831e-8992953be002",
       "timestamp": "2026-11-20T20:17:20.389Z",
       "instagramId": "18123937742516220",
