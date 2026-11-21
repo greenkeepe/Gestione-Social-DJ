@@ -494,6 +494,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "23afc07b-e657-493a-8861-b941587b61b1",
+      "createdAt": "2026-11-21T07:04:49.022Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Eventi.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/624855ff-a062-40fe-b182-bcc7e6db28f6.png"
+      },
+      "caption": "Matrimoni, compleanni, feste private: ogni evento ha la sua musica giusta. Trovi tutto sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#weddingitaly",
+        "#sposi2027",
+        "#weddingparty",
+        "#djmatrimonio",
+        "#weddingdj",
+        "#musicapermatrimoni",
+        "#djprofessionista",
+        "#discjockey",
+        "#djwedding",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-11-21",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
