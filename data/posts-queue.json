@@ -502,9 +502,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Eventi.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/624855ff-a062-40fe-b182-bcc7e6db28f6.png"
+        "filename": "reel-sito-Eventi.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/72eedc06-5c63-48ae-a926-383450924185.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/624855ff-a062-40fe-b182-bcc7e6db28f6.png",
+          "mimeType": "image/png",
+          "filename": "sito-Eventi.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Matrimoni, compleanni, feste private: ogni evento ha la sua musica giusta. Trovi tutto sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
