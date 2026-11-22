@@ -2,6 +2,13 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Regista",
+      "identita": "Agente AI Reel Maker",
+      "status": "ok",
+      "riepilogo": "Reel da immagini con Regia: 1/1 contenuti trasformati in Reel (musica, transizioni, finale con contatti; didascalie e orari invariati).",
+      "timestamp": "2026-11-22T07:09:44.622Z"
+    },
+    {
       "agente": "Direttore",
       "identita": "Agente Master / Orchestratore",
       "status": "ok",
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
       "timestamp": "2026-10-18T19:31:01.144Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "ok",
-      "riepilogo": "Pubblicato su Instagram (17907152682590136) e Facebook (1135985282443596). + Storia IG pubblicata.",
-      "timestamp": "2026-10-18T19:17:46.576Z"
     }
   ]
 }

@@ -464,9 +464,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Alessandria.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/6cd56e28-7ed5-4eb8-b490-a4464bedc2e8.png"
+        "filename": "reel-sito-DJ-a-Alessandria.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4489b1eb-c29f-4300-9d72-ffcc75184878.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/6cd56e28-7ed5-4eb8-b490-a4464bedc2e8.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Alessandria.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Alessandria e dintorni, dai castelli alle cascine del Monferrato: è il mio territorio di casa. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
