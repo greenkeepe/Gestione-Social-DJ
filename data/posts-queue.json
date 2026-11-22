@@ -34,10 +34,12 @@
         "#serravallescrivia"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-22"
+      "dataProgrammata": "2026-11-22",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "2334c840-d401-4548-bd6c-1879bbe8721e",
