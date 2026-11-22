@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "f35ab123-0220-442f-93da-1b605dc42a78",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "b22b290e-3648-46b1-b1b4-75c7393eb574",
-        "filename": "reel-telegram-1794053524991.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7d81c2f5-8bf6-480d-88c9-2637c00fca1a.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/971bb450-d214-45a4-94aa-df1caec99e37.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053524991.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Console pronta, luci blu accese, fuori ancora si sistemano i tavoli. Tra poco si parte.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#sposi2027",
-        "#weddingparty",
-        "#matrimonio2027",
-        "#weddingday",
-        "#djperfeste",
-        "#djeventi",
-        "#djwedding",
-        "#discjockey",
-        "#weddingpiemonte",
-        "#matrimonioinpiemonte",
-        "#lombardia"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-21",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "4de61ec2-0b99-470d-8153-1e0685a230c0",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -496,44 +456,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "23afc07b-e657-493a-8861-b941587b61b1",
-      "createdAt": "2026-11-21T07:04:49.022Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-Eventi.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/72eedc06-5c63-48ae-a926-383450924185.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/624855ff-a062-40fe-b182-bcc7e6db28f6.png",
-          "mimeType": "image/png",
-          "filename": "sito-Eventi.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Matrimoni, compleanni, feste private: ogni evento ha la sua musica giusta. Trovi tutto sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingitaly",
-        "#sposi2027",
-        "#weddingparty",
-        "#djmatrimonio",
-        "#weddingdj",
-        "#musicapermatrimoni",
-        "#djprofessionista",
-        "#discjockey",
-        "#djwedding",
-        "#serravallescrivia",
-        "#matrimonioinpiemonte",
-        "#alessandria"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-21",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     }
   ]
 }
