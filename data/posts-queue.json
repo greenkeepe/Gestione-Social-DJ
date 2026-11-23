@@ -418,6 +418,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "aa659e81-b2e7-4be0-b303-e56d60600e3c",
+      "createdAt": "2026-11-23T07:04:56.799Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-FAQ.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/587a3080-3c50-4b9a-98de-3deeb7a11cef.png"
+      },
+      "caption": "Raccolto le domande che mi fate più spesso in una pagina sola. Tutte le risposte le trovi sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#matrimonioitaliano",
+        "#matrimonio2027",
+        "#weddingdj",
+        "#weddingparty",
+        "#djprofessionista",
+        "#animazionematrimonio",
+        "#musicapermatrimoni",
+        "#discjockey",
+        "#serravallescrivia",
+        "#liguria",
+        "#lombardia"
+      ],
+      "orarioProgrammato": "12:30",
+      "dataProgrammata": "2026-11-23",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
