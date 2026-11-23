@@ -34,10 +34,12 @@
         "#alessandria"
       ],
       "orarioProgrammato": "12:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "testimonianze",
-      "dataProgrammata": "2026-11-23"
+      "dataProgrammata": "2026-11-23",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "c0cc3bfa-ad7e-4dc9-bf36-ec38ab15bde2",
