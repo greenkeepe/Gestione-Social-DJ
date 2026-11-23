@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "4de61ec2-0b99-470d-8153-1e0685a230c0",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "0e834465-b2f6-4f3f-9d48-824dffa64a60",
-        "filename": "reel-telegram-1794053527918.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/7fe99f61-0bc9-4fbd-8efc-2aedbd90a7ce.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/564f5db0-2bc4-4baf-8d97-bcea8661f0a8.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053527918.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Console accesa, luci blu, tavoli pieni dietro di me. Serata che scorre, io qui a dare il ritmo giusto.\n\nTienilo a portata di mano per quando dovrai pensare alla musica del matrimonio.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#matrimonioitaliano",
-        "#weddingdj",
-        "#weddingparty",
-        "#weddingitaly",
-        "#sposi2027",
-        "#discjockey",
-        "#weddingmusic",
-        "#djwedding",
-        "#djprofessionista",
-        "#alessandria",
-        "#weddingpiemonte",
-        "#serravallescrivia"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-22",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "2334c840-d401-4548-bd6c-1879bbe8721e",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -458,44 +418,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "33fd7b6f-3d7a-4e32-8c9d-aafed00ed3d8",
-      "createdAt": "2026-11-22T07:04:54.362Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-DJ-a-Alessandria.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/4489b1eb-c29f-4300-9d72-ffcc75184878.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/6cd56e28-7ed5-4eb8-b490-a4464bedc2e8.png",
-          "mimeType": "image/png",
-          "filename": "sito-DJ-a-Alessandria.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Alessandria e dintorni, dai castelli alle cascine del Monferrato: è il mio territorio di casa. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#weddingdj",
-        "#matrimonioitaliano",
-        "#weddingparty",
-        "#sposi2027",
-        "#weddingday",
-        "#discjockey",
-        "#djwedding",
-        "#weddingmusic",
-        "#djeventi",
-        "#lombardia",
-        "#liguria",
-        "#piemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-22",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     }
   ]
 }
