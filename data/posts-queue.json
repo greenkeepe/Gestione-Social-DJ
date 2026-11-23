@@ -462,13 +462,19 @@
     {
       "id": "a534d5bd-0d9f-4d1a-923c-78e2a7529c26",
       "createdAt": "2026-11-23T18:51:00.361Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Maria-Francesca-F.-21-09-2023.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/457602dd-9f35-4c69-8fb6-a411e02b4a14.png"
+        "filename": "reel-testimonianza-Maria-Francesca-F.-21-09-2023.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f8ce22de-00d7-41b7-94f2-923bdfbca54b.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/457602dd-9f35-4c69-8fb6-a411e02b4a14.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Maria-Francesca-F.-21-09-2023.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Le parole più belle sono quelle di chi c'era, grazie davvero.\n\n\"Andrea mi ha fatto divertire come non mi capitava da secoli. Tra brani vecchi e nuovi, la sua selezione è stata quella che mi piacerebbe ascoltare ad ogni festa danzante!\"\n— Maria Francesca F., Festa privata\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
