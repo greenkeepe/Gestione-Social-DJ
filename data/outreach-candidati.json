@@ -2,19 +2,19 @@
   "_istruzioni": "Scorta dei locali trovati su OpenStreetMap dall'Agente Esploratore (agents/outreach-agent.ts), per zona di ricerca. Gestita dall'agente: non serve modificarla a mano.",
   "zone": {
     "citta:novi ligure:20": {
-      "cercataIl": "2026-11-23T07:06:11.773Z",
+      "cercataIl": "2026-11-24T07:06:04.425Z",
       "trovati": 61
     },
     "citta:alessandria:20": {
-      "cercataIl": "2026-11-23T07:06:51.535Z",
+      "cercataIl": "2026-11-24T07:07:47.773Z",
       "trovati": 54
     },
     "provincia:AL": {
-      "cercataIl": "2026-11-23T07:07:38.500Z",
+      "cercataIl": "2026-11-24T07:08:33.323Z",
       "trovati": 105
     },
     "provincia:AT": {
-      "cercataIl": "2026-11-23T07:08:26.603Z",
+      "cercataIl": "2026-11-24T07:09:13.462Z",
       "trovati": 230
     }
   },

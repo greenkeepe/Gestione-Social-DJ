@@ -418,6 +418,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "a2151df3-82bc-47f1-a005-50a49d85b194",
+      "createdAt": "2026-11-24T07:04:50.746Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Home.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/cc0d3022-86ba-47cc-8fd4-2211e2f70ee9.png"
+      },
+      "caption": "La musica che trasforma un momento in un ricordo. Sul sito trovi tutto quello che facciamo per matrimoni ed eventi.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingitaly",
+        "#djmatrimonio",
+        "#weddingdj",
+        "#matrimonioitaliano",
+        "#discjockey",
+        "#djprofessionista",
+        "#musicapermatrimoni",
+        "#djwedding",
+        "#weddingpiemonte",
+        "#alessandria",
+        "#serravallescrivia"
+      ],
+      "orarioProgrammato": "18:30",
+      "dataProgrammata": "2026-11-24",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
