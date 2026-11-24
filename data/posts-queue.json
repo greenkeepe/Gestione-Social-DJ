@@ -426,9 +426,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Home.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/cc0d3022-86ba-47cc-8fd4-2211e2f70ee9.png"
+        "filename": "reel-sito-Home.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/b99bbaee-9b7b-4ad1-8ebb-6c3853d094eb.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/cc0d3022-86ba-47cc-8fd4-2211e2f70ee9.png",
+          "mimeType": "image/png",
+          "filename": "sito-Home.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "La musica che trasforma un momento in un ricordo. Sul sito trovi tutto quello che facciamo per matrimoni ed eventi.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
