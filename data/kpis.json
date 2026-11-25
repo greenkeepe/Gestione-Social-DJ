@@ -1,9 +1,9 @@
 {
   "_istruzioni": "Statistiche aggregate aggiornate dall'Analytics Agent leggendo la Graph API (Insights). Popolato progressivamente una volta collegati i token reali.",
-  "ultimoAggiornamento": "2026-11-24T07:05:13.812Z",
+  "ultimoAggiornamento": "2026-11-25T07:05:19.444Z",
   "instagram": {
-    "followers": 386,
-    "followersTrend7g": 0,
+    "followers": 387,
+    "followersTrend7g": 1,
     "reachMedio30g": null,
     "engagementRateMedio30g": null
   },
