@@ -2,6 +2,30 @@
   "_istruzioni": "Storico di tutto ciò che è stato pubblicato realmente, con id post Meta, orario, e metriche raccolte successivamente dall'Analytics Agent.",
   "log": [
     {
+      "queueId": "6f0b7009-ab48-4919-93cb-2471dcb7e17c",
+      "timestamp": "2026-11-25T11:32:30.893Z",
+      "instagramId": "18034800641883826",
+      "facebookId": "40975278568723943",
+      "instagramStoryId": "18084441587428268",
+      "formato": "reel",
+      "pillarId": "dietro-le-quinte",
+      "hashtags": [
+        "#sposi2027",
+        "#weddingday",
+        "#djmatrimonio",
+        "#weddingparty",
+        "#matrimonioitaliano",
+        "#djperfeste",
+        "#djeventi",
+        "#djwedding",
+        "#discjockey",
+        "#serravallescrivia",
+        "#matrimonioinpiemonte",
+        "#alessandria"
+      ],
+      "punteggio": null
+    },
+    {
       "queueId": "a2151df3-82bc-47f1-a005-50a49d85b194",
       "timestamp": "2026-11-25T00:02:26.956Z",
       "instagramId": "18114409736353066",
