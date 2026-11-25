@@ -4,6 +4,13 @@
     {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
+      "status": "nessuna-azione",
+      "riepilogo": "In attesa dell'orario migliore (12:30) per pubblicare.",
+      "timestamp": "2026-11-25T00:15:39.564Z"
+    },
+    {
+      "agente": "Editore",
+      "identita": "Agente Pubblicazione",
       "status": "ok",
       "riepilogo": "Pubblicato su Instagram (18114409736353066) e Facebook (1456225912648862). + Storia IG pubblicata.",
       "timestamp": "2026-11-25T00:02:26.959Z"
@@ -3493,13 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessuna nuova proposta (0 opportunità trovate).",
       "timestamp": "2026-10-26T10:51:29.882Z"
-    },
-    {
-      "agente": "Postino",
-      "identita": "Agente Invio Automatico Locali",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
-      "timestamp": "2026-10-26T09:17:31.445Z"
     }
   ]
 }
