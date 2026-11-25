@@ -388,9 +388,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Gallery.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a18e86c0-da3a-489d-b8c9-01462f0d603b.png"
+        "filename": "reel-sito-Gallery.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a787a897-f420-4512-9f9b-bc918a70fc3e.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a18e86c0-da3a-489d-b8c9-01462f0d603b.png",
+          "mimeType": "image/png",
+          "filename": "sito-Gallery.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Momenti veri, tra fuochi d'artificio, sorrisi e balli fino a tardi. La gallery è piena di storie così.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
