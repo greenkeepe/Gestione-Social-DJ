@@ -350,9 +350,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Serravalle-Scrivia.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1a3dad25-bcc1-4827-918c-49caf6966e35.png"
+        "filename": "reel-sito-DJ-a-Serravalle-Scrivia.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/65ad33c6-47a7-42c5-8722-cdf8ea4ee014.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/1a3dad25-bcc1-4827-918c-49caf6966e35.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Serravalle-Scrivia.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Serravalle Scrivia è la mia base, ma giro tra Val Borbera e colline del Gavi per matrimoni e feste. Tutti i dettagli sul sito.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
