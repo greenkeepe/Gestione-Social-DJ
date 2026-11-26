@@ -34,10 +34,12 @@
         "#liguria"
       ],
       "orarioProgrammato": "18:30",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-26"
+      "dataProgrammata": "2026-11-26",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "976a5a43-c38f-45a8-aeb0-76c7641064cf",
