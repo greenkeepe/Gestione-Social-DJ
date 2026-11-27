@@ -304,6 +304,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
+    },
+    {
+      "id": "cdac08f3-fded-4696-b234-a5fd460c79f0",
+      "createdAt": "2026-11-27T07:04:52.387Z",
+      "formato": "sito",
+      "media": {
+        "source": "sito-web",
+        "mediaId": null,
+        "filename": "sito-Contatti.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5c6774dc-a2b5-4a3f-9644-934d3afbbd82.png"
+      },
+      "caption": "Raccontami data e location del tuo evento, in 5 minuti ti dico la disponibilità. Tutto sul sito, link in bio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingitaly",
+        "#weddingparty",
+        "#matrimonio2027",
+        "#sposi2027",
+        "#discjockey",
+        "#weddingmusic",
+        "#djwedding",
+        "#djprofessionista",
+        "#liguria",
+        "#weddingpiemonte",
+        "#piemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-11-27",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "sito-web"
     }
   ]
 }
