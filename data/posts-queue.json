@@ -34,10 +34,12 @@
         "#weddingpiemonte"
       ],
       "orarioProgrammato": "21:15",
-      "status": "pronto",
+      "status": "pubblicato",
       "istruzioniUtente": null,
       "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-27"
+      "dataProgrammata": "2026-11-27",
+      "ultimoErrore": null,
+      "tentativiFalliti": 0
     },
     {
       "id": "825ac837-40e1-446c-99f3-4a399181bbff",
