@@ -312,9 +312,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-Contatti.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5c6774dc-a2b5-4a3f-9644-934d3afbbd82.png"
+        "filename": "reel-sito-Contatti.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a0d32abb-d4bd-4014-a835-7002974e01d7.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5c6774dc-a2b5-4a3f-9644-934d3afbbd82.png",
+          "mimeType": "image/png",
+          "filename": "sito-Contatti.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Raccontami data e location del tuo evento, in 5 minuti ti dico la disponibilità. Tutto sul sito, link in bio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
