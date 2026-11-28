@@ -340,13 +340,19 @@
     {
       "id": "5fc3fd1d-9998-435f-820c-24c975527427",
       "createdAt": "2026-11-28T15:54:24.732Z",
-      "formato": "post",
+      "formato": "reel",
       "media": {
         "source": "testimonianza",
         "mediaId": null,
-        "filename": "testimonianza-Luciana-D.-26-01-2023.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a572a766-f95f-4374-ab40-aece5d83d3f9.png"
+        "filename": "reel-testimonianza-Luciana-D.-26-01-2023.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/94a86000-57ea-46c5-bf25-5791edb7995a.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a572a766-f95f-4374-ab40-aece5d83d3f9.png",
+          "mimeType": "image/png",
+          "filename": "testimonianza-Luciana-D.-26-01-2023.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Recensioni così sono il motivo per cui faccio questo lavoro.\n\n\"Bravo Andrea, DJ che sa il fatto suo! Impeccabile in ogni momento, ci ha fatto ballare tutti fino alle 5 del mattino. Lo consigliamo a tutti senza dubbi.\"\n— Luciana D., Compleanno\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
