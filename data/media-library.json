@@ -450,6 +450,16 @@
       "usatoIl": "2026-11-10T16:04:08.631Z",
       "source": "telegram",
       "istruzioniUtente": null
+    },
+    {
+      "id": "831124e9-b464-4fd3-bc19-aad479cbe366",
+      "url": "https://gestione-social-dj.vercel.app/api/r2-file/07c0e32b-b2fd-4f99-b98d-1c5241080c62.mp4",
+      "filename": "reel-telegram-1795851766626.mp4",
+      "mimeType": "video/mp4",
+      "uploadedAt": "2026-11-28T07:44:43.419Z",
+      "usatoIl": null,
+      "source": "telegram",
+      "istruzioniUtente": null
     }
   ]
 }
