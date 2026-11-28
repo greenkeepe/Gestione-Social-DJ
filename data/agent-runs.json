@@ -2,6 +2,20 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "ok",
+      "riepilogo": "Scritta didascalia per il contenuto \"Consigli per gli sposi\" (LLM con visione). Programmato per il 2026-12-05 alle 21:15.",
+      "timestamp": "2026-11-28T07:45:36.122Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "ok",
+      "riepilogo": "1 contenuti (foto o Reel già montati) messi in coda per la didascalia.",
+      "timestamp": "2026-11-28T07:45:30.809Z"
+    },
+    {
       "agente": "Regista",
       "identita": "Agente AI Reel Maker",
       "status": "ok",
@@ -3486,20 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-11-08T18:25:05.824Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
-      "timestamp": "2026-11-08T17:40:01.905Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-11-08T13:01:00.760Z"
     }
   ]
 }

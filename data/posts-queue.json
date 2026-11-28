@@ -304,6 +304,38 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "sito-web"
+    },
+    {
+      "id": "54c8698c-a216-47f8-8679-2fa55e8107d0",
+      "createdAt": "2026-11-28T07:45:30.783Z",
+      "formato": "reel",
+      "media": {
+        "source": "telegram",
+        "mediaId": "831124e9-b464-4fd3-bc19-aad479cbe366",
+        "filename": "reel-telegram-1795851766626.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/07c0e32b-b2fd-4f99-b98d-1c5241080c62.mp4"
+      },
+      "caption": "Pista che si scalda, luci glow ovunque e la gente che balla senza pensieri. Questo è il momento che aspetto tutta la sera.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#sposi2027",
+        "#weddingdj",
+        "#matrimonio2027",
+        "#weddingday",
+        "#djperfeste",
+        "#djprofessionista",
+        "#djeventi",
+        "#weddingmusic",
+        "#serravallescrivia",
+        "#alessandria",
+        "#matrimonioinpiemonte"
+      ],
+      "orarioProgrammato": "21:15",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "consigli",
+      "dataProgrammata": "2026-12-05"
     }
   ]
 }
