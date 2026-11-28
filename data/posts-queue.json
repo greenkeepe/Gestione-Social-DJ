@@ -2,46 +2,6 @@
   "_istruzioni": "Coda dei post pronti da pubblicare. Il Publishing Agent consuma da qui (status: pronto -> pubblicato). Puoi anche aggiungere post manualmente con status 'pronto'.",
   "queue": [
     {
-      "id": "976a5a43-c38f-45a8-aeb0-76c7641064cf",
-      "createdAt": "2026-11-10T16:04:08.631Z",
-      "formato": "reel",
-      "media": {
-        "source": "telegram",
-        "mediaId": "550af8dc-c3fc-444d-8676-fce342249872",
-        "filename": "reel-telegram-1794053541739.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/404b5532-a1ff-4462-a785-a33a05f906b1.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/ac4e3058-d58f-4569-97b9-fb975246a9b5.jpg",
-          "mimeType": "image/jpeg",
-          "filename": "telegram-1794053541739.jpg"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Festa anni '70 al completo, costumi veri e sorrisi pieni. Serata così si ricorda a lungo.\n\nSe ti piacciono questi contenuti, seguimi: è il modo più semplice per non perderteli.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingdj",
-        "#matrimonio2027",
-        "#weddingday",
-        "#matrimonioitaliano",
-        "#musicapermatrimoni",
-        "#djperfeste",
-        "#djprofessionista",
-        "#discjockey",
-        "#piemonte",
-        "#alessandria",
-        "#weddingpiemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "status": "pubblicato",
-      "istruzioniUtente": null,
-      "pillarId": "dietro-le-quinte",
-      "dataProgrammata": "2026-11-27",
-      "ultimoErrore": null,
-      "tentativiFalliti": 0
-    },
-    {
       "id": "825ac837-40e1-446c-99f3-4a399181bbff",
       "createdAt": "2026-11-10T16:04:08.631Z",
       "formato": "reel",
@@ -306,44 +266,6 @@
       "status": "pronto",
       "istruzioniUtente": null,
       "pillarId": "testimonianze"
-    },
-    {
-      "id": "cdac08f3-fded-4696-b234-a5fd460c79f0",
-      "createdAt": "2026-11-27T07:04:52.387Z",
-      "formato": "sito",
-      "media": {
-        "source": "sito-web",
-        "mediaId": null,
-        "filename": "reel-sito-Contatti.mp4",
-        "mimeType": "video/mp4",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a0d32abb-d4bd-4014-a835-7002974e01d7.mp4",
-        "originale": {
-          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5c6774dc-a2b5-4a3f-9644-934d3afbbd82.png",
-          "mimeType": "image/png",
-          "filename": "sito-Contatti.png"
-        },
-        "fotoReel": "regia-foto-2"
-      },
-      "caption": "Raccontami data e location del tuo evento, in 5 minuti ti dico la disponibilità. Tutto sul sito, link in bio.\n\nScrivimi qui in DM, ti rispondo con tutti i dettagli. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
-      "hashtags": [
-        "#djmatrimonio",
-        "#weddingitaly",
-        "#weddingparty",
-        "#matrimonio2027",
-        "#sposi2027",
-        "#discjockey",
-        "#weddingmusic",
-        "#djwedding",
-        "#djprofessionista",
-        "#liguria",
-        "#weddingpiemonte",
-        "#piemonte"
-      ],
-      "orarioProgrammato": "21:15",
-      "dataProgrammata": "2026-11-27",
-      "status": "pronto",
-      "istruzioniUtente": null,
-      "pillarId": "sito-web"
     }
   ]
 }
