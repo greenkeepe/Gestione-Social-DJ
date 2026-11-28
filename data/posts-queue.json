@@ -336,6 +336,38 @@
       "istruzioniUtente": null,
       "pillarId": "consigli",
       "dataProgrammata": "2026-12-05"
+    },
+    {
+      "id": "5fc3fd1d-9998-435f-820c-24c975527427",
+      "createdAt": "2026-11-28T15:54:24.732Z",
+      "formato": "post",
+      "media": {
+        "source": "testimonianza",
+        "mediaId": null,
+        "filename": "testimonianza-Luciana-D.-26-01-2023.png",
+        "mimeType": "image/png",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/a572a766-f95f-4374-ab40-aece5d83d3f9.png"
+      },
+      "caption": "Recensioni così sono il motivo per cui faccio questo lavoro.\n\n\"Bravo Andrea, DJ che sa il fatto suo! Impeccabile in ogni momento, ci ha fatto ballare tutti fino alle 5 del mattino. Lo consigliamo a tutti senza dubbi.\"\n— Luciana D., Compleanno\n\nScrivimi in DM per info e disponibilità. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
+      "hashtags": [
+        "#djmatrimonio",
+        "#weddingdj",
+        "#weddingitaly",
+        "#weddingday",
+        "#matrimonioitaliano",
+        "#weddingmusic",
+        "#djwedding",
+        "#djeventi",
+        "#musicapermatrimoni",
+        "#weddingpiemonte",
+        "#serravallescrivia",
+        "#alessandria"
+      ],
+      "orarioProgrammato": "21:15",
+      "dataProgrammata": "2026-12-06",
+      "status": "pronto",
+      "istruzioniUtente": null,
+      "pillarId": "testimonianze"
     }
   ]
 }
