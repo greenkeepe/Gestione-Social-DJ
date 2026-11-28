@@ -274,9 +274,15 @@
       "media": {
         "source": "sito-web",
         "mediaId": null,
-        "filename": "sito-DJ-a-Novi-Ligure.png",
-        "mimeType": "image/png",
-        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5dedb517-dcd1-41e7-b06a-b42fdffeae3c.png"
+        "filename": "reel-sito-DJ-a-Novi-Ligure.mp4",
+        "mimeType": "video/mp4",
+        "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/f12bac6f-341f-4cce-a990-a024bb8f682c.mp4",
+        "originale": {
+          "downloadUrl": "https://gestione-social-dj.vercel.app/api/r2-file/5dedb517-dcd1-41e7-b06a-b42fdffeae3c.png",
+          "mimeType": "image/png",
+          "filename": "sito-DJ-a-Novi-Ligure.png"
+        },
+        "fotoReel": "regia-foto-2"
       },
       "caption": "Novi Ligure è praticamente sotto casa: conosco location e colline del Gavi come le mie tasche. Tutti i dettagli sul sito.\n\nMandami un messaggio privato se vuoi sapere di più. Trovi anche il bottone WhatsApp sul mio profilo, se preferisci. Sul sito in bio trovi foto, recensioni e tutti i dettagli.",
       "hashtags": [
