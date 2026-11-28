@@ -2,6 +2,76 @@
   "_istruzioni": "Log delle esecuzioni giornaliere di ogni agente, mostrato nella dashboard sezione 'Agenti' per sapere chi ha fatto cosa e quando, ed eventuali errori.",
   "runs": [
     {
+      "agente": "Direttore",
+      "identita": "Agente Master / Orchestratore",
+      "status": "ok",
+      "riepilogo": "Ciclo giornaliero completato: contenuto del giorno preparato, lead controllati, KPI e strategia aggiornati. La pubblicazione avverrà al prossimo controllo orario utile.",
+      "timestamp": "2026-11-28T07:07:58.441Z"
+    },
+    {
+      "agente": "Esploratore",
+      "identita": "Agente Partnership Locali",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessuna nuova bozza in novi ligure (20 km), alessandria (20 km), provincia di Alessandria, provincia di Asti: 0 locali esaminati, nessuno con email pubblica e attività di eventi (coda 0/10). Locali ancora da esaminare in scorta: 0.",
+      "timestamp": "2026-11-28T07:07:58.439Z"
+    },
+    {
+      "agente": "Appunti",
+      "identita": "Agente Note Instagram",
+      "status": "nessuna-azione",
+      "riepilogo": "Oggi niente proposta di Nota: restano un'idea occasionale, non un appuntamento fisso.",
+      "timestamp": "2026-11-28T07:05:12.791Z"
+    },
+    {
+      "agente": "Stratega",
+      "identita": "Agente Strategia",
+      "status": "ok",
+      "riepilogo": "Avanzamento: 0/30 matrimoni confermati (0.0%), 1 lead in pipeline.",
+      "timestamp": "2026-11-28T07:05:12.477Z"
+    },
+    {
+      "agente": "Analista",
+      "identita": "Agente Analytics",
+      "status": "ok",
+      "riepilogo": "KPI aggiornati: 386 follower Instagram, 1 lead attivi.",
+      "timestamp": "2026-11-28T07:05:12.414Z"
+    },
+    {
+      "agente": "Portavoce",
+      "identita": "Agente Risposte Pubbliche",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento a cui rispondere da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-11-28T07:05:02.682Z"
+    },
+    {
+      "agente": "Cacciatore",
+      "identita": "Agente Lead & Outreach",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo commento con segnali di interesse da quando ho controllato l'ultima volta.",
+      "timestamp": "2026-11-28T07:04:57.742Z"
+    },
+    {
+      "agente": "Vetrina",
+      "identita": "Agente Vetrina Sito Web",
+      "status": "ok",
+      "riepilogo": "Vetrina del sito pronta (\"DJ a Novi Ligure\"), programmata per il 2026-11-28 alle 21:15.",
+      "timestamp": "2026-11-28T07:04:54.209Z"
+    },
+    {
+      "agente": "Copy",
+      "identita": "Agente Contenuti",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun contenuto in attesa di didascalia oggi.",
+      "timestamp": "2026-11-28T07:04:48.252Z"
+    },
+    {
+      "agente": "Occhio",
+      "identita": "Agente Media",
+      "status": "nessuna-azione",
+      "riepilogo": "Nessun nuovo media disponibile: carica nuove foto/video dalla pagina 'Carica media' della dashboard.",
+      "timestamp": "2026-11-28T07:04:48.241Z"
+    },
+    {
       "agente": "Editore",
       "identita": "Agente Pubblicazione",
       "status": "nessuna-azione",
@@ -3430,76 +3500,6 @@
       "status": "nessuna-azione",
       "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
       "timestamp": "2026-11-08T01:12:37.783Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-11-07T21:43:13.277Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
-      "timestamp": "2026-11-07T21:29:26.500Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-11-07T17:59:07.581Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
-      "timestamp": "2026-11-07T17:28:48.985Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-11-07T12:43:55.552Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1794053493757.mp4\" (categoria festa, stile dynamic, 15s) e messo in coda per la didascalia e la pubblicazione automatica.",
-      "timestamp": "2026-11-07T12:15:55.369Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "ok",
-      "riepilogo": "Reel creato da \"telegram-1794053499322.mp4\" (categoria festa, stile dynamic, 8s) e messo in coda per la didascalia e la pubblicazione automatica.",
-      "timestamp": "2026-11-07T12:14:43.007Z"
-    },
-    {
-      "agente": "Postino",
-      "identita": "Agente Invio Automatico Locali",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessuna bozza da inviare automaticamente oggi.",
-      "timestamp": "2026-11-07T09:17:31.546Z"
-    },
-    {
-      "agente": "Editore",
-      "identita": "Agente Pubblicazione",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun contenuto pronto da pubblicare oggi (o già pubblicato il massimo per i canali disponibili).",
-      "timestamp": "2026-11-07T00:38:33.809Z"
-    },
-    {
-      "agente": "Regista",
-      "identita": "Agente AI Reel Maker",
-      "status": "nessuna-azione",
-      "riepilogo": "Nessun video grezzo in coda per l'AI Reel Maker.",
-      "timestamp": "2026-11-07T00:19:52.347Z"
     }
   ]
 }
